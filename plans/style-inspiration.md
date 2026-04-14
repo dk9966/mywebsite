@@ -8,8 +8,9 @@ Tron
 
 Iron man 2
 
-- Wakeup daddy’s home  
-OblivionD
+- Wakeup daddy’s home
+
+Oblivion
 
 Star Wars
 
@@ -20,7 +21,7 @@ GTA 5 transition
 Into the spider verse.
 
 - upside down transition like when Gwen on tower in second movie
-When they go into the spider cave in aunt backyard
+  When they go into the spider cave in aunt backyard
 
 Ben 10
 
@@ -37,7 +38,7 @@ Aot thingy
 
 Jamaican ai speech
 
- Give opus or codex this layout + a few sketches and ask for suggestions
+Give opus or codex this layout + a few sketches and ask for suggestions
 
 Animation idea: turn intersections of lines into nodes, at each beat of the music a line will start from a node
 
@@ -51,6 +52,13 @@ transformers style animations
 
 invincible
 
+- title card (s)
+- word splat
+
 gambling
 
 id card
+
+jjk
+
+matrix dissolve

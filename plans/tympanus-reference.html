@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tympanus references for current plan ideas</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background: #090c12;
+        color: #e9eef9;
+      }
+
+      .site-ref {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 32px 20px 60px;
+      }
+
+      .site-ref__title {
+        margin: 0;
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+
+      .site-ref__meta {
+        margin-top: 10px;
+        color: #a9b6cf;
+      }
+
+      .site-ref__grid {
+        margin-top: 24px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .site-ref__card {
+        border: 1px solid #283142;
+        border-radius: 12px;
+        padding: 14px;
+        background: #0e131c;
+      }
+
+      .site-ref__card-title {
+        margin: 0;
+        font-size: 1.15rem;
+      }
+
+      .site-ref__card-link {
+        margin-top: 6px;
+      }
+
+      .site-ref__card-link a {
+        color: #88b8ff;
+        text-decoration: none;
+      }
+
+      .site-ref__shot {
+        display: block;
+        margin-top: 12px;
+        width: 100%;
+        max-width: 960px;
+        border-radius: 8px;
+        border: 1px solid #263145;
+        background: #090c12;
+      }
+
+      .site-ref__why {
+        margin: 12px 0 0;
+        color: #ced8ea;
+      }
+
+      .site-ref__caption {
+        margin: 8px 0 0;
+        color: #98a8c6;
+        font-size: 0.95rem;
+      }
+
+      .site-ref__command {
+        margin-top: 6px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.85rem;
+        color: #c7d4ec;
+        word-break: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="site-ref">
+      <h1 class="site-ref__title">Tympanus references mapped to current ideas</h1>
+      <p class="site-ref__meta">
+        Focus: Tron / Iron Man HUD feel, startup line movement, scan energy, and 3D transition language from
+        your current planning notes.
+      </p>
+
+      <section class="site-ref__grid">
+        <article class="site-ref__card">
+          <h2 class="site-ref__card-title">Scanning effect with depth map</h2>
+          <p class="site-ref__card-link">
+            Live demo:
+            <a href="https://tympanus.net/Development/ScanEffect/effect1/">https://tympanus.net/Development/ScanEffect/effect1/</a>
+          </p>
+          <img
+            class="site-ref__shot"
+            src="assets/tympanus-scan-effect-capture.gif"
+            alt="Depth-map scan effect from Tympanus"
+          />
+          <p class="site-ref__why">
+            Good fit for your scan/HUD direction: moving scan bars and depth-based reveal can map to line-based startup
+            animations and 2D-to-3D projection moments.
+          </p>
+          <p class="site-ref__caption">GIF: <code>plans/assets/tympanus-scan-effect-capture.gif</code></p>
+          <p class="site-ref__command">
+            Regenerate: <code>pnpm run capture-site-gif --url "https://tympanus.net/Development/ScanEffect/effect1/" --out "plans/assets/tympanus-scan-effect-capture.gif" --seconds 4 --settle-ms 1500 --wait-until domcontentloaded</code>
+          </p>
+        </article>
+
+        <article class="site-ref__card">
+          <h2 class="site-ref__card-title">Matrix Sentinels</h2>
+          <p class="site-ref__card-link">
+            Live demo:
+            <a href="https://tympanus.net/Tutorials/MatrixSentinels/">https://tympanus.net/Tutorials/MatrixSentinels/</a>
+          </p>
+          <img
+            class="site-ref__shot"
+            src="assets/tympanus-matrix-sentinels-capture.gif"
+            alt="Matrix Sentinels particle field demo"
+          />
+          <p class="site-ref__why">
+            Strong match for matrix/boids and music-beat node ideas: flowing particles and trail energy can become
+            beat-driven node links or transition layers.
+          </p>
+          <p class="site-ref__caption">GIF: <code>plans/assets/tympanus-matrix-sentinels-capture.gif</code></p>
+          <p class="site-ref__command">
+            Regenerate: <code>pnpm run capture-site-gif --url "https://tympanus.net/Tutorials/MatrixSentinels/" --out "plans/assets/tympanus-matrix-sentinels-capture.gif" --seconds 4 --settle-ms 1500 --wait-until domcontentloaded</code>
+          </p>
+        </article>
+
+        <article class="site-ref__card">
+          <h2 class="site-ref__card-title">Perspective Page View Navigation</h2>
+          <p class="site-ref__card-link">
+            Live demo:
+            <a href="https://tympanus.net/Development/PerspectivePageViewNavigation/">https://tympanus.net/Development/PerspectivePageViewNavigation/</a>
+          </p>
+          <img
+            class="site-ref__shot"
+            src="assets/tympanus-perspective-nav-capture.gif"
+            alt="Perspective page view navigation demo"
+          />
+          <p class="site-ref__why">
+            Useful for Spider-Verse-like perspective swings and GTA-style state shifts without overcomplicating scene logic.
+          </p>
+          <p class="site-ref__caption">GIF: <code>plans/assets/tympanus-perspective-nav-capture.gif</code></p>
+          <p class="site-ref__command">
+            Regenerate: <code>pnpm run capture-site-gif --url "https://tympanus.net/Development/PerspectivePageViewNavigation/" --out "plans/assets/tympanus-perspective-nav-capture.gif" --seconds 4 --settle-ms 1500 --wait-until domcontentloaded</code>
+          </p>
+        </article>
+
+        <article class="site-ref__card">
+          <h2 class="site-ref__card-title">A Collection of Page Transitions</h2>
+          <p class="site-ref__card-link">
+            Live demo:
+            <a href="https://tympanus.net/Development/PageTransitions/">https://tympanus.net/Development/PageTransitions/</a>
+          </p>
+          <img
+            class="site-ref__shot"
+            src="assets/tympanus-page-transitions-capture.gif"
+            alt="Codrops page transitions demo"
+          />
+          <p class="site-ref__why">
+            Practical transition library for choosing your motion language early (fold, cube, room, slide) before custom
+            polish.
+          </p>
+          <p class="site-ref__caption">GIF: <code>plans/assets/tympanus-page-transitions-capture.gif</code></p>
+          <p class="site-ref__command">
+            Regenerate: <code>pnpm run capture-site-gif --url "https://tympanus.net/Development/PageTransitions/" --out "plans/assets/tympanus-page-transitions-capture.gif" --seconds 4 --settle-ms 1500 --wait-until domcontentloaded</code>
+          </p>
+        </article>
+
+        <article class="site-ref__card">
+          <h2 class="site-ref__card-title">Texture Transition (WebGL)</h2>
+          <p class="site-ref__card-link">
+            Live demo:
+            <a href="https://tympanus.net/Development/TextureTransition/">https://tympanus.net/Development/TextureTransition/</a>
+          </p>
+          <img
+            class="site-ref__shot"
+            src="assets/tympanus-texture-transition-capture.gif"
+            alt="Texture transition and radial noise demo"
+          />
+          <p class="site-ref__why">
+            Gives a cleaner route to procedural radial-noise pulses that can be tied to music beats and startup reveal timing.
+          </p>
+          <p class="site-ref__caption">GIF: <code>plans/assets/tympanus-texture-transition-capture.gif</code></p>
+          <p class="site-ref__command">
+            Regenerate: <code>pnpm run capture-site-gif --url "https://tympanus.net/Development/TextureTransition/" --out "plans/assets/tympanus-texture-transition-capture.gif" --seconds 4 --settle-ms 1500 --wait-until domcontentloaded</code>
+          </p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

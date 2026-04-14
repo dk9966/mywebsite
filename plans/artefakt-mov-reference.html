@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Artefakt.mov — capture reference</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 52rem;
+      margin: 2rem auto;
+      padding: 0 1.25rem;
+      line-height: 1.55;
+      color: #0f0f0f;
+      background: #fafafa;
+    }
+    .artefakt-ref__title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin: 0 0 0.5rem;
+    }
+    .artefakt-ref__meta {
+      margin: 0 0 1.5rem;
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .artefakt-ref__meta a {
+      color: #0645ad;
+    }
+    .artefakt-ref__section-title {
+      font-size: 1.05rem;
+      margin: 1.5rem 0 0.75rem;
+    }
+    .artefakt-ref__list {
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+    .artefakt-ref__list li {
+      margin-bottom: 0.35rem;
+    }
+    .artefakt-ref__shot {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 1rem 0 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .artefakt-ref__caption {
+      margin: 0.5rem 0 0;
+      font-size: 0.85rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <article class="artefakt-ref">
+    <h1 class="artefakt-ref__title">Artefakt.mov — capture reference</h1>
+    <p class="artefakt-ref__meta">
+      <strong>Site:</strong> <a href="https://artefakt.mov/">https://artefakt.mov/</a><br>
+      <strong>Motion:</strong> ~3s loop, 12&nbsp;fps, 960px wide (GIF next to this file). Captured with headless Chromium after a short settle; not identical to every real browser.
+    </p>
+
+    <h2 class="artefakt-ref__section-title">What stands out</h2>
+    <ul class="artefakt-ref__list">
+      <li>Dark field with a fine pixel/grid grain (CRT-ish read without full scanline gimmick).</li>
+      <li>Huge wordmark top-left, <code>:/ MENU</code> top-right in a tight mono/pixel stack.</li>
+      <li>Center band of dense glyph/ASCII noise with big headline on top: “FILM PRODUCTION” / “REIMAGINED.”</li>
+      <li>All-caps mono blurb anchored low; high contrast, minimal chrome.</li>
+    </ul>
+
+    <h2 class="artefakt-ref__section-title">Motion clip (~3s)</h2>
+    <img
+      class="artefakt-ref__shot"
+      src="assets/artefakt-mov-capture.gif"
+      alt="Artefakt.mov homepage — ~3 second capture"
+    >
+    <p class="artefakt-ref__caption">
+      GIF: <code>plans/assets/artefakt-mov-capture.gif</code>
+      · still: <code>plans/assets/artefakt-mov-screenshot.png</code>
+      · regenerate: <code>pnpm run capture-artefakt-gif</code>
+      (or <code>pnpm run capture-site-gif -- --url "https://artefakt.mov/" --out plans/assets/artefakt-mov-capture.gif</code>)
+    </p>
+  </article>
+</body>
+</html>

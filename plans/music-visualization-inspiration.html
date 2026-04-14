@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Music visualization & audio-coordinated motion — inspiration board</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 58rem;
+      margin: 2rem auto;
+      padding: 0 1.25rem 3rem;
+      line-height: 1.55;
+      color: #0f0f0f;
+      background: #f6f6f4;
+    }
+    .site-ref-board__intro {
+      margin-bottom: 2rem;
+    }
+    .site-ref-board__intro h1 {
+      font-size: 1.5rem;
+      font-weight: 650;
+      margin: 0 0 0.5rem;
+    }
+    .site-ref-board__intro p {
+      margin: 0.35rem 0;
+      color: #333;
+      max-width: 48rem;
+    }
+    .site-ref-board__section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 2.25rem 0 0.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #d8d8d4;
+    }
+    .site-ref {
+      margin: 1.75rem 0;
+      padding: 1.25rem 1.25rem 1.4rem;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+    .site-ref__title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 0.35rem;
+    }
+    .site-ref__meta {
+      margin: 0 0 0.75rem;
+      font-size: 0.92rem;
+      color: #444;
+    }
+    .site-ref__meta a {
+      color: #0645ad;
+      word-break: break-all;
+    }
+    .site-ref__notes {
+      margin: 0 0 0.85rem;
+      padding-left: 1.1rem;
+      font-size: 0.92rem;
+      color: #333;
+    }
+    .site-ref__notes li {
+      margin-bottom: 0.35rem;
+    }
+    .site-ref__shot {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0.5rem 0 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .site-ref__caption {
+      margin: 0.45rem 0 0;
+      font-size: 0.82rem;
+      color: #555;
+    }
+    .site-ref__caption code {
+      font-size: 0.8em;
+      word-break: break-all;
+    }
+    .site-ref--text-only .site-ref__notes {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-ref-board__intro">
+    <h1>Music visualization & audio-coordinated motion</h1>
+    <p>
+      Curated references that lean <strong>authored, spatial, typographic, or structural</strong> rather than generic fractal or “liquid LSD” mush.
+      Each web example includes a short silent GIF from headless Chromium (see captions for regenerate commands). Clips may look idle on keyboard-first experiences until you open the live site.
+    </p>
+    <p>
+      Research pass: web (Codrops, Experiments with Google, artist tools) plus parallel passes for editorial <strong>Blender</strong> music-video pipelines (geometry nodes, baked audio).
+    </p>
+  </header>
+
+  <h2 class="site-ref-board__section-title">Web — synesthesia, albums, space, education</h2>
+
+  <article class="site-ref">
+    <h3 class="site-ref__title">Patatap</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://www.patatap.com/">https://www.patatap.com/</a>
+      · Jono Brandel + Lullatone (Two.js). Chrome Experiment.
+    </p>
+    <ul class="site-ref__notes">
+      <li>Each letter key pairs a <strong>designed motion graphic</strong> with a sound; space swaps palette worlds.</li>
+      <li>Motion design as instrument—not a shader stack reacting to a single FFT texture.</li>
+    </ul>
+    <img class="site-ref__shot" src="assets/music-viz-patatap-capture.gif" alt="Patatap — ~4s headless capture (mostly idle without key presses)">
+    <p class="site-ref__caption">
+      GIF: <code>plans/assets/music-viz-patatap-capture.gif</code>
+      · regenerate: <code>pnpm exec tsx scripts/capture-site-gif.ts --url "https://www.patatap.com/" --out plans/assets/music-viz-patatap-capture.gif --seconds 4 --settle-ms 3500 --gif-width 720</code>
+    </p>
+  </article>
+
+  <article class="site-ref">
+    <h3 class="site-ref__title">Typatone</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://typatone.com/">https://typatone.com/</a>
+      · Sister tool to Patatap (typing → melody, moods, sharing).
+    </p>
+    <ul class="site-ref__notes">
+      <li><strong>Typography drives pitch and rhythm</strong>; composition is the interface.</li>
+    </ul>
+    <img class="site-ref__shot" src="assets/music-viz-typatone-capture.gif" alt="Typatone — ~4s headless capture">
+    <p class="site-ref__caption">
+      GIF: <code>plans/assets/music-viz-typatone-capture.gif</code>
+      · regenerate: <code>pnpm exec tsx scripts/capture-site-gif.ts --url "https://typatone.com/" --out plans/assets/music-viz-typatone-capture.gif --seconds 4 --settle-ms 3500 --gif-width 720</code>
+    </p>
+  </article>
+
+  <article class="site-ref">
+    <h3 class="site-ref__title">Audiograph</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://www.audiograph.xyz/">https://www.audiograph.xyz/</a>
+      · Matt DesLauriers — WebGL + Web Audio for Pilotpriest <em>TRANS</em> (Dolby Web Audio challenge).
+    </p>
+    <ul class="site-ref__notes">
+      <li><strong>Album-native</strong> visual room: hold space to queue tracks, release to play—depth, noise-driven vertex motion, colour palettes, post stack.</li>
+      <li>Code: <a href="https://github.com/mattdesl/audiograph.xyz">github.com/mattdesl/audiograph.xyz</a></li>
+    </ul>
+    <img class="site-ref__shot" src="assets/music-viz-audiograph-capture.gif" alt="Audiograph — ~4s headless capture">
+    <p class="site-ref__caption">
+      GIF: <code>plans/assets/music-viz-audiograph-capture.gif</code>
+      · regenerate: <code>pnpm exec tsx scripts/capture-site-gif.ts --url "https://www.audiograph.xyz/" --out plans/assets/music-viz-audiograph-capture.gif --seconds 4 --settle-ms 4000 --gif-width 720</code>
+    </p>
+  </article>
+
+  <article class="site-ref">
+    <h3 class="site-ref__title">Chrome Music Lab — Spectrogram</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://musiclab.chromeexperiments.com/spectrogram/">https://musiclab.chromeexperiments.com/spectrogram/</a>
+      · Google Creative Lab (Web Audio, companion experiments use Tone.js).
+    </p>
+    <ul class="site-ref__notes">
+      <li>Teaches <strong>frequency vs. time</strong> with mic or built-in sounds—honest signal view instead of decorative blobs.</li>
+    </ul>
+    <img class="site-ref__shot" src="assets/music-viz-spectrogram-capture.gif" alt="Chrome Music Lab spectrogram — ~4s headless capture">
+    <p class="site-ref__caption">
+      GIF: <code>plans/assets/music-viz-spectrogram-capture.gif</code>
+      · regenerate: <code>pnpm exec tsx scripts/capture-site-gif.ts --url "https://musiclab.chromeexperiments.com/spectrogram/" --out plans/assets/music-viz-spectrogram-capture.gif --seconds 4 --settle-ms 4000 --gif-width 720</code>
+    </p>
+  </article>
+
+  <article class="site-ref">
+    <h3 class="site-ref__title">Radio Garden</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://radio.garden/">https://radio.garden/</a>
+      · Studio Puckey × Moniker; WebGL globe + live streams.
+    </p>
+    <ul class="site-ref__notes">
+      <li><strong>Geo-spatial listening UI</strong> as the whole product—music discovery by spinning Earth, not by remapping FFT to glow.</li>
+    </ul>
+    <img class="site-ref__shot" src="assets/music-viz-radio-garden-capture.gif" alt="Radio Garden — ~4s headless capture">
+    <p class="site-ref__caption">
+      GIF: <code>plans/assets/music-viz-radio-garden-capture.gif</code>
+      · regenerate: <code>pnpm exec tsx scripts/capture-site-gif.ts --url "https://radio.garden/" --out plans/assets/music-viz-radio-garden-capture.gif --seconds 4 --settle-ms 4000 --gif-width 720</code>
+    </p>
+  </article>
+
+  <article class="site-ref">
+    <h3 class="site-ref__title">Three.js — audio-reactive demo (Netlify)</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://threejs-audio-reactive-visual.netlify.app/">https://threejs-audio-reactive-visual.netlify.app/</a>
+    </p>
+    <ul class="site-ref__notes">
+      <li>Public <strong>Three.js + Web Audio</strong> sketch you can lift patterns from (upload/track flow may vary).</li>
+      <li>For authored tutorials, see <a href="https://tympanus.net/codrops/2023/12/19/creating-audio-reactive-visuals-with-dynamic-particles-in-three-js/">Codrops: audio-reactive particles in Three.js</a>.</li>
+    </ul>
+    <img class="site-ref__shot" src="assets/music-viz-threejs-audio-reactive-capture.gif" alt="Three.js audio reactive demo — ~3s headless capture">
+    <p class="site-ref__caption">
+      GIF: <code>plans/assets/music-viz-threejs-audio-reactive-capture.gif</code>
+      (this page is visually busy; captured at 480px / 10&nbsp;fps to keep the file smaller)
+      · regenerate: <code>pnpm exec tsx scripts/capture-site-gif.ts --url "https://threejs-audio-reactive-visual.netlify.app/" --out plans/assets/music-viz-threejs-audio-reactive-capture.gif --seconds 3 --settle-ms 3500 --gif-width 480 --fps 10</code>
+    </p>
+  </article>
+
+  <article class="site-ref">
+    <h3 class="site-ref__title">Artefakt.mov</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://artefakt.mov/">https://artefakt.mov/</a>
+      · Film production studio — typographic / grain motion (existing repo capture).
+    </p>
+    <ul class="site-ref__notes">
+      <li>Reference for <strong>motion type + texture</strong> in a music-adjacent reel context; GIF already captured in this repo.</li>
+    </ul>
+    <img class="site-ref__shot" src="assets/artefakt-mov-capture.gif" alt="Artefakt.mov — existing ~3s capture">
+    <p class="site-ref__caption">
+      GIF: <code>plans/assets/artefakt-mov-capture.gif</code>
+      · regenerate: <code>pnpm run capture-artefakt-gif</code>
+    </p>
+  </article>
+
+  <article class="site-ref site-ref--text-only">
+    <h3 class="site-ref__title">Song Exploder presents: Inside Music</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://g.co/insidemusic">https://g.co/insidemusic</a>
+      · Google Creative Lab × Song Exploder (<strong>A-Frame + Three.js + Tone.js</strong>, spatial audio stems).
+    </p>
+    <ul class="site-ref__notes">
+      <li>Walk inside a mix, toggle stems—not a screensaver viz. Best experienced live (VR-capable); no batch GIF in this board.</li>
+    </ul>
+  </article>
+
+  <article class="site-ref site-ref--text-only">
+    <h3 class="site-ref__title">Soundwaves.world</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://soundwaves.world/">https://soundwaves.world/</a>
+    </p>
+    <ul class="site-ref__notes">
+      <li>Festival-style <strong>volumetric / performance presentation</strong> on the web; capture omitted here (heavy / event landing).</li>
+    </ul>
+  </article>
+
+  <h2 class="site-ref-board__section-title">Deeper cuts — generative systems (bookmark)</h2>
+
+  <article class="site-ref site-ref--text-only">
+    <h3 class="site-ref__title">Macronaut</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://toxi.co.uk/macronaut/">https://toxi.co.uk/macronaut/</a>
+      · toxi + meekmocha — cuepoint-driven scene cuts, procedural geometry tied to a single MP3 timeline.
+    </p>
+    <ul class="site-ref__notes">
+      <li>Useful model for <strong>score-like visual structure</strong> (not real-time mic input).</li>
+    </ul>
+  </article>
+
+  <article class="site-ref site-ref--text-only">
+    <h3 class="site-ref__title">SonoMorphis</h3>
+    <p class="site-ref__meta">
+      <strong>Live:</strong> <a href="https://bernd-lintermann.de/SonoMorphis/index.html">https://bernd-lintermann.de/SonoMorphis/index.html</a>
+      · installation — evolving 3D forms ↔ timbre/pitch (research-era but clear concept).
+    </p>
+  </article>
+
+  <h2 class="site-ref-board__section-title">Blender — editorial music video &amp; geometry nodes + audio</h2>
+
+  <article class="site-ref site-ref--text-only">
+    <h3 class="site-ref__title">OK Go — “Impulse Purchase” (Blender press + video)</h3>
+    <p class="site-ref__meta">
+      <strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=fwzbIUffcR4">YouTube — OK Go Impulse Purchase</a>
+      · <strong>Notes:</strong> <a href="https://www.blender.org/press/announcing-impulse-purchase-animated-video/">Blender.org press — production overview</a>
+    </p>
+    <ul class="site-ref__notes">
+      <li>GN-heavy, character-led motion design; reference for <strong>readable art direction</strong> tied to song structure.</li>
+    </ul>
+  </article>
+
+  <article class="site-ref site-ref--text-only">
+    <h3 class="site-ref__title">Mike Hodgetts — Geometry nodes for audio-reactive music videos (Blender Conference 2024)</h3>
+    <p class="site-ref__meta">
+      <strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=WV_zD_KppjY">YouTube — talk</a>
+      · <a href="https://video.blender.org/w/39uV6m7Fx6W1fWL3EoqUxg">video.blender.org mirror</a>
+      · <a href="https://conference.blender.org/2024/presentations/1966/">Conference page</a>
+    </p>
+    <ul class="site-ref__notes">
+      <li>Collage / sculpture-derived imagery, waveform buffers, emission driven by audio—<strong>structural</strong> sync.</li>
+    </ul>
+  </article>
+
+  <article class="site-ref site-ref--text-only">
+    <h3 class="site-ref__title">Will Anderson — Making an OK Go video in geometry nodes (Blender Conference 2025)</h3>
+    <p class="site-ref__meta">
+      <strong>Watch:</strong> <a href="https://video.blender.org/videos/watch/27ebcbb3-0fb3-4ca4-8b5b-88b453ed4cb9">video.blender.org</a>
+      · <a href="https://conference.blender.org/2025/presentations/4081/">Conference page</a>
+    </p>
+  </article>
+
+  <article class="site-ref site-ref--text-only">
+    <h3 class="site-ref__title">MILM — “Transmogrified” (music video, GN-assisted)</h3>
+    <p class="site-ref__meta">
+      <strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=5IfB819O7qg">YouTube</a>
+      · <a href="https://blendernation.com/2025/05/13/music-video-transmogrified">BlenderNation write-up</a>
+    </p>
+  </article>
+
+  <article class="site-ref site-ref--text-only">
+    <h3 class="site-ref__title">Sketches for Humanity — spectrogram mesh + geometry nodes (tutorial)</h3>
+    <p class="site-ref__meta">
+      <strong>Watch:</strong> <a href="https://www.youtube.com/watch?v=1LV2X6CSfFM">YouTube — Geometry Nodes music visualisation</a>
+    </p>
+    <ul class="site-ref__notes">
+      <li>Pipeline: <strong>spectrogram image → topology</strong>, plus bake sound to F-curve for punch—bridges analysis to 3D without fractal noise default.</li>
+    </ul>
+  </article>
+</body>
+</html>

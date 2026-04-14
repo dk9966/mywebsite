@@ -67,6 +67,10 @@ https://tympanus.net/Tutorials/webcam-audio-visualizer/index.html
 
 - i love audio visualizers
 
+https://artefakt.mov/
+
+- cool text generation
+
 - **Aristide Benoist's site** - Tasteful 3D on the web without gimmicks.
 - good animations for files
 
@@ -115,3 +119,16 @@ https://tympanus.net/Tutorials/webcam-audio-visualizer/index.html
 - **Iron Man HUD** - Search "FUI design" (Fantasy User Interface). Mark Coleran is the godfather.
 
 - **Music-reactive node animation** - Matt DesLauriers (mattdesl on GitHub). Generative, audio-driven line work.
+
+## Music visualization — curated board (HTML + GIFs)
+
+- **`plans/music-visualization-inspiration.html`** — Open locally in a browser (not markdown preview) to see inline GIFs. Pulls together **non-fractal-mush** references: Patatap / Typatone, Audiograph, Chrome Spectrogram, Radio Garden, a public Three.js audio demo, Artefakt capture, Inside Music + Soundwaves (links only), Macronaut / SonoMorphis bookmarks, and **Blender** music-video / geometry-nodes talks (OK Go, Mike Hodgetts BConf 2024, etc.).
+- **Done this phase:** parallel `capture-site-gif` runs per site; **`scripts/capture-site-gif.ts`** temp file is now `*.part-<pid>.gif` so FFmpeg always gets a `.gif` muxer (parallel batches were failing before).
+- **Next:** optional second pass — capture **Soundwaves** or **g.co/insidemusic** if you want GIFs despite weight/VR; add any new Journey picks (e.g. “Unknown Pleasures” visualizer) as duplicate links here if you fold them into the board.
+
+## Tympanus / Codrops board (HTML + GIFs)
+
+- **`plans/tympanus-reference.html`** — Open locally in a browser to see inline GIF clips focused on your current direction: scan/HUD language, matrix-like particle flow, and perspective/page transition patterns.
+- **Captured demos:** `ScanEffect/effect1`, `Tutorials/MatrixSentinels`, `PerspectivePageViewNavigation`, `PageTransitions`, and `TextureTransition`.
+- **Done this phase:** used parallel subagent scouting on `tympanus.net` and parallel `capture-site-gif` runs to speed up discovery + capture.
+- **Next:** pick 1-2 motion systems from this board as your default interaction grammar (startup scan + one transition family), then prototype those directly in your `src/components/Scene/` work.
