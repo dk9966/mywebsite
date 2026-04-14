@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Ephemeral frame dirs from scripts/capture-site-gif.ts (mkdtemp)
+plans/assets/.tmp-site-gif-*/
+
+# Video clips and extracted frames (too large for git)
+plans/clips/
+
+# Local environment secrets
+.env
+.env.*
+!.env.example
