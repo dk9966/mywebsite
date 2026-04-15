@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Font Picks — Tech / Retro / Terminal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=VT323&family=Share+Tech+Mono&family=Major+Mono+Display&family=IBM+Plex+Mono:wght@400;700&family=Fira+Code:wght@400;700&family=Azeret+Mono:wght@400;700&family=Courier+Prime:wght@400;700&family=Oxanium:wght@400;700&family=Orbitron:wght@400;700&family=DM+Mono:wght@400;500&family=Source+Code+Pro:wght@400;700&family=Silkscreen&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    color: #e0e0e0;
+    padding: 48px 40px 120px;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 48px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .font-card {
+    border-top: 1px solid #1a1a1a;
+    padding: 36px 0;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .font-card:last-child {
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .font-meta {
+    position: sticky;
+    top: 36px;
+  }
+
+  .font-meta__name {
+    font-family: system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .font-meta__vibe {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .font-meta__license {
+    font-size: 11px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .font-meta__tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .font-meta__tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border: 1px solid #222;
+    border-radius: 3px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .font-samples {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .font-samples__display {
+    font-size: 48px;
+    line-height: 1.15;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .font-samples__medium {
+    font-size: 24px;
+    line-height: 1.4;
+    color: #ccc;
+  }
+
+  .font-samples__body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #888;
+    max-width: 680px;
+  }
+
+  .font-samples__mono-block {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #00dffc;
+    background: #0d1117;
+    border: 1px solid #161b22;
+    border-radius: 6px;
+    padding: 16px 20px;
+    white-space: pre;
+    max-width: 680px;
+    overflow-x: auto;
+  }
+
+  .divider {
+    grid-column: 1 / -1;
+    border: none;
+    border-top: 1px solid #1a1a1a;
+    margin: 20px 0 0;
+  }
+
+  .section-label {
+    grid-column: 1 / -1;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #333;
+    padding: 40px 0 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>Font picks — tech / futuristic / aged terminal</h1>
+
+<div class="grid">
+
+  <!-- ========== TIER: RETRO TERMINAL / CRT ========== -->
+  <div class="section-label">Retro terminal / CRT feel</div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">VT323</div>
+      <div class="font-meta__vibe">Pixel-perfect recreation of the classic VT320 terminal. Feels like a green-screen CRT from 1983.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">pixel</span>
+        <span class="font-meta__tag">CRT</span>
+        <span class="font-meta__tag">display only</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'VT323', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Silkscreen</div>
+      <div class="font-meta__vibe">Bitmap font designed for screen. Tiny, sharp, unmistakably digital. Good for labels and UI chrome.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">bitmap</span>
+        <span class="font-meta__tag">pixel</span>
+        <span class="font-meta__tag">small sizes</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Silkscreen', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <!-- ========== TIER: RETRO-FUTURISTIC ========== -->
+  <div class="section-label">Retro-futuristic / Sci-fi</div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Space Mono</div>
+      <div class="font-meta__vibe">Geometric monospace with a retrofuturist edge. Designed by Colophon Foundry. Quirky character shapes give it real personality.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">geometric</span>
+        <span class="font-meta__tag">retrofuture</span>
+        <span class="font-meta__tag">body + display</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Space Mono', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Major Mono Display</div>
+      <div class="font-meta__vibe">Uppercase-dominant display font where lowercase letters are miniature caps. Very stylized, very futuristic. Best at large sizes.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">display</span>
+        <span class="font-meta__tag">futuristic</span>
+        <span class="font-meta__tag">headlines only</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Major Mono Display', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Orbitron</div>
+      <div class="font-meta__vibe">Geometric sans with a strong sci-fi feel. Not mono, but reads like a spaceship dashboard. Great for headings.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">geometric</span>
+        <span class="font-meta__tag">sci-fi</span>
+        <span class="font-meta__tag">display</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Orbitron', sans-serif;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Oxanium</div>
+      <div class="font-meta__vibe">Rounded, techy sans-serif with a cyberpunk-adjacent feel. Softer than Orbitron but still reads futuristic.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">rounded</span>
+        <span class="font-meta__tag">tech</span>
+        <span class="font-meta__tag">display + body</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Oxanium', sans-serif;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <!-- ========== TIER: CLEAN TERMINAL / MONOSPACE ========== -->
+  <div class="section-label">Clean terminal monospace (tech feel, not overtly retro)</div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Share Tech Mono</div>
+      <div class="font-meta__vibe">Clean, utilitarian mono with a slightly condensed feel. Reads like an old government terminal printout.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">utilitarian</span>
+        <span class="font-meta__tag">condensed</span>
+        <span class="font-meta__tag">all sizes</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Share Tech Mono', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">IBM Plex Mono</div>
+      <div class="font-meta__vibe">IBM's house mono. Industrial precision, subtly humanist. Feels like it belongs in a well-funded research lab from the 70s.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">industrial</span>
+        <span class="font-meta__tag">humanist</span>
+        <span class="font-meta__tag">all sizes</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'IBM Plex Mono', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Fira Code</div>
+      <div class="font-meta__vibe">Mozilla's monospace with programming ligatures. Modern developer feel with just enough character to avoid being generic.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">ligatures</span>
+        <span class="font-meta__tag">developer</span>
+        <span class="font-meta__tag">all sizes</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Fira Code', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">DM Mono</div>
+      <div class="font-meta__vibe">Low-contrast mono with a warm, slightly worn feel. Like a typewriter that's been through some things.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">warm</span>
+        <span class="font-meta__tag">low-contrast</span>
+        <span class="font-meta__tag">body + display</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'DM Mono', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Azeret Mono</div>
+      <div class="font-meta__vibe">Contemporary mono with a bit of edge. Wide apertures and clean geometry give it a sleek, modern terminal look.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">modern</span>
+        <span class="font-meta__tag">wide</span>
+        <span class="font-meta__tag">all sizes</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Azeret Mono', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Source Code Pro</div>
+      <div class="font-meta__vibe">Adobe's monospace workhorse. Neutral and highly legible. The safe pick that still looks good.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">neutral</span>
+        <span class="font-meta__tag">legible</span>
+        <span class="font-meta__tag">all sizes</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Source Code Pro', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">Courier Prime</div>
+      <div class="font-meta__vibe">Courier, but actually good. Thicker strokes and better spacing than Courier New. Classic typewriter meets early terminal.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">typewriter</span>
+        <span class="font-meta__tag">classic</span>
+        <span class="font-meta__tag">body + display</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'Courier Prime', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+  <!-- ========== ALREADY IN USE ========== -->
+  <div class="section-label">Currently in your project</div>
+
+  <div class="font-card">
+    <div class="font-meta">
+      <div class="font-meta__name">JetBrains Mono</div>
+      <div class="font-meta__vibe">Your current font. Clean, developer-focused, with increased x-height for readability. Modern but not particularly retro.</div>
+      <div class="font-meta__license">OFL — Free for everything</div>
+      <div class="font-meta__tags">
+        <span class="font-meta__tag">current</span>
+        <span class="font-meta__tag">developer</span>
+        <span class="font-meta__tag">all sizes</span>
+      </div>
+    </div>
+    <div class="font-samples" style="font-family: 'JetBrains Mono', monospace;">
+      <div class="font-samples__display">SYSTEM ONLINE 2087</div>
+      <div class="font-samples__medium">The quick brown fox jumps over the lazy dog</div>
+      <div class="font-samples__body">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%^&*()_+-=[]{}|;:'",.<>?/</div>
+      <div class="font-samples__mono-block">$ ssh root@10.0.0.1 -p 2222
+> Connection established.
+> Loading kernel modules... OK
+> System ready. 48 processes active.</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
