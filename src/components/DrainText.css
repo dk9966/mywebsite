@@ -80,6 +80,37 @@
   cursor: pointer;
 }
 
+/* ── Mode toggle ── */
+
+.drain-text__mode-toggle {
+  display: flex;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 223, 252, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.drain-text__mode-btn {
+  padding: 5px 10px;
+  border: none;
+  background: transparent;
+  color: rgba(0, 223, 252, 0.4);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.drain-text__mode-btn:hover {
+  color: rgba(0, 223, 252, 0.7);
+}
+
+.drain-text__mode-btn--active {
+  background: rgba(0, 223, 252, 0.15);
+  color: #00dffc;
+}
+
 .drain-text__time {
   flex-shrink: 0;
   font-family: "JetBrains Mono", monospace;

@@ -14,16 +14,20 @@ import {
   splitSubpaths,
   type DrainDirection,
 } from "../lib/svgPaths";
+import { STROKE_FONT, CELL_W, CELL_H } from "../lib/strokeFont";
 import "./DrainText.css";
 
 const FONT_URL = "/fonts/JetBrainsMono-Regular.ttf";
 const FONT_SIZE = 120;
 const STROKE_COLOR = "#00dffc";
-const STROKE_WIDTH = 2;
+const OUTLINE_WIDTH = 2;
+const STROKE_WIDTH = 8;
 
-const LETTER_STAGGER = 0.3;
+const LETTER_GAP = 0.1;
 const SUBPATH_STAGGER = 0.15;
 const DRAW_DURATION = 1.5;
+
+export type DrainMode = "outline" | "stroke";
 
 const DRAIN_DIRECTIONS: Record<string, DrainDirection> = {
   B: "top-left",
@@ -40,9 +44,20 @@ interface SubpathInfo {
   subpathIdx: number;
 }
 
-function computeLayout(font: Font, text: string) {
-  const scale = FONT_SIZE / font.unitsPerEm;
-  const lineHeight = (font.ascender - font.descender) * scale * 1.15;
+interface LayoutResult {
+  subpaths: SubpathInfo[];
+  viewBox: string;
+  strokeWidth: number;
+}
+
+function polylineToD(pts: [number, number][]): string {
+  return "M" + pts.map(([x, y]) => `${x} ${y}`).join("L");
+}
+
+function computeLayout(font: Font, text: string, mode: DrainMode): LayoutResult {
+  const fontScale = FONT_SIZE / font.unitsPerEm;
+  const lineHeight = (font.ascender - font.descender) * fontScale * 1.15;
+  const cellScale = (font.ascender * fontScale) / CELL_H;
   const lines = text.split("\n");
 
   const subpaths: SubpathInfo[] = [];
@@ -56,37 +71,63 @@ function computeLayout(font: Font, text: string) {
 
     for (const char of line) {
       const glyph = font.charToGlyph(char);
+      const advance = glyph.advanceWidth * fontScale;
 
       if (char !== " ") {
-        const path = glyph.getPath(x, baseline, FONT_SIZE);
-        const direction = DRAIN_DIRECTIONS[char.toUpperCase()] ?? "left";
-        const reindexed = reindexForDirection(path.commands, direction);
-        const parts = splitSubpaths(reindexed);
+        if (mode === "outline") {
+          const path = glyph.getPath(x, baseline, FONT_SIZE);
+          const direction = DRAIN_DIRECTIONS[char.toUpperCase()] ?? "left";
+          const reindexed = reindexForDirection(path.commands, direction);
+          const parts = splitSubpaths(reindexed);
 
-        for (let si = 0; si < parts.length; si++) {
-          subpaths.push({
-            d: commandsToD(parts[si]),
-            glyphIdx,
-            subpathIdx: si,
-          });
+          for (let si = 0; si < parts.length; si++) {
+            subpaths.push({
+              d: commandsToD(parts[si]),
+              glyphIdx,
+              subpathIdx: si,
+            });
+          }
+        } else {
+          const strokes = STROKE_FONT[char.toUpperCase()];
+          if (strokes) {
+            const strokeVisualW = CELL_W * cellScale;
+            const xOff = x + (advance - strokeVisualW) / 2;
+            const yOff = baseline - font.ascender * fontScale;
+
+            for (let si = 0; si < strokes.length; si++) {
+              const scaled = strokes[si].map(
+                ([gx, gy]) =>
+                  [xOff + gx * cellScale, yOff + gy * cellScale] as [number, number],
+              );
+              subpaths.push({
+                d: polylineToD(scaled),
+                glyphIdx,
+                subpathIdx: si,
+              });
+            }
+          }
         }
         glyphIdx++;
       }
 
-      x += glyph.advanceWidth * scale;
+      x += advance;
     }
 
     if (x > maxWidth) maxWidth = x;
   }
 
-  const ascent = font.ascender * scale;
-  const descent = Math.abs(font.descender * scale);
+  const ascent = font.ascender * fontScale;
+  const descent = Math.abs(font.descender * fontScale);
   const totalHeight = (lines.length - 1) * lineHeight + ascent + descent;
   const yMin = FONT_SIZE - ascent;
   const pad = 10;
 
   const viewBox = `${-pad} ${yMin - pad} ${maxWidth + pad * 2} ${totalHeight + pad * 2}`;
-  return { subpaths, viewBox };
+  return {
+    subpaths,
+    viewBox,
+    strokeWidth: mode === "stroke" ? STROKE_WIDTH : OUTLINE_WIDTH,
+  };
 }
 
 function formatTime(seconds: number): string {
@@ -104,6 +145,7 @@ export default function DrainText({ text }: DrainTextProps) {
   const timeRef = useRef<HTMLSpanElement>(null);
   const [font, setFont] = useState<Font | null>(null);
   const [playing, setPlaying] = useState(true);
+  const [mode, setMode] = useState<DrainMode>("outline");
 
   useEffect(() => {
     load(FONT_URL, (err, f) => {
@@ -117,8 +159,8 @@ export default function DrainText({ text }: DrainTextProps) {
 
   const layout = useMemo(() => {
     if (!font) return null;
-    return computeLayout(font, text);
-  }, [font, text]);
+    return computeLayout(font, text, mode);
+  }, [font, text, mode]);
 
   useLayoutEffect(() => {
     if (!layout) return;
@@ -126,13 +168,15 @@ export default function DrainText({ text }: DrainTextProps) {
     const paths = pathRefs.current.filter(Boolean) as SVGPathElement[];
     if (paths.length === 0) return;
 
+    const sw = layout.strokeWidth;
     for (const el of paths) {
       const len = el.getTotalLength();
-      el.style.strokeDasharray = `${len}`;
-      el.style.strokeDashoffset = `${len}`;
+      el.style.strokeDasharray = `${len} ${len + sw * 2}`;
+      el.style.strokeDashoffset = `${len + sw}`;
     }
 
     const tl = gsap.timeline({
+      onStart: () => setPlaying(true),
       onUpdate: () => {
         if (scrubberRef.current) {
           scrubberRef.current.value = String(tl.progress());
@@ -145,13 +189,29 @@ export default function DrainText({ text }: DrainTextProps) {
       onComplete: () => setPlaying(false),
     });
 
+    const maxSubpathByGlyph = new Map<number, number>();
+    for (const sp of layout.subpaths) {
+      const prev = maxSubpathByGlyph.get(sp.glyphIdx);
+      if (prev === undefined || sp.subpathIdx > prev) {
+        maxSubpathByGlyph.set(sp.glyphIdx, sp.subpathIdx);
+      }
+    }
+
+    const letterStart = new Map<number, number>();
+    let cursor = 0;
+    const glyphIndices = [...maxSubpathByGlyph.keys()].sort((a, b) => a - b);
+    for (const idx of glyphIndices) {
+      letterStart.set(idx, cursor);
+      const glyphDuration = DRAW_DURATION + maxSubpathByGlyph.get(idx)! * SUBPATH_STAGGER;
+      cursor += glyphDuration + LETTER_GAP;
+    }
+
     for (let i = 0; i < layout.subpaths.length; i++) {
       const el = pathRefs.current[i];
       if (!el) continue;
 
       const info = layout.subpaths[i];
-      const letterDelay = info.glyphIdx * LETTER_STAGGER;
-      const branchDelay = info.subpathIdx * SUBPATH_STAGGER;
+      const offset = letterStart.get(info.glyphIdx)! + info.subpathIdx * SUBPATH_STAGGER;
 
       tl.to(
         el,
@@ -160,12 +220,11 @@ export default function DrainText({ text }: DrainTextProps) {
           duration: DRAW_DURATION,
           ease: "power2.inOut",
         },
-        letterDelay + branchDelay,
+        offset,
       );
     }
 
     tlRef.current = tl;
-    setPlaying(true);
 
     return () => {
       tl.kill();
@@ -213,14 +272,14 @@ export default function DrainText({ text }: DrainTextProps) {
       >
         {layout.subpaths.map((sp, i) => (
           <path
-            key={`${sp.glyphIdx}-${sp.subpathIdx}`}
+            key={`${mode}-${sp.glyphIdx}-${sp.subpathIdx}`}
             ref={(el) => {
               pathRefs.current[i] = el;
             }}
             d={sp.d}
             fill="none"
             stroke={STROKE_COLOR}
-            strokeWidth={STROKE_WIDTH}
+            strokeWidth={layout.strokeWidth}
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -254,6 +313,20 @@ export default function DrainText({ text }: DrainTextProps) {
           defaultValue={0}
           onChange={handleScrub}
         />
+        <div className="drain-text__mode-toggle">
+          <button
+            className={`drain-text__mode-btn ${mode === "outline" ? "drain-text__mode-btn--active" : ""}`}
+            onClick={() => setMode("outline")}
+          >
+            OUTLINE
+          </button>
+          <button
+            className={`drain-text__mode-btn ${mode === "stroke" ? "drain-text__mode-btn--active" : ""}`}
+            onClick={() => setMode("stroke")}
+          >
+            STROKE
+          </button>
+        </div>
         <span ref={timeRef} className="drain-text__time">
           0.0s / 0.0s
         </span>
