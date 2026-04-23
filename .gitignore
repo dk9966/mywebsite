@@ -26,6 +26,12 @@ dist-ssr
 # Ephemeral frame dirs from scripts/capture-site-gif.ts (mkdtemp)
 plans/assets/.tmp-site-gif-*/
 
+# Blender incremental saves
+*.blend1
+
+# Local 3D kitbash (large binaries; wire into app before tracking)
+/models/
+
 # Video clips and extracted frames (too large for git)
 plans/clips/
 
