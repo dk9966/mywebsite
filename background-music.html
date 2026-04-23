@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>background music</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --fg: #c4e9f3;
+        --fg-dim: rgba(196, 233, 243, 0.55);
+        --fg-faint: rgba(196, 233, 243, 0.3);
+        --bg: #000;
+        --accent: #7fd8a8;
+        --cyan: #78dce8;
+        --warn: #f5c17b;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        background: var(--bg);
+        color: var(--fg);
+        font-family: "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
+        font-size: 13px;
+        line-height: 1.35;
+        -webkit-font-smoothing: antialiased;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 32px 40px;
+        cursor: default;
+        user-select: none;
+      }
+      .scanline {
+        height: 80px;
+        position: relative;
+        margin-bottom: 16px;
+        flex-shrink: 0;
+      }
+      .scanline__canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .viz {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+      }
+      .viz__box {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        max-width: 100%;
+      }
+      .viz__canvas {
+        white-space: pre;
+        flex: 1;
+        min-width: 0;
+      }
+      .viz__handle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: -8px;
+        width: 16px;
+        cursor: ew-resize;
+        touch-action: none;
+        z-index: 2;
+      }
+      .viz__handle::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 2px;
+        height: 36px;
+        background: var(--fg-faint);
+        border-radius: 1px;
+        transition: background 120ms ease, height 120ms ease;
+      }
+      .viz__handle:hover::after,
+      .viz__handle--active::after {
+        background: var(--fg-dim);
+        height: 48px;
+      }
+      .status {
+        padding-top: 12px;
+        white-space: pre;
+        line-height: 1.5;
+      }
+      .dim { color: var(--fg-dim); }
+      .faint { color: var(--fg-faint); }
+      .ok { color: var(--accent); }
+      .cyan { color: var(--cyan); }
+      .warn { color: var(--warn); }
+      .hint {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg);
+        z-index: 10;
+        cursor: pointer;
+      }
+      .hint__text {
+        color: var(--fg-dim);
+        font-size: 13px;
+        text-align: center;
+        line-height: 1.6;
+      }
+      .hint--hidden { display: none; }
+      .toolbar {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+      .toolbar__label {
+        color: var(--fg-dim);
+        white-space: nowrap;
+      }
+      .toolbar__select {
+        flex: 1;
+        min-width: 0;
+        max-width: 520px;
+        font: inherit;
+        color: var(--fg);
+        background: rgba(196, 233, 243, 0.06);
+        border: 1px solid rgba(196, 233, 243, 0.2);
+        border-radius: 4px;
+        padding: 6px 10px;
+        cursor: pointer;
+      }
+      .toolbar__select:focus {
+        outline: 1px solid var(--cyan);
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hint" id="hint">
+      <div class="hint__text">
+        click anywhere to start<br/>
+        <span class="faint">space: play/pause &middot; m: mute &middot; &uarr;&darr;: volume &middot; v: switch viz</span>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <label class="toolbar__label" for="track">track</label>
+      <select class="toolbar__select" id="track" aria-label="Select audio track"></select>
+    </div>
+
+    <div class="scanline">
+      <canvas class="scanline__canvas" id="scanline"></canvas>
+    </div>
+    <div class="viz">
+      <div class="viz__box" id="viz-box">
+        <div class="viz__canvas" id="viz"></div>
+        <div class="viz__handle" id="viz-handle" role="separator" aria-orientation="vertical" aria-label="Resize visualizer"></div>
+      </div>
+    </div>
+    <div class="status" id="status"></div>
+
+    <script type="module" src="/src/background-music-main.ts"></script>
+  </body>
+</html>

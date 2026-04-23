@@ -1,0 +1,1385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>terminal text — reference</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --fg: #c4e9f3;
+        --fg-dim: rgba(196, 233, 243, 0.55);
+        --fg-faint: rgba(196, 233, 243, 0.3);
+        --bg: #000;
+        --accent: #7fd8a8;
+        --warn: #f5c17b;
+        --err: #f08a8a;
+        --cyan: #78dce8;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        --lh: 1.35em;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
+        font-size: 13px;
+        line-height: 1.35;
+        -webkit-font-smoothing: antialiased;
+        padding: 32px 40px 120px;
+      }
+      header {
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--fg-faint);
+        margin-bottom: 24px;
+      }
+      header h1 {
+        font-size: 14px;
+        font-weight: 500;
+        margin: 0 0 4px;
+      }
+      header p {
+        margin: 0;
+        color: var(--fg-dim);
+      }
+      .scene {
+        margin: 28px 0;
+      }
+      .scene__title {
+        color: var(--fg-dim);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 8px;
+      }
+      .scene__body {
+        white-space: pre;
+        min-height: var(--lh);
+      }
+      /* heights = tallest-state line count * line-height */
+      #pnpm { min-height: calc(10 * var(--lh)); }
+      #cargo { min-height: calc(14 * var(--lh)); }
+      #docker { min-height: calc(8 * var(--lh)); }
+      #git { min-height: calc(7 * var(--lh)); }
+      #apt { min-height: calc(11 * var(--lh)); }
+      #curl { min-height: calc(5 * var(--lh)); }
+      #vite { min-height: calc(13 * var(--lh)); }
+      #mpv { min-height: calc(9 * var(--lh)); }
+      #cava { min-height: calc(9 * var(--lh)); }
+      #ncmpcpp { min-height: calc(11 * var(--lh)); }
+      #mpc { min-height: calc(4 * var(--lh)); }
+      #cmus { min-height: calc(14 * var(--lh)); }
+      #spotify { min-height: calc(13 * var(--lh)); }
+      #pulsemixer { min-height: calc(12 * var(--lh)); }
+      #htop { min-height: calc(14 * var(--lh)); }
+      #vitest { min-height: calc(14 * var(--lh)); }
+      #ffmpeg { min-height: calc(12 * var(--lh)); }
+      #ping { min-height: calc(14 * var(--lh)); }
+      #fastfetch { min-height: calc(18 * var(--lh)); }
+      .legacy {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 16px;
+        row-gap: 4px;
+        align-items: center;
+      }
+      .legacy__label {
+        color: var(--fg-dim);
+      }
+      .legacy__frame {
+        white-space: pre;
+        min-width: 0;
+      }
+      .dotline {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-width: 0;
+        color: var(--fg);
+      }
+      .dotline__dots {
+        display: block;
+        flex-shrink: 0;
+        overflow: visible;
+      }
+      .dotline__rail {
+        flex: 1;
+        min-width: 0;
+        height: 2px;
+        overflow: hidden;
+      }
+      .dotline__bar {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: currentColor;
+        transform-origin: left center;
+        will-change: transform;
+      }
+      .dim {
+        color: var(--fg-dim);
+      }
+      .faint {
+        color: var(--fg-faint);
+      }
+      .ok {
+        color: var(--accent);
+      }
+      .warn {
+        color: var(--warn);
+      }
+      .err {
+        color: var(--err);
+      }
+      .cyan {
+        color: var(--cyan);
+      }
+      .cursor {
+        display: inline-block;
+        width: 0.55em;
+        height: 1em;
+        background: var(--fg);
+        vertical-align: -2px;
+        animation: blink 1.05s steps(1, end) infinite;
+      }
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        50.01%,
+        100% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>terminal text · reference</h1>
+      <p class="dim">animations archived from the home page plus simulations of real tool output, for inspiration.</p>
+    </header>
+
+    <section class="scene">
+      <div class="scene__title">dot line</div>
+      <div class="scene__body" id="dotline-top"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">legacy loaders</div>
+      <div class="legacy" id="legacy"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">pnpm install</div>
+      <div class="scene__body" id="pnpm"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">cargo build</div>
+      <div class="scene__body" id="cargo"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">docker pull</div>
+      <div class="scene__body" id="docker"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">git clone</div>
+      <div class="scene__body" id="git"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">apt install</div>
+      <div class="scene__body" id="apt"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">curl download</div>
+      <div class="scene__body" id="curl"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">vite dev</div>
+      <div class="scene__body" id="vite"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">mpv · playing audio</div>
+      <div class="scene__body" id="mpv"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">cava · audio visualizer</div>
+      <div class="scene__body" id="cava"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">ncmpcpp · now playing</div>
+      <div class="scene__body" id="ncmpcpp"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">mpc · minimal status</div>
+      <div class="scene__body" id="mpc"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">cmus · classic player</div>
+      <div class="scene__body" id="cmus"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">spotify_player · queue</div>
+      <div class="scene__body" id="spotify"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">pulsemixer · volume columns</div>
+      <div class="scene__body" id="pulsemixer"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">htop · system monitor</div>
+      <div class="scene__body" id="htop"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">vitest · test runner</div>
+      <div class="scene__body" id="vitest"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">ffmpeg · encoding</div>
+      <div class="scene__body" id="ffmpeg"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">ping</div>
+      <div class="scene__body" id="ping"></div>
+    </section>
+
+    <section class="scene">
+      <div class="scene__title">fastfetch</div>
+      <div class="scene__body" id="fastfetch"></div>
+    </section>
+
+    <script type="module">
+      const TICK_MS = 60;
+
+      // ---------- frame builders (ported from Terminal.tsx) ----------
+      const repeat = (s, n) => (n > 0 ? s.repeat(n) : "");
+
+      function buildBarFrames(width = 20, step = 5) {
+        const frames = [];
+        for (let pct = 0; pct <= 100; pct += step) {
+          const filled = Math.round((pct / 100) * width);
+          const bar = repeat("\u2588", filled) + repeat("\u2591", width - filled);
+          frames.push(`[${bar}] ${String(pct).padStart(3)}%`);
+        }
+        return frames;
+      }
+      function buildBounceFrames(width = 12) {
+        const render = (p) => `[${repeat(" ", p)}=${repeat(" ", width - p - 1)}]`;
+        const frames = [];
+        for (let i = 0; i < width; i++) frames.push(render(i));
+        for (let i = width - 2; i > 0; i--) frames.push(render(i));
+        return frames;
+      }
+      function buildScannerFrames(width = 7) {
+        const render = (h) =>
+          Array.from({ length: width }, (_, j) => (j === h ? "\u25B0" : "\u25B1")).join("");
+        const frames = [];
+        for (let i = 0; i < width; i++) frames.push(render(i));
+        for (let i = width - 2; i > 0; i--) frames.push(render(i));
+        return frames;
+      }
+      function buildThinFillFrames(width = 22) {
+        const frames = [];
+        for (let n = 0; n <= width; n++) {
+          frames.push(repeat("\u2501", n) + repeat("\u2500", width - n));
+        }
+        for (let n = width - 1; n >= 0; n--) {
+          frames.push(repeat("\u2501", n) + repeat("\u2500", width - n));
+        }
+        return frames;
+      }
+      function buildThinSliderFrames(width = 22, segment = 4) {
+        const render = (pos) =>
+          repeat("\u2500", pos) +
+          repeat("\u2501", segment) +
+          repeat("\u2500", width - pos - segment);
+        const frames = [];
+        for (let pos = 0; pos <= width - segment; pos++) frames.push(render(pos));
+        for (let pos = width - segment - 1; pos > 0; pos--) frames.push(render(pos));
+        return frames;
+      }
+      function buildThinPulseFrames(width = 22) {
+        const center = Math.floor(width / 2);
+        const maxR = Math.max(center, width - center);
+        const render = (r) => {
+          const slots = Array(width).fill("\u2500");
+          const from = Math.max(0, center - r);
+          const to = Math.min(width, center + r);
+          for (let i = from; i < to; i++) slots[i] = "\u2501";
+          return slots.join("");
+        };
+        const frames = [];
+        for (let r = 0; r <= maxR; r++) frames.push(render(r));
+        for (let r = maxR - 1; r >= 0; r--) frames.push(render(r));
+        return frames;
+      }
+
+      // ---------- dots-line SVG loader ----------
+      const DL = {
+        h: 6,
+        pad: 2,
+        r: 1,
+        dots: 24,
+        gapMax: 24,
+        line: 34,
+        hold: 22,
+      };
+      const DL_POS = (() => {
+        const pos = [];
+        let x = DL.pad + DL.r;
+        pos.push(x);
+        for (let i = 0; i < DL.dots - 1; i++) {
+          const t = i / (DL.dots - 2);
+          const eased = t * t * t * (t * (t * 6 - 15) + 10);
+          const gap = DL.gapMax * (1 - eased) + 2 * DL.r * eased;
+          x += gap;
+          pos.push(x);
+        }
+        return pos;
+      })();
+      const DL_DOTS_W = DL_POS[DL_POS.length - 1] + DL.r;
+      const DL_DWELLS = DL_POS.map((_, i) => Math.max(1, 5 - i));
+      const DL_DOT_TOTAL = DL_DWELLS.reduce((a, b) => a + b, 0);
+      const DL_TOTAL = DL_DOT_TOTAL + DL.line + DL.hold;
+
+      function dotlineBurstThenSteady(linear) {
+        const t = Math.min(1, Math.max(0, linear));
+        const inv = 1 - t;
+        return 0.5 * (1 - inv * inv * inv * inv * inv) + 0.5 * t;
+      }
+
+      function dotsLineSvg(tick) {
+        const step = tick % DL_TOTAL;
+        let visible = DL_POS.length;
+        let acc = 0;
+        for (let i = 0; i < DL_DWELLS.length; i++) {
+          acc += DL_DWELLS[i];
+          if (step < acc) {
+            visible = i + 1;
+            break;
+          }
+        }
+        const rawLine =
+          step >= DL_DOT_TOTAL ? Math.min(1, (step - DL_DOT_TOTAL) / DL.line) : 0;
+        const lineProgress = dotlineBurstThenSteady(rawLine);
+        const cy = DL.h / 2;
+
+        const circles = DL_POS.slice(0, visible)
+          .map((cx) => `<circle cx="${cx}" cy="${cy}" r="${DL.r}" fill="currentColor" />`)
+          .join("");
+        return (
+          `<span class="dotline">` +
+          `<svg class="dotline__dots" width="${DL_DOTS_W}" height="${DL.h}" viewBox="0 0 ${DL_DOTS_W} ${DL.h}">${circles}</svg>` +
+          `<span class="dotline__rail"><span class="dotline__bar" style="transform:scaleX(${lineProgress})"></span></span>` +
+          `</span>`
+        );
+      }
+
+      // ---------- legacy loaders row ----------
+      const legacy = [
+        { label: "compiling", frames: ["|", "/", "-", "\\"], divisor: 2 },
+        {
+          label: "resolving",
+          frames: ["\u280B", "\u2819", "\u2839", "\u2838", "\u283C", "\u2834", "\u2826", "\u2827", "\u2807", "\u280F"],
+          divisor: 1,
+        },
+        { label: "fetching", frames: ["\u25D0", "\u25D3", "\u25D1", "\u25D2"], divisor: 3 },
+        { label: "installing", render: (tick) => dotsLineSvg(tick) },
+        { label: "bundling", frames: buildBarFrames(), divisor: 1 },
+        { label: "polling", frames: buildBounceFrames(), divisor: 1 },
+        { label: "scanning", frames: buildScannerFrames(), divisor: 2 },
+        { label: "streaming", frames: buildThinFillFrames(), divisor: 1 },
+        { label: "syncing", frames: buildThinSliderFrames(), divisor: 1 },
+        { label: "pulsing", frames: buildThinPulseFrames(), divisor: 1 },
+      ];
+
+      const dotlineTopEl = document.getElementById("dotline-top");
+
+      const legacyEl = document.getElementById("legacy");
+      const legacyCells = legacy.map((l) => {
+        const label = document.createElement("span");
+        label.className = "legacy__label";
+        label.textContent = `[${l.label}]`;
+        const frame = document.createElement("span");
+        frame.className = "legacy__frame";
+        legacyEl.appendChild(label);
+        legacyEl.appendChild(frame);
+        return { loader: l, el: frame };
+      });
+      function renderLegacy(tick) {
+        for (const { loader, el } of legacyCells) {
+          if (loader.render) continue; // dot line is driven by rAF elsewhere
+          el.textContent = loader.frames[Math.floor(tick / loader.divisor) % loader.frames.length];
+        }
+      }
+
+      // ---------- scene helpers ----------
+      const BRAILLE = ["\u280B", "\u2819", "\u2839", "\u2838", "\u283C", "\u2834", "\u2826", "\u2827", "\u2807", "\u280F"];
+      const braille = (tick) => BRAILLE[tick % BRAILLE.length];
+
+      function progressBar(pct, width = 24, filled = "=", head = ">", empty = " ") {
+        const n = Math.round((pct / 100) * width);
+        const body = n > 0 ? repeat(filled, n - 1) + head : "";
+        return `[${body}${repeat(empty, width - n)}]`;
+      }
+
+      function blockBar(pct, width = 20) {
+        const n = Math.round((pct / 100) * width);
+        return repeat("\u2588", n) + repeat("\u2591", width - n);
+      }
+
+      const fmtMB = (mb) => `${mb.toFixed(1)}MB`;
+      const fmtKB = (kb) => `${kb.toLocaleString()} kB/s`;
+
+      // ---------- pnpm install ----------
+      const pnpmPkgs = [
+        "react@18.3.1",
+        "react-dom@18.3.1",
+        "vite@5.4.8",
+        "@vitejs/plugin-react@4.3.1",
+        "typescript@5.5.4",
+        "three@0.168.0",
+        "opentype.js@1.3.4",
+        "@types/react@18.3.4",
+      ];
+      const pnpmEl = document.getElementById("pnpm");
+      // phases: 0 resolve, 1 fetch, 2 link, 3 done, 4 hold
+      function renderPnpm(tick) {
+        const cycle = 240;
+        const t = tick % cycle;
+        const lines = [];
+        lines.push(`<span class="dim">$</span> pnpm install`);
+        if (t < 20) {
+          lines.push(`<span class="cyan">${braille(tick)}</span> Resolving dependencies...`);
+        } else if (t < 140) {
+          const progress = (t - 20) / 120;
+          const done = Math.floor(progress * pnpmPkgs.length);
+          lines.push(`<span class="ok">\u2713</span> Resolved <span class="cyan">${pnpmPkgs.length}</span>, reused <span class="cyan">${Math.floor(pnpmPkgs.length * 0.4)}</span>, downloaded <span class="cyan">${done}</span>`);
+          lines.push(`<span class="cyan">${braille(tick)}</span> <span class="dim">downloading</span> ${pnpmPkgs[Math.min(done, pnpmPkgs.length - 1)]}`);
+          const bar = blockBar((progress * 100) | 0, 24);
+          lines.push(`  <span class="cyan">${bar}</span> <span class="dim">${((progress * 100) | 0)
+            .toString()
+            .padStart(3)}%</span>`);
+        } else if (t < 180) {
+          lines.push(`<span class="ok">\u2713</span> Resolved <span class="cyan">${pnpmPkgs.length}</span>, reused <span class="cyan">${Math.floor(pnpmPkgs.length * 0.4)}</span>, downloaded <span class="cyan">${pnpmPkgs.length}</span>`);
+          lines.push(`<span class="cyan">${braille(tick)}</span> <span class="dim">linking</span> node_modules/.pnpm`);
+        } else {
+          lines.push(`<span class="ok">\u2713</span> Resolved <span class="cyan">${pnpmPkgs.length}</span>, reused <span class="cyan">${Math.floor(pnpmPkgs.length * 0.4)}</span>, downloaded <span class="cyan">${pnpmPkgs.length}</span>`);
+          lines.push(``);
+          lines.push(`dependencies:`);
+          lines.push(`<span class="ok">+</span> react <span class="dim">18.3.1</span>`);
+          lines.push(`<span class="ok">+</span> react-dom <span class="dim">18.3.1</span>`);
+          lines.push(`<span class="ok">+</span> three <span class="dim">0.168.0</span>`);
+          lines.push(``);
+          lines.push(`<span class="dim">Done in 4.2s</span>`);
+        }
+        pnpmEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- cargo build ----------
+      const cargoCrates = [
+        ["proc-macro2", "1.0.86"],
+        ["unicode-ident", "1.0.13"],
+        ["quote", "1.0.37"],
+        ["syn", "2.0.77"],
+        ["serde", "1.0.210"],
+        ["serde_derive", "1.0.210"],
+        ["tokio", "1.40.0"],
+        ["hyper", "1.4.1"],
+        ["tower", "0.5.1"],
+        ["axum", "0.7.5"],
+        ["tracing", "0.1.40"],
+        ["mywebsite", "0.1.0"],
+      ];
+      const cargoEl = document.getElementById("cargo");
+      function renderCargo(tick) {
+        const cycle = 300;
+        const perCrate = 18;
+        const total = cargoCrates.length * perCrate;
+        const t = tick % cycle;
+        const lines = [];
+        lines.push(`<span class="dim">$</span> cargo build`);
+        if (t < total) {
+          const done = Math.floor(t / perCrate);
+          for (let i = 0; i < done; i++) {
+            lines.push(`   <span class="ok">Compiling</span> ${cargoCrates[i][0]} <span class="dim">v${cargoCrates[i][1]}</span>`);
+          }
+          if (done < cargoCrates.length) {
+            lines.push(`<span class="cyan">${braille(tick)}</span> <span class="cyan">Compiling</span> ${cargoCrates[done][0]} <span class="dim">v${cargoCrates[done][1]}</span> <span class="faint">(${done + 1}/${cargoCrates.length})</span>`);
+          }
+        } else {
+          for (const [n, v] of cargoCrates) {
+            lines.push(`   <span class="ok">Compiling</span> ${n} <span class="dim">v${v}</span>`);
+          }
+          lines.push(`    <span class="ok">Finished</span> <span class="dim">\`dev\` profile [unoptimized + debuginfo] target(s) in 4.21s</span>`);
+        }
+        cargoEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- docker pull ----------
+      const dockerLayers = [
+        { id: "a4f1b8c9", size: 31.2, offset: 0 },
+        { id: "e2d3c7a1", size: 12.8, offset: 40 },
+        { id: "f9b6d234", size: 68.5, offset: 20 },
+        { id: "7c1a9e5d", size: 4.1, offset: 90 },
+      ];
+      const dockerEl = document.getElementById("docker");
+      function renderDocker(tick) {
+        const cycle = 260;
+        const t = tick % cycle;
+        const lines = [];
+        lines.push(`<span class="dim">$</span> docker pull node:20-alpine`);
+        lines.push(`<span class="dim">20-alpine: Pulling from library/node</span>`);
+        let allDone = true;
+        for (const { id, size, offset } of dockerLayers) {
+          const raw = Math.max(0, t - offset * 0.5);
+          const prog = Math.min(100, (raw / 120) * 100);
+          if (prog < 100) allDone = false;
+          const done = fmtMB((prog / 100) * size);
+          const total = fmtMB(size);
+          if (prog < 5) {
+            lines.push(`<span class="cyan">${id}</span>: Pulling fs layer`);
+          } else if (prog < 100) {
+            const bar = progressBar(prog, 22, "=", ">", " ");
+            lines.push(`<span class="cyan">${id}</span>: Downloading <span class="cyan">${bar}</span> <span class="dim">${done}/${total}</span>`);
+          } else {
+            lines.push(`<span class="cyan">${id}</span>: <span class="ok">Pull complete</span>`);
+          }
+        }
+        if (allDone) {
+          lines.push(`<span class="ok">Status:</span> Downloaded newer image for node:20-alpine`);
+          lines.push(`docker.io/library/node:20-alpine`);
+        }
+        dockerEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- git clone ----------
+      const gitEl = document.getElementById("git");
+      function renderGit(tick) {
+        const cycle = 240;
+        const t = tick % cycle;
+        const lines = [];
+        lines.push(`<span class="dim">$</span> git clone git@github.com:danielku/mywebsite.git`);
+        lines.push(`Cloning into 'mywebsite'...`);
+        if (t < 20) {
+          lines.push(`remote: <span class="cyan">${braille(tick)}</span> Enumerating objects...`);
+        } else if (t < 40) {
+          lines.push(`remote: Enumerating objects: <span class="cyan">2847</span>, done.`);
+          lines.push(`remote: <span class="cyan">${braille(tick)}</span> Counting objects...`);
+        } else if (t < 160) {
+          const prog = ((t - 40) / 120) * 100;
+          const n = Math.floor((prog / 100) * 2847);
+          const mb = (prog / 100) * 12.4;
+          const bar = progressBar(prog, 20, "=", ">", " ");
+          lines.push(`remote: Enumerating objects: <span class="cyan">2847</span>, done.`);
+          lines.push(`remote: Counting objects: <span class="cyan">100%</span> (842/842), done.`);
+          lines.push(`remote: Compressing objects: <span class="cyan">100%</span> (410/410), done.`);
+          lines.push(`Receiving objects: <span class="cyan">${((prog | 0) + "").padStart(3)}%</span> (${n}/2847), <span class="dim">${mb.toFixed(2)} MiB | 2.1 MiB/s</span> <span class="cyan">${bar}</span>`);
+        } else if (t < 200) {
+          const prog = ((t - 160) / 40) * 100;
+          lines.push(`remote: Enumerating objects: <span class="cyan">2847</span>, done.`);
+          lines.push(`remote: Counting objects: <span class="cyan">100%</span> (842/842), done.`);
+          lines.push(`remote: Compressing objects: <span class="cyan">100%</span> (410/410), done.`);
+          lines.push(`Receiving objects: <span class="cyan">100%</span> (2847/2847), 12.40 MiB | 2.1 MiB/s, done.`);
+          lines.push(`Resolving deltas: <span class="cyan">${(prog | 0).toString().padStart(3)}%</span> (${Math.floor((prog / 100) * 1521)}/1521)`);
+        } else {
+          lines.push(`remote: Enumerating objects: <span class="cyan">2847</span>, done.`);
+          lines.push(`remote: Counting objects: <span class="cyan">100%</span> (842/842), done.`);
+          lines.push(`remote: Compressing objects: <span class="cyan">100%</span> (410/410), done.`);
+          lines.push(`Receiving objects: <span class="cyan">100%</span> (2847/2847), 12.40 MiB | 2.1 MiB/s, done.`);
+          lines.push(`Resolving deltas: <span class="cyan">100%</span> (1521/1521), done.`);
+        }
+        gitEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- apt install ----------
+      const aptPkgs = [
+        { name: "libc6", ver: "2.35-0ubuntu3.5", size: 2840 },
+        { name: "libstdc++6", ver: "12.3.0-1ubuntu1", size: 698 },
+        { name: "openssl", ver: "3.0.2-0ubuntu1.15", size: 1214 },
+        { name: "curl", ver: "7.81.0-1ubuntu1.17", size: 194 },
+      ];
+      const aptEl = document.getElementById("apt");
+      function renderApt(tick) {
+        const cycle = 260;
+        const t = tick % cycle;
+        const lines = [];
+        lines.push(`<span class="dim">$</span> sudo apt install build-essential`);
+        const preface = [
+          "Reading package lists... Done",
+          "Building dependency tree... Done",
+          "Reading state information... Done",
+        ];
+        const prefaceDelay = 8;
+        for (let i = 0; i < preface.length; i++) {
+          if (t >= i * prefaceDelay) {
+            lines.push(preface[i].replace("Done", '<span class="ok">Done</span>'));
+          }
+        }
+        if (t < prefaceDelay * 3) {
+          // still showing preface
+        } else if (t < 160) {
+          const k = (t - prefaceDelay * 3) / (160 - prefaceDelay * 3);
+          const totalKB = aptPkgs.reduce((a, p) => a + p.size, 0);
+          const fetchedKB = (k * totalKB) | 0;
+          let acc = 0;
+          for (let i = 0; i < aptPkgs.length; i++) {
+            acc += aptPkgs[i].size;
+            const got = fetchedKB >= acc ? aptPkgs[i].size : Math.max(0, fetchedKB - (acc - aptPkgs[i].size));
+            if (got >= aptPkgs[i].size) {
+              lines.push(`<span class="cyan">Get:${i + 1}</span> http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 ${aptPkgs[i].name} amd64 ${aptPkgs[i].ver} [${aptPkgs[i].size} kB]`);
+            } else if (got > 0) {
+              const prog = (got / aptPkgs[i].size) * 100;
+              const bar = blockBar(prog, 18);
+              lines.push(`<span class="cyan">Get:${i + 1}</span> ${aptPkgs[i].name} <span class="cyan">${bar}</span> <span class="dim">${got}/${aptPkgs[i].size} kB</span>`);
+              break;
+            } else {
+              break;
+            }
+          }
+          lines.push(`<span class="dim">Fetched ${(fetchedKB / 1024).toFixed(1)} MB in ${((t - prefaceDelay * 3) / 20).toFixed(0)}s</span>`);
+        } else if (t < 220) {
+          const idx = Math.min(aptPkgs.length - 1, Math.floor((t - 160) / 15));
+          lines.push(`<span class="dim">(Reading database ... 112,847 files and directories currently installed.)</span>`);
+          for (let i = 0; i <= idx; i++) {
+            lines.push(`Unpacking ${aptPkgs[i].name} (${aptPkgs[i].ver}) ...`);
+          }
+        } else {
+          for (let i = 0; i < aptPkgs.length; i++) {
+            lines.push(`Setting up ${aptPkgs[i].name}:amd64 (${aptPkgs[i].ver}) ...`);
+          }
+          lines.push(`Processing triggers for man-db (2.10.2-1) ...`);
+        }
+        aptEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- curl download ----------
+      const curlEl = document.getElementById("curl");
+      function renderCurl(tick) {
+        const cycle = 200;
+        const t = tick % cycle;
+        const total = 45.2;
+        const prog = Math.min(100, (t / 160) * 100);
+        const received = (prog / 100) * total;
+        const elapsed = Math.floor((t / 160) * 19);
+        const left = Math.max(0, 19 - elapsed);
+        const speed = prog < 100 ? "2344k" : "    0";
+        const bar = progressBar(prog, 20, "#", "#", " ");
+        const mmss = (s) => `0:00:${String(s).padStart(2, "0")}`;
+        const line =
+          `<span class="dim">${prog.toFixed(0).padStart(3)} ${fmtMB(total)}   ${prog.toFixed(0).padStart(3)} ${received.toFixed(1)}M    0     0  ${speed}      0  ${mmss(19)}  ${mmss(elapsed)}  ${mmss(left)} ${speed.trim()}</span>`;
+        curlEl.innerHTML = [
+          `<span class="dim">$</span> curl -L -o node.tar.xz https://nodejs.org/dist/v20.17.0/node-v20.17.0-linux-x64.tar.xz`,
+          `  <span class="dim">% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span>`,
+          `  <span class="dim">                               Dload  Upload   Total   Spent    Left  Speed</span>`,
+          line,
+          `<span class="cyan">${bar}</span> <span class="dim">${prog.toFixed(1).padStart(5)}%</span>`,
+        ].join("\n");
+      }
+
+      // ---------- vite dev ----------
+      const viteEvents = [
+        { t: 40, line: `<span class="cyan">[vite]</span> <span class="dim">hmr update</span> <span class="ok">/src/App.tsx</span> <span class="faint">(x1) in 12ms</span>` },
+        { t: 80, line: `<span class="cyan">[vite]</span> <span class="dim">hmr update</span> <span class="ok">/src/components/Terminal.css</span> <span class="faint">in 4ms</span>` },
+        { t: 130, line: `<span class="cyan">[vite]</span> <span class="dim">page reload</span> <span class="warn">index.html</span>` },
+        { t: 170, line: `<span class="cyan">[vite]</span> <span class="dim">hmr update</span> <span class="ok">/src/components/Terminal.tsx</span> <span class="faint">in 18ms</span>` },
+      ];
+      const viteEl = document.getElementById("vite");
+      function renderVite(tick) {
+        const cycle = 240;
+        const t = tick % cycle;
+        const header = [
+          ``,
+          `  <span class="ok">VITE</span> <span class="dim">v5.4.8</span>  <span class="dim">ready in 287 ms</span>`,
+          ``,
+          `  <span class="cyan">\u279C</span>  <span class="dim">Local:</span>   <span class="cyan">http://localhost:5173/</span>`,
+          `  <span class="cyan">\u279C</span>  <span class="dim">Network: use --host to expose</span>`,
+          `  <span class="cyan">\u279C</span>  <span class="dim">press h + enter to show help</span>`,
+          ``,
+        ];
+        const lines = [`<span class="dim">$</span> pnpm dev`, ...header];
+        for (const e of viteEvents) {
+          if (t >= e.t) lines.push(e.line);
+        }
+        const blink = Math.floor(tick / 9) % 2 === 0;
+        const caret = blink
+          ? `<span class="cursor" style="animation:none"></span>`
+          : `<span class="cursor" style="animation:none;opacity:0"></span>`;
+        lines.push(`<span class="dim">\u279C</span> ${caret}`);
+        viteEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- music: shared track ----------
+      const TRACK = {
+        title: "End of Line (Remixed by Photek)",
+        artist: "Daft Punk",
+        album: "TRON: Legacy Reconfigured",
+        file: "end-of-line-photek.mp3",
+        lengthSec: 272, // 4:32
+      };
+      const mmss = (s) => {
+        const m = Math.floor(s / 60);
+        const r = Math.floor(s % 60);
+        return `${m}:${String(r).padStart(2, "0")}`;
+      };
+
+      // ---------- mpv ----------
+      const mpvEl = document.getElementById("mpv");
+      function renderMpv(tick) {
+        const cycle = 320;
+        const t = tick % cycle;
+        const headerSteps = [
+          `<span class="dim">$</span> mpv "${TRACK.file}"`,
+          ` <span class="dim">(+) Audio --aid=1 --alang=eng (*) (mp3 2ch 44100Hz)</span>`,
+          ` <span class="dim">AO: [coreaudio] 44100Hz stereo 2ch floatp</span>`,
+          ` <span class="dim">File tags:</span>`,
+          `  <span class="dim">Artist:</span> ${TRACK.artist}`,
+          `  <span class="dim">Title:</span>  ${TRACK.title}`,
+          `  <span class="dim">Album:</span>  ${TRACK.album}`,
+        ];
+        const headerDelay = 3;
+        const shown = Math.min(headerSteps.length, Math.floor(t / headerDelay));
+        const lines = headerSteps.slice(0, shown);
+        if (shown === headerSteps.length) {
+          const playT = t - headerSteps.length * headerDelay;
+          const sec = Math.min(TRACK.lengthSec, Math.floor(playT * 1.4));
+          const pct = (sec / TRACK.lengthSec) * 100;
+          const bar = progressBar(pct, 22, "=", ">", " ");
+          lines.push(
+            `<span class="ok">A:</span> ${mmss(sec)} / ${mmss(TRACK.lengthSec)} <span class="dim">(${pct
+              .toFixed(0)
+              .padStart(2)}%)</span> <span class="faint">Cache:  8s/256KB</span>`,
+          );
+          lines.push(`<span class="cyan">${bar}</span>`);
+        }
+        mpvEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- cava ----------
+      const cavaEl = document.getElementById("cava");
+      const CAVA_BARS = 56;
+      const CAVA_ROWS = 6;
+      const PARTIAL = [" ", "\u2581", "\u2582", "\u2583", "\u2584", "\u2585", "\u2586", "\u2587"];
+      function cavaHeights(tick) {
+        const h = new Array(CAVA_BARS);
+        for (let i = 0; i < CAVA_BARS; i++) {
+          const x = i / (CAVA_BARS - 1);
+          const v =
+            Math.sin(tick * 0.09 + i * 0.31) * 0.35 +
+            Math.sin(tick * 0.14 + i * 0.73) * 0.25 +
+            Math.sin(tick * 0.23 + i * 1.27) * 0.15 +
+            Math.sin(tick * 0.05 + x * 6) * 0.15;
+          const env = Math.sin(x * Math.PI) * 0.65 + 0.35;
+          h[i] = Math.max(0, Math.min(1, 0.5 + v * env));
+        }
+        return h;
+      }
+      function renderCava(tick) {
+        const heights = cavaHeights(tick);
+        const totalLevels = CAVA_ROWS * 8;
+        const levels = heights.map((h) => Math.round(h * totalLevels));
+        const rows = [];
+        for (let r = 0; r < CAVA_ROWS; r++) {
+          const fromBottom = CAVA_ROWS - 1 - r;
+          const rowStart = fromBottom * 8;
+          let row = "";
+          for (let i = 0; i < CAVA_BARS; i++) {
+            const lvl = levels[i];
+            if (lvl >= rowStart + 8) row += "\u2588";
+            else if (lvl <= rowStart) row += " ";
+            else row += PARTIAL[lvl - rowStart];
+          }
+          rows.push(row);
+        }
+        // progress
+        const cycle = 480;
+        const t = tick % cycle;
+        const sec = Math.floor((t / cycle) * TRACK.lengthSec);
+        const bar = progressBar((t / cycle) * 100, 22, "=", ">", " ");
+        const lines = [
+          `<span class="dim">$</span> cava`,
+          ...rows.map((r) => `<span class="cyan">${r}</span>`),
+          ``,
+          `<span class="dim">\u266B</span> ${TRACK.title} <span class="faint">\u2014</span> <span class="dim">${TRACK.artist}</span>   <span class="cyan">${bar}</span> <span class="dim">${mmss(sec)} / ${mmss(TRACK.lengthSec)}</span>`,
+        ];
+        cavaEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- ncmpcpp ----------
+      const ncmpEl = document.getElementById("ncmpcpp");
+      const BOX_W = 58; // inner width between │ │
+      function visibleLen(s) {
+        return s.replace(/<[^>]+>/g, "").length;
+      }
+      function boxLine(inner) {
+        const pad = Math.max(0, BOX_W - visibleLen(inner));
+        return `\u2502 ${inner}${" ".repeat(pad)} \u2502`;
+      }
+      function renderNcmpcpp(tick) {
+        const cycle = 520;
+        const t = tick % cycle;
+        const sec = Math.floor((t / cycle) * TRACK.lengthSec);
+        const pct = sec / TRACK.lengthSec;
+        const trackBarW = 38;
+        const markerPos = Math.round(pct * (trackBarW - 1));
+        let trackBar = "";
+        for (let i = 0; i < trackBarW; i++) {
+          if (i === markerPos) trackBar += "\u25C6"; // diamond marker
+          else if (i < markerPos) trackBar += "\u2501"; // heavy line behind
+          else trackBar += "\u2500"; // thin line ahead
+        }
+        // inline mini-visualizer
+        const miniBars = 38;
+        const minibarChars = "\u2581\u2582\u2583\u2584\u2585\u2586\u2587\u2588";
+        let mini = "";
+        for (let i = 0; i < miniBars; i++) {
+          const x = i / (miniBars - 1);
+          const v =
+            Math.sin(tick * 0.11 + i * 0.37) * 0.5 +
+            Math.sin(tick * 0.19 + i * 1.1) * 0.3;
+          const env = Math.sin(x * Math.PI) * 0.7 + 0.3;
+          const h = Math.max(0, Math.min(0.999, 0.5 + v * env * 0.7));
+          mini += minibarChars[Math.floor(h * 8)];
+        }
+
+        const topTitle = " ncmpcpp ";
+        const topLeft = "\u256D" + "\u2500".repeat(2) + topTitle;
+        const topFill = "\u2500".repeat(Math.max(0, BOX_W + 2 - topLeft.length - 1)) + "\u256E";
+        const top = `<span class="dim">${topLeft}${topFill}</span>`;
+        const bot = `<span class="dim">\u2570${"\u2500".repeat(BOX_W + 2)}\u256F</span>`;
+
+        const state = Math.floor(tick / 120) % 3;
+        const stateIcon = state === 0 ? "\u25B6" : state === 1 ? "\u23F8" : "\u25B6";
+        const stateLabel = state === 1 ? "paused " : "playing";
+
+        const lines = [
+          `<span class="dim">$</span> ncmpcpp`,
+          top,
+          boxLine(`<span class="ok">${stateIcon}</span> ${TRACK.title}`),
+          boxLine(`  <span class="dim">${TRACK.artist} \u00B7 ${TRACK.album}</span>`),
+          boxLine(``),
+          boxLine(`<span class="cyan">${trackBar}</span> <span class="dim">${mmss(sec)} / ${mmss(TRACK.lengthSec)}</span>`),
+          boxLine(``),
+          boxLine(`<span class="cyan">${mini}</span>`),
+          boxLine(``),
+          boxLine(`<span class="dim">${stateLabel}  \u00B7  \u2665 liked  \u00B7  shuffle on  \u00B7  repeat: all  \u00B7  vol 74</span>`),
+          bot,
+        ];
+        ncmpEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- mpc ----------
+      const mpcEl = document.getElementById("mpc");
+      function renderMpc(tick) {
+        const cycle = 520;
+        const t = tick % cycle;
+        const sec = Math.floor((t / cycle) * TRACK.lengthSec);
+        const pct = Math.floor((sec / TRACK.lengthSec) * 100);
+        const state = Math.floor(tick / 180) % 3 === 1 ? "paused " : "playing";
+        const lines = [
+          `<span class="dim">$</span> mpc`,
+          `${TRACK.title} <span class="faint">\u2014</span> <span class="dim">${TRACK.artist}</span>`,
+          `<span class="ok">[${state}]</span> <span class="dim">#2/24</span>   ${mmss(sec)}/${mmss(TRACK.lengthSec)} <span class="faint">(${pct}%)</span>`,
+          `<span class="dim">volume:</span> 74%   <span class="dim">repeat:</span> on   <span class="dim">random:</span> off   <span class="dim">single:</span> off`,
+        ];
+        mpcEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- cmus ----------
+      const cmusEl = document.getElementById("cmus");
+      const CMUS_TRACKS = [
+        ["01", "The Game Has Changed", "4:21"],
+        ["02", "End of Line (Remixed by Photek)", "4:32"],
+        ["03", "Fall (Remixed by M83 vs. Big Black Delta)", "4:28"],
+        ["04", "Derezzed (Remixed by The Glitch Mob)", "4:08"],
+        ["05", "Solar Sailer (Remixed by Pretty Lights)", "4:14"],
+        ["06", "Rinzler (Remixed by The Crystal Method)", "3:52"],
+      ];
+      function renderCmus(tick) {
+        const cycle = 520;
+        const t = tick % cycle;
+        const sec = Math.floor((t / cycle) * TRACK.lengthSec);
+        const pct = sec / TRACK.lengthSec;
+        const barW = 46;
+        const filled = Math.round(pct * barW);
+        const bar =
+          "\u2501".repeat(filled) + "\u2500".repeat(Math.max(0, barW - filled));
+        const hdr = (label) =>
+          `<span class="dim">\u2014\u2014\u2014 ${label} ${"\u2014".repeat(Math.max(0, 56 - label.length - 5))}</span>`;
+        const state = Math.floor(tick / 120) % 3;
+        const statusLabel = state === 1 ? "paused " : "playing";
+        const lines = [`<span class="dim">$</span> cmus`, hdr("Library")];
+        lines.push(` <span class="cyan">Daft Punk</span> <span class="faint">\u2014</span> <span class="dim">TRON: Legacy Reconfigured</span>`);
+        for (const [num, name, dur] of CMUS_TRACKS) {
+          const isCurrent = num === "02";
+          const marker = isCurrent ? ` <span class="ok">\u25B6</span>` : "  ";
+          const line = `${marker}<span class="dim">${num}</span>  ${isCurrent ? `<span class="cyan">${name}</span>` : name}   <span class="dim">${dur}</span>`;
+          lines.push(line);
+        }
+        lines.push(hdr("Now Playing"));
+        lines.push(` <span class="ok">${statusLabel}</span>  ${TRACK.title}`);
+        lines.push(`          <span class="dim">${TRACK.artist} \u00B7 ${TRACK.album}</span>`);
+        lines.push(` <span class="cyan">${bar}</span> <span class="dim">${mmss(sec)} / ${mmss(TRACK.lengthSec)}</span>`);
+        lines.push(` <span class="dim">vol: 74  \u00B7  continue  \u00B7  repeat  \u00B7  shuffle: off</span>`);
+        cmusEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- spotify_player ----------
+      const spotifyEl = document.getElementById("spotify");
+      const SPOT_QUEUE = [
+        ["End of Line (Remixed by Photek)", "Daft Punk", "4:32"],
+        ["Solar Sailer (Remixed by Pretty Lights)", "Daft Punk", "4:14"],
+        ["Derezzed (Remixed by The Glitch Mob)", "Daft Punk", "4:08"],
+        ["Rinzler (Remixed by The Crystal Method)", "Daft Punk", "3:52"],
+        ["Fall (Remixed by M83 vs. Big Black Delta)", "Daft Punk", "4:28"],
+        ["The Grid (Remixed by Crookers)", "Daft Punk", "3:44"],
+      ];
+      const SPOT_BOX_W = 68;
+      function spotBoxLine(inner) {
+        const pad = Math.max(0, SPOT_BOX_W - visibleLen(inner));
+        return `<span class="dim">\u2502</span> ${inner}${" ".repeat(pad)} <span class="dim">\u2502</span>`;
+      }
+      function renderSpotify(tick) {
+        const cycle = 540;
+        const t = tick % cycle;
+        const sec = Math.floor((t / cycle) * TRACK.lengthSec);
+        const pct = sec / TRACK.lengthSec;
+        const top = `<span class="dim">\u256D\u2500 Queue \u00B7 End of Line session ${"\u2500".repeat(
+          Math.max(0, SPOT_BOX_W - 27),
+        )}\u256E</span>`;
+        const bot = `<span class="dim">\u2570${"\u2500".repeat(SPOT_BOX_W + 2)}\u256F</span>`;
+        const lines = [`<span class="dim">$</span> spotify_player`, top];
+        SPOT_QUEUE.forEach(([title, artist, dur], i) => {
+          const isCurrent = i === 0;
+          const icon = isCurrent ? `<span class="ok">\u25B6</span>` : ` `;
+          const titleSpan = isCurrent ? `<span class="cyan">${title}</span>` : title;
+          const artistSpan = `<span class="dim">${artist}</span>`;
+          const titleW = 42;
+          const artistW = 16;
+          const titleTrim = title.length > titleW ? title.slice(0, titleW - 1) + "\u2026" : title;
+          const titleOut = isCurrent
+            ? `<span class="cyan">${titleTrim}</span>`
+            : titleTrim;
+          const titlePad = " ".repeat(Math.max(0, titleW - titleTrim.length));
+          const artistPad = " ".repeat(Math.max(0, artistW - artist.length));
+          lines.push(
+            spotBoxLine(
+              `${icon} ${titleOut}${titlePad} ${artistSpan}${artistPad} <span class="dim">${dur}</span>`,
+            ),
+          );
+        });
+        lines.push(bot);
+        const barW = 34;
+        const markerPos = Math.round(pct * (barW - 1));
+        let progBar = "";
+        for (let i = 0; i < barW; i++) {
+          if (i === markerPos) progBar += "\u25C6";
+          else if (i < markerPos) progBar += "\u2501";
+          else progBar += "\u2500";
+        }
+        lines.push(
+          `<span class="dim">\u266B</span> <span class="cyan">${TRACK.title}</span> <span class="faint">\u2014</span> <span class="dim">${TRACK.artist}</span>`,
+        );
+        lines.push(
+          `  <span class="cyan">${progBar}</span> <span class="dim">${mmss(sec)} / ${mmss(TRACK.lengthSec)}</span>`,
+        );
+        lines.push(
+          `  <span class="dim">vol 74%  \u2022  shuffle  \u2022  repeat: all  \u2022  device: macbook</span>`,
+        );
+        spotifyEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- pulsemixer ----------
+      const pulseEl = document.getElementById("pulsemixer");
+      const PULSE_STREAMS = [
+        { name: "mpv", base: 74, rate: 0.17 },
+        { name: "firefox", base: 42, rate: 0.09 },
+        { name: "ffplay", base: 88, rate: 0.22 },
+        { name: "system", base: 30, rate: 0.05 },
+        { name: "discord", base: 55, rate: 0.13 },
+        { name: "ptm", base: 62, rate: 0.19 },
+      ];
+      const PULSE_ROWS = 8;
+      const COL_W = 8;
+      function renderPulsemixer(tick) {
+        const levels = PULSE_STREAMS.map((s, i) => {
+          const wobble = Math.sin(tick * s.rate + i * 1.3) * 6;
+          const drift = Math.sin(tick * 0.02 + i * 0.7) * 3;
+          return Math.max(0, Math.min(100, s.base + wobble + drift));
+        });
+        const topLabel = " Playback ";
+        const innerW = PULSE_STREAMS.length * COL_W + 2;
+        const topFill = "\u2500".repeat(Math.max(0, innerW - topLabel.length - 2));
+        const top = `<span class="dim">\u256D${topLabel}${topFill}\u256E</span>`;
+        const mid = `<span class="dim">\u2502${" ".repeat(innerW)}\u2502</span>`;
+        const bot = `<span class="dim">\u2570${"\u2500".repeat(innerW)}\u256F</span>`;
+        const lines = [`<span class="dim">$</span> pulsemixer`, top];
+        const selected = Math.floor(tick / 80) % PULSE_STREAMS.length;
+        for (let r = 0; r < PULSE_ROWS; r++) {
+          const threshold = ((PULSE_ROWS - r) / PULSE_ROWS) * 100;
+          let row = " ";
+          for (let c = 0; c < PULSE_STREAMS.length; c++) {
+            const pct = levels[c];
+            const on = pct >= threshold;
+            const hot = threshold > 75;
+            const warm = threshold > 55;
+            const cls = c === selected ? (on ? "cyan" : "faint") : on ? (hot ? "warn" : warm ? "cyan" : "ok") : "faint";
+            const ch = on ? "\u2588" : "\u2502";
+            row += `  <span class="${cls}">${ch}${ch}</span>   `;
+          }
+          lines.push(`<span class="dim">\u2502</span>${row}<span class="dim">\u2502</span>`);
+        }
+        let pctRow = " ";
+        let nameRow = " ";
+        PULSE_STREAMS.forEach((s, c) => {
+          const pct = Math.round(levels[c]);
+          const pctStr = `${pct}%`.padStart(4);
+          const nameStr = s.name.padEnd(6).slice(0, 6);
+          const cls = c === selected ? "cyan" : "dim";
+          pctRow += `<span class="${cls}">${pctStr}</span>  `;
+          nameRow += `<span class="${cls}">${nameStr}</span>`;
+        });
+        lines.push(mid);
+        lines.push(`<span class="dim">\u2502</span>${pctRow}<span class="dim">\u2502</span>`);
+        lines.push(`<span class="dim">\u2502</span>${nameRow} <span class="dim">\u2502</span>`);
+        lines.push(bot);
+        pulseEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- htop ----------
+      const htopEl = document.getElementById("htop");
+      const HTOP_PROCS = [
+        ["14231", "danielku", "node", 1.1, 128],
+        [" 2847", "danielku", "Chrome", 0.89, 42],
+        [" 1024", "root    ", "WindowServer", 0.16, 8],
+        [" 7812", "danielku", "Cursor Helper", 0.28, 14],
+        [" 3921", "danielku", "vite", 0.22, 6],
+        ["  512", "danielku", "SystemUIServer", 0.09, 2],
+        ["  128", "root    ", "kernel_task", 0.05, 1],
+      ];
+      function htopBar(pct, width, color = "ok") {
+        const filled = Math.round((pct / 100) * width);
+        const body = repeat("|", filled) + repeat(" ", width - filled);
+        const label = `${pct.toFixed(1).padStart(5)}%`;
+        return `<span class="${color}">${body}</span><span class="dim">${label}</span>`;
+      }
+      function renderHtop(tick) {
+        const cpus = [];
+        for (let c = 0; c < 4; c++) {
+          const v =
+            Math.sin(tick * 0.13 + c * 1.2) * 30 +
+            Math.sin(tick * 0.27 + c * 0.5) * 15;
+          cpus.push(Math.max(2, Math.min(98, 40 + v)));
+        }
+        const mem = 28.4 + Math.sin(tick * 0.04) * 0.6;
+        const lines = [];
+        for (let i = 0; i < 4; i++) {
+          lines.push(`<span class="dim">${i + 1}</span>[${htopBar(cpus[i], 24)}]`);
+        }
+        const memPct = (mem / 64) * 100;
+        lines.push(
+          `<span class="dim">Mem</span>[${htopBar(memPct, 24, "cyan")} <span class="dim">${mem.toFixed(1)}G/64.0G</span>]`,
+        );
+        lines.push(
+          `<span class="dim">Swp</span>[${htopBar(0, 24, "dim")} <span class="dim">    0B/2.0G</span>]`,
+        );
+        lines.push(``);
+        lines.push(
+          `<span class="dim">  PID USER       PRI NI VIRT  RES  SHR S  CPU%  MEM%  TIME+  Command</span>`,
+        );
+        const procs = HTOP_PROCS.map((p, i) => {
+          const [pid, user, cmd, gb, baseCpu] = p;
+          const cpu = Math.max(0, baseCpu + Math.sin(tick * 0.09 + i) * 12);
+          const memPc = (gb / 64) * 100;
+          return { pid, user, cmd, cpu, memPc };
+        });
+        procs.sort((a, b) => b.cpu - a.cpu);
+        for (const { pid, user, cmd, cpu, memPc } of procs) {
+          const cpuStr = cpu.toFixed(1).padStart(5);
+          const memStr = memPc.toFixed(1).padStart(4);
+          const color = cpu > 50 ? "warn" : "dim";
+          lines.push(
+            `${pid} ${user}  20  0  8G  1G  92M S <span class="${color}">${cpuStr}</span> <span class="dim">${memStr}</span>  0:${String(((tick / 50) | 0) % 60).padStart(2, "0")}.00 ${cmd}`,
+          );
+        }
+        htopEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- vitest ----------
+      const vitestEl = document.getElementById("vitest");
+      const TEST_FILES = [
+        { path: "tests/App.test.tsx", count: 3, result: "pass", start: 10 },
+        { path: "tests/Terminal.test.tsx", count: 5, result: "pass", start: 30 },
+        { path: "tests/DrainText.test.tsx", count: 4, result: "pass", start: 60 },
+        { path: "tests/TronGrid.test.tsx", count: 6, result: "pass", start: 85 },
+        {
+          path: "tests/centerline.test.ts",
+          count: 2,
+          result: "fail",
+          start: 110,
+          fail: "expected 42 to be 41",
+          failName: "computes centerline for circle",
+        },
+      ];
+      function renderVitest(tick) {
+        const cycle = 260;
+        const t = tick % cycle;
+        const lines = [];
+        lines.push(`<span class="dim">$</span> pnpm test`);
+        lines.push(``);
+        lines.push(` <span class="ok">RUN</span>  <span class="dim">v1.6.0</span> /Users/danielku/mywebsite`);
+        lines.push(``);
+        let totalPass = 0;
+        let totalFail = 0;
+        let doneFiles = 0;
+        for (const f of TEST_FILES) {
+          const done = t > f.start + 20;
+          const running = t > f.start && t <= f.start + 20;
+          if (done) {
+            const icon = f.result === "fail"
+              ? `<span class="err">\u2715</span>`
+              : `<span class="ok">\u2713</span>`;
+            lines.push(` ${icon} ${f.path} <span class="dim">(${f.count})</span>`);
+            if (f.result === "fail") {
+              lines.push(`   <span class="err">\u00D7</span> ${f.failName}  <span class="dim">\u2192</span> <span class="err">${f.fail}</span>`);
+              totalFail += 1;
+              totalPass += f.count - 1;
+            } else {
+              totalPass += f.count;
+            }
+            doneFiles += 1;
+          } else if (running) {
+            lines.push(` <span class="cyan">${braille(tick)}</span> ${f.path}`);
+          }
+        }
+        const allDone = t > TEST_FILES[TEST_FILES.length - 1].start + 20;
+        if (allDone) {
+          lines.push(``);
+          const totalTests = TEST_FILES.reduce((a, f) => a + f.count, 0);
+          const failedFiles = TEST_FILES.filter((f) => f.result === "fail").length;
+          const passedFiles = TEST_FILES.length - failedFiles;
+          lines.push(` <span class="dim">Test Files</span>  <span class="err">${failedFiles} failed</span> <span class="dim">|</span> <span class="ok">${passedFiles} passed</span> <span class="dim">(${TEST_FILES.length})</span>`);
+          lines.push(`      <span class="dim">Tests</span>  <span class="err">${totalFail} failed</span> <span class="dim">|</span> <span class="ok">${totalPass} passed</span> <span class="dim">(${totalTests})</span>`);
+          lines.push(`   <span class="dim">Start at</span>  12:34:56`);
+          lines.push(`   <span class="dim">Duration</span>  2.41s`);
+        }
+        vitestEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- ffmpeg ----------
+      const ffmpegEl = document.getElementById("ffmpeg");
+      const FFMPEG_HEADER = [
+        `<span class="dim">$</span> ffmpeg -i clip.mov -c:v libx264 -preset slow out.mp4`,
+        `<span class="dim">ffmpeg version 6.1.1 Copyright (c) 2000-2023 the FFmpeg developers</span>`,
+        `<span class="dim">  configuration: --prefix=/opt/homebrew --enable-gpl --enable-libx264</span>`,
+        `<span class="dim">Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'clip.mov':</span>`,
+        `<span class="dim">  Duration: 00:02:34.21, bitrate: 8240 kb/s</span>`,
+        `<span class="dim">  Stream #0:0: Video: h264, yuv420p, 1920x1080, 25 fps</span>`,
+        `<span class="dim">Stream mapping:</span>`,
+        `<span class="dim">  Stream #0:0 -> #0:0 (h264 -> libx264)</span>`,
+        `<span class="dim">Output #0, mp4, to 'out.mp4':</span>`,
+      ];
+      function renderFfmpeg(tick) {
+        const cycle = 280;
+        const t = tick % cycle;
+        const headerDelay = 2;
+        const shown = Math.min(FFMPEG_HEADER.length, Math.floor(t / headerDelay));
+        const lines = FFMPEG_HEADER.slice(0, shown);
+        if (shown === FFMPEG_HEADER.length) {
+          const encodeT = t - FFMPEG_HEADER.length * headerDelay;
+          const totalSec = 154.21;
+          const pct = Math.min(1, encodeT / 140);
+          const curSec = pct * totalSec;
+          const frame = Math.floor(curSec * 25);
+          const fps = 42 + Math.sin(tick * 0.2) * 6;
+          const q = 23 + Math.sin(tick * 0.15) * 0.6;
+          const sizeKb = Math.floor(curSec * 420);
+          const bitrate = 3100 + Math.sin(tick * 0.11) * 280;
+          const speed = 1.7 + Math.sin(tick * 0.08) * 0.25;
+          const h = Math.floor(curSec / 3600);
+          const m = Math.floor((curSec % 3600) / 60);
+          const s = curSec % 60;
+          const timeStr = `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${s.toFixed(2).padStart(5, "0")}`;
+          lines.push(
+            `<span class="cyan">frame=</span>${String(frame).padStart(5)} <span class="cyan">fps=</span>${fps.toFixed(0).padStart(3)} <span class="cyan">q=</span>${q.toFixed(1)} <span class="cyan">size=</span>${String(sizeKb).padStart(6)}kB <span class="cyan">time=</span>${timeStr} <span class="cyan">bitrate=</span>${bitrate.toFixed(1)}kbits/s <span class="cyan">speed=</span><span class="ok">${speed.toFixed(2)}x</span>`,
+          );
+          if (pct >= 1) {
+            lines.push(
+              `<span class="dim">video:${(sizeKb * 0.92).toFixed(0)}kB audio:${(sizeKb * 0.05).toFixed(0)}kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.312%</span>`,
+            );
+          }
+        }
+        ffmpegEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- ping ----------
+      const pingEl = document.getElementById("ping");
+      const PING_COUNT = 8;
+      const PING_INTERVAL = 14;
+      function renderPing(tick) {
+        const cycle = PING_COUNT * PING_INTERVAL + 40;
+        const t = tick % cycle;
+        const lines = [];
+        lines.push(`<span class="dim">$</span> ping -c ${PING_COUNT} google.com`);
+        lines.push(`<span class="dim">PING google.com (142.250.80.46) 56(84) bytes of data.</span>`);
+        const times = [];
+        for (let i = 0; i < PING_COUNT; i++) {
+          if (t < (i + 1) * PING_INTERVAL) break;
+          const seed = Math.sin(i * 13.37) * 0.5 + 0.5;
+          const rtt = 11.5 + seed * 3.2 + (i % 3) * 0.4;
+          times.push(rtt);
+          lines.push(
+            `64 bytes from google.com: <span class="dim">icmp_seq=</span><span class="cyan">${i + 1}</span> <span class="dim">ttl=</span>115 <span class="dim">time=</span><span class="ok">${rtt.toFixed(1)} ms</span>`,
+          );
+        }
+        if (times.length === PING_COUNT && t >= PING_COUNT * PING_INTERVAL + 8) {
+          const min = Math.min(...times);
+          const max = Math.max(...times);
+          const avg = times.reduce((a, b) => a + b) / times.length;
+          const mdev = Math.sqrt(
+            times.reduce((a, b) => a + (b - avg) ** 2, 0) / times.length,
+          );
+          lines.push(``);
+          lines.push(`<span class="dim">--- google.com ping statistics ---</span>`);
+          lines.push(
+            `${PING_COUNT} packets transmitted, <span class="ok">${PING_COUNT} received</span>, 0% packet loss, time ${(PING_COUNT * 1000 - 88)}ms`,
+          );
+          lines.push(
+            `rtt min/avg/max/mdev = <span class="cyan">${min.toFixed(2)}/${avg.toFixed(2)}/${max.toFixed(2)}/${mdev.toFixed(2)}</span> ms`,
+          );
+        }
+        pingEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- fastfetch ----------
+      const fastfetchEl = document.getElementById("fastfetch");
+      // Apple logo ported from neofetch, 17 rows, 19 cols wide.
+      const APPLE_LOGO = [
+        "                    'c.        ",
+        "                 ,xNMM.         ",
+        "               .OMMMMo          ",
+        "               OMMM0,           ",
+        "     .;loddo:' loolloddol;.     ",
+        "   cKMMMMMMMMMMNWMMMMMMMMMM0:   ",
+        " .KMMMMMMMMMMMMMMMMMMMMMMMWd.   ",
+        " XMMMMMMMMMMMMMMMMMMMMMMMX.     ",
+        ";MMMMMMMMMMMMMMMMMMMMMMMM:      ",
+        ":MMMMMMMMMMMMMMMMMMMMMMMM:      ",
+        ".MMMMMMMMMMMMMMMMMMMMMMMMX.     ",
+        " kMMMMMMMMMMMMMMMMMMMMMMMMWd.   ",
+        " 'XMMMMMMMMMMMMMMMMMMMMMMMMMk   ",
+        "  'XMMMMMMMMMMMMMMMMMMMMMMMK.   ",
+        "    kMMMMMMMMMMMMMMMMMMMMMMd    ",
+        "     ;KMMMMMMMWXXWMMMMMMMk.     ",
+        "       .cooc,.    .,coo:.       ",
+      ];
+      function renderFastfetch(tick) {
+        const cycle = 320;
+        const t = tick % cycle;
+        const uptimeSec = 3 * 86400 + 12 * 3600 + 47 * 60 + Math.floor(t / 1);
+        const up = {
+          d: Math.floor(uptimeSec / 86400),
+          h: Math.floor((uptimeSec % 86400) / 3600),
+          m: Math.floor((uptimeSec % 3600) / 60),
+        };
+        const memGb = (28.4 + Math.sin(tick * 0.04) * 0.6).toFixed(1);
+        const cpuPct = (42 + Math.sin(tick * 0.09) * 10).toFixed(0);
+        const info = [
+          `<span class="ok">danielku</span><span class="dim">@</span><span class="ok">macbook</span>`,
+          `<span class="dim">${"-".repeat(19)}</span>`,
+          `<span class="cyan">OS</span>       macOS 14.5 arm64`,
+          `<span class="cyan">Host</span>     MacBook Pro (14-inch, M3 Pro, 2023)`,
+          `<span class="cyan">Kernel</span>   Darwin 24.6.0`,
+          `<span class="cyan">Uptime</span>   ${up.d}d ${up.h}h ${up.m}m`,
+          `<span class="cyan">Packages</span> 412 (brew), 87 (npm)`,
+          `<span class="cyan">Shell</span>    zsh 5.9`,
+          `<span class="cyan">CPU</span>      Apple M3 Pro (12) @ ${cpuPct}%`,
+          `<span class="cyan">GPU</span>      Apple M3 Pro (18 cores)`,
+          `<span class="cyan">Memory</span>   ${memGb} GiB / 64.0 GiB`,
+          `<span class="cyan">Disk</span>     412 GiB / 994 GiB (41%)`,
+          `<span class="cyan">Display</span>  3024x1964 @ 120Hz`,
+          `<span class="cyan">Terminal</span> ghostty`,
+          ``,
+          `<span class="ok">\u25A0</span><span class="warn">\u25A0</span><span class="err">\u25A0</span><span class="cyan">\u25A0</span><span class="dim">\u25A0 \u25A0 \u25A0 \u25A0</span>`,
+        ];
+        // reveal line by line at the start of cycle
+        const revealDelay = 3;
+        const visible = Math.min(info.length, Math.floor(t / revealDelay));
+        const lines = [`<span class="dim">$</span> fastfetch`];
+        for (let i = 0; i < APPLE_LOGO.length; i++) {
+          const logo = `<span class="ok">${APPLE_LOGO[i]}</span>`;
+          const side = i < visible ? info[i] : "";
+          lines.push(`${logo}  ${side}`);
+        }
+        fastfetchEl.innerHTML = lines.join("\n");
+      }
+
+      // ---------- main loop ----------
+      let tick = 0;
+      // Smooth, rAF-driven tick used only for the dot-line loader so the bar
+      // animates at display refresh rate instead of the 60ms scene cadence.
+      let dotlineTick = 0;
+      let dotlineLastTime = performance.now();
+      const installingCell = legacyCells.find((c) => c.loader.render);
+      function dotlineFrame(now) {
+        const dt = (now - dotlineLastTime) / TICK_MS;
+        dotlineLastTime = now;
+        dotlineTick += dt;
+        const svg = dotsLineSvg(dotlineTick);
+        dotlineTopEl.innerHTML = svg;
+        if (installingCell) installingCell.el.innerHTML = svg;
+        requestAnimationFrame(dotlineFrame);
+      }
+      requestAnimationFrame(dotlineFrame);
+
+      function frame() {
+        renderLegacy(tick);
+        renderPnpm(tick);
+        renderCargo(tick);
+        renderDocker(tick);
+        renderGit(tick);
+        renderApt(tick);
+        renderCurl(tick);
+        renderVite(tick);
+        renderMpv(tick);
+        renderCava(tick);
+        renderNcmpcpp(tick);
+        renderMpc(tick);
+        renderCmus(tick);
+        renderSpotify(tick);
+        renderPulsemixer(tick);
+        renderHtop(tick);
+        renderVitest(tick);
+        renderFfmpeg(tick);
+        renderPing(tick);
+        renderFastfetch(tick);
+        tick++;
+      }
+      frame();
+      setInterval(frame, TICK_MS);
+    </script>
+  </body>
+</html>

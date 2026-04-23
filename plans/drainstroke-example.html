@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stroke drain — font examples</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #0a0a0a;
+        color: #e0e0e0;
+        font-family: ui-monospace, "JetBrains Mono", monospace;
+        font-size: 13px;
+        min-height: 100vh;
+        padding: 32px 24px 48px;
+      }
+      .drain-example {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .drain-example__header {
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #1a1a1a;
+      }
+      .drain-example__title {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #666;
+        margin-bottom: 8px;
+      }
+      .drain-example__lead {
+        font-size: 14px;
+        color: #aaa;
+        line-height: 1.5;
+        max-width: 52ch;
+      }
+      .drain-example__toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 20px;
+        margin-bottom: 24px;
+      }
+      .drain-example__label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #555;
+      }
+      .drain-example__font-switch {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .drain-example__font-btn {
+        background: transparent;
+        color: #777;
+        border: 1px solid #2a2a2a;
+        font-family: inherit;
+        font-size: 12px;
+        padding: 8px 14px;
+        cursor: pointer;
+        letter-spacing: 0.03em;
+      }
+      .drain-example__font-btn:hover {
+        color: #aaa;
+        border-color: #3a3a3a;
+      }
+      .drain-example__font-btn--active {
+        background: #00dffc;
+        color: #000;
+        border-color: #00dffc;
+      }
+      .drain-example__font-btn--active:hover {
+        color: #000;
+      }
+      .drain-example__stage {
+        background: #080808;
+        border: 1px solid #1a1a1a;
+        border-radius: 4px;
+        padding: 28px 20px 20px;
+      }
+      .drain-example__hint {
+        margin-top: 20px;
+        font-size: 11px;
+        color: #444;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="drain-example">
+      <header class="drain-example__header">
+        <p class="drain-example__title">Reference</p>
+        <p class="drain-example__lead">
+          Same <code>DrainText</code> mask animation as the site; pick a font to
+          load its outlines and centerline drain plan.
+        </p>
+      </header>
+      <div id="root"></div>
+      <p class="drain-example__hint">
+        Dev URL:
+        <code>http://localhost:5173/plans/drainstroke-example.html</code>
+      </p>
+    </div>
+    <script type="module" src="./drainstroke-example.tsx"></script>
+  </body>
+</html>

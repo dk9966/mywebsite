@@ -1,72 +1,105 @@
+import gsap from "gsap";
+import { load, type Font } from "opentype.js";
 import {
-  useRef,
+  useCallback,
   useEffect,
-  useState,
+  useId,
   useLayoutEffect,
   useMemo,
-  useCallback,
+  useRef,
+  useState,
 } from "react";
-import { load, type Font } from "opentype.js";
-import gsap from "gsap";
-import {
-  commandsToD,
-  reindexForDirection,
-  splitSubpaths,
-  type DrainDirection,
-} from "../lib/svgPaths";
-import { STROKE_FONT, CELL_W, CELL_H } from "../lib/strokeFont";
+import { getCenterlineDrain } from "../lib/centerline";
+import { DRAIN_MANUAL_NODES_BY_CHAR } from "../lib/drainManualNodes";
+import { DRAIN_STROKE_INDEX_ORDER_BY_CHAR } from "../lib/drainStrokeOrder";
 import "./DrainText.css";
 
-const FONT_URL = "/fonts/JetBrainsMono-Regular.ttf";
+/** Default TTF when `fontUrl` is omitted (site hero). */
+export const DEFAULT_DRAIN_FONT_URL = "/fonts/VT323-Regular.ttf";
 const FONT_SIZE = 120;
 const STROKE_COLOR = "#00dffc";
-const OUTLINE_WIDTH = 2;
-const STROKE_WIDTH = 8;
+const STROKE_WIDTH = 4;
+/**
+ * Mask eraser width (centerline stroke in mask). Wider than STROKE_WIDTH so
+ * the sweep clears the filled glyph, not just a hairline.
+ */
+const ERASER_WIDTH = 28;
 
-const LETTER_GAP = 0.1;
-const SUBPATH_STAGGER = 0.15;
-const DRAW_DURATION = 1.5;
+const HOLD_BEFORE_DRAIN = 0.5;
+const DRAIN_DURATION = 1.5;
+const LETTER_OVERLAP = 0.6;
 
-export type DrainMode = "outline" | "stroke";
-
-const DRAIN_DIRECTIONS: Record<string, DrainDirection> = {
-  B: "top-left",
-  D: "top-left",
-  O: "top-left",
-  P: "top-left",
-  Q: "top-left",
-  R: "top-left",
-};
-
-interface SubpathInfo {
+interface ProjectedStroke {
   d: string;
+  pixelLength: number;
+  tStart: number;
+  tEnd: number;
+}
+
+interface GlyphRender {
   glyphIdx: number;
-  subpathIdx: number;
+  /** Filled outline path in SVG user space (matches opentype getPath). */
+  fillD: string;
+  strokes: ProjectedStroke[];
+  totalDistanceEm: number;
 }
 
 interface LayoutResult {
-  subpaths: SubpathInfo[];
+  glyphs: GlyphRender[];
   viewBox: string;
-  strokeWidth: number;
+  referenceDistanceEm: number;
 }
 
-function polylineToD(pts: [number, number][]): string {
-  return "M" + pts.map(([x, y]) => `${x} ${y}`).join("L");
+function isValidStrokeIndexOrder(order: number[], n: number): boolean {
+  if (order.length !== n || n === 0) return false;
+  const sorted = [...order].sort((a, b) => a - b);
+  for (let i = 0; i < n; i++) {
+    if (sorted[i] !== i) return false;
+  }
+  return true;
 }
 
-function computeLayout(font: Font, text: string, mode: DrainMode): LayoutResult {
+/** Reorder strokes and assign sequential [tStart,tEnd] windows, or return as-is. */
+function orderStrokesForGlyph(
+  char: string,
+  projected: ProjectedStroke[],
+): ProjectedStroke[] {
+  const order = DRAIN_STROKE_INDEX_ORDER_BY_CHAR[char];
+  if (!order) return projected;
+
+  if (!isValidStrokeIndexOrder(order, projected.length)) {
+    console.warn(
+      `[DrainText] Invalid DRAIN_STROKE_INDEX_ORDER_BY_CHAR["${char}"] ` +
+        `(need ${projected.length} distinct indices 0..${
+          projected.length - 1
+        }); using liquid order.`,
+    );
+    return projected;
+  }
+
+  const n = order.length;
+  return order.map((srcIndex, playIndex) => {
+    const base = projected[srcIndex];
+    return {
+      ...base,
+      tStart: playIndex / n,
+      tEnd: (playIndex + 1) / n,
+    };
+  });
+}
+
+function computeLayout(font: Font, text: string): LayoutResult {
   const fontScale = FONT_SIZE / font.unitsPerEm;
   const lineHeight = (font.ascender - font.descender) * fontScale * 1.15;
-  const cellScale = (font.ascender * fontScale) / CELL_H;
   const lines = text.split("\n");
 
-  const subpaths: SubpathInfo[] = [];
+  const glyphs: GlyphRender[] = [];
   let glyphIdx = 0;
   let maxWidth = 0;
 
   for (let lineIdx = 0; lineIdx < lines.length; lineIdx++) {
     const line = lines[lineIdx];
-    let x = 0;
+    let cursorX = 0;
     const baseline = FONT_SIZE + lineIdx * lineHeight;
 
     for (const char of line) {
@@ -74,46 +107,50 @@ function computeLayout(font: Font, text: string, mode: DrainMode): LayoutResult 
       const advance = glyph.advanceWidth * fontScale;
 
       if (char !== " ") {
-        if (mode === "outline") {
-          const path = glyph.getPath(x, baseline, FONT_SIZE);
-          const direction = DRAIN_DIRECTIONS[char.toUpperCase()] ?? "left";
-          const reindexed = reindexForDirection(path.commands, direction);
-          const parts = splitSubpaths(reindexed);
+        const manualNodes = DRAIN_MANUAL_NODES_BY_CHAR[char];
+        const { plan } = getCenterlineDrain(
+          font,
+          char,
+          manualNodes?.length ? { manualNodes } : undefined,
+        );
+        const glyphPath = glyph.getPath(cursorX, baseline, FONT_SIZE);
+        const fillD = glyphPath.toPathData(2);
 
-          for (let si = 0; si < parts.length; si++) {
-            subpaths.push({
-              d: commandsToD(parts[si]),
-              glyphIdx,
-              subpathIdx: si,
-            });
-          }
-        } else {
-          const strokes = STROKE_FONT[char.toUpperCase()];
-          if (strokes) {
-            const strokeVisualW = CELL_W * cellScale;
-            const xOff = x + (advance - strokeVisualW) / 2;
-            const yOff = baseline - font.ascender * fontScale;
+        const projected: ProjectedStroke[] = [];
+        for (const ds of plan.strokes) {
+          const pixelLength = ds.length * fontScale;
+          if (pixelLength < STROKE_WIDTH) continue;
 
-            for (let si = 0; si < strokes.length; si++) {
-              const scaled = strokes[si].map(
-                ([gx, gy]) =>
-                  [xOff + gx * cellScale, yOff + gy * cellScale] as [number, number],
-              );
-              subpaths.push({
-                d: polylineToD(scaled),
-                glyphIdx,
-                subpathIdx: si,
-              });
-            }
+          const pts = ds.points;
+          const parts: string[] = [];
+          for (let i = 0; i < pts.length; i++) {
+            const sx = cursorX + pts[i][0] * fontScale;
+            const sy = baseline - pts[i][1] * fontScale;
+            parts.push(
+              `${i === 0 ? "M" : "L"}${sx.toFixed(2)} ${sy.toFixed(2)}`,
+            );
           }
+          projected.push({
+            d: parts.join(""),
+            pixelLength,
+            tStart: ds.tStart,
+            tEnd: ds.tEnd,
+          });
         }
+
+        glyphs.push({
+          glyphIdx,
+          fillD,
+          strokes: orderStrokesForGlyph(char, projected),
+          totalDistanceEm: plan.totalDistance,
+        });
         glyphIdx++;
       }
 
-      x += advance;
+      cursorX += advance;
     }
 
-    if (x > maxWidth) maxWidth = x;
+    if (cursorX > maxWidth) maxWidth = cursorX;
   }
 
   const ascent = font.ascender * fontScale;
@@ -121,13 +158,16 @@ function computeLayout(font: Font, text: string, mode: DrainMode): LayoutResult 
   const totalHeight = (lines.length - 1) * lineHeight + ascent + descent;
   const yMin = FONT_SIZE - ascent;
   const pad = 10;
-
   const viewBox = `${-pad} ${yMin - pad} ${maxWidth + pad * 2} ${totalHeight + pad * 2}`;
-  return {
-    subpaths,
-    viewBox,
-    strokeWidth: mode === "stroke" ? STROKE_WIDTH : OUTLINE_WIDTH,
-  };
+
+  let referenceDistanceEm = 1;
+  for (const g of glyphs) {
+    if (g.totalDistanceEm > referenceDistanceEm) {
+      referenceDistanceEm = g.totalDistanceEm;
+    }
+  }
+
+  return { glyphs, viewBox, referenceDistanceEm };
 }
 
 function formatTime(seconds: number): string {
@@ -136,43 +176,63 @@ function formatTime(seconds: number): string {
 
 interface DrainTextProps {
   text: string;
+  /** Opentype.js fetches this URL (same-origin `/fonts/...` TTF or WOFF). */
+  fontUrl?: string;
 }
 
-export default function DrainText({ text }: DrainTextProps) {
-  const pathRefs = useRef<(SVGPathElement | null)[]>([]);
+export default function DrainText({
+  text,
+  fontUrl = DEFAULT_DRAIN_FONT_URL,
+}: DrainTextProps) {
+  const maskPathRefs = useRef<(SVGPathElement | null)[][]>([]);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
   const scrubberRef = useRef<HTMLInputElement>(null);
   const timeRef = useRef<HTMLSpanElement>(null);
-  const [font, setFont] = useState<Font | null>(null);
+  const [fontReady, setFontReady] = useState<{
+    url: string;
+    font: Font;
+  } | null>(null);
   const [playing, setPlaying] = useState(true);
-  const [mode, setMode] = useState<DrainMode>("outline");
+  const reactId = useId().replace(/:/g, "");
 
   useEffect(() => {
-    load(FONT_URL, (err, f) => {
+    let cancelled = false;
+    load(fontUrl, (err, f) => {
+      if (cancelled) return;
       if (err || !f) {
         console.error("Font load failed:", err);
+        setFontReady(null);
         return;
       }
-      setFont(f);
+      setFontReady({ url: fontUrl, font: f });
     });
-  }, []);
+    return () => {
+      cancelled = true;
+    };
+  }, [fontUrl]);
+
+  const font = fontReady?.url === fontUrl ? fontReady.font : null;
 
   const layout = useMemo(() => {
     if (!font) return null;
-    return computeLayout(font, text, mode);
-  }, [font, text, mode]);
+    return computeLayout(font, text);
+  }, [font, text]);
 
   useLayoutEffect(() => {
     if (!layout) return;
 
-    const paths = pathRefs.current.filter(Boolean) as SVGPathElement[];
-    if (paths.length === 0) return;
+    const dashEnd = (s: ProjectedStroke) => s.pixelLength + ERASER_WIDTH * 2;
 
-    const sw = layout.strokeWidth;
-    for (const el of paths) {
-      const len = el.getTotalLength();
-      el.style.strokeDasharray = `${len} ${len + sw * 2}`;
-      el.style.strokeDashoffset = `${len + sw}`;
+    for (let gi = 0; gi < layout.glyphs.length; gi++) {
+      const g = layout.glyphs[gi];
+      for (let si = 0; si < g.strokes.length; si++) {
+        const path = maskPathRefs.current[gi]?.[si];
+        if (path)
+          path.setAttribute(
+            "stroke-dashoffset",
+            String(dashEnd(g.strokes[si])),
+          );
+      }
     }
 
     const tl = gsap.timeline({
@@ -189,39 +249,31 @@ export default function DrainText({ text }: DrainTextProps) {
       onComplete: () => setPlaying(false),
     });
 
-    const maxSubpathByGlyph = new Map<number, number>();
-    for (const sp of layout.subpaths) {
-      const prev = maxSubpathByGlyph.get(sp.glyphIdx);
-      if (prev === undefined || sp.subpathIdx > prev) {
-        maxSubpathByGlyph.set(sp.glyphIdx, sp.subpathIdx);
+    let glyphStart = HOLD_BEFORE_DRAIN;
+    for (let gi = 0; gi < layout.glyphs.length; gi++) {
+      const g = layout.glyphs[gi];
+      const subDuration =
+        DRAIN_DURATION * (g.totalDistanceEm / layout.referenceDistanceEm);
+
+      for (let si = 0; si < g.strokes.length; si++) {
+        const path = maskPathRefs.current[gi]?.[si];
+        if (!path) continue;
+        const s = g.strokes[si];
+        const dur = subDuration * (s.tEnd - s.tStart);
+        const fromOff = dashEnd(s);
+        tl.fromTo(
+          path,
+          { attr: { "stroke-dashoffset": fromOff } },
+          {
+            attr: { "stroke-dashoffset": 0 },
+            duration: Math.max(dur, 0.0001),
+            ease: "none",
+          },
+          glyphStart + s.tStart * subDuration,
+        );
       }
-    }
 
-    const letterStart = new Map<number, number>();
-    let cursor = 0;
-    const glyphIndices = [...maxSubpathByGlyph.keys()].sort((a, b) => a - b);
-    for (const idx of glyphIndices) {
-      letterStart.set(idx, cursor);
-      const glyphDuration = DRAW_DURATION + maxSubpathByGlyph.get(idx)! * SUBPATH_STAGGER;
-      cursor += glyphDuration + LETTER_GAP;
-    }
-
-    for (let i = 0; i < layout.subpaths.length; i++) {
-      const el = pathRefs.current[i];
-      if (!el) continue;
-
-      const info = layout.subpaths[i];
-      const offset = letterStart.get(info.glyphIdx)! + info.subpathIdx * SUBPATH_STAGGER;
-
-      tl.to(
-        el,
-        {
-          strokeDashoffset: 0,
-          duration: DRAW_DURATION,
-          ease: "power2.inOut",
-        },
-        offset,
-      );
+      glyphStart += subDuration * (1 - LETTER_OVERLAP);
     }
 
     tlRef.current = tl;
@@ -248,20 +300,23 @@ export default function DrainText({ text }: DrainTextProps) {
     }
   }, []);
 
-  const handleScrub = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const tl = tlRef.current;
-      if (!tl) return;
+  const handleScrub = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const tl = tlRef.current;
+    if (!tl) return;
 
-      const value = parseFloat(e.target.value);
-      tl.pause();
-      tl.progress(value);
-      setPlaying(false);
-    },
-    [],
-  );
+    const value = parseFloat(e.target.value);
+    tl.pause();
+    tl.progress(value);
+    setPlaying(false);
+  }, []);
 
-  if (!layout) return null;
+  if (!layout) {
+    return (
+      <div className="drain-text drain-text--loading" aria-busy="true">
+        <p className="drain-text__loading">Loading font…</p>
+      </div>
+    );
+  }
 
   return (
     <div className="drain-text">
@@ -270,18 +325,47 @@ export default function DrainText({ text }: DrainTextProps) {
         viewBox={layout.viewBox}
         xmlns="http://www.w3.org/2000/svg"
       >
-        {layout.subpaths.map((sp, i) => (
+        <defs>
+          {layout.glyphs.map((g, gi) => (
+            <mask
+              key={`mask-def-${g.glyphIdx}`}
+              id={`${reactId}-mask-${g.glyphIdx}`}
+              maskUnits="userSpaceOnUse"
+              maskContentUnits="userSpaceOnUse"
+            >
+              <path fill="white" fillRule="evenodd" d={g.fillD} />
+              {g.strokes.map((s, si) => (
+                <path
+                  key={`m-${g.glyphIdx}-${si}`}
+                  ref={(el) => {
+                    let row = maskPathRefs.current[gi];
+                    if (!row) {
+                      row = [];
+                      maskPathRefs.current[gi] = row;
+                    }
+                    row[si] = el;
+                  }}
+                  d={s.d}
+                  fill="none"
+                  stroke="black"
+                  strokeWidth={ERASER_WIDTH}
+                  strokeLinecap="butt"
+                  strokeLinejoin="round"
+                  strokeDasharray={`${s.pixelLength} ${s.pixelLength + ERASER_WIDTH * 4}`}
+                  strokeDashoffset={s.pixelLength + ERASER_WIDTH * 2}
+                />
+              ))}
+            </mask>
+          ))}
+        </defs>
+
+        {layout.glyphs.map((g) => (
           <path
-            key={`${mode}-${sp.glyphIdx}-${sp.subpathIdx}`}
-            ref={(el) => {
-              pathRefs.current[i] = el;
-            }}
-            d={sp.d}
-            fill="none"
-            stroke={STROKE_COLOR}
-            strokeWidth={layout.strokeWidth}
-            strokeLinecap="round"
-            strokeLinejoin="round"
+            key={`fill-${g.glyphIdx}`}
+            fill={STROKE_COLOR}
+            fillRule="evenodd"
+            d={g.fillD}
+            mask={`url(#${reactId}-mask-${g.glyphIdx})`}
           />
         ))}
       </svg>
@@ -313,20 +397,6 @@ export default function DrainText({ text }: DrainTextProps) {
           defaultValue={0}
           onChange={handleScrub}
         />
-        <div className="drain-text__mode-toggle">
-          <button
-            className={`drain-text__mode-btn ${mode === "outline" ? "drain-text__mode-btn--active" : ""}`}
-            onClick={() => setMode("outline")}
-          >
-            OUTLINE
-          </button>
-          <button
-            className={`drain-text__mode-btn ${mode === "stroke" ? "drain-text__mode-btn--active" : ""}`}
-            onClick={() => setMode("stroke")}
-          >
-            STROKE
-          </button>
-        </div>
         <span ref={timeRef} className="drain-text__time">
           0.0s / 0.0s
         </span>

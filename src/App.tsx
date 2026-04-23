@@ -1,5 +1,9 @@
-import DrainText from "./components/DrainText";
+import Terminal from "./components/Terminal";
 
 export default function App() {
-  return <DrainText text={"ABCDEFGHIJKLM\nNOPQRSTUVWXYZ"} />;
+  return (
+    <div className="app">
+      <Terminal />
+    </div>
+  );
 }

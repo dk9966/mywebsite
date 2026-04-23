@@ -11,4 +11,19 @@ export default defineConfig({
     },
     dedupe: ['react', 'react-dom', 'three'],
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        terminalText: path.resolve(__dirname, 'terminal-text.html'),
+        backgroundMusic: path.resolve(__dirname, 'background-music.html'),
+        centerlineDebug: path.resolve(__dirname, 'plans/centerline-debug.html'),
+        drainstrokeExample: path.resolve(
+          __dirname,
+          'plans/drainstroke-example.html',
+        ),
+        tronLines: path.resolve(__dirname, 'tron-lines.html'),
+      },
+    },
+  },
 })

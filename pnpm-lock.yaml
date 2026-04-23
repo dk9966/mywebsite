@@ -29,6 +29,9 @@ importers:
       react-dom:
         specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
+      skeleton-tracing-js:
+        specifier: ^1.0.4
+        version: 1.0.4
       three:
         specifier: ^0.183.2
         version: 0.183.2
@@ -1274,6 +1277,9 @@ packages:
   shebang-regex@3.0.0:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
+
+  skeleton-tracing-js@1.0.4:
+    resolution: {integrity: sha512-fn2LYYTCiTW8fIRQx1GBT24cUR1wTyRTx9CmFLVgahZndgILnxCo+15NlSWAZW6mLo3xX9a8xeWbgUaajofbFg==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -2610,6 +2616,8 @@ snapshots:
       shebang-regex: 3.0.0
 
   shebang-regex@3.0.0: {}
+
+  skeleton-tracing-js@1.0.4: {}
 
   source-map-js@1.2.1: {}
 
