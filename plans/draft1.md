@@ -9,3 +9,8 @@
 5. and then lines start to become the meshes in my main room type shit
 6. some things will flicker into existence
 7. maybe the cockpit can stretch from the existing lines when we need to travel to diff style world
+
+8. terminal
+9. daddys home garage
+10. drive up -> star wars hanger
+11. fly spaceship -> lightspeed
