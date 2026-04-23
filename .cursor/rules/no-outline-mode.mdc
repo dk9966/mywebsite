@@ -1,0 +1,31 @@
+---
+description: Forbid outline-tracing animations for the stroke drain effect
+alwaysApply: true
+---
+
+# No outline mode for stroke drain
+
+The stroke drain animation draws each letter down its **centerline** (medial axis / skeleton). Outline tracing — animating the contour of a glyph with `stroke-dashoffset` — is the wrong shape and was deliberately removed.
+
+Do not propose, implement, or reason about outline-tracing approaches for the drain animation. Do not suggest "we could also stroke the outline" as an alternative. The decision is final.
+
+See `plans/stroke-drain-any-font.md` for the centerline approach.
+
+## What "outline mode" means here
+
+Taking the glyph's outline path from `opentype.js`, splitting subpaths, and animating dashoffset around the contour. Example of what NOT to do:
+
+```ts
+// BAD: traces the outside of the letter
+const reindexed = reindexForDirection(path.commands, direction);
+const parts = splitSubpaths(reindexed);
+for (const part of parts) {
+  // ... animate stroke-dashoffset around the outline
+}
+```
+
+## What to do instead
+
+Extract centerline polylines from the glyph and animate dashoffset along each polyline. See `plans/stroke-drain-any-font.md`.
+
+If a true centerline extractor isn't available yet, use the clip-rect wipe currently in `src/components/DrainText.tsx` as the placeholder. Never reintroduce outline tracing.
