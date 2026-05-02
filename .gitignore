@@ -26,6 +26,10 @@ dist-ssr
 # Ephemeral frame dirs from scripts/capture-site-gif.ts (mkdtemp)
 plans/assets/.tmp-site-gif-*/
 
+# Python
+__pycache__/
+*.pyc
+
 # Blender incremental saves
 *.blend1
 
