@@ -23,6 +23,8 @@ export default defineConfig({
           'plans/drainstroke-example.html',
         ),
         tronLines: path.resolve(__dirname, 'tron-lines.html'),
+        tronTable: path.resolve(__dirname, 'tron-table.html'),
+        deskSetup: path.resolve(__dirname, 'desk-setup.html'),
       },
     },
   },

@@ -157,7 +157,6 @@ export default function Controls() {
           <section className="controls__group">
             <h4 className="controls__group-title">Colors</h4>
             <ColorRow label="Line" value={cfg.lineColor} onChange={patch("lineColor")} />
-            <ColorRow label="Glow" value={cfg.glowColor} onChange={patch("glowColor")} />
             <ColorRow label="Tip" value={cfg.tipColor} onChange={patch("tipColor")} />
             <ColorRow label="Grid" value={cfg.gridColor} onChange={patch("gridColor")} />
           </section>
@@ -167,7 +166,6 @@ export default function Controls() {
           <section className="controls__group">
             <h4 className="controls__group-title">Opacity</h4>
             <Slider label="Line" value={cfg.lineOpacity} min={0} max={1} step={0.01} onChange={patch("lineOpacity") as (v: number) => void} />
-            <Slider label="Glow" value={cfg.glowOpacity} min={0} max={1} step={0.01} onChange={patch("glowOpacity") as (v: number) => void} />
             <Slider label="Tip" value={cfg.tipOpacity} min={0} max={1} step={0.01} onChange={patch("tipOpacity") as (v: number) => void} />
             <Slider label="Grid" value={cfg.gridOpacity} min={0} max={0.3} step={0.005} onChange={patch("gridOpacity") as (v: number) => void} />
           </section>

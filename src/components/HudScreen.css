@@ -1,0 +1,173 @@
+.hud-screen {
+  pointer-events: auto;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color: #cfe8ec;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.hud-screen__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, rgba(20, 40, 50, 0.55) 0%, rgba(6, 14, 20, 0.55) 100%);
+  /* No CSS border / inset shadow ring — both rasterize fuzzy under drei's
+     Html transform (CSS3D matrix), and a 1-px SVG stroke aliases on the
+     tilted panel edges. The crisp edge is drawn in the WebGL canvas as a
+     fat Line2 mesh (see BezelLines), which gets MSAA + bloom for free. */
+  border: none;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hud-screen__frame::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(102, 240, 240, 0.04) 0px,
+    rgba(102, 240, 240, 0.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.72;
+}
+
+.hud-screen__handle {
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(102, 240, 240, 0.18) 0%, rgba(102, 240, 240, 0.04) 100%);
+  border-bottom: 1px solid rgba(102, 240, 240, 0.35);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #aeeaee;
+  touch-action: none;
+}
+
+.hud-screen__handle:active {
+  cursor: grabbing;
+}
+
+.hud-screen__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #66f0f0;
+  box-shadow: 0 0 8px rgba(102, 240, 240, 0.9);
+  flex: 0 0 auto;
+}
+
+.hud-screen__title {
+  flex: 1 1 auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.hud-screen__tag {
+  font-size: 10px;
+  color: rgba(174, 234, 238, 0.65);
+  flex: 0 0 auto;
+}
+
+.hud-screen__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 12px 14px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Edge hit-zones live on top of the body so dragging the bottom/left/right
+   border moves the panel, mirroring what the title bar does for the top
+   edge. Corners (below) sit above the edges with z-index 5 so the corner
+   areas always act as resize handles even where they overlap an edge.
+   The 14-px / 22-px sizes give comfortable targets after the CSS3D matrix
+   projects the panel down to a few device pixels per CSS pixel. */
+.hud-screen__edge {
+  position: absolute;
+  /* drei's <Html transform> wraps content in a CSS3D matrix3d; z-index alone
+     doesn't reliably win against descendants inside that 3D space, so we
+     also lift edges and corners off the body plane by a sub-pixel translateZ.
+     Combined, this keeps drag targets clickable above the widget content. */
+  transform: translateZ(0.5px);
+  z-index: 4;
+  cursor: grab;
+  touch-action: none;
+}
+
+.hud-screen__edge:active {
+  cursor: grabbing;
+}
+
+.hud-screen__edge--bottom {
+  left: 22px;
+  right: 22px;
+  bottom: 0;
+  height: 14px;
+}
+
+.hud-screen__edge--left {
+  top: 22px;
+  bottom: 22px;
+  left: 0;
+  width: 14px;
+}
+
+.hud-screen__edge--right {
+  top: 22px;
+  bottom: 22px;
+  right: 0;
+  width: 14px;
+}
+
+.hud-screen__corner {
+  position: absolute;
+  /* See note on .hud-screen__edge — translateZ(1px) keeps corners above
+     edges in 3D space so the overlapping corner area always wins. */
+  transform: translateZ(1px);
+  z-index: 5;
+  width: 22px;
+  height: 22px;
+  touch-action: none;
+}
+
+.hud-screen__corner--tl {
+  top: 0;
+  left: 0;
+  cursor: nwse-resize;
+}
+
+.hud-screen__corner--tr {
+  top: 0;
+  right: 0;
+  cursor: nesw-resize;
+}
+
+.hud-screen__corner--bl {
+  bottom: 0;
+  left: 0;
+  cursor: nesw-resize;
+}
+
+.hud-screen__corner--br {
+  bottom: 0;
+  right: 0;
+  cursor: nwse-resize;
+}
+

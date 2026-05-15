@@ -3,8 +3,6 @@ import { create } from "zustand";
 export interface LineConfig {
   lineColor: string;
   lineOpacity: number;
-  glowColor: string;
-  glowOpacity: number;
   tipColor: string;
   tipPointCount: number;
   tipLength: number;
@@ -19,11 +17,9 @@ export interface LineConfig {
 }
 
 export const DEFAULTS: LineConfig = {
-  lineColor: "#e0ffff",
+  lineColor: "#66f0f0",
   lineOpacity: 1.0,
-  glowColor: "#00d4ff",
-  glowOpacity: 0.5,
-  tipColor: "#ffffff",
+  tipColor: "#66f0f0",
   tipPointCount: 6,
   tipLength: 0.5,
   tipWidth: 0.1,
@@ -45,6 +41,15 @@ interface LineConfigStore {
 export const useLineConfig = create<LineConfigStore>((set) => ({
   config: { ...DEFAULTS },
   set: (patch) =>
-    set((s) => ({ config: { ...s.config, ...patch } })),
+    set((s) => {
+      const next = { ...s.config, ...patch };
+      // Tip color follows line color until the user picks a different tip.
+      const tipWasLinked = s.config.tipColor === s.config.lineColor;
+      const tipUntouched = patch.tipColor === undefined;
+      if (patch.lineColor !== undefined && tipWasLinked && tipUntouched) {
+        next.tipColor = patch.lineColor;
+      }
+      return { config: next };
+    }),
   reset: () => set({ config: { ...DEFAULTS } }),
 }));

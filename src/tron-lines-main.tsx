@@ -23,15 +23,26 @@ function TronPostFX() {
 }
 
 function TronScene() {
-  const hideArcGizmos = useCallback((ctrl: ElementRef<typeof ArcballControls> | null) => {
-    ctrl?.setGizmosVisible(false);
+  const configureArcball = useCallback((ctrl: ElementRef<typeof ArcballControls> | null) => {
+    if (!ctrl) return;
+    ctrl.setGizmosVisible(false);
+    // Without this, Shift+drag falls back to unmodified binding (rotate).
+    (
+      ctrl as unknown as {
+        setMouseAction(
+          operation: string,
+          mouse: number | string,
+          key?: string | null,
+        ): boolean;
+      }
+    ).setMouseAction("PAN", 0, "SHIFT");
   }, []);
 
   return (
     <>
       <color attach="background" args={["#000000"]} />
       <ArcballControls
-        ref={hideArcGizmos}
+        ref={configureArcball}
         makeDefault
         target={[2, 1, 2]}
         cursorZoom
