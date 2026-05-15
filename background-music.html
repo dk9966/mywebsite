@@ -61,12 +61,30 @@
         height: 2px;
         background: var(--fg-faint);
         border-radius: 1px;
-        transition: background 120ms ease, width 120ms ease;
+        transition: background 120ms ease, width 120ms ease, height 120ms ease;
       }
       .scanline__handle:hover::after,
       .scanline__handle--active::after {
         background: var(--fg-dim);
+      }
+      .scanline__handle:not(.scanline__handle--rows):hover::after,
+      .scanline__handle:not(.scanline__handle--rows).scanline__handle--active::after {
         width: 16px;
+      }
+      .scanline__handle--rows {
+        right: auto;
+        left: -8px;
+        width: 14px;
+        height: 16px;
+        cursor: ew-resize;
+      }
+      .scanline__handle--rows::after {
+        width: 2px;
+        height: 12px;
+      }
+      .scanline__handle--rows:hover::after,
+      .scanline__handle--rows.scanline__handle--active::after {
+        height: 16px;
       }
       .viz {
         flex: 1;
@@ -216,6 +234,13 @@
         role="separator"
         aria-orientation="horizontal"
         aria-label="Low frequency trace height"
+      ></div>
+      <div
+        class="scanline__handle scanline__handle--rows"
+        id="scanline-handle-rows"
+        role="separator"
+        aria-orientation="vertical"
+        aria-label="Trace bar row height"
       ></div>
     </div>
     <div class="bands" id="bands" aria-hidden="true"></div>

@@ -108,6 +108,7 @@ const vizHandleEl = document.getElementById('viz-handle') as HTMLDivElement
 const bandsEl = document.getElementById('bands') as HTMLDivElement
 const scanHiHandleEl = document.getElementById('scanline-handle-hi') as HTMLDivElement
 const scanLoHandleEl = document.getElementById('scanline-handle-lo') as HTMLDivElement
+const scanRowsHandleEl = document.getElementById('scanline-handle-rows') as HTMLDivElement
 const statusLine1El = document.getElementById('status-line1')!
 const statusProgressEl = document.getElementById('status-progress') as HTMLSpanElement
 const statusProgressTextEl = document.getElementById('status-progress-text')!
@@ -171,6 +172,7 @@ function resetVizState() {
   waveHead = 0
   waveBuffer.fill(0)
   scanX = 0
+  scanFrameCounter = 0
   scanHiAmps.length = 0
   scanLoAmps.length = 0
 }
@@ -357,17 +359,19 @@ function renderBars() {
   return rows
 }
 
-// Average of the lower half of bars (≈ 40 Hz – 800 Hz) and the upper half
-// (≈ 800 Hz – 16 kHz). The split is logarithmic because BIN_MAP is. Used by
-// both the LO/HI bands meter and the scanline traces so they stay in sync.
+// Fraction of bars (from the bottom) counted as the LO band; the rest is HI.
+// 0.75 → LO covers ~40 Hz – 3.5 kHz, HI covers ~3.5 kHz – 16 kHz (the split
+// is logarithmic because BIN_MAP is). Used by both the LO/HI bands meter
+// and the scanline traces so they stay in sync.
+const LO_BAND_FRACTION = 0.75
+
 function getBandAverages(): { lo: number; hi: number } {
-  const half = Math.floor(BARS / 2)
-  if (half < 1 || BARS - half < 1) return { lo: 0, hi: 0 }
+  const split = Math.max(1, Math.min(BARS - 1, Math.round(BARS * LO_BAND_FRACTION)))
   let loSum = 0
   let hiSum = 0
-  for (let i = 0; i < half; i++) loSum += smoothed[i]!
-  for (let i = half; i < BARS; i++) hiSum += smoothed[i]!
-  return { lo: loSum / half, hi: hiSum / (BARS - half) }
+  for (let i = 0; i < split; i++) loSum += smoothed[i]!
+  for (let i = split; i < BARS; i++) hiSum += smoothed[i]!
+  return { lo: loSum / split, hi: hiSum / (BARS - split) }
 }
 
 const BAND_LABEL_W = 3   // visual width of "LO " / "HI "
@@ -475,8 +479,26 @@ function updateStatus() {
 // --- scanning line ---
 // Two stacked traces sharing a horizontal midline: HI band deflects upward,
 // LO band deflects downward. Each trace's max deflection (in pixels) is set
-// by a draggable handle on the right edge of the canvas.
-const SCAN_SPEED = 2
+// by a draggable handle on the right edge of the canvas. Bars are stepped
+// into discrete row segments to match the blocky look of the spectrum viz,
+// and each bar is exactly one viz column (charWidth) wide so they align.
+const SCAN_BAR_COLOR = '#78dce8'  // matches --cyan
+// One new bar every N animation frames. With charWidth ≈ 8 px and 60 fps,
+// N = 4 gives ~2 px / frame perceived scroll speed (same feel as before
+// the bar width was matched to the viz columns).
+const SCAN_FRAMES_PER_SAMPLE = 4
+// Visual gaps. The column footprint (colW) still matches one viz character so
+// scanline bars line up with the spectrum bars below.
+const SCAN_BAR_GAP_RATIO = 0.25         // 25% of colW becomes empty space
+const SCAN_MIDLINE_GAP_PX = 4           // total gutter between HI (above) and LO (below)
+const scanColW = () => Math.max(1, Math.round(charWidth))
+const scanBarW = () => Math.max(1, Math.round(scanColW() * (1 - SCAN_BAR_GAP_RATIO)))
+let scanFrameCounter = 0
+const SCAN_ROW_GAP = 1            // px gap between row segments
+const SCAN_ROW_HEIGHT_DEFAULT = 6
+const SCAN_ROW_HEIGHT_MIN = 2
+const SCAN_ROW_HEIGHT_MAX = 14
+let scanRowHeightPx = SCAN_ROW_HEIGHT_DEFAULT
 let scanX = 0
 const scanHiAmps: number[] = []
 const scanLoAmps: number[] = []
@@ -485,14 +507,19 @@ let scanLoHeightPx = SCAN_DEFAULT_HEIGHT_PX
 
 function scanMaxHeight(): number {
   const h = scanCanvas.parentElement!.getBoundingClientRect().height
-  return Math.max(SCAN_MIN_HEIGHT_PX, h / 2 - SCAN_EDGE_MARGIN_PX)
+  return Math.max(
+    SCAN_MIN_HEIGHT_PX,
+    h / 2 - SCAN_EDGE_MARGIN_PX - SCAN_MIDLINE_GAP_PX / 2,
+  )
 }
 
 function positionScanHandles() {
   const h = scanCanvas.parentElement!.getBoundingClientRect().height
   const midY = h / 2
-  scanHiHandleEl.style.top = `${midY - scanHiHeightPx}px`
-  scanLoHandleEl.style.top = `${midY + scanLoHeightPx}px`
+  const halfGap = SCAN_MIDLINE_GAP_PX / 2
+  scanHiHandleEl.style.top = `${midY - halfGap - scanHiHeightPx}px`
+  scanLoHandleEl.style.top = `${midY + halfGap + scanLoHeightPx}px`
+  scanRowsHandleEl.style.top = `${midY}px`
 }
 
 function setScanHi(px: number) {
@@ -505,13 +532,21 @@ function setScanLo(px: number) {
   positionScanHandles()
 }
 
+function setScanRowHeight(px: number) {
+  scanRowHeightPx = Math.max(
+    SCAN_ROW_HEIGHT_MIN,
+    Math.min(SCAN_ROW_HEIGHT_MAX, Math.round(px)),
+  )
+}
+
 function loadScanHeights() {
   try {
     const raw = localStorage.getItem(SCAN_HEIGHTS_STORAGE_KEY)
     if (!raw) return
-    const obj = JSON.parse(raw) as { hi?: number; lo?: number }
+    const obj = JSON.parse(raw) as { hi?: number; lo?: number; rows?: number }
     if (typeof obj.hi === 'number') scanHiHeightPx = obj.hi
     if (typeof obj.lo === 'number') scanLoHeightPx = obj.lo
+    if (typeof obj.rows === 'number') scanRowHeightPx = obj.rows
   } catch {
     // ignore (private mode / quota / corrupt value)
   }
@@ -521,7 +556,11 @@ function persistScanHeights() {
   try {
     localStorage.setItem(
       SCAN_HEIGHTS_STORAGE_KEY,
-      JSON.stringify({ hi: scanHiHeightPx, lo: scanLoHeightPx }),
+      JSON.stringify({
+        hi: scanHiHeightPx,
+        lo: scanLoHeightPx,
+        rows: scanRowHeightPx,
+      }),
     )
   } catch {
     // ignore
@@ -548,16 +587,25 @@ function drawScanline() {
   const w = scanCanvas.width / devicePixelRatio
   const h = scanCanvas.height / devicePixelRatio
   const midY = h / 2
+  const colW = scanColW()
+  const barW = scanBarW()
+  const halfGap = SCAN_MIDLINE_GAP_PX / 2
+  const hiBaseY = midY - halfGap   // bottom edge of HI bars
+  const loBaseY = midY + halfGap   // top edge of LO bars
 
-  const { lo, hi } = getBandAverages()
-  scanHiAmps.push(hi)
-  scanLoAmps.push(lo)
-  scanX += SCAN_SPEED
+  scanFrameCounter++
+  if (scanFrameCounter >= SCAN_FRAMES_PER_SAMPLE) {
+    scanFrameCounter = 0
+    const { lo, hi } = getBandAverages()
+    scanHiAmps.push(hi)
+    scanLoAmps.push(lo)
+    scanX += colW
 
-  if (scanX >= w) {
-    scanX = 0
-    scanHiAmps.length = 0
-    scanLoAmps.length = 0
+    if (scanX >= w) {
+      scanX = 0
+      scanHiAmps.length = 0
+      scanLoAmps.length = 0
+    }
   }
 
   scanCtx.clearRect(0, 0, w, h)
@@ -569,42 +617,60 @@ function drawScanline() {
   scanCtx.lineTo(w, midY)
   scanCtx.stroke()
 
-  if (scanHiAmps.length < 2) return
+  if (scanHiAmps.length < 1) return
 
-  scanCtx.strokeStyle = '#fff'
-  scanCtx.lineWidth = 1.5
-  scanCtx.lineJoin = 'round'
+  // Bars made of discrete row segments to match the spectrum viz look. Each
+  // column is colW (one viz character) wide; height is quantized into row
+  // segments of scanRowHeightPx separated by SCAN_ROW_GAP. HI grows up from
+  // the midline, LO grows down. The rightmost segment stack is the current
+  // value (the "tip" of the trace).
+  const rowH = scanRowHeightPx
+  const STEP = rowH + SCAN_ROW_GAP
 
-  scanCtx.beginPath()
+  scanCtx.fillStyle = SCAN_BAR_COLOR
   for (let i = 0; i < scanHiAmps.length; i++) {
-    const x = i * SCAN_SPEED
-    const y = midY - Math.min(1, scanHiAmps[i]!) * scanHiHeightPx
-    if (i === 0) scanCtx.moveTo(x, y)
-    else scanCtx.lineTo(x, y)
+    const x = i * colW
+    const target = Math.min(1, scanHiAmps[i]!) * scanHiHeightPx
+    const rows = Math.floor(target / STEP)
+    for (let r = 0; r < rows; r++) {
+      scanCtx.fillRect(x, hiBaseY - (r + 1) * STEP + SCAN_ROW_GAP, barW, rowH)
+    }
+    const rem = target - rows * STEP
+    if (rem > SCAN_ROW_GAP) {
+      const partial = rem - SCAN_ROW_GAP
+      scanCtx.fillRect(x, hiBaseY - rows * STEP - partial, barW, partial)
+    }
   }
-  scanCtx.stroke()
-
-  scanCtx.beginPath()
   for (let i = 0; i < scanLoAmps.length; i++) {
-    const x = i * SCAN_SPEED
-    const y = midY + Math.min(1, scanLoAmps[i]!) * scanLoHeightPx
-    if (i === 0) scanCtx.moveTo(x, y)
-    else scanCtx.lineTo(x, y)
+    const x = i * colW
+    const target = Math.min(1, scanLoAmps[i]!) * scanLoHeightPx
+    const rows = Math.floor(target / STEP)
+    for (let r = 0; r < rows; r++) {
+      scanCtx.fillRect(x, loBaseY + r * STEP, barW, rowH)
+    }
+    const rem = target - rows * STEP
+    if (rem > SCAN_ROW_GAP) {
+      const partial = rem - SCAN_ROW_GAP
+      scanCtx.fillRect(x, loBaseY + rows * STEP, barW, partial)
+    }
   }
-  scanCtx.stroke()
 }
+
+type ScanHandleAxis = 'y-up' | 'y-down' | 'x-right'
 
 function attachScanHandle(
   el: HTMLElement,
   read: () => number,
   write: (px: number) => void,
-  upIncreases: boolean,
+  axis: ScanHandleAxis,
 ) {
   let dragId: number | null = null
+  let startX = 0
   let startY = 0
   let startVal = 0
   el.addEventListener('pointerdown', (e) => {
     dragId = e.pointerId
+    startX = e.clientX
     startY = e.clientY
     startVal = read()
     el.setPointerCapture(e.pointerId)
@@ -613,8 +679,13 @@ function attachScanHandle(
   })
   el.addEventListener('pointermove', (e) => {
     if (dragId !== e.pointerId) return
-    const dy = startY - e.clientY  // positive when pointer moves up
-    write(startVal + (upIncreases ? dy : -dy))
+    let delta: number
+    switch (axis) {
+      case 'y-up':    delta = startY - e.clientY; break
+      case 'y-down':  delta = e.clientY - startY; break
+      case 'x-right': delta = e.clientX - startX; break
+    }
+    write(startVal + delta)
   })
   const end = (e: PointerEvent) => {
     if (dragId !== e.pointerId) return
@@ -631,8 +702,9 @@ function attachScanHandle(
   el.addEventListener('pointercancel', end)
 }
 
-attachScanHandle(scanHiHandleEl, () => scanHiHeightPx, setScanHi, true)
-attachScanHandle(scanLoHandleEl, () => scanLoHeightPx, setScanLo, false)
+attachScanHandle(scanHiHandleEl, () => scanHiHeightPx, setScanHi, 'y-up')
+attachScanHandle(scanLoHandleEl, () => scanLoHeightPx, setScanLo, 'y-down')
+attachScanHandle(scanRowsHandleEl, () => scanRowHeightPx, setScanRowHeight, 'x-right')
 
 function tick() {
   if (!started) return
