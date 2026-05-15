@@ -1,0 +1,22 @@
+---
+description: Defines scene "front" and viewer-relative directions for the curved office table built by blender/table/build_table.py
+globs: blender/**/*
+alwaysApply: false
+---
+
+# Blender table: what “front” means
+
+This project’s semicircular desk mesh (`build_table.py`) uses **angles 0 … π** on the XY plane: the **curved outer edge bulges toward +Y** (apex near `(0, OUTER_R, z)`). The straight chord lies along **Y = 0** between the two tip angles.
+
+- **Front (outward / user-facing arc):** **+Y** — the rounded side of the desk faces global **+Y**. That is the side you treat as “in front of the table” when blocking vehicles, clearings, or runway geometry **past the desk**, toward the open side of the arc.
+- **Inside / concave side (toward a typical default camera):** **−Y** — the hollow of the semicircle and the chord region generally face **−Y**, which matches a camera placed on **−Y** looking toward **+Y** at the desk.
+
+Other axes (Blender default): **+X** right, **+Z** up.
+
+When instructions say “left column” / “right column” while facing **into the clearing from +Y** (standing on the arc side looking back toward the desk), **left = −X** and **right = +X**. Vehicles or props “facing the middle clearing” should rotate so their primary forward axis points toward **global −X** from the right column and **+X** from the left column (i.e. toward the strip centered on **X = 0**).
+
+See `blender/table/vehicle_bays.py` for the concrete plaza offsets used with `OUTER_R` from `build_table.py`.
+
+## Scene vs viewport (`main.blend`)
+
+This file has multiple scenes. The desk and vehicle props from `vehicle_bays.py` live in **Main Scene**. **circuit-elements** is a separate scene (PCB layout); its viewport will **not** show the desk or vehicles. Use Blender’s **scene** dropdown (top bar) to switch to **Main Scene** before concluding assets are missing.

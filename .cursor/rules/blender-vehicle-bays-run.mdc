@@ -1,0 +1,33 @@
+---
+description: Run vehicle_bays.py headless with SAVE_BLEND_AFTER so blends on disk match the scene; never stop at console-only OK lines.
+globs: blender/table/vehicle_bays.py
+alwaysApply: false
+---
+
+# Vehicle bays: always run and save
+
+After changing `blender/table/vehicle_bays.py`, adding vehicle assets under `models/`, or when the user expects props to appear in a `.blend`, **do not** claim the scene is updated until Blender has been run **and** the file has been written back.
+
+## Required command pattern
+
+Use **`SAVE_BLEND_AFTER=1`** so `vehicle_bays.py` calls `bpy.ops.wm.save_mainfile` at the end (see script `if __name__` block). Without it, headless runs leave **no change on disk** when the user opens the file later.
+
+From the repo root (adjust Blender binary if needed):
+
+```bash
+SAVE_BLEND_AFTER=1 /Applications/Blender.app/Contents/MacOS/Blender \
+  --background blender/main.blend \
+  --python blender/table/vehicle_bays.py
+```
+
+Repeat for any other working blend that contains the desk (e.g. `blender/test.blend`) so parallel workflows stay in sync.
+
+`vehicle_bays.py` uses simple fixed layout constants at the top of the file (not `build_table.py`).
+
+## Verification
+
+Console must include **`Info: Saved "<name>.blend"`** (or equivalent save confirmation). Optionally grep `[vehicle_bays]` lines for OK / scene summary.
+
+## Viewport reminder
+
+Vehicles exist only in **Main Scene** (see `.cursor/rules/blender-table-front.mdc`). **circuit-elements** will still look empty.

@@ -1,0 +1,22 @@
+---
+description: Follow explicit user instructions; after Blender changes always verify in Blender and fix issues before stopping.
+alwaysApply: true
+---
+
+# Instructions and Blender verification
+
+## Do what the user asked
+
+- Treat the user’s request as the source of truth: implement **what they said**, including scope and constraints.
+- Avoid substituting a different approach, “helpful” extras, or scope creep unless they ask for options.
+- If something is ambiguous, prefer the smallest interpretation that matches their words; ask only when truly blocked.
+
+## After changing Blender scripts or scene logic
+
+Do **not** stop at “the script ran without errors.” Before finishing:
+
+1. **Inspect the result in Blender** using means available in the environment: headless `bpy` (object transforms, bbox, collections), project MCP Blender tools if connected, or the documented `SAVE_BLEND_AFTER=1` workflow plus a short diagnostic script.
+2. **Confirm** the intended objects exist in the correct scene/collection, transforms look sane, and scale/facing match the goal.
+3. **Fix** problems you find (wrong scale, wrong rotation, missing links), then re-verify.
+
+Skipping verification for Blender work is treated as incomplete.
