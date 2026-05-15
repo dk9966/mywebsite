@@ -9,6 +9,7 @@ https://threejs-journey.com/selection/the-anomaly
 - i love how it has a galaxy background behind the low poly base
   https://threejs-journey.com/selection/bluebox-design-intro
 - i like the ocean split into grid style
+
   https://threejs-journey.com/selection/merouane-bali-portfolio
 
 - i love the initializezation animation and also the zooming in nd out of certain sections, as well as the black and white

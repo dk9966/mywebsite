@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PCB parts — Z height roster</title>
+    <style>
+      :root {
+        --pcb-roster-bg: #0d0d0f;
+        --pcb-roster-surface: #16161a;
+        --pcb-roster-border: #2a2a30;
+        --pcb-roster-text: #e8e8ec;
+        --pcb-roster-muted: #9a9aa8;
+        --pcb-roster-accent: #3df0ff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+          sans-serif;
+        font-size: 15px;
+        line-height: 1.55;
+        color: var(--pcb-roster-text);
+        background: var(--pcb-roster-bg);
+      }
+
+      .pcb-roster {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.25rem 3rem;
+      }
+
+      .pcb-roster__title {
+        margin: 0 0 0.75rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .pcb-roster__intro {
+        margin: 0 0 1rem;
+        color: var(--pcb-roster-muted);
+        max-width: 72ch;
+      }
+
+      .pcb-roster__intro strong {
+        color: var(--pcb-roster-text);
+      }
+
+      .pcb-roster__hint {
+        margin: 0 0 1.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--pcb-roster-border);
+        background: var(--pcb-roster-surface);
+        color: var(--pcb-roster-muted);
+        font-size: 0.9rem;
+      }
+
+      .pcb-roster__hint code {
+        color: var(--pcb-roster-accent);
+        font-size: 0.85em;
+      }
+
+      .pcb-roster__section-title {
+        margin: 2rem 0 0.75rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .pcb-roster__table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--pcb-roster-border);
+        border-radius: 10px;
+        background: var(--pcb-roster-surface);
+      }
+
+      .pcb-roster__table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 920px;
+      }
+
+      .pcb-roster__table th,
+      .pcb-roster__table td {
+        padding: 0.65rem 0.75rem;
+        vertical-align: top;
+        border-bottom: 1px solid var(--pcb-roster-border);
+        text-align: left;
+      }
+
+      .pcb-roster__table thead th {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--pcb-roster-muted);
+        background: rgba(0, 0, 0, 0.35);
+      }
+
+      .pcb-roster__table tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      .pcb-roster__z {
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+        color: var(--pcb-roster-accent);
+      }
+
+      .pcb-roster__part {
+        font-weight: 600;
+      }
+
+      .pcb-roster__scream {
+        font-variant-numeric: tabular-nums;
+        text-align: center;
+      }
+
+      .pcb-roster__notes {
+        color: var(--pcb-roster-muted);
+        max-width: 34ch;
+      }
+
+      .pcb-roster__cell-img {
+        width: 220px;
+      }
+
+      .pcb-roster__thumb {
+        display: block;
+        width: 100%;
+        max-height: 140px;
+        object-fit: contain;
+        background: #000;
+        border-radius: 6px;
+        border: 1px solid var(--pcb-roster-border);
+      }
+
+      .pcb-roster__list {
+        margin: 0;
+        padding-left: 1.25rem;
+        color: var(--pcb-roster-muted);
+        max-width: 72ch;
+      }
+
+      .pcb-roster__list li {
+        margin: 0.35rem 0;
+      }
+
+      .pcb-roster__footer {
+        margin-top: 2rem;
+        font-size: 0.88rem;
+        color: var(--pcb-roster-muted);
+        max-width: 72ch;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="pcb-roster">
+      <h1 class="pcb-roster__title">PCB parts with Z height — roster</h1>
+
+      <p class="pcb-roster__intro">
+        Plain English: anything soldered or mounted on a board has <em>some</em> thickness. This list
+        orders typical <strong>maximum height above the PCB plane</strong> (package body + standing pins +
+        tallest variants people actually use). Real boards vary by vendor; treat ranges as layout guides,
+        not CAD tolerances.
+      </p>
+
+      <p class="pcb-roster__intro">
+        <strong>Circuit scream</strong> is subjective: <strong>10</strong> = instant “that’s a board /
+        computer,” <strong>1</strong> = could be almost anything.
+      </p>
+
+      <p class="pcb-roster__hint">
+        If images stay blank: your Markdown viewer may block remote URLs — this HTML uses normal
+        <code>&lt;img&gt;</code> tags. Open this file in Chrome/Safari/Firefox with network access. From
+        repo root you can run <code>pnpm exec vite preview</code> after copying under
+        <code>public/</code>, or run <code>python3 -m http.server</code> inside <code>plans/</code> and open
+        <code>/pcb-z-roster.html</code>.
+      </p>
+
+      <div class="pcb-roster__table-wrap">
+        <table class="pcb-roster__table">
+          <thead>
+            <tr>
+              <th scope="col">Typical max Z (mm)</th>
+              <th scope="col">Part / feature</th>
+              <th scope="col">Scream (1–10)</th>
+              <th scope="col">Notes</th>
+              <th scope="col">Reference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="pcb-roster__z">0.2–0.6</td>
+              <td class="pcb-roster__part">0201 / 0402 / 0603 passives (R, C, L)</td>
+              <td class="pcb-roster__scream">7</td>
+              <td class="pcb-roster__notes">
+                Density read — “rice grain city.” Almost no silhouette alone; power is massed repetition.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Smt_closeup.jpg"
+                  alt="Close-up of surface-mount passives on a PCB"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">0.6–1.2</td>
+              <td class="pcb-roster__part">SMD diodes / small SOT packages</td>
+              <td class="pcb-roster__scream">5</td>
+              <td class="pcb-roster__notes">
+                Low slabs; silhouette needs clusters or polarity silk to read beside denser passives.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/5e/M7_1A_DO-214_general_purpose_rectifier_diode.jpg"
+                  alt="DO-214 SMD rectifier diode (M7)"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">0.9–1.4</td>
+              <td class="pcb-roster__part">QFN / MLF (pads under body; optional exposed pad)</td>
+              <td class="pcb-roster__scream">10</td>
+              <td class="pcb-roster__notes">
+                Square “dark tile” from above; edge pads sometimes visible as a halo.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/23/28_pin_MLP_integrated_circuit.jpg"
+                  alt="QFN-style IC on PCB"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">1.0–1.4</td>
+              <td class="pcb-roster__part">TSSOP / SSOP (two fine-pitch rows)</td>
+              <td class="pcb-roster__scream">9</td>
+              <td class="pcb-roster__notes">
+                Strong train-track IC read from an angle; great paired rails for line tracing.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/TSOP_32_%28T1%29_BW.svg/960px-TSOP_32_%28T1%29_BW.svg.png"
+                  alt="TSOP package diagram"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">1.5–1.9</td>
+              <td class="pcb-roster__part">SOIC (wider two-row SO packages)</td>
+              <td class="pcb-roster__scream">10</td>
+              <td class="pcb-roster__notes">The everyday logic IC silhouette — readable without microscope.</td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/9/98/Laptop_Acrobat_Model_NBD_486C%2C_Type_DXh2_-_California_Micro_Devices_CMD_9324_on_motherboard-9749.jpg"
+                  alt="SOIC chip on motherboard"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">1.8–2.6</td>
+              <td class="pcb-roster__part">QFP / LQFP / TQFP (gull leads on four sides)</td>
+              <td class="pcb-roster__scream">11</td>
+              <td class="pcb-roster__notes">
+                The chip-city poster child — perimeter legs read instantly.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/4/40/Z84C0010FEC_LQFP.png"
+                  alt="LQFP integrated circuit"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">2–4</td>
+              <td class="pcb-roster__part">SMD tantalum (molded chip tantalum)</td>
+              <td class="pcb-roster__scream">7</td>
+              <td class="pcb-roster__notes">
+                Directionality marked; reads as serious decoupling next to big ICs.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/3/34/Tantal-P1100196c.jpg"
+                  alt="Tantalum capacitors"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">2–8</td>
+              <td class="pcb-roster__part">Stamped EMI shield / RF can</td>
+              <td class="pcb-roster__scream">9</td>
+              <td class="pcb-roster__notes">
+                Boxy volumes with seams — great Z jumps at corners without fragile pins.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/55/Electromagnetic_shielding_inside_mobile_phone.jpg"
+                  alt="RF shield cans inside a phone"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">~2.4–4.5</td>
+              <td class="pcb-roster__part">M.2 2280 module</td>
+              <td class="pcb-roster__scream">9</td>
+              <td class="pcb-roster__notes">
+                Low long slab — storage highway silhouette; pairs with PCIe lanes by association.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Intel_512G_M2_Solid_State_Drive.jpg/960px-Intel_512G_M2_Solid_State_Drive.jpg"
+                  alt="M.2 SSD module"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">3.5–5</td>
+              <td class="pcb-roster__part">DIP IC (through-hole dual-inline)</td>
+              <td class="pcb-roster__scream">10</td>
+              <td class="pcb-roster__notes">Retro breadboard soul — parallel pin forest on two sides.</td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/8/80/Three_IC_circuit_chips.JPG"
+                  alt="DIP integrated circuits"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">4–20</td>
+              <td class="pcb-roster__part">TO-220 / TO-247 (vertical regulator / FET + tab)</td>
+              <td class="pcb-roster__scream">8</td>
+              <td class="pcb-roster__notes">
+                Tab as vertical plane — power-device silhouette everyone recognizes.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/TO-220_Front_Coloured.svg/960px-TO-220_Front_Coloured.svg.png"
+                  alt="TO-220 package diagram"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">8–17</td>
+              <td class="pcb-roster__part">1.27 mm / 2.54 mm pin headers (vertical stacks)</td>
+              <td class="pcb-roster__scream">8</td>
+              <td class="pcb-roster__notes">
+                Prototype DNA — rows of square pins; tallest when stacked or long tails.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/bf/6_Pin_Header.jpg"
+                  alt="Pin header"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">8–15</td>
+              <td class="pcb-roster__part">CPU socket + retention frame / ILM</td>
+              <td class="pcb-roster__scream">11</td>
+              <td class="pcb-roster__notes">
+                Mechanical ring around the die land — central plaza before cooler mounts.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/0/0c/AM5_Socket_Open.jpg"
+                  alt="CPU socket open"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">11–14</td>
+              <td class="pcb-roster__part">RJ45 jack + magnetics block</td>
+              <td class="pcb-roster__scream">10</td>
+              <td class="pcb-roster__notes">Chunky cubic connector — network hardware identity.</td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Rjxx.jpg"
+                  alt="RJ45 connectors"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">~11 (+card)</td>
+              <td class="pcb-roster__part">PCIe / PCI / edge connectors (slot + retention)</td>
+              <td class="pcb-roster__scream">10</td>
+              <td class="pcb-roster__notes">
+                Gold fingers + slot mouth — interface machinery (photo: add-in card context).
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/ee/LSI_9207-4i4e_PCI-E_SAS_HBA.jpg"
+                  alt="PCIe expansion card"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">13–17</td>
+              <td class="pcb-roster__part">Through-hole USB-A socket (stacked USB common)</td>
+              <td class="pcb-roster__scream">9</td>
+              <td class="pcb-roster__notes">
+                Tall cage — swap in your own PCB-mount macro for a less catalog look.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/24/PCB_mounting_female_USB_A_and_B_connectors.jpg"
+                  alt="USB A and B PCB-mount connectors"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">20–55</td>
+              <td class="pcb-roster__part">Chipset / VRM / northbridge style heatsinks</td>
+              <td class="pcb-roster__scream">11</td>
+              <td class="pcb-roster__notes">
+                Stepped extrusions — hero mesas without inventing fantasy buildings.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Abit-kt7-large.jpg"
+                  alt="Motherboard with chipset heatsink"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">~30</td>
+              <td class="pcb-roster__part">DDR DIMM module (vertical UDIMM in socket)</td>
+              <td class="pcb-roster__scream">10</td>
+              <td class="pcb-roster__notes">
+                Paired RAM slabs — tall-flank skyscraper language maps here.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/168_pin_and_184_pin_DIMM.jpg/960px-168_pin_and_184_pin_DIMM.jpg"
+                  alt="DDR DIMM modules"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="pcb-roster__z">40–165</td>
+              <td class="pcb-roster__part">CPU cooler (tower / downdraft / AIO block on bracket)</td>
+              <td class="pcb-roster__scream">10</td>
+              <td class="pcb-roster__notes">
+                Usually wins tallest object on the board; dominates silhouette shots.
+              </td>
+              <td class="pcb-roster__cell-img">
+                <img
+                  class="pcb-roster__thumb"
+                  src="https://upload.wikimedia.org/wikipedia/commons/2/25/AMD_heatsink_and_fan.jpg"
+                  alt="AMD heatsink and fan"
+                  loading="lazy"
+                  decoding="async"
+                  referrerpolicy="no-referrer-when-downgrade"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="pcb-roster__section-title">How to use this for your Tron mesh</h2>
+      <ul class="pcb-roster__list">
+        <li>
+          Pick one spine (PCIe trace corridor or long DIMM channel) and hang four height tiers off it:
+          passives + low packages → QFP/DIMM slabs → socket/heatsink mesas → cooler peak.
+        </li>
+        <li>Repeat dimensions within a tier — that is how real boards stay legible.</li>
+        <li>
+          If Z feels flat, add one EMI can, a dense passive or QFP cluster, and one vertical connector
+          wall (RJ45/USB stack) before touching fantasy geometry.
+        </li>
+      </ul>
+
+      <p class="pcb-roster__footer">
+        Images are from Wikimedia Commons / Wikipedia (various licenses). Attribute if you ship these
+        photos in production; for internal reference you are fine.
+      </p>
+    </article>
+  </body>
+</html>
