@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Tooling / CI artifacts
+coverage/
+*.tsbuildinfo
+.eslintcache
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -32,6 +37,19 @@ __pycache__/
 
 # Blender incremental saves
 *.blend1
+
+# Large local working scenes (keep on disk; regenerate via scripts / SAVE_BLEND_AFTER)
+/blender/main.blend
+/blender/test.blend
+
+# Blender offline / WIP render previews
+/blender/**/tron_preview*.png
+/blender/**/tron_final.png
+/blender/**/_preview_*.png
+/blender/**/_test.png
+
+# Captured browser profiles (optional; may appear when profiling)
+.cursor/browser-logs/
 
 # Local 3D kitbash (large binaries; wire into app before tracking)
 /models/
