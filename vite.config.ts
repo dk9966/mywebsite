@@ -15,6 +15,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
+        terminalView: path.resolve(__dirname, 'terminal-view.html'),
         terminalText: path.resolve(__dirname, 'terminal-text.html'),
         backgroundMusic: path.resolve(__dirname, 'background-music.html'),
         centerlineDebug: path.resolve(__dirname, 'plans/centerline-debug.html'),
