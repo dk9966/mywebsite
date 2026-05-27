@@ -1,0 +1,769 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1672 941" width="1672" height="941" shape-rendering="geometricPrecision">
+  <defs><style><![CDATA[
+    .board { fill: #04101a; }
+    .component { fill: #020a10; stroke: #3fb6da; stroke-width: 0.7; }
+    .die { fill: none; stroke: #2a8aaa; stroke-width: 0.5; }
+    .trace { fill: none; stroke: #5cd9ff; stroke-linecap: square; stroke-linejoin: miter; }
+    .trace--backbone { stroke-width: 1.4; }
+    .trace--signal   { stroke-width: 0.7; }
+  ]]></style></defs>
+  <rect class="board" width="1672" height="941"/>
+  <g id="traces-backbone">
+    <path class="trace trace--backbone" d="M903 752 L903 789 L909 795 L957 795 L963 789 L963 735 L951 723 L939 723 L927 735 L927 750"/>
+    <path class="trace trace--backbone" d="M1323 740 L1323 729 L1353 729 L1359 735 L1359 753 L1353 759 L1305 759 L1287 741 L1287 717 L1293 711 L1305 711"/>
+    <path class="trace trace--backbone" d="M421 363 L435 363 L447 351 L489 351 L495 357 L495 387 L483 399 L434 399"/>
+    <path class="trace trace--backbone" d="M1082 837 L1095 837 L1107 849 L1233 849 L1245 837 L1245 813 L1263 795 L1323 795 L1365 753 L1365 687 L1353 675 L1257 675 L1149 783 L1095 783 L1089 777 L1071 795 L1071 807"/>
+    <path class="trace trace--backbone" d="M989 873 L933 873 L915 855 L915 825 L921 819 L975 819 L975 828"/>
+    <path class="trace trace--backbone" d="M525 587 L525 597 L537 609 L543 609 L549 603 L567 603 L573 597 L591 615 L591 669 L579 681 L561 663 L561 639 L574 639"/>
+    <path class="trace trace--backbone" d="M887 261 L897 261 L897 267 L867 297 L759 297 L705 243 L705 123 L747 81 L891 81 L909 99 L909 207 L895 207"/>
+    <path class="trace trace--backbone" d="M1563 619 L1563 693 L1551 693"/>
+    <path class="trace trace--backbone" d="M1057 519 L1047 519 L1029 501 L1059 471 L1089 471"/>
+    <path class="trace trace--backbone" d="M205 333 L231 333 L237 327 L237 279 L223 279"/>
+    <path class="trace trace--backbone" d="M843 752 L843 765 L849 771 L849 825 L863 825"/>
+    <path class="trace trace--backbone" d="M447 857 L447 843 L459 831 L501 831 L507 837 L507 848"/>
+    <path class="trace trace--backbone" d="M1415 435 L1425 435 L1431 429 L1431 423 L1413 405 L1407 411 L1401 405 L1395 411 L1383 399 L1383 393 L1377 387 L1377 381 L1389 369 L1413 369 L1419 375 L1419 385"/>
+    <path class="trace trace--backbone" d="M421 303 L435 303 L459 327 L489 327 L495 321 L495 285 L489 279 L477 279"/>
+    <path class="trace trace--backbone" d="M801 237 L801 225 L789 213 L759 213 L741 231 L741 243 L747 249 L758 249"/>
+    <path class="trace trace--backbone" d="M874 519 L885 519 L903 501 L903 465 L891 453 L885 453 L885 463"/>
+    <path class="trace trace--backbone" d="M597 430 L597 338"/>
+    <path class="trace trace--backbone" d="M609 430 L609 338"/>
+    <path class="trace trace--backbone" d="M975 195 L963 195 L963 201 L981 219 L1065 219 L1233 387 L1239 387 L1245 393 L1245 423 L1131 537 L987 537 L885 435 L885 423 L765 303 L717 303 L573 159 L573 135 L633 75 L891 75 L903 87 L897 93 L897 208"/>
+    <path class="trace trace--backbone" d="M421 351 L435 351 L441 345 L489 345 L501 357 L501 387 L471 417 L429 417 L429 402"/>
+    <path class="trace trace--backbone" d="M1082 849 L1095 849 L1113 867 L1347 867 L1371 843 L1371 687 L1353 669 L1227 669 L1149 747 L1143 741 L1137 747 L1131 741 L1125 747 L1107 729 L1059 777 L1059 807"/>
+    <path class="trace trace--backbone" d="M1362 165 L1377 165 L1377 183 L1365 195 L1335 195 L1329 189 L1329 141 L1359 111 L1425 111"/>
+    <path class="trace trace--backbone" d="M972 645 L987 645 L987 693 L975 705 L953 705"/>
+    <path class="trace trace--backbone" d="M1059 518 L1059 531 L987 531 L981 537 L1029 585 L1101 585 L1101 596"/>
+    <path class="trace trace--backbone" d="M273 30 L273 21 L345 21 L345 33"/>
+    <path class="trace trace--backbone" d="M421 315 L435 315 L453 333 L489 333 L501 321 L501 279 L489 267 L477 267"/>
+    <path class="trace trace--backbone" d="M873 259 L873 273 L891 291 L891 339 L902 339"/>
+    <path class="trace trace--backbone" d="M453 185 L453 195 L429 195 L393 159 L399 153 L399 147 L384 147"/>
+    <path class="trace trace--backbone" d="M1201 831 L1119 831 L1095 855 L1167 927 L1485 927 L1491 921 L1491 801 L1353 663 L1227 663 L1161 729 L1167 735 L1167 759 L1173 765 L1155 783 L1149 777 L1143 777 L1143 764"/>
+    <path class="trace trace--backbone" d="M1347 350 L1347 339 L1389 339 L1419 369 L1413 375 L1407 375 L1407 385"/>
+    <path class="trace trace--backbone" d="M1523 777 L1509 777 L1509 789 L1527 807 L1557 807 L1581 783 L1581 771"/>
+    <path class="trace trace--backbone" d="M1509 218 L1509 207 L1461 207 L1443 225 L1443 231 L1457 231"/>
+    <path class="trace trace--backbone" d="M465 585 L453 585 L429 609 L429 661"/>
+    <path class="trace trace--backbone" d="M129 781 L129 795 L105 819 L105 861 L114 861"/>
+    <path class="trace trace--backbone" d="M1071 30 L1071 21 L1065 15 L1017 15 L999 33 L999 42"/>
+    <path class="trace trace--backbone" d="M879 752 L879 765 L873 765 L867 771 L861 765 L855 771 L849 765 L843 771 L843 849 L855 861 L885 861 L891 855 L891 837 L880 837"/>
+    <path class="trace trace--backbone" d="M435 855 L423 855 L393 885 L393 921 L406 921"/>
+    <path class="trace trace--backbone" d="M594 429 L585 429 L585 338"/>
+    <path class="trace trace--backbone" d="M1575 621 L1672 621"/>
+    <path class="trace trace--backbone" d="M537 56 L537 81 L585 129 L585 143"/>
+    <path class="trace trace--backbone" d="M831 752 L831 843 L843 855 L849 849 L849 837 L863 837"/>
+    <path class="trace trace--backbone" d="M141 299 L141 285 L171 255 L201 255 L213 267 L213 278"/>
+    <path class="trace trace--backbone" d="M205 345 L225 345 L243 327 L243 279 L231 267 L225 267 L225 278"/>
+    <path class="trace trace--backbone" d="M199 915 L141 915 L117 891 L117 879"/>
+    <path class="trace trace--backbone" d="M989 897 L975 897 L957 879 L933 879 L909 855 L909 825 L921 813 L981 813 L987 819 L987 828"/>
+    <path class="trace trace--backbone" d="M1467 686 L1467 699 L1509 741 L1509 765 L1523 765"/>
+    <path class="trace trace--backbone" d="M387 136 L387 63 L369 45 L357 45"/>
+    <path class="trace trace--backbone" d="M666 837 L681 837 L681 753 L651 723 L651 681 L681 651 L681 627 L651 597 L585 597 L567 579 L567 567 L549 549 L543 549 L519 525 L189 525 L183 519 L93 519 L87 525 L87 603 L309 825 L543 825 L603 885 L625 885"/>
+    <path class="trace trace--backbone" d="M463 27 L453 27 L447 33 L357 33"/>
+    <path class="trace trace--backbone" d="M891 728 L891 717 L837 663 L783 663 L777 657 L777 435 L795 417 L873 417 L879 411 L909 441 L909 453 L903 459 L927 483 L927 645 L939 645"/>
+    <path class="trace trace--backbone" d="M435 857 L435 843 L429 843 L405 867 L417 879 L417 903 L423 909 L429 903 L447 921 L483 921 L549 855 L531 837 L519 837 L519 848"/>
+    <path class="trace trace--backbone" d="M219 653 L219 663 L207 675 L177 675 L141 639 L141 628"/>
+    <path class="trace trace--backbone" d="M1014 465 L1005 465 L1005 501 L975 531 L975 537 L987 549 L993 543 L1131 543 L1251 423 L1251 393 L1227 369 L1221 369 L1215 375 L1191 351 L1053 351 L1029 375 L1029 399"/>
+    <path class="trace trace--backbone" d="M465 56 L465 69 L399 135 L384 135"/>
+    <path class="trace trace--backbone" d="M477 561 L477 549 L489 537 L525 537 L549 513 L569 513"/>
+    <path class="trace trace--backbone" d="M465 573 L453 573 L417 609 L417 661"/>
+    <path class="trace trace--backbone" d="M141 781 L141 795 L117 819 L111 819 L105 813 L99 819 L99 867 L105 873 L114 873"/>
+    <path class="trace trace--backbone" d="M555 761 L555 747 L561 741 L561 723 L567 717 L579 729 L579 741 L585 747 L591 741 L597 747 L603 741 L609 747 L627 729 L627 723 L639 711 L639 705 L627 693 L615 693"/>
+    <path class="trace trace--backbone" d="M543 51 L555 51 L555 87 L597 129 L597 143"/>
+    <path class="trace trace--backbone" d="M999 904 L999 915 L981 915 L951 885 L933 885 L903 855 L903 825 L921 807 L987 807 L999 819 L999 828"/>
+    <path class="trace trace--backbone" d="M261 30 L261 21 L267 15 L351 15 L357 21 L357 33"/>
+    <path class="trace trace--backbone" d="M1554 231 L1672 231"/>
+    <path class="trace trace--backbone" d="M1554 219 L1672 219"/>
+    <path class="trace trace--backbone" d="M1554 243 L1672 243"/>
+    <path class="trace trace--backbone" d="M1347 550 L1347 537 L1371 513 L1371 471 L1389 453 L1389 438"/>
+    <path class="trace trace--backbone" d="M519 859 L519 879 L525 885 L477 933 L426 933"/>
+    <path class="trace trace--backbone" d="M798 495 L789 495 L789 441 L777 429 L759 447 L759 453 L741 471 L682 471"/>
+    <path class="trace trace--backbone" d="M325 363 L315 363 L315 285 L333 267 L417 267 L423 273 L441 273 L453 285 L453 315 L441 327 L453 339 L489 339 L507 357 L507 387 L471 423 L453 423 L411 465 L327 465 L327 452"/>
+    <path class="trace trace--backbone" d="M375 293 L375 279 L339 279 L327 267 L375 219 L375 160"/>
+    <path class="trace trace--backbone" d="M387 293 L387 279 L381 273 L339 273 L333 279 L327 279 L321 273 L321 267 L369 219 L375 225 L387 213 L387 160"/>
+    <path class="trace trace--backbone" d="M213 893 L213 855 L153 795 L153 781"/>
+    <path class="trace trace--backbone" d="M879 728 L879 717 L843 681 L789 681 L753 717 L753 723 L729 747 L717 747 L711 753 L711 855 L723 867 L885 867 L897 855 L897 825 L921 801 L957 801 L993 765 L993 645 L981 633 L939 633 L939 642"/>
+    <path class="trace trace--backbone" d="M277 915 L291 915 L309 933 L406 933"/>
+    <path class="trace trace--backbone" d="M1335 550 L1335 537 L1365 507 L1365 471 L1389 447 L1395 453 L1401 453 L1401 438"/>
+    <path class="trace trace--backbone" d="M543 39 L555 39 L591 75 L591 111 L609 129 L609 143"/>
+    <path class="trace trace--backbone" d="M129 628 L129 639 L135 645 L129 651 L129 762"/>
+    <path class="trace trace--backbone" d="M130 777 L0 777"/>
+    <path class="trace trace--backbone" d="M130 765 L0 765"/>
+    <path class="trace trace--backbone" d="M798 507 L789 507 L783 501 L783 441 L789 435 L789 429 L777 417 L723 417 L693 447 L693 459 L682 459"/>
+    <path class="trace trace--backbone" d="M273 55 L273 69 L345 69 L363 87 L363 135 L374 135"/>
+    <path class="trace trace--backbone" d="M279 749 L279 759 L249 759 L243 765 L150 765"/>
+    <path class="trace trace--backbone" d="M225 893 L225 837 L165 777 L150 777"/>
+    <path class="trace trace--backbone" d="M273 893 L273 795 L291 777 L291 749"/>
+    <path class="trace trace--backbone" d="M501 56 L501 93 L579 171 L585 165 L585 151"/>
+    <path class="trace trace--backbone" d="M463 51 L381 51 L369 63 L363 63 L357 69 L351 69 L339 81 L255 81 L249 87 L249 195 L255 201 L357 201 L363 195 L363 147 L374 147"/>
+    <path class="trace trace--backbone" d="M1533 218 L1533 207 L1545 207 L1557 195 L1557 87 L1545 75 L1518 75"/>
+    <path class="trace trace--backbone" d="M1119 55 L1119 69 L1107 81 L1107 195 L1113 201 L1136 201"/>
+    <path class="trace trace--backbone" d="M1083 55 L1083 81 L993 171 L983 171"/>
+    <path class="trace trace--backbone" d="M1136 213 L1011 213 L993 195 L983 195"/>
+    <path class="trace trace--backbone" d="M489 56 L489 87 L579 177 L585 177 L597 165 L597 151"/>
+    <path class="trace trace--backbone" d="M1143 55 L1143 69 L1209 69 L1227 87 L1227 195 L1221 201 L1168 201"/>
+    <path class="trace trace--backbone" d="M465 561 L465 549 L483 531 L519 531 L525 525 L531 525 L555 549 L561 549 L579 567 L579 585 L573 591 L591 609 L585 615 L585 626"/>
+    <path class="trace trace--backbone" d="M614 333 L669 333 L741 261 L758 261"/>
+    <path class="trace trace--backbone" d="M916 339 L1095 339 L1233 201 L1233 87 L1221 75 L1215 81 L1113 81 L1107 75 L999 183 L999 195 L987 207 L975 207 L975 195"/>
+    <path class="trace trace--backbone" d="M1095 55 L1095 81 L993 183 L983 183"/>
+    <path class="trace trace--backbone" d="M609 330 L609 201 L615 195 L615 171 L609 165 L609 151"/>
+    <path class="trace trace--backbone" d="M1557 218 L1557 207 L1563 201 L1563 9 L1557 3 L1557 0"/>
+    <path class="trace trace--backbone" d="M1521 218 L1521 207 L1527 201 L1545 201 L1551 207 L1557 201 L1563 207 L1569 201 L1569 9 L1563 3 L1557 9 L1527 9 L1521 3 L1521 0"/>
+    <path class="trace trace--backbone" d="M1575 619 L1575 633 L1599 657 L1599 909 L1575 933 L1575 941"/>
+    <path class="trace trace--backbone" d="M1082 885 L1095 885 L1143 933 L1569 933 L1593 909 L1599 915 L1635 915 L1665 885 L1672 885"/>
+    <path class="trace trace--backbone" d="M625 897 L603 897 L543 837 L543 831 L549 825 L525 801 L297 801 L279 783 L273 783 L267 789 L183 789 L177 795 L159 795 L135 819 L123 819 L111 807 L93 807 L3 897 L0 897"/>
+  </g>
+  <g id="components">
+    <rect class="component" x="325" y="293" width="96" height="96"/>
+    <rect class="die" x="330" y="298" width="86" height="86"/>
+    <rect class="component" x="919" y="360" width="98" height="94"/>
+    <rect class="die" x="924" y="365" width="88" height="84"/>
+    <rect class="component" x="919" y="360" width="98" height="94"/>
+    <rect class="die" x="924" y="365" width="88" height="84"/>
+    <rect class="component" x="258" y="94" width="96" height="95"/>
+    <rect class="die" x="263" y="99" width="86" height="85"/>
+    <rect class="component" x="788" y="94" width="96" height="95"/>
+    <rect class="die" x="793" y="99" width="86" height="85"/>
+    <rect class="component" x="1451" y="94" width="96" height="95"/>
+    <rect class="die" x="1456" y="99" width="86" height="85"/>
+    <rect class="component" x="457" y="625" width="95" height="96"/>
+    <rect class="die" x="462" y="630" width="85" height="86"/>
+    <rect class="component" x="258" y="94" width="96" height="95"/>
+    <rect class="die" x="263" y="99" width="86" height="85"/>
+    <rect class="component" x="788" y="94" width="96" height="95"/>
+    <rect class="die" x="793" y="99" width="86" height="85"/>
+    <rect class="component" x="1451" y="94" width="96" height="95"/>
+    <rect class="die" x="1456" y="99" width="86" height="85"/>
+    <rect class="component" x="457" y="625" width="95" height="96"/>
+    <rect class="die" x="462" y="630" width="85" height="86"/>
+    <rect class="component" x="1119" y="94" width="95" height="95"/>
+    <rect class="die" x="1124" y="99" width="85" height="85"/>
+    <rect class="component" x="192" y="360" width="95" height="95"/>
+    <rect class="die" x="197" y="365" width="85" height="85"/>
+    <rect class="component" x="1119" y="94" width="95" height="95"/>
+    <rect class="die" x="1124" y="99" width="85" height="85"/>
+    <rect class="component" x="192" y="360" width="95" height="95"/>
+    <rect class="die" x="197" y="365" width="85" height="85"/>
+    <rect class="component" x="1451" y="293" width="94" height="96"/>
+    <rect class="die" x="1456" y="298" width="84" height="86"/>
+    <rect class="component" x="1451" y="293" width="94" height="96"/>
+    <rect class="die" x="1456" y="298" width="84" height="86"/>
+    <rect class="component" x="589" y="493" width="95" height="94"/>
+    <rect class="die" x="594" y="498" width="85" height="84"/>
+    <rect class="component" x="589" y="493" width="95" height="94"/>
+    <rect class="die" x="594" y="498" width="85" height="84"/>
+    <rect class="component" x="192" y="560" width="95" height="93"/>
+    <rect class="die" x="197" y="565" width="85" height="83"/>
+    <rect class="component" x="921" y="228" width="94" height="93"/>
+    <rect class="die" x="926" y="233" width="84" height="83"/>
+    <rect class="component" x="1385" y="494" width="94" height="93"/>
+    <rect class="die" x="1390" y="499" width="84" height="83"/>
+    <rect class="component" x="921" y="228" width="94" height="93"/>
+    <rect class="die" x="926" y="233" width="84" height="83"/>
+    <rect class="component" x="1385" y="494" width="94" height="93"/>
+    <rect class="die" x="1390" y="499" width="84" height="83"/>
+    <rect class="component" x="1119" y="561" width="95" height="92"/>
+    <rect class="die" x="1124" y="566" width="85" height="82"/>
+    <rect class="component" x="1119" y="561" width="95" height="92"/>
+    <rect class="die" x="1124" y="566" width="85" height="82"/>
+    <rect class="component" x="789" y="561" width="94" height="92"/>
+    <rect class="die" x="794" y="566" width="84" height="82"/>
+    <rect class="component" x="1385" y="825" width="94" height="92"/>
+    <rect class="die" x="1390" y="830" width="84" height="82"/>
+    <rect class="component" x="789" y="561" width="94" height="92"/>
+    <rect class="die" x="794" y="566" width="84" height="82"/>
+    <rect class="component" x="1385" y="825" width="94" height="92"/>
+    <rect class="die" x="1390" y="830" width="84" height="82"/>
+    <rect class="component" x="724" y="759" width="92" height="93"/>
+    <rect class="die" x="729" y="764" width="82" height="83"/>
+    <rect class="component" x="724" y="759" width="92" height="93"/>
+    <rect class="die" x="729" y="764" width="82" height="83"/>
+    <rect class="component" x="989" y="837" width="93" height="67"/>
+    <rect class="die" x="994" y="842" width="83" height="57"/>
+    <rect class="component" x="1259" y="818" width="81" height="37"/>
+    <rect class="die" x="1264" y="823" width="71" height="27"/>
+    <rect class="component" x="1259" y="818" width="81" height="37"/>
+    <rect class="die" x="1264" y="823" width="71" height="27"/>
+    <rect class="component" x="796" y="884" width="80" height="37"/>
+    <rect class="die" x="801" y="889" width="70" height="27"/>
+    <rect class="component" x="796" y="884" width="80" height="37"/>
+    <rect class="die" x="801" y="889" width="70" height="27"/>
+    <rect class="component" x="95" y="321" width="81" height="35"/>
+    <rect class="component" x="95" y="321" width="81" height="35"/>
+    <rect class="component" x="93" y="57" width="79" height="34"/>
+    <rect class="component" x="93" y="57" width="79" height="34"/>
+    <rect class="component" x="1224" y="327" width="79" height="29"/>
+    <rect class="component" x="1224" y="327" width="79" height="29"/>
+    <rect class="component" x="429" y="129" width="84" height="27"/>
+    <rect class="component" x="429" y="129" width="84" height="27"/>
+    <rect class="component" x="1309" y="550" width="46" height="47"/>
+    <rect class="die" x="1314" y="555" width="36" height="37"/>
+    <rect class="component" x="463" y="29" width="80" height="27"/>
+    <rect class="component" x="662" y="693" width="80" height="27"/>
+    <rect class="component" x="662" y="693" width="80" height="27"/>
+    <rect class="component" x="1490" y="594" width="85" height="25"/>
+    <rect class="component" x="1508" y="218" width="46" height="46"/>
+    <rect class="die" x="1513" y="223" width="36" height="36"/>
+    <rect class="component" x="1061" y="428" width="80" height="26"/>
+    <rect class="component" x="1061" y="428" width="80" height="26"/>
+    <rect class="component" x="1458" y="30" width="82" height="25"/>
+    <rect class="component" x="1458" y="30" width="82" height="25"/>
+    <rect class="component" x="98" y="528" width="81" height="25"/>
+    <rect class="component" x="894" y="661" width="81" height="25"/>
+    <rect class="component" x="98" y="528" width="81" height="25"/>
+    <rect class="component" x="894" y="661" width="81" height="25"/>
+    <rect class="component" x="1061" y="30" width="79" height="25"/>
+    <rect class="component" x="200" y="30" width="76" height="25"/>
+    <rect class="component" x="301" y="594" width="76" height="25"/>
+    <rect class="component" x="267" y="694" width="76" height="25"/>
+    <rect class="component" x="199" y="893" width="78" height="24"/>
+    <rect class="component" x="628" y="129" width="68" height="27"/>
+    <rect class="component" x="628" y="129" width="68" height="27"/>
+    <rect class="component" x="665" y="363" width="76" height="24"/>
+    <rect class="component" x="798" y="496" width="76" height="24"/>
+    <rect class="component" x="532" y="761" width="76" height="24"/>
+    <rect class="component" x="665" y="363" width="76" height="24"/>
+    <rect class="component" x="964" y="64" width="75" height="24"/>
+    <rect class="component" x="833" y="728" width="71" height="24"/>
+    <rect class="component" x="276" y="730" width="67" height="19"/>
+    <rect class="component" x="1165" y="397" width="70" height="18"/>
+    <rect class="component" x="851" y="224" width="36" height="35"/>
+    <rect class="component" x="1165" y="397" width="70" height="18"/>
+    <rect class="component" x="965" y="42" width="73" height="17"/>
+    <rect class="component" x="800" y="431" width="71" height="16"/>
+    <rect class="component" x="800" y="431" width="71" height="16"/>
+    <rect class="component" x="603" y="631" width="68" height="16"/>
+    <rect class="component" x="603" y="631" width="68" height="16"/>
+    <rect class="component" x="253" y="294" width="39" height="26"/>
+    <rect class="component" x="253" y="294" width="39" height="26"/>
+    <rect class="component" x="187" y="294" width="38" height="26"/>
+    <rect class="component" x="916" y="759" width="38" height="26"/>
+    <rect class="component" x="1247" y="759" width="38" height="26"/>
+    <rect class="component" x="1182" y="891" width="38" height="26"/>
+    <rect class="component" x="187" y="294" width="38" height="26"/>
+    <rect class="component" x="916" y="759" width="38" height="26"/>
+    <rect class="component" x="1247" y="759" width="38" height="26"/>
+    <rect class="component" x="1182" y="891" width="38" height="26"/>
+    <rect class="component" x="1445" y="428" width="39" height="25"/>
+    <rect class="component" x="364" y="727" width="39" height="25"/>
+    <rect class="component" x="1445" y="428" width="39" height="25"/>
+    <rect class="component" x="718" y="627" width="37" height="26"/>
+    <rect class="component" x="1314" y="693" width="37" height="26"/>
+    <rect class="component" x="1096" y="797" width="74" height="13"/>
+    <rect class="component" x="718" y="627" width="37" height="26"/>
+    <rect class="component" x="1314" y="693" width="37" height="26"/>
+    <rect class="component" x="1096" y="797" width="74" height="13"/>
+    <rect class="component" x="552" y="788" width="43" height="21"/>
+    <rect class="component" x="410" y="727" width="36" height="25"/>
+    <rect class="component" x="435" y="857" width="28" height="29"/>
+    <rect class="component" x="780" y="248" width="45" height="18"/>
+    <rect class="component" x="1309" y="350" width="45" height="18"/>
+    <rect class="component" x="1180" y="796" width="53" height="15"/>
+    <rect class="component" x="1180" y="796" width="53" height="15"/>
+    <rect class="component" x="1366" y="422" width="49" height="16"/>
+    <rect class="component" x="1311" y="381" width="42" height="17"/>
+    <rect class="component" x="290" y="552" width="33" height="21"/>
+    <rect class="component" x="127" y="616" width="53" height="12"/>
+    <rect class="component" x="453" y="174" width="55" height="11"/>
+    <rect class="component" x="714" y="130" width="60" height="10"/>
+    <rect class="component" x="714" y="130" width="60" height="10"/>
+    <rect class="component" x="858" y="29" width="22" height="26"/>
+    <rect class="component" x="858" y="29" width="22" height="26"/>
+    <rect class="component" x="182" y="323" width="23" height="24"/>
+    <rect class="component" x="1343" y="154" width="19" height="29"/>
+    <rect class="component" x="465" y="561" width="21" height="26"/>
+    <rect class="component" x="1136" y="201" width="32" height="17"/>
+    <rect class="component" x="1382" y="134" width="33" height="16"/>
+    <rect class="component" x="1382" y="134" width="33" height="16"/>
+    <rect class="component" x="489" y="565" width="31" height="17"/>
+    <rect class="component" x="489" y="565" width="31" height="17"/>
+    <rect class="component" x="523" y="561" width="20" height="26"/>
+    <rect class="component" x="1468" y="251" width="17" height="30"/>
+    <rect class="component" x="328" y="430" width="22" height="22"/>
+    <rect class="component" x="594" y="430" width="22" height="22"/>
+    <rect class="component" x="1057" y="496" width="22" height="22"/>
+    <rect class="component" x="1255" y="563" width="22" height="22"/>
+    <rect class="component" x="792" y="695" width="22" height="22"/>
+    <rect class="component" x="1255" y="563" width="22" height="22"/>
+    <rect class="component" x="792" y="695" width="22" height="22"/>
+    <rect class="component" x="1360" y="130" width="20" height="24"/>
+    <rect class="component" x="1360" y="130" width="20" height="24"/>
+    <rect class="component" x="1201" y="821" width="28" height="17"/>
+    <rect class="component" x="1137" y="227" width="16" height="29"/>
+    <rect class="component" x="1137" y="227" width="16" height="29"/>
+    <rect class="component" x="924" y="32" width="22" height="21"/>
+    <rect class="component" x="594" y="695" width="21" height="22"/>
+    <rect class="component" x="863" y="824" width="17" height="27"/>
+    <rect class="component" x="1417" y="130" width="19" height="24"/>
+    <rect class="component" x="1417" y="130" width="19" height="24"/>
+    <rect class="component" x="375" y="575" width="25" height="18"/>
+    <rect class="component" x="965" y="828" width="50" height="9"/>
+    <rect class="component" x="594" y="32" width="21" height="21"/>
+    <rect class="component" x="924" y="894" width="21" height="21"/>
+    <rect class="component" x="594" y="32" width="21" height="21"/>
+    <rect class="component" x="924" y="894" width="21" height="21"/>
+    <rect class="component" x="1014" y="452" width="23" height="19"/>
+    <rect class="component" x="1117" y="227" width="15" height="29"/>
+    <rect class="component" x="1117" y="227" width="15" height="29"/>
+    <rect class="component" x="403" y="661" width="43" height="10"/>
+    <rect class="component" x="726" y="431" width="22" height="19"/>
+    <rect class="component" x="924" y="828" width="22" height="19"/>
+    <rect class="component" x="726" y="431" width="22" height="19"/>
+    <rect class="component" x="924" y="828" width="22" height="19"/>
+    <rect class="component" x="460" y="365" width="23" height="18"/>
+    <rect class="component" x="1308" y="370" width="46" height="9"/>
+    <rect class="component" x="460" y="365" width="23" height="18"/>
+    <rect class="component" x="841" y="192" width="29" height="14"/>
+    <rect class="component" x="465" y="857" width="14" height="29"/>
+    <rect class="component" x="1057" y="365" width="22" height="18"/>
+    <rect class="component" x="195" y="498" width="22" height="18"/>
+    <rect class="component" x="1321" y="498" width="22" height="18"/>
+    <rect class="component" x="1321" y="631" width="22" height="18"/>
+    <rect class="component" x="1057" y="365" width="22" height="18"/>
+    <rect class="component" x="195" y="498" width="22" height="18"/>
+    <rect class="component" x="1321" y="498" width="22" height="18"/>
+    <rect class="component" x="1321" y="631" width="22" height="18"/>
+    <rect class="component" x="1028" y="408" width="28" height="14"/>
+    <rect class="component" x="130" y="762" width="20" height="19"/>
+    <rect class="component" x="1480" y="64" width="38" height="10"/>
+    <rect class="component" x="793" y="33" width="21" height="18"/>
+    <rect class="component" x="793" y="33" width="21" height="18"/>
+    <rect class="component" x="1089" y="471" width="22" height="17"/>
+    <rect class="component" x="1117" y="674" width="41" height="9"/>
+    <rect class="component" x="779" y="237" width="46" height="8"/>
+    <rect class="component" x="449" y="741" width="46" height="8"/>
+    <rect class="component" x="464" y="298" width="19" height="19"/>
+    <rect class="component" x="464" y="298" width="19" height="19"/>
+    <rect class="component" x="968" y="93" width="24" height="15"/>
+    <rect class="component" x="664" y="456" width="18" height="20"/>
+    <rect class="component" x="1444" y="675" width="32" height="11"/>
+    <rect class="component" x="812" y="529" width="17" height="20"/>
+    <rect class="component" x="306" y="408" width="16" height="21"/>
+    <rect class="component" x="569" y="498" width="10" height="32"/>
+    <rect class="component" x="1102" y="596" width="15" height="21"/>
+    <rect class="component" x="473" y="166" width="35" height="9"/>
+    <rect class="component" x="1011" y="93" width="24" height="13"/>
+    <rect class="component" x="1049" y="807" width="39" height="8"/>
+    <rect class="component" x="902" y="341" width="14" height="22"/>
+    <rect class="component" x="1390" y="631" width="17" height="18"/>
+    <rect class="component" x="140" y="607" width="34" height="9"/>
+    <rect class="component" x="939" y="642" width="33" height="9"/>
+    <rect class="component" x="496" y="848" width="27" height="11"/>
+    <rect class="component" x="467" y="255" width="10" height="29"/>
+    <rect class="component" x="1457" y="233" width="17" height="17"/>
+    <rect class="component" x="397" y="432" width="17" height="17"/>
+    <rect class="component" x="463" y="432" width="17" height="17"/>
+    <rect class="component" x="1125" y="698" width="17" height="17"/>
+    <rect class="component" x="1523" y="764" width="17" height="17"/>
+    <rect class="component" x="397" y="432" width="17" height="17"/>
+    <rect class="component" x="463" y="432" width="17" height="17"/>
+    <rect class="component" x="1477" y="585" width="15" height="19"/>
+    <rect class="component" x="975" y="160" width="8" height="35"/>
+    <rect class="component" x="406" y="920" width="20" height="14"/>
+    <rect class="component" x="1157" y="423" width="20" height="14"/>
+    <rect class="component" x="1019" y="399" width="39" height="7"/>
+    <rect class="component" x="1312" y="740" width="34" height="8"/>
+    <rect class="component" x="150" y="596" width="30" height="9"/>
+    <rect class="component" x="143" y="299" width="33" height="8"/>
+    <rect class="component" x="851" y="463" width="33" height="8"/>
+    <rect class="component" x="1487" y="262" width="13" height="20"/>
+    <rect class="component" x="582" y="330" width="32" height="8"/>
+    <rect class="component" x="758" y="238" width="7" height="36"/>
+    <rect class="component" x="187" y="278" width="36" height="7"/>
+    <rect class="component" x="584" y="143" width="31" height="8"/>
+    <rect class="component" x="574" y="626" width="8" height="31"/>
+    <rect class="component" x="940" y="695" width="13" height="19"/>
+    <rect class="component" x="1305" y="687" width="7" height="35"/>
+    <rect class="component" x="124" y="231" width="27" height="9"/>
+    <rect class="component" x="1518" y="905" width="27" height="9"/>
+    <rect class="component" x="124" y="231" width="27" height="9"/>
+    <rect class="component" x="1518" y="905" width="27" height="9"/>
+    <rect class="component" x="374" y="136" width="10" height="24"/>
+    <rect class="component" x="1425" y="111" width="15" height="16"/>
+    <rect class="component" x="1349" y="408" width="10" height="24"/>
+    <rect class="component" x="399" y="731" width="15" height="16"/>
+    <rect class="component" x="379" y="566" width="34" height="7"/>
+    <rect class="component" x="922" y="110" width="26" height="9"/>
+    <rect class="component" x="511" y="754" width="9" height="26"/>
+    <rect class="component" x="922" y="110" width="26" height="9"/>
+    <rect class="component" x="257" y="682" width="11" height="21"/>
+    <rect class="component" x="872" y="208" width="23" height="10"/>
+    <rect class="component" x="114" y="860" width="12" height="19"/>
+    <rect class="component" x="152" y="860" width="12" height="19"/>
+    <rect class="component" x="419" y="387" width="15" height="15"/>
+    <rect class="component" x="1465" y="608" width="14" height="16"/>
+    <rect class="component" x="1121" y="756" width="28" height="8"/>
+    <rect class="component" x="657" y="33" width="27" height="8"/>
+    <rect class="component" x="657" y="44" width="27" height="8"/>
+    <rect class="component" x="1518" y="894" width="27" height="8"/>
+    <rect class="component" x="657" y="33" width="27" height="8"/>
+    <rect class="component" x="657" y="44" width="27" height="8"/>
+    <rect class="component" x="350" y="566" width="24" height="9"/>
+    <rect class="component" x="1099" y="694" width="9" height="24"/>
+    <rect class="component" x="654" y="836" width="12" height="18"/>
+    <rect class="component" x="1518" y="894" width="27" height="8"/>
+    <rect class="component" x="1145" y="656" width="15" height="14"/>
+    <rect class="component" x="1541" y="695" width="10" height="21"/>
+    <rect class="component" x="917" y="750" width="35" height="6"/>
+    <rect class="component" x="134" y="860" width="11" height="19"/>
+    <rect class="component" x="922" y="99" width="26" height="8"/>
+    <rect class="component" x="124" y="243" width="26" height="8"/>
+    <rect class="component" x="922" y="99" width="26" height="8"/>
+    <rect class="component" x="124" y="243" width="26" height="8"/>
+    <rect class="component" x="1397" y="385" width="26" height="8"/>
+    <rect class="component" x="1556" y="763" width="26" height="8"/>
+    <rect class="component" x="625" y="872" width="8" height="26"/>
+    <rect class="component" x="939" y="121" width="23" height="9"/>
+    <rect class="component" x="619" y="814" width="17" height="12"/>
+    <rect class="component" x="347" y="33" width="10" height="20"/>
+    <rect class="component" x="1337" y="408" width="10" height="20"/>
+    <rect class="component" x="637" y="752" width="10" height="20"/>
+  </g>
+  <g id="traces-signal">
+    <path class="trace trace--signal" d="M327 389 L327 399 L321 399 L321 408"/>
+    <path class="trace trace--signal" d="M399 389 L399 399 L419 399"/>
+    <path class="trace trace--signal" d="M255 653 L255 682"/>
+    <path class="trace trace--signal" d="M267 653 L267 682"/>
+    <path class="trace trace--signal" d="M192 585 L177 585 L177 596"/>
+    <path class="trace trace--signal" d="M287 633 L303 633 L303 619"/>
+    <path class="trace trace--signal" d="M377 609 L387 609 L387 593"/>
+    <path class="trace trace--signal" d="M343 717 L363 717 L363 727"/>
+    <path class="trace trace--signal" d="M849 520 L849 531 L829 531"/>
+    <path class="trace trace--signal" d="M543 785 L543 801 L552 801"/>
+    <path class="trace trace--signal" d="M887 237 L897 237 L897 218"/>
+    <path class="trace trace--signal" d="M963 42 L963 33 L946 33"/>
+    <path class="trace trace--signal" d="M459 857 L459 843 L465 843 L465 857"/>
+    <path class="trace trace--signal" d="M459 886 L459 897 L465 897 L465 886"/>
+    <path class="trace trace--signal" d="M1354 363 L1365 363 L1365 369 L1354 369"/>
+    <path class="trace trace--signal" d="M1377 422 L1377 411 L1359 411"/>
+    <path class="trace trace--signal" d="M323 567 L350 567"/>
+    <path class="trace trace--signal" d="M453 174 L453 165 L473 165"/>
+    <path class="trace trace--signal" d="M328 441 L309 441 L309 429"/>
+    <path class="trace trace--signal" d="M1071 496 L1071 483 L1089 483"/>
+    <path class="trace trace--signal" d="M1079 507 L1089 507 L1089 488"/>
+    <path class="trace trace--signal" d="M1029 452 L1029 422"/>
+    <path class="trace trace--signal" d="M1155 683 L1155 699 L1142 699"/>
+    <path class="trace trace--signal" d="M1158 675 L1173 675 L1173 669 L1160 669"/>
+    <path class="trace trace--signal" d="M495 741 L513 741 L513 754"/>
+    <path class="trace trace--signal" d="M981 108 L981 123 L962 123"/>
+    <path class="trace trace--signal" d="M177 299 L177 279 L187 279"/>
+    <path class="trace trace--signal" d="M1347 432 L1347 428"/>
+    <path class="trace trace--signal" d="M381 566 L381 555 L375 555 L375 566"/>
+    <path class="trace trace--signal" d="M129 860 L129 849 L135 849 L135 860"/>
+    <path class="trace trace--signal" d="M129 879 L129 891 L135 891 L135 879"/>
+    <path class="trace trace--signal" d="M153 860 L153 849 L147 849 L147 860"/>
+    <path class="trace trace--signal" d="M153 879 L153 891 L147 891 L147 879"/>
+    <path class="trace trace--signal" d="M657 836 L657 825 L636 825"/>
+    <path class="trace trace--signal" d="M213 917 L213 941"/>
+    <path class="trace trace--signal" d="M261 917 L261 941"/>
+    <path class="trace trace--signal" d="M192 645 L183 645 L177 639 L177 628"/>
+    <path class="trace trace--signal" d="M1509 264 L1509 279 L1515 273 L1500 273"/>
+    <path class="trace trace--signal" d="M1059 55 L1059 69 L1053 75 L1039 75"/>
+    <path class="trace trace--signal" d="M608 759 L621 759 L627 753 L637 753"/>
+    <path class="trace trace--signal" d="M608 771 L621 771 L627 765 L637 765"/>
+    <path class="trace trace--signal" d="M1365 438 L1365 453 L1359 447 L1359 432"/>
+    <path class="trace trace--signal" d="M1389 422 L1389 411 L1395 405 L1395 393"/>
+    <path class="trace trace--signal" d="M1401 422 L1401 411 L1407 405 L1407 393"/>
+    <path class="trace trace--signal" d="M1413 422 L1413 411 L1419 405 L1419 393"/>
+    <path class="trace trace--signal" d="M339 430 L339 417 L333 411 L322 411"/>
+    <path class="trace trace--signal" d="M479 879 L489 879 L495 873 L495 859"/>
+    <path class="trace trace--signal" d="M1117 675 L1107 675 L1101 681 L1101 694"/>
+    <path class="trace trace--signal" d="M495 749 L495 759 L501 765 L511 765"/>
+    <path class="trace trace--signal" d="M1508 231 L1474 231"/>
+    <path class="trace trace--signal" d="M1061 33 L1035 33 L1035 42"/>
+    <path class="trace trace--signal" d="M874 495 L885 495 L885 471"/>
+    <path class="trace trace--signal" d="M964 63 L939 63 L939 53"/>
+    <path class="trace trace--signal" d="M851 225 L825 225 L825 237"/>
+    <path class="trace trace--signal" d="M399 752 L399 765 L411 765 L411 752"/>
+    <path class="trace trace--signal" d="M595 801 L621 801 L621 814"/>
+    <path class="trace trace--signal" d="M477 587 L477 597 L489 597 L489 582"/>
+    <path class="trace trace--signal" d="M1056 411 L1071 411 L1071 399 L1058 399"/>
+    <path class="trace trace--signal" d="M939 714 L939 750"/>
+    <path class="trace trace--signal" d="M951 714 L951 750"/>
+    <path class="trace trace--signal" d="M654 837 L633 837 L633 826"/>
+    <path class="trace trace--signal" d="M477 29 L477 0"/>
+    <path class="trace trace--signal" d="M537 29 L537 0"/>
+    <path class="trace trace--signal" d="M325 387 L315 387 L315 393 L309 399 L309 408"/>
+    <path class="trace trace--signal" d="M279 560 L279 549 L285 543 L291 543 L291 552"/>
+    <path class="trace trace--signal" d="M1491 619 L1491 633 L1485 639 L1479 639 L1479 624"/>
+    <path class="trace trace--signal" d="M447 752 L447 765 L453 765 L459 759 L459 749"/>
+    <path class="trace trace--signal" d="M435 886 L435 903 L429 909 L429 920"/>
+    <path class="trace trace--signal" d="M975 160 L975 147 L969 147 L963 141 L963 130"/>
+    <path class="trace trace--signal" d="M657 854 L657 867 L651 873 L633 873"/>
+    <path class="trace trace--signal" d="M421 375 L441 375 L447 381 L447 387 L434 387"/>
+    <path class="trace trace--signal" d="M989 861 L975 861 L963 849 L963 837"/>
+    <path class="trace trace--signal" d="M904 729 L915 729 L927 717 L940 717"/>
+    <path class="trace trace--signal" d="M1311 398 L1311 411 L1323 423 L1337 423"/>
+    <path class="trace trace--signal" d="M597 695 L597 681 L585 669 L585 657"/>
+    <path class="trace trace--signal" d="M351 389 L351 430"/>
+    <path class="trace trace--signal" d="M243 653 L243 681 L257 681"/>
+    <path class="trace trace--signal" d="M1035 837 L1035 807 L1049 807"/>
+    <path class="trace trace--signal" d="M837 496 L837 465 L851 465"/>
+    <path class="trace trace--signal" d="M531 785 L531 795 L513 795 L513 780"/>
+    <path class="trace trace--signal" d="M608 783 L639 783 L639 772"/>
+    <path class="trace trace--signal" d="M323 555 L351 555 L351 566"/>
+    <path class="trace trace--signal" d="M777 237 L777 225 L759 225 L759 238"/>
+    <path class="trace trace--signal" d="M1143 30 L1143 0"/>
+    <path class="trace trace--signal" d="M1083 904 L1083 941"/>
+    <path class="trace trace--signal" d="M1047 904 L1047 941"/>
+    <path class="trace trace--signal" d="M1035 904 L1035 941"/>
+    <path class="trace trace--signal" d="M1131 30 L1131 0"/>
+    <path class="trace trace--signal" d="M1095 30 L1095 0"/>
+    <path class="trace trace--signal" d="M1083 30 L1083 0"/>
+    <path class="trace trace--signal" d="M591 761 L591 747 L597 741 L597 717"/>
+    <path class="trace trace--signal" d="M603 761 L603 747 L609 741 L609 717"/>
+    <path class="trace trace--signal" d="M1039 87 L1053 87 L1053 99 L1047 105 L1035 105"/>
+    <path class="trace trace--signal" d="M591 809 L591 819 L603 819 L609 813 L619 813"/>
+    <path class="trace trace--signal" d="M1353 393 L1377 393 L1383 387 L1397 387"/>
+    <path class="trace trace--signal" d="M1037 453 L1047 453 L1047 441 L1041 435 L1041 422"/>
+    <path class="trace trace--signal" d="M477 857 L477 843 L483 837 L495 837 L495 848"/>
+    <path class="trace trace--signal" d="M993 108 L993 123 L1005 123 L1011 117 L1011 106"/>
+    <path class="trace trace--signal" d="M1125 715 L1125 741 L1119 747 L1119 756"/>
+    <path class="trace trace--signal" d="M1137 715 L1137 741 L1131 747 L1131 756"/>
+    <path class="trace trace--signal" d="M1312 741 L1299 741 L1293 735 L1293 723 L1305 723"/>
+    <path class="trace trace--signal" d="M421 291 L441 291 L453 279 L467 279"/>
+    <path class="trace trace--signal" d="M279 653 L279 663 L291 675 L291 694"/>
+    <path class="trace trace--signal" d="M192 573 L183 573 L171 585 L165 585 L165 596"/>
+    <path class="trace trace--signal" d="M287 645 L303 645 L315 633 L315 619"/>
+    <path class="trace trace--signal" d="M377 621 L387 621 L399 609 L399 593"/>
+    <path class="trace trace--signal" d="M343 705 L357 705 L369 717 L375 717 L375 727"/>
+    <path class="trace trace--signal" d="M199 891 L189 891 L189 885 L177 873 L164 873"/>
+    <path class="trace trace--signal" d="M861 520 L861 531 L849 543 L829 543"/>
+    <path class="trace trace--signal" d="M543 561 L555 561 L567 549 L567 530"/>
+    <path class="trace trace--signal" d="M1059 496 L1059 477 L1047 465 L1037 465"/>
+    <path class="trace trace--signal" d="M1057 495 L1041 495 L1029 483 L1029 471"/>
+    <path class="trace trace--signal" d="M1079 519 L1089 519 L1101 507 L1101 488"/>
+    <path class="trace trace--signal" d="M400 585 L417 585 L423 579 L423 567 L413 567"/>
+    <path class="trace trace--signal" d="M975 159 L963 159 L963 153 L951 141 L951 130"/>
+    <path class="trace trace--signal" d="M669 836 L669 825 L663 825 L651 813 L636 813"/>
+    <path class="trace trace--signal" d="M654 849 L645 849 L633 861 L627 861 L627 872"/>
+    <path class="trace trace--signal" d="M339 594 L339 585 L363 585 L363 575"/>
+    <path class="trace trace--signal" d="M1311 393 L1299 393 L1299 369 L1308 369"/>
+    <path class="trace trace--signal" d="M1467 675 L1467 624"/>
+    <path class="trace trace--signal" d="M1533 764 L1533 753 L1557 753 L1557 763"/>
+    <path class="trace trace--signal" d="M627 898 L627 941"/>
+    <path class="trace trace--signal" d="M841 207 L831 207 L813 225 L813 237"/>
+    <path class="trace trace--signal" d="M483 749 L483 759 L501 777 L511 777"/>
+    <path class="trace trace--signal" d="M339 749 L339 759 L345 765 L363 765 L363 752"/>
+    <path class="trace trace--signal" d="M447 886 L447 915 L441 921 L426 921"/>
+    <path class="trace trace--signal" d="M783 266 L783 279 L777 285 L759 285 L759 274"/>
+    <path class="trace trace--signal" d="M616 453 L627 453 L633 459 L664 459"/>
+    <path class="trace trace--signal" d="M1515 594 L1515 585 L1503 573 L1491 573 L1491 585"/>
+    <path class="trace trace--signal" d="M199 903 L177 903 L165 891 L165 879"/>
+    <path class="trace trace--signal" d="M798 519 L789 519 L789 531 L801 543 L812 543"/>
+    <path class="trace trace--signal" d="M964 75 L939 75 L927 63 L927 53"/>
+    <path class="trace trace--signal" d="M903 728 L903 717 L915 717 L927 705 L940 705"/>
+    <path class="trace trace--signal" d="M594 693 L585 693 L585 681 L573 669 L573 657"/>
+    <path class="trace trace--signal" d="M615 717 L627 717 L639 729 L639 752"/>
+    <path class="trace trace--signal" d="M1533 781 L1533 795 L1545 795 L1557 783 L1557 771"/>
+    <path class="trace trace--signal" d="M363 389 L363 429 L350 429"/>
+    <path class="trace trace--signal" d="M287 585 L327 585 L327 594"/>
+    <path class="trace trace--signal" d="M1508 219 L1467 219 L1467 233"/>
+    <path class="trace trace--signal" d="M393 566 L393 555 L387 549 L369 549 L363 555 L363 566"/>
+    <path class="trace trace--signal" d="M201 893 L201 879 L195 879 L177 861 L164 861"/>
+    <path class="trace trace--signal" d="M129 616 L129 603 L147 585 L153 585 L153 596"/>
+    <path class="trace trace--signal" d="M537 561 L537 549 L555 531 L555 525 L569 525"/>
+    <path class="trace trace--signal" d="M597 452 L597 471 L579 489 L579 498"/>
+    <path class="trace trace--signal" d="M1443 675 L1443 663 L1437 663 L1419 645 L1407 645"/>
+    <path class="trace trace--signal" d="M1521 764 L1521 753 L1539 735 L1539 716"/>
+    <path class="trace trace--signal" d="M165 299 L165 285 L183 267 L189 267 L189 278"/>
+    <path class="trace trace--signal" d="M669 854 L669 867 L651 885 L633 885"/>
+    <path class="trace trace--signal" d="M1551 716 L1551 729 L1569 747 L1569 763"/>
+    <path class="trace trace--signal" d="M579 761 L579 747 L585 741 L585 717 L594 717"/>
+    <path class="trace trace--signal" d="M849 259 L849 273 L843 279 L819 279 L819 266"/>
+    <path class="trace trace--signal" d="M579 809 L579 819 L585 825 L619 825"/>
+    <path class="trace trace--signal" d="M435 879 L423 879 L423 903 L417 909 L417 920"/>
+    <path class="trace trace--signal" d="M1121 759 L1107 759 L1107 735 L1101 729 L1101 718"/>
+    <path class="trace trace--signal" d="M1355 597 L1365 597 L1389 621 L1389 631"/>
+    <path class="trace trace--signal" d="M423 293 L423 279 L441 279 L453 267 L467 267"/>
+    <path class="trace trace--signal" d="M231 653 L231 681 L243 693 L257 693"/>
+    <path class="trace trace--signal" d="M887 249 L897 249 L909 237 L909 219 L895 219"/>
+    <path class="trace trace--signal" d="M1468 273 L1455 273 L1443 261 L1443 243 L1457 243"/>
+    <path class="trace trace--signal" d="M1444 675 L1413 675 L1401 663 L1401 649"/>
+    <path class="trace trace--signal" d="M387 727 L387 717 L423 717 L423 727"/>
+    <path class="trace trace--signal" d="M387 752 L387 765 L393 771 L417 771 L423 765 L423 752"/>
+    <path class="trace trace--signal" d="M489 561 L489 549 L525 549 L525 561"/>
+    <path class="trace trace--signal" d="M387 389 L387 399 L405 417 L417 417 L417 402"/>
+    <path class="trace trace--signal" d="M375 619 L375 633 L393 651 L405 651 L405 661"/>
+    <path class="trace trace--signal" d="M555 809 L555 831 L537 849 L523 849"/>
+    <path class="trace trace--signal" d="M501 185 L501 195 L513 195 L519 189 L519 165 L508 165"/>
+    <path class="trace trace--signal" d="M543 585 L555 585 L573 603 L573 626"/>
+    <path class="trace trace--signal" d="M328 453 L315 453 L297 435 L297 423 L306 423"/>
+    <path class="trace trace--signal" d="M267 560 L267 549 L279 537 L297 537 L303 543 L303 552"/>
+    <path class="trace trace--signal" d="M435 727 L435 687 L429 681 L429 671"/>
+    <path class="trace trace--signal" d="M435 752 L435 765 L441 771 L459 771 L471 759 L471 749"/>
+    <path class="trace trace--signal" d="M447 727 L447 687 L441 681 L441 671"/>
+    <path class="trace trace--signal" d="M616 441 L627 441 L633 447 L663 447 L663 456"/>
+    <path class="trace trace--signal" d="M1476 687 L1491 687 L1497 693 L1541 693"/>
+    <path class="trace trace--signal" d="M625 873 L615 873 L615 843 L621 837 L621 826"/>
+    <path class="trace trace--signal" d="M195 653 L195 663 L189 663 L165 639 L165 628"/>
+    <path class="trace trace--signal" d="M1347 597 L1347 609 L1371 633 L1390 633"/>
+    <path class="trace trace--signal" d="M1503 619 L1503 639 L1479 663 L1479 675"/>
+    <path class="trace trace--signal" d="M1354 351 L1365 351 L1389 375 L1395 375 L1395 385"/>
+    <path class="trace trace--signal" d="M537 587 L537 597 L561 621 L561 627 L574 627"/>
+    <path class="trace trace--signal" d="M543 573 L555 573 L579 549 L579 530"/>
+    <path class="trace trace--signal" d="M1057 507 L1041 507 L1017 483 L1017 471"/>
+    <path class="trace trace--signal" d="M477 886 L477 897 L483 897 L507 873 L507 859"/>
+    <path class="trace trace--signal" d="M1480 75 L1449 75 L1437 87 L1437 111"/>
+    <path class="trace trace--signal" d="M1111 471 L1143 471 L1155 459 L1155 437"/>
+    <path class="trace trace--signal" d="M975 171 L963 171 L963 165 L939 141 L939 130"/>
+    <path class="trace trace--signal" d="M975 42 L975 33 L963 21 L939 21 L939 32"/>
+    <path class="trace trace--signal" d="M1415 423 L1425 423 L1437 411 L1437 387 L1423 387"/>
+    <path class="trace trace--signal" d="M1407 633 L1443 633 L1455 621 L1465 621"/>
+    <path class="trace trace--signal" d="M1142 711 L1155 711 L1155 735 L1143 747 L1143 756"/>
+    <path class="trace trace--signal" d="M276 33 L347 33"/>
+    <path class="trace trace--signal" d="M276 45 L347 45"/>
+    <path class="trace trace--signal" d="M363 619 L363 633 L393 663 L403 663"/>
+    <path class="trace trace--signal" d="M1119 674 L1119 663 L1113 663 L1089 687 L1089 693 L1099 693"/>
+    <path class="trace trace--signal" d="M325 375 L315 375 L297 393 L297 411 L306 411"/>
+    <path class="trace trace--signal" d="M594 453 L585 453 L585 471 L567 489 L567 498"/>
+    <path class="trace trace--signal" d="M1083 807 L1083 789 L1095 777 L1119 777 L1119 764"/>
+    <path class="trace trace--signal" d="M1551 717 L1563 717 L1581 735 L1581 763"/>
+    <path class="trace trace--signal" d="M609 452 L609 465 L615 471 L664 471"/>
+    <path class="trace trace--signal" d="M276 741 L267 741 L243 717 L243 705 L257 705"/>
+    <path class="trace trace--signal" d="M1011 828 L1011 819 L1035 795 L1047 795 L1047 807"/>
+    <path class="trace trace--signal" d="M633 814 L633 801 L657 777 L657 765 L647 765"/>
+    <path class="trace trace--signal" d="M375 389 L375 429 L363 441 L350 441"/>
+    <path class="trace trace--signal" d="M874 507 L885 507 L897 495 L897 465 L884 465"/>
+    <path class="trace trace--signal" d="M1377 438 L1377 453 L1371 459 L1353 459 L1335 441 L1335 428"/>
+    <path class="trace trace--signal" d="M789 237 L789 225 L783 219 L759 219 L747 231 L747 237 L758 237"/>
+    <path class="trace trace--signal" d="M1539 619 L1539 695"/>
+    <path class="trace trace--signal" d="M1551 619 L1551 695"/>
+    <path class="trace trace--signal" d="M327 619 L327 694"/>
+    <path class="trace trace--signal" d="M339 619 L339 694"/>
+    <path class="trace trace--signal" d="M465 185 L465 255"/>
+    <path class="trace trace--signal" d="M477 185 L477 255"/>
+    <path class="trace trace--signal" d="M1476 675 L1491 675 L1491 681 L1485 687 L1503 705 L1541 705"/>
+    <path class="trace trace--signal" d="M117 860 L117 849 L123 843 L159 843 L165 849 L165 860"/>
+    <path class="trace trace--signal" d="M567 761 L567 723 L585 705 L594 705"/>
+    <path class="trace trace--signal" d="M435 867 L423 867 L405 885 L405 920"/>
+    <path class="trace trace--signal" d="M453 177 L417 177 L399 159 L384 159"/>
+    <path class="trace trace--signal" d="M1355 585 L1365 585 L1401 621 L1401 631"/>
+    <path class="trace trace--signal" d="M855 752 L855 765 L861 771 L861 824"/>
+    <path class="trace trace--signal" d="M867 752 L867 765 L873 771 L873 824"/>
+    <path class="trace trace--signal" d="M327 749 L327 759 L339 771 L369 771 L375 765 L375 752"/>
+    <path class="trace trace--signal" d="M795 266 L795 279 L783 291 L759 291 L747 279 L747 273 L758 273"/>
+    <path class="trace trace--signal" d="M465 561 L453 561 L447 555 L405 555 L405 566"/>
+    <path class="trace trace--signal" d="M411 293 L411 279 L435 255 L467 255"/>
+    <path class="trace trace--signal" d="M1444 687 L1413 687 L1389 663 L1389 649"/>
+    <path class="trace trace--signal" d="M1059 30 L1059 21 L1023 21 L1011 33 L1011 42"/>
+    <path class="trace trace--signal" d="M343 693 L393 693 L405 681 L405 671"/>
+    <path class="trace trace--signal" d="M1521 781 L1521 795 L1527 801 L1551 801 L1569 783 L1569 771"/>
+    <path class="trace trace--signal" d="M567 809 L567 831 L537 861 L523 861"/>
+    <path class="trace trace--signal" d="M1071 518 L1071 531 L1083 531 L1113 501 L1113 488"/>
+    <path class="trace trace--signal" d="M1455 675 L1455 627 L1449 621 L1455 615 L1455 609 L1465 609"/>
+    <path class="trace trace--signal" d="M1023 106 L1023 129 L993 159 L983 159"/>
+    <path class="trace trace--signal" d="M616 429 L657 429 L675 447 L675 456"/>
+    <path class="trace trace--signal" d="M1479 686 L1479 699 L1497 717 L1541 717"/>
+    <path class="trace trace--signal" d="M153 299 L153 285 L177 261 L195 261 L201 267 L201 278"/>
+    <path class="trace trace--signal" d="M1335 597 L1335 609 L1371 645 L1390 645"/>
+    <path class="trace trace--signal" d="M276 57 L291 57 L297 63 L345 63 L345 53"/>
+    <path class="trace trace--signal" d="M861 259 L861 273 L849 285 L813 285 L807 279 L807 266"/>
+    <path class="trace trace--signal" d="M1111 483 L1137 483 L1167 453 L1167 437"/>
+    <path class="trace trace--signal" d="M891 752 L891 825 L880 825"/>
+    <path class="trace trace--signal" d="M489 185 L489 255 L477 255"/>
+    <path class="trace trace--signal" d="M615 705 L627 705 L657 735 L657 753 L647 753"/>
+    <path class="trace trace--signal" d="M885 259 L885 273 L903 291 L903 341"/>
+    <path class="trace trace--signal" d="M255 560 L255 549 L273 531 L303 531 L315 543 L315 552"/>
+    <path class="trace trace--signal" d="M1071 55 L1071 87 L1041 117 L1035 117 L1035 106"/>
+    <path class="trace trace--signal" d="M666 849 L681 849 L681 861 L645 897 L633 897"/>
+    <path class="trace trace--signal" d="M207 653 L207 663 L201 669 L183 669 L153 639 L153 628"/>
+    <path class="trace trace--signal" d="M465 587 L465 597 L441 621 L441 661"/>
+    <path class="trace trace--signal" d="M987 42 L987 33 L969 15 L933 15 L927 21 L927 32"/>
+    <path class="trace trace--signal" d="M375 136 L375 81 L357 63 L357 53"/>
+    <path class="trace trace--signal" d="M594 441 L585 441 L555 471 L555 501 L569 501"/>
+    <path class="trace trace--signal" d="M1551 705 L1563 705 L1593 735 L1593 765 L1582 765"/>
+    <path class="trace trace--signal" d="M919 375 L843 375 L807 411 L681 411 L651 441 L633 441 L627 447 L633 453 L621 465 L615 465 L597 483 L591 483 L579 471 L561 471 L555 465 L549 471 L99 471 L3 375 L0 375"/>
+    <path class="trace trace--signal" d="M345 94 L345 81 L351 81 L357 75 L363 75 L375 63 L369 57 L369 51 L381 39 L447 39 L453 33 L423 3 L345 3 L345 0"/>
+    <path class="trace trace--signal" d="M789 189 L789 201 L765 201 L669 297 L669 327 L675 333 L651 357 L651 399 L717 465 L741 465 L765 489 L765 699 L771 705 L771 711 L735 747 L729 741 L717 741 L705 753 L705 855 L783 933 L789 933 L789 941"/>
+    <path class="trace trace--signal" d="M1449 94 L1449 81 L1443 75 L1449 69 L1449 0"/>
+    <path class="trace trace--signal" d="M1533 94 L1533 81 L1545 81 L1551 75 L1551 27 L1539 15 L1527 15 L1521 9 L1527 3 L1533 3 L1533 0"/>
+    <path class="trace trace--signal" d="M459 625 L459 609 L435 585 L435 573 L477 531 L489 543 L531 543 L543 531 L543 525 L495 477 L99 477 L75 453 L81 447 L81 201 L189 93 L189 27 L207 9 L423 9 L429 3 L459 3 L459 0"/>
+    <path class="trace trace--signal" d="M219 360 L219 351 L279 351 L303 327 L303 255 L189 141 L189 99 L183 93 L183 27 L207 3 L219 3 L219 0"/>
+    <path class="trace trace--signal" d="M1545 291 L1672 291"/>
+    <path class="trace trace--signal" d="M1545 303 L1672 303"/>
+    <path class="trace trace--signal" d="M1545 315 L1672 315"/>
+    <path class="trace trace--signal" d="M1545 327 L1672 327"/>
+    <path class="trace trace--signal" d="M1545 339 L1672 339"/>
+    <path class="trace trace--signal" d="M1545 351 L1672 351"/>
+    <path class="trace trace--signal" d="M1545 363 L1672 363"/>
+    <path class="trace trace--signal" d="M1545 375 L1672 375"/>
+    <path class="trace trace--signal" d="M1545 387 L1672 387"/>
+    <path class="trace trace--signal" d="M1479 495 L1672 495"/>
+    <path class="trace trace--signal" d="M1479 507 L1672 507"/>
+    <path class="trace trace--signal" d="M1479 519 L1672 519"/>
+    <path class="trace trace--signal" d="M1479 531 L1672 531"/>
+    <path class="trace trace--signal" d="M1479 543 L1672 543"/>
+    <path class="trace trace--signal" d="M1479 555 L1672 555"/>
+    <path class="trace trace--signal" d="M1479 567 L1672 567"/>
+    <path class="trace trace--signal" d="M1214 633 L1227 633 L1239 621 L1341 621 L1347 615 L1371 639 L1365 645 L1461 741 L1503 741 L1509 735 L1533 735 L1539 741 L1545 741 L1593 693 L1593 657 L1617 633 L1672 633"/>
+    <path class="trace trace--signal" d="M1011 904 L1011 941"/>
+    <path class="trace trace--signal" d="M1023 904 L1023 941"/>
+    <path class="trace trace--signal" d="M1059 904 L1059 941"/>
+    <path class="trace trace--signal" d="M1071 904 L1071 941"/>
+    <path class="trace trace--signal" d="M93 321 L93 195 L81 183 L81 15 L93 3 L93 0"/>
+    <path class="trace trace--signal" d="M105 321 L105 195 L93 183 L87 183 L81 189 L75 183 L75 15 L87 3 L93 9 L99 9 L105 3 L105 0"/>
+    <path class="trace trace--signal" d="M117 57 L117 0"/>
+    <path class="trace trace--signal" d="M129 57 L129 0"/>
+    <path class="trace trace--signal" d="M141 57 L141 0"/>
+    <path class="trace trace--signal" d="M153 57 L153 0"/>
+    <path class="trace trace--signal" d="M165 57 L165 0"/>
+    <path class="trace trace--signal" d="M1227 327 L1227 315 L1239 303 L1239 15 L1227 3 L1227 0"/>
+    <path class="trace trace--signal" d="M1239 327 L1239 315 L1245 309 L1245 9 L1239 3 L1239 0"/>
+    <path class="trace trace--signal" d="M1251 327 L1251 0"/>
+    <path class="trace trace--signal" d="M1263 327 L1263 0"/>
+    <path class="trace trace--signal" d="M1275 327 L1275 0"/>
+    <path class="trace trace--signal" d="M1287 327 L1287 0"/>
+    <path class="trace trace--signal" d="M1299 327 L1299 0"/>
+    <path class="trace trace--signal" d="M465 29 L465 0"/>
+    <path class="trace trace--signal" d="M489 29 L489 0"/>
+    <path class="trace trace--signal" d="M501 29 L501 0"/>
+    <path class="trace trace--signal" d="M513 29 L513 0"/>
+    <path class="trace trace--signal" d="M525 29 L525 0"/>
+    <path class="trace trace--signal" d="M675 720 L675 735 L687 747 L687 921 L675 933 L675 941"/>
+    <path class="trace trace--signal" d="M687 720 L687 735 L693 741 L693 927 L687 933 L687 941"/>
+    <path class="trace trace--signal" d="M699 720 L699 941"/>
+    <path class="trace trace--signal" d="M1575 597 L1672 597"/>
+    <path class="trace trace--signal" d="M1575 609 L1672 609"/>
+    <path class="trace trace--signal" d="M1554 255 L1672 255"/>
+    <path class="trace trace--signal" d="M1554 267 L1672 267"/>
+    <path class="trace trace--signal" d="M1461 30 L1461 0"/>
+    <path class="trace trace--signal" d="M1473 30 L1473 0"/>
+    <path class="trace trace--signal" d="M1485 30 L1485 0"/>
+    <path class="trace trace--signal" d="M1497 30 L1497 0"/>
+    <path class="trace trace--signal" d="M1509 30 L1509 0"/>
+    <path class="trace trace--signal" d="M1107 30 L1107 0"/>
+    <path class="trace trace--signal" d="M1119 30 L1119 0"/>
+    <path class="trace trace--signal" d="M267 719 L267 729 L261 729 L255 735 L225 735 L201 759 L165 759 L159 765 L177 783 L261 783 L267 777 L285 777 L297 789 L297 795 L285 807 L297 819 L297 915 L279 933 L267 933 L267 941"/>
+    <path class="trace trace--signal" d="M201 917 L201 941"/>
+    <path class="trace trace--signal" d="M225 917 L225 941"/>
+    <path class="trace trace--signal" d="M237 917 L237 941"/>
+    <path class="trace trace--signal" d="M249 917 L249 941"/>
+    <path class="trace trace--signal" d="M627 129 L627 117 L633 111 L633 81 L627 75 L627 0"/>
+    <path class="trace trace--signal" d="M1023 42 L1023 27 L1011 15 L1023 3 L1023 0"/>
+    <path class="trace trace--signal" d="M1484 429 L1672 429"/>
+    <path class="trace trace--signal" d="M1484 441 L1672 441"/>
+    <path class="trace trace--signal" d="M1484 453 L1672 453"/>
+    <path class="trace trace--signal" d="M1323 350 L1323 0"/>
+    <path class="trace trace--signal" d="M127 615 L105 615 L99 621 L9 621 L3 615 L0 615"/>
+    <path class="trace trace--signal" d="M127 627 L117 627 L111 633 L9 633 L3 627 L0 627"/>
+    <path class="trace trace--signal" d="M861 29 L861 0"/>
+    <path class="trace trace--signal" d="M873 29 L873 0"/>
+    <path class="trace trace--signal" d="M1341 154 L1341 141 L1347 135 L1347 129 L1341 123 L1341 0"/>
+    <path class="trace trace--signal" d="M1395 134 L1395 123 L1389 117 L1359 117 L1353 111 L1395 69 L1395 0"/>
+    <path class="trace trace--signal" d="M597 32 L597 0"/>
+    <path class="trace trace--signal" d="M609 32 L609 0"/>
+    <path class="trace trace--signal" d="M927 915 L927 941"/>
+    <path class="trace trace--signal" d="M939 915 L939 941"/>
+    <path class="trace trace--signal" d="M195 501 L0 501"/>
+    <path class="trace trace--signal" d="M195 513 L0 513"/>
+    <path class="trace trace--signal" d="M795 33 L795 0"/>
+    <path class="trace trace--signal" d="M807 33 L807 0"/>
+    <path class="trace trace--signal" d="M1492 585 L1509 585 L1515 579 L1521 585 L1672 585"/>
+    <path class="trace trace--signal" d="M150 597 L141 597 L135 591 L105 591 L87 609 L15 609 L3 597 L0 597"/>
+    <path class="trace trace--signal" d="M1425 111 L1425 0"/>
+    <path class="trace trace--signal" d="M657 33 L657 0"/>
+    <path class="trace trace--signal" d="M669 33 L669 0"/>
+    <path class="trace trace--signal" d="M681 33 L681 0"/>
+    <path class="trace trace--signal" d="M921 99 L921 87 L915 81 L915 9 L921 3 L921 0"/>
+    <path class="trace trace--signal" d="M933 99 L933 87 L927 87 L921 81 L915 87 L909 81 L909 9 L915 3 L921 9 L927 9 L933 3 L933 0"/>
+  </g>
+</svg>
