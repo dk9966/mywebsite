@@ -284,6 +284,10 @@ export function applyObstaclesToGrid(grid, gridWidth, gridHeight) {
 
 // Cells (and outward headings) where wires should be seeded for QFP obstacles.
 // Only obstacles tagged .qfp emit pins; block obstacles emit nothing.
+// `heading` is a DIRS index (see wire.js): 1 = up, 3 = right, 5 = down, 7 = left.
+// Each pin cell is one step OUTSIDE the chip boundary on its side, and its wire
+// is told to grow further outward; the matching pin tab in drawQFP fills the
+// half-cell gap from the chip body edge to that pin cell center.
 export function getQFPPinSeeds(gridWidth, gridHeight) {
     const seeds = [];
     if (!params.qfpStyle) return seeds;
@@ -349,13 +353,16 @@ function drawBlock(ctx, o, cw, ch) {
 }
 
 function drawQFP(ctx, o, cw, ch) {
-    // Pin tabs are sized so they reach from the body edge ALL the way to the
-    // pin cell center -- with a tiny overlap so the trace and tab visually
-    // fuse with no seam. (See "the disconnect" notes: previously tabs only
-    // covered the body's outer margin, leaving a half-cell gap to the wire.)
+    // Each pin tab bridges the chip body and the wire trace that starts at
+    // the adjacent pin cell. Two rules:
+    //   * width matches the wire stroke (params.cellSize / 4) so the seam
+    //     between tab and trace is invisible -- one continuous line, not a
+    //     "pin lead followed by thinner wire".
+    //   * length reaches the pin cell center plus a tiny overlap so canvas
+    //     pixel rounding can't open a gap.
     const cellMin = Math.min(cw, ch);
     const bodyInset = cellMin * 0.5;
-    const pinWid = cellMin * 0.45;
+    const pinWid = params.cellSize / 4;
     const pinOverlap = cellMin * 0.1;
     const spacing = Math.max(1, params.qfpPinSpacing | 0);
 

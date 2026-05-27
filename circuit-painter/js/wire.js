@@ -48,6 +48,10 @@ export class Wire {
         this.grid = grid;
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
+        // `last` is the DIRS index of the wire's most recent move (i.e. the
+        // forward heading). modifier = 0 keeps that heading, ±1 turns 45°,
+        // ±2 turns 90°. Callers that seed a wire (QFP pins) pass the direction
+        // they want the wire to grow toward.
         this.last = initialHeading !== null
             ? initialHeading
             : findRandomAvailableDirection(start.x, start.y, grid, gridWidth, gridHeight);
@@ -61,10 +65,12 @@ export class Wire {
             const current = this.cells[this.cells.length - 1];
             // Modifier semantics: 0 = keep heading, ±1 = 45° turn (flips
             // cardinal<->diagonal parity), ±2 = 90° turn (preserves parity).
-            // The expanded set is required whenever diagonals are suppressed
-            // OR directionality is active, because a wire on the "wrong" axis
-            // needs the 90° option to swing onto the preferred one.
-            const needsRightAngles = params.diagonalChance < 1 || params.directionality !== 0;
+            // The expanded set is required whenever diagonals are suppressed,
+            // directionality is active, or this is a QFP pin wire that may
+            // need a 90° swing to escape a chip's immediate neighborhood.
+            const needsRightAngles = this.isQFPPin
+                || params.diagonalChance < 1
+                || params.directionality !== 0;
             const directionModifiers = needsRightAngles
                 ? (rnd() > 0.5 ? [0, 1, -1, 2, -2] : [0, -1, 1, -2, 2])
                 : (rnd() > 0.5 ? [0, 1, -1] : [0, -1, 1]);
@@ -72,7 +78,10 @@ export class Wire {
             const flowBiases = [];
             let totalFlowBias = 0;
             for (let i = 0; i < 8; i++) {
-                const relative = (this.last + i + 4 + 8) % 8;
+                // mapDirection8ToFlow4 collapses opposite directions into the
+                // same bucket, so the offset here only needs to enumerate all
+                // 8 directions; the exact phase doesn't affect flowDir.
+                const relative = (this.last + i + 8) % 8;
                 const flowDir = mapDirection8ToFlow4(relative);
                 const strength = getFlowStrength(current.x, current.y, flowDir);
                 flowBiases.push(strength);
@@ -101,7 +110,7 @@ export class Wire {
                     directionChoice = directionModifiers.splice(idx, 1)[0];
                 }
 
-                const directionIndex = (this.last + 4 + directionChoice + 8) % 8;
+                const directionIndex = (this.last + directionChoice + 8) % 8;
                 if (diagonalVetoed(directionIndex)) continue;
                 const [dx, dy] = DIRS[directionIndex];
                 const nx = current.x + dx;
@@ -178,7 +187,7 @@ function pickModifierIndex(directionModifiers, last, current, grid) {
         let bestCount = 0;
         const bestIdxs = [];
         for (let i = 0; i < len; i++) {
-            const dirIdx = (last + 4 + directionModifiers[i] + 8) % 8;
+            const dirIdx = (last + directionModifiers[i] + 8) % 8;
             const matches = countNeighborsWithHeading(grid, current, dirIdx);
             if (matches > bestCount) {
                 bestCount = matches;
@@ -197,7 +206,7 @@ function pickModifierIndex(directionModifiers, last, current, grid) {
         const wantSign = dirBias > 0 ? 1 : -1;
         const matching = [];
         for (let i = 0; i < len; i++) {
-            const dirIdx = (last + 4 + directionModifiers[i] + 8) % 8;
+            const dirIdx = (last + directionModifiers[i] + 8) % 8;
             if (horizontalScore(dirIdx) === wantSign) matching.push(i);
         }
         if (matching.length) return matching[rndInt(matching.length)];
