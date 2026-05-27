@@ -48,6 +48,13 @@ __pycache__/
 /blender/**/_preview_*.png
 /blender/**/_test.png
 
+# Image-trace / vectorize pipeline intermediates (regenerate via tools/)
+/output/
+
+# Duplicate archives when unpacked trees are tracked
+/plans/claude/files.zip
+/plans/claude/files/pcb_export.zip
+
 # Captured browser profiles (optional; may appear when profiling)
 .cursor/browser-logs/
 
