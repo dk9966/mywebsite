@@ -144,6 +144,68 @@ export function generateObstacles(gridWidth, gridHeight) {
             }
         }
     }
+
+    relaxObstacleSpacing(gridWidth, gridHeight);
+}
+
+// Iterative push-apart relaxation. Honors params.obstacleMinSpacing as the
+// minimum edge-to-edge gap between any two obstacles. Each pair that's too
+// close is pushed along the axis where they're already MORE separated -- this
+// is the cheapest escape direction and avoids unnecessary movement.
+//
+// Bounded by a hard iteration cap so a tightly packed board doesn't loop
+// forever; chains of pushes converge geometrically since each pass roughly
+// halves any remaining deficit. If grid bounds prevent full separation, we
+// stop at the best-effort layout.
+function relaxObstacleSpacing(gridWidth, gridHeight) {
+    const minSpacing = Math.max(0, params.obstacleMinSpacing | 0);
+    if (minSpacing <= 0 || obstacles.length < 2) return;
+
+    const edgePad = 2;
+    const maxIterations = 60;
+
+    for (let iter = 0; iter < maxIterations; iter++) {
+        let moved = false;
+
+        for (let i = 0; i < obstacles.length - 1; i++) {
+            for (let j = i + 1; j < obstacles.length; j++) {
+                const a = obstacles[i];
+                const b = obstacles[j];
+
+                // Signed edge-gap on each axis. Positive = the boxes are
+                // separated on that axis; negative = their projections
+                // overlap there by |gap| cells.
+                const gapX = Math.max(b.x - (a.x + a.w), a.x - (b.x + b.w));
+                const gapY = Math.max(b.y - (a.y + a.h), a.y - (b.y + b.h));
+
+                if (gapX >= minSpacing || gapY >= minSpacing) continue;
+
+                if (gapX >= gapY) {
+                    const push = Math.ceil((minSpacing - gapX) / 2);
+                    if (a.x + a.w / 2 < b.x + b.w / 2) {
+                        a.x -= push; b.x += push;
+                    } else {
+                        a.x += push; b.x -= push;
+                    }
+                } else {
+                    const push = Math.ceil((minSpacing - gapY) / 2);
+                    if (a.y + a.h / 2 < b.y + b.h / 2) {
+                        a.y -= push; b.y += push;
+                    } else {
+                        a.y += push; b.y -= push;
+                    }
+                }
+                moved = true;
+            }
+        }
+
+        for (const o of obstacles) {
+            o.x = clamp(o.x, edgePad, gridWidth - o.w - edgePad);
+            o.y = clamp(o.y, edgePad, gridHeight - o.h - edgePad);
+        }
+
+        if (!moved) break;
+    }
 }
 
 function obstacleSizeRange(baseSize, sizeRand) {

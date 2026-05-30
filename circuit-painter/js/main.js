@@ -8,14 +8,16 @@
 import { setSeed, rndInt } from './rng.js';
 import { params, rgbaToHex, hexToRgba } from './params.js';
 import { initFlowGrid, resetFlowGrid } from './flowGrid.js';
-import { Cell, Wire } from './wire.js';
+import { Cell, Wire, joinAdjacentWires, carveLead } from './wire.js';
 import {
     generateObstacles, applyObstaclesToGrid, getQFPPinSeeds, setObstacleGridDimensions,
     clampObstaclesToGrid,
 } from './obstacles.js';
+import { aStar, pickEdgeCell, pickOppositeEdgeCell } from './pathfind.js';
+import { generateBuses } from './bus.js';
 import { initSnapshots } from './snapshots.js';
 import {
-    initCanvas, getCanvas, setWires, setGridDimensions, redraw, resize,
+    initCanvas, getCanvas, setWires, setGapRects, setGridDimensions, redraw, resize,
 } from './canvas.js';
 import {
     handleMouseDown, handleMouseMove, handleMouseUp,
@@ -26,6 +28,21 @@ let grid = [];
 let wires = [];
 let gridWidth = 0;
 let gridHeight = 0;
+
+// How many cells each QFP pin runs straight out from the chip before its trace
+// is free to wander. A short perpendicular lead reads as a real pin (the
+// classic QFP fan-out) and, reserved up front for every pin, guarantees no pin
+// is left as a disconnected pad. carveLead clamps this against bounds and
+// neighbours, so a value larger than the local gap simply yields a shorter run.
+const PIN_LEAD_LENGTH = 3;
+
+// Show/hide a dat.GUI controller by toggling its <li> row. dat.GUI stores the
+// row as `__li`; the parent of the controller's input div is the same element
+// as a fallback.
+function setControllerVisible(controller, visible) {
+    const li = controller.__li || controller.domElement?.parentElement;
+    if (li) li.style.display = visible ? '' : 'none';
+}
 
 // rebuildBoard handles both code paths. When regenerateObstacles=true (default),
 // obstacles are placed from scratch using the seed. When false, the current
@@ -63,6 +80,18 @@ function rebuildBoard({ regenerateObstacles }) {
     clampObstaclesToGrid(gridWidth, gridHeight);
     applyObstaclesToGrid(grid, gridWidth, gridHeight);
 
+    // Bus mode replaces the random-walk fill, trunk lines, and QFP pin wires
+    // wholesale: obstacles still define the gaps, and buses fill them.
+    if (params.busMode) {
+        const { rects, wires: busWires } = generateBuses(grid, gridWidth, gridHeight);
+        wires = busWires;
+        setGapRects(rects);
+        setWires(wires);
+        redraw();
+        return;
+    }
+    setGapRects([]);
+
     const available = [];
     for (let x = 0; x < gridWidth; x++) {
         for (let y = 0; y < gridHeight; y++) {
@@ -78,9 +107,16 @@ function rebuildBoard({ regenerateObstacles }) {
     // missing pins looks broken), which is why they're spawned in a separate
     // loop here instead of going through the main loop's gating.
     //
-    // Done in two passes: reserve every pin cell FIRST so an earlier pin wire
-    // can't accidentally consume a later pin's seed (which would silently drop
-    // pins). Then grow a wire from each reserved cell.
+    // Done in three passes so every pin ends up connected to a trace rather
+    // than stranded as a bare pad against the chip body:
+    //   1. Reserve every pin cell, so an earlier pin wire can't consume a
+    //      later pin's seed.
+    //   2. Reserve a short straight escape lead outward from every pin. Doing
+    //      this for ALL pins before growing any wire is what guarantees
+    //      fairness: a pin's wandering trace can no longer eat the corridor a
+    //      sibling pin needs to reach the board.
+    //   3. Grow each pin's wire onward from the tip of its lead, so the lead
+    //      becomes the start of a real trace that weaves into the routing.
     const pinSeeds = getQFPPinSeeds(gridWidth, gridHeight);
     const reservedPins = [];
     for (const seed of pinSeeds) {
@@ -92,8 +128,13 @@ function rebuildBoard({ regenerateObstacles }) {
         if (pos !== -1) available.splice(pos, 1);
         reservedPins.push({ cell, heading: seed.heading });
     }
-    for (const { cell, heading } of reservedPins) {
-        const wire = new Wire(cell, grid, gridWidth, gridHeight, heading);
+    for (const pin of reservedPins) {
+        pin.lead = carveLead(pin.cell, pin.heading, PIN_LEAD_LENGTH, grid, gridWidth, gridHeight);
+    }
+    for (const { lead, heading } of reservedPins) {
+        const wire = new Wire(lead[0], grid, gridWidth, gridHeight, heading);
+        wire.cells = lead;
+        wire.last = heading;
         wire.isQFPPin = true;
         wire.generate();
         wires.push(wire);
@@ -101,6 +142,32 @@ function rebuildBoard({ regenerateObstacles }) {
             const pos = available.indexOf(c);
             if (pos !== -1) available.splice(pos, 1);
         }
+    }
+
+    // Pathfinding "trunk" lines run BEFORE the fill so the random walker
+    // routes around them rather than the other way around. Each trunk grabs a
+    // free edge cell, finds a free cell on (preferably) the opposite edge, and
+    // A*'s a path between them through whatever cells remain. Failed attempts
+    // (no available edge cell, no reachable destination) are skipped quietly.
+    const trunkCount = Math.max(0, params.trunkWireCount | 0);
+    for (let t = 0; t < trunkCount; t++) {
+        const startInfo = pickEdgeCell(grid, gridWidth, gridHeight);
+        if (!startInfo) break;
+        const end = pickOppositeEdgeCell(startInfo.side, grid, gridWidth, gridHeight);
+        if (!end) break;
+        const path = aStar(startInfo.cell, end, grid, gridWidth, gridHeight);
+        if (!path || path.length < 2) continue;
+
+        const wire = new Wire(path[0], grid, gridWidth, gridHeight);
+        wire.cells = path;
+        wire.isTrunk = true;
+        for (const c of path) {
+            c.available = false;
+            c.heading = -1;
+            const pos = available.indexOf(c);
+            if (pos !== -1) available.splice(pos, 1);
+        }
+        wires.push(wire);
     }
 
     // When prioritizeLongWires is on, wires whose final length wouldn't even
@@ -138,6 +205,8 @@ function rebuildBoard({ regenerateObstacles }) {
         }
     }
 
+    if (params.joinEndpoints) joinAdjacentWires(wires);
+
     setWires(wires);
     redraw();
 }
@@ -171,16 +240,40 @@ function setup() {
 
     const gui = new dat.GUI();
 
-    const flow = gui.addFolder('Flow Field Painting');
-    flow.add(params, 'paintFlow').name('Enable Painting');
-    flow.add(params, 'brushMode', ['brush', 'eraser']).name('Tool');
-    flow.add(params, 'brushSize', 1, 20, 1).name('Brush Size');
-    flow.add(params, 'brushOpacity', 0, 1, 0.01).name('Opacity');
-    flow.add(params, 'angleSmoothing', 0.1, 1, 0.05).name('Angle Smoothing');
-    flow.add(params, 'flowInfluence', 0, 1, 0.05).name('Flow Influence');
-    flow.add(params, 'autoRegenerate').name('Auto Regenerate');
-    flow.add(params, 'showFlowGrid').name('Show Flow Field').onChange(redraw);
-    flow.add(params, 'clearFlowGrid').name('Clear Flow Grid');
+    // One folder, two faces. The Bus Mode checkbox swaps between the bus
+    // controls (default) and the legacy flow-field painting controls; only one
+    // set is visible at a time.
+    const flow = gui.addFolder('Circuit Lines');
+    flow.add(params, 'busMode').name('Bus Mode')
+        .onChange(() => { syncCircuitModeUI(); recreate(); });
+
+    const busControls = [
+        flow.add(params, 'showGapRects').name('Show Gap Rects').onChange(redraw),
+        flow.add(params, 'gapRectCount', 1, 600, 1).name('Gap Rect Count').onChange(recreate),
+        flow.add(params, 'gapRectMinSize', 2, 40, 1).name('Gap Rect Min').onChange(recreate),
+        flow.add(params, 'gapRectMaxSize', 4, 80, 1).name('Gap Rect Max').onChange(recreate),
+        flow.add(params, 'busLineSpacing', 0, 12, 1).name('Line Gap').onChange(recreate),
+        flow.add(params, 'connectBuses').name('Connect Buses').onChange(recreate),
+        flow.add(params, 'busTailLength', 0, 14, 1).name('Slant Length').onChange(recreate),
+    ];
+
+    const flowControls = [
+        flow.add(params, 'paintFlow').name('Enable Painting'),
+        flow.add(params, 'brushMode', ['brush', 'eraser']).name('Tool'),
+        flow.add(params, 'brushSize', 1, 20, 1).name('Brush Size'),
+        flow.add(params, 'brushOpacity', 0, 1, 0.01).name('Opacity'),
+        flow.add(params, 'angleSmoothing', 0.1, 1, 0.05).name('Angle Smoothing'),
+        flow.add(params, 'flowInfluence', 0, 1, 0.05).name('Flow Influence'),
+        flow.add(params, 'autoRegenerate').name('Auto Regenerate'),
+        flow.add(params, 'showFlowGrid').name('Show Flow Field').onChange(redraw),
+        flow.add(params, 'clearFlowGrid').name('Clear Flow Grid'),
+    ];
+
+    function syncCircuitModeUI() {
+        for (const c of busControls) setControllerVisible(c, params.busMode);
+        for (const c of flowControls) setControllerVisible(c, !params.busMode);
+    }
+    syncCircuitModeUI();
     flow.open();
 
     // Ranges widened from the original on cellSize / wireLength / cutOffLength
@@ -190,8 +283,12 @@ function setup() {
     gui.add(params, 'wireLength', 1, 500, 1).onChange(recreate);
     gui.add(params, 'cutOffLength', 0, 50, 1).onChange(recreate);
     gui.add(params, 'prioritizeLongWires').name('Prioritize Long Wires').onChange(recreate);
+    gui.add(params, 'trunkWireCount', 0, 20, 1).name('Trunk Lines').onChange(recreate);
+    gui.add(params, 'trunksOnly').name('Trunks Only').onChange(redraw);
+    gui.add(params, 'joinEndpoints').name('Join Trace Ends').onChange(recreate);
     gui.add(params, 'straightness', 0.01, 50, 0.01).onChange(recreate);
     gui.add(params, 'diagonalChance', 0, 1, 0.01).name('Diagonal Chance').onChange(recreate);
+    gui.add(params, 'turnSmoothness', 0, 1, 0.01).name('Turn Smoothness').onChange(recreate);
     gui.add(params, 'directionality', -1, 1, 0.01).name('Directionality').onChange(recreate);
     gui.add(params, 'collectiveness', 0, 1, 0.01).name('Collectiveness').onChange(recreate);
     gui.add(params, 'showGrid').name('Show Grid').onChange(redraw);
@@ -204,6 +301,7 @@ function setup() {
     obstaclesFolder.add(params, 'obstacleSizeRandomness', 0, 1, 0.01)
         .name('Size Randomness').onChange(recreate);
     obstaclesFolder.add(params, 'obstacleKeepOut', 0, 5, 1).name('Keep-out').onChange(recreate);
+    obstaclesFolder.add(params, 'obstacleMinSpacing', 0, 20, 1).name('Min Spacing').onChange(recreate);
     obstaclesFolder.add(params, 'editObstacles').name('Edit Obstacles (drag corners)').onChange(redraw);
     obstaclesFolder.add(params, 'obstacleSpacingRandomness', 0, 1, 0.01)
         .name('Spacing Randomness').onChange(recreate);

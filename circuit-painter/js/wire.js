@@ -22,6 +22,15 @@ function diagonalVetoed(dirIndex) {
     return isDiagonal(dirIndex) && rnd() >= params.diagonalChance;
 }
 
+// Heading changes of two DIRS steps (in either rotational direction) are 90
+// degree corners; one step is a 45 degree bend, zero is straight. params
+// .turnSmoothness is the probability such a right-angle step gets vetoed, so
+// the walker falls back to a gentler turn instead.
+function rightAngleVetoed(fromDir, toDir) {
+    const delta = (toDir - fromDir + 8) % 8;
+    return (delta === 2 || delta === 6) && rnd() < params.turnSmoothness;
+}
+
 // +1 for horizontal cardinals, -1 for vertical cardinals, 0 for everything
 // else. Used by the directionality layer to score candidate directions.
 function horizontalScore(dirIndex) {
@@ -58,9 +67,26 @@ export class Wire {
         // Wires born as QFP pin stubs always render, regardless of cutOffLength
         // and prioritizeLongWires. The flag is set by the caller after build.
         this.isQFPPin = false;
+        // Edge-to-edge "trunk" wires laid by pathfind.js. Both endpoints sit on
+        // the canvas border, so we skip the end pads -- they should look like
+        // traces running off the board, not terminating at a via.
+        this.isTrunk = false;
+        // Bus lines (bus.js) are straight parallel traces with 45 degree tails,
+        // built by setting .cells directly. They render as continuous traces
+        // with no end pads.
+        this.isBus = false;
     }
 
     generate() {
+        // Track this wire's own cells so the walk can't curl back adjacent to
+        // its own body. A loop can only close by touching an earlier segment,
+        // so vetoing self-contact (beyond the last two cells -- see touchesSelf)
+        // prevents loops by construction instead of relying on straightness,
+        // which can't help once a turn is geometrically forced. Skipped cells
+        // stay free for other wires, so the board still fills with no gaps.
+        const keyOf = (c) => c.x * this.gridHeight + c.y;
+        const own = new Set(this.cells.map(keyOf));
+
         while (this.cells.length < params.wireLength) {
             const current = this.cells[this.cells.length - 1];
             // Modifier semantics: 0 = keep heading, ±1 = 45° turn (flips
@@ -112,6 +138,7 @@ export class Wire {
 
                 const directionIndex = (this.last + directionChoice + 8) % 8;
                 if (diagonalVetoed(directionIndex)) continue;
+                if (rightAngleVetoed(this.last, directionIndex)) continue;
                 const [dx, dy] = DIRS[directionIndex];
                 const nx = current.x + dx;
                 const ny = current.y + dy;
@@ -121,8 +148,10 @@ export class Wire {
                 const next = this.grid[nx][ny];
                 if (!next.available) continue;
                 if (!isValidDiagonalMove(directionIndex, nx, ny, this.grid)) continue;
+                if (this.touchesSelf(next, own, keyOf)) continue;
 
                 this.cells.push(next);
+                own.add(keyOf(next));
                 next.available = false;
                 next.heading = directionIndex;
                 foundValidCell = true;
@@ -131,6 +160,28 @@ export class Wire {
 
             if (!foundValidCell) break;
         }
+    }
+
+    // True if `next` would sit 8-adjacent to part of this wire other than its
+    // last two cells. The head (current) is always adjacent to `next`, and the
+    // cell before it must stay legal too -- otherwise staircases and gentle
+    // bends would be rejected. Contact with anything further back means the
+    // trace is bending around to meet itself, i.e. forming a loop, so we veto.
+    touchesSelf(next, own, keyOf) {
+        const n = this.cells.length;
+        const exemptHead = keyOf(this.cells[n - 1]);
+        const exemptPrev = n >= 2 ? keyOf(this.cells[n - 2]) : -1;
+        for (let i = 0; i < 8; i++) {
+            const [dx, dy] = DIRS[i];
+            const col = this.grid[next.x + dx];
+            if (!col) continue;
+            const nb = col[next.y + dy];
+            if (!nb) continue;
+            const k = keyOf(nb);
+            if (k === exemptHead || k === exemptPrev) continue;
+            if (own.has(k)) return true;
+        }
+        return false;
     }
 
     render(canvas, ctx) {
@@ -167,11 +218,88 @@ export class Wire {
         };
         // QFP pin wires inherit their visual endpoint from the pin tab on the
         // chip body, so a pad at the start would just create a donut between
-        // the tab and the trace. Skip it for those; everyone else gets pads at
-        // both ends.
-        if (!this.isQFPPin) drawPad(this.cells[0]);
-        drawPad(this.cells[this.cells.length - 1]);
+        // the tab and the trace. Trunk wires terminate off the canvas, so a
+        // pad on either end would read as "this is a via" rather than "this
+        // wire continues off the board". Everyone else gets pads at both ends.
+        if (!this.isQFPPin && !this.isTrunk && !this.isBus) drawPad(this.cells[0]);
+        if (!this.isTrunk && !this.isBus) drawPad(this.cells[this.cells.length - 1]);
     }
+}
+
+// Reserve a straight run of cells starting at (and including) `start`, stepping
+// in DIRS direction `heading` for up to `maxLen` further cells. Each reserved
+// cell is marked unavailable so nothing else can claim it. Stops at the first
+// out-of-bounds or already-occupied cell. Returns the run (always at least
+// `[start]`).
+//
+// Used to give every QFP pin a guaranteed escape lead before any wire is grown,
+// so a sibling pin's wandering trace can't starve the corridor a later pin needs
+// to reach the board -- which is what otherwise leaves pins stranded as a bare
+// pad against the chip body.
+export function carveLead(start, heading, maxLen, grid, gridWidth, gridHeight) {
+    const cells = [start];
+    let cur = start;
+    for (let i = 0; i < maxLen; i++) {
+        const [dx, dy] = DIRS[heading];
+        const nx = cur.x + dx;
+        const ny = cur.y + dy;
+        if (nx <= 0 || nx >= gridWidth - 1 || ny <= 0 || ny >= gridHeight - 1) break;
+        const next = grid[nx][ny];
+        if (!next.available) break;
+        next.available = false;
+        next.heading = heading;
+        cells.push(next);
+        cur = next;
+    }
+    return cells;
+}
+
+// Cardinally-adjacent endpoints from two fill wires get fused into a single
+// longer wire, repeatedly, until no more joins are possible. QFP pin wires and
+// trunk wires are left alone -- their endpoint semantics are part of what makes
+// them read as "pin" or "off-board trunk", and joining would erase that.
+//
+// Cardinal-only adjacency keeps the merge guaranteed-safe: the new segment is
+// always one full step along a grid axis, which can never visually slice across
+// a third wire (the way a diagonal merge could).
+export function joinAdjacentWires(wires) {
+    let changed = true;
+    while (changed) {
+        changed = false;
+        outer: for (let i = 0; i < wires.length; i++) {
+            const a = wires[i];
+            if (a.isQFPPin || a.isTrunk) continue;
+            for (let j = 0; j < wires.length; j++) {
+                if (i === j) continue;
+                const b = wires[j];
+                if (b.isQFPPin || b.isTrunk) continue;
+
+                const merged = tryMergeCells(a.cells, b.cells);
+                if (merged) {
+                    a.cells = merged;
+                    wires.splice(j, 1);
+                    changed = true;
+                    break outer;
+                }
+            }
+        }
+    }
+}
+
+function tryMergeCells(aCells, bCells) {
+    const aStart = aCells[0];
+    const aEnd = aCells[aCells.length - 1];
+    const bStart = bCells[0];
+    const bEnd = bCells[bCells.length - 1];
+    if (cardinalAdjacent(aEnd, bStart)) return aCells.concat(bCells);
+    if (cardinalAdjacent(aEnd, bEnd)) return aCells.concat(bCells.slice().reverse());
+    if (cardinalAdjacent(aStart, bStart)) return aCells.slice().reverse().concat(bCells);
+    if (cardinalAdjacent(aStart, bEnd)) return bCells.concat(aCells);
+    return null;
+}
+
+function cardinalAdjacent(c1, c2) {
+    return Math.abs(c1.x - c2.x) + Math.abs(c1.y - c2.y) === 1;
 }
 
 // Decide which entry of `directionModifiers` to consume. With probability

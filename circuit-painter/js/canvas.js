@@ -8,12 +8,14 @@ import { drawObstacles, drawObstacleHandles } from './obstacles.js';
 let canvas = null;
 let ctx = null;
 let wires = [];
+let gapRects = [];
 let gridWidth = 0;
 let gridHeight = 0;
 
 export function getCanvas() { return canvas; }
 export function getCtx() { return ctx; }
 export function setWires(next) { wires = next; }
+export function setGapRects(next) { gapRects = next || []; }
 export function setGridDimensions(w, h) { gridWidth = w; gridHeight = h; }
 
 export function initCanvas() {
@@ -44,11 +46,15 @@ export function draw() {
     // over the pin tab, fusing them into one continuous fg-colored shape.
     drawObstacles(canvas, ctx, gridWidth, gridHeight);
     drawObstacleHandles(canvas, ctx);
+    drawGapRects();
 
     for (const w of wires) {
+        // Bus lines ignore trunksOnly / cutOffLength -- those gate the
+        // random-walk fill, which bus mode replaces.
+        if (!w.isBus && params.trunksOnly && !w.isTrunk) continue;
         // QFP pin stubs always render even if shorter than cutOffLength --
         // an invisible pin would look like a broken chip.
-        if (w.isQFPPin || w.cells.length > params.cutOffLength) w.render(canvas, ctx);
+        if (w.isBus || w.isQFPPin || w.cells.length > params.cutOffLength) w.render(canvas, ctx);
     }
 
     drawFlowOverlay(canvas, ctx, params);
@@ -57,6 +63,22 @@ export function draw() {
 
 export function redraw() {
     draw();
+}
+
+function drawGapRects() {
+    if (!params.busMode || !params.showGapRects || !gapRects.length) return;
+    const sx = (1 + canvas.width / params.cellSize) / gridWidth;
+    const sy = (1 + canvas.height / params.cellSize) / gridHeight;
+    const cw = params.cellSize * sx;
+    const ch = params.cellSize * sy;
+
+    ctx.strokeStyle = params.fgColor;
+    ctx.globalAlpha = 0.25;
+    ctx.lineWidth = 1;
+    for (const r of gapRects) {
+        ctx.strokeRect(r.x * cw, r.y * ch, r.w * cw, r.h * ch);
+    }
+    ctx.globalAlpha = 1;
 }
 
 function drawGridOverlay() {
