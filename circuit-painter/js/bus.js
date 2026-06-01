@@ -1,38 +1,86 @@
-// Bus mode: fill the gaps between obstacles with rectangles of parallel
-// traces.
+// Bus mode: carve the free space into rectangular gaps, pack each gap with a
+// tight set of parallel straight traces (a bus), then stitch the buses together
+// with 45 degree slants so the whole board reads as one connected network.
 //
-// Two steps, kept independent so each is easy to reason about:
-//   1. placeGapRects -- carve large, non-overlapping rectangles out of the
-//      free space (cells the obstacle pass left available).
-//   2. buildBus      -- pack each rectangle with parallel straight lines. Every
-//      line gets a 45 degree tail on each end (a straight body meeting a
-//      diagonal is a 45 degree bend, never a 90). Adjacent rects alternate
-//      orientation in a checkerboard, so a horizontal bus's down-right tails
-//      run parallel to its vertical neighbor's lines and the two link up across
-//      the gap.
-//
-// Lines are emitted as Wire objects carrying only their vertices (corners);
-// the renderer strokes straight segments between them, so no per-cell walk is
-// needed.
+// busSpineMode 'centerline' replaces gap-rect placement with corridor spines
+// derived from the medial axis; slant connection is unchanged.
 
 import { rndInt } from './rng.js';
 import { params } from './params.js';
-import { Wire } from './wire.js';
+import { Wire, sanitizePathRightAngles } from './wire.js';
+import { aStar } from './pathfind.js';
+import {
+    computeCorridorGeometry, packLinesOnEdge, edgeDebugRect,
+} from './corridorGeom.js';
 
-export function generateBuses(grid, gridWidth, gridHeight) {
-    const rects = placeGapRects(grid, gridWidth, gridHeight);
-    const wires = [];
-    for (const r of rects) {
-        buildBus(r, orientationFor(r), grid, gridWidth, gridHeight, wires);
+const DIRS = [
+    [-1, -1], [0, -1], [1, -1], [1, 0],
+    [1, 1], [0, 1], [-1, 1], [-1, 0],
+];
+
+const RECT_MARGIN = 2;
+
+export function generateBuses(grid, W, H) {
+    if (params.busSpineMode === 'centerline') {
+        return generateCenterlineBuses(grid, W, H);
     }
+    return generateGapRectBuses(grid, W, H);
+}
+
+function generateGapRectBuses(grid, W, H) {
+    const rects = placeGapRects(grid, W, H);
+
+    const wires = [];
+    const lines = [];
+    const lineRect = [];
+
+    let rectId = 0;
+    for (const r of rects) {
+        for (const body of busBodies(r, orientationFor(r))) {
+            const id = lineRect.length;
+            const cells = stampLine(body, grid, rectId, id);
+            if (cells.length < 2) continue;
+            lineRect.push(rectId);
+            wires.push(makeBusWire([cells[0], cells[cells.length - 1]], grid, W, H));
+            lines.push({ id, ends: [cells[0], cells[cells.length - 1]], rectId });
+        }
+        rectId++;
+    }
+
+    if (params.connectBuses) connectBuses(lines, lineRect, grid, W, H, wires);
+
     return { rects, wires };
 }
 
-// Greedy maximal-rectangle placement. Each attempt drops a random seed on a
-// free cell, grows a rectangle right-then-down until it hits something taken,
-// and keeps it if it cleared the minimum size. Taken cells (obstacles + already
-// placed rects) are tracked in a flat byte grid so growth and overlap are O(1)
-// per cell.
+function generateCenterlineBuses(grid, W, H) {
+    const { graph } = computeCorridorGeometry(W, H);
+    const wires = [];
+    const lines = [];
+    const lineRect = [];
+    const rects = [];
+
+    let edgeId = 0;
+    for (const edge of graph.edges) {
+        rects.push(edgeDebugRect(edge));
+        const bodies = packLinesOnEdge(edge, W, H);
+        for (const body of bodies) {
+            const id = lineRect.length;
+            const cells = stampLineClipped(body, grid, edgeId, id);
+            if (cells.length < 2) continue;
+            lineRect.push(edgeId);
+            wires.push(makeBusWire([cells[0], cells[cells.length - 1]], grid, W, H));
+            lines.push({ id, ends: [cells[0], cells[cells.length - 1]], rectId: edgeId });
+        }
+        edgeId++;
+    }
+
+    if (params.connectBuses) connectBuses(lines, lineRect, grid, W, H, wires);
+
+    return { rects, wires };
+}
+
+// === Gap rectangles ========================================================
+
 function placeGapRects(grid, W, H) {
     const idx = (x, y) => x * H + y;
     const taken = new Uint8Array(W * H);
@@ -44,9 +92,6 @@ function placeGapRects(grid, W, H) {
 
     const minSize = Math.max(2, params.gapRectMinSize | 0);
     const maxSize = Math.max(minSize, params.gapRectMaxSize | 0);
-    // gapRectCount is an upper bound. We otherwise keep dropping rects until a
-    // long run of misses shows the free space is essentially full -- this packs
-    // the board densely instead of quitting early when random seeds get unlucky.
     const cap = Math.max(0, params.gapRectCount | 0);
     const fullAfterMisses = 800;
 
@@ -60,18 +105,13 @@ function placeGapRects(grid, W, H) {
         const rect = growRect(sx, sy, taken, idx, W, H, maxSize);
         if (rect.w < minSize || rect.h < minSize) { misses++; continue; }
 
-        for (let x = rect.x; x < rect.x + rect.w; x++) {
-            for (let y = rect.y; y < rect.y + rect.h; y++) taken[idx(x, y)] = 1;
-        }
+        markTaken(rect, taken, idx, W, H, RECT_MARGIN);
         rects.push(rect);
         misses = 0;
     }
     return rects;
 }
 
-// Grow a rectangle anchored at (sx, sy) as its top-left corner: extend the
-// width while the seed row stays free, then extend the height while every
-// column in that width stays free. Bounded by maxSize and the board edge.
 function growRect(sx, sy, taken, idx, W, H, maxSize) {
     let w = 0;
     while (w < maxSize && sx + w < W - 1 && !taken[idx(sx + w, sy)]) w++;
@@ -86,10 +126,16 @@ function growRect(sx, sy, taken, idx, W, H, maxSize) {
     return { x: sx, y: sy, w, h };
 }
 
-// Checkerboard orientation keyed on the rect's center, so neighbours alternate
-// horizontal/vertical and the board's overall direction keeps changing. The
-// band size is roughly a typical rect, so adjacent rects usually land in
-// different bands.
+function markTaken(r, taken, idx, W, H, margin) {
+    const x0 = Math.max(0, r.x - margin);
+    const y0 = Math.max(0, r.y - margin);
+    const x1 = Math.min(W - 1, r.x + r.w + margin);
+    const y1 = Math.min(H - 1, r.y + r.h + margin);
+    for (let x = x0; x < x1; x++) {
+        for (let y = y0; y < y1; y++) taken[idx(x, y)] = 1;
+    }
+}
+
 function orientationFor(r) {
     const band = Math.max(4, Math.round((params.gapRectMinSize + params.gapRectMaxSize) / 2));
     const bx = Math.floor((r.x + r.w / 2) / band);
@@ -97,68 +143,138 @@ function orientationFor(r) {
     return ((bx + by) & 1) === 0 ? 'h' : 'v';
 }
 
-function buildBus(r, orient, grid, W, H, out) {
+// === Bus bodies ============================================================
+
+function busBodies(r, orient) {
     const step = Math.max(1, (params.busLineSpacing | 0) + 1);
     const inset = 1;
-    const tail = params.connectBuses ? Math.max(0, params.busTailLength | 0) : 0;
-
+    const out = [];
     if (orient === 'h') {
         const x0 = r.x + inset;
         const x1 = r.x + r.w - 1 - inset;
-        if (x1 - x0 < 2) return;
+        if (x1 - x0 < 1) return out;
         for (let y = r.y + inset; y <= r.y + r.h - 1 - inset; y += step) {
-            out.push(makeBusLine(lineH(x0, x1, y, tail, grid, W, H), grid, W, H));
+            out.push({ x0, y0: y, x1, y1: y });
         }
     } else {
         const y0 = r.y + inset;
         const y1 = r.y + r.h - 1 - inset;
-        if (y1 - y0 < 2) return;
+        if (y1 - y0 < 1) return out;
         for (let x = r.x + inset; x <= r.x + r.w - 1 - inset; x += step) {
-            out.push(makeBusLine(lineV(x, y0, y1, tail, grid, W, H), grid, W, H));
+            out.push({ x0: x, y0, x1: x, y1 });
+        }
+    }
+    return out;
+}
+
+function stampLine(b, grid, rectId, lineId) {
+    const cells = [];
+    const dx = Math.sign(b.x1 - b.x0);
+    const dy = Math.sign(b.y1 - b.y0);
+    let x = b.x0;
+    let y = b.y0;
+    while (true) {
+        const c = grid[x][y];
+        c.available = false;
+        c.busRect = rectId;
+        c.busLine = lineId;
+        cells.push(c);
+        if (x === b.x1 && y === b.y1) break;
+        x += dx;
+        y += dy;
+    }
+    return cells;
+}
+
+function stampLineClipped(b, grid, rectId, lineId) {
+    const cells = [];
+    const dx = Math.sign(b.x1 - b.x0);
+    const dy = Math.sign(b.y1 - b.y0);
+    let x = b.x0;
+    let y = b.y0;
+    while (true) {
+        const c = grid[x][y];
+        if (c.available) {
+            c.available = false;
+            c.busRect = rectId;
+            c.busLine = lineId;
+            cells.push(c);
+        }
+        if (x === b.x1 && y === b.y1) break;
+        x += dx;
+        y += dy;
+    }
+    return cells;
+}
+
+// === Connecting buses with slants ==========================================
+
+function connectBuses(lines, lineRect, grid, W, H, wires) {
+    const net = buildNet(grid, W, H);
+    const reach = Math.max(6, (params.busTailLength | 0) * 3);
+
+    for (const L of lines) {
+        for (const sameGapOk of [false, true]) {
+            let connected = false;
+            for (const end of L.ends) {
+                const goal = goalCells(net, lineRect, L, sameGapOk);
+                if (!goal.size) continue;
+                const path = aStar(end, goal, grid, W, H);
+                if (!path || path.length < 2 || path.length > reach) continue;
+                sanitizePathRightAngles(path, grid, W, H);
+                commitSlant(path, grid, W, H, net);
+                wires.push(makeBusWire(path, grid, W, H));
+                connected = true;
+            }
+            if (connected) break;
         }
     }
 }
 
-// Horizontal line from x0 to x1 at row y, with up-left and down-right 45 degree
-// tails. Both tails shear the same way so all lines in the bus stay parallel.
-function lineH(x0, x1, y, tail, grid, W, H) {
-    const a = diagTail(x0, y, -1, -1, tail, grid, W, H);
-    const b = diagTail(x1, y, 1, 1, tail, grid, W, H);
-    const v = [];
-    if (a.x !== x0 || a.y !== y) v.push(a);
-    v.push({ x: x0, y }, { x: x1, y });
-    if (b.x !== x1 || b.y !== y) v.push(b);
-    return v;
-}
-
-function lineV(x, y0, y1, tail, grid, W, H) {
-    const a = diagTail(x, y0, -1, -1, tail, grid, W, H);
-    const b = diagTail(x, y1, 1, 1, tail, grid, W, H);
-    const v = [];
-    if (a.x !== x || a.y !== y0) v.push(a);
-    v.push({ x, y: y0 }, { x, y: y1 });
-    if (b.x !== x || b.y !== y1) v.push(b);
-    return v;
-}
-
-// Walk diagonally from (fromX, fromY) up to `len` cells, stopping at the board
-// edge or the first obstacle so a tail never cuts through a chip. Returns the
-// farthest cell reached (equal to the start if blocked immediately).
-function diagTail(fromX, fromY, dirX, dirY, len, grid, W, H) {
-    let x = fromX;
-    let y = fromY;
-    for (let i = 0; i < len; i++) {
-        const nx = x + dirX;
-        const ny = y + dirY;
-        if (nx < 1 || nx > W - 2 || ny < 1 || ny > H - 2) break;
-        if (!grid[nx][ny].available) break;
-        x = nx;
-        y = ny;
+function buildNet(grid, W, H) {
+    const net = new Map();
+    for (let x = 0; x < W; x++) {
+        for (let y = 0; y < H; y++) {
+            const c = grid[x][y];
+            if (c.busLine === undefined) continue;
+            addNeighbours(c, c.busLine, grid, W, H, net);
+        }
     }
-    return { x, y };
+    return net;
 }
 
-function makeBusLine(vertices, grid, W, H) {
+function addNeighbours(cell, lineId, grid, W, H, net) {
+    for (let i = 0; i < 8; i++) {
+        const nx = cell.x + DIRS[i][0];
+        const ny = cell.y + DIRS[i][1];
+        if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
+        const n = grid[nx][ny];
+        if (!n.available) continue;
+        let s = net.get(n);
+        if (!s) { s = new Set(); net.set(n, s); }
+        s.add(lineId);
+    }
+}
+
+function goalCells(net, lineRect, L, sameGapOk) {
+    const goal = new Set();
+    for (const [cell, ids] of net) {
+        for (const lid of ids) {
+            if (lid === L.id) continue;
+            if (!sameGapOk && lineRect[lid] === L.rectId) continue;
+            goal.add(cell);
+            break;
+        }
+    }
+    return goal;
+}
+
+function commitSlant(path, grid, W, H, net) {
+    for (const c of path) c.available = false;
+    for (const c of path) addNeighbours(c, -1, grid, W, H, net);
+}
+
+function makeBusWire(vertices, grid, W, H) {
     const wire = new Wire(vertices[0], grid, W, H);
     wire.cells = vertices;
     wire.isBus = true;

@@ -84,7 +84,11 @@ export function generateObstacles(gridWidth, gridHeight) {
 
     const baseSize = Math.max(1, params.obstacleSize | 0);
     const sizeRand = clamp01(params.obstacleSizeRandomness ?? 0);
-    const { minDim, maxDim } = obstacleSizeRange(baseSize, sizeRand);
+    const blockRange = obstacleSizeRange(baseSize, sizeRand);
+    const qfpBase = Math.max(2, params.qfpSize | 0);
+    const qfpRand = clamp01(params.qfpSizeRandomness ?? 0);
+    const qfpRange = obstacleSizeRange(qfpBase, qfpRand);
+    const maxDim = Math.max(blockRange.maxDim, qfpRange.maxDim);
     const buffer = Math.max(0, params.obstacleKeepOut | 0);
     const randomness = clamp01(params.obstacleSpacingRandomness ?? 1);
     const edgePad = 2;
@@ -217,6 +221,12 @@ function obstacleSizeRange(baseSize, sizeRand) {
     };
 }
 
+function qfpSquareSide(baseSize, sizeRand) {
+    const { minDim, maxDim } = obstacleSizeRange(baseSize, sizeRand);
+    if (minDim === maxDim) return baseSize;
+    return minDim + rndInt(maxDim - minDim + 1);
+}
+
 function randomObstacleDimensions(baseSize, sizeRand) {
     const { minDim, maxDim } = obstacleSizeRange(baseSize, sizeRand);
     if (minDim === maxDim) return { w: baseSize, h: baseSize };
@@ -230,8 +240,15 @@ function randomObstacleDimensions(baseSize, sizeRand) {
 // pin-seed list, and drawing branch all see the same answer.
 function makeObstacle(x, y, baseSize, sizeRand) {
     const qfp = params.qfpStyle && rnd() < clamp01(params.qfpFraction ?? 0);
+    if (qfp) {
+        const side = qfpSquareSide(
+            Math.max(2, params.qfpSize | 0),
+            clamp01(params.qfpSizeRandomness ?? 0),
+        );
+        return { x, y, w: side, h: side, qfp: true };
+    }
     const { w, h } = randomObstacleDimensions(baseSize, sizeRand);
-    return { x, y, w, h, qfp };
+    return { x, y, w, h, qfp: false };
 }
 
 // Corner resize: drag a handle to change w/h (and x/y for nw/ne/sw as needed).
@@ -265,6 +282,27 @@ export function resizeObstacle(o, corner, gx, gy) {
         o.x = newX;
         o.w = right - newX;
         o.h = clamp(gy - o.y + 1, minSize, maxGy - o.y + 1);
+    }
+
+    if (o.qfp) {
+        const side = Math.max(minSize, Math.min(o.w, o.h));
+        if (corner === 'se') {
+            o.w = side;
+            o.h = side;
+        } else if (corner === 'nw') {
+            o.x = right - side;
+            o.y = bottom - side;
+            o.w = side;
+            o.h = side;
+        } else if (corner === 'ne') {
+            o.y = bottom - side;
+            o.w = side;
+            o.h = side;
+        } else if (corner === 'sw') {
+            o.x = right - side;
+            o.w = side;
+            o.h = side;
+        }
     }
 }
 

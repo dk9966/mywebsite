@@ -5,29 +5,41 @@
 // algorithm walks, so it naturally routes around them without any special path
 // logic.
 
-import { setSeed, rndInt } from './rng.js';
-import { params, rgbaToHex, hexToRgba } from './params.js';
-import { initFlowGrid, resetFlowGrid } from './flowGrid.js';
-import { Cell, Wire, joinAdjacentWires, carveLead } from './wire.js';
-import {
-    generateObstacles, applyObstaclesToGrid, getQFPPinSeeds, setObstacleGridDimensions,
-    clampObstaclesToGrid,
-} from './obstacles.js';
-import { aStar, pickEdgeCell, pickOppositeEdgeCell } from './pathfind.js';
 import { generateBuses } from './bus.js';
-import { initSnapshots } from './snapshots.js';
 import {
-    initCanvas, getCanvas, setWires, setGapRects, setGridDimensions, redraw, resize,
+    getCanvas,
+    getCtx,
+    initCanvas,
+    redraw, resize, resizeLayout,
+    setGapRects, setGridDimensions,
+    setWires,
 } from './canvas.js';
+import { initFlowGrid, resetFlowGrid } from './flowGrid.js';
 import {
     handleMouseDown, handleMouseMove, handleMouseUp,
-    setRecreateCallback, setRerouteWiresCallback, setGridDimensionsForMouse,
+    setGridDimensionsForMouse,
+    setRecreateCallback, setRerouteWiresCallback,
 } from './mouse.js';
+import {
+    applyObstaclesToGrid,
+    clampObstaclesToGrid,
+    generateObstacles,
+    getQFPPinSeeds, setObstacleGridDimensions,
+} from './obstacles.js';
+import { hexToRgba, params, rgbaToHex } from './params.js';
+import { generatePinBusesAsync } from './pinBuses.js';
+import { rndInt, setSeed } from './rng.js';
+import { initSnapshots } from './snapshots.js';
+import { Cell, Wire, carveLead, joinAdjacentWires } from './wire.js';
 
 let grid = [];
 let wires = [];
 let gridWidth = 0;
 let gridHeight = 0;
+let rebuildToken = 0;
+let debounceTimer = null;
+
+const REBUILD_DEBOUNCE_MS = 200;
 
 // How many cells each QFP pin runs straight out from the chip before its trace
 // is free to wander. A short perpendicular lead reads as a real pin (the
@@ -48,9 +60,11 @@ function setControllerVisible(controller, visible) {
 // obstacles are placed from scratch using the seed. When false, the current
 // obstacles array is kept verbatim (e.g. after the user dragged a corner) and
 // only the wires are re-routed around them.
-function rebuildBoard({ regenerateObstacles }) {
+async function rebuildBoard({ regenerateObstacles, token }) {
     setSeed(params.seed);
+    resize();
     const canvas = getCanvas();
+    const ctx = getCtx();
 
     const prevWidth = gridWidth;
     const prevHeight = gridHeight;
@@ -67,30 +81,41 @@ function rebuildBoard({ regenerateObstacles }) {
     initFlowGrid(gridWidth, gridHeight);
     if (prevWidth !== gridWidth || prevHeight !== gridHeight) resetFlowGrid();
 
-    setGridDimensions(gridWidth, gridHeight);
-    setGridDimensionsForMouse(gridWidth, gridHeight);
     setObstacleGridDimensions(gridWidth, gridHeight);
 
     if (regenerateObstacles) {
         generateObstacles(gridWidth, gridHeight);
     }
-    // Always clamp before applying: a no-op for freshly-generated obstacles,
-    // but the safety net that lets snapshot-loaded obstacles survive a
-    // cellSize / viewport change.
     clampObstaclesToGrid(gridWidth, gridHeight);
     applyObstaclesToGrid(grid, gridWidth, gridHeight);
 
-    // Bus mode replaces the random-walk fill, trunk lines, and QFP pin wires
-    // wholesale: obstacles still define the gaps, and buses fill them.
+    function commit() {
+        if (token !== rebuildToken) return false;
+        setGridDimensions(gridWidth, gridHeight);
+        setGridDimensionsForMouse(gridWidth, gridHeight);
+        return true;
+    }
+
     if (params.busMode) {
         const { rects, wires: busWires } = generateBuses(grid, gridWidth, gridHeight);
+        if (!commit()) return;
         wires = busWires;
         setGapRects(rects);
         setWires(wires);
         redraw();
         return;
     }
-    setGapRects([]);
+
+    if (params.showBuses) {
+        ctx.fillStyle = params.bgColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        wires = await generatePinBusesAsync(grid, gridWidth, gridHeight);
+        if (!commit()) return;
+        setGapRects([]);
+        setWires(wires);
+        redraw();
+        return;
+    }
 
     const available = [];
     for (let x = 0; x < gridWidth; x++) {
@@ -144,32 +169,6 @@ function rebuildBoard({ regenerateObstacles }) {
         }
     }
 
-    // Pathfinding "trunk" lines run BEFORE the fill so the random walker
-    // routes around them rather than the other way around. Each trunk grabs a
-    // free edge cell, finds a free cell on (preferably) the opposite edge, and
-    // A*'s a path between them through whatever cells remain. Failed attempts
-    // (no available edge cell, no reachable destination) are skipped quietly.
-    const trunkCount = Math.max(0, params.trunkWireCount | 0);
-    for (let t = 0; t < trunkCount; t++) {
-        const startInfo = pickEdgeCell(grid, gridWidth, gridHeight);
-        if (!startInfo) break;
-        const end = pickOppositeEdgeCell(startInfo.side, grid, gridWidth, gridHeight);
-        if (!end) break;
-        const path = aStar(startInfo.cell, end, grid, gridWidth, gridHeight);
-        if (!path || path.length < 2) continue;
-
-        const wire = new Wire(path[0], grid, gridWidth, gridHeight);
-        wire.cells = path;
-        wire.isTrunk = true;
-        for (const c of path) {
-            c.available = false;
-            c.heading = -1;
-            const pos = available.indexOf(c);
-            if (pos !== -1) available.splice(pos, 1);
-        }
-        wires.push(wire);
-    }
-
     // When prioritizeLongWires is on, wires whose final length wouldn't even
     // clear cutOffLength get rolled back (their cells are released) so the
     // algorithm can try again in a different spot. We cap consecutive failures
@@ -207,19 +206,42 @@ function rebuildBoard({ regenerateObstacles }) {
 
     if (params.joinEndpoints) joinAdjacentWires(wires);
 
+    if (!commit()) return;
     setWires(wires);
     redraw();
 }
 
+function scheduleRebuild(regenerateObstacles, immediate = false) {
+    rebuildToken++;
+    const token = rebuildToken;
+    clearTimeout(debounceTimer);
+
+    const run = () => { rebuildBoard({ regenerateObstacles, token }); };
+
+    if (immediate) {
+        run();
+    } else {
+        debounceTimer = setTimeout(run, REBUILD_DEBOUNCE_MS);
+    }
+}
+
 function recreate() {
-    rebuildBoard({ regenerateObstacles: true });
+    scheduleRebuild(true);
+}
+
+function recreateImmediate() {
+    scheduleRebuild(true, true);
 }
 
 // Keep the user-edited obstacles, re-route wires only. Called when the user
 // drags an obstacle corner -- preserves their resize instead of snapping the
 // box back to its seeded shape.
 function rerouteWires() {
-    rebuildBoard({ regenerateObstacles: false });
+    scheduleRebuild(false);
+}
+
+function rerouteWiresImmediate() {
+    scheduleRebuild(false, true);
 }
 
 function setup() {
@@ -227,7 +249,7 @@ function setup() {
     const canvas = getCanvas();
 
     params.clearFlowGrid = () => { resetFlowGrid(); redraw(); };
-    params.regenerate = () => { recreate(); };
+    params.regenerate = () => { recreateImmediate(); };
     params.savePNG = () => {
         const link = document.createElement('a');
         link.download = `circuit_${params.seed}_${Date.now()}.png`;
@@ -248,14 +270,24 @@ function setup() {
         .onChange(() => { syncCircuitModeUI(); recreate(); });
 
     const busControls = [
-        flow.add(params, 'showGapRects').name('Show Gap Rects').onChange(redraw),
-        flow.add(params, 'gapRectCount', 1, 600, 1).name('Gap Rect Count').onChange(recreate),
-        flow.add(params, 'gapRectMinSize', 2, 40, 1).name('Gap Rect Min').onChange(recreate),
-        flow.add(params, 'gapRectMaxSize', 4, 80, 1).name('Gap Rect Max').onChange(recreate),
-        flow.add(params, 'busLineSpacing', 0, 12, 1).name('Line Gap').onChange(recreate),
+        flow.add(params, 'busSpineMode', ['gapRects', 'centerline']).name('Bus Spine')
+            .onChange(() => { syncBusSpineUI(); recreate(); }),
+        flow.add(params, 'gapRectMinSize', 2, 40, 1).name('Gap Min Size').onChange(recreate),
+        flow.add(params, 'gapRectMaxSize', 4, 80, 1).name('Gap Max Size').onChange(recreate),
+        flow.add(params, 'gapRectCount', 1, 600, 1).name('Max Gaps').onChange(recreate),
+        flow.add(params, 'centerlineMinLength', 1, 20, 1).name('Min Corridor Len').onChange(recreate),
+        flow.add(params, 'centerlineSimplify', 0, 2, 0.05).name('Corridor Simplify').onChange(recreate),
+        flow.add(params, 'corridorJunctionInset', 0, 8, 1).name('Junction Inset').onChange(recreate),
+        flow.add(params, 'corridorMaxLines', 1, 40, 1).name('Max Lines / Corridor').onChange(recreate),
+        flow.add(params, 'busLineSpacing', 0, 12, 1).name('Line Spacing').onChange(recreate),
         flow.add(params, 'connectBuses').name('Connect Buses').onChange(recreate),
-        flow.add(params, 'busTailLength', 0, 14, 1).name('Slant Length').onChange(recreate),
+        flow.add(params, 'busTailLength', 0, 20, 1).name('Slant Length').onChange(recreate),
+        flow.add(params, 'showGapRects').name('Show Gaps').onChange(redraw),
     ];
+
+    const gapRectControls = busControls.slice(1, 4);
+    const centerlineControls = busControls.slice(4, 8);
+    const sharedBusControls = busControls.slice(8);
 
     const flowControls = [
         flow.add(params, 'paintFlow').name('Enable Painting'),
@@ -269,28 +301,43 @@ function setup() {
         flow.add(params, 'clearFlowGrid').name('Clear Flow Grid'),
     ];
 
+    function syncBusSpineUI() {
+        const centerline = params.busSpineMode === 'centerline';
+        for (const c of gapRectControls) setControllerVisible(c, !centerline);
+        for (const c of centerlineControls) setControllerVisible(c, centerline);
+    }
+
     function syncCircuitModeUI() {
         for (const c of busControls) setControllerVisible(c, params.busMode);
         for (const c of flowControls) setControllerVisible(c, !params.busMode);
+        if (params.busMode) syncBusSpineUI();
     }
     syncCircuitModeUI();
-    flow.open();
+    flow.domElement.style.display = 'none';
 
     // Ranges widened from the original on cellSize / wireLength / cutOffLength
     // / straightness per request: smaller cells + longer, straighter wires +
     // looser cutoff.
     gui.add(params, 'cellSize', 2, 80, 1).onChange(recreate);
+    gui.add(params, 'mapWidth', 500, 2000, 10).name('Map Width')
+        .onChange(() => { resizeLayout(); recreate(); });
+    gui.add(params, 'mapHeight', 50, 1200, 10).name('Map Height')
+        .onChange(() => { resizeLayout(); recreate(); });
     gui.add(params, 'wireLength', 1, 500, 1).onChange(recreate);
     gui.add(params, 'cutOffLength', 0, 50, 1).onChange(recreate);
     gui.add(params, 'prioritizeLongWires').name('Prioritize Long Wires').onChange(recreate);
-    gui.add(params, 'trunkWireCount', 0, 20, 1).name('Trunk Lines').onChange(recreate);
-    gui.add(params, 'trunksOnly').name('Trunks Only').onChange(redraw);
     gui.add(params, 'joinEndpoints').name('Join Trace Ends').onChange(recreate);
     gui.add(params, 'straightness', 0.01, 50, 0.01).onChange(recreate);
     gui.add(params, 'diagonalChance', 0, 1, 0.01).name('Diagonal Chance').onChange(recreate);
     gui.add(params, 'turnSmoothness', 0, 1, 0.01).name('Turn Smoothness').onChange(recreate);
     gui.add(params, 'directionality', -1, 1, 0.01).name('Directionality').onChange(recreate);
     gui.add(params, 'collectiveness', 0, 1, 0.01).name('Collectiveness').onChange(recreate);
+    gui.add(params, 'showBuses').name('Show Buses').onChange(recreate);
+    gui.add(params, 'pinBusSlantLength', 1, 30, 1).name('Slant Length').onChange(recreate);
+    gui.add(params, 'pinBusStraightMax', 2, 60, 1).name('Straight Max').onChange(recreate);
+    gui.add(params, 'pinBusWireCount', 1, 16, 1).name('Bus Wires').onChange(recreate);
+    gui.add(params, 'showCircuits').name('Show Circuits').onChange(redraw);
+    gui.add(params, 'editWires').name('Edit Wires (drag joints)').onChange(redraw);
     gui.add(params, 'showGrid').name('Show Grid').onChange(redraw);
     gui.add(params, 'seed', 0, 10000, 1).name('Seed').onChange(recreate);
 
@@ -307,14 +354,15 @@ function setup() {
         .name('Spacing Randomness').onChange(recreate);
     obstaclesFolder.add(params, 'qfpStyle').name('QFP Style').onChange(recreate);
     obstaclesFolder.add(params, 'qfpFraction', 0, 1, 0.01).name('QFP Fraction').onChange(recreate);
+    obstaclesFolder.add(params, 'qfpSize', 2, 40, 1).name('QFP Size (cells)').onChange(recreate);
+    obstaclesFolder.add(params, 'qfpSizeRandomness', 0, 1, 0.01)
+        .name('QFP Size Randomness').onChange(recreate);
     obstaclesFolder.add(params, 'qfpPinSpacing', 1, 8, 1).name('QFP Pin Spacing').onChange(recreate);
     obstaclesFolder.open();
 
     initSnapshots({
         gui,
-        // After load: params + obstacles already mutated; rerouteWires keeps
-        // those obstacles and rebuilds the grid + wires around them.
-        onLoad: rerouteWires,
+        onLoad: rerouteWiresImmediate,
     });
 
     Object.defineProperty(params, 'bgColorHex', {
@@ -329,14 +377,32 @@ function setup() {
     gui.addColor(params, 'fgColorHex').name('Foreground Color');
     gui.add(params, 'savePNG').name('Save PNG');
 
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'h' && e.key !== 'H') return;
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        if (e.target.closest('input, textarea, select')) return;
+        e.preventDefault();
+        const hidden = gui.domElement.style.display === 'none';
+        gui.domElement.style.display = hidden ? '' : 'none';
+        const snapshots = document.getElementById('snapshots-panel');
+        if (snapshots) snapshots.style.display = hidden ? '' : 'none';
+    });
+
     canvas.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
     canvas.addEventListener('mouseleave', handleMouseUp);
 
-    window.addEventListener('resize', () => { resize(); recreate(); });
+    window.addEventListener('resize', () => { resize(); redraw(); });
 
-    recreate();
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            resize();
+            redraw();
+        }
+    });
+
+    recreateImmediate();
 }
 
 if (document.readyState === 'loading') {

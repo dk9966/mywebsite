@@ -4,7 +4,9 @@
 import { params } from './params.js';
 import { drawFlowOverlay } from './flowGrid.js';
 import { drawObstacles, drawObstacleHandles } from './obstacles.js';
+import { drawWireHandles } from './wireEdit.js';
 
+let stage = null;
 let canvas = null;
 let ctx = null;
 let wires = [];
@@ -17,24 +19,67 @@ export function getCtx() { return ctx; }
 export function setWires(next) { wires = next; }
 export function setGapRects(next) { gapRects = next || []; }
 export function setGridDimensions(w, h) { gridWidth = w; gridHeight = h; }
+export function getGridDimensions() { return { w: gridWidth, h: gridHeight }; }
+
+// Single source of truth for "is this wire on screen right now" -- shared by
+// the draw loop and the wire editor so handles only appear on visible traces.
+function isWireVisible(w) {
+    if (!params.showCircuits) return false;
+    if (w.isRoute) return true;
+    return !!(w.isBus || w.isQFPPin || w.cells.length > params.cutOffLength);
+}
+
+export function getVisibleWires() { return wires.filter(isWireVisible); }
 
 export function initCanvas() {
+    stage = document.createElement('div');
+    stage.className = 'map-stage';
+
     canvas = document.createElement('canvas');
     canvas.style.display = 'block';
-    canvas.style.position = 'fixed';
-    canvas.style.top = '0';
-    canvas.style.left = '0';
+    canvas.style.position = 'absolute';
     canvas.style.zIndex = '0';
-    document.body.appendChild(canvas);
+    stage.appendChild(canvas);
+    document.body.appendChild(stage);
 
     ctx = canvas.getContext('2d');
     resize();
 }
 
+function mapDimensions() {
+    return {
+        w: Math.min(2000, Math.max(500, params.mapWidth | 0)),
+        h: Math.min(1200, Math.max(50, params.mapHeight | 0)),
+    };
+}
+
+// CSS/stage layout only — does not touch canvas.width/height, so the backing
+// buffer (and current frame) stay intact while a debounced rebuild is pending.
+export function resizeLayout() {
+    const { w, h } = mapDimensions();
+    canvas.style.width = `${w}px`;
+    canvas.style.height = `${h}px`;
+
+    const stageW = Math.max(window.innerWidth, w);
+    const stageH = Math.max(window.innerHeight, h);
+    stage.style.width = `${stageW}px`;
+    stage.style.height = `${stageH}px`;
+    canvas.style.left = `${(stageW - w) / 2}px`;
+    canvas.style.top = `${(stageH - h) / 2}px`;
+}
+
 export function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    return { width: canvas.width, height: canvas.height };
+    const { w, h } = mapDimensions();
+    // Reassigning width/height clears the backing buffer even when the value
+    // is unchanged -- skip if we already match so incidental resize events
+    // (tab switch, mobile URL bar) don't wipe the frame.
+    if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w;
+        canvas.height = h;
+    }
+    resizeLayout();
+
+    return { width: w, height: h };
 }
 
 export function draw() {
@@ -48,17 +93,14 @@ export function draw() {
     drawObstacleHandles(canvas, ctx);
     drawGapRects();
 
-    for (const w of wires) {
-        // Bus lines ignore trunksOnly / cutOffLength -- those gate the
-        // random-walk fill, which bus mode replaces.
-        if (!w.isBus && params.trunksOnly && !w.isTrunk) continue;
-        // QFP pin stubs always render even if shorter than cutOffLength --
-        // an invisible pin would look like a broken chip.
-        if (w.isBus || w.isQFPPin || w.cells.length > params.cutOffLength) w.render(canvas, ctx);
-    }
+    // QFP pin stubs always render even if shorter than cutOffLength -- an
+    // invisible pin would look like a broken chip (see isWireVisible).
+    for (const w of getVisibleWires()) w.render(canvas, ctx);
 
     drawFlowOverlay(canvas, ctx, params);
     drawGridOverlay();
+
+    if (params.editWires) drawWireHandles(ctx);
 }
 
 export function redraw() {
@@ -66,7 +108,7 @@ export function redraw() {
 }
 
 function drawGapRects() {
-    if (!params.busMode || !params.showGapRects || !gapRects.length) return;
+    if (!params.showGapRects || !gapRects.length) return;
     const sx = (1 + canvas.width / params.cellSize) / gridWidth;
     const sy = (1 + canvas.height / params.cellSize) / gridHeight;
     const cw = params.cellSize * sx;

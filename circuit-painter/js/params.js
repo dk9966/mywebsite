@@ -20,21 +20,25 @@ export function hexToRgba(hex, alpha = 1) {
 }
 
 export const params = {
+    // Canvas size in pixels (routing grid is derived from this / cellSize).
+    mapWidth: 1600,
+    mapHeight: 810,
+
     // Routing
-    cellSize: 7,
+    cellSize: 9,
     wireLength: 40,
     cutOffLength: 1,
     straightness: 15,
-    // Probability that a diagonal step is allowed. 1 = original behavior;
-    // 0 = Manhattan routing (no slants). Anything in between probabilistically
-    // suppresses long slants while keeping the look organic.
-    diagonalChance: 1,
-    // How hard to soften corners. 0 = original behavior (sharp 90 degree turns
-    // allowed). 1 = no right angles anywhere -- every would-be 90 degree corner
-    // is replaced by a 45 degree bend (random-walk wires) or routed around with
-    // a diagonal staircase (A* trunk lines). Values in between veto right angles
-    // probabilistically.
-    turnSmoothness: 0,
+    // Diagonal preference, shared by both modes. In the random walker it's the
+    // probability a diagonal step is allowed. In the router it sets the diagonal
+    // step cost: 1 = cheap diagonals (long 45 degree runs, diagonal grain);
+    // lower = costlier diagonals, so routes stay rectilinear (H/V) with 45
+    // degree chamfers at corners. Default tuned so slants are present but not
+    // dominant -- rectilinear runs with noticeable 45 degree diagonal stretches.
+    diagonalChance: 0.5,
+    // Legacy shaped-route cost scaler. Corners ≤ 90° are always forbidden in
+    // routing and chamfered on finished paths; only ±45° heading changes remain.
+    turnSmoothness: 1,
     // Probability per step of picking the modifier whose target direction
     // matches the most neighbor wire headings. 0 = each wire is independent
     // (original); 1 = wires aggressively run parallel to neighbors (buses).
@@ -44,43 +48,49 @@ export const params = {
     // to grow a long wire in that region. Pure quality-of-life for high
     // wireLength / cutOffLength combos; off by default to preserve behavior.
     prioritizeLongWires: false,
-    // Number of A* "trunk" lines laid before the random-walk fill. Each goes
-    // from a random edge cell to (preferably) the opposite edge, routing
-    // around everything that's already on the board. Endpoints sit on the
-    // canvas border so the wire renders without end pads -- the trace reads
-    // as running off the edge of the board, not terminating at a via.
-    // This is the only reliable way to get a wire that visibly spans the
-    // whole canvas; pushing wireLength alone can't guarantee it because the
-    // random walker has no backtracking.
-    trunkWireCount: 8,
-    // When true, hide fill / pin wires and draw only A* trunk lines. Display
-    // only -- routing is unchanged.
-    trunksOnly: false,
     // Post-process that fuses any two random-walk wires whose endpoints are
     // cardinally adjacent. After joining, the former join point is just an
     // interior bend (no end pad), so chains read as one continuous trace.
-    // QFP pin wires and trunks are excluded -- their endpoint semantics are
-    // load-bearing.
+    // QFP pin wires are excluded -- their endpoint semantics are load-bearing.
     joinEndpoints: false,
     // Global directional bias. -1 = strongly vertical, 0 = none, +1 = strongly
     // horizontal. Diagonals are treated as neutral. Implemented as another
-    // probabilistic layer in pickModifierIndex; requires the expanded modifier
-    // set so the wire can pivot 90 degrees onto the preferred axis.
+    // probabilistic layer in pickModifierIndex.
     directionality: 0,
     showGrid: false,
+    showCircuits: true,
+    // Manual wire editing. When on, every trace shows draggable joint handles:
+    // drag a joint to move it, click a corner (or the trace body near one) to
+    // bevel it into a 45 degree slant. Edits live on each wire's `points`
+    // override and are discarded on the next full rebuild (any slider change).
+    editWires: false,
+    // Pin buses: straight / slant traces from QFP pins. When on, replaces the
+    // greedy random-walk fill. Roughly half the pins link to another chip's pin;
+    // the rest wander out and stop.
+    showBuses: true,
+    // Minimum cells per straight or 45° run on pin-bus routes before the next bend
+    // (hard constraint in A*; raising this lengthens visible slants and straights).
+    pinBusSlantLength: 10,
+    // Length a straight run may reach before the router is forced to bend 45°,
+    // so a trace can't arrow straight forever: it slants off, runs straight,
+    // then slants back.
+    pinBusStraightMax: 18,
+    // How many parallel wires the bus carries. If the facing chip edge has fewer
+    // pins than this, the nearest pins around the chip's corner are pulled in to
+    // make up the count.
+    pinBusWireCount: 7,
     seed: 1,
 
     bgColor: 'rgba(51, 5, 51, 1)',
     fgColor: 'rgba(163, 204, 194, 1)',
 
-    // Bus mode. The default look: instead of the random-walk fill, the free
-    // space between obstacles is carved into large rectangles ("gap rects"),
-    // each packed with a bus of parallel traces. Trace ends bend at 45 degrees
-    // (never 90) so adjacent buses -- which alternate orientation in a
-    // checkerboard -- can reach across the gap and link up. Turning this off
-    // restores the original flow-field / random-walk behavior.
-    busMode: true,
-    // Draw the gap-rect outlines as a guide. Off just shows the buses.
+    // Bus mode. The default look: the free space between chips is carved into
+    // rectangular gaps, each gap is packed with parallel straight traces (a
+    // bus), and the buses are linked across gaps by 45 degree slants running off
+    // each line's ends. Turning this off restores the flow-field / random-walk
+    // painting behavior.
+    busMode: false,
+    // Draw the gap-rect outlines as a faint guide. Off just shows the buses.
     showGapRects: false,
     // Upper bound on gap rects. Placement otherwise packs until the free space
     // is full, so this mostly acts as a ceiling.
@@ -92,14 +102,24 @@ export const params = {
     // chunkier buses.
     gapRectMaxSize: 28,
     // Cells of empty space between adjacent bus lines. 0 packs them tight.
-    busLineSpacing: 4,
-    // When on, each line's 45 degree tail runs out past the rect edge into the
-    // gap toward the neighbor bus, so buses visibly link. Off keeps tails
-    // inside their rect.
+    busLineSpacing: 1,
+    // When on, each line's ends are routed to the nearest other bus with a 45
+    // degree slant, so adjacent buses visibly link into one network. Off leaves
+    // the buses as isolated parallel-line blocks.
     connectBuses: true,
-    // Max length (cells) of the 45 degree tail on each end of a bus line. The
-    // tail stops early at any obstacle or board edge.
+    // How far (roughly, in cells) a connecting slant may reach for the bus it
+    // links to. Higher = slants can bridge wider channels; lower = only the
+    // closest buses link.
     busTailLength: 5,
+    // How buses are placed in free space: random gap rects, or centerline spine.
+    busSpineMode: 'gapRects',
+    // Centerline / corridor extraction (shared with circuit-painter-2).
+    centerlineMinLength: 3,
+    centerlineSimplify: 0.35,
+    // Cells trimmed from corridor ends near junctions when packing centerline buses.
+    corridorJunctionInset: 2,
+    // Cap parallel lines per corridor (like gapRectMaxSize for width).
+    corridorMaxLines: 28,
 
     // Flow-field painting
     paintFlow: false,
@@ -115,7 +135,7 @@ export const params = {
     // Obstacles ("meshes" the wires must avoid). The keep-out buffer is what
     // guarantees a visible gap so wires never touch a mesh edge.
     obstaclesEnabled: true,
-    obstacleCount: 90,
+    obstacleCount: 14,
     obstacleSize: 14,
     // 0 = every obstacle uses obstacleSize exactly; 1 = w/h vary independently
     // by up to +/- obstacleSize around the base (clamped to min 2 cells).
@@ -140,6 +160,8 @@ export const params = {
     // path are decided once and respected everywhere.
     qfpStyle: true,
     qfpFraction: 0.45,
+    qfpSize: 14,
+    qfpSizeRandomness: 0.25,
     qfpPinSpacing: 2,
 
     regenerate() {},
