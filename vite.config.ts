@@ -27,6 +27,7 @@ export default defineConfig({
         tronTable: path.resolve(__dirname, 'tron-table.html'),
         deskSetup: path.resolve(__dirname, 'desk-setup.html'),
         circuitPainter: path.resolve(__dirname, 'circuit-painter/index.html'),
+        circuitPainter2: path.resolve(__dirname, 'circuit-painter-2/index.html'),
       },
     },
   },
