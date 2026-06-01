@@ -6,8 +6,11 @@ import {
     hitTestCorner, resizeObstacle, pixelToGrid,
 } from './obstacles.js';
 import { getCanvas, redraw } from './canvas.js';
+import { editPointerDown, editPointerDrag, editPointerUp } from './wireEdit.js';
 
 const TWO_PI = Math.PI * 2;
+// Pointer travel (px) past which a press counts as a drag, not a click.
+const CLICK_SLOP = 3;
 
 let mouseAngle = null;
 let lastX = null;
@@ -21,6 +24,12 @@ let rerouteWiresCallback = null;
 // Obstacle corner drag state
 let resizeTarget = null; // { obstacle, corner }
 let isResizing = false;
+
+// Wire-edit drag state
+let editAction = null; // { kind: 'vertex' | 'segment', wire, ... }
+let editDownX = 0;
+let editDownY = 0;
+let editMoved = false;
 
 export function setGridDimensionsForMouse(w, h) {
     gridWidth = w;
@@ -44,6 +53,16 @@ export function handleMouseDown(e) {
 
     const pos = getMousePos(e);
     if (pos.x <= 0 || pos.x >= canvas.width || pos.y <= 0 || pos.y >= canvas.height) return;
+
+    // Wire editing owns the pointer when on: grab a joint to drag, or record a
+    // press on the trace to resolve as a click on release.
+    if (params.editWires) {
+        editAction = editPointerDown(pos.x, pos.y);
+        editDownX = pos.x;
+        editDownY = pos.y;
+        editMoved = false;
+        return;
+    }
 
     // Corner resize takes priority over flow painting when edit mode is on.
     if (params.editObstacles && params.obstaclesEnabled) {
@@ -72,6 +91,19 @@ export function handleMouseDown(e) {
 export function handleMouseMove(e) {
     const canvas = getCanvas();
     const pos = getMousePos(e);
+
+    if (params.editWires) {
+        if (!editAction) return;
+        if (!editMoved
+            && Math.hypot(pos.x - editDownX, pos.y - editDownY) > CLICK_SLOP) {
+            editMoved = true;
+        }
+        if (editMoved) {
+            editPointerDrag(editAction, pos.x, pos.y);
+            redraw();
+        }
+        return;
+    }
 
     if (isResizing && resizeTarget) {
         const { gx, gy } = pixelToGrid(pos.x, pos.y, canvas);
@@ -113,6 +145,15 @@ export function handleMouseMove(e) {
 }
 
 export function handleMouseUp() {
+    if (params.editWires) {
+        if (editAction) {
+            editPointerUp(editAction, editDownX, editDownY, editMoved);
+            editAction = null;
+            redraw();
+        }
+        return;
+    }
+
     if (isResizing) {
         isResizing = false;
         resizeTarget = null;
