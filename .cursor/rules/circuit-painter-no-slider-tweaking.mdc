@@ -1,0 +1,30 @@
+---
+description: Do not tune circuit-painter via GUI sliders during agent work
+globs: circuit-painter/**/*
+alwaysApply: false
+---
+
+# Circuit painter: no slider tweaking
+
+When working on `circuit-painter`, do **not** use the browser or dat.GUI to adjust slider parameters as a debugging or verification strategy.
+
+## Why
+
+- Almost every GUI control calls `recreate()`, which rebuilds the whole board synchronously on the main thread.
+- With `showBuses` on, each rebuild runs multiple shaped A* searches per bus wire. That is expensive and makes the page feel frozen.
+- Dragging sliders (Slant Length, Straight Max, Bus Wires, obstacle spacing, etc.) repeatedly triggers this work and wastes time without fixing routing bugs.
+
+## Do instead
+
+- Fix routing in code (`pinBuses.js`, `pathfind.js`) and verify with **one** reload or snapshot load, not slider sweeps.
+- If a parameter matters, change the default in `params.js` or pass explicit options in code — not live GUI tuning.
+- Use console timing/logs or a small headless script if you need to compare behavior across values.
+- For visual checks: load a saved snapshot once, screenshot once, move on. Do not iterate sliders in the browser to "find a good look."
+
+## Avoid during agent sessions
+
+- Filling dat.GUI fields and pressing Enter to trigger `recreate()` repeatedly
+- Trying Bus Wires / Slant Length / Straight Max combinations in the UI
+- Using browser automation to hunt for a layout that "looks right" via parameter search
+
+If the user explicitly asks to tune a specific slider value, set it once in `params.js` or make the code change directly — do not explore ranges in the GUI.
