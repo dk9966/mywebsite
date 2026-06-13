@@ -107,10 +107,36 @@ ROW_COLORS = [
 ]
 
 BOARD_T = 0.4
+# Package height above the board top (y = BOARD_T / 2). Footprint (X/Z) unchanged.
+COMPONENT_H_SCALE = 2.0
 
 def _vis(part, material):
     part.visual = trimesh.visual.TextureVisuals(material=material)
     return part
+
+
+def scale_parts_height(parts, factor: float = COMPONENT_H_SCALE) -> list:
+    """Stretch component height above the board without rescaling footprint or pins."""
+    anchor = BOARD_T / 2
+    scaled = []
+    for part in parts:
+        mesh = part.copy()
+        if hasattr(part.visual, "copy"):
+            mesh.visual = part.visual.copy()
+        verts = mesh.vertices.copy()
+        above = verts[:, 1] >= anchor - 1e-6
+        verts[above, 1] = anchor + (verts[above, 1] - anchor) * factor
+        mesh.vertices = verts
+        scaled.append(mesh)
+    return scaled
+
+
+def _wrap_row_builders(builders):
+    def wrap(builder):
+        def wrapped():
+            return scale_parts_height(builder())
+        return wrapped
+    return [wrap(builder) for builder in builders]
 
 # ============ QFP-FAMILY ============
 def make_qfp(w, d, h=0.32, pins_per_side=10, top_marking='none',
@@ -1793,7 +1819,7 @@ def make_smd_fuse(w=0.4, d=0.2, h=0.12):
     return parts
 
 # ============ ROW DEFINITIONS ============
-ROWS = [
+_RAW_ROWS = [
     ("QFP / chip ICs", [
         lambda: make_qfp(1.95, 1.95, h=0.32, pins_per_side=10, top_marking='dot'),
         lambda: make_qfp(2.00, 2.00, h=0.32, pins_per_side=12, top_marking='line'),
@@ -2001,3 +2027,5 @@ ROWS = [
         lambda: make_smd_fuse(0.85, 0.44, 0.24),
     ]),
 ]
+
+ROWS = [(name, _wrap_row_builders(builders)) for name, builders in _RAW_ROWS]
