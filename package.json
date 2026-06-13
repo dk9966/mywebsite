@@ -11,7 +11,12 @@
     "capture-site-gif": "tsx scripts/capture-site-gif.ts",
     "capture-artefakt-gif": "tsx scripts/capture-site-gif.ts --url https://artefakt.mov/ --out plans/assets/artefakt-mov-capture.gif",
     "extract-video-frames": "tsx scripts/extract-video-frames.ts",
-    "watch-clip-titles": "tsx scripts/watch-clip-titles.ts"
+    "watch-clip-titles": "tsx scripts/watch-clip-titles.ts",
+    "render-circuit-flow": "node scripts/render-circuit-flow.mjs",
+    "render-circuit-board": "node scripts/render-circuit-board.mjs",
+    "render-circuit-road": "node scripts/render-circuit-road.mjs",
+    "trace-reference-lines": "node scripts/trace-reference-lines.mjs",
+    "build-circuits-tracing": "python3 scripts/build-circuits-tracing-snapshot.py"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -37,6 +42,8 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
     "playwright": "^1.59.1",
+    "seedrandom": "^3.0.5",
+    "sharp": "^0.34.5",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.57.0",

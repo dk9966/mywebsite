@@ -1,0 +1,143 @@
+:root {
+  color: #d9fffb;
+  background: #020606;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 10%, rgb(39 240 230 / 14%), transparent 32rem),
+    radial-gradient(circle at 80% 88%, rgb(39 240 230 / 8%), transparent 28rem),
+    #020606;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.road-app {
+  display: grid;
+  grid-template-columns: minmax(18rem, 22rem) minmax(0, 1fr);
+  gap: 1rem;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.road-app__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgb(39 240 230 / 28%);
+  border-radius: 1rem;
+  background: rgb(0 14 14 / 72%);
+  box-shadow: 0 0 2rem rgb(39 240 230 / 10%);
+}
+
+.road-app__eyebrow {
+  margin: 0 0 0.35rem;
+  color: rgb(217 255 251 / 68%);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.road-app__title {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.25rem);
+  line-height: 1;
+}
+
+.road-app__field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.road-app__label {
+  color: rgb(217 255 251 / 74%);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.road-app__input {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgb(39 240 230 / 34%);
+  border-radius: 0.65rem;
+  color: #d9fffb;
+  background: rgb(0 0 0 / 42%);
+  outline: none;
+}
+
+.road-app__input:focus {
+  border-color: rgb(39 240 230 / 80%);
+  box-shadow: 0 0 0 3px rgb(39 240 230 / 14%);
+}
+
+.road-app__actions {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.road-app__button {
+  padding: 0.78rem 0.9rem;
+  border: 1px solid rgb(39 240 230 / 74%);
+  border-radius: 999px;
+  color: #00100f;
+  background: #27f0e6;
+  cursor: pointer;
+}
+
+.road-app__button:hover {
+  filter: brightness(1.08);
+}
+
+.road-app__button--ghost {
+  color: #d9fffb;
+  background: rgb(39 240 230 / 8%);
+}
+
+.road-app__meta {
+  margin: auto 0 0;
+  color: rgb(217 255 251 / 68%);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.road-app__stage {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid rgb(39 240 230 / 18%);
+  border-radius: 1rem;
+  background: rgb(0 0 0 / 48%);
+  overflow: auto;
+}
+
+.road-app__canvas {
+  display: block;
+  width: min(100%, 96rem);
+  height: auto;
+  border: 1px solid rgb(39 240 230 / 20%);
+  box-shadow: 0 0 2.5rem rgb(39 240 230 / 14%);
+}
+
+@media (max-width: 900px) {
+  .road-app {
+    grid-template-columns: 1fr;
+  }
+}
+

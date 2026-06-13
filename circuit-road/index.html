@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PCB Road Circuit</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <main class="road-app">
+      <section class="road-app__panel" aria-label="PCB road circuit controls">
+        <div>
+          <p class="road-app__eyebrow">Procedural PCB study</p>
+          <h1 class="road-app__title">PCB Road Circuit</h1>
+        </div>
+        <label class="road-app__field">
+          <span class="road-app__label">Seed</span>
+          <input class="road-app__input" id="seedInput" type="number" min="1" value="1" />
+        </label>
+        <label class="road-app__field">
+          <span class="road-app__label">Style</span>
+          <select class="road-app__input" id="styleSelect">
+            <option value="neon">Neon</option>
+            <option value="blueprint">Blueprint</option>
+          </select>
+        </label>
+        <div class="road-app__actions">
+          <button class="road-app__button" id="renderButton" type="button">Render</button>
+          <button class="road-app__button road-app__button--ghost" id="randomButton" type="button">Random Seed</button>
+          <button class="road-app__button road-app__button--ghost" id="downloadButton" type="button">Download SVG</button>
+        </div>
+        <p class="road-app__meta" id="statsText"></p>
+      </section>
+      <section class="road-app__stage" aria-label="Generated PCB road circuit preview">
+        <canvas class="road-app__canvas" id="roadCanvas"></canvas>
+      </section>
+    </main>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
+
