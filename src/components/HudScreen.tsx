@@ -8,13 +8,16 @@ import "./HudScreen.css";
 // drei's <Html transform> divides the group's matrix by 40 internally
 // (defaults from distanceFactor=10 → 400/10 scale on the inner CSS matrix).
 // So to land at "1 CSS px = WORLD_PER_CSS_PX world units" the group's scale
-// must be WORLD_PER_CSS_PX * 40. 0.0015 m/px = 1.5 mm per CSS pixel makes a
-// 400 px-wide panel ≈ 0.6 m in the scene — tablet-sized.
-const WORLD_PER_CSS_PX = 0.0015;
+// must be WORLD_PER_CSS_PX * 40. 0.002 m/px = 2 mm per CSS pixel makes a
+// 400 px-wide panel ≈ 0.8 m in the scene at the default scale.
+const WORLD_PER_CSS_PX = 0.002;
 const GROUP_SCALE = WORLD_PER_CSS_PX * 40;
 
 const MIN_WIDTH_PX = 180;
 const MIN_HEIGHT_PX = 120;
+
+/** Matches `.hud-screen__frame` border-radius in CSS px. */
+const CORNER_RADIUS_PX = 22;
 
 type ResizeCorner = "tl" | "tr" | "bl" | "br";
 
@@ -53,6 +56,10 @@ export interface HudScreenProps {
   // Optional small text shown on the right of the title bar — usually a
   // status / "tag" string per widget.
   tag?: string;
+  // Yaw offset applied after the panel faces the camera — negative values
+  // turn the right edge toward the user, positive the left. Use to fan
+  // panels into a gentle arc around the seated viewpoint.
+  curveYaw?: number;
   children: ReactNode;
 }
 
@@ -62,6 +69,7 @@ export default function HudScreen({
   heightPx: initialHeightPx,
   title,
   tag,
+  curveYaw = 0,
   children,
 }: HudScreenProps) {
   const groupRef = useRef<THREE.Group>(null);
@@ -84,7 +92,8 @@ export default function HudScreen({
     // Face the user. lookAt rotates -Z toward target, which matches the way
     // Html transform projects (the DOM normal is the group's local +Z).
     g.lookAt(camera.position);
-  }, [position, camera]);
+    g.rotateY(curveYaw);
+  }, [position, camera, curveYaw]);
 
   const captureBasis = useCallback((): DragBasis | null => {
     const g = groupRef.current;
@@ -268,59 +277,55 @@ export default function HudScreen({
 // outer group (scale = WORLD_PER_CSS_PX * 40), so to match the Html panel's
 // CSS-px perimeter our local vertex units are (CSS-px / 40).
 const BEZEL_COLOR = "#9cf8f8";
-const BRACKET_ARM_PX = 16;
 const PX_TO_LOCAL = 1 / 40;
 
+function roundedRectOutline(
+  halfW: number,
+  halfH: number,
+  radius: number,
+  segments = 10,
+): [number, number, number][] {
+  const r = Math.min(radius, halfW, halfH);
+  const pts: [number, number, number][] = [];
+
+  const pushArc = (cx: number, cy: number, start: number, end: number) => {
+    for (let i = 0; i <= segments; i++) {
+      const t = start + ((end - start) * i) / segments;
+      pts.push([cx + Math.cos(t) * r, cy + Math.sin(t) * r, 0]);
+    }
+  };
+
+  // Clockwise from the top edge, starting just right of the top-left arc.
+  pts.push([-(halfW - r), halfH, 0]);
+  pts.push([ halfW - r, halfH, 0]);
+  pushArc( halfW - r, halfH - r, Math.PI / 2, 0);
+  pts.push([ halfW, -(halfH - r), 0]);
+  pushArc( halfW - r, -(halfH - r), 0, -Math.PI / 2);
+  pts.push([-(halfW - r), -halfH, 0]);
+  pushArc(-(halfW - r), -(halfH - r), -Math.PI / 2, -Math.PI);
+  pts.push([-halfW, halfH - r, 0]);
+  pushArc(-(halfW - r), halfH - r, Math.PI, Math.PI / 2);
+  pts.push([-(halfW - r), halfH, 0]);
+
+  return pts;
+}
+
 function BezelLines({ widthPx, heightPx }: { widthPx: number; heightPx: number }) {
-  const lines = useMemo(() => {
+  const outline = useMemo(() => {
     const halfW = (widthPx * PX_TO_LOCAL) / 2;
     const halfH = (heightPx * PX_TO_LOCAL) / 2;
-    const arm = BRACKET_ARM_PX * PX_TO_LOCAL;
-
-    const rect: [number, number, number][] = [
-      [-halfW, -halfH, 0],
-      [ halfW, -halfH, 0],
-      [ halfW,  halfH, 0],
-      [-halfW,  halfH, 0],
-      [-halfW, -halfH, 0],
-    ];
-    const tl: [number, number, number][] = [
-      [-halfW, halfH - arm, 0],
-      [-halfW, halfH, 0],
-      [-halfW + arm, halfH, 0],
-    ];
-    const tr: [number, number, number][] = [
-      [ halfW - arm, halfH, 0],
-      [ halfW, halfH, 0],
-      [ halfW, halfH - arm, 0],
-    ];
-    const br: [number, number, number][] = [
-      [ halfW, -halfH + arm, 0],
-      [ halfW, -halfH, 0],
-      [ halfW - arm, -halfH, 0],
-    ];
-    const bl: [number, number, number][] = [
-      [-halfW + arm, -halfH, 0],
-      [-halfW, -halfH, 0],
-      [-halfW, -halfH + arm, 0],
-    ];
-    return { rect, tl, tr, br, bl };
+    const radius = CORNER_RADIUS_PX * PX_TO_LOCAL;
+    return roundedRectOutline(halfW, halfH, radius);
   }, [widthPx, heightPx]);
 
   return (
-    <>
-      <DreiLine
-        points={lines.rect}
-        color={BEZEL_COLOR}
-        lineWidth={1.4}
-        transparent
-        opacity={0.6}
-        depthWrite={false}
-      />
-      <DreiLine points={lines.tl} color={BEZEL_COLOR} lineWidth={2.6} depthWrite={false} />
-      <DreiLine points={lines.tr} color={BEZEL_COLOR} lineWidth={2.6} depthWrite={false} />
-      <DreiLine points={lines.br} color={BEZEL_COLOR} lineWidth={2.6} depthWrite={false} />
-      <DreiLine points={lines.bl} color={BEZEL_COLOR} lineWidth={2.6} depthWrite={false} />
-    </>
+    <DreiLine
+      points={outline}
+      color={BEZEL_COLOR}
+      lineWidth={1.8}
+      transparent
+      opacity={0.72}
+      depthWrite={false}
+    />
   );
 }

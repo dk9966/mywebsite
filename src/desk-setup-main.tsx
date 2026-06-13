@@ -329,9 +329,10 @@ function HudScreens() {
   return (
     <>
       <HudScreen
-        position={[-1.0, y, z]}
-        widthPx={420}
-        heightPx={280}
+        position={[-1.15, y, z]}
+        widthPx={540}
+        heightPx={360}
+        curveYaw={0.14}
         title="Telemetry"
         tag="01"
       >
@@ -339,9 +340,9 @@ function HudScreens() {
       </HudScreen>
 
       <HudScreen
-        position={[0.0, y, z]}
-        widthPx={520}
-        heightPx={260}
+        position={[0.0, y, z - 0.04]}
+        widthPx={640}
+        heightPx={340}
         title="MCP Trace"
         tag="02"
       >
@@ -349,9 +350,10 @@ function HudScreens() {
       </HudScreen>
 
       <HudScreen
-        position={[1.0, y, z]}
-        widthPx={420}
-        heightPx={280}
+        position={[1.15, y, z]}
+        widthPx={540}
+        heightPx={360}
+        curveYaw={-0.14}
         title="Chrono"
         tag="00"
       >
