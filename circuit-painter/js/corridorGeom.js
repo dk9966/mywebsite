@@ -7,6 +7,7 @@
 import TraceSkeleton from 'skeleton-tracing-js';
 import { params as defaultParams } from './params.js';
 import { getObstacles as defaultGetObstacles } from './obstacles.js';
+import { hasPins } from './components.js';
 
 export function idx(x, y, H) {
     return x * H + y;
@@ -33,7 +34,7 @@ export function buildBlocked(gridWidth, gridHeight, cfg) {
     }
 
     for (const o of obstacles) {
-        const buffer = o.qfp ? 0 : blockBuffer;
+        const buffer = hasPins(o) ? 0 : blockBuffer;
         for (let x = o.x - buffer; x < o.x + o.w + buffer; x++) {
             for (let y = o.y - buffer; y < o.y + o.h + buffer; y++) {
                 if (x < 0 || y < 0 || x >= gridWidth || y >= gridHeight) continue;
@@ -400,6 +401,13 @@ export function computeCenterlinePolylines(gridWidth, gridHeight, cfg) {
     }
 
     return polylines;
+}
+
+// Per-cell clearance (BFS steps to nearest blocked cell). Higher values sit on
+// corridor centerlines; A* uses this to penalize hugging obstacle walls early.
+export function computeRoutingClearance(gridWidth, gridHeight, cfg) {
+    const blocked = buildBlocked(gridWidth, gridHeight, cfg);
+    return computeDistanceTransform(blocked, gridWidth, gridHeight);
 }
 
 export function computeCorridorGeometry(gridWidth, gridHeight, cfg) {

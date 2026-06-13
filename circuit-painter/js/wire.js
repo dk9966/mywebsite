@@ -65,6 +65,8 @@ export class Wire {
         // built by setting .cells directly. They render as continuous traces
         // with no end pads.
         this.isBus = false;
+        // Greedy random-walk fill (main.js when Show Buses is off).
+        this.isGreedy = false;
         // Router routes (router.js): A* paths between anchors. They always
         // render (no cutOffLength gating), carry no end pads
         // (noPads), and may set strokeScale for the length-based taper.
@@ -78,6 +80,8 @@ export class Wire {
         // source of truth for rendering -- the dense `cells` list is only used
         // until the user grabs a joint. Null means "render straight from cells".
         this.points = null;
+        // User-drawn or snapshot-restored trace; always visible when circuits on.
+        this.manual = false;
     }
 
     generate() {
@@ -181,10 +185,8 @@ export class Wire {
     }
 
     render(canvas, ctx) {
-        const sx = (1 + canvas.width / params.cellSize) / this.gridWidth;
-        const sy = (1 + canvas.height / params.cellSize) / this.gridHeight;
-        const cw = params.cellSize * sx;
-        const ch = params.cellSize * sy;
+        const cw = canvas.width / this.gridWidth;
+        const ch = canvas.height / this.gridHeight;
         const r = params.cellSize / 4;
 
         // A user-edited wire renders from its sparse corner polyline; everyone
@@ -355,6 +357,63 @@ function tryBothChamfers(cur, next, fromDir, toDir, grid, gridWidth, gridHeight,
     return microPathChamfer(cur, next, fromDir, grid, gridWidth, gridHeight, cells);
 }
 
+// BFS from prev to next, obtuse corners only, when a single chamfer insert is blocked.
+function obtuseBridgePrevNext(prev, next, inDir, grid, gridWidth, gridHeight, cells, avoid) {
+    const maxDepth = 10;
+    const queue = [{ x: prev.x, y: prev.y, dir: inDir, path: [] }];
+    const seen = new Set();
+
+    while (queue.length > 0) {
+        const node = queue.shift();
+        const key = `${node.x},${node.y},${node.dir},${node.path.length}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+
+        if (node.path.length > maxDepth) continue;
+
+        for (let i = 0; i < 8; i++) {
+            const stepDir = node.path.length === 0
+                ? i
+                : node.path[node.path.length - 1].stepDir;
+            const from = node.path.length === 0 ? node.dir : stepDir;
+            if (from >= 0 && isSharpCorner(from, i)) continue;
+
+            const nx = node.x + DIRS[i][0];
+            const ny = node.y + DIRS[i][1];
+            if (avoid && nx === avoid.x && ny === avoid.y) continue;
+            if (!cellUsableForWire(nx, ny, grid, gridWidth, gridHeight, cells)) continue;
+
+            const step = { x: nx, y: ny, stepDir: i };
+            const path = node.path.concat(step);
+
+            if (cellStepAdjacent(nx, ny, next.x, next.y)) {
+                const outDir = directionBetween(step, next);
+                if (!isSharpCorner(i, outDir)) {
+                    return path.map((p) => ({
+                        cell: grid[p.x][p.y],
+                        stepDir: p.stepDir,
+                        inPath: cellOnWire(p.x, p.y, cells),
+                    }));
+                }
+            }
+
+            queue.push({ x: nx, y: ny, dir: i, path });
+        }
+    }
+    return null;
+}
+
+function applyInsertCells(cells, index, insert) {
+    for (let j = 0; j < insert.length; j++) {
+        const { cell, stepDir, inPath } = insert[j];
+        cells.splice(index + 1 + j, 0, cell);
+        if (!inPath) {
+            cell.available = false;
+            cell.heading = stepDir;
+        }
+    }
+}
+
 // Replace corners ≤ 90° with 45° chamfer steps when a valid local detour exists.
 export function sanitizePathRightAngles(cells, grid, gridWidth, gridHeight) {
     if (cells.length < 3) return cells;
@@ -385,20 +444,40 @@ export function sanitizePathRightAngles(cells, grid, gridWidth, gridHeight) {
         const insert = tryBothChamfers(
             cur, next, fromDir, toDir, grid, gridWidth, gridHeight, cells,
         );
-        if (!insert?.length) {
-            i++;
+        if (insert?.length) {
+            applyInsertCells(cells, i, insert);
             continue;
         }
 
-        for (let j = 0; j < insert.length; j++) {
-            const { cell, stepDir, inPath } = insert[j];
-            cells.splice(i + 1 + j, 0, cell);
-            if (!inPath) {
-                cell.available = false;
-                cell.heading = stepDir;
+        const inDir = i >= 2 ? directionBetweenCells(cells[i - 2], prev) : -1;
+        const bridge = obtuseBridgePrevNext(
+            prev, next, inDir, grid, gridWidth, gridHeight, cells, cur,
+        );
+        if (bridge?.length) {
+            cells.splice(i, 1, ...bridge.map((b) => b.cell));
+            for (const { cell, stepDir, inPath } of bridge) {
+                if (!inPath) {
+                    cell.available = false;
+                    cell.heading = stepDir;
+                }
+            }
+            continue;
+        }
+
+        if (cellStepAdjacent(prev.x, prev.y, next.x, next.y)) {
+            const skipDir = directionBetweenCells(prev, next);
+            const outDir = i + 2 < cells.length
+                ? directionBetweenCells(next, cells[i + 2])
+                : -1;
+            const inOk = inDir < 0 || !isSharpCorner(inDir, skipDir);
+            const outOk = outDir < 0 || !isSharpCorner(skipDir, outDir);
+            if (inOk && outOk) {
+                cells.splice(i, 1);
+                continue;
             }
         }
-        // Re-check the same corner index with chamfer cells inserted.
+
+        i++;
     }
 
     return cells;

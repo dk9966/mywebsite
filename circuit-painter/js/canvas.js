@@ -4,7 +4,7 @@
 import { params } from './params.js';
 import { drawFlowOverlay } from './flowGrid.js';
 import { drawObstacles, drawObstacleHandles } from './obstacles.js';
-import { drawWireHandles } from './wireEdit.js';
+import { drawChainPreview, drawSelectedSegment, drawWireHandles } from './wireEdit.js';
 
 let stage = null;
 let canvas = null;
@@ -17,6 +17,12 @@ let gridHeight = 0;
 export function getCanvas() { return canvas; }
 export function getCtx() { return ctx; }
 export function setWires(next) { wires = next; }
+export function getWires() { return wires; }
+export function appendWire(w) { wires.push(w); }
+export function removeWire(w) {
+    const i = wires.indexOf(w);
+    if (i !== -1) wires.splice(i, 1);
+}
 export function setGapRects(next) { gapRects = next || []; }
 export function setGridDimensions(w, h) { gridWidth = w; gridHeight = h; }
 export function getGridDimensions() { return { w: gridWidth, h: gridHeight }; }
@@ -25,8 +31,14 @@ export function getGridDimensions() { return { w: gridWidth, h: gridHeight }; }
 // the draw loop and the wire editor so handles only appear on visible traces.
 function isWireVisible(w) {
     if (!params.showCircuits) return false;
+    if (w.manual || w.points) return true;
     if (w.isRoute) return true;
-    return !!(w.isBus || w.isQFPPin || w.cells.length > params.cutOffLength);
+    if (w.isBus && !params.showBuses) return false;
+    if (w.isQFPPin && !params.showBuses) return false;
+    if (w.isGreedy && !params.showGreedyCircuits) return false;
+    if (w.isBus || w.isQFPPin) return true;
+    if (w.isGreedy) return w.cells.length > params.cutOffLength;
+    return w.cells.length > params.cutOffLength;
 }
 
 export function getVisibleWires() { return wires.filter(isWireVisible); }
@@ -53,6 +65,10 @@ function mapDimensions() {
     };
 }
 
+// Vertical room kept clear at the top so the centered canvas never slides
+// under the fixed component palette bar.
+const TOP_RESERVE = 104;
+
 // CSS/stage layout only — does not touch canvas.width/height, so the backing
 // buffer (and current frame) stay intact while a debounced rebuild is pending.
 export function resizeLayout() {
@@ -61,11 +77,11 @@ export function resizeLayout() {
     canvas.style.height = `${h}px`;
 
     const stageW = Math.max(window.innerWidth, w);
-    const stageH = Math.max(window.innerHeight, h);
+    const stageH = Math.max(window.innerHeight, h + TOP_RESERVE);
     stage.style.width = `${stageW}px`;
     stage.style.height = `${stageH}px`;
     canvas.style.left = `${(stageW - w) / 2}px`;
-    canvas.style.top = `${(stageH - h) / 2}px`;
+    canvas.style.top = `${Math.max(TOP_RESERVE, (stageH - h) / 2)}px`;
 }
 
 export function resize() {
@@ -95,12 +111,22 @@ export function draw() {
 
     // QFP pin stubs always render even if shorter than cutOffLength -- an
     // invisible pin would look like a broken chip (see isWireVisible).
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.clip();
     for (const w of getVisibleWires()) w.render(canvas, ctx);
+    ctx.restore();
+
+    if (params.editWires) drawSelectedSegment(ctx);
 
     drawFlowOverlay(canvas, ctx, params);
     drawGridOverlay();
 
-    if (params.editWires) drawWireHandles(ctx);
+    if (params.editWires) {
+        drawWireHandles(ctx);
+        drawChainPreview(ctx);
+    }
 }
 
 export function redraw() {
@@ -109,10 +135,8 @@ export function redraw() {
 
 function drawGapRects() {
     if (!params.showGapRects || !gapRects.length) return;
-    const sx = (1 + canvas.width / params.cellSize) / gridWidth;
-    const sy = (1 + canvas.height / params.cellSize) / gridHeight;
-    const cw = params.cellSize * sx;
-    const ch = params.cellSize * sy;
+    const cw = canvas.width / gridWidth;
+    const ch = canvas.height / gridHeight;
 
     ctx.strokeStyle = params.fgColor;
     ctx.globalAlpha = 0.25;
@@ -125,10 +149,8 @@ function drawGapRects() {
 
 function drawGridOverlay() {
     if (!params.showGrid) return;
-    const sx = (1 + canvas.width / params.cellSize) / gridWidth;
-    const sy = (1 + canvas.height / params.cellSize) / gridHeight;
-    const cw = params.cellSize * sx;
-    const ch = params.cellSize * sy;
+    const cw = canvas.width / gridWidth;
+    const ch = canvas.height / gridHeight;
 
     ctx.strokeStyle = 'rgba(230, 230, 230, 0.15)';
     ctx.lineWidth = 1;

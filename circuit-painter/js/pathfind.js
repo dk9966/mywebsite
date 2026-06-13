@@ -4,7 +4,7 @@
 // serves the lighter bus-mode slant connections.
 
 import { params } from './params.js';
-import { aStarCore } from './pathfindCore.js';
+import { aStarCore, inRouteBounds } from './pathfindCore.js';
 
 export function aStar(start, end, grid, gridWidth, gridHeight, options = {}) {
     const goalSet = end instanceof Set ? end : null;
@@ -32,6 +32,9 @@ export function aStar(start, end, grid, gridWidth, gridHeight, options = {}) {
                 ...opts,
                 turnSmoothness: params.turnSmoothness,
                 diagonalChance: params.diagonalChance,
+                clearance: opts.clearance,
+                clearanceTarget: opts.clearanceTarget ?? params.routeClearanceTarget,
+                clearanceWeight: opts.clearanceWeight ?? params.routeClearanceBias,
             },
         );
         return path ? path.map(({ x, y }) => grid[x][y]) : null;
@@ -142,7 +145,7 @@ function aStarMultiGoal(start, goalSet, grid, gridWidth, gridHeight, options) {
             const [dx, dy] = DIRS[i];
             const nx = node.cell.x + dx;
             const ny = node.cell.y + dy;
-            if (nx < 0 || nx >= gridWidth || ny < 0 || ny >= gridHeight) continue;
+            if (!inRouteBounds(nx, ny, gridWidth, gridHeight)) continue;
             const ncell = grid[nx][ny];
             if (!ncell.available) continue;
 

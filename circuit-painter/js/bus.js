@@ -10,7 +10,7 @@ import { params } from './params.js';
 import { Wire, sanitizePathRightAngles } from './wire.js';
 import { aStar } from './pathfind.js';
 import {
-    computeCorridorGeometry, packLinesOnEdge, edgeDebugRect,
+    computeCorridorGeometry, computeRoutingClearance, packLinesOnEdge, edgeDebugRect,
 } from './corridorGeom.js';
 
 const DIRS = [
@@ -212,6 +212,12 @@ function stampLineClipped(b, grid, rectId, lineId) {
 function connectBuses(lines, lineRect, grid, W, H, wires) {
     const net = buildNet(grid, W, H);
     const reach = Math.max(6, (params.busTailLength | 0) * 3);
+    const clearance = params.obstaclesEnabled ? computeRoutingClearance(W, H) : null;
+    const slantOpts = clearance ? {
+        clearance,
+        clearanceTarget: params.routeClearanceTarget,
+        clearanceWeight: params.routeClearanceBias,
+    } : {};
 
     for (const L of lines) {
         for (const sameGapOk of [false, true]) {
@@ -219,7 +225,7 @@ function connectBuses(lines, lineRect, grid, W, H, wires) {
             for (const end of L.ends) {
                 const goal = goalCells(net, lineRect, L, sameGapOk);
                 if (!goal.size) continue;
-                const path = aStar(end, goal, grid, W, H);
+                const path = aStar(end, goal, grid, W, H, slantOpts);
                 if (!path || path.length < 2 || path.length > reach) continue;
                 sanitizePathRightAngles(path, grid, W, H);
                 commitSlant(path, grid, W, H, net);

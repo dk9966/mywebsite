@@ -22,7 +22,7 @@ export function hexToRgba(hex, alpha = 1) {
 export const params = {
     // Canvas size in pixels (routing grid is derived from this / cellSize).
     mapWidth: 1600,
-    mapHeight: 810,
+    mapHeight: 550,
 
     // Routing
     cellSize: 9,
@@ -59,15 +59,16 @@ export const params = {
     directionality: 0,
     showGrid: false,
     showCircuits: true,
-    // Manual wire editing. When on, every trace shows draggable joint handles:
-    // drag a joint to move it, click a corner (or the trace body near one) to
-    // bevel it into a 45 degree slant. Edits live on each wire's `points`
-    // override and are discarded on the next full rebuild (any slider change).
-    editWires: false,
+    // Random-walk fill traces (when Show Buses is off). Pin stubs and bus
+    // routes use their own flags.
+    showGreedyCircuits: false,
+    // Manual wire editing: slide segments orthogonally, click joints to split.
+    // Edits persist in snapshots; Regenerate or a new seed clears them.
+    editWires: true,
     // Pin buses: straight / slant traces from QFP pins. When on, replaces the
     // greedy random-walk fill. Roughly half the pins link to another chip's pin;
     // the rest wander out and stop.
-    showBuses: true,
+    showBuses: false,
     // Minimum cells per straight or 45° run on pin-bus routes before the next bend
     // (hard constraint in A*; raising this lengthens visible slants and straights).
     pinBusSlantLength: 10,
@@ -75,11 +76,29 @@ export const params = {
     // so a trace can't arrow straight forever: it slants off, runs straight,
     // then slants back.
     pinBusStraightMax: 18,
+    // A* clearance bias: prefer cells farther from obstacles (corridor centerlines).
+    // Target is the desired min distance to a blocked cell; bias is extra step cost
+    // per cell below that target. 0 disables.
+    routeClearanceTarget: 5,
+    routeClearanceBias: 0.6,
+    // Keep each pin-to-pin bus in the local gap between its two meshes. This is
+    // what prevents a failed connection from wrapping around a component.
+    pinBusRouteMargin: 12,
+    pinBusMaxDetourRatio: 1.65,
+    // Extra cost for drifting away from the direct channel between connected
+    // mesh groups. This is what makes traces run through the middle gaps.
+    pinBusCorridorWeight: 0.18,
+    // Stable board-level spine location as a fraction of grid height. Keeping
+    // this fixed prevents obstacle drags from making a different gap become the
+    // new "main" route and reshuffling the whole circuit.
+    pinBusSpineRatio: 0.52,
     // How many parallel wires the bus carries. If the facing chip edge has fewer
     // pins than this, the nearest pins around the chip's corner are pulled in to
     // make up the count.
     pinBusWireCount: 7,
     seed: 1,
+    thinPcbProcedural: false,
+    thinPcbRouteHints: null,
 
     bgColor: 'rgba(51, 5, 51, 1)',
     fgColor: 'rgba(163, 204, 194, 1)',
@@ -132,6 +151,11 @@ export const params = {
     showFlowGrid: false,
     clearFlowGrid() {},
 
+    // Generator: place only QFP + SOIC chips (no caps, blocks, etc.).
+    generatorChipsOnly: false,
+    generatorQfpCount: 4,
+    generatorSoicCount: 4,
+
     // Obstacles ("meshes" the wires must avoid). The keep-out buffer is what
     // guarantees a visible gap so wires never touch a mesh edge.
     obstaclesEnabled: true,
@@ -143,7 +167,7 @@ export const params = {
     obstacleKeepOut: 1,
     // Drag obstacle corners to resize after generation. Turn off flow painting
     // or disable this when painting the flow field.
-    editObstacles: false,
+    editObstacles: true,
     // 0 = perfectly even grid placement, 1 = fully random (current behavior).
     // Implemented as a continuous lerp between each obstacle's grid anchor and
     // an independently-random point in the usable area.

@@ -58,10 +58,8 @@ export function subFlowStrength(x, y, flowDir, amount) {
 export function drawFlowOverlay(canvas, ctx, params) {
     if (!params.showFlowGrid) return;
 
-    const sx = (1 + canvas.width / params.cellSize) / gridWidth;
-    const sy = (1 + canvas.height / params.cellSize) / gridHeight;
-    const cw = params.cellSize * sx;
-    const ch = params.cellSize * sy;
+    const cw = canvas.width / gridWidth;
+    const ch = canvas.height / gridHeight;
 
     for (let x = 0; x < gridWidth; x++) {
         for (let y = 0; y < gridHeight; y++) {

@@ -24,6 +24,95 @@ canvas {
     z-index: 1000;
 }
 
+/* === Component palette ================================================ */
+
+.component-palette {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+    display: flex;
+    gap: 6px;
+    padding: 8px 10px;
+    background-color: rgba(28, 28, 28, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+.component-palette__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: grab;
+    user-select: none;
+    transition: background-color 0.12s ease;
+}
+
+.component-palette__item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.component-palette__item:active {
+    cursor: grabbing;
+}
+
+.component-palette__thumb {
+    display: block;
+    pointer-events: none;
+}
+
+.component-palette__label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.4px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* === Obstacle right-click menu ======================================= */
+
+.obstacle-menu {
+    position: fixed;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transform: translate(-2px, -2px);
+}
+
+.obstacle-menu__rotate,
+.obstacle-menu__delete {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    padding: 5px 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.12s ease;
+}
+
+.obstacle-menu__rotate {
+    background-color: rgba(40, 90, 120, 0.96);
+}
+
+.obstacle-menu__rotate:hover {
+    background-color: rgba(52, 118, 155, 1);
+}
+
+.obstacle-menu__delete {
+    background-color: rgba(190, 40, 50, 0.96);
+}
+
+.obstacle-menu__delete:hover {
+    background-color: rgba(214, 56, 66, 1);
+}
+
 /* === Snapshots panel ================================================== */
 
 .snapshots-panel {

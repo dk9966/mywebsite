@@ -7,6 +7,10 @@
 
 import { rnd, rndInt } from './rng.js';
 import { params } from './params.js';
+import {
+    KIND_REFERENCE_DIM, MAX_KIND_DIM, drawComponent, getKind, hasPins,
+    listPaletteKinds, obstacleDrawGeom, pinCellOffsets, pinGroups, resolveKind,
+} from './components.js';
 
 let obstacles = [];
 let obstacleGridWidth = 0;
@@ -18,13 +22,55 @@ export function getObstacles() {
 
 // Replace the obstacles array wholesale. Used when loading snapshots.
 export function setObstacles(next) {
-    obstacles = Array.isArray(next) ? next.map((o) => ({
-        x: o.x | 0,
-        y: o.y | 0,
-        w: Math.max(2, o.w | 0),
-        h: Math.max(2, o.h | 0),
-        qfp: !!o.qfp,
-    })) : [];
+    obstacles = Array.isArray(next) ? next.map((o) => {
+        const kind = o.kind || (o.qfp ? 'qfp' : 'block');
+        return {
+            x: o.x | 0,
+            y: o.y | 0,
+            w: Math.max(2, o.w | 0),
+            h: Math.max(2, o.h | 0),
+            kind,
+            qfp: kind === 'qfp',
+            rot: (o.rot | 0) % 4,
+            ...(o.auxPinSide ? { auxPinSide: o.auxPinSide } : {}),
+            ...(o.auxPinOffsets?.length ? { auxPinOffsets: o.auxPinOffsets.slice() } : {}),
+        };
+    }) : [];
+}
+
+// Remove a specific obstacle (e.g. via the right-click Delete menu).
+export function removeObstacle(o) {
+    const i = obstacles.indexOf(o);
+    if (i !== -1) obstacles.splice(i, 1);
+}
+
+// Rotate 90° clockwise around the obstacle center; swaps w/h and keeps the
+// center fixed so pins and asymmetric silhouettes turn in place.
+export function rotateObstacle(o) {
+    const cx = o.x + o.w / 2;
+    const cy = o.y + o.h / 2;
+    const nw = o.h;
+    const nh = o.w;
+    o.w = nw;
+    o.h = nh;
+    o.rot = ((o.rot || 0) + 1) % 4;
+    o.x = clamp(Math.round(cx - o.w / 2), 0, Math.max(0, obstacleGridWidth - o.w));
+    o.y = clamp(Math.round(cy - o.h / 2), 0, Math.max(0, obstacleGridHeight - o.h));
+}
+
+// Drop a palette component onto the board, centered under the cursor. Returns
+// the new obstacle so the caller can trigger a reroute.
+export function addComponentAtPixel(kindId, px, py, canvas) {
+    const kind = getKind(kindId);
+    if (!kind) return null;
+    const { cw, ch } = gridMetrics(canvas);
+    const w = Math.max(2, kind.w | 0);
+    const h = Math.max(2, kind.h | 0);
+    const x = clamp(Math.round(px / cw - w / 2), 0, Math.max(0, obstacleGridWidth - w));
+    const y = clamp(Math.round(py / ch - h / 2), 0, Math.max(0, obstacleGridHeight - h));
+    const o = { x, y, w, h, kind: kind.id, qfp: kind.id === 'qfp', rot: 0 };
+    obstacles.push(o);
+    return o;
 }
 
 // Bring every obstacle inside the current grid bounds. No-op when obstacles
@@ -49,11 +95,9 @@ export function setObstacleGridDimensions(w, h) {
 }
 
 export function gridMetrics(canvas) {
-    const sx = (1 + canvas.width / params.cellSize) / obstacleGridWidth;
-    const sy = (1 + canvas.height / params.cellSize) / obstacleGridHeight;
     return {
-        cw: params.cellSize * sx,
-        ch: params.cellSize * sy,
+        cw: canvas.width / obstacleGridWidth,
+        ch: canvas.height / obstacleGridHeight,
     };
 }
 
@@ -79,16 +123,19 @@ export function generateObstacles(gridWidth, gridHeight) {
     obstacles = [];
     if (!params.obstaclesEnabled) return;
 
+    if (params.generatorChipsOnly) {
+        generateChipObstacles(gridWidth, gridHeight);
+        return;
+    }
+
     const count = Math.max(0, params.obstacleCount | 0);
     if (count === 0) return;
 
-    const baseSize = Math.max(1, params.obstacleSize | 0);
-    const sizeRand = clamp01(params.obstacleSizeRandomness ?? 0);
-    const blockRange = obstacleSizeRange(baseSize, sizeRand);
-    const qfpBase = Math.max(2, params.qfpSize | 0);
-    const qfpRand = clamp01(params.qfpSizeRandomness ?? 0);
-    const qfpRange = obstacleSizeRange(qfpBase, qfpRand);
-    const maxDim = Math.max(blockRange.maxDim, qfpRange.maxDim);
+    // Every generated obstacle is a random component kind at the same scale,
+    // so the slider stays meaningful (scale 1 = native footprints) while the
+    // board fills with the full mix of shapes.
+    const scale = Math.max(0.25, (params.obstacleSize | 0) / KIND_REFERENCE_DIM);
+    const maxDim = Math.ceil(MAX_KIND_DIM * scale);
     const buffer = Math.max(0, params.obstacleKeepOut | 0);
     const randomness = clamp01(params.obstacleSpacingRandomness ?? 1);
     const edgePad = 2;
@@ -130,7 +177,7 @@ export function generateObstacles(gridWidth, gridHeight) {
                 const ry = minY + rndInt(usableH + 1);
                 const x = clamp(Math.round(lerp(anchorX, rx, randomness)), minX, maxX);
                 const y = clamp(Math.round(lerp(anchorY, ry, randomness)), minY, maxY);
-                const candidate = makeObstacle(x, y, baseSize, sizeRand);
+                const candidate = makeObstacle(x, y, scale);
                 if (!overlapsAny(candidate, obstacles, minSeparation)) {
                     chosen = candidate;
                     break;
@@ -139,7 +186,7 @@ export function generateObstacles(gridWidth, gridHeight) {
             if (!chosen) {
                 const x = clamp(Math.round(anchorX), minX, maxX);
                 const y = clamp(Math.round(anchorY), minY, maxY);
-                const candidate = makeObstacle(x, y, baseSize, sizeRand);
+                const candidate = makeObstacle(x, y, scale);
                 if (!overlapsAny(candidate, obstacles, minSeparation)) chosen = candidate;
             }
             if (chosen) {
@@ -150,6 +197,115 @@ export function generateObstacles(gridWidth, gridHeight) {
     }
 
     relaxObstacleSpacing(gridWidth, gridHeight);
+}
+
+// Generator layout: multiple QFPs and SOICs only — no mixed palette obstacles.
+function generateChipObstacles(gridWidth, gridHeight) {
+    const qfpCount = Math.max(1, params.generatorQfpCount | 0);
+    const soicCount = Math.max(1, params.generatorSoicCount | 0);
+    const count = qfpCount + soicCount;
+    const scale = Math.max(0.25, (params.qfpSize | 0) / KIND_REFERENCE_DIM);
+    const maxDim = Math.ceil(MAX_KIND_DIM * scale);
+    const randomness = clamp01(params.obstacleSpacingRandomness ?? 0.35);
+    const edgePad = 2;
+    const minSeparation = Math.max(0, params.obstacleMinSpacing | 0) + 1;
+
+    const minX = edgePad;
+    const minY = edgePad;
+    const maxX = gridWidth - maxDim - edgePad;
+    const maxY = gridHeight - maxDim - edgePad;
+    if (maxX <= minX || maxY <= minY) return;
+
+    const usableW = maxX - minX;
+    const usableH = maxY - minY;
+
+    const aspect = (usableW + 1) / (usableH + 1);
+    let cols = Math.max(1, Math.round(Math.sqrt(count * aspect)));
+    let rows = Math.max(1, Math.ceil(count / cols));
+    while (rows * cols < count) {
+        if (usableW > usableH) cols++; else rows++;
+    }
+
+    const cellW = cols > 1 ? usableW / (cols - 1) : 0;
+    const cellH = rows > 1 ? usableH / (rows - 1) : 0;
+    const baseOffsetX = cols === 1 ? usableW / 2 : 0;
+    const baseOffsetY = rows === 1 ? usableH / 2 : 0;
+
+    const kinds = [];
+    for (let i = 0; i < qfpCount; i++) kinds.push('qfp');
+    for (let i = 0; i < soicCount; i++) kinds.push('soic');
+    for (let i = kinds.length - 1; i > 0; i--) {
+        const j = rndInt(i + 1);
+        [kinds[i], kinds[j]] = [kinds[j], kinds[i]];
+    }
+
+    const triesPerSlot = randomness > 0 ? 16 : 1;
+    let placed = 0;
+    let kindIdx = 0;
+
+    for (let row = 0; row < rows && placed < count; row++) {
+        for (let col = 0; col < cols && placed < count; col++) {
+            const anchorX = minX + baseOffsetX + col * cellW;
+            const anchorY = minY + baseOffsetY + row * cellH;
+            // Consume the kind only when the chip actually lands, otherwise a
+            // failed slot burns a kind and later slots read past the array.
+            const kindId = kinds[kindIdx];
+
+            let chosen = null;
+            for (let attempt = 0; attempt < triesPerSlot; attempt++) {
+                const rx = minX + rndInt(usableW + 1);
+                const ry = minY + rndInt(usableH + 1);
+                const x = clamp(Math.round(lerp(anchorX, rx, randomness)), minX, maxX);
+                const y = clamp(Math.round(lerp(anchorY, ry, randomness)), minY, maxY);
+                const candidate = makeChipObstacle(x, y, kindId, scale);
+                if (!overlapsAny(candidate, obstacles, minSeparation)) {
+                    chosen = candidate;
+                    break;
+                }
+            }
+            if (!chosen) {
+                const x = clamp(Math.round(anchorX), minX, maxX);
+                const y = clamp(Math.round(anchorY), minY, maxY);
+                const candidate = makeChipObstacle(x, y, kindId, scale);
+                if (!overlapsAny(candidate, obstacles, minSeparation)) chosen = candidate;
+            }
+            if (chosen) {
+                obstacles.push(chosen);
+                placed++;
+                kindIdx++;
+            }
+        }
+    }
+
+    relaxObstacleSpacing(gridWidth, gridHeight);
+}
+
+function makeChipObstacle(x, y, kindId, scale) {
+    const kind = getKind(kindId);
+    if (kindId === 'qfp') {
+        const side = Math.max(2, Math.round(kind.w * scale));
+        return { x, y, w: side, h: side, kind: 'qfp', qfp: true, rot: 0 };
+    }
+    if (rnd() > 0.5) {
+        return {
+            x,
+            y,
+            w: Math.max(2, Math.round(kind.w * scale)),
+            h: Math.max(2, Math.round(kind.h * scale)),
+            kind: 'soic',
+            qfp: false,
+            rot: 0,
+        };
+    }
+    return {
+        x,
+        y,
+        w: Math.max(2, Math.round(kind.h * scale)),
+        h: Math.max(2, Math.round(kind.w * scale)),
+        kind: 'soic',
+        qfp: false,
+        rot: 1,
+    };
 }
 
 // Iterative push-apart relaxation. Honors params.obstacleMinSpacing as the
@@ -212,43 +368,15 @@ function relaxObstacleSpacing(gridWidth, gridHeight) {
     }
 }
 
-function obstacleSizeRange(baseSize, sizeRand) {
-    if (sizeRand <= 0) return { minDim: baseSize, maxDim: baseSize };
-    const spread = Math.max(1, Math.round(baseSize * sizeRand));
-    return {
-        minDim: Math.max(2, baseSize - spread),
-        maxDim: baseSize + spread,
-    };
-}
-
-function qfpSquareSide(baseSize, sizeRand) {
-    const { minDim, maxDim } = obstacleSizeRange(baseSize, sizeRand);
-    if (minDim === maxDim) return baseSize;
-    return minDim + rndInt(maxDim - minDim + 1);
-}
-
-function randomObstacleDimensions(baseSize, sizeRand) {
-    const { minDim, maxDim } = obstacleSizeRange(baseSize, sizeRand);
-    if (minDim === maxDim) return { w: baseSize, h: baseSize };
-    return {
-        w: minDim + rndInt(maxDim - minDim + 1),
-        h: minDim + rndInt(maxDim - minDim + 1),
-    };
-}
-
-// Per-obstacle qfp tag is decided once at generation time, so the buffer,
-// pin-seed list, and drawing branch all see the same answer.
-function makeObstacle(x, y, baseSize, sizeRand) {
-    const qfp = params.qfpStyle && rnd() < clamp01(params.qfpFraction ?? 0);
-    if (qfp) {
-        const side = qfpSquareSide(
-            Math.max(2, params.qfpSize | 0),
-            clamp01(params.qfpSizeRandomness ?? 0),
-        );
-        return { x, y, w: side, h: side, qfp: true };
-    }
-    const { w, h } = randomObstacleDimensions(baseSize, sizeRand);
-    return { x, y, w, h, qfp: false };
+// Pick a random component kind and stamp it at the given scale. The kind is
+// decided once at generation time so the buffer, pin-seed list, and drawing
+// branch all see the same answer.
+function makeObstacle(x, y, scale) {
+    const kinds = listPaletteKinds();
+    const kind = kinds[rndInt(kinds.length)];
+    const w = Math.max(2, Math.round(kind.w * scale));
+    const h = Math.max(2, Math.round(kind.h * scale));
+    return { x, y, w, h, kind: kind.id, qfp: kind.id === 'qfp', rot: 0 };
 }
 
 // Corner resize: drag a handle to change w/h (and x/y for nw/ne/sw as needed).
@@ -322,6 +450,38 @@ export function hitTestCorner(px, py, canvas) {
     return null;
 }
 
+export function hitTestCenter(px, py, canvas) {
+    if (!obstacles.length || !params.obstaclesEnabled) return null;
+    const { cw, ch } = gridMetrics(canvas);
+    const hitR = Math.max(12, Math.min(cw, ch) * 0.5);
+
+    for (const o of obstacles) {
+        const cx = (o.x + o.w / 2) * cw;
+        const cy = (o.y + o.h / 2) * ch;
+        if (Math.hypot(px - cx, py - cy) <= hitR) {
+            const { gx, gy } = pixelToGrid(px, py, canvas);
+            return {
+                obstacle: o,
+                originX: o.x,
+                originY: o.y,
+                startGx: gx,
+                startGy: gy,
+            };
+        }
+    }
+    return null;
+}
+
+export function moveObstacle(o, gx, gy, originX, originY, startGx, startGy) {
+    const dx = gx - startGx;
+    const dy = gy - startGy;
+    const edgePad = 0;
+    const maxX = obstacleGridWidth - o.w - edgePad;
+    const maxY = obstacleGridHeight - o.h - edgePad;
+    o.x = clamp(Math.round(originX + dx), edgePad, maxX);
+    o.y = clamp(Math.round(originY + dy), edgePad, maxY);
+}
+
 function obstacleCornerPixels(o, cw, ch) {
     return [
         { corner: 'nw', px: o.x * cw, py: o.y * ch },
@@ -340,6 +500,7 @@ export function drawObstacleHandles(canvas, ctx) {
     ctx.strokeStyle = params.bgColor;
     ctx.lineWidth = Math.max(1, r * 0.35);
 
+    const centerR = Math.max(6, Math.min(cw, ch) * 0.28);
     for (const o of obstacles) {
         for (const c of obstacleCornerPixels(o, cw, ch)) {
             ctx.beginPath();
@@ -347,6 +508,15 @@ export function drawObstacleHandles(canvas, ctx) {
             ctx.fill();
             ctx.stroke();
         }
+        const cx = (o.x + o.w / 2) * cw;
+        const cy = (o.y + o.h / 2) * ch;
+        ctx.fillStyle = params.bgColor;
+        ctx.strokeStyle = params.fgColor;
+        ctx.beginPath();
+        ctx.rect(cx - centerR, cy - centerR, centerR * 2, centerR * 2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = params.fgColor;
     }
 }
 
@@ -372,7 +542,7 @@ export function applyObstaclesToGrid(grid, gridWidth, gridHeight) {
     // the wires preserve around them.
     const blockBuffer = Math.max(0, params.obstacleKeepOut | 0);
     for (const o of obstacles) {
-        const buffer = o.qfp ? 0 : blockBuffer;
+        const buffer = hasPins(o) ? 0 : blockBuffer;
         for (let x = o.x - buffer; x < o.x + o.w + buffer; x++) {
             for (let y = o.y - buffer; y < o.y + o.h + buffer; y++) {
                 if (x < 0 || y < 0 || x >= gridWidth || y >= gridHeight) continue;
@@ -382,11 +552,11 @@ export function applyObstaclesToGrid(grid, gridWidth, gridHeight) {
     }
 }
 
-// Cells (and outward headings) where wires should be seeded for QFP obstacles.
-// Only obstacles tagged .qfp emit pins; block obstacles emit nothing.
+// Cells (and outward headings) where wires should be seeded for pinned meshes.
+// ICs emit full pin rows; aux meshes emit their small aesthetic pin pairs.
 // `heading` is a DIRS index (see wire.js): 1 = up, 3 = right, 5 = down, 7 = left.
 // Each pin cell is one step OUTSIDE the chip boundary on its side, and its wire
-// is told to grow further outward; the matching pin tab in drawQFP fills the
+// is told to grow further outward; the matching pin tab in drawChip fills the
 // half-cell gap from the chip body edge to that pin cell center.
 export function getQFPPinSeeds(gridWidth, gridHeight) {
     const seeds = [];
@@ -395,22 +565,28 @@ export function getQFPPinSeeds(gridWidth, gridHeight) {
     const inBounds = (x, y) => x >= 0 && y >= 0 && x < gridWidth && y < gridHeight;
 
     for (const o of obstacles) {
-        if (!o.qfp) continue;
-        for (let i = 0; i < o.w; i += spacing) {
-            const x = o.x + i, y = o.y - 1;
-            if (inBounds(x, y)) seeds.push({ x, y, heading: 1 }); // up
-        }
-        for (let j = 0; j < o.h; j += spacing) {
-            const x = o.x + o.w, y = o.y + j;
-            if (inBounds(x, y)) seeds.push({ x, y, heading: 3 }); // right
-        }
-        for (let i = 0; i < o.w; i += spacing) {
-            const x = o.x + i, y = o.y + o.h;
-            if (inBounds(x, y)) seeds.push({ x, y, heading: 5 }); // down
-        }
-        for (let j = 0; j < o.h; j += spacing) {
-            const x = o.x - 1, y = o.y + j;
-            if (inBounds(x, y)) seeds.push({ x, y, heading: 7 }); // left
+        for (const group of pinGroups(o)) {
+            if (group.side === 'top') {
+                for (const i of pinCellOffsets(o.w, group, spacing)) {
+                    const x = o.x + i, y = o.y - 1;
+                    if (inBounds(x, y)) seeds.push({ x, y, heading: 1 }); // up
+                }
+            } else if (group.side === 'right') {
+                for (const j of pinCellOffsets(o.h, group, spacing)) {
+                    const x = o.x + o.w, y = o.y + j;
+                    if (inBounds(x, y)) seeds.push({ x, y, heading: 3 }); // right
+                }
+            } else if (group.side === 'bottom') {
+                for (const i of pinCellOffsets(o.w, group, spacing)) {
+                    const x = o.x + i, y = o.y + o.h;
+                    if (inBounds(x, y)) seeds.push({ x, y, heading: 5 }); // down
+                }
+            } else if (group.side === 'left') {
+                for (const j of pinCellOffsets(o.h, group, spacing)) {
+                    const x = o.x - 1, y = o.y + j;
+                    if (inBounds(x, y)) seeds.push({ x, y, heading: 7 }); // left
+                }
+            }
         }
     }
     return seeds;
@@ -419,101 +595,24 @@ export function getQFPPinSeeds(gridWidth, gridHeight) {
 export function drawObstacles(canvas, ctx, gridWidth, gridHeight) {
     if (!obstacles.length) return;
 
-    const sx = (1 + canvas.width / params.cellSize) / gridWidth;
-    const sy = (1 + canvas.height / params.cellSize) / gridHeight;
-    const cw = params.cellSize * sx;
-    const ch = params.cellSize * sy;
+    const cw = canvas.width / gridWidth;
+    const ch = canvas.height / gridHeight;
 
     for (const o of obstacles) {
-        if (o.qfp) drawQFP(ctx, o, cw, ch);
-        else drawBlock(ctx, o, cw, ch);
+        const kind = resolveKind(o);
+        const ox = o.x * cw;
+        const oy = o.y * ch;
+        if (!(o.rot || 0)) {
+            drawComponent(ctx, kind, { ox, oy, cols: o.w, rows: o.h, cw, ch }, o);
+            continue;
+        }
+        const geom = obstacleDrawGeom(o, kind, cw, ch);
+        const mx = ox + o.w * cw / 2;
+        const my = oy + o.h * ch / 2;
+        ctx.save();
+        ctx.translate(mx, my);
+        ctx.rotate(geom.rot * Math.PI / 2);
+        drawComponent(ctx, kind, geom, o);
+        ctx.restore();
     }
-}
-
-function drawBlock(ctx, o, cw, ch) {
-    const inset = Math.min(cw, ch) * 0.15;
-    const padRadius = Math.min(cw, ch) * 0.22;
-    const x = o.x * cw + inset;
-    const y = o.y * ch + inset;
-    const w = o.w * cw - inset * 2;
-    const h = o.h * ch - inset * 2;
-
-    ctx.lineWidth = Math.max(1, params.cellSize / 5);
-    ctx.fillStyle = params.bgColor;
-    ctx.strokeStyle = params.fgColor;
-    ctx.fillRect(x, y, w, h);
-    ctx.strokeRect(x, y, w, h);
-
-    ctx.fillStyle = params.fgColor;
-    for (const [cx, cy] of cornerPoints(x, y, w, h)) {
-        ctx.beginPath();
-        ctx.arc(cx, cy, padRadius, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-
-function drawQFP(ctx, o, cw, ch) {
-    // Each pin tab bridges the chip body and the wire trace that starts at
-    // the adjacent pin cell. Two rules:
-    //   * width matches the wire stroke (params.cellSize / 4) so the seam
-    //     between tab and trace is invisible -- one continuous line, not a
-    //     "pin lead followed by thinner wire".
-    //   * length reaches the pin cell center plus a tiny overlap so canvas
-    //     pixel rounding can't open a gap.
-    const cellMin = Math.min(cw, ch);
-    const bodyInset = cellMin * 0.5;
-    const pinWid = params.cellSize / 4;
-    const pinOverlap = cellMin * 0.1;
-    const spacing = Math.max(1, params.qfpPinSpacing | 0);
-
-    const bx = o.x * cw + bodyInset;
-    const by = o.y * ch + bodyInset;
-    const bw = o.w * cw - bodyInset * 2;
-    const bh = o.h * ch - bodyInset * 2;
-
-    ctx.fillStyle = params.fgColor;
-
-    // Top + bottom pins
-    for (let i = 0; i < o.w; i += spacing) {
-        const cx = (o.x + i + 0.5) * cw;
-        // Top: from pin cell center DOWN to body top.
-        const topY = (o.y - 0.5) * ch - pinOverlap;
-        ctx.fillRect(cx - pinWid / 2, topY, pinWid, by - topY);
-        // Bottom: from body bottom DOWN to pin cell center.
-        const botEnd = (o.y + o.h + 0.5) * ch + pinOverlap;
-        ctx.fillRect(cx - pinWid / 2, by + bh, pinWid, botEnd - (by + bh));
-    }
-    // Left + right pins
-    for (let j = 0; j < o.h; j += spacing) {
-        const cy = (o.y + j + 0.5) * ch;
-        const leftX = (o.x - 0.5) * cw - pinOverlap;
-        ctx.fillRect(leftX, cy - pinWid / 2, bx - leftX, pinWid);
-        const rightEnd = (o.x + o.w + 0.5) * cw + pinOverlap;
-        ctx.fillRect(bx + bw, cy - pinWid / 2, rightEnd - (bx + bw), pinWid);
-    }
-
-    // Body on top of the tab roots so the chip case looks solid.
-    ctx.lineWidth = Math.max(1, params.cellSize / 5);
-    ctx.fillStyle = params.bgColor;
-    ctx.strokeStyle = params.fgColor;
-    ctx.fillRect(bx, by, bw, bh);
-    ctx.strokeRect(bx, by, bw, bh);
-
-    // Pin-1 dot so the chip reads as a chip.
-    const dotR = Math.min(bw, bh) * 0.06;
-    if (dotR > 0.5) {
-        ctx.fillStyle = params.fgColor;
-        ctx.beginPath();
-        ctx.arc(bx + dotR * 2.8, by + dotR * 2.8, dotR, 0, Math.PI * 2);
-        ctx.fill();
-    }
-}
-
-function cornerPoints(x, y, w, h) {
-    return [
-        [x, y],
-        [x + w, y],
-        [x, y + h],
-        [x + w, y + h],
-    ];
 }

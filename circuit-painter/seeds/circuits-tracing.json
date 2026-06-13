@@ -1,0 +1,1102 @@
+{
+  "id": "circuits_tracing_v2",
+  "name": "Circuits tracing",
+  "createdAt": 1781200000000,
+  "thumbnail": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+  "data": {
+    "params": {
+      "mapWidth": 1647,
+      "mapHeight": 423,
+      "cellSize": 9,
+      "wireLength": 28,
+      "cutOffLength": 1,
+      "straightness": 15,
+      "diagonalChance": 0.5,
+      "turnSmoothness": 1,
+      "collectiveness": 0,
+      "prioritizeLongWires": false,
+      "joinEndpoints": false,
+      "directionality": 0.8,
+      "showGrid": false,
+      "showCircuits": true,
+      "showGreedyCircuits": false,
+      "editWires": true,
+      "showBuses": false,
+      "qfpStyle": true,
+      "qfpPinSpacing": 2,
+      "obstaclesEnabled": true,
+      "editObstacles": true,
+      "pinBusSlantLength": 6,
+      "pinBusStraightMax": 14,
+      "routeClearanceTarget": 4,
+      "routeClearanceBias": 0.75,
+      "pinBusRouteMargin": 16,
+      "pinBusMaxDetourRatio": 1.75,
+      "pinBusCorridorWeight": 0.24,
+      "pinBusSpineRatio": 0.52,
+      "pinBusWireCount": 4,
+      "seed": 1,
+      "bgColor": "rgba(51, 5, 51, 1)",
+      "fgColor": "rgba(163, 204, 194, 1)"
+    },
+    "obstacles": [
+      {
+        "x": 98,
+        "y": 9,
+        "w": 12,
+        "h": 12,
+        "kind": "qfp",
+        "qfp": true,
+        "rot": 0
+      },
+      {
+        "x": 163,
+        "y": 15,
+        "w": 14,
+        "h": 14,
+        "kind": "qfp",
+        "qfp": true,
+        "rot": 0
+      },
+      {
+        "x": 36,
+        "y": 16,
+        "w": 14,
+        "h": 14,
+        "kind": "qfp",
+        "qfp": true,
+        "rot": 0
+      },
+      {
+        "x": 125,
+        "y": 21,
+        "w": 14,
+        "h": 14,
+        "kind": "qfp",
+        "qfp": true,
+        "rot": 0
+      },
+      {
+        "x": 68,
+        "y": 27,
+        "w": 12,
+        "h": 12,
+        "kind": "qfp",
+        "qfp": true,
+        "rot": 0
+      },
+      {
+        "x": 68,
+        "y": 12,
+        "w": 13,
+        "h": 10,
+        "kind": "heatsink",
+        "qfp": false,
+        "rot": 0,
+        "auxPinSide": "bottom",
+        "auxPinOffsets": [
+          2,
+          9
+        ]
+      },
+      {
+        "x": 105,
+        "y": 29,
+        "w": 11,
+        "h": 8,
+        "kind": "heatsink",
+        "qfp": false,
+        "rot": 0,
+        "auxPinSide": "top",
+        "auxPinOffsets": [
+          5,
+          9
+        ]
+      }
+    ],
+    "wires": [
+      {
+        "points": [
+          {
+            "x": 50.22222222222222,
+            "y": 27.666666666666668
+          },
+          {
+            "x": 53.666666666666664,
+            "y": 27.77777777777778
+          },
+          {
+            "x": 54.55555555555556,
+            "y": 28.77777777777778
+          },
+          {
+            "x": 58.0,
+            "y": 28.77777777777778
+          },
+          {
+            "x": 62.666666666666664,
+            "y": 33.22222222222222
+          },
+          {
+            "x": 68.44444444444444,
+            "y": 33.22222222222222
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 78.88888888888889,
+            "y": 25.88888888888889
+          },
+          {
+            "x": 110.11111111111111,
+            "y": 25.77777777777778
+          },
+          {
+            "x": 113.44444444444444,
+            "y": 22.444444444444443
+          },
+          {
+            "x": 117.11111111111111,
+            "y": 22.333333333333332
+          },
+          {
+            "x": 119.77777777777777,
+            "y": 19.666666666666668
+          },
+          {
+            "x": 124.33333333333333,
+            "y": 19.77777777777778
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 36.333333333333336,
+            "y": 22.22222222222222
+          },
+          {
+            "x": 30.444444444444443,
+            "y": 22.22222222222222
+          },
+          {
+            "x": 29.555555555555557,
+            "y": 23.0
+          },
+          {
+            "x": 6.777777777777778,
+            "y": 23.0
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 66.0,
+            "y": 18.333333333333332
+          },
+          {
+            "x": 59.888888888888886,
+            "y": 18.333333333333332
+          },
+          {
+            "x": 55.888888888888886,
+            "y": 22.333333333333332
+          },
+          {
+            "x": 50.333333333333336,
+            "y": 22.333333333333332
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 50.44444444444444,
+            "y": 24.333333333333332
+          },
+          {
+            "x": 67.88888888888889,
+            "y": 24.22222222222222
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 170.22222222222223,
+            "y": 16.555555555555557
+          },
+          {
+            "x": 170.11111111111111,
+            "y": 13.11111111111111
+          },
+          {
+            "x": 163.88888888888889,
+            "y": 13.0
+          },
+          {
+            "x": 159.88888888888889,
+            "y": 16.88888888888889
+          },
+          {
+            "x": 148.77777777777777,
+            "y": 16.88888888888889
+          },
+          {
+            "x": 145.44444444444446,
+            "y": 20.333333333333332
+          },
+          {
+            "x": 142.77777777777777,
+            "y": 20.333333333333332
+          },
+          {
+            "x": 141.33333333333334,
+            "y": 18.77777777777778
+          },
+          {
+            "x": 133.11111111111111,
+            "y": 18.77777777777778
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 76.44444444444444,
+            "y": 24.555555555555557
+          },
+          {
+            "x": 77.22222222222223,
+            "y": 25.555555555555557
+          },
+          {
+            "x": 78.77777777777777,
+            "y": 25.88888888888889
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 36.22222222222222,
+            "y": 24.333333333333332
+          },
+          {
+            "x": 11.11111111111111,
+            "y": 24.444444444444443
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 66.11111111111111,
+            "y": 12.444444444444445
+          },
+          {
+            "x": 57.666666666666664,
+            "y": 12.444444444444445
+          },
+          {
+            "x": 50.333333333333336,
+            "y": 19.88888888888889
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 73.33333333333333,
+            "y": 25.77777777777778
+          },
+          {
+            "x": 70.44444444444444,
+            "y": 25.77777777777778
+          },
+          {
+            "x": 69.55555555555556,
+            "y": 24.666666666666668
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 67.88888888888889,
+            "y": 24.22222222222222
+          },
+          {
+            "x": 70.22222222222223,
+            "y": 21.666666666666668
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 78.33333333333333,
+            "y": 6.666666666666667
+          },
+          {
+            "x": 87.11111111111111,
+            "y": 6.666666666666667
+          },
+          {
+            "x": 91.44444444444444,
+            "y": 11.0
+          },
+          {
+            "x": 91.44444444444444,
+            "y": 17.22222222222222
+          },
+          {
+            "x": 87.55555555555556,
+            "y": 17.444444444444443
+          },
+          {
+            "x": 86.77777777777777,
+            "y": 18.0
+          },
+          {
+            "x": 85.11111111111111,
+            "y": 19.666666666666668
+          },
+          {
+            "x": 85.0,
+            "y": 22.555555555555557
+          },
+          {
+            "x": 83.66666666666667,
+            "y": 24.11111111111111
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 121.33333333333333,
+            "y": 21.666666666666668
+          },
+          {
+            "x": 122.88888888888889,
+            "y": 21.666666666666668
+          },
+          {
+            "x": 124.33333333333333,
+            "y": 19.88888888888889
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 102.11111111111111,
+            "y": 32.0
+          },
+          {
+            "x": 98.33333333333333,
+            "y": 32.111111111111114
+          },
+          {
+            "x": 94.66666666666667,
+            "y": 28.555555555555557
+          },
+          {
+            "x": 88.77777777777777,
+            "y": 28.555555555555557
+          },
+          {
+            "x": 87.88888888888889,
+            "y": 27.333333333333332
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 69.55555555555556,
+            "y": 24.555555555555557
+          },
+          {
+            "x": 76.33333333333333,
+            "y": 24.444444444444443
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 68.0,
+            "y": 29.77777777777778
+          },
+          {
+            "x": 64.0,
+            "y": 25.77777777777778
+          },
+          {
+            "x": 50.333333333333336,
+            "y": 25.77777777777778
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 98.11111111111111,
+            "y": 15.444444444444445
+          },
+          {
+            "x": 95.0,
+            "y": 15.555555555555555
+          },
+          {
+            "x": 94.11111111111111,
+            "y": 16.444444444444443
+          },
+          {
+            "x": 94.11111111111111,
+            "y": 19.22222222222222
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 18.77777777777778,
+            "y": 18.666666666666668
+          },
+          {
+            "x": 29.77777777777778,
+            "y": 18.666666666666668
+          },
+          {
+            "x": 34.111111111111114,
+            "y": 14.333333333333334
+          },
+          {
+            "x": 43.333333333333336,
+            "y": 14.333333333333334
+          },
+          {
+            "x": 43.44444444444444,
+            "y": 16.666666666666668
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 98.11111111111111,
+            "y": 14.555555555555555
+          },
+          {
+            "x": 96.77777777777777,
+            "y": 13.0
+          },
+          {
+            "x": 96.88888888888889,
+            "y": 11.333333333333334
+          },
+          {
+            "x": 98.88888888888889,
+            "y": 9.333333333333334
+          },
+          {
+            "x": 100.22222222222223,
+            "y": 9.333333333333334
+          },
+          {
+            "x": 101.55555555555556,
+            "y": 8.0
+          },
+          {
+            "x": 102.22222222222223,
+            "y": 7.888888888888889
+          },
+          {
+            "x": 113.44444444444444,
+            "y": 8.0
+          },
+          {
+            "x": 116.33333333333333,
+            "y": 10.88888888888889
+          },
+          {
+            "x": 116.44444444444444,
+            "y": 13.11111111111111
+          },
+          {
+            "x": 119.66666666666667,
+            "y": 16.22222222222222
+          },
+          {
+            "x": 129.77777777777777,
+            "y": 16.22222222222222
+          },
+          {
+            "x": 136.66666666666666,
+            "y": 9.333333333333334
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 50.333333333333336,
+            "y": 21.0
+          },
+          {
+            "x": 55.111111111111114,
+            "y": 21.0
+          },
+          {
+            "x": 59.666666666666664,
+            "y": 16.444444444444443
+          },
+          {
+            "x": 66.11111111111111,
+            "y": 16.333333333333332
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 83.66666666666667,
+            "y": 24.22222222222222
+          },
+          {
+            "x": 89.55555555555556,
+            "y": 24.333333333333332
+          },
+          {
+            "x": 94.11111111111111,
+            "y": 19.444444444444443
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 139.0,
+            "y": 26.555555555555557
+          },
+          {
+            "x": 149.88888888888889,
+            "y": 26.555555555555557
+          },
+          {
+            "x": 153.77777777777777,
+            "y": 22.88888888888889
+          },
+          {
+            "x": 163.11111111111111,
+            "y": 22.88888888888889
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 170.55555555555554,
+            "y": 33.666666666666664
+          },
+          {
+            "x": 170.22222222222223,
+            "y": 34.0
+          },
+          {
+            "x": 163.77777777777777,
+            "y": 34.0
+          },
+          {
+            "x": 159.33333333333334,
+            "y": 29.666666666666668
+          },
+          {
+            "x": 156.11111111111111,
+            "y": 29.77777777777778
+          },
+          {
+            "x": 152.88888888888889,
+            "y": 33.111111111111114
+          },
+          {
+            "x": 146.33333333333334,
+            "y": 33.111111111111114
+          },
+          {
+            "x": 144.66666666666666,
+            "y": 31.333333333333332
+          },
+          {
+            "x": 138.88888888888889,
+            "y": 31.333333333333332
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 118.66666666666667,
+            "y": 32.0
+          },
+          {
+            "x": 120.44444444444444,
+            "y": 32.111111111111114
+          },
+          {
+            "x": 121.77777777777777,
+            "y": 30.77777777777778
+          },
+          {
+            "x": 125.88888888888889,
+            "y": 30.77777777777778
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 16.22222222222222,
+            "y": 28.88888888888889
+          },
+          {
+            "x": 25.0,
+            "y": 28.77777777777778
+          },
+          {
+            "x": 27.22222222222222,
+            "y": 26.666666666666668
+          },
+          {
+            "x": 36.333333333333336,
+            "y": 26.77777777777778
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 87.88888888888889,
+            "y": 27.22222222222222
+          },
+          {
+            "x": 112.22222222222223,
+            "y": 27.11111111111111
+          },
+          {
+            "x": 113.66666666666667,
+            "y": 25.88888888888889
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 126.11111111111111,
+            "y": 33.888888888888886
+          },
+          {
+            "x": 120.77777777777777,
+            "y": 39.22222222222222
+          },
+          {
+            "x": 97.33333333333333,
+            "y": 39.22222222222222
+          },
+          {
+            "x": 94.33333333333333,
+            "y": 36.22222222222222
+          },
+          {
+            "x": 94.22222222222223,
+            "y": 35.0
+          },
+          {
+            "x": 91.22222222222223,
+            "y": 32.0
+          },
+          {
+            "x": 84.55555555555556,
+            "y": 32.0
+          },
+          {
+            "x": 80.33333333333333,
+            "y": 27.444444444444443
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 139.0,
+            "y": 28.88888888888889
+          },
+          {
+            "x": 151.22222222222223,
+            "y": 28.88888888888889
+          },
+          {
+            "x": 151.88888888888889,
+            "y": 28.77777777777778
+          },
+          {
+            "x": 155.22222222222223,
+            "y": 25.444444444444443
+          },
+          {
+            "x": 163.0,
+            "y": 25.333333333333332
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 163.0,
+            "y": 20.333333333333332
+          },
+          {
+            "x": 151.44444444444446,
+            "y": 20.333333333333332
+          },
+          {
+            "x": 148.77777777777777,
+            "y": 23.11111111111111
+          },
+          {
+            "x": 144.0,
+            "y": 23.11111111111111
+          },
+          {
+            "x": 140.55555555555554,
+            "y": 19.666666666666668
+          },
+          {
+            "x": 124.44444444444444,
+            "y": 19.77777777777778
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 126.0,
+            "y": 24.444444444444443
+          },
+          {
+            "x": 115.11111111111111,
+            "y": 24.444444444444443
+          },
+          {
+            "x": 113.66666666666667,
+            "y": 25.88888888888889
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 76.44444444444444,
+            "y": 24.333333333333332
+          },
+          {
+            "x": 83.55555555555556,
+            "y": 24.22222222222222
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 113.66666666666667,
+            "y": 25.88888888888889
+          },
+          {
+            "x": 114.66666666666667,
+            "y": 26.22222222222222
+          },
+          {
+            "x": 120.0,
+            "y": 26.11111111111111
+          },
+          {
+            "x": 121.11111111111111,
+            "y": 27.11111111111111
+          },
+          {
+            "x": 126.0,
+            "y": 27.11111111111111
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 94.22222222222223,
+            "y": 19.333333333333332
+          },
+          {
+            "x": 98.33333333333333,
+            "y": 19.333333333333332
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      },
+      {
+        "points": [
+          {
+            "x": 87.77777777777777,
+            "y": 27.22222222222222
+          },
+          {
+            "x": 80.33333333333333,
+            "y": 27.333333333333332
+          }
+        ],
+        "isBus": false,
+        "isGreedy": false,
+        "isQFPPin": false,
+        "isRoute": false,
+        "noPads": true,
+        "strokeScale": null,
+        "manual": true
+      }
+    ]
+  }
+}

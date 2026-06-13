@@ -18,6 +18,15 @@ export function isSharpCorner(fromDir, toDir) {
     return delta >= 2 && delta <= 6;
 }
 
+// One-cell inset matches wire.js: traces stay inside the visible map so stroke
+// width does not bleed past the canvas edge.
+export const ROUTE_INSET = 1;
+
+export function inRouteBounds(x, y, gridWidth, gridHeight) {
+    return x >= ROUTE_INSET && y >= ROUTE_INSET
+        && x < gridWidth - ROUTE_INSET && y < gridHeight - ROUTE_INSET;
+}
+
 /** DIRS indices to step from a corner cell when replacing a sharp turn. */
 export function chamferDirsForCorner(fromDir, toDir) {
     const delta = turnDelta(fromDir, toDir);
@@ -85,6 +94,16 @@ function cellAt(available, x, y, gridWidth, gridHeight) {
     return available[idx(x, y, gridHeight)] !== 0;
 }
 
+function distanceToSegment(x, y, segment) {
+    const dx = segment.bx - segment.ax;
+    const dy = segment.by - segment.ay;
+    const lenSq = dx * dx + dy * dy;
+    if (lenSq === 0) return Math.hypot(x - segment.ax, y - segment.ay);
+
+    const t = Math.max(0, Math.min(1, ((x - segment.ax) * dx + (y - segment.ay) * dy) / lenSq));
+    return Math.hypot(x - (segment.ax + dx * t), y - (segment.ay + dy * t));
+}
+
 // `available` and `headings` are mutated in place by callers that mark cells
 // taken. `start`/`end` are {x,y}. Returns [{x,y}, ...] or null.
 export function aStarCore(available, headings, gridWidth, gridHeight, start, end, options = {}) {
@@ -99,13 +118,23 @@ export function aStarCore(available, headings, gridWidth, gridHeight, start, end
     const segMax = options.segMax > 0 ? options.segMax : Infinity;
     const segPenalty = options.segPenalty != null ? options.segPenalty : 3;
     const startDir = Number.isInteger(options.startDir) ? options.startDir : -1;
+    const endDir = Number.isInteger(options.endDir) ? options.endDir : -1;
     const shaping = onlyObtuse || segMin > 0 || segMax !== Infinity;
+
+    const clearance = options.clearance;
+    const clearanceTarget = Math.max(0, options.clearanceTarget ?? 0);
+    const clearanceWeight = Math.max(0, options.clearanceWeight ?? 0);
+    const useClearance = clearance && clearanceWeight > 0 && clearanceTarget > 0;
 
     const turnSmoothness = options.turnSmoothness ?? 0;
     const diagonalChance = options.diagonalChance ?? 0.5;
     const turnPenalty = turnSmoothness * (gridWidth + gridHeight);
     const dc = diagonalChance < 0 ? 0 : diagonalChance > 1 ? 1 : diagonalChance;
     const diagCost = Math.SQRT2 + (1 - dc) * 2.5;
+    const bounds = options.bounds || null;
+    const corridor = options.corridor || null;
+    const corridorWeight = corridor ? Math.max(0, corridor.weight || 0) : 0;
+    const corridorRadius = corridor ? Math.max(0, corridor.radius || 0) : 0;
 
     const trackDir = shaping || turnPenalty > 0;
     const RUN_CAP = 31;
@@ -144,6 +173,10 @@ export function aStarCore(available, headings, gridWidth, gridHeight, start, end
         if (++expansions > maxExpansions) return null;
 
         if (node.x === end.x && node.y === end.y) {
+            // The caller continues from the goal in `endDir` (e.g. into a pin
+            // lead); any arrival within ±45° of that keeps the joint smooth.
+            // Demanding the exact direction would reject many valid approaches.
+            if (endDir >= 0 && node.dir >= 0 && isSharpCorner(node.dir, endDir)) continue;
             const path = [];
             let key = node.key;
             let info = { x: node.x, y: node.y, dir: node.dir };
@@ -161,7 +194,10 @@ export function aStarCore(available, headings, gridWidth, gridHeight, start, end
             const [dx, dy] = DIRS[i];
             const nx = node.x + dx;
             const ny = node.y + dy;
-            if (nx < 0 || nx >= gridWidth || ny < 0 || ny >= gridHeight) continue;
+            if (!inRouteBounds(nx, ny, gridWidth, gridHeight)) continue;
+            if (bounds && (
+                nx < bounds.minX || ny < bounds.minY || nx > bounds.maxX || ny > bounds.maxY
+            )) continue;
 
             const nIdx = idx(nx, ny, gridHeight);
             if (!available[nIdx]) continue;
@@ -196,6 +232,18 @@ export function aStarCore(available, headings, gridWidth, gridHeight, start, end
                 }
             } else {
                 nextRun = 0;
+            }
+
+            if (useClearance) {
+                const d = clearance[nIdx];
+                if (d < clearanceTarget) {
+                    stepCost += clearanceWeight * (clearanceTarget - d);
+                }
+            }
+
+            if (corridorWeight > 0) {
+                const drift = Math.max(0, distanceToSegment(nx, ny, corridor) - corridorRadius);
+                stepCost += corridorWeight * drift;
             }
 
             let bundle = 0;

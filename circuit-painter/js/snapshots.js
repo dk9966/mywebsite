@@ -7,14 +7,17 @@
 //     have hand-edited them via the corner-drag tool)
 //   - a small canvas thumbnail for the UI list
 //
-// Wires are NOT saved -- they're deterministic from (params + obstacles).
-// Painted flow grid is NOT saved in v1; document that limitation if it bites.
+// Wires: saved as sparse polylines when present (manual edits / drawn lines).
+// Painted flow grid is NOT saved; document that limitation if it bites.
 
 import { params } from './params.js';
 import { getObstacles, setObstacles } from './obstacles.js';
-import { getCanvas } from './canvas.js';
+import { getCanvas, getWires } from './canvas.js';
+import { serializeWiresForSnapshot, setWireOverlay } from './wireEdit.js';
 
-const STORAGE_KEY = 'circuit-painter:snapshots:v1';
+const PAINTER_STORAGE_KEY = 'circuit-painter:snapshots:v1';
+const GENERATOR_STORAGE_KEY = 'circuit-generator:snapshots:v1';
+let storageKey = PAINTER_STORAGE_KEY;
 const THUMB_W = 90;
 const THUMB_H = 54;
 
@@ -24,17 +27,24 @@ const SKIP_PARAM_KEYS = new Set(['bgColorHex', 'fgColorHex']);
 let onLoadCallback = null;
 let datGui = null;
 
-export function initSnapshots({ gui, onLoad }) {
+export function initSnapshots({
+    gui,
+    onLoad,
+    seedUrls = [],
+    storageKey: key = PAINTER_STORAGE_KEY,
+}) {
     datGui = gui;
     onLoadCallback = onLoad;
+    storageKey = key;
     renderPanel();
+    if (seedUrls.length) ensureSeedSnapshots(seedUrls);
 }
 
 // === Storage ===============================================================
 
 function readAll() {
     try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        return JSON.parse(localStorage.getItem(storageKey) || '[]');
     } catch {
         return [];
     }
@@ -42,7 +52,7 @@ function readAll() {
 
 function writeAll(list) {
     try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        localStorage.setItem(storageKey, JSON.stringify(list));
     } catch (err) {
         console.error('Snapshot save failed (storage full?):', err);
         alert('Could not save snapshot: localStorage is full or unavailable.');
@@ -72,7 +82,7 @@ function makeThumbnail() {
     return off.toDataURL('image/png');
 }
 
-function captureSnapshot(name) {
+export function captureSnapshot(name) {
     return {
         id: Date.now() + '_' + Math.random().toString(36).slice(2, 8),
         name,
@@ -81,15 +91,51 @@ function captureSnapshot(name) {
         data: {
             params: paramsToPlain(),
             obstacles: getObstacles().map((o) => ({
-                x: o.x, y: o.y, w: o.w, h: o.h, qfp: !!o.qfp,
+                x: o.x, y: o.y, w: o.w, h: o.h, kind: o.kind, qfp: !!o.qfp,
+                rot: o.rot | 0,
+                ...(o.auxPinSide ? { auxPinSide: o.auxPinSide } : {}),
+                ...(o.auxPinOffsets?.length ? { auxPinOffsets: o.auxPinOffsets.slice() } : {}),
             })),
+            wires: serializeWiresForSnapshot(getWires()),
         },
     };
+}
+
+export function saveSnapshotNamed(name) {
+    const all = readAll();
+    all.push(captureSnapshot(name));
+    writeAll(all);
+    renderPanel();
+}
+
+function snapshotExists(name) {
+    return readAll().some((s) => s.name === name);
+}
+
+export async function ensureSeedSnapshots(seedUrls) {
+    let added = false;
+    for (const url of seedUrls) {
+        try {
+            const snap = await fetch(url).then((r) => {
+                if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+                return r.json();
+            });
+            if (snapshotExists(snap.name)) continue;
+            const all = readAll();
+            all.push(snap);
+            writeAll(all);
+            added = true;
+        } catch (err) {
+            console.warn('Seed snapshot failed:', url, err);
+        }
+    }
+    if (added) renderPanel();
 }
 
 function applySnapshot(snap) {
     Object.assign(params, snap.data.params);
     setObstacles(snap.data.obstacles);
+    setWireOverlay(snap.data.wires?.length ? snap.data.wires : null);
     refreshGuiControllers(datGui);
     if (onLoadCallback) onLoadCallback();
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obstacle Reference</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <canvas id="sheet"></canvas>
+    <script type="module">
+        import { listPaletteKinds, drawComponent, referenceFootprintPx } from './js/components.js';
+        import { params } from './js/params.js';
+
+        const COLS = 4;
+        const PAD = 56;
+        const GAP_X = 64;
+        const GAP_Y = 80;
+        const LABEL_H = 32;
+        // GLB units → pixels. QFP (~2.35 u) lands near 120 px wide.
+        const PX_PER_UNIT = 52;
+        const CELL = 150;
+
+        const kinds = listPaletteKinds();
+        const rows = Math.ceil(kinds.length / COLS);
+
+        const sheetW = PAD * 2 + COLS * CELL + (COLS - 1) * GAP_X;
+        const sheetH = PAD * 2 + rows * (CELL + LABEL_H) + (rows - 1) * GAP_Y;
+
+        const canvas = document.getElementById('sheet');
+        const dpr = 2;
+        canvas.width = sheetW * dpr;
+        canvas.height = sheetH * dpr;
+        canvas.style.width = `${sheetW}px`;
+        canvas.style.height = `${sheetH}px`;
+        const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+
+        ctx.fillStyle = params.bgColor;
+        ctx.fillRect(0, 0, sheetW, sheetH);
+
+        kinds.forEach((kind, i) => {
+            const col = i % COLS;
+            const row = Math.floor(i / COLS);
+            const cellX = PAD + col * (CELL + GAP_X);
+            const cellY = PAD + row * (CELL + LABEL_H + GAP_Y);
+
+            const fp = referenceFootprintPx(kind, PX_PER_UNIT);
+            const ox = cellX + (CELL - fp.drawW) / 2;
+            const oy = cellY + (CELL - fp.drawH) / 2;
+
+            drawComponent(ctx, kind, {
+                ox, oy, cols: fp.cols, rows: fp.rows, cw: fp.cw, ch: fp.ch,
+            });
+
+            ctx.fillStyle = params.fgColor;
+            ctx.font = '600 15px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'top';
+            ctx.fillText(kind.label, cellX + CELL / 2, cellY + CELL + 10);
+        });
+    </script>
+</body>
+</html>
