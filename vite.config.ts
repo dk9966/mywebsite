@@ -1,9 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import { circuitsTuningSavePlugin } from './scripts/vite-circuits-tuning-save'
 
 export default defineConfig({
-  plugins: [react()],
+  server: {
+    port: 5174,
+    strictPort: true,
+  },
+  plugins: [react(), circuitsTuningSavePlugin()],
   resolve: {
     alias: {
       react: path.resolve('./node_modules/react'),
@@ -25,7 +30,9 @@ export default defineConfig({
         ),
         tronLines: path.resolve(__dirname, 'tron-lines.html'),
         tronTable: path.resolve(__dirname, 'tron-table.html'),
-        deskSetup: path.resolve(__dirname, 'desk-setup.html'),
+        tronCircuitsOutline: path.resolve(__dirname, 'tron-circuits-outline.html'),
+        tronCircuitsEditor: path.resolve(__dirname, 'tron-circuits-editor.html'),
+        componentReferenceOutline: path.resolve(__dirname, 'component-reference-outline.html'),
         circuitPainter: path.resolve(__dirname, 'circuit-painter/index.html'),
         circuitGenerator: path.resolve(__dirname, 'circuit-generator/index.html'),
         circuitFlow: path.resolve(__dirname, 'circuit-flow/index.html'),

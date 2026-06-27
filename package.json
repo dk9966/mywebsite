@@ -14,9 +14,12 @@
     "watch-clip-titles": "tsx scripts/watch-clip-titles.ts",
     "render-circuit-flow": "node scripts/render-circuit-flow.mjs",
     "render-circuit-board": "node scripts/render-circuit-board.mjs",
+    "render-circuit-board:dense": "node scripts/render-circuit-board.mjs --variant dense-long",
     "render-circuit-road": "node scripts/render-circuit-road.mjs",
+    "render-circuit-pcb": "node scripts/render-circuit-pcb.mjs",
     "trace-reference-lines": "node scripts/trace-reference-lines.mjs",
-    "build-circuits-tracing": "python3 scripts/build-circuits-tracing-snapshot.py"
+    "build-circuits-tracing": "python3 scripts/build-circuits-tracing-snapshot.py",
+    "build-component-reference-outline": "python3 scripts/build-component-reference-outline-glb.py"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",

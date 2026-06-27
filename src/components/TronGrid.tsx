@@ -1,18 +1,19 @@
-import { useRef, useMemo, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { Line2 } from "three/addons/lines/Line2.js";
 import { LineGeometry } from "three/addons/lines/LineGeometry.js";
 import { LineMaterial } from "three/addons/lines/LineMaterial.js";
+import { GRID_EXTENT, GRID_SPACING } from "../lib/constants";
 import {
   buildScene,
+  sceneDuration,
   totalPathLength,
   type GridPath,
   type Vec3,
 } from "../lib/gridBuilder";
-import { GRID_SPACING, GRID_EXTENT } from "../lib/constants";
-import { useLineConfig, type LineConfig } from "../stores/lineConfig";
 import { useClock } from "../stores/clock";
+import { useLineConfig, type LineConfig } from "../stores/lineConfig";
 
 const sharedTipGeo = new THREE.SphereGeometry(0.5, 8, 6);
 const _xAxis = new THREE.Vector3(1, 0, 0);
@@ -21,6 +22,7 @@ const _dir = new THREE.Vector3();
 type AnimatedLine = {
   spawnTime: number;
   pathLength: number;
+  cursorSpeed: number;
   waypoints: Vec3[];
   line: Line2;
   lineGeo: LineGeometry;
@@ -65,8 +67,10 @@ function syncLineSegmentBuffers(
 ): void {
   if (segmentCount <= 0) return;
 
-  const iStart = geo.attributes.instanceStart as THREE.InterleavedBufferAttribute;
-  const colStart = geo.attributes.instanceColorStart as THREE.InterleavedBufferAttribute;
+  const iStart = geo.attributes
+    .instanceStart as THREE.InterleavedBufferAttribute;
+  const colStart = geo.attributes
+    .instanceColorStart as THREE.InterleavedBufferAttribute;
   if (!iStart?.data?.array || !colStart?.data?.array) return;
 
   const posPairs = iStart.data.array as Float32Array;
@@ -112,11 +116,13 @@ function waypointsToPoints(waypoints: Vec3[]): THREE.Vector3[] {
     const maxDelta = Math.max(Math.abs(dx), Math.abs(dy), Math.abs(dz));
     const steps = Math.max(1, Math.round(maxDelta / GRID_SPACING));
     for (let s = 1; s <= steps; s++) {
-      out.push(new THREE.Vector3(
-        px + (dx * s) / steps,
-        py + (dy * s) / steps,
-        pz + (dz * s) / steps,
-      ));
+      out.push(
+        new THREE.Vector3(
+          px + (dx * s) / steps,
+          py + (dy * s) / steps,
+          pz + (dz * s) / steps,
+        ),
+      );
     }
   }
   return out;
@@ -130,7 +136,11 @@ function computeCumDist(pts: THREE.Vector3[]): Float32Array {
   return cd;
 }
 
-function fillBodyColor(arr: Float32Array, pointCount: number, color: THREE.Color) {
+function fillBodyColor(
+  arr: Float32Array,
+  pointCount: number,
+  color: THREE.Color,
+) {
   for (let i = 0; i < pointCount; i++) {
     arr[i * 3] = color.r;
     arr[i * 3 + 1] = color.g;
@@ -138,7 +148,10 @@ function fillBodyColor(arr: Float32Array, pointCount: number, color: THREE.Color
   }
 }
 
-function createColorVerts(pointCount: number, baseColor: THREE.Color): Float32Array {
+function createColorVerts(
+  pointCount: number,
+  baseColor: THREE.Color,
+): Float32Array {
   const arr = new Float32Array(pointCount * 3);
   fillBodyColor(arr, pointCount, baseColor);
   return arr;
@@ -168,13 +181,27 @@ function updateTipColors(
   }
 }
 
+function drawFullLine(a: AnimatedLine, cfg: LineConfig): void {
+  const segDone = Math.max(0, a.pointCount - 1);
+  a.lineGeo.instanceCount = segDone;
+  a.tip.visible = false;
+  updateTipColors(
+    a.colorsVert,
+    a.pointCount,
+    new THREE.Color(cfg.lineColor),
+    new THREE.Color(cfg.tipColor),
+    cfg.tipPointCount,
+  );
+  syncLineSegmentBuffers(a.lineGeo, a.positions, a.colorsVert, segDone);
+}
+
 function tickAnims(anims: AnimatedLine[], time: number, cfg: LineConfig) {
   applyFatLineSharedStyle(cfg);
   const lineBase = new THREE.Color(cfg.lineColor);
   const tipColorVal = new THREE.Color(cfg.tipColor);
-  const speed = cfg.cursorSpeed;
 
   for (const a of anims) {
+    const speed = a.cursorSpeed;
     const tipMat = a.tip.material as THREE.MeshBasicMaterial;
     tipMat.color.set(cfg.tipColor);
     tipMat.opacity = cfg.tipOpacity;
@@ -205,7 +232,13 @@ function tickAnims(anims: AnimatedLine[], time: number, cfg: LineConfig) {
       const segDone = Math.max(0, a.pointCount - 1);
       geo.instanceCount = segDone;
       a.tip.visible = false;
-      updateTipColors(a.colorsVert, a.pointCount, lineBase, tipColorVal, cfg.tipPointCount);
+      updateTipColors(
+        a.colorsVert,
+        a.pointCount,
+        lineBase,
+        tipColorVal,
+        cfg.tipPointCount,
+      );
       syncLineSegmentBuffers(geo, lp, a.colorsVert, segDone);
       continue;
     }
@@ -248,7 +281,13 @@ function tickAnims(anims: AnimatedLine[], time: number, cfg: LineConfig) {
     const segDraw = Math.max(0, drawCount - 1);
     geo.instanceCount = segDraw;
 
-    updateTipColors(a.colorsVert, drawCount, lineBase, tipColorVal, cfg.tipPointCount);
+    updateTipColors(
+      a.colorsVert,
+      drawCount,
+      lineBase,
+      tipColorVal,
+      cfg.tipPointCount,
+    );
     syncLineSegmentBuffers(geo, lp, a.colorsVert, segDraw);
   }
 }
@@ -279,7 +318,12 @@ function BackgroundGrid() {
 
   return (
     <lineSegments geometry={geo}>
-      <lineBasicMaterial ref={matRef} color={0x003040} transparent opacity={0.06} />
+      <lineBasicMaterial
+        ref={matRef}
+        color={0x003040}
+        transparent
+        opacity={0.06}
+      />
     </lineSegments>
   );
 }
@@ -291,16 +335,46 @@ type TronGridProps = {
   // The 80-unit gridlines only make sense for the abstract demo. Real scenes
   // (e.g. the meter-scale table) opt out via showBackgroundGrid={false}.
   showBackgroundGrid?: boolean;
+  // When false, every path is drawn at full length with no cursor animation.
+  animated?: boolean;
+  // Lower bound for playback duration (e.g. camera pan length).
+  playbackDuration?: number;
 };
 
 export default function TronGrid({
   paths,
   showBackgroundGrid = true,
+  animated = true,
+  playbackDuration,
 }: TronGridProps = {}) {
   const groupRef = useRef<THREE.Group>(null);
   const animRef = useRef<AnimatedLine[]>([]);
 
   const gridPaths = useMemo(() => paths ?? buildScene(42), [paths]);
+
+  useEffect(() => {
+    if (!animated) return;
+
+    const syncDuration = () => {
+      const speed = useLineConfig.getState().config.cursorSpeed;
+      let duration = sceneDuration(gridPaths, speed);
+      if (playbackDuration != null) {
+        duration = Math.max(duration, playbackDuration);
+      }
+      useClock.getState().setDuration(duration);
+    };
+
+    syncDuration();
+    const unsubscribe = useLineConfig.subscribe((state, prev) => {
+      if (state.config.cursorSpeed === prev.config.cursorSpeed) return;
+      syncDuration();
+    });
+
+    return () => {
+      unsubscribe();
+      useClock.getState().setDuration(20);
+    };
+  }, [gridPaths, animated, playbackDuration]);
 
   useEffect(() => {
     const group = groupRef.current;
@@ -311,6 +385,7 @@ export default function TronGrid({
     const lineBase = new THREE.Color(cfg.lineColor);
 
     for (const path of gridPaths) {
+      if (path.hidden) continue;
       const pts = waypointsToPoints(path.waypoints);
       const cumDist = computeCumDist(pts);
       const pointCount = pts.length;
@@ -349,6 +424,7 @@ export default function TronGrid({
       anims.push({
         spawnTime: path.spawnTime,
         pathLength: totalPathLength(path.waypoints),
+        cursorSpeed: path.cursorSpeed ?? cfg.cursorSpeed,
         waypoints: path.waypoints,
         line,
         lineGeo,
@@ -363,6 +439,12 @@ export default function TronGrid({
     }
 
     animRef.current = anims;
+
+    if (!animated) {
+      for (const a of anims) {
+        drawFullLine(a, cfg);
+      }
+    }
 
     // Body vertex colors are baked in at mount; refresh them whenever
     // lineColor changes so already-drawn segments pick up the new color
@@ -386,11 +468,30 @@ export default function TronGrid({
         (a.tip.material as THREE.Material).dispose();
       }
     };
-  }, [gridPaths]);
+  }, [gridPaths, animated]);
+
+  useEffect(() => {
+    if (animated) return;
+    return useLineConfig.subscribe((state, prev) => {
+      if (state.config.lineColor === prev.config.lineColor) return;
+      const cfg = state.config;
+      const lineBase = new THREE.Color(cfg.lineColor);
+      for (const a of animRef.current) {
+        fillBodyColor(a.colorsVert, a.pointCount, lineBase);
+        const segAll = Math.max(0, a.pointCount - 1);
+        syncLineSegmentBuffers(a.lineGeo, a.positions, a.colorsVert, segAll);
+      }
+    });
+  }, [gridPaths, animated]);
 
   useFrame((_, delta) => {
+    const cfg = useLineConfig.getState().config;
+    if (!animated) {
+      applyFatLineSharedStyle(cfg);
+      return;
+    }
     useClock.getState().tick(delta);
-    tickAnims(animRef.current, useClock.getState().time, useLineConfig.getState().config);
+    tickAnims(animRef.current, useClock.getState().time, cfg);
   });
 
   return (

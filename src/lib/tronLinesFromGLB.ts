@@ -22,10 +22,28 @@ function parseTronLineName(name: string): ParsedName | null {
   if (parts.length < 2) return null;
 
   const order = Number.parseInt(parts[0], 10);
-  const delaySec = Number.parseFloat(parts[1]);
-  if (!Number.isFinite(order) || !Number.isFinite(delaySec)) return null;
+  if (!Number.isFinite(order)) return null;
 
-  return { order, delaySec, tags: parts.slice(2) };
+  let delaySec: number;
+  let tags: string[];
+
+  // glTF loaders strip '.' from node names (8.00 → 800), so authored delays use
+  // TronLine_<order>_<sec>_<centi>[_tags] instead of a decimal seconds field.
+  if (
+    parts.length >= 3 &&
+    /^\d+$/.test(parts[1]) &&
+    /^\d{2}$/.test(parts[2])
+  ) {
+    delaySec = Number.parseInt(parts[1], 10) + Number.parseInt(parts[2], 10) / 100;
+    tags = parts.slice(3);
+  } else {
+    delaySec = Number.parseFloat(parts[1]);
+    tags = parts.slice(2);
+  }
+
+  if (!Number.isFinite(delaySec)) return null;
+
+  return { order, delaySec, tags };
 }
 
 // Reconstructs travel order from an edge-pair index buffer.
@@ -136,12 +154,22 @@ function sequentialPairs(count: number): number[] {
   return pairs;
 }
 
-export function tronLinesFromGLB(root: THREE.Object3D): GridPath[] {
+export type TronLinesFromGLBOptions = {
+  // When set, only nodes whose name includes `TronLine_<order>_<delay>_<tag>`
+  // with this tag token are returned. Example: "part" for component outlines.
+  tag?: string;
+};
+
+export function tronLinesFromGLB(
+  root: THREE.Object3D,
+  options: TronLinesFromGLBOptions = {},
+): GridPath[] {
   const paths: Array<GridPath & { _order: number }> = [];
 
   root.traverse((obj) => {
     const parsed = parseTronLineName(obj.name);
     if (!parsed) return;
+    if (options.tag !== undefined && !parsed.tags.includes(options.tag)) return;
 
     const waypoints = extractOrderedWaypoints(obj);
     if (!waypoints) {

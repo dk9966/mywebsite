@@ -1,0 +1,235 @@
+.cce {
+  position: fixed;
+  inset: 0;
+  background: #04090b;
+  overflow: hidden;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #cfeae6;
+}
+
+.cce__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.cce__canvas:focus {
+  outline: none;
+}
+
+.cce__canvas--add {
+  cursor: crosshair;
+}
+
+.cce__canvas--pan {
+  cursor: grabbing;
+}
+
+.cce__toolbar {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 8px;
+  max-width: calc(100vw - 24px);
+  background: rgba(6, 16, 18, 0.82);
+  border: 1px solid rgba(70, 160, 165, 0.28);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+}
+
+.cce__group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cce__sep {
+  width: 1px;
+  align-self: stretch;
+  margin: 2px 4px;
+  background: rgba(70, 160, 165, 0.28);
+}
+
+.cce__btn {
+  appearance: none;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  padding: 7px 10px;
+  color: #bfe6e0;
+  background: rgba(20, 50, 54, 0.6);
+  border: 1px solid rgba(70, 160, 165, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cce__btn:hover:not(:disabled) {
+  background: rgba(30, 78, 82, 0.8);
+  border-color: rgba(90, 200, 200, 0.5);
+}
+
+.cce__btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.cce__btn--active {
+  color: #04090b;
+  background: #2fd6c2;
+  border-color: #2fd6c2;
+}
+
+.cce__btn--danger:hover:not(:disabled) {
+  background: rgba(120, 40, 44, 0.8);
+  border-color: rgba(220, 90, 90, 0.6);
+  color: #ffd9d9;
+}
+
+.cce__snap-merge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 4px;
+}
+
+.cce__snap-merge-label {
+  font-size: 11px;
+  color: #8fb6b1;
+  white-space: nowrap;
+}
+
+.cce__snap-merge-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 72px;
+  height: 3px;
+  background: rgba(70, 160, 165, 0.25);
+  border-radius: 2px;
+  outline: none;
+}
+
+.cce__snap-merge-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  background: #2fd6c2;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(47, 214, 194, 0.5);
+}
+
+.cce__snap-merge-slider::-webkit-slider-thumb:hover {
+  background: #5ee8d8;
+}
+
+.cce__snap-merge-value {
+  min-width: 2.4em;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: #8fb6b1;
+  text-align: right;
+}
+
+.cce__status {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  font-size: 11px;
+  color: #8fb6b1;
+  background: rgba(6, 16, 18, 0.7);
+  border: 1px solid rgba(70, 160, 165, 0.22);
+  border-radius: 8px;
+}
+
+.cce__status-line--accent {
+  color: #2fd6c2;
+}
+
+.cce__hint {
+  color: #6f928e;
+}
+
+.cce__palette {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 88px;
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  padding: 8px;
+  background: rgba(6, 16, 18, 0.82);
+  border: 1px solid rgba(70, 160, 165, 0.28);
+  border-radius: 8px;
+  backdrop-filter: blur(6px);
+}
+
+.cce__palette-title {
+  margin: 0 0 2px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8fb6b1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cce__palette-item {
+  appearance: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 4px;
+  font: inherit;
+  font-size: 10px;
+  color: #bfe6e0;
+  background: rgba(20, 50, 54, 0.5);
+  border: 1px solid rgba(70, 160, 165, 0.25);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cce__palette-item:hover {
+  background: rgba(30, 78, 82, 0.8);
+  border-color: rgba(90, 200, 200, 0.45);
+}
+
+.cce__palette-item--active {
+  color: #04090b;
+  background: #2fd6c2;
+  border-color: #2fd6c2;
+}
+
+.cce__palette-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 28px;
+  padding: 2px 4px;
+  border: 1px solid rgba(70, 160, 165, 0.35);
+  border-radius: 4px;
+  background: #04090b;
+  color: #1bbfac;
+  font-size: 9px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.cce__palette-item--active .cce__palette-preview {
+  border-color: rgba(4, 9, 11, 0.35);
+  color: #04090b;
+  background: rgba(4, 9, 11, 0.12);
+}
