@@ -21,13 +21,14 @@ COMPONENTS_DIR = ROOT / "plans/claude/files/pcb_export/components"
 if str(COMPONENTS_DIR) not in sys.path:
     sys.path.insert(0, str(COMPONENTS_DIR))
 
-from component_builders import BOARD_MAT, BOARD_T, ROWS, mat  # noqa: E402
+from component_builders import ROWS, mat  # noqa: E402
 
 PAD_CELLS = 6
 CELL_PX = 9
 BOARD_WORLD_W = 58.0
 TRACE_RADIUS = 0.022
-TRACE_Y = BOARD_T / 2 + TRACE_RADIUS
+# Board top sits at y=0; trace cylinders should rest on that surface.
+TRACE_Y = TRACE_RADIUS
 
 # Row/col indices in component_reference.glb (r0 = QFP, r3 = Heatsinks).
 QFP_COLS = [0, 5, 1, 11, 12]
@@ -208,18 +209,12 @@ def build_scene() -> trimesh.Scene:
     pad_px = PAD_CELLS * CELL_PX
     bounds = content_bounds(lines, boxes, pad_px)
     content_w = bounds["max_x"] - bounds["min_x"]
-    content_h = bounds["max_y"] - bounds["min_y"]
     scale = BOARD_WORLD_W / content_w
-    board_d = content_h * scale
 
     ref_scene = trimesh.load(REF_GLB, force="scene")
     qfp_cache, hs_cache = load_reference_templates(ref_scene)
 
     scene = trimesh.Scene()
-    board = creation.box(extents=[BOARD_WORLD_W, BOARD_T, board_d])
-    board.apply_translation([BOARD_WORLD_W * 0.5, -BOARD_T / 2, board_d * 0.5])
-    board.visual = trimesh.visual.TextureVisuals(material=BOARD_MAT)
-    scene.add_geometry(board, geom_name="board")
 
     for i, box in enumerate(boxes["green"]):
         col = QFP_COLS[i % len(QFP_COLS)]
@@ -271,7 +266,7 @@ def main() -> None:
     print(f"  geometries: {len(geoms)}")
     print(f"  qfp cols: {QFP_COLS}")
     print(f"  heatsink cols: {HS_COLS}")
-    print(f"  sample names: {[g for g in geoms if g != 'board'][:12]}...")
+    print(f"  sample names: {geoms[:12]}...")
 
 
 if __name__ == "__main__":

@@ -50,8 +50,8 @@ def annular_sector_solid(
         bm.faces.new((inner_top[i], inner_top[i + 1],
                      inner_bot[i + 1], inner_bot[i]))
 
-    bm.faces.new((outer_bot[0], inner_bot[0], inner_top[0], outer_top[0]))
-    bm.faces.new((outer_top[-1], inner_top[-1], inner_bot[-1], outer_bot[-1]))
+    bm.faces.new((outer_top[0], inner_top[0], inner_bot[0], outer_bot[0]))
+    bm.faces.new((outer_bot[-1], inner_bot[-1], inner_top[-1], outer_top[-1]))
 
     bm.normal_update()
     bm.to_mesh(mesh)
@@ -595,8 +595,24 @@ def build_suit_display_cases():
         bev.segments = SD_BEVEL_SEGMENTS
 
 
-def build():
-    clear_meshes()
+DESK_MESH_NAMES = frozenset({"Top", "Skirt", "FootBrace"})
+
+
+def clear_desk_meshes():
+    """Remove only the desk GLB export set, not the rest of main.blend."""
+    for obj in list(bpy.data.objects):
+        if obj.type != "MESH":
+            continue
+        if obj.name in DESK_MESH_NAMES or obj.name.startswith("Leg_"):
+            bpy.data.objects.remove(obj, do_unlink=True)
+    for mesh in list(bpy.data.meshes):
+        if mesh.users == 0:
+            bpy.data.meshes.remove(mesh)
+
+
+def build_desk():
+    """Rebuild Top / Skirt / Leg_* / FootBrace for table.glb export."""
+    clear_desk_meshes()
 
     start_angle = 0.0
     end_angle = math.pi
@@ -651,6 +667,10 @@ def build():
         segments=128,
     )
 
+
+def build():
+    clear_meshes()
+    build_desk()
     build_suit_platform()
     build_suit_display_cases()
 
