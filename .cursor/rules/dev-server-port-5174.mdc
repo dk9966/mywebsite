@@ -1,0 +1,39 @@
+---
+description: Dev server and local URLs must use port 5174 only.
+alwaysApply: true
+---
+
+# Dev server port 5174
+
+This project runs locally on **port 5174 only**. Do not use Vite's default 5173, do not let the port auto-increment to 5175+, and do not hardcode other ports in scripts or docs.
+
+## Vite config
+
+`vite.config.ts` must pin the port and fail if it is taken:
+
+```ts
+export default defineConfig({
+  server: {
+    port: 5174,
+    strictPort: true,
+  },
+  // ...
+})
+```
+
+If `server.port` or `strictPort` is missing, add them. Do not remove or change the port without explicit user request.
+
+## Scripts and automation
+
+- Default local URLs: `http://localhost:5174/` (include path as needed).
+- Playwright captures, verify scripts, and screenshot tools should default to 5174.
+- Optional override via CLI arg is fine; the default must stay 5174.
+- Do not introduce `5173`, `5175`, or `process.env.VITE_PORT || '5173'`-style fallbacks.
+
+## When port 5174 is busy
+
+Kill the process holding 5174 (or ask the user to). Do not start the dev server on another port.
+
+## UI copy and docs
+
+Terminal mockups, HTML examples, and plan notes that show a local URL should use `http://localhost:5174/`.
