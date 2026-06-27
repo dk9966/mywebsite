@@ -135,12 +135,42 @@
   letter-spacing: 0.06em;
 }
 
+.controls__subgroup-title {
+  margin: 8px 0 4px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #546e7a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .controls__field {
   display: grid;
   grid-template-columns: 72px 1fr 38px;
   align-items: center;
   gap: 6px;
   margin-bottom: 4px;
+}
+
+.controls__checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.controls__checkbox {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: #78909c;
+  cursor: pointer;
+}
+
+.controls__checkbox-label {
+  color: #90a4ae;
 }
 
 .controls__label {

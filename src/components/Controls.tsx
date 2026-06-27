@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useLineConfig, type LineConfig } from "../stores/lineConfig";
 import { useClock } from "../stores/clock";
+import { useCircuitTuning } from "../stores/circuitTuning";
 import "./Controls.css";
 
 interface SliderProps {
@@ -52,21 +53,40 @@ function ColorRow({ label, value, onChange }: ColorRowProps) {
 }
 
 function formatTime(t: number): string {
-  const s = Math.floor(t % 60);
-  const ms = Math.floor((t % 1) * 10);
+  const clamped = Math.max(0, t);
+  const whole = Math.floor(clamped);
+  const s = whole % 60;
+  const m = Math.floor(whole / 60);
+  const ms = Math.floor((clamped % 1) * 10);
+  if (m > 0) return `${m}:${String(s).padStart(2, "0")}.${ms}s`;
   return `${s}.${ms}s`;
 }
 
-export default function Controls() {
+export type ControlsCameraProps = {
+  topView: boolean;
+  onTopViewChange: (value: boolean) => void;
+  fov: number;
+  onFovChange: (value: number) => void;
+};
+
+type ControlsProps = {
+  camera?: ControlsCameraProps;
+};
+
+export default function Controls({ camera }: ControlsProps = {}) {
   const cfg = useLineConfig((s) => s.config);
   const set = useLineConfig((s) => s.set);
   const resetConfig = useLineConfig((s) => s.reset);
 
   const time = useClock((s) => s.time);
+  const duration = useClock((s) => s.duration);
   const paused = useClock((s) => s.paused);
   const seek = useClock((s) => s.seek);
   const restart = useClock((s) => s.restart);
   const togglePause = useClock((s) => s.togglePause);
+
+  const topViewCamera = useCircuitTuning((s) => s.topViewCamera);
+  const setTopViewCamera = useCircuitTuning((s) => s.setTopViewCamera);
 
   const [minimized, setMinimized] = useState(false);
   const [width, setWidth] = useState(280);
@@ -139,18 +159,106 @@ export default function Controls() {
               <button className="controls__btn" type="button" onClick={togglePause} title={paused ? "Play" : "Pause"}>
                 {paused ? ">" : "||"}
               </button>
-              <span className="controls__time">{formatTime(time)}</span>
+              <span className="controls__time">{formatTime(time)} / {formatTime(duration)}</span>
             </div>
             <input
               className="controls__slider controls__slider--time"
               type="range"
               min={0}
-              max={20}
+              max={duration}
               step={0.05}
-              value={time}
+              value={Math.min(time, duration)}
               onChange={(e) => seek(Number(e.target.value))}
             />
           </section>
+
+          {camera ? (
+            <>
+              <hr className="controls__divider" />
+
+              <section className="controls__group">
+                <h4 className="controls__group-title">Camera</h4>
+                <label className="controls__checkbox-field">
+                  <input
+                    className="controls__checkbox"
+                    type="checkbox"
+                    checked={camera.topView}
+                    onChange={(e) => camera.onTopViewChange(e.target.checked)}
+                  />
+                  <span className="controls__checkbox-label">Top view on appear</span>
+                </label>
+                <Slider
+                  label="FOV"
+                  value={camera.fov}
+                  min={15}
+                  max={90}
+                  step={1}
+                  onChange={camera.onFovChange}
+                />
+                <h5 className="controls__subgroup-title">Top view scan</h5>
+                <Slider
+                  label="Height"
+                  value={topViewCamera.heightFactor}
+                  min={0.05}
+                  max={0.35}
+                  step={0.01}
+                  onChange={(v) => setTopViewCamera({ heightFactor: v })}
+                />
+                <Slider
+                  label="Front lag"
+                  value={topViewCamera.frontLagSec}
+                  min={0}
+                  max={5}
+                  step={0.1}
+                  onChange={(v) => setTopViewCamera({ frontLagSec: v })}
+                />
+                <Slider
+                  label="Offset X"
+                  value={topViewCamera.offset[0]}
+                  min={-20}
+                  max={20}
+                  step={0.5}
+                  onChange={(v) =>
+                    setTopViewCamera({
+                      offset: [v, topViewCamera.offset[1], topViewCamera.offset[2]],
+                    })
+                  }
+                />
+                <Slider
+                  label="Offset Y"
+                  value={topViewCamera.offset[1]}
+                  min={-20}
+                  max={20}
+                  step={0.5}
+                  onChange={(v) =>
+                    setTopViewCamera({
+                      offset: [
+                        topViewCamera.offset[0],
+                        v,
+                        topViewCamera.offset[2],
+                      ],
+                    })
+                  }
+                />
+                <Slider
+                  label="Offset Z"
+                  value={topViewCamera.offset[2]}
+                  min={-20}
+                  max={20}
+                  step={0.5}
+                  onChange={(v) =>
+                    setTopViewCamera({
+                      offset: [
+                        topViewCamera.offset[0],
+                        topViewCamera.offset[1],
+                        v,
+                      ],
+                    })
+                  }
+                />
+              </section>
+            </>
+          ) : null}
 
           <hr className="controls__divider" />
 

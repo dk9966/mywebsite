@@ -1,42 +1,18 @@
 import { Environment, MeshReflectorMaterial } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { StrictMode, Suspense, useEffect, useRef } from "react";
+import { StrictMode, Suspense, useEffect, useMemo, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import * as THREE from "three";
 import DeskTable from "./components/DeskTable";
-import HudScreen from "./components/HudScreen";
-import {
-  ClockWidget,
-  TelemetryWidget,
-  TerminalWidget,
-} from "./components/hudWidgets";
-const DEFAULT_CAMERA_POS: [number, number, number] = [0, 2, 0.45];
+import DeskPanels from "./components/DeskPanels";
+import DeskControls from "./components/DeskControls";
+import { useDeskLayout } from "./stores/deskLayout";
 
-const DEFAULT_LOOK_AT: [number, number, number] = [0, 1.68, -1.0];
-
-const DEFAULT_FOV = 62;
 const DEFAULT_NEAR = 0.05;
 const DEFAULT_FAR = 100;
 
-/** Screens sit on this plane (less negative z = closer to the seated camera). */
-const HUD_Z = -1.05;
-
-type DeskSceneProps = {
-  cameraPosition: [number, number, number];
-  lookAtCoords: [number, number, number];
-  cameraFov: number;
-  cameraNear: number;
-  cameraFar: number;
-};
-
-function DeskScene({
-  cameraPosition,
-  lookAtCoords,
-  cameraFov,
-  cameraNear,
-  cameraFar,
-}: DeskSceneProps) {
+function DeskScene() {
   return (
     <>
       <color attach="background" args={["#05080b"]} />
@@ -89,17 +65,9 @@ function DeskScene({
       </Suspense>
       <Floor />
 
-      <CameraParamsSync fov={cameraFov} near={cameraNear} far={cameraFar} />
+      <CameraRig />
 
-      <HeadLook
-        position={cameraPosition}
-        lookAt={lookAtCoords}
-        yawClamp={Math.PI * 0.45}
-        pitchMin={-Math.PI * 0.32}
-        pitchMax={Math.PI * 0.18}
-      />
-
-      <HudScreens />
+      <DeskPanels />
 
       {/* Subtle bloom so the practicals bleed into halos in both the direct
           view and the floor reflection — that's what reads as the polished
@@ -115,6 +83,33 @@ function DeskScene({
           radius={0.7}
         />
       </EffectComposer>
+    </>
+  );
+}
+
+// Bridges the desk-layout store to the three.js camera: FOV via the
+// projection sync, position + aim via HeadLook.
+function CameraRig() {
+  const camera = useDeskLayout((s) => s.camera);
+  const lookAt = useDeskLayout((s) => s.lookAt);
+  const position = useMemo<[number, number, number]>(
+    () => [camera.x, camera.y, camera.z],
+    [camera.x, camera.y, camera.z],
+  );
+  const aim = useMemo<[number, number, number]>(
+    () => [lookAt.x, lookAt.y, lookAt.z],
+    [lookAt.x, lookAt.y, lookAt.z],
+  );
+  return (
+    <>
+      <CameraParamsSync fov={camera.fov} near={DEFAULT_NEAR} far={DEFAULT_FAR} />
+      <HeadLook
+        position={position}
+        lookAt={aim}
+        yawClamp={Math.PI * 0.45}
+        pitchMin={-Math.PI * 0.32}
+        pitchMax={Math.PI * 0.18}
+      />
     </>
   );
 }
@@ -237,19 +232,17 @@ function HeadLook({
     startPitch: number;
   } | null>(null);
 
+  // Plant the eye and re-aim at the target whenever either changes (slider
+  // moves). Drag look-around mutates the refs below without re-running this.
   useEffect(() => {
     camera.position.set(...position);
-  }, [camera, position]);
-
-  // Re-base head orientation when lookAt identity changes.
-  useEffect(() => {
     camera.up.set(0, 1, 0);
     camera.lookAt(...lookAt);
     const euler = new THREE.Euler().setFromQuaternion(camera.quaternion, "YXZ");
     yawRef.current = euler.y;
     pitchRef.current = euler.x;
     initialYawRef.current = euler.y;
-  }, [camera, lookAt]);
+  }, [camera, position, lookAt]);
 
   useEffect(() => {
     const canvas = gl.domElement;
@@ -320,55 +313,8 @@ function HeadLook({
   return null;
 }
 
-// Three screens in one row, slightly closer to the seated camera than the
-// previous 6-up layout. Y is lifted so panels clear the desk top (y≈1.05);
-// Html backdrop-filter would otherwise smear the cyan desk lines.
-function HudScreens() {
-  const y = 1.68;
-  const z = HUD_Z;
-  return (
-    <>
-      <HudScreen
-        position={[-1.15, y, z]}
-        widthPx={540}
-        heightPx={360}
-        curveYaw={0.14}
-        title="Telemetry"
-        tag="01"
-      >
-        <TelemetryWidget />
-      </HudScreen>
-
-      <HudScreen
-        position={[0.0, y, z - 0.04]}
-        widthPx={640}
-        heightPx={340}
-        title="MCP Trace"
-        tag="02"
-      >
-        <TerminalWidget />
-      </HudScreen>
-
-      <HudScreen
-        position={[1.15, y, z]}
-        widthPx={540}
-        heightPx={360}
-        curveYaw={-0.14}
-        title="Chrono"
-        tag="00"
-      >
-        <ClockWidget />
-      </HudScreen>
-    </>
-  );
-}
-
-export function DeskSetupApp() {
-  const cameraPos = DEFAULT_CAMERA_POS;
-  const lookAtCoords = DEFAULT_LOOK_AT;
-  const fov = DEFAULT_FOV;
-  const near = DEFAULT_NEAR;
-  const far = DEFAULT_FAR;
+export function DeskApp() {
+  const initialCamera = useDeskLayout.getState().camera;
 
   return (
     <div
@@ -383,20 +329,15 @@ export function DeskSetupApp() {
         style={{ display: "block", width: "100%", height: "100%" }}
         gl={{ antialias: true, alpha: false }}
         camera={{
-          position: [...cameraPos],
-          fov,
-          near,
-          far,
+          position: [initialCamera.x, initialCamera.y, initialCamera.z],
+          fov: initialCamera.fov,
+          near: DEFAULT_NEAR,
+          far: DEFAULT_FAR,
         }}
       >
-        <DeskScene
-          cameraPosition={cameraPos}
-          lookAtCoords={lookAtCoords}
-          cameraFov={fov}
-          cameraNear={near}
-          cameraFar={far}
-        />
+        <DeskScene />
       </Canvas>
+      <DeskControls />
       <Hint />
     </div>
   );
@@ -404,7 +345,7 @@ export function DeskSetupApp() {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <DeskSetupApp />
+    <DeskApp />
   </StrictMode>,
 );
 
@@ -423,7 +364,7 @@ function Hint() {
         lineHeight: 1.5,
       }}
     >
-      <div>Drag edges to move · corners to resize</div>
+      <div>Drag panel edges or corners to resize — neighbors adjust</div>
       <div>Drag empty space to look around</div>
     </div>
   );
