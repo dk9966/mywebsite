@@ -50,6 +50,7 @@ function partShape(part, style) {
 
 function qfpShape(part, style) {
     return [
+        haloShape(part, style, 14, 18),
         pinsShape(part, style),
         outlineRect(part, style, 4),
         `    <rect x="${fmt(part.x + 14)}" y="${fmt(part.y + 14)}" width="${fmt(part.w - 28)}" height="${fmt(part.h - 28)}" fill="${style.bg}" stroke="${style.fg}" stroke-width="${style.partWidth * 0.8}" rx="3"/>`,
@@ -58,6 +59,7 @@ function qfpShape(part, style) {
 
 function icShape(part, style) {
     return [
+        haloShape(part, style, 10, 14),
         pinsShape(part, style),
         outlineRect(part, style, 8),
         `    <line x1="${fmt(part.x + 10)}" y1="${fmt(part.y + 10)}" x2="${fmt(part.x + part.w - 10)}" y2="${fmt(part.y + 10)}" stroke="${style.dim}" stroke-width="${style.pinWidth}"/>`,
@@ -65,7 +67,7 @@ function icShape(part, style) {
 }
 
 function busBlockShape(part, style) {
-    const lines = [pinsShape(part, style), outlineRect(part, style, 2)];
+    const lines = [haloShape(part, style, 10, 12), pinsShape(part, style), outlineRect(part, style, 2)];
     const count = part.lanes ?? 7;
     for (let i = 1; i <= count; i++) {
         const t = i / (count + 1);
@@ -79,7 +81,7 @@ function busBlockShape(part, style) {
 }
 
 function padClusterShape(part, style) {
-    const lines = [outlineRect(part, style, 8)];
+    const lines = [haloShape(part, style, 9, 12), outlineRect(part, style, 8)];
     for (const pin of part.pins) {
         lines.push(`    <circle cx="${fmt(pin.x)}" cy="${fmt(pin.y)}" r="10" fill="${style.bg}" stroke="${style.fg}" stroke-width="${style.pinWidth}"/>`);
         lines.push(`    <circle cx="${fmt(pin.x)}" cy="${fmt(pin.y)}" r="3" fill="${style.fg}" opacity="0.66"/>`);
@@ -98,6 +100,26 @@ function passiveShape(part, style) {
 
 function outlineRect(part, style, radius) {
     return `    <rect x="${fmt(part.x)}" y="${fmt(part.y)}" width="${fmt(part.w)}" height="${fmt(part.h)}" fill="${style.bg}" stroke="${style.fg}" stroke-width="${style.partWidth}" rx="${radius}"/>`;
+}
+
+function haloShape(part, style, offset, corner) {
+    const x = part.x - offset;
+    const y = part.y - offset;
+    const w = part.w + offset * 2;
+    const h = part.h + offset * 2;
+    const c = Math.min(corner, w / 3, h / 3);
+    const d = [
+        `M ${fmt(x + c)} ${fmt(y)}`,
+        `L ${fmt(x + w - c)} ${fmt(y)}`,
+        `L ${fmt(x + w)} ${fmt(y + c)}`,
+        `L ${fmt(x + w)} ${fmt(y + h - c)}`,
+        `L ${fmt(x + w - c)} ${fmt(y + h)}`,
+        `L ${fmt(x + c)} ${fmt(y + h)}`,
+        `L ${fmt(x)} ${fmt(y + h - c)}`,
+        `L ${fmt(x)} ${fmt(y + c)}`,
+        'Z',
+    ].join(' ');
+    return `    <path d="${d}" fill="none" stroke="${style.fg}" stroke-width="${style.traceWidth * 0.9}"/>`;
 }
 
 function pinsShape(part, style) {

@@ -6,6 +6,7 @@ export function buildRoadNetwork(rng, parts, config) {
     const majorParts = parts.filter((part) => ['qfp', 'ic', 'busBlock', 'padCluster'].includes(part.kind));
     const smallParts = parts.filter((part) => !majorParts.includes(part));
     const usedPins = new Set();
+    const corridors = buildCorridors(config);
 
     for (const [a, b] of nearestMajorPairs(majorParts, config.route.majorLinks)) {
         const lanes = rng.int(config.route.busLaneRange[0], config.route.busLaneRange[1]);
@@ -13,7 +14,7 @@ export function buildRoadNetwork(rng, parts, config) {
         const bPins = pinsFacing(b, a).filter((pin) => !usedPins.has(pin.id)).slice(0, lanes);
         const laneCount = Math.min(aPins.length, bPins.length);
         for (let i = 0; i < laneCount; i++) {
-            const trace = makeTrace(rng, aPins[i], bPins[laneCount - 1 - i], config, 'bus');
+            const trace = makeTrace(rng, aPins[i], bPins[laneCount - 1 - i], config, corridors, 'bus', i);
             traces.push(trace);
             usedPins.add(aPins[i].id);
             usedPins.add(bPins[laneCount - 1 - i].id);
@@ -24,13 +25,13 @@ export function buildRoadNetwork(rng, parts, config) {
     for (let i = 0; i < config.route.localLinks; i++) {
         const small = smallParts[i % smallParts.length];
         if (!small) break;
-        const anchor = nearestPart(small, majorParts, 360);
+        const anchor = nearestPart(small, majorParts, config.route.localMaxDist);
         if (!anchor) continue;
         const openSmallPins = small.pins.filter((pin) => !usedPins.has(pin.id));
         const from = rng.pick(openSmallPins.length ? openSmallPins : small.pins);
         const to = closestFreePin(from, anchor.pins, usedPins) ?? rng.pick(anchor.pins);
         if (!from || !to) continue;
-        traces.push(makeTrace(rng, from, to, config, 'local'));
+        traces.push(makeTrace(rng, from, to, config, corridors, 'local', i % 3));
         usedPins.add(from.id);
         usedPins.add(to.id);
     }
@@ -40,7 +41,7 @@ export function buildRoadNetwork(rng, parts, config) {
         const source = rng.pick(sourcePart.pins);
         const via = makeBranchVia(rng, source, config);
         vias.push(via);
-        traces.push(makeTrace(rng, source, via, config, 'branch'));
+        traces.push(makeTrace(rng, source, via, config, corridors, 'branch', i % 2));
     }
 
     for (let i = 0; i < config.route.edgeBranches; i++) {
@@ -48,7 +49,7 @@ export function buildRoadNetwork(rng, parts, config) {
         const source = rng.pick(sourcePart.pins);
         const via = makeEdgeVia(rng, source, config);
         vias.push(via);
-        traces.push(makeTrace(rng, source, via, config, 'branch'));
+        traces.push(makeTrace(rng, source, via, config, corridors, 'branch', i % 2));
     }
 
     return { traces, vias: dedupeVias(vias, config) };
@@ -96,8 +97,8 @@ function closestFreePin(from, pins, usedPins) {
         .sort((a, b) => dist(from, a) - dist(from, b))[0];
 }
 
-function makeTrace(rng, from, to, config, kind) {
-    const points = octilinearPath(rng, from, to, config);
+function makeTrace(rng, from, to, config, corridors, kind, laneIndex = 0) {
+    const points = corridorPath(rng, from, to, config, corridors, laneIndex, kind);
     return {
         kind,
         points,
@@ -106,7 +107,25 @@ function makeTrace(rng, from, to, config, kind) {
     };
 }
 
-function octilinearPath(rng, from, to, config) {
+function buildCorridors(config) {
+    const levels = [];
+    const { margin } = config.grid;
+    const { width, height } = config.board;
+    const pitch = config.route.lanePitch;
+    const gap = config.route.corridorGap;
+
+    for (let y = margin + gap; y < height - margin; y += gap) {
+        levels.push({ axis: 'h', value: snap(y, pitch) });
+        levels.push({ axis: 'h', value: snap(y + pitch, pitch) });
+    }
+    for (let x = margin + gap; x < width - margin; x += gap) {
+        levels.push({ axis: 'v', value: snap(x, pitch) });
+        levels.push({ axis: 'v', value: snap(x + pitch, pitch) });
+    }
+    return levels;
+}
+
+function corridorPath(rng, from, to, config, corridors, laneIndex, kind) {
     const cell = config.grid.cell;
     const start = anchorPoint(from, config);
     const end = anchorPoint(to, config);
@@ -114,27 +133,58 @@ function octilinearPath(rng, from, to, config) {
     const dy = end.y - start.y;
     const sx = Math.sign(dx) || (rng.chance(0.5) ? 1 : -1);
     const sy = Math.sign(dy) || (rng.chance(0.5) ? 1 : -1);
-    const chamfer = Math.min(config.route.chamfer, Math.abs(dx) / 2, Math.abs(dy) / 2);
-    const horizontalFirst = Math.abs(dx) > Math.abs(dy) ? rng.chance(0.68) : rng.chance(0.32);
-    const jitter = snap(rng.float(-config.route.bendJitter, config.route.bendJitter), cell);
+    const chamfer = Math.min(config.route.chamfer, Math.abs(dx) / 3, Math.abs(dy) / 3);
+    const horizontalFirst = Math.abs(dx) >= Math.abs(dy);
+    const laneOffset = (laneIndex - 1.5) * config.route.lanePitch;
     const points = [start];
 
     if (horizontalFirst) {
-        const midX = clamp(snap(start.x + dx * rng.float(0.35, 0.65) + jitter, cell), config.grid.margin, config.board.width - config.grid.margin);
-        points.push({ x: midX - sx * chamfer, y: start.y });
-        points.push({ x: midX, y: start.y + sy * chamfer });
-        points.push({ x: midX, y: end.y - sy * chamfer });
-        points.push({ x: midX + sx * chamfer, y: end.y });
+        const corridorY = nearestCorridor(corridors, 'h', (start.y + end.y) / 2 + laneOffset, config);
+        const leadA = clamp(start.x + sx * leadLength(kind, rng, config), config.grid.margin, config.board.width - config.grid.margin);
+        const leadB = clamp(end.x - sx * leadLength(kind, rng, config), config.grid.margin, config.board.width - config.grid.margin);
+        points.push({ x: snap(leadA, cell), y: start.y });
+        pushDiagonal(points, { x: snap(leadA, cell), y: corridorY }, chamfer, sx, Math.sign(corridorY - start.y) || sy);
+        points.push({ x: snap(leadB, cell), y: corridorY });
+        pushDiagonal(points, { x: snap(leadB, cell), y: end.y }, chamfer, sx, Math.sign(end.y - corridorY) || sy);
     } else {
-        const midY = clamp(snap(start.y + dy * rng.float(0.35, 0.65) + jitter, cell), config.grid.margin, config.board.height - config.grid.margin);
-        points.push({ x: start.x, y: midY - sy * chamfer });
-        points.push({ x: start.x + sx * chamfer, y: midY });
-        points.push({ x: end.x - sx * chamfer, y: midY });
-        points.push({ x: end.x, y: midY + sy * chamfer });
+        const corridorX = nearestCorridor(corridors, 'v', (start.x + end.x) / 2 + laneOffset, config);
+        const leadA = clamp(start.y + sy * leadLength(kind, rng, config), config.grid.margin, config.board.height - config.grid.margin);
+        const leadB = clamp(end.y - sy * leadLength(kind, rng, config), config.grid.margin, config.board.height - config.grid.margin);
+        points.push({ x: start.x, y: snap(leadA, cell) });
+        pushDiagonal(points, { x: corridorX, y: snap(leadA, cell) }, chamfer, Math.sign(corridorX - start.x) || sx, sy);
+        points.push({ x: corridorX, y: snap(leadB, cell) });
+        pushDiagonal(points, { x: end.x, y: snap(leadB, cell) }, chamfer, Math.sign(end.x - corridorX) || sx, sy);
     }
 
     points.push(end);
     return compactPoints(points);
+}
+
+function nearestCorridor(corridors, axis, target, config) {
+    const candidates = corridors.filter((corridor) => corridor.axis === axis);
+    const fallback = axis === 'h' ? config.board.height / 2 : config.board.width / 2;
+    const best = candidates.sort((a, b) => Math.abs(a.value - target) - Math.abs(b.value - target))[0]?.value ?? fallback;
+    const limit = axis === 'h' ? config.board.height : config.board.width;
+    return snap(clamp(best, config.grid.margin, limit - config.grid.margin), config.grid.cell);
+}
+
+function leadLength(kind, rng, config) {
+    if (kind === 'branch') return rng.float(18, 42);
+    if (kind === 'local') return rng.float(22, 56);
+    return rng.float(34, 76);
+}
+
+function pushDiagonal(points, target, chamfer, sx, sy) {
+    const prev = points[points.length - 1];
+    const dx = target.x - prev.x;
+    const dy = target.y - prev.y;
+    if (Math.abs(dx) <= chamfer || Math.abs(dy) <= chamfer) {
+        points.push(target);
+        return;
+    }
+    points.push({ x: target.x - sx * chamfer, y: prev.y });
+    points.push({ x: target.x, y: prev.y + sy * chamfer });
+    points.push(target);
 }
 
 function anchorPoint(point, config) {
@@ -161,7 +211,7 @@ function maybeAddVia(rng, trace, vias, chance) {
 }
 
 function makeBranchVia(rng, source, config) {
-    const length = rng.float(70, 220);
+    const length = rng.float(config.route.branchLength[0], config.route.branchLength[1]);
     const angle = rng.pick([0, Math.PI / 4, Math.PI / 2, 3 * Math.PI / 4, Math.PI, -3 * Math.PI / 4, -Math.PI / 2, -Math.PI / 4]);
     const x = snap(clamp(source.x + Math.cos(angle) * length, config.grid.margin, config.board.width - config.grid.margin), config.grid.cell);
     const y = snap(clamp(source.y + Math.sin(angle) * length, config.grid.margin, config.board.height - config.grid.margin), config.grid.cell);

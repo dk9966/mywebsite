@@ -19,7 +19,7 @@ export function generate(seed, config) {
     return {
         width: config.board.width,
         height: config.board.height,
-        parts: pruneUnconnectedParts(parts, traces),
+        parts: config.output?.keepPlacedParts ? parts : pruneUnconnectedParts(parts, traces),
         traces,
         vias,
     };

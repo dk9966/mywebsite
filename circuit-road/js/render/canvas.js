@@ -46,6 +46,9 @@ function drawVia(ctx, via, config, style) {
 }
 
 function drawPart(ctx, part, style) {
+    if (['qfp', 'ic', 'busBlock', 'padCluster'].includes(part.kind)) {
+        drawHalo(ctx, part, style);
+    }
     drawPins(ctx, part, style);
     if (part.kind === 'padCluster') {
         drawRect(ctx, part, style, 8);
@@ -65,6 +68,30 @@ function drawPart(ctx, part, style) {
         ctx.lineTo(part.x + part.w - 5, part.y + part.h / 2);
         ctx.stroke();
     }
+}
+
+function drawHalo(ctx, part, style) {
+    const offset = part.kind === 'qfp' ? 14 : 10;
+    const corner = part.kind === 'qfp' ? 18 : 12;
+    const x = part.x - offset;
+    const y = part.y - offset;
+    const width = part.w + offset * 2;
+    const height = part.h + offset * 2;
+    const c = Math.min(corner, width / 3, height / 3);
+
+    ctx.strokeStyle = style.fg;
+    ctx.lineWidth = style.traceWidth * 0.9;
+    ctx.beginPath();
+    ctx.moveTo(x + c, y);
+    ctx.lineTo(x + width - c, y);
+    ctx.lineTo(x + width, y + c);
+    ctx.lineTo(x + width, y + height - c);
+    ctx.lineTo(x + width - c, y + height);
+    ctx.lineTo(x + c, y + height);
+    ctx.lineTo(x, y + height - c);
+    ctx.lineTo(x, y + c);
+    ctx.closePath();
+    ctx.stroke();
 }
 
 function drawRect(ctx, part, style, radius) {

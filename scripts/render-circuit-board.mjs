@@ -3,27 +3,40 @@
  * prints metrics against the reference illustration
  * (plans/chatgpt/top view spaced out.png).
  *
- *   node scripts/render-circuit-board.mjs [--style bw|neon] [seed ...]
+ *   node scripts/render-circuit-board.mjs [--variant default|dense-long] [--style bw|neon] [seed ...]
  */
 import { mkdirSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
-import { CONFIG } from '../circuit-board/js/config.js';
+import { BOARD_VARIANTS } from '../circuit-board/js/config.js';
 import { generate } from '../circuit-board/js/core/index.js';
 import { modelToSvg } from '../circuit-board/js/render/svg.js';
 
 const require = createRequire(import.meta.url);
 const args = process.argv.slice(2);
-let style = CONFIG.defaultStyle;
+let variantName = 'default';
+let style = null;
 const seeds = [];
 for (let i = 0; i < args.length; i++) {
-    if (args[i] === '--style' && args[i + 1]) style = args[++i];
+    if (args[i] === '--variant' && args[i + 1]) variantName = args[++i];
+    else if (args[i] === '--style' && args[i + 1]) style = args[++i];
     else if (Number.isFinite(Number(args[i]))) seeds.push(Number(args[i]));
 }
 if (!seeds.length) seeds.push(1, 2, 3, 4, 5);
 
-const outDir = fileURLToPath(new URL('../plans/circuit design/board-renders/', import.meta.url));
-const referencePng = fileURLToPath(new URL('../plans/chatgpt/top view spaced out.png', import.meta.url));
+const variant = BOARD_VARIANTS[variantName];
+if (!variant) {
+    console.error(`Unknown board variant "${variantName}". Expected one of: ${Object.keys(BOARD_VARIANTS).join(', ')}`);
+    process.exit(1);
+}
+
+const config = variant.config;
+style = style ?? variant.style ?? config.defaultStyle;
+
+const outBaseUrl = new URL('../plans/circuit design/board-renders/', import.meta.url);
+const outUrl = variant.outDir ? new URL(`${variant.outDir}/`, outBaseUrl) : outBaseUrl;
+const outDir = fileURLToPath(outUrl);
+const referencePng = fileURLToPath(new URL(variant.reference ?? '../plans/chatgpt/top view spaced out.png', import.meta.url));
 mkdirSync(outDir, { recursive: true });
 
 // Every trace end must land on a pin anchor or a via -- no bare ends, ever.
@@ -117,10 +130,10 @@ async function inkRatio(pngPath) {
 
 const svgPaths = [];
 for (const seed of seeds) {
-    const model = generate(seed, CONFIG);
-    const suffix = style === CONFIG.defaultStyle ? '' : `-${style}`;
+    const model = generate(seed, config);
+    const suffix = style === config.defaultStyle ? '' : `-${style}`;
     const svgPath = `${outDir}seed-${seed}${suffix}.svg`;
-    writeFileSync(svgPath, modelToSvg(model, CONFIG, { style }));
+    writeFileSync(svgPath, modelToSvg(model, config, { style }));
     svgPaths.push(svgPath);
 
     const byKind = new Map();
@@ -140,7 +153,7 @@ const browser = await chromium.launch();
 const page = await browser.newPage();
 for (const svgPath of svgPaths) {
     await page.goto(`file://${svgPath}`);
-    await page.setViewportSize({ width: CONFIG.board.width, height: CONFIG.board.height });
+    await page.setViewportSize({ width: config.board.width, height: config.board.height });
     const pngPath = svgPath.replace(/\.svg$/, '.png');
     await page.screenshot({ path: pngPath });
     console.log(`\nwrote ${pngPath}`);

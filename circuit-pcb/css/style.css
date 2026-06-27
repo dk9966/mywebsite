@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #111;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pcb-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+}
+
+.pcb-app__canvas {
+    max-width: 100%;
+    height: auto;
+    outline: 1px solid #2a2a2a;
+}
+
+.pcb-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: monospace;
+    color: #aaa;
+}
+
+.pcb-toolbar__seed,
+.pcb-toolbar__style {
+    background: #1b1b1b;
+    color: #ddd;
+    border: 1px solid #333;
+    padding: 4px 6px;
+    font-family: inherit;
+}
+
+.pcb-toolbar__seed {
+    width: 70px;
+}
+
+.pcb-toolbar__button {
+    background: #222;
+    color: #ddd;
+    border: 1px solid #444;
+    padding: 4px 10px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.pcb-toolbar__button:hover {
+    background: #2e2e2e;
+}

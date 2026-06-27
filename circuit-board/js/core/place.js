@@ -8,6 +8,14 @@ import {
     SMALL_MAKERS, makeQfp, makeSoic, makeHeatsink, makeHeader, makeConnector,
 } from './parts.js';
 
+const CITY_MAKERS = {
+    qfp: makeQfp,
+    soic: makeSoic,
+    heatsink: makeHeatsink,
+    header: makeHeader,
+    connector: makeConnector,
+};
+
 export function placeParts(rng, config) {
     const { gw, gh } = gridSize(config);
     const em = config.grid.edgeMargin + 1; // +1 keeps pin anchors inside bounds
@@ -58,9 +66,46 @@ export function placeParts(rng, config) {
         return scatter(make, marginCells, Math.ceil(tries / 3));
     }
 
-    // 1. QFPs: one per jittered slot of a 3x2 grid.
-    const slotsX = 3;
-    const slotsY = 2;
+    function placeCityGrid() {
+        const city = config.place.cityGrid;
+        const tileW = (gw - 2 * em) / city.cols;
+        const tileH = (gh - 2 * em) / city.rows;
+        const slots = [];
+        for (let sx = 0; sx < city.cols; sx++) {
+            for (let sy = 0; sy < city.rows; sy++) slots.push([sx, sy]);
+        }
+
+        for (const [sx, sy] of rng.shuffle(slots)) {
+            if (!rng.chance(city.fill)) continue;
+
+            const kind = rng.weighted(city.weights);
+            const make = CITY_MAKERS[kind];
+            if (!make) continue;
+
+            const spec = make(rng, config);
+            const x0 = Math.ceil(em + sx * tileW + city.gutter);
+            const y0 = Math.ceil(em + sy * tileH + city.gutter);
+            const x1 = Math.floor(em + (sx + 1) * tileW - city.gutter - spec.cols);
+            const y1 = Math.floor(em + (sy + 1) * tileH - city.gutter - spec.rows);
+
+            if (x1 < x0 || y1 < y0) continue;
+
+            let placed = false;
+            for (let i = 0; i < city.triesPerSlot && !placed; i++) {
+                const cellX = rng.int(x0, x1);
+                const cellY = rng.int(y0, y1);
+                placed = !!tryPlace(spec, cellX, cellY, city.margin);
+            }
+        }
+    }
+
+    if (config.place.cityGrid) {
+        placeCityGrid();
+        return parts;
+    }
+
+    // 1. QFPs: one per jittered slot. Dense variants may request a finer grid.
+    const [slotsX, slotsY] = config.place.qfp.slots ?? [3, 2];
     const slotW = (gw - 2 * em) / slotsX;
     const slotH = (gh - 2 * em) / slotsY;
     const slots = [];

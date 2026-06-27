@@ -82,7 +82,7 @@ function chipEdges(rng, chips, config) {
         inTree.add(best[1]);
     }
 
-    // A few extra short edges for loops, like the reference's cross-links.
+    // A few extra edges for loops, like the reference's cross-links.
     const used = new Set(edges.map(([a, b]) => key(a, b)));
     const candidates = [];
     for (let i = 0; i < chips.length; i++) {
@@ -91,8 +91,28 @@ function chipEdges(rng, chips, config) {
         }
     }
     candidates.sort((p, q) => dist(...p) - dist(...q));
-    edges.push(...candidates.slice(0, rng.int(...config.net.extraEdges)));
+    edges.push(...pickExtraEdges(rng, candidates, config));
     return edges;
+}
+
+function pickExtraEdges(rng, candidates, config) {
+    const count = rng.int(...config.net.extraEdges);
+    const longShare = config.net.longEdgeShare ?? 0;
+    if (longShare <= 0) return candidates.slice(0, count);
+
+    const longCount = Math.round(count * longShare);
+    const picked = candidates.slice(0, count - longCount);
+    const seen = new Set(picked.map(([a, b]) => key(a, b)));
+
+    for (const pair of [...candidates].reverse()) {
+        if (picked.length >= count) break;
+        const pairKey = key(pair[0], pair[1]);
+        if (seen.has(pairKey)) continue;
+        picked.push(pair);
+        seen.add(pairKey);
+    }
+
+    return picked;
 }
 
 function key(a, b) {

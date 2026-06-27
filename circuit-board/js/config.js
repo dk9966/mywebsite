@@ -104,6 +104,100 @@ export const CONFIG = {
     },
 };
 
+const DENSE_LONG_CONFIG = denseLongConfig(CONFIG);
+
+export const BOARD_VARIANTS = {
+    default: {
+        config: CONFIG,
+        style: CONFIG.defaultStyle,
+    },
+    'dense-long': {
+        config: DENSE_LONG_CONFIG,
+        style: DENSE_LONG_CONFIG.defaultStyle,
+        outDir: 'dense-long',
+        reference: '../plans/board pcb road circuits.png',
+    },
+};
+
+function denseLongConfig(baseConfig) {
+    const config = structuredClone(baseConfig);
+
+    config.place.qfp.count = [18, 22];
+    config.place.qfp.slots = [6, 4];
+    config.place.qfp.jitter = 0.34;
+    config.place.qfp.body = [11, 16];
+    config.place.soic.bodyW = [12, 17];
+    config.place.soic.bodyH = [5, 8];
+    config.place.soic.count = [8, 12];
+    config.place.heatsink.count = [7, 10];
+    config.place.header.count = [5, 8];
+    config.place.connector.count = [5, 8];
+    config.place.satelliteRadius = [10, 78];
+    config.place.small.count = [0, 0];
+    config.place.small.weights = [
+        { value: 'passive', weight: 34 },
+        { value: 'passivePair', weight: 18 },
+        { value: 'smd', weight: 20 },
+        { value: 'capRound', weight: 12 },
+        { value: 'lonePad', weight: 10 },
+        { value: 'drum', weight: 8 },
+    ];
+    config.place.margin = { qfp: 2, mid: 2, small: 2 };
+    config.place.cityGrid = {
+        cols: 12,
+        rows: 8,
+        fill: 0.96,
+        gutter: 1,
+        margin: 1,
+        triesPerSlot: 12,
+        weights: [
+            { value: 'qfp', weight: 36 },
+            { value: 'soic', weight: 16 },
+            { value: 'heatsink', weight: 16 },
+            { value: 'header', weight: 16 },
+            { value: 'connector', weight: 16 },
+        ],
+    };
+
+    config.net.extraEdges = [14, 20];
+    config.net.longEdgeShare = 0.45;
+    config.net.busSize = [5, 8];
+    config.net.soloDist = [64, 190];
+    config.net.soloGroupSizes = [
+        { value: 2, weight: 2 },
+        { value: 3, weight: 3 },
+        { value: 4, weight: 3 },
+        { value: 5, weight: 2 },
+    ];
+    config.net.smallChance = 0.45;
+    config.net.anchorLinkDist = 120;
+    config.net.fillerMax = 300;
+    config.net.fillerDist = [58, 196];
+    config.net.fillerStopOcc = 132;
+    config.net.fillerPairChance = 0.78;
+
+    config.route.clearanceTarget = 1;
+    config.route.clearanceWeight = 0.45;
+    config.route.segMin = 7;
+    config.route.diagCost = 2.15;
+    config.route.openMaxExpansions = 65000;
+    config.route.maxExpansions = 90000;
+
+    config.vias.ringChance = 0.72;
+    config.output = { keepPlacedParts: true };
+    config.defaultStyle = 'neon';
+    config.styles.neon = {
+        ...config.styles.neon,
+        bg: '#000000',
+        fg: '#27f4ee',
+        traceWidth: 1.3,
+        glowBlur: 0.8,
+        accents: { green: '#27f4ee', pink: '#27f4ee' },
+    };
+
+    return config;
+}
+
 export function gridSize(config) {
     return {
         gw: Math.floor(config.board.width / config.grid.cell),
