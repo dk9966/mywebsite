@@ -13,6 +13,11 @@ const DEFAULT_NEAR = 0.05;
 const DEFAULT_FAR = 100;
 
 function DeskScene() {
+  const bloomIntensity = useDeskLayout((s) => s.bloomIntensity);
+  const bloomThreshold = useDeskLayout((s) => s.bloomThreshold);
+  const bloomRadius = useDeskLayout((s) => s.bloomRadius);
+  const bloomSmoothing = useDeskLayout((s) => s.bloomSmoothing);
+
   return (
     <>
       <color attach="background" args={["#05080b"]} />
@@ -69,18 +74,16 @@ function DeskScene() {
 
       <DeskPanels />
 
-      {/* Subtle bloom so the practicals bleed into halos in both the direct
-          view and the floor reflection — that's what reads as the polished
-          Stark-workshop look rather than three pinpoint dots. Threshold is
-          near 1.0 so only the un-tone-mapped bulb meshes glow; the cyan
-          HUD text stays crisp. */}
+      {/* Bloom: bulbs stay hot via toneMapped={false}; panel bezels use the
+          same path (HudScreen BezelLines). Threshold stays high so the HTML
+          HUD text layer stays crisp — it composites outside this pass. */}
       <EffectComposer>
         <Bloom
           mipmapBlur
-          intensity={0.85}
-          luminanceThreshold={0.9}
-          luminanceSmoothing={0.15}
-          radius={0.7}
+          intensity={bloomIntensity}
+          luminanceThreshold={bloomThreshold}
+          luminanceSmoothing={bloomSmoothing}
+          radius={bloomRadius}
         />
       </EffectComposer>
     </>
@@ -230,7 +233,10 @@ function HeadLook({
     startY: number;
     startYaw: number;
     startPitch: number;
+    active: boolean;
   } | null>(null);
+
+  const DRAG_THRESHOLD_PX = 5;
 
   // Plant the eye and re-aim at the target whenever either changes (slider
   // moves). Drag look-around mutates the refs below without re-running this.
@@ -255,14 +261,22 @@ function HeadLook({
     const onPointerDown = (e: PointerEvent) => {
       // Ignore non-primary buttons so right-click / middle-click are free.
       if (e.button !== 0) return;
+      const hit = document.elementFromPoint(e.clientX, e.clientY);
+      if (
+        hit?.closest(
+          ".hud-contact-portal__link, .hud-contact__link, .desk-controls",
+        )
+      ) {
+        return;
+      }
       drag.current = {
         pointerId: e.pointerId,
         startX: e.clientX,
         startY: e.clientY,
         startYaw: yawRef.current,
         startPitch: pitchRef.current,
+        active: false,
       };
-      canvas.setPointerCapture(e.pointerId);
     };
 
     const onPointerMove = (e: PointerEvent) => {
@@ -270,6 +284,12 @@ function HeadLook({
       if (!d || d.pointerId !== e.pointerId) return;
       const dx = e.clientX - d.startX;
       const dy = e.clientY - d.startY;
+
+      if (!d.active) {
+        if (Math.hypot(dx, dy) < DRAG_THRESHOLD_PX) return;
+        d.active = true;
+        canvas.setPointerCapture(e.pointerId);
+      }
 
       let nextYaw = d.startYaw - dx * sensitivity;
       let nextPitch = d.startPitch - dy * sensitivity;
@@ -288,12 +308,14 @@ function HeadLook({
 
     const endDrag = (e: PointerEvent) => {
       if (drag.current?.pointerId !== e.pointerId) return;
-      drag.current = null;
-      try {
-        canvas.releasePointerCapture(e.pointerId);
-      } catch {
-        // releasePointerCapture throws if the pointer is already gone; safe to ignore.
+      if (drag.current.active) {
+        try {
+          canvas.releasePointerCapture(e.pointerId);
+        } catch {
+          // releasePointerCapture throws if the pointer is already gone; safe to ignore.
+        }
       }
+      drag.current = null;
     };
 
     canvas.addEventListener("pointerdown", onPointerDown);

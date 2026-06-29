@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import type { CSSProperties, PointerEvent as ReactPointerEvent, ReactNode } from "react";
-import { useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { Html, Line as DreiLine } from "@react-three/drei";
 import * as THREE from "three";
+import { useDeskLayout } from "../stores/deskLayout";
 import "./HudScreen.css";
+import "./hudContactPortal.css";
 
 // drei's <Html transform> divides the group's matrix by 40 internally
 // (defaults from distanceFactor=10 → 400/10 scale on the inner CSS matrix).
@@ -72,6 +74,16 @@ export interface HudScreenProps {
   bgBlur: number;
   /** Panel title font size in CSS px. */
   headerFontPx: number;
+  /** Content rendered on the right of the title row. */
+  headerAside?: ReactNode;
+  /** Screen-space links rendered as invisible 3D hit targets (CSS3D breaks <a> clicks). */
+  headerLinks?: { href: string; label: string }[];
+  /** Title row only — omit the body slot. */
+  headerOnly?: boolean;
+  /** Omit the title bar — for compact strips like contact icons. */
+  hideHeader?: boolean;
+  /** Cap padding on short panels so content isn't clipped by overflow. */
+  compactPadding?: boolean;
   /** Incremental resize feedback: dW/dH are this panel's signed size change
    *  in CSS px since the previous event. */
   onResizeDelta?: (handle: ResizeHandle, dW: number, dH: number) => void;
@@ -89,9 +101,15 @@ export default function HudScreen({
   bgOpacity,
   bgBlur,
   headerFontPx,
+  headerAside,
+  headerLinks,
+  headerOnly = false,
+  hideHeader = false,
+  compactPadding = false,
   onResizeDelta,
   children,
 }: HudScreenProps) {
+  const contentPaddingPx = useDeskLayout((s) => s.contentPaddingPx);
   const groupRef = useRef<THREE.Group>(null);
   const camera = useThree((s) => s.camera);
   const size = useThree((s) => s.size);
@@ -175,12 +193,47 @@ export default function HudScreen({
   // The visible panel face — handle bar + content. Rendered once per slice as
   // a full-width layer that each slice clips to a vertical strip, so the
   // content (text, placeholders) bends together on the cylinder.
+  const facePadV = compactPadding
+    ? Math.min(contentPaddingPx, 10)
+    : contentPaddingPx;
+  const facePadH = compactPadding
+    ? Math.min(contentPaddingPx, 16)
+    : contentPaddingPx;
+  const faceGap = compactPadding ? 6 : 12;
+
   const face = (
-    <div className="hud-screen__face">
-      <div className="hud-screen__handle" style={{ fontSize: `${headerFontPx}px` }}>
-        {title}
-      </div>
-      <div className="hud-screen__body">{children}</div>
+    <div
+      className={
+        hideHeader
+          ? "hud-screen__face hud-screen__face--headerless"
+          : headerOnly
+            ? "hud-screen__face hud-screen__face--header-only"
+            : compactPadding
+              ? "hud-screen__face hud-screen__face--compact"
+              : "hud-screen__face"
+      }
+      style={{
+        padding: hideHeader
+          ? `${facePadV}px ${facePadH}px`
+          : `${facePadV}px ${facePadH}px`,
+        gap: headerOnly ? "0px" : `${faceGap}px`,
+      }}
+    >
+      {!hideHeader ? (
+        <div className="hud-screen__handle" style={{ fontSize: `${headerFontPx}px` }}>
+          <span className="hud-screen__handle-title">{title}</span>
+          {headerAside}
+        </div>
+      ) : null}
+      {!headerOnly ? (
+        <div
+          className={
+            compactPadding ? "hud-screen__body hud-screen__body--compact" : "hud-screen__body"
+          }
+        >
+          {children}
+        </div>
+      ) : null}
     </div>
   );
 
@@ -205,16 +258,19 @@ export default function HudScreen({
         heightPx={heightPx}
         curveRadiusPx={curveRadiusPx}
         blurStyle={blurStyle}
+        allowPointerEvents={!headerOnly}
       >
         {face}
       </CurvedFaceSlices>
+      {headerLinks && headerLinks.length > 0 ? (
+        <HeaderLinkPortal links={headerLinks} />
+      ) : null}
       <BezelLines
         widthPx={widthPx}
         heightPx={heightPx}
         curveRadiusPx={curveRadiusPx}
       />
-      {/* Flat resize hit-zones sit above the bent face in screen space. */}
-      <Html transform center zIndexRange={[110, 0]}>
+      <Html transform center zIndexRange={[110, 0]} pointerEvents="none">
         <div className="hud-screen hud-screen--handles" style={panelStyle}>
           <div className="hud-screen__edge hud-screen__edge--top" {...handleProps("top")} />
           <div className="hud-screen__edge hud-screen__edge--bottom" {...handleProps("bottom")} />
@@ -228,6 +284,78 @@ export default function HudScreen({
       </Html>
     </group>
   );
+}
+
+function HeaderLinkPortal({
+  links,
+}: {
+  links: { href: string; label: string }[];
+}) {
+  const anchorsRef = useRef<HTMLAnchorElement[]>([]);
+
+  useEffect(() => {
+    const container = document.createElement("div");
+    container.className = "hud-contact-portal";
+    document.body.appendChild(container);
+
+    anchorsRef.current = links.map((link) => {
+      const a = document.createElement("a");
+      a.className = "hud-contact-portal__link";
+      a.href = link.href;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.setAttribute("aria-label", link.label);
+      a.title = link.label;
+      a.addEventListener("pointerdown", (e) => e.stopPropagation());
+      container.appendChild(a);
+      return a;
+    });
+
+    return () => {
+      container.remove();
+      anchorsRef.current = [];
+    };
+  }, [links]);
+
+  // Match screen-space hit targets to the decorative icons each frame. We
+  // cannot render <a> through React inside R3F — the reconciler treats it as
+  // a THREE primitive and crashes the canvas. Each curved slice repeats the
+  // same icon row, so pick the largest on-screen rect per link index.
+  useFrame(() => {
+    const icons = document.querySelectorAll<HTMLElement>(".hud-contact__icon");
+    const n = links.length;
+
+    for (let i = 0; i < n; i++) {
+      const el = anchorsRef.current[i];
+      if (!el) continue;
+
+      let best: DOMRect | null = null;
+      let bestArea = 0;
+      icons.forEach((icon, idx) => {
+        if (idx % n !== i) return;
+        const r = icon.getBoundingClientRect();
+        const area = r.width * r.height;
+        if (area > bestArea) {
+          bestArea = area;
+          best = r;
+        }
+      });
+
+      if (!best || bestArea < 1) {
+        el.style.display = "none";
+        continue;
+      }
+
+      const pad = 8;
+      el.style.display = "block";
+      el.style.left = `${best.left - pad}px`;
+      el.style.top = `${best.top - pad}px`;
+      el.style.width = `${best.width + pad * 2}px`;
+      el.style.height = `${best.height + pad * 2}px`;
+    }
+  });
+
+  return null;
 }
 
 // Bend a flat panel by slicing it into vertical strips placed on the shared
@@ -397,23 +525,33 @@ function CurvedFaceSlices({
   heightPx,
   curveRadiusPx,
   blurStyle,
+  allowPointerEvents = true,
   children,
 }: {
   widthPx: number;
   heightPx: number;
   curveRadiusPx: number;
   blurStyle?: CSSProperties;
+  allowPointerEvents?: boolean;
   children: ReactNode;
 }) {
   const slices = useCylinderSlices(widthPx, heightPx, curveRadiusPx);
+  const sliceClass = allowPointerEvents
+    ? "hud-screen__slice-strip"
+    : "hud-screen__slice-strip hud-screen__slice-strip--pass-through";
 
   return (
     <>
       {slices.map((slice) => (
         <group key={slice.key} position={slice.position} rotation={[0, slice.yaw, 0]}>
-          <Html transform center zIndexRange={[100, 0]}>
+          <Html
+            transform
+            center
+            zIndexRange={[100, 0]}
+            pointerEvents={allowPointerEvents ? "auto" : "none"}
+          >
             <div
-              className="hud-screen__slice-strip"
+              className={sliceClass}
               style={{
                 width: `${slice.width}px`,
                 height: `${heightPx}px`,
@@ -502,6 +640,10 @@ function BezelLines({
   heightPx: number;
   curveRadiusPx: number;
 }) {
+  const bezelEmission = useDeskLayout((s) => s.bezelEmission);
+  const bezelLineWidth = useDeskLayout((s) => s.bezelLineWidth);
+  const bezelOpacity = useDeskLayout((s) => s.bezelOpacity);
+
   const outline = useMemo(() => {
     const halfW = (widthPx * PX_TO_LOCAL) / 2;
     const halfH = (heightPx * PX_TO_LOCAL) / 2;
@@ -520,13 +662,19 @@ function BezelLines({
     });
   }, [widthPx, heightPx, curveRadiusPx]);
 
+  const lineColor = useMemo(
+    () => new THREE.Color(BEZEL_COLOR).multiplyScalar(bezelEmission),
+    [bezelEmission],
+  );
+
   return (
     <DreiLine
       points={outline}
-      color={BEZEL_COLOR}
-      lineWidth={1.8}
+      color={lineColor}
+      lineWidth={bezelLineWidth}
       transparent
-      opacity={0.72}
+      opacity={bezelOpacity}
+      toneMapped={false}
       depthWrite={false}
     />
   );

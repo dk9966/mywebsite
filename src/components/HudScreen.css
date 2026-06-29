@@ -21,6 +21,11 @@
 .hud-screen__slice-strip {
   position: relative;
   overflow: hidden;
+  pointer-events: auto;
+}
+
+.hud-screen__slice-strip--pass-through,
+.hud-screen__slice-strip--pass-through .hud-screen__slice-inner {
   pointer-events: none;
 }
 
@@ -28,6 +33,7 @@
   position: absolute;
   left: 50%;
   top: 0;
+  pointer-events: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
@@ -46,20 +52,65 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
   isolation: isolate;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.hud-screen__face--compact {
+  gap: 6px;
+}
+
+.hud-screen__face--compact .hud-screen__handle {
+  line-height: 1.1;
+}
+
+.hud-screen__body--compact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.hud-screen__face--headerless {
+  gap: 0;
+  justify-content: center;
+}
+
+.hud-screen__face--headerless .hud-screen__body {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+}
+
+.hud-screen__face--header-only {
+  gap: 0;
+  justify-content: center;
+  pointer-events: none;
+}
+
 .hud-screen__handle {
-  padding: 12px 20px 0;
   position: relative;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   flex: 0 0 auto;
+  width: 100%;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #aeeaee;
+  pointer-events: none;
+}
+
+.hud-screen__handle-title {
+  flex: 0 1 auto;
+  min-width: 0;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -69,7 +120,6 @@
 .hud-screen__body {
   flex: 1 1 auto;
   min-height: 0;
-  padding: 12px 20px 18px;
   overflow: hidden;
   font-size: 12px;
   line-height: 1.5;

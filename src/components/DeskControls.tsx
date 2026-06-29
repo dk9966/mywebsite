@@ -1,5 +1,10 @@
 import { useState, type PointerEvent as ReactPointerEvent } from "react";
-import { useDeskLayout, MAX_HEADER_FONT_PX } from "../stores/deskLayout";
+import {
+  useDeskLayout,
+  MAX_HEADER_FONT_PX,
+  MIN_CONTACT_HEIGHT_PX,
+  MAX_CONTACT_HEIGHT_PX,
+} from "../stores/deskLayout";
 import "./DeskControls.css";
 
 interface SliderProps {
@@ -52,13 +57,41 @@ export default function DeskControls() {
   const setBgOpacity = useDeskLayout((s) => s.setBgOpacity);
   const bgBlur = useDeskLayout((s) => s.bgBlur);
   const setBgBlur = useDeskLayout((s) => s.setBgBlur);
+  const bezelEmission = useDeskLayout((s) => s.bezelEmission);
+  const setBezelEmission = useDeskLayout((s) => s.setBezelEmission);
+  const bezelLineWidth = useDeskLayout((s) => s.bezelLineWidth);
+  const setBezelLineWidth = useDeskLayout((s) => s.setBezelLineWidth);
+  const bezelOpacity = useDeskLayout((s) => s.bezelOpacity);
+  const setBezelOpacity = useDeskLayout((s) => s.setBezelOpacity);
+  const bloomIntensity = useDeskLayout((s) => s.bloomIntensity);
+  const setBloomIntensity = useDeskLayout((s) => s.setBloomIntensity);
+  const bloomThreshold = useDeskLayout((s) => s.bloomThreshold);
+  const setBloomThreshold = useDeskLayout((s) => s.setBloomThreshold);
+  const bloomRadius = useDeskLayout((s) => s.bloomRadius);
+  const setBloomRadius = useDeskLayout((s) => s.setBloomRadius);
+  const bloomSmoothing = useDeskLayout((s) => s.bloomSmoothing);
+  const setBloomSmoothing = useDeskLayout((s) => s.setBloomSmoothing);
   const headerFontPx = useDeskLayout((s) => s.headerFontPx);
   const setHeaderFontPx = useDeskLayout((s) => s.setHeaderFontPx);
+  const contentPaddingPx = useDeskLayout((s) => s.contentPaddingPx);
+  const setContentPaddingPx = useDeskLayout((s) => s.setContentPaddingPx);
+  const contactHeightPx = useDeskLayout((s) => s.contactHeightPx);
+  const setContactHeightPx = useDeskLayout((s) => s.setContactHeightPx);
+  const contactIconSizePx = useDeskLayout((s) => s.contactIconSizePx);
+  const setContactIconSizePx = useDeskLayout((s) => s.setContactIconSizePx);
   const reset = useDeskLayout((s) => s.reset);
+  const saveAsDefault = useDeskLayout((s) => s.saveAsDefault);
 
   const [minimized, setMinimized] = useState(false);
+  const [savedFlash, setSavedFlash] = useState(false);
 
   const stopBubble = (e: ReactPointerEvent) => e.stopPropagation();
+
+  const onSaveAsDefault = () => {
+    saveAsDefault();
+    setSavedFlash(true);
+    window.setTimeout(() => setSavedFlash(false), 1400);
+  };
 
   return (
     <aside
@@ -103,15 +136,66 @@ export default function DeskControls() {
             <Slider label="Wall H" value={wallHeightPx} min={300} max={1800} step={10} onChange={setWallHeightPx} />
             <Slider label="Curvature" value={curveRadiusPx} min={500} max={1500} step={5} onChange={setCurveRadiusPx} />
             <Slider label="Header" value={headerFontPx} min={9} max={MAX_HEADER_FONT_PX} step={1} onChange={setHeaderFontPx} />
+            <Slider label="Padding" value={contentPaddingPx} min={4} max={56} step={1} onChange={setContentPaddingPx} />
             <Slider label="BG opacity" value={bgOpacity} min={0} max={1} step={0.01} decimals={2} onChange={setBgOpacity} />
             <Slider label="BG blur" value={bgBlur} min={0} max={16} step={0.5} decimals={1} onChange={setBgBlur} />
           </section>
 
           <hr className="desk-controls__divider" />
 
-          <button className="desk-controls__reset" type="button" onClick={reset}>
-            Reset defaults
-          </button>
+          <section className="desk-controls__group">
+            <h4 className="desk-controls__group-title">Contact</h4>
+            <Slider
+              label="Height px"
+              value={contactHeightPx}
+              min={MIN_CONTACT_HEIGHT_PX}
+              max={MAX_CONTACT_HEIGHT_PX}
+              step={1}
+              onChange={setContactHeightPx}
+            />
+            <Slider
+              label="Icon px"
+              value={contactIconSizePx}
+              min={20}
+              max={72}
+              step={1}
+              onChange={setContactIconSizePx}
+            />
+          </section>
+
+          <hr className="desk-controls__divider" />
+
+          <section className="desk-controls__group">
+            <h4 className="desk-controls__group-title">Border</h4>
+            <Slider label="Emission" value={bezelEmission} min={0.5} max={6} step={0.1} decimals={1} onChange={setBezelEmission} />
+            <Slider label="Width" value={bezelLineWidth} min={0.5} max={6} step={0.1} decimals={1} onChange={setBezelLineWidth} />
+            <Slider label="Opacity" value={bezelOpacity} min={0} max={1} step={0.01} decimals={2} onChange={setBezelOpacity} />
+          </section>
+
+          <hr className="desk-controls__divider" />
+
+          <section className="desk-controls__group">
+            <h4 className="desk-controls__group-title">Bloom</h4>
+            <Slider label="Intensity" value={bloomIntensity} min={0} max={4} step={0.05} decimals={2} onChange={setBloomIntensity} />
+            <Slider label="Threshold" value={bloomThreshold} min={0} max={1} step={0.01} decimals={2} onChange={setBloomThreshold} />
+            <Slider label="Radius" value={bloomRadius} min={0} max={1.5} step={0.05} decimals={2} onChange={setBloomRadius} />
+            <Slider label="Smoothing" value={bloomSmoothing} min={0} max={1} step={0.01} decimals={2} onChange={setBloomSmoothing} />
+          </section>
+
+          <hr className="desk-controls__divider" />
+
+          <div className="desk-controls__actions">
+            <button className="desk-controls__reset" type="button" onClick={reset}>
+              Reset defaults
+            </button>
+            <button
+              className={`desk-controls__save ${savedFlash ? "desk-controls__save--flash" : ""}`}
+              type="button"
+              onClick={onSaveAsDefault}
+            >
+              {savedFlash ? "Saved" : "Set as default"}
+            </button>
+          </div>
         </>
       )}
     </aside>

@@ -138,6 +138,12 @@
   font-variant-numeric: tabular-nums;
 }
 
+.desk-controls__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .desk-controls__reset {
   display: block;
   width: 100%;
@@ -154,4 +160,27 @@
 
 .desk-controls__reset:hover {
   background: rgba(102, 240, 240, 0.14);
+}
+
+.desk-controls__save {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  background: rgba(102, 240, 240, 0.1);
+  border: 1px solid rgba(102, 240, 240, 0.35);
+  border-radius: 4px;
+  color: #cfeef0;
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.desk-controls__save:hover {
+  background: rgba(102, 240, 240, 0.2);
+}
+
+.desk-controls__save--flash {
+  border-color: rgba(156, 248, 248, 0.65);
+  color: #9cf8f8;
 }

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { useMemo } from "react";
+import { contact } from "../data/resume";
 import {
   availableColumnHeight,
   availableWidth,
@@ -11,7 +12,7 @@ import {
 } from "../lib/panelWall";
 import { useDeskLayout } from "../stores/deskLayout";
 import {
-  ContactPanel,
+  ContactHeaderIcons,
   ExperiencePanel,
   FeaturedPanel,
   ProfilePanel,
@@ -26,7 +27,18 @@ const WORLD_PER_CSS_PX = 0.002;
 // Gap between adjacent cells on the flat wall, in CSS px.
 const WALL_GAP_PX = 28;
 
-type CellMeta = { title: string; tag: string; content: ReactNode };
+type CellMeta = {
+  title: string;
+  tag: string;
+  content?: ReactNode;
+  headerAside?: ReactNode;
+  headerLinks?: { href: string; label: string }[];
+  /** Title row only — no body slot (contact strip). */
+  headerOnly?: boolean;
+  hideHeader?: boolean;
+  /** Tighter inset so short strips (contact) don't clip their content. */
+  compactPadding?: boolean;
+};
 
 const CELL_META: Record<CellId, CellMeta> = {
   profile: { title: "Profile", tag: "01", content: <ProfilePanel /> },
@@ -36,8 +48,14 @@ const CELL_META: Record<CellId, CellMeta> = {
     tag: "03",
     content: <FeaturedPanel />,
   },
-  experience: { title: "Experience", tag: "04", content: <ExperiencePanel /> },
-  contact: { title: "Contact", tag: "05", content: <ContactPanel /> },
+  experience: { title: "Experiences", tag: "04", content: <ExperiencePanel /> },
+  contact: {
+    title: "Contact",
+    tag: "05",
+    headerAside: <ContactHeaderIcons />,
+    headerOnly: true,
+    headerLinks: contact.map((c) => ({ href: c.href, label: c.label })),
+  },
 };
 
 type EdgeRules = {
@@ -81,11 +99,10 @@ export default function DeskPanels() {
   const wallHeightPx = useDeskLayout((s) => s.wallHeightPx);
   const colFrac = useDeskLayout((s) => s.colFrac);
   const leftSplit = useDeskLayout((s) => s.leftSplit);
-  const rightSplit = useDeskLayout((s) => s.rightSplit);
+  const contactHeightPx = useDeskLayout((s) => s.contactHeightPx);
 
   const adjustColBoundary = useDeskLayout((s) => s.adjustColBoundary);
   const adjustLeftSplit = useDeskLayout((s) => s.adjustLeftSplit);
-  const adjustRightSplit = useDeskLayout((s) => s.adjustRightSplit);
 
   const wall = useMemo<WallSize>(
     () => ({ width: wallWidthPx, height: wallHeightPx, gap: WALL_GAP_PX }),
@@ -93,8 +110,8 @@ export default function DeskPanels() {
   );
 
   const cells = useMemo(
-    () => solveWall({ colFrac, leftSplit, rightSplit }, wall),
-    [colFrac, leftSplit, rightSplit, wall],
+    () => solveWall({ colFrac, leftSplit, contactHeightPx }, wall),
+    [colFrac, leftSplit, contactHeightPx, wall],
   );
 
   const availW = availableWidth(wall);
@@ -116,14 +133,12 @@ export default function DeskPanels() {
       },
       experience: {
         left: (f) => adjustColBoundary(1, -f),
-        bottom: (f) => adjustRightSplit(f),
       },
       contact: {
         left: (f) => adjustColBoundary(1, -f),
-        top: (f) => adjustRightSplit(-f),
       },
     }),
-    [adjustColBoundary, adjustLeftSplit, adjustRightSplit],
+    [adjustColBoundary, adjustLeftSplit],
   );
 
   const onResize =
@@ -157,9 +172,14 @@ export default function DeskPanels() {
             bgOpacity={bgOpacity}
             bgBlur={bgBlur}
             headerFontPx={headerFontPx}
+            hideHeader={meta.hideHeader}
+            headerAside={meta.headerAside}
+            headerLinks={meta.headerLinks}
+            headerOnly={meta.headerOnly}
+            compactPadding={meta.compactPadding}
             onResizeDelta={onResize(cell.id)}
           >
-            {meta.content}
+            {meta.content ?? null}
           </HudScreen>
         );
       })}

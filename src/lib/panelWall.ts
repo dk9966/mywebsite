@@ -19,8 +19,8 @@ export interface WallFractions {
   colFrac: [number, number, number];
   /** Fraction of the left column's height given to its top cell. */
   leftSplit: number;
-  /** Fraction of the right column's height given to its top cell. */
-  rightSplit: number;
+  /** Fixed height of the contact strip in CSS px. */
+  contactHeightPx: number;
 }
 
 export interface WallSize {
@@ -71,8 +71,8 @@ export function solveWall(f: WallFractions, size: WallSize): Cell[] {
 
   const leftTopH = f.leftSplit * availH;
   const leftBottomH = availH - leftTopH;
-  const rightTopH = f.rightSplit * availH;
-  const rightBottomH = availH - rightTopH;
+  const rightBottomH = Math.min(f.contactHeightPx, availH - availH * 0.22);
+  const rightTopH = availH - rightBottomH;
 
   // Stacked cells: top cell sits in the upper half, bottom in the lower.
   const topCy = (h: number) => size.height / 2 - h / 2;

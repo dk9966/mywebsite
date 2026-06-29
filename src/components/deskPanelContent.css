@@ -235,15 +235,39 @@
 
 /* Experience (04) -----------------------------------------------------------*/
 /* Timeline: a circular icon ring per entry joined down the column by a thin
-   connector line, with role / date / org / highlight beside each ring. */
+   connector line, with role / date / org / highlight beside each ring.
+   Type scales with the panel via container queries; overflow scrolls. */
+
+.hud-exp-wrap {
+  container-type: size;
+  container-name: exp-panel;
+  height: 100%;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  pointer-events: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 240, 240, 0.35) transparent;
+}
+
+.hud-exp-wrap::-webkit-scrollbar {
+  width: 4px;
+}
+
+.hud-exp-wrap::-webkit-scrollbar-thumb {
+  background: rgba(102, 240, 240, 0.35);
+  border-radius: 2px;
+}
 
 .hud-exp {
+  /* Blend height + width so type stays readable at any panel aspect ratio. */
+  font-size: clamp(0.7rem, 0.35cqw + 2.4cqh, 1.25rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  gap: 1.35em;
   margin: 0;
-  padding: 0;
+  padding: 0 0.15em 0.2em 0;
   list-style: none;
 }
 
@@ -251,17 +275,17 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 16px;
-  flex: 1 1 0;
+  gap: 0.95em;
+  flex: 0 0 auto;
 }
 
 /* Connector line: 2px wide, scaled to 1px so it stays crisp under CSS3D bend. */
 .hud-exp__row::before {
   content: "";
   position: absolute;
-  left: 16px;
-  top: 38px;
-  bottom: 4px;
+  left: 1.15em;
+  top: 2.55em;
+  bottom: -1.35em;
   width: 2px;
   transform: scaleX(0.5);
   transform-origin: left center;
@@ -274,8 +298,8 @@
 
 .hud-exp__marker {
   flex: 0 0 auto;
-  width: 34px;
-  height: 34px;
+  width: 2.3em;
+  height: 2.3em;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -289,89 +313,90 @@
   color: #9cf8f8;
 }
 
+.hud-exp__marker .hud-icon {
+  width: 1.05em;
+  height: 1.05em;
+}
+
 .hud-exp__entry {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding-top: 1px;
+  gap: 0.35em;
+  padding-top: 0.08em;
+  min-width: 0;
 }
 
 .hud-exp__head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 10px;
+  gap: 0.65em;
 }
 
 .hud-exp__role {
-  font-size: 13px;
+  font-size: 1.12em;
   font-weight: 600;
   color: #e4f6f8;
 }
 
 .hud-exp__date {
   flex: 0 0 auto;
-  font-size: 10px;
+  font-size: 0.82em;
   letter-spacing: 0.04em;
   color: rgba(174, 234, 238, 0.6);
 }
 
 .hud-exp__org {
-  font-size: 11px;
+  font-size: 0.94em;
   letter-spacing: 0.04em;
   color: #9cf8f8;
 }
 
 .hud-exp__highlight {
-  margin: 2px 0 0;
-  font-size: 11px;
+  margin: 0;
+  font-size: 0.94em;
   line-height: 1.45;
   color: rgba(207, 232, 236, 0.78);
+}
+
+@container exp-panel (max-width: 14em) {
+  .hud-exp__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15em;
+  }
 }
 
 /* Contact (05) --------------------------------------------------------------*/
 
 .hud-contact {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 18px;
-  height: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1 1 auto;
+  min-width: 0;
   margin: 0;
   padding: 0;
   list-style: none;
+  pointer-events: none;
 }
 
-.hud-contact__row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+.hud-contact__item {
+  flex: 0 0 auto;
 }
 
 .hud-contact__icon {
-  flex: 0 0 auto;
-  width: 32px;
-  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 1px rgba(140, 235, 240, 0.5);
-  background: radial-gradient(
-    circle at 40% 30%,
-    rgba(102, 240, 240, 0.1),
-    rgba(15, 40, 50, 0.4)
-  );
+  min-width: calc(var(--contact-icon-size, 40px) + 4px);
+  min-height: calc(var(--contact-icon-size, 40px) + 2px);
   color: #9cf8f8;
 }
 
-.hud-contact__value {
-  flex: 1 1 auto;
-  font-size: 12px;
-  letter-spacing: 0.02em;
-  color: #dbf0f3;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.hud-contact .hud-icon {
+  width: var(--contact-icon-size, 40px);
+  height: var(--contact-icon-size, 40px);
 }

@@ -34,11 +34,11 @@ export interface ExperienceEntry {
   highlight: string;
 }
 
-export type ContactKind = "email" | "phone" | "linkedin" | "github";
+export type ContactKind = "github" | "linkedin" | "x";
 
 export interface ContactLink {
   kind: ContactKind;
-  value: string;
+  label: string;
   href: string;
 }
 
@@ -131,19 +131,18 @@ export const experience: ExperienceEntry[] = [
 
 export const contact: ContactLink[] = [
   {
-    kind: "email",
-    value: "danielku9696@gmail.com",
-    href: "mailto:danielku9696@gmail.com",
+    kind: "github",
+    label: "GitHub",
+    href: "https://github.com/dk9966",
   },
-  { kind: "phone", value: "+1 (619) 743-9924", href: "tel:+16197439924" },
   {
     kind: "linkedin",
-    value: "linkedin.com/in/danielku96",
+    label: "LinkedIn",
     href: "https://linkedin.com/in/danielku96",
   },
   {
-    kind: "github",
-    value: "github.com/dk9966",
-    href: "https://github.com/dk9966",
+    kind: "x",
+    label: "X",
+    href: "https://x.com/DanielKu123",
   },
 ];

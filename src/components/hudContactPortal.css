@@ -1,0 +1,27 @@
+/* Screen-space click targets for contact icons. Portaled to document.body so
+   CSS3D panel slices and the canvas cannot swallow pointer events. */
+
+.hud-contact-portal {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.hud-contact-portal__link {
+  position: fixed;
+  display: block;
+  pointer-events: auto;
+  cursor: pointer;
+  border-radius: 6px;
+  background: transparent;
+}
+
+.hud-contact-portal__link:hover {
+  background: rgba(102, 240, 240, 0.08);
+}
+
+.hud-contact-portal__link:focus-visible {
+  outline: 2px solid rgba(156, 248, 248, 0.65);
+  outline-offset: 2px;
+}
