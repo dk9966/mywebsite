@@ -84,6 +84,10 @@ export interface HudScreenProps {
   hideHeader?: boolean;
   /** Cap padding on short panels so content isn't clipped by overflow. */
   compactPadding?: boolean;
+  /** Collapsed dock icon — shows the first letter and restores on click. */
+  dockIcon?: boolean;
+  onMinimize?: () => void;
+  onRestore?: () => void;
   /** Incremental resize feedback: dW/dH are this panel's signed size change
    *  in CSS px since the previous event. */
   onResizeDelta?: (handle: ResizeHandle, dW: number, dH: number) => void;
@@ -106,6 +110,9 @@ export default function HudScreen({
   headerOnly = false,
   hideHeader = false,
   compactPadding = false,
+  dockIcon = false,
+  onMinimize,
+  onRestore,
   onResizeDelta,
   children,
 }: HudScreenProps) {
@@ -201,7 +208,20 @@ export default function HudScreen({
     : contentPaddingPx;
   const faceGap = compactPadding ? 6 : 12;
 
-  const face = (
+  const face = dockIcon ? (
+    <button
+      type="button"
+      className="hud-screen__dock-icon"
+      onClick={(e) => {
+        e.stopPropagation();
+        onRestore?.();
+      }}
+      title={`Restore ${title}`}
+      aria-label={`Restore ${title}`}
+    >
+      {title.charAt(0)}
+    </button>
+  ) : (
     <div
       className={
         hideHeader
@@ -222,7 +242,23 @@ export default function HudScreen({
       {!hideHeader ? (
         <div className="hud-screen__handle" style={{ fontSize: `${headerFontPx}px` }}>
           <span className="hud-screen__handle-title">{title}</span>
-          {headerAside}
+          <div className="hud-screen__handle-actions">
+            {headerAside}
+            {onMinimize ? (
+              <button
+                type="button"
+                className="hud-screen__minimize-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onMinimize();
+                }}
+                title="Minimize"
+                aria-label={`Minimize ${title}`}
+              >
+                −
+              </button>
+            ) : null}
+          </div>
         </div>
       ) : null}
       {!headerOnly ? (
@@ -258,11 +294,11 @@ export default function HudScreen({
         heightPx={heightPx}
         curveRadiusPx={curveRadiusPx}
         blurStyle={blurStyle}
-        allowPointerEvents={!headerOnly}
+        allowPointerEvents={dockIcon || !headerOnly || !!onMinimize}
       >
         {face}
       </CurvedFaceSlices>
-      {headerLinks && headerLinks.length > 0 ? (
+      {headerLinks && headerLinks.length > 0 && !dockIcon ? (
         <HeaderLinkPortal links={headerLinks} />
       ) : null}
       <BezelLines
@@ -272,14 +308,21 @@ export default function HudScreen({
       />
       <Html transform center zIndexRange={[110, 0]} pointerEvents="none">
         <div className="hud-screen hud-screen--handles" style={panelStyle}>
-          <div className="hud-screen__edge hud-screen__edge--top" {...handleProps("top")} />
-          <div className="hud-screen__edge hud-screen__edge--bottom" {...handleProps("bottom")} />
-          <div className="hud-screen__edge hud-screen__edge--left" {...handleProps("left")} />
-          <div className="hud-screen__edge hud-screen__edge--right" {...handleProps("right")} />
-          <div className="hud-screen__corner hud-screen__corner--tl" {...handleProps("tl")} />
-          <div className="hud-screen__corner hud-screen__corner--tr" {...handleProps("tr")} />
-          <div className="hud-screen__corner hud-screen__corner--bl" {...handleProps("bl")} />
-          <div className="hud-screen__corner hud-screen__corner--br" {...handleProps("br")} />
+          {!dockIcon ? (
+            <>
+              <div className="hud-screen__edge hud-screen__edge--top" {...handleProps("top")} />
+              <div
+                className="hud-screen__edge hud-screen__edge--bottom"
+                {...handleProps("bottom")}
+              />
+              <div className="hud-screen__edge hud-screen__edge--left" {...handleProps("left")} />
+              <div className="hud-screen__edge hud-screen__edge--right" {...handleProps("right")} />
+              <div className="hud-screen__corner hud-screen__corner--tl" {...handleProps("tl")} />
+              <div className="hud-screen__corner hud-screen__corner--tr" {...handleProps("tr")} />
+              <div className="hud-screen__corner hud-screen__corner--bl" {...handleProps("bl")} />
+              <div className="hud-screen__corner hud-screen__corner--br" {...handleProps("br")} />
+            </>
+          ) : null}
         </div>
       </Html>
     </group>

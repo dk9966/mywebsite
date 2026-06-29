@@ -4,6 +4,7 @@ import { contact } from "../data/resume";
 import {
   availableColumnHeight,
   availableWidth,
+  dockMinimizedCells,
   solveWall,
   wallToCylinder,
   type Cell,
@@ -100,6 +101,8 @@ export default function DeskPanels() {
   const colFrac = useDeskLayout((s) => s.colFrac);
   const leftSplit = useDeskLayout((s) => s.leftSplit);
   const contactHeightPx = useDeskLayout((s) => s.contactHeightPx);
+  const minimizedPanels = useDeskLayout((s) => s.minimizedPanels);
+  const togglePanelMinimized = useDeskLayout((s) => s.togglePanelMinimized);
 
   const adjustColBoundary = useDeskLayout((s) => s.adjustColBoundary);
   const adjustLeftSplit = useDeskLayout((s) => s.adjustLeftSplit);
@@ -109,9 +112,19 @@ export default function DeskPanels() {
     [wallWidthPx, wallHeightPx],
   );
 
+  const fractions = useMemo(
+    () => ({ colFrac, leftSplit, contactHeightPx }),
+    [colFrac, leftSplit, contactHeightPx],
+  );
+
   const cells = useMemo(
-    () => solveWall({ colFrac, leftSplit, contactHeightPx }, wall),
-    [colFrac, leftSplit, contactHeightPx, wall],
+    () => solveWall(fractions, wall, minimizedPanels),
+    [fractions, wall, minimizedPanels],
+  );
+
+  const dockCells = useMemo(
+    () => dockMinimizedCells(fractions, wall, minimizedPanels),
+    [fractions, wall, minimizedPanels],
   );
 
   const availW = availableWidth(wall);
@@ -149,40 +162,46 @@ export default function DeskPanels() {
       if (v && rules[v]) rules[v]!(dH / availH);
     };
 
+  const renderPanel = (cell: Cell, dockIcon: boolean) => {
+    const bent = wallToCylinder(cell.x, cell.y, curveRadiusPx);
+    const position: [number, number, number] = [
+      bent.position[0] * WORLD_PER_CSS_PX,
+      bent.position[1] * WORLD_PER_CSS_PX,
+      bent.position[2] * WORLD_PER_CSS_PX,
+    ];
+    const meta = CELL_META[cell.id];
+    return (
+      <HudScreen
+        key={dockIcon ? `dock-${cell.id}` : cell.id}
+        position={position}
+        yaw={bent.yaw}
+        widthPx={cell.width}
+        heightPx={cell.height}
+        title={meta.title}
+        tag={meta.tag}
+        curveRadiusPx={curveRadiusPx}
+        bgOpacity={bgOpacity}
+        bgBlur={bgBlur}
+        headerFontPx={headerFontPx}
+        hideHeader={meta.hideHeader}
+        headerAside={dockIcon ? undefined : meta.headerAside}
+        headerLinks={dockIcon ? undefined : meta.headerLinks}
+        headerOnly={dockIcon ? false : meta.headerOnly}
+        compactPadding={meta.compactPadding}
+        dockIcon={dockIcon}
+        onMinimize={dockIcon ? undefined : () => togglePanelMinimized(cell.id)}
+        onRestore={dockIcon ? () => togglePanelMinimized(cell.id) : undefined}
+        onResizeDelta={dockIcon ? undefined : onResize(cell.id)}
+      >
+        {meta.content ?? null}
+      </HudScreen>
+    );
+  };
+
   return (
     <group position={[wallAnchor.x, wallAnchor.y, wallAnchor.z]}>
-      {cells.map((cell: Cell) => {
-        const bent = wallToCylinder(cell.x, cell.y, curveRadiusPx);
-        const position: [number, number, number] = [
-          bent.position[0] * WORLD_PER_CSS_PX,
-          bent.position[1] * WORLD_PER_CSS_PX,
-          bent.position[2] * WORLD_PER_CSS_PX,
-        ];
-        const meta = CELL_META[cell.id];
-        return (
-          <HudScreen
-            key={cell.id}
-            position={position}
-            yaw={bent.yaw}
-            widthPx={cell.width}
-            heightPx={cell.height}
-            title={meta.title}
-            tag={meta.tag}
-            curveRadiusPx={curveRadiusPx}
-            bgOpacity={bgOpacity}
-            bgBlur={bgBlur}
-            headerFontPx={headerFontPx}
-            hideHeader={meta.hideHeader}
-            headerAside={meta.headerAside}
-            headerLinks={meta.headerLinks}
-            headerOnly={meta.headerOnly}
-            compactPadding={meta.compactPadding}
-            onResizeDelta={onResize(cell.id)}
-          >
-            {meta.content ?? null}
-          </HudScreen>
-        );
-      })}
+      {cells.map((cell) => renderPanel(cell, false))}
+      {dockCells.map((cell) => renderPanel(cell, true))}
     </group>
   );
 }

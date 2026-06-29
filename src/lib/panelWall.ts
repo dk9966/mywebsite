@@ -14,6 +14,19 @@ export type CellId =
   | "experience"
   | "contact";
 
+/** Dock icon size when a panel is minimized. */
+export const MINIMIZED_ICON_PX = 52;
+export const MINIMIZED_ICON_GAP_PX = 10;
+
+/** Stable order for stacking minimized icons below contact. */
+export const CELL_ORDER: CellId[] = [
+  "profile",
+  "skills",
+  "featured",
+  "experience",
+  "contact",
+];
+
 export interface WallFractions {
   /** Column widths as fractions of the available width; must sum to 1. */
   colFrac: [number, number, number];
@@ -52,7 +65,65 @@ export function availableColumnHeight(size: WallSize): number {
   return size.height - size.gap;
 }
 
-export function solveWall(f: WallFractions, size: WallSize): Cell[] {
+function isMinimized(minimized: CellId[] | undefined, id: CellId): boolean {
+  return minimized?.includes(id) ?? false;
+}
+
+/** Where the contact strip sits — used as the dock anchor even when minimized. */
+export function contactDockAnchor(
+  f: WallFractions,
+  size: WallSize,
+): { x: number; bottomY: number; width: number } {
+  const availW = availableWidth(size);
+  const availH = availableColumnHeight(size);
+  const w2 = f.colFrac[2] * availW;
+  const left0 = -size.width / 2;
+  const left1 = left0 + f.colFrac[0] * availW + size.gap;
+  const left2 = left1 + f.colFrac[1] * availW + size.gap;
+  const cx2 = left2 + w2 / 2;
+
+  const rightBottomH = Math.min(f.contactHeightPx, availH - availH * 0.22);
+  const bottomCy = (h: number) => -size.height / 2 + h / 2;
+  const centerY = bottomCy(rightBottomH);
+
+  return {
+    x: cx2,
+    bottomY: centerY - rightBottomH / 2,
+    width: w2,
+  };
+}
+
+/** Minimized panels become square icons stacked below the contact strip. */
+export function dockMinimizedCells(
+  f: WallFractions,
+  size: WallSize,
+  minimized: CellId[],
+): Cell[] {
+  const ordered = CELL_ORDER.filter((id) => minimized.includes(id));
+  if (ordered.length === 0) return [];
+
+  const anchor = contactDockAnchor(f, size);
+  let cursorY = anchor.bottomY - MINIMIZED_ICON_GAP_PX;
+
+  return ordered.map((id) => {
+    cursorY -= MINIMIZED_ICON_PX / 2;
+    const cell: Cell = {
+      id,
+      x: anchor.x,
+      y: cursorY,
+      width: MINIMIZED_ICON_PX,
+      height: MINIMIZED_ICON_PX,
+    };
+    cursorY -= MINIMIZED_ICON_PX / 2 + MINIMIZED_ICON_GAP_PX;
+    return cell;
+  });
+}
+
+export function solveWall(
+  f: WallFractions,
+  size: WallSize,
+  minimized: CellId[] = [],
+): Cell[] {
   const availW = availableWidth(size);
   const availH = availableColumnHeight(size);
 
@@ -69,6 +140,12 @@ export function solveWall(f: WallFractions, size: WallSize): Cell[] {
   const cx1 = left1 + w1 / 2;
   const cx2 = left2 + w2 / 2;
 
+  const profileMin = isMinimized(minimized, "profile");
+  const skillsMin = isMinimized(minimized, "skills");
+  const featuredMin = isMinimized(minimized, "featured");
+  const experienceMin = isMinimized(minimized, "experience");
+  const contactMin = isMinimized(minimized, "contact");
+
   const leftTopH = f.leftSplit * availH;
   const leftBottomH = availH - leftTopH;
   const rightBottomH = Math.min(f.contactHeightPx, availH - availH * 0.22);
@@ -78,31 +155,77 @@ export function solveWall(f: WallFractions, size: WallSize): Cell[] {
   const topCy = (h: number) => size.height / 2 - h / 2;
   const bottomCy = (h: number) => -size.height / 2 + h / 2;
 
-  return [
-    { id: "profile", x: cx0, y: topCy(leftTopH), width: w0, height: leftTopH },
-    {
+  const cells: Cell[] = [];
+
+  if (!profileMin && !skillsMin) {
+    cells.push(
+      { id: "profile", x: cx0, y: topCy(leftTopH), width: w0, height: leftTopH },
+      {
+        id: "skills",
+        x: cx0,
+        y: bottomCy(leftBottomH),
+        width: w0,
+        height: leftBottomH,
+      },
+    );
+  } else if (!profileMin) {
+    cells.push({
+      id: "profile",
+      x: cx0,
+      y: 0,
+      width: w0,
+      height: availH,
+    });
+  } else if (!skillsMin) {
+    cells.push({
       id: "skills",
       x: cx0,
-      y: bottomCy(leftBottomH),
+      y: 0,
       width: w0,
-      height: leftBottomH,
-    },
-    { id: "featured", x: cx1, y: 0, width: w1, height: size.height },
-    {
+      height: availH,
+    });
+  }
+
+  if (!featuredMin) {
+    cells.push({ id: "featured", x: cx1, y: 0, width: w1, height: size.height });
+  }
+
+  if (!experienceMin && !contactMin) {
+    cells.push(
+      {
+        id: "experience",
+        x: cx2,
+        y: topCy(rightTopH),
+        width: w2,
+        height: rightTopH,
+      },
+      {
+        id: "contact",
+        x: cx2,
+        y: bottomCy(rightBottomH),
+        width: w2,
+        height: rightBottomH,
+      },
+    );
+  } else if (!experienceMin) {
+    cells.push({
       id: "experience",
       x: cx2,
-      y: topCy(rightTopH),
+      y: 0,
       width: w2,
-      height: rightTopH,
-    },
-    {
+      height: availH,
+    });
+  } else if (!contactMin) {
+    cells.push({
       id: "contact",
       x: cx2,
       y: bottomCy(rightBottomH),
       width: w2,
       height: rightBottomH,
-    },
-  ];
+    });
+  }
+
+  return cells;
 }
 
 export interface PanelTransform {

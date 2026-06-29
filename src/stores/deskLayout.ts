@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import type { CellId } from "../lib/panelWall";
 
 // Shared source of truth for the desk HUD: camera, the global panel
 // curvature + glass look, and the flat-wall grid fractions that the layout
@@ -159,6 +160,10 @@ let savedDefaults: DeskLayoutDefaults = normalizeLayoutDefaults(
 );
 
 interface DeskLayoutStore extends DeskLayoutDefaults {
+  /** Panels collapsed to letter icons in the dock below contact. */
+  minimizedPanels: CellId[];
+  togglePanelMinimized: (id: CellId) => void;
+
   setCamera: (patch: Partial<DeskCamera>) => void;
   setLookAt: (patch: Partial<DeskPoint3>) => void;
   setWallAnchor: (patch: Partial<DeskPoint3>) => void;
@@ -195,6 +200,17 @@ interface DeskLayoutStore extends DeskLayoutDefaults {
 
 export const useDeskLayout = create<DeskLayoutStore>((set, get) => ({
   ...cloneDefaults(savedDefaults),
+  minimizedPanels: [],
+
+  togglePanelMinimized: (id) =>
+    set((state) => {
+      const on = state.minimizedPanels.includes(id);
+      return {
+        minimizedPanels: on
+          ? state.minimizedPanels.filter((p) => p !== id)
+          : [...state.minimizedPanels, id],
+      };
+    }),
 
   setCamera: (patch) => set({ camera: { ...get().camera, ...patch } }),
   setLookAt: (patch) => set({ lookAt: { ...get().lookAt, ...patch } }),
@@ -250,7 +266,7 @@ export const useDeskLayout = create<DeskLayoutStore>((set, get) => ({
   adjustLeftSplit: (delta) =>
     set({ leftSplit: clamp(get().leftSplit + delta, MIN_SPLIT, 1 - MIN_SPLIT) }),
 
-  reset: () => set(cloneDefaults(savedDefaults)),
+  reset: () => set({ ...cloneDefaults(savedDefaults), minimizedPanels: [] }),
 
   saveAsDefault: () => {
     savedDefaults = normalizeLayoutDefaults(snapshotDefaults(get()));
