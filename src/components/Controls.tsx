@@ -276,6 +276,15 @@ export default function Controls({ camera }: ControlsProps = {}) {
             <Slider label="Line" value={cfg.lineOpacity} min={0} max={1} step={0.01} onChange={patch("lineOpacity") as (v: number) => void} />
             <Slider label="Tip" value={cfg.tipOpacity} min={0} max={1} step={0.01} onChange={patch("tipOpacity") as (v: number) => void} />
             <Slider label="Grid" value={cfg.gridOpacity} min={0} max={0.3} step={0.005} onChange={patch("gridOpacity") as (v: number) => void} />
+            <Slider label="Spacing" value={cfg.gridSpacing} min={0.5} max={4} step={0.25} onChange={patch("gridSpacing") as (v: number) => void} />
+          </section>
+
+          <hr className="controls__divider" />
+
+          <section className="controls__group">
+            <h4 className="controls__group-title">Line</h4>
+            <Slider label="Width" value={cfg.lineWidth} min={0.005} max={0.15} step={0.005} onChange={patch("lineWidth") as (v: number) => void} />
+            <Slider label="Emission" value={cfg.lineEmission} min={0.5} max={8} step={0.1} onChange={patch("lineEmission") as (v: number) => void} />
           </section>
 
           <hr className="controls__divider" />
@@ -293,6 +302,7 @@ export default function Controls({ camera }: ControlsProps = {}) {
             <h4 className="controls__group-title">Bloom</h4>
             <Slider label="Intensity" value={cfg.bloomIntensity} min={0} max={8} step={0.1} onChange={patch("bloomIntensity") as (v: number) => void} />
             <Slider label="Threshold" value={cfg.bloomThreshold} min={0} max={1} step={0.01} onChange={patch("bloomThreshold") as (v: number) => void} />
+            <Slider label="Radius" value={cfg.bloomRadius} min={0} max={1.5} step={0.05} onChange={patch("bloomRadius") as (v: number) => void} />
             <Slider label="Smoothing" value={cfg.bloomSmoothing} min={0} max={1} step={0.01} onChange={patch("bloomSmoothing") as (v: number) => void} />
           </section>
 

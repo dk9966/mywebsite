@@ -1,10 +1,10 @@
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import { Line2 } from "three/addons/lines/Line2.js";
 import { LineGeometry } from "three/addons/lines/LineGeometry.js";
 import { LineMaterial } from "three/addons/lines/LineMaterial.js";
-import { GRID_EXTENT, GRID_SPACING } from "../lib/constants";
+import { GRID_EXTENT } from "../lib/constants";
 import {
   buildScene,
   sceneDuration,
@@ -18,6 +18,15 @@ import { useLineConfig, type LineConfig } from "../stores/lineConfig";
 const sharedTipGeo = new THREE.SphereGeometry(0.5, 8, 6);
 const _xAxis = new THREE.Vector3(1, 0, 0);
 const _dir = new THREE.Vector3();
+const _lineDisplayColor = new THREE.Color();
+
+function lineDisplayColor(cfg: LineConfig, out = _lineDisplayColor): THREE.Color {
+  return out.set(cfg.lineColor).multiplyScalar(cfg.lineEmission);
+}
+
+function lineColorDirty(next: LineConfig, prev: LineConfig): boolean {
+  return next.lineColor !== prev.lineColor || next.lineEmission !== prev.lineEmission;
+}
 
 type AnimatedLine = {
   spawnTime: number;
@@ -36,24 +45,52 @@ type AnimatedLine = {
 };
 
 let sharedFatLineMaterial: LineMaterial | null = null;
+let sharedScreenLineMaterial: LineMaterial | null = null;
 
 function getSharedFatLineMaterial(): LineMaterial {
   sharedFatLineMaterial ??= new LineMaterial({
     color: 0xffffff,
-    // Screen-space thickness (pixels). Wide enough to rasterize cleanly
-    // instead of shimmering 1px GL lines — especially visible with bloom on.
-    linewidth: 2.8,
-    worldUnits: false,
+    // World-space thickness — screen-pixel width was invisible under bloom.
+    linewidth: 0.04,
+    worldUnits: true,
     dashed: false,
     vertexColors: true,
     transparent: true,
+    toneMapped: false,
     depthWrite: false,
   });
   return sharedFatLineMaterial;
 }
 
+function getScreenLineMaterial(): LineMaterial {
+  sharedScreenLineMaterial ??= new LineMaterial({
+    color: 0xffffff,
+    linewidth: 2.5,
+    worldUnits: false,
+    dashed: false,
+    vertexColors: true,
+    transparent: true,
+    toneMapped: false,
+    depthWrite: false,
+  });
+  return sharedScreenLineMaterial;
+}
+
 function applyFatLineSharedStyle(cfg: LineConfig): void {
   const m = getSharedFatLineMaterial();
+  m.linewidth = cfg.lineWidth;
+  m.transparent = cfg.lineOpacity < 1;
+  m.opacity = cfg.lineOpacity;
+}
+
+function applyScreenLineStyle(
+  cfg: LineConfig,
+  size: THREE.Vector2,
+  screenWidth: number,
+): void {
+  const m = getScreenLineMaterial();
+  m.linewidth = screenWidth;
+  m.resolution.copy(size);
   m.transparent = cfg.lineOpacity < 1;
   m.opacity = cfg.lineOpacity;
 }
@@ -101,7 +138,10 @@ function syncLineSegmentBuffers(
   geo.attributes.instanceColorEnd!.needsUpdate = true;
 }
 
-function waypointsToPoints(waypoints: Vec3[]): THREE.Vector3[] {
+function waypointsToPoints(
+  waypoints: Vec3[],
+  gridSpacing: number,
+): THREE.Vector3[] {
   const out: THREE.Vector3[] = [];
   for (let i = 0; i < waypoints.length; i++) {
     const [x, y, z] = waypoints[i];
@@ -114,7 +154,7 @@ function waypointsToPoints(waypoints: Vec3[]): THREE.Vector3[] {
     const dy = y - py;
     const dz = z - pz;
     const maxDelta = Math.max(Math.abs(dx), Math.abs(dy), Math.abs(dz));
-    const steps = Math.max(1, Math.round(maxDelta / GRID_SPACING));
+    const steps = Math.max(1, Math.round(maxDelta / gridSpacing));
     for (let s = 1; s <= steps; s++) {
       out.push(
         new THREE.Vector3(
@@ -188,16 +228,26 @@ function drawFullLine(a: AnimatedLine, cfg: LineConfig): void {
   updateTipColors(
     a.colorsVert,
     a.pointCount,
-    new THREE.Color(cfg.lineColor),
+    lineDisplayColor(cfg),
     new THREE.Color(cfg.tipColor),
     cfg.tipPointCount,
   );
   syncLineSegmentBuffers(a.lineGeo, a.positions, a.colorsVert, segDone);
 }
 
-function tickAnims(anims: AnimatedLine[], time: number, cfg: LineConfig) {
-  applyFatLineSharedStyle(cfg);
-  const lineBase = new THREE.Color(cfg.lineColor);
+function tickAnims(
+  anims: AnimatedLine[],
+  time: number,
+  cfg: LineConfig,
+  screenLineWidth?: number,
+  size?: THREE.Vector2,
+) {
+  if (screenLineWidth != null && size) {
+    applyScreenLineStyle(cfg, size, screenLineWidth);
+  } else {
+    applyFatLineSharedStyle(cfg);
+  }
+  const lineBase = lineDisplayColor(cfg);
   const tipColorVal = new THREE.Color(cfg.tipColor);
 
   for (const a of anims) {
@@ -294,20 +344,21 @@ function tickAnims(anims: AnimatedLine[], time: number, cfg: LineConfig) {
 
 function BackgroundGrid() {
   const matRef = useRef<THREE.LineBasicMaterial>(null);
+  const gridSpacing = useLineConfig((s) => s.config.gridSpacing);
 
   const geo = useMemo(() => {
     const verts: number[] = [];
     const half = GRID_EXTENT / 2;
-    for (let x = -half; x <= half; x += GRID_SPACING) {
+    for (let x = -half; x <= half; x += gridSpacing) {
       verts.push(x, -half, -0.05, x, half, -0.05);
     }
-    for (let y = -half; y <= half; y += GRID_SPACING) {
+    for (let y = -half; y <= half; y += gridSpacing) {
       verts.push(-half, y, -0.05, half, y, -0.05);
     }
     const g = new THREE.BufferGeometry();
     g.setAttribute("position", new THREE.Float32BufferAttribute(verts, 3));
     return g;
-  }, []);
+  }, [gridSpacing]);
 
   useFrame(() => {
     if (!matRef.current) return;
@@ -339,6 +390,8 @@ type TronGridProps = {
   animated?: boolean;
   // Lower bound for playback duration (e.g. camera pan length).
   playbackDuration?: number;
+  /** Fixed screen-pixel stroke width; stays visible when zooming out. */
+  screenLineWidth?: number;
 };
 
 export default function TronGrid({
@@ -346,9 +399,16 @@ export default function TronGrid({
   showBackgroundGrid = true,
   animated = true,
   playbackDuration,
+  screenLineWidth,
 }: TronGridProps = {}) {
   const groupRef = useRef<THREE.Group>(null);
   const animRef = useRef<AnimatedLine[]>([]);
+  const size = useThree((s) => s.size);
+  const gridSpacing = useLineConfig((s) => s.config.gridSpacing);
+  const lineMaterial =
+    screenLineWidth != null
+      ? getScreenLineMaterial()
+      : getSharedFatLineMaterial();
 
   const gridPaths = useMemo(() => paths ?? buildScene(42), [paths]);
 
@@ -382,11 +442,11 @@ export default function TronGrid({
 
     const anims: AnimatedLine[] = [];
     const cfg = useLineConfig.getState().config;
-    const lineBase = new THREE.Color(cfg.lineColor);
+    const lineBase = lineDisplayColor(cfg);
 
     for (const path of gridPaths) {
       if (path.hidden) continue;
-      const pts = waypointsToPoints(path.waypoints);
+      const pts = waypointsToPoints(path.waypoints, gridSpacing);
       const cumDist = computeCumDist(pts);
       const pointCount = pts.length;
 
@@ -404,13 +464,14 @@ export default function TronGrid({
       lineGeo.setColors(colorsVert);
       lineGeo.instanceCount = 0;
 
-      const line = new Line2(lineGeo, getSharedFatLineMaterial());
+      const line = new Line2(lineGeo, lineMaterial);
       line.frustumCulled = false;
 
       const tipMat = new THREE.MeshBasicMaterial({
         color: cfg.tipColor,
         transparent: true,
         opacity: cfg.tipOpacity,
+        toneMapped: false,
         blending: THREE.AdditiveBlending,
         depthWrite: false,
       });
@@ -450,8 +511,8 @@ export default function TronGrid({
     // lineColor changes so already-drawn segments pick up the new color
     // instead of fossilizing the initial one.
     const unsubscribe = useLineConfig.subscribe((state, prev) => {
-      if (state.config.lineColor === prev.config.lineColor) return;
-      const newBase = new THREE.Color(state.config.lineColor);
+      if (!lineColorDirty(state.config, prev.config)) return;
+      const newBase = lineDisplayColor(state.config);
       for (const a of anims) {
         fillBodyColor(a.colorsVert, a.pointCount, newBase);
         const segAll = Math.max(0, a.pointCount - 1);
@@ -468,14 +529,13 @@ export default function TronGrid({
         (a.tip.material as THREE.Material).dispose();
       }
     };
-  }, [gridPaths, animated]);
+  }, [gridPaths, animated, gridSpacing, lineMaterial]);
 
   useEffect(() => {
     if (animated) return;
     return useLineConfig.subscribe((state, prev) => {
-      if (state.config.lineColor === prev.config.lineColor) return;
-      const cfg = state.config;
-      const lineBase = new THREE.Color(cfg.lineColor);
+      if (!lineColorDirty(state.config, prev.config)) return;
+      const lineBase = lineDisplayColor(state.config);
       for (const a of animRef.current) {
         fillBodyColor(a.colorsVert, a.pointCount, lineBase);
         const segAll = Math.max(0, a.pointCount - 1);
@@ -484,14 +544,22 @@ export default function TronGrid({
     });
   }, [gridPaths, animated]);
 
-  useFrame((_, delta) => {
+  useFrame((_state, delta) => {
     const cfg = useLineConfig.getState().config;
-    if (!animated) {
+    if (screenLineWidth != null) {
+      applyScreenLineStyle(cfg, size, screenLineWidth);
+    } else if (!animated) {
       applyFatLineSharedStyle(cfg);
-      return;
     }
+    if (!animated) return;
     useClock.getState().tick(delta);
-    tickAnims(animRef.current, useClock.getState().time, cfg);
+    tickAnims(
+      animRef.current,
+      useClock.getState().time,
+      cfg,
+      screenLineWidth,
+      size,
+    );
   });
 
   return (

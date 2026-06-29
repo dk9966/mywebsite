@@ -1,4 +1,4 @@
-import { StrictMode, Suspense, useCallback, useEffect, useState } from "react";
+import { StrictMode, Suspense, useCallback, useState } from "react";
 import type { ElementRef } from "react";
 import { createRoot } from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
@@ -14,11 +14,8 @@ import {
 
 const fallbackLayout = layoutFromPaths([]);
 
-const REFERENCE_CONFIG_OVERRIDES = {
-  bloomIntensity: 2.0,
-  bloomThreshold: 0.05,
-  gridOpacity: 0,
-};
+/** Per wheel notch; default ArcballControls value is 1.1. */
+const ZOOM_SCALE_FACTOR = 1.28;
 
 function TronPostFX() {
   const cfg = useLineConfig((s) => s.config);
@@ -28,6 +25,7 @@ function TronPostFX() {
         intensity={cfg.bloomIntensity}
         luminanceThreshold={cfg.bloomThreshold}
         luminanceSmoothing={cfg.bloomSmoothing}
+        radius={cfg.bloomRadius}
         mipmapBlur
       />
     </EffectComposer>
@@ -41,10 +39,6 @@ function ReferenceOutlineScene({
   layout: CircuitsTracedLayout;
   onLayout: (layout: CircuitsTracedLayout) => void;
 }) {
-  useEffect(() => {
-    useLineConfig.getState().set(REFERENCE_CONFIG_OVERRIDES);
-  }, []);
-
   const configureArcball = useCallback((ctrl: ElementRef<typeof ArcballControls> | null) => {
     if (!ctrl) return;
     ctrl.setGizmosVisible(false);
@@ -65,6 +59,7 @@ function ReferenceOutlineScene({
         makeDefault
         target={[cx, cy, cz]}
         cursorZoom
+        scaleFactor={ZOOM_SCALE_FACTOR}
         dampingFactor={0.12}
         minDistance={layout.span * 0.35}
         maxDistance={layout.span * 4}

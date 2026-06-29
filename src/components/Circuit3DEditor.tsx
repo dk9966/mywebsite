@@ -9,6 +9,7 @@ import {
   Suspense,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -53,10 +54,14 @@ const VIEW_ANIM_MS = 300;
 
 type ViewKind = "top" | "side";
 
+/** Screen-pixel stroke width — stays readable at any zoom without bloom. */
+const EDITOR_SCREEN_LINE_WIDTH = 2.5;
+
 const LINE_CONFIG_OVERRIDES = {
-  lineColor: "#3ee8d2",
+  lineColor: "#66f0f0",
   lineOpacity: 1,
-  tipColor: "#3ee8d2",
+  tipColor: "#66f0f0",
+  lineEmission: 1,
   gridOpacity: 0,
 };
 
@@ -125,15 +130,6 @@ const LOCKED_VIEW_AXIS: Record<ViewKind, THREE.Vector3> = {
   side: new THREE.Vector3(0, 0, 1),
 };
 
-function lockedViewDistance(
-  view: ViewKind,
-  camera: THREE.Camera,
-  lookAt: THREE.Vector3,
-): number {
-  if (view === "top") return Math.max(camera.position.y - lookAt.y, 0.5);
-  return Math.max(camera.position.z - lookAt.z, 0.5);
-}
-
 const _lockedAxisOffset = new THREE.Vector3();
 
 function snapLockedCamera(
@@ -173,21 +169,39 @@ function CameraRig({
   const viewDistanceRef = useRef(
     presets.top.pos.distanceTo(presets.target),
   );
-  const targetInitialized = useRef(false);
+  const [controlsReady, setControlsReady] = useState(false);
   const prevFitToken = useRef(fitToken);
   const shiftHeld = useRef(false);
   const lockedRef = useRef(locked);
   lockedRef.current = locked;
 
-  // OrbitControls target is owned by the rig — never reset from layout updates.
-  useEffect(() => {
-    if (targetInitialized.current) return;
+  const initControlsTarget = useCallback(() => {
     const controls = controlsRef.current;
-    if (!controls) return;
-    controls.target.copy(presets.target);
-    viewDistanceRef.current = lockedViewDistance(view, camera, presets.target);
-    targetInitialized.current = true;
-  }, [presets, view, camera]);
+    if (!controls || controlsReady) return;
+
+    const p = presetsRef.current;
+    const preset = view === "top" ? p.top : p.side;
+    const distance = preset.pos.distanceTo(p.target);
+    controls.target.copy(p.target);
+    viewDistanceRef.current = distance;
+    if (lockedRef.current) {
+      snapLockedCamera(view, camera, p.target, distance, preset.up);
+      controls.update();
+    }
+    setControlsReady(true);
+  }, [view, camera, controlsReady]);
+
+  const bindControls = useCallback(
+    (node: ElementRef<typeof OrbitControls> | null) => {
+      controlsRef.current = node;
+      if (node) initControlsTarget();
+    },
+    [initControlsTarget],
+  );
+
+  useLayoutEffect(() => {
+    initControlsTarget();
+  }, [initControlsTarget, presets]);
 
   const syncMouseButtons = useCallback((shift: boolean) => {
     const controls = controlsRef.current;
@@ -241,6 +255,41 @@ function CameraRig({
     return () => dom.removeEventListener("pointerdown", onPointerDown, true);
   }, [gl, syncMouseButtons]);
 
+  // After a locked pan/zoom, re-square the camera once — not every frame.
+  useEffect(() => {
+    if (!locked) return;
+    const dom = gl.domElement;
+
+    const resquare = () => {
+      const controls = controlsRef.current;
+      if (!controls) return;
+      const preset =
+        view === "top" ? presetsRef.current.top : presetsRef.current.side;
+      const lookAt = controls.target;
+      const distance =
+        view === "top"
+          ? Math.max(camera.position.y - lookAt.y, 0.5)
+          : Math.max(camera.position.z - lookAt.z, 0.5);
+      viewDistanceRef.current = distance;
+      snapLockedCamera(view, camera, lookAt, distance, preset.up);
+      controls.update();
+    };
+
+    let wheelTimer = 0;
+    const onWheel = () => {
+      window.clearTimeout(wheelTimer);
+      wheelTimer = window.setTimeout(resquare, 80);
+    };
+
+    dom.addEventListener("pointerup", resquare);
+    dom.addEventListener("wheel", onWheel, { passive: true });
+    return () => {
+      dom.removeEventListener("pointerup", resquare);
+      dom.removeEventListener("wheel", onWheel);
+      window.clearTimeout(wheelTimer);
+    };
+  }, [locked, view, camera, gl]);
+
   const anim = useRef<{
     fromPos: THREE.Vector3;
     toPos: THREE.Vector3;
@@ -257,6 +306,8 @@ function CameraRig({
       anim.current = null;
       return;
     }
+    if (!controlsReady) return;
+
     const p = presetsRef.current;
     const controls = controlsRef.current;
     const preset = view === "top" ? p.top : p.side;
@@ -283,9 +334,8 @@ function CameraRig({
       lookTarget,
       start: performance.now(),
     };
-  }, [view, locked, viewToken, fitToken, camera]);
+  }, [view, locked, viewToken, fitToken, camera, controlsReady]);
 
-  // Run after OrbitControls so locked pan/zoom can be corrected each frame.
   useFrame(() => {
     const controls = controlsRef.current;
     if (!controls) return;
@@ -334,25 +384,11 @@ function CameraRig({
     controls.enableRotate = !locked && !block;
     controls.enablePan = !block;
     controls.enableZoom = true;
-
-    if (locked) {
-      const preset =
-        view === "top" ? presetsRef.current.top : presetsRef.current.side;
-      const lookAt = controls.target;
-      viewDistanceRef.current = lockedViewDistance(view, camera, lookAt);
-      snapLockedCamera(
-        view,
-        camera,
-        lookAt,
-        viewDistanceRef.current,
-        preset.up,
-      );
-    }
-  }, 1);
+  });
 
   return (
     <OrbitControls
-      ref={controlsRef}
+      ref={bindControls}
       makeDefault
       enableDamping
       dampingFactor={0.12}
@@ -698,10 +734,6 @@ function EditorScene({
   const topology = useCircuitTuning((s) => s.topology);
   const meshEdits = useCircuitTuning((s) => s.meshEdits);
 
-  useEffect(() => {
-    useLineConfig.getState().set(LINE_CONFIG_OVERRIDES);
-  }, []);
-
   const raw = useMemo(() => buildRawCircuitPaths(scene), [scene]);
   const model = useMemo(() => buildOutlineModel(raw), [raw]);
   const baselineMeshes = useMemo(
@@ -751,12 +783,14 @@ function EditorScene({
         paths={outlinePaths}
         showBackgroundGrid={false}
         animated={false}
+        screenLineWidth={EDITOR_SCREEN_LINE_WIDTH}
       />
       {/* Editable circuit traces — static, full length. */}
       <TronGrid
         paths={editablePaths}
         showBackgroundGrid={false}
         animated={false}
+        screenLineWidth={EDITOR_SCREEN_LINE_WIDTH}
       />
       <MeshLayer meshes={resolvedMeshes} model={model} />
       <CircuitSelectionLayer paths={editablePaths} />
@@ -767,6 +801,10 @@ function EditorScene({
 // --- Editor shell (overlay UI + key handling) -------------------------------
 
 export default function Circuit3DEditor() {
+  useLayoutEffect(() => {
+    useLineConfig.getState().set(LINE_CONFIG_OVERRIDES);
+  }, []);
+
   const [view, setView] = useState<ViewKind>("top");
   const [locked, setLocked] = useState(true);
   const [viewToken, setViewToken] = useState(0);

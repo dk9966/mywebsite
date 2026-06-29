@@ -57,6 +57,7 @@ function TronPostFX() {
         intensity={cfg.bloomIntensity}
         luminanceThreshold={cfg.bloomThreshold}
         luminanceSmoothing={cfg.bloomSmoothing}
+        radius={cfg.bloomRadius}
         mipmapBlur
       />
     </EffectComposer>
