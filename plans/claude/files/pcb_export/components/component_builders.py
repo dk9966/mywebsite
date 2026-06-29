@@ -3,7 +3,7 @@ component_builders.py
 =====================
 
 Procedural builders for 8 families of electronic components, each with
-~14-20 distinct variations. All builders return a list of trimesh objects
+~10 distinct variations. All builders return a list of trimesh objects
 representing one component, centered at the world origin and sitting on a
 board of thickness BOARD_T at y=0.
 
@@ -141,7 +141,8 @@ def _wrap_row_builders(builders):
 # ============ QFP-FAMILY ============
 def make_qfp(w, d, h=0.32, pins_per_side=10, top_marking='none',
              pin_material=PIN_MAT, body_material=CHIP_MAT,
-             chamfer=False, label_band=False):
+             chamfer=False, label_band=False, pin_style='block',
+             pin_width=0.04, pin_length=0.18, pin_height_factor=0.5):
     parts = []
     body = creation.box(extents=[w, h, d])
     _vis(body, body_material)
@@ -219,25 +220,59 @@ def make_qfp(w, d, h=0.32, pins_per_side=10, top_marking='none',
         _vis(c, CHIP_LIGHT_MAT)
         c.apply_translation([-(w/2 - 0.06), h + BOARD_T/2 + 0.02, -(d/2 - 0.06)])
         parts.append(c)
-    pin_h, pin_w, pin_l = h * 0.5, 0.04, 0.18
+    if pin_style == 'segment':
+        pin_h = max(0.012, h * 0.04)
+        pin_w = max(0.012, pin_width)
+    elif pin_style == 'ribbon':
+        pin_h = max(0.018, h * 0.06)
+        pin_w = pin_width
+    else:
+        pin_h = h * pin_height_factor
+        pin_w = pin_width
+    pin_l = pin_length
     py = pin_h/2 + BOARD_T/2
+
+    def add_pin(extents, pos):
+        p = creation.box(extents=extents)
+        _vis(p, pin_material)
+        p.apply_translation(pos)
+        parts.append(p)
+
+    def add_side_pin(side, along):
+        if side in ('l', 'r'):
+            sign = -1 if side == 'l' else 1
+            x = sign * (w/2 + pin_l/2)
+            if pin_style == 'gullwing':
+                lead_l = pin_l * 0.55
+                add_pin([lead_l, pin_h, pin_w], [sign * (w/2 + lead_l/2), py, along])
+                add_pin(
+                    [pin_l * 0.62, max(0.025, pin_h * 0.22), pin_w * 1.25],
+                    [sign * (w/2 + lead_l + pin_l * 0.31), BOARD_T/2 + max(0.025, pin_h * 0.22)/2, along],
+                )
+            else:
+                add_pin([pin_l, pin_h, pin_w], [x, py, along])
+        else:
+            sign = -1 if side == 't' else 1
+            z = sign * (d/2 + pin_l/2)
+            if pin_style == 'gullwing':
+                lead_l = pin_l * 0.55
+                add_pin([pin_w, pin_h, lead_l], [along, py, sign * (d/2 + lead_l/2)])
+                add_pin(
+                    [pin_w * 1.25, max(0.025, pin_h * 0.22), pin_l * 0.62],
+                    [along, BOARD_T/2 + max(0.025, pin_h * 0.22)/2, sign * (d/2 + lead_l + pin_l * 0.31)],
+                )
+            else:
+                add_pin([pin_w, pin_h, pin_l], [along, py, z])
+
     for side in ['l', 'r', 't', 'b']:
         if side in ('l', 'r'):
             ys = np.linspace(-d/2 + 0.12, d/2 - 0.12, pins_per_side)
-            x = -w/2 - pin_l/2 if side == 'l' else w/2 + pin_l/2
             for yz in ys:
-                p = creation.box(extents=[pin_l, pin_h, pin_w])
-                _vis(p, pin_material)
-                p.apply_translation([x, py, yz])
-                parts.append(p)
+                add_side_pin(side, yz)
         else:
             xs = np.linspace(-w/2 + 0.12, w/2 - 0.12, pins_per_side)
-            z = -d/2 - pin_l/2 if side == 't' else d/2 + pin_l/2
             for xx in xs:
-                p = creation.box(extents=[pin_w, pin_h, pin_l])
-                _vis(p, pin_material)
-                p.apply_translation([xx, py, z])
-                parts.append(p)
+                add_side_pin(side, xx)
     return parts
 
 def make_bga(w, d, h=0.35, grid=10, body_material=CHIP_MAT):
@@ -465,7 +500,8 @@ def make_stacked_cap(radius=0.22, height_each=0.55):
 
 # ============ HEATSINK-FAMILY ============
 def make_heatsink(w, d, h=0.7, fins=7, fin_axis='x',
-                  base_style='flat', fin_style='straight', color=HEATSINK_MAT):
+                  base_style='flat', fin_style='straight', color=HEATSINK_MAT,
+                  fin_width_ratio=0.7):
     parts = []
     base = creation.box(extents=[w, 0.1, d])
     _vis(base, color)
@@ -487,7 +523,7 @@ def make_heatsink(w, d, h=0.7, fins=7, fin_axis='x',
         fin_t = w / (fins * 2 + 1)
         xs = np.linspace(-w/2 + fin_t, w/2 - fin_t, fins)
         for xx in xs:
-            fin = creation.box(extents=[fin_t * 0.7, h, d * 0.95])
+            fin = creation.box(extents=[fin_t * fin_width_ratio, h, d * 0.95])
             _vis(fin, color)
             fin.apply_translation([xx, h/2 + 0.1 + BOARD_T/2, 0])
             parts.append(fin)
@@ -506,7 +542,7 @@ def make_heatsink(w, d, h=0.7, fins=7, fin_axis='x',
         fin_t = d / (fins * 2 + 1)
         zs = np.linspace(-d/2 + fin_t, d/2 - fin_t, fins)
         for zz in zs:
-            fin = creation.box(extents=[w * 0.95, h, fin_t * 0.7])
+            fin = creation.box(extents=[w * 0.95, h, fin_t * fin_width_ratio])
             _vis(fin, color)
             fin.apply_translation([0, h/2 + 0.1 + BOARD_T/2, zz])
             parts.append(fin)
@@ -1366,6 +1402,68 @@ def make_heatsink_low_profile(w=1.9, d=1.4, h=0.4, fins=14):
     return make_heatsink(w, d, h=h, fins=fins, fin_axis='x', base_style='flat',
                          fin_style='straight', color=HEATSINK_MAT)
 
+def make_heatsink_stepped_stack(w=1.9, d=1.4, h=0.72, tiers=3, fins=8):
+    """Layered heatsink with narrowing decks stacked upward."""
+    parts = []
+    deck_h = 0.08
+    y = BOARD_T/2
+    for i in range(tiers):
+        scale = 1.0 - i * 0.18
+        deck = creation.box(extents=[w * scale, deck_h, d * scale])
+        _vis(deck, HEATSINK_DARK if i % 2 else HEATSINK_MAT)
+        deck.apply_translation([0, y + deck_h/2, 0])
+        parts.append(deck)
+        y += deck_h + 0.035
+
+    fin_t = w / (fins * 2 + 1)
+    for i, x in enumerate(np.linspace(-w*0.38, w*0.38, fins)):
+        fin_h = h * (0.55 + 0.12 * (i % 2))
+        fin = creation.box(extents=[fin_t * 0.95, fin_h, d * 0.56])
+        _vis(fin, HEATSINK_MAT)
+        fin.apply_translation([x, y + fin_h/2, 0])
+        parts.append(fin)
+    return parts
+
+def make_heatsink_offset_layers(w=1.9, d=1.4, h=0.7):
+    """Vertical stack of offset plates with air gaps between layers."""
+    parts = []
+    layer_count = 5
+    plate_h = 0.055
+    gap = 0.07
+    for i in range(layer_count):
+        scale = 1.0 - 0.08 * (i % 3)
+        plate = creation.box(extents=[w * scale, plate_h, d * (0.86 - 0.06 * i)])
+        _vis(plate, HEATSINK_MAT if i % 2 == 0 else HEATSINK_DARK)
+        plate.apply_translation([
+            (i - (layer_count - 1) / 2) * 0.055,
+            BOARD_T/2 + plate_h/2 + i * (plate_h + gap),
+            0,
+        ])
+        parts.append(plate)
+
+    post_h = h * 0.72
+    for sx in (-1, 1):
+        for sz in (-1, 1):
+            post = creation.box(extents=[0.08, post_h, 0.08])
+            _vis(post, HEATSINK_DARK)
+            post.apply_translation([sx * w * 0.36, BOARD_T/2 + post_h/2, sz * d * 0.3])
+            parts.append(post)
+    return parts
+
+def make_heatsink_split_plate_stack(w=1.9, d=1.4, h=0.75):
+    """Split upper plates crossing over a lower fin bank."""
+    parts = make_heatsink(
+        w, d, h=h * 0.42, fins=9, fin_axis='x',
+        base_style='raised', fin_width_ratio=0.42, color=HEATSINK_MAT,
+    )
+    y0 = BOARD_T/2 + 0.1 + h * 0.42 + 0.06
+    for i, z in enumerate((-0.42, 0.0, 0.42)):
+        plate = creation.box(extents=[w * (0.88 - i * 0.08), 0.055, d * 0.18])
+        _vis(plate, HEATSINK_DARK if i == 1 else HEATSINK_MAT)
+        plate.apply_translation([0, y0 + i * 0.09, z])
+        parts.append(plate)
+    return parts
+
 def make_heatsink_diagonal(w=1.9, d=1.4, h=0.7, fins=8):
     """Heatsink with fins rotated 45° diagonally."""
     parts = []
@@ -1819,212 +1917,119 @@ def make_smd_fuse(w=0.4, d=0.2, h=0.12):
     return parts
 
 # ============ ROW DEFINITIONS ============
+# Ten columns per row — the most visually distinct builder in each family.
 _RAW_ROWS = [
     ("QFP / chip ICs", [
-        lambda: make_qfp(1.95, 1.95, h=0.32, pins_per_side=10, top_marking='dot'),
-        lambda: make_qfp(2.00, 2.00, h=0.32, pins_per_side=12, top_marking='line'),
-        lambda: make_qfp(2.00, 2.00, h=0.34, pins_per_side=14, top_marking='square'),
-        lambda: make_qfp(1.95, 1.95, h=0.32, pins_per_side=11, top_marking='stripe'),
-        lambda: make_qfp(2.05, 2.05, h=0.34, pins_per_side=13, top_marking='cross'),
+        lambda: make_qfp(1.95, 1.95, h=0.32, pins_per_side=8, top_marking='dot',
+                         pin_style='segment', pin_width=0.012, pin_length=0.16),
+        lambda: make_qfp(2.00, 2.00, h=0.34, pins_per_side=10, top_marking='square',
+                         pin_style='ribbon', pin_width=0.075, pin_length=0.22,
+                         pin_height_factor=0.08),
         lambda: make_qfp(2.00, 2.00, h=0.34, pins_per_side=12, top_marking='square_pin1',
-                         pin_material=PIN_GOLD_MAT),
-        lambda: make_qfp(2.00, 2.00, h=0.34, pins_per_side=14, top_marking='square',
-                         body_material=CHIP_LIGHT_MAT),
+                         pin_material=PIN_GOLD_MAT, pin_style='gullwing',
+                         pin_width=0.045, pin_length=0.30, pin_height_factor=0.55),
         lambda: make_qfp(2.05, 2.05, h=0.36, pins_per_side=15, top_marking='square_pin1',
-                         chamfer=True),
+                         chamfer=True, pin_style='block', pin_width=0.032,
+                         pin_length=0.13, pin_height_factor=0.42),
         lambda: make_bga(2.0, 2.0, h=0.38, grid=12),
         lambda: make_ceramic_qfp(2.05, 2.05, h=0.42, pins_per_side=13),
-        lambda: make_qfp(2.00, 2.00, h=0.34, pins_per_side=13, top_marking='exposed_die'),
-        lambda: make_qfp(2.00, 2.00, h=0.34, pins_per_side=14, top_marking='dual',
-                         pin_material=PIN_GOLD_MAT),
-        lambda: make_qfp(2.05, 2.05, h=0.36, pins_per_side=15, top_marking='square',
-                         label_band=True, body_material=CHIP_LIGHT_MAT),
-        lambda: make_qfp(2.00, 2.00, h=0.34, pins_per_side=12, top_marking='square_pin1',
-                         chamfer=True, body_material=CERAMIC_MAT,
-                         pin_material=PIN_GOLD_MAT),
-        lambda: make_qfp_with_dimple(2.00, 2.00, h=0.34, pins_per_side=13),
-        lambda: make_qfp_diagonal_text(2.00, 2.00, h=0.34, pins_per_side=14),
+        lambda: make_qfp(2.00, 2.00, h=0.34, pins_per_side=16, top_marking='exposed_die',
+                         pin_style='segment', pin_width=0.014, pin_length=0.24),
+        lambda: make_qfp_with_dimple(2.00, 2.00, h=0.34, pins_per_side=9),
         lambda: make_qfp_two_die(2.00, 2.00, h=0.34, pins_per_side=14),
-        lambda: make_qfp_bond_wires(2.05, 2.05, h=0.4, pins_per_side=12),
-        lambda: make_qfp_topside_logo(2.00, 2.00, h=0.34, pins_per_side=13),
-        lambda: make_qfp_with_xtal(2.00, 2.00, h=0.32, pins_per_side=12),
+        lambda: make_qfp_with_xtal(2.00, 2.00, h=0.32, pins_per_side=11),
     ]),
     ("DIP ICs", [
         lambda: make_dip(1.55, 0.5, h=0.3, pins_per_side=7, notch_style='dot'),
         lambda: make_dip(1.6, 0.5, h=0.3, pins_per_side=8, notch_style='half_circle'),
         lambda: make_dip(1.65, 0.55, h=0.32, pins_per_side=9, notch_style='slot'),
-        lambda: make_dip(1.6, 0.5, h=0.3, pins_per_side=8, notch_style='bar'),
-        lambda: make_dip(1.7, 0.55, h=0.32, pins_per_side=10, notch_style='dot',
-                         pin_material=PIN_GOLD_MAT),
-        lambda: make_dip(1.65, 0.5, h=0.3, pins_per_side=9, notch_style='half_circle'),
-        lambda: make_dip(1.75, 0.55, h=0.32, pins_per_side=10, notch_style='slot'),
         lambda: make_dip(1.7, 0.55, h=0.32, pins_per_side=9, notch_style='none'),
         lambda: make_dip_socketed(1.65, 0.55, h=0.32, pins_per_side=9),
         lambda: make_dip(1.7, 0.55, h=0.34, pins_per_side=10, notch_style='slot',
                         body_material=CERAMIC_MAT, pin_material=PIN_GOLD_MAT),
-        lambda: make_dip(1.7, 0.55, h=0.32, pins_per_side=10, notch_style='dot', groove=True),
-        lambda: make_dip(1.75, 0.6, h=0.34, pins_per_side=11, notch_style='half_circle',
-                        body_material=CERAMIC_MAT),
-        lambda: make_dip(1.65, 0.55, h=0.32, pins_per_side=9, notch_style='bar',
-                        body_material=CHIP_LIGHT_MAT, pin_material=PIN_GOLD_MAT),
-        lambda: make_dip(1.7, 0.55, h=0.34, pins_per_side=10, notch_style='slot',
-                        groove=True, body_material=CERAMIC_MAT,
-                        pin_material=PIN_GOLD_MAT),
         lambda: make_dip_window(1.7, 0.55, h=0.3, pins_per_side=9),
         lambda: make_dip_zif(1.7, 0.55, h=0.32, pins_per_side=10),
-        lambda: make_dip_dual_notch(1.7, 0.55, h=0.3, pins_per_side=10),
         lambda: make_dip_with_chip_on_top(1.65, 0.55, h=0.3, pins_per_side=8),
-        lambda: make_dip_speckled(1.7, 0.55, h=0.32, pins_per_side=10),
         lambda: make_dip_long(1.8, 0.55, h=0.3, pins_per_side=12),
     ]),
     ("Capacitors", [
         lambda: make_capacitor(0.30, 1.05, sections=24, top_style='flat'),
         lambda: make_capacitor(0.30, 1.05, sections=24, top_style='ring'),
         lambda: make_capacitor(0.30, 1.10, sections=28, top_style='dome'),
-        lambda: make_capacitor(0.30, 1.05, sections=24, top_style='plus'),
-        lambda: make_capacitor(0.30, 1.10, sections=28, top_style='ring', stripe=True),
         lambda: make_capacitor(0.32, 1.10, sections=28, top_style='plus', stripe=True,
                                top_color=CAP_TOP_RED),
-        lambda: make_capacitor(0.30, 1.05, sections=24, top_style='dome', stripe=True),
-        lambda: make_capacitor(0.30, 1.10, sections=32, top_style='ring',
-                               top_color=CAP_TOP_RED),
-        lambda: make_capacitor(0.32, 1.10, sections=28, top_style='plus', stripe=True,
-                               label_band=True),
-        lambda: make_capacitor(0.30, 1.10, sections=28, top_style='ring', stripe=True,
-                               sleeve_color=PLASTIC_BLUE, top_color=CAP_TOP_RED),
         lambda: make_tantalum_cap(),
         lambda: make_film_cap(),
         lambda: make_stacked_cap(),
-        lambda: make_capacitor(0.30, 1.10, sections=32, top_style='plus', stripe=True,
-                               sleeve_color=PLASTIC_GREEN, top_color=CAP_TOP_MAT,
-                               label_band=True),
         lambda: make_cap_double_stripe(),
         lambda: make_cap_squat_smd(),
-        lambda: make_cap_with_band_and_dome(),
         lambda: make_cap_translucent_top(),
-        lambda: make_cap_with_screw_top(),
-        lambda: make_cap_with_topside_text(),
     ]),
     ("Heatsinks", [
-        lambda: make_heatsink(1.85, 1.35, h=0.7, fins=7, fin_axis='x', base_style='flat'),
-        lambda: make_heatsink(1.90, 1.35, h=0.7, fins=9, fin_axis='x', base_style='raised'),
-        lambda: make_heatsink(1.85, 1.40, h=0.72, fins=8, fin_axis='z', base_style='flat'),
-        lambda: make_heatsink(1.90, 1.40, h=0.7, fins=8, fin_axis='x', base_style='with_holes'),
-        lambda: make_heatsink(1.85, 1.35, h=0.7, fins=10, fin_axis='x', fin_style='beveled'),
-        lambda: make_heatsink(1.90, 1.40, h=0.72, fins=7, fin_axis='x',
-                              fin_style='pinned', base_style='raised'),
-        lambda: make_heatsink(1.85, 1.40, h=0.7, fins=11, fin_axis='z', base_style='with_holes'),
-        lambda: make_heatsink(1.95, 1.40, h=0.75, fins=9, fin_axis='x',
-                              fin_style='beveled', base_style='raised', color=HEATSINK_DARK),
+        lambda: make_heatsink(1.85, 1.35, h=0.7, fins=6, fin_axis='x',
+                              base_style='flat', fin_width_ratio=0.38),
+        lambda: make_heatsink(1.90, 1.35, h=0.7, fins=11, fin_axis='x',
+                              base_style='raised', fin_width_ratio=0.86),
+        lambda: make_heatsink(1.85, 1.40, h=0.72, fins=7, fin_axis='z',
+                              base_style='flat', fin_width_ratio=0.5),
+        lambda: make_heatsink(1.90, 1.40, h=0.7, fins=9, fin_axis='x',
+                              base_style='with_holes', fin_width_ratio=0.62),
+        lambda: make_heatsink(1.85, 1.35, h=0.7, fins=12, fin_axis='x',
+                              fin_style='beveled', fin_width_ratio=0.34),
         lambda: make_pin_fin_heatsink(w=1.9, d=1.4, h=0.65, grid_x=8, grid_z=6),
-        lambda: make_heatsink_with_pad(w=1.9, d=1.4, h=0.7, fins=9),
-        lambda: make_pin_fin_heatsink(w=1.9, d=1.4, h=0.7, grid_x=10, grid_z=7,
-                                      color=HEATSINK_BLACK_ANO),
-        lambda: make_heatsink(1.90, 1.40, h=0.75, fins=8, fin_axis='x', fin_style='pinned',
-                              base_style='with_holes', color=HEATSINK_BLACK_ANO),
-        lambda: make_heatsink(1.90, 1.40, h=0.7, fins=12, fin_axis='z',
-                              fin_style='straight', base_style='raised'),
-        lambda: make_pin_fin_heatsink(w=1.95, d=1.4, h=0.7, grid_x=6, grid_z=4,
-                                      color=HEATSINK_BLACK_ANO),
         lambda: make_heatsink_crosshatch(w=1.9, d=1.4, h=0.7),
-        lambda: make_heatsink_radial(w=1.9, d=1.4, h=0.7, blades=12),
-        lambda: make_heatsink_with_fan(w=1.9, d=1.4, h=0.75),
-        lambda: make_heatsink_low_profile(w=1.9, d=1.4, h=0.45, fins=14),
-        lambda: make_heatsink_diagonal(w=1.85, d=1.4, h=0.7, fins=8),
-        lambda: make_heatsink_extruded_holes(w=1.9, d=1.4, h=0.7, fins=9),
+        lambda: make_heatsink_stepped_stack(w=1.9, d=1.4, h=0.72, tiers=3, fins=8),
+        lambda: make_heatsink_offset_layers(w=1.9, d=1.4, h=0.7),
+        lambda: make_heatsink_split_plate_stack(w=1.9, d=1.4, h=0.75),
     ]),
     ("Octagonal / drum", [
         lambda: make_octagon(0.55, 0.6, sections=6, top_detail='none'),
-        lambda: make_octagon(0.55, 0.6, sections=8, top_detail='none'),
         lambda: make_octagon(0.55, 0.6, sections=8, top_detail='ring'),
         lambda: make_octagon(0.55, 0.6, sections=8, top_detail='screw'),
         lambda: make_octagon(0.55, 0.6, sections=10, top_detail='center_pin'),
-        lambda: make_octagon(0.55, 0.6, sections=12, top_detail='double_ring'),
-        lambda: make_octagon(0.55, 0.6, sections=12, top_detail='screw'),
-        lambda: make_octagon(0.55, 0.6, sections=16, top_detail='double_ring',
-                             body_color=CHIP_LIGHT_MAT),
         lambda: make_octagon_torus_top(0.55, 0.55, sections=12),
         lambda: make_octagon_shielded(0.55, 0.6, sections=8),
         lambda: make_octagon_vented(0.58, 0.6, sections=8),
         lambda: make_octagon(0.55, 0.6, sections=8, top_detail='ring', body_color=COPPER_MAT),
-        lambda: make_octagon_shielded(0.55, 0.65, sections=12),
-        lambda: make_octagon(0.55, 0.6, sections=12, top_detail='center_pin',
-                             body_color=CERAMIC_MAT),
         lambda: make_octagon_capped(0.55, 0.6, sections=8),
-        lambda: make_octagon_label(0.55, 0.6, sections=10),
-        lambda: make_octagon_with_pins(0.55, 0.6, sections=8, n_pins=4),
-        lambda: make_octagon_glowing_top(0.55, 0.55, sections=12),
         lambda: make_octagon_taller(0.55, 0.85, sections=8),
-        lambda: make_octagon_with_strap_diag(0.55, 0.6, sections=8),
     ]),
     ("Headers / terminals", [
         lambda: make_header(n_pins=10, spacing=0.16),
         lambda: make_header(n_pins=12, spacing=0.16, rows=2),
         lambda: make_header(n_pins=10, spacing=0.16, shrouded=True),
         lambda: make_header(n_pins=10, spacing=0.16, right_angle=True),
-        lambda: make_header(n_pins=11, spacing=0.16),
-        lambda: make_header(n_pins=11, spacing=0.16, rows=2, shrouded=True),
-        lambda: make_header(n_pins=10, spacing=0.16, rows=2, right_angle=True),
-        lambda: make_header(n_pins=12, spacing=0.15, shrouded=True),
         lambda: make_screw_terminal(n_pos=4, total_w=1.55, h=0.5),
         lambda: make_idc_header(n_pins=8, total_w=1.6),
         lambda: make_jst_header(n_pins=4, pitch=0.3),
-        lambda: make_screw_terminal(n_pos=5, total_w=1.6, h=0.5),
-        lambda: make_idc_header(n_pins=10, total_w=1.6),
-        lambda: make_jst_header(n_pins=6, pitch=0.22),
         lambda: make_header_boxed(n_pins=10, total_w=1.6, color=PLASTIC_BLUE),
-        lambda: make_header_screw_blue(n_pos=4, total_w=1.6),
-        lambda: make_header_screw_black(n_pos=5, total_w=1.6),
         lambda: make_header_dual_idc(n_pins=8, total_w=1.6),
         lambda: make_header_locking(n_pins=5, total_w=1.6),
-        lambda: make_header_terminal_strip(n_pos=5, total_w=1.6),
     ]),
     ("Connectors / ports", [
         lambda: make_connector(1.7, 0.55, h=0.42, slot_style='none'),
         lambda: make_connector(1.7, 0.55, h=0.42, slot_style='single'),
         lambda: make_connector(1.7, 0.6, h=0.44, slot_style='double'),
-        lambda: make_connector(1.75, 0.6, h=0.45, slot_style='multi'),
-        lambda: make_connector(1.7, 0.6, h=0.44, slot_style='keyed'),
-        lambda: make_connector(1.7, 0.6, h=0.45, slot_style='single', latch=True),
+        lambda: make_connector(1.75, 0.6, h=0.45, slot_style='keyed'),
         lambda: make_connector(1.75, 0.6, h=0.45, slot_style='multi', latch=True),
-        lambda: make_connector(1.75, 0.65, h=0.48, slot_style='keyed', latch=True,
-                               color=CHIP_LIGHT_MAT),
         lambda: make_usb_port(w=1.7, d=0.75, h=0.55),
         lambda: make_audio_jack(),
         lambda: make_rj45(w=1.7, d=0.85, h=0.7),
-        lambda: make_card_edge_slot(w=1.7, d=0.5, h=0.5),
-        lambda: make_usb_port(w=1.7, d=0.7, h=0.5),
-        lambda: make_card_edge_slot(w=1.7, d=0.45, h=0.45),
-        lambda: make_usb_c(w=1.7, d=0.7, h=0.5),
         lambda: make_hdmi_port(w=1.7, d=0.7, h=0.55),
-        lambda: make_barrel_jack(w=1.7, d=0.7, h=0.65),
         lambda: make_sd_slot(w=1.7, d=0.7, h=0.35),
-        lambda: make_micro_usb(w=1.7, d=0.7, h=0.4),
-        lambda: make_rj45(w=1.7, d=0.8, h=0.65),
     ]),
     ("SMD passives / LEDs", [
         lambda: make_resistor_smd(0.8, 0.4, 0.2),
-        lambda: make_resistor_smd(0.8, 0.4, 0.2),
         lambda: make_resistor_smd(0.8, 0.4, 0.2, stripe_color=LABEL_MAT),
-        lambda: make_resistor_smd(0.8, 0.4, 0.2, stripe_color=CHIP_GLOW_MAT),
-        lambda: make_resistor_smd(0.8, 0.4, 0.2, end_cap_material=PIN_GOLD_MAT),
-        lambda: make_resistor_smd(0.8, 0.4, 0.2, end_cap_material=PIN_GOLD_MAT,
-                                  stripe_color=CHIP_GLOW_WARM),
-        lambda: make_resistor_smd(0.85, 0.44, 0.22, stripe_color=LABEL_MAT),
         lambda: make_resistor_smd(0.85, 0.44, 0.22, stripe_color=CHIP_GLOW_GREEN,
                                   end_cap_material=PIN_GOLD_MAT),
         lambda: make_smd_led(0.8, 0.44, 0.22, emit_color=CHIP_GLOW_RED),
         lambda: make_smd_led(0.8, 0.44, 0.22, emit_color=CHIP_GLOW_GREEN),
-        lambda: make_smd_led(0.8, 0.44, 0.22, emit_color=CHIP_GLOW_MAT),
         lambda: make_smd_inductor(0.8, 0.56, 0.36),
         lambda: make_smd_4pad(0.8, 0.56, 0.22),
         lambda: make_smd_tall_cap(0.8, 0.64, 0.9),
-        lambda: make_smd_diode(0.8, 0.44, 0.22),
         lambda: make_smd_xtal(0.85, 0.6, 0.32),
         lambda: make_smd_rgb_led(0.85, 0.6, 0.26),
-        lambda: make_smd_transistor(0.85, 0.56, 0.28),
-        lambda: make_smd_inductor_shielded(0.8, 0.64, 0.44),
-        lambda: make_smd_fuse(0.85, 0.44, 0.24),
     ]),
 ]
 

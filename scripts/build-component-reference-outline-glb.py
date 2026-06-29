@@ -30,6 +30,8 @@ EDGE_MAT = mat([0.35, 0.85, 1.0, 1.0], metallic=0.0, roughness=0.15, emissive=[0
 SURFACE_LIFT = 0.003
 
 _INSTANCE = re.compile(r"^(r\d+_.+_c\d+)_p(\d+)$")
+_QFP_PREFIX = re.compile(r"^r0_.*_c(\d+)$")
+_QFP_PIN_OUTLINE_COLS = {0, 1, 2, 3, 5, 6}
 
 
 def world_meshes(scene: trimesh.Scene) -> list[tuple[str, trimesh.Trimesh]]:
@@ -62,7 +64,17 @@ def parts_for_instance(scene: trimesh.Scene, prefix: str) -> list[tuple[int, tri
     return parts
 
 
-def is_pin_part(part_idx: int, mesh: trimesh.Trimesh, parts: list[tuple[int, trimesh.Trimesh]]) -> bool:
+def keep_external_pin_outlines(prefix: str) -> bool:
+    match = _QFP_PREFIX.match(prefix)
+    return bool(match and int(match.group(1)) in _QFP_PIN_OUTLINE_COLS)
+
+
+def is_pin_part(
+    part_idx: int,
+    mesh: trimesh.Trimesh,
+    parts: list[tuple[int, trimesh.Trimesh]],
+    prefix: str = "",
+) -> bool:
     """Drop leads and repeated pin arrays; keep bodies, shrouds, and markings."""
     body_idx = max(range(len(parts)), key=lambda i: parts[i][1].volume)
     if part_idx == parts[body_idx][0]:
@@ -75,7 +87,7 @@ def is_pin_part(part_idx: int, mesh: trimesh.Trimesh, parts: list[tuple[int, tri
     x1, z1 = bounds[1][0] + margin, bounds[1][2] + margin
     cx, cz = mesh.centroid[0], mesh.centroid[2]
     if cx < x0 or cx > x1 or cz < z0 or cz > z1:
-        return True
+        return not keep_external_pin_outlines(prefix)
 
     vol_key = round(float(mesh.volume), 4)
     same_vol = sum(1 for _, m in parts if round(float(m.volume), 4) == vol_key)
@@ -151,10 +163,13 @@ def edges_to_tubes(
     return tube
 
 
-def outline_meshes_for_parts(parts: list[tuple[int, trimesh.Trimesh]]) -> trimesh.Trimesh | None:
+def outline_meshes_for_parts(
+    parts: list[tuple[int, trimesh.Trimesh]],
+    prefix: str = "",
+) -> trimesh.Trimesh | None:
     edges_list: list[np.ndarray] = []
     for part_idx, mesh in parts:
-        if is_pin_part(part_idx, mesh, parts):
+        if is_pin_part(part_idx, mesh, parts, prefix):
             continue
         edges = _extract_crease_edges(mesh, length_threshold=0.006, angle_threshold_deg=15)
         if len(edges):
@@ -171,10 +186,10 @@ def tron_specs_from_scene(scene: trimesh.Scene) -> list[LineMeshSpec]:
 
     for prefix in instance_prefixes(scene):
         parts = parts_for_instance(scene, prefix)
-        edges = outline_meshes_for_parts(parts)
+        edges = outline_meshes_for_parts(parts, prefix)
         if edges is None or len(edges) == 0:
             continue
-        mesh = trimesh.util.concatenate([m for _, m in parts if not is_pin_part(_, m, parts)])
+        mesh = trimesh.util.concatenate([m for _, m in parts if not is_pin_part(_, m, parts, prefix)])
         centroid = np.asarray(mesh.centroid, dtype=float)
         for chain in chain_edges(edges):
             length = sum(
@@ -208,7 +223,7 @@ def build_outline_scene(scene: trimesh.Scene) -> trimesh.Scene:
 
     for prefix in instance_prefixes(scene):
         parts = parts_for_instance(scene, prefix)
-        edges = outline_meshes_for_parts(parts)
+        edges = outline_meshes_for_parts(parts, prefix)
         if edges is not None and len(edges):
             all_edges.append(edges)
 

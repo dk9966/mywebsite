@@ -31,7 +31,8 @@ TRACE_RADIUS = 0.022
 TRACE_Y = TRACE_RADIUS
 
 # Row/col indices in component_reference.glb (r0 = QFP, r3 = Heatsinks).
-QFP_COLS = [0, 5, 1, 11, 12]
+# Picked for visual diversity within the 10-column catalog.
+QFP_COLS = [0, 4, 5, 6, 8]
 HS_COLS = [0, 7]
 
 QFP_BUILDERS = ROWS[0][1]
