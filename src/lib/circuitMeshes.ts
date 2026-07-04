@@ -134,8 +134,9 @@ export function addMeshToEdits(
   kind: MeshKind,
   cx: number,
   cz: number,
+  size = DEFAULT_MESH_SIZE[kind],
 ): { edits: CircuitMeshEdits; mesh: CircuitMesh } {
-  const { w, h } = DEFAULT_MESH_SIZE[kind];
+  const { w, h } = size;
   const id = nextUserMeshId(edits);
   const mesh: CircuitMesh = {
     id,

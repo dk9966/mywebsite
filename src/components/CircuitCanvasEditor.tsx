@@ -29,8 +29,18 @@ import {
   type SegmentGeom,
 } from "../lib/circuitTopology";
 import type { GridPath, Vec3 } from "../lib/gridBuilder";
+import {
+  BOX_SELECT_PAD,
+  inflateScreenRect,
+  segmentIntersectsRect as segmentHitsRect,
+  screenRect as boxScreenRect,
+} from "../lib/circuitBoxSelect";
 import { buildRawCircuitPaths } from "../lib/tronPathsFromCircuitsTraced";
 import { useCircuitTuning, setEditPathsGetter } from "../stores/circuitTuning";
+import {
+  SHORTCUT_BTN,
+  useShortcutButtonFlash,
+} from "../hooks/useShortcutButtonFlash";
 import "./CircuitCanvasEditor.css";
 
 const OUTLINE_GLB_URL = "/models/circuits-traced-outline.glb";
@@ -473,6 +483,7 @@ export default function CircuitCanvasEditor() {
 
   const [loaded, setLoaded] = useState(false);
   const [status, setStatus] = useState("");
+  const { flash, btnClass } = useShortcutButtonFlash();
 
   const editTool = useCircuitTuning((s) => s.editTool);
   const selectedLineIds = useCircuitTuning((s) => s.selectedLineIds);
@@ -934,13 +945,20 @@ export default function CircuitCanvasEditor() {
 
   const linesInBox = useCallback(
     (x0: number, y0: number, x1: number, y1: number): string[] => {
-      const rect = screenRect(x0, y0, x1, y1);
+      const rect = inflateScreenRect(boxScreenRect(x0, y0, x1, y1), BOX_SELECT_PAD);
       const ids: string[] = [];
       for (const p of getPaths()) {
         if (!isEditableLine(p.id) || p.hidden || p.waypoints.length < 2) continue;
-        const a = worldToScreen(p.waypoints[0][0], p.waypoints[0][2]);
-        const b = worldToScreen(p.waypoints[1][0], p.waypoints[1][2]);
-        if (segmentIntersectsRect(a.sx, a.sy, b.sx, b.sy, rect)) ids.push(p.id!);
+        let hit = false;
+        for (let i = 0; i < p.waypoints.length - 1; i++) {
+          const a = worldToScreen(p.waypoints[i][0], p.waypoints[i][2]);
+          const b = worldToScreen(p.waypoints[i + 1][0], p.waypoints[i + 1][2]);
+          if (segmentHitsRect(a.sx, a.sy, b.sx, b.sy, rect)) {
+            hit = true;
+            break;
+          }
+        }
+        if (hit) ids.push(p.id!);
       }
       return ids;
     },
@@ -1002,6 +1020,17 @@ export default function CircuitCanvasEditor() {
         const { x, z } = screenToWorld(sx, sy);
         store.addMeshAt(store.addMeshKind, x, z);
         drawRef.current();
+        return;
+      }
+
+      if (e.shiftKey && store.editTool === "select") {
+        interactionRef.current = {
+          kind: "boxSelect",
+          startSx: sx,
+          startSy: sy,
+          endSx: sx,
+          endSy: sy,
+        };
         return;
       }
 
@@ -1083,7 +1112,7 @@ export default function CircuitCanvasEditor() {
           hitId,
           store.selectedLineIds,
           store.selectedMeshIds,
-          e.shiftKey || e.metaKey,
+          e.metaKey,
         );
         if (!resolved) return;
 
@@ -1198,17 +1227,6 @@ export default function CircuitCanvasEditor() {
             return;
           }
         }
-      }
-
-      if (e.shiftKey && store.editTool === "select") {
-        interactionRef.current = {
-          kind: "boxSelect",
-          startSx: sx,
-          startSy: sy,
-          endSx: sx,
-          endSy: sy,
-        };
-        return;
       }
 
       interactionRef.current = {
@@ -1489,18 +1507,20 @@ export default function CircuitCanvasEditor() {
       if (e.key === "a" || e.key === "A") {
         e.preventDefault();
         const store = useCircuitTuning.getState();
-        if (store.editTool === "addLine") store.setEditTool("select");
-        else store.setEditTool("addLine");
+        const next = store.editTool === "addLine" ? "select" : "addLine";
+        store.setEditTool(next);
+        flash(next === "addLine" ? SHORTCUT_BTN.addLine : SHORTCUT_BTN.select);
         return;
       }
-      if (e.key === "s" || e.key === "S") {
+      if (e.key === "r" || e.key === "R") {
         e.preventDefault();
+        flash(SHORTCUT_BTN.snap45);
         onSnap45();
       }
     };
     canvas.addEventListener("keydown", onKeyDown);
     return () => canvas.removeEventListener("keydown", onKeyDown);
-  }, [onSnap45]);
+  }, [flash, onSnap45]);
 
   const onSave = useCallback(async () => {
     const ok = await useCircuitTuning.getState().saveAsDefault();
@@ -1558,18 +1578,20 @@ export default function CircuitCanvasEditor() {
         <div className="cce__group">
           <button
             type="button"
-            className={
-              editTool === "select" ? "cce__btn cce__btn--active" : "cce__btn"
-            }
+            className={btnClass(
+              SHORTCUT_BTN.select,
+              editTool === "select" ? "cce__btn cce__btn--active" : "cce__btn",
+            )}
             onClick={() => setTool("select")}
           >
             Select
           </button>
           <button
             type="button"
-            className={
-              editTool === "addLine" ? "cce__btn cce__btn--active" : "cce__btn"
-            }
+            className={btnClass(
+              SHORTCUT_BTN.addLine,
+              editTool === "addLine" ? "cce__btn cce__btn--active" : "cce__btn",
+            )}
             onClick={() => setTool("addLine")}
           >
             Add line
@@ -1589,13 +1611,17 @@ export default function CircuitCanvasEditor() {
           </button>
           <button
             type="button"
-            className="cce__btn cce__btn--danger"
+            className={btnClass(SHORTCUT_BTN.delete, "cce__btn cce__btn--danger")}
             disabled={!hasSelection}
             onClick={onDelete}
           >
             Delete
           </button>
-          <button type="button" className="cce__btn" onClick={onSnap45}>
+          <button
+            type="button"
+            className={btnClass(SHORTCUT_BTN.snap45, "cce__btn")}
+            onClick={onSnap45}
+          >
             Snap 45°
           </button>
           <label className="cce__snap-merge">
@@ -1618,10 +1644,10 @@ export default function CircuitCanvasEditor() {
         <div className="cce__sep" />
 
         <div className="cce__group">
-          <button type="button" className="cce__btn" onClick={() => undo()}>
+          <button type="button" className={btnClass(SHORTCUT_BTN.undo, "cce__btn")} onClick={() => undo()}>
             Undo
           </button>
-          <button type="button" className="cce__btn" onClick={() => redo()}>
+          <button type="button" className={btnClass(SHORTCUT_BTN.redo, "cce__btn")} onClick={() => redo()}>
             Redo
           </button>
           <button
@@ -1718,7 +1744,7 @@ export default function CircuitCanvasEditor() {
             : "loading board..."}
         </span>
         <span className="cce__hint">
-          wheel: zoom · a: add line · s: snap 45° · space/middle-drag: pan ·
+          wheel: zoom · a: add line · r: snap 45° · space/middle-drag: pan ·
           ⌘-click: add to group · shift-drag: box select · drag line/body: move ·
           group corners: scale · ⌘C: copy · ⌘V: paste · del: delete · auto-saves
         </span>

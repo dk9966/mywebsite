@@ -2,6 +2,14 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Line } from "@react-three/drei";
 import { useThree, type ThreeEvent } from "@react-three/fiber";
 import * as THREE from "three";
+import {
+  boardCenterZ,
+  boardY,
+  pickBoardPoint,
+  type BoardPickView,
+} from "../lib/circuitBoardPick";
+import type { CircuitMesh } from "../lib/circuitMeshes";
+import { resolveLineMoveSelection } from "../lib/circuitSelectionMove";
 import type { GridPath, Vec3 } from "../lib/gridBuilder";
 import {
   pointOnAxis,
@@ -11,6 +19,7 @@ import {
   type SegmentAxis,
   type SegmentGeom,
 } from "../lib/circuitTopology";
+import { useCircuitSelectionMove } from "../hooks/useCircuitSelectionMove";
 import { useCircuitTuning } from "../stores/circuitTuning";
 
 const _ray = new THREE.Raycaster();
@@ -72,13 +81,6 @@ function pickPointOnDragAxis(
       (_hit.z - axis.anchor[2]) * axis.dir[2],
   );
   return pointOnAxis(axis.anchor, axis.dir, t);
-}
-
-function boardY(paths: GridPath[]): number {
-  for (const p of paths) {
-    if (p.waypoints.length > 0) return p.waypoints[0][1];
-  }
-  return 0.022;
 }
 
 /** Drag a vertex along its segment axis; snaps on release. */
@@ -267,8 +269,21 @@ function VertexHandles({ paths }: { paths: GridPath[] }) {
   );
 }
 
-/** Two-click line placement on the board plane. */
-function AddLineTool({ paths }: { paths: GridPath[] }) {
+const GHOST_LINE_COLOR = "#66f0f0";
+const GHOST_MIN_LEN = 0.05;
+
+/** Two-click line placement on the board plane (locked top/side views only). */
+function AddLineTool({
+  paths,
+  view,
+  locked,
+  centerZ,
+}: {
+  paths: GridPath[];
+  view: BoardPickView;
+  locked: boolean;
+  centerZ: number;
+}) {
   const editTool = useCircuitTuning((s) => s.editTool);
   const addLineStart = useCircuitTuning((s) => s.addLineStart);
   const setAddLineStart = useCircuitTuning((s) => s.setAddLineStart);
@@ -277,55 +292,121 @@ function AddLineTool({ paths }: { paths: GridPath[] }) {
 
   const { camera, gl } = useThree();
   const y = useMemo(() => boardY(paths), [paths]);
-
-  const boardPlane = useRef(new THREE.Plane());
-  const boardHit = useRef(new THREE.Vector3());
+  const [previewEnd, setPreviewEnd] = useState<Vec3 | null>(null);
 
   const pickBoard = useCallback(
-    (clientX: number, clientY: number): Vec3 | null => {
-      const rect = gl.domElement.getBoundingClientRect();
-      const ndc = new THREE.Vector2(
-        ((clientX - rect.left) / rect.width) * 2 - 1,
-        -((clientY - rect.top) / rect.height) * 2 + 1,
-      );
-      _ray.setFromCamera(ndc, camera);
-      boardPlane.current.set(new THREE.Vector3(0, 1, 0), -y);
-      return _ray.ray.intersectPlane(boardPlane.current, boardHit.current)
-        ? ([boardHit.current.x, y, boardHit.current.z] as Vec3)
-        : null;
-    },
-    [camera, gl.domElement, y],
+    (clientX: number, clientY: number): Vec3 | null =>
+      pickBoardPoint(clientX, clientY, camera, gl.domElement, y, view, centerZ),
+    [camera, centerZ, gl.domElement, view, y],
   );
+
+  const updatePreview = useCallback(
+    (clientX: number, clientY: number) => {
+      if (!addLineStart) return;
+      const point = pickBoard(clientX, clientY);
+      if (!point) return;
+      setPreviewEnd(previewSnapPoint(point, paths, "__new__"));
+    },
+    [addLineStart, paths, pickBoard],
+  );
+
+  useEffect(() => {
+    if (editTool !== "addLine" || !addLineStart) {
+      setPreviewEnd(null);
+      return;
+    }
+
+    const el = gl.domElement;
+    const onMove = (e: PointerEvent) => updatePreview(e.clientX, e.clientY);
+    el.addEventListener("pointermove", onMove);
+    return () => el.removeEventListener("pointermove", onMove);
+  }, [addLineStart, editTool, gl.domElement, updatePreview]);
+
+  const ghostPoints = useMemo((): [number, number, number][] | null => {
+    if (!addLineStart || !previewEnd) return null;
+    const len = Math.hypot(
+      previewEnd[0] - addLineStart[0],
+      previewEnd[1] - addLineStart[1],
+      previewEnd[2] - addLineStart[2],
+    );
+    if (len < GHOST_MIN_LEN) return null;
+    return [addLineStart, previewEnd];
+  }, [addLineStart, previewEnd]);
 
   const onPlaneClick = useCallback(
     (e: ThreeEvent<PointerEvent>) => {
       e.stopPropagation();
       const point = pickBoard(e.clientX, e.clientY);
       if (!point) return;
+      const snapped = previewSnapPoint(point, paths, "__new__");
 
       if (!addLineStart) {
         pushUndo();
-        setAddLineStart(point);
+        setAddLineStart(snapped);
         return;
       }
 
-      addLineSegment(addLineStart, point);
+      addLineSegment(addLineStart, snapped);
+      setPreviewEnd(snapped);
     },
-    [addLineStart, addLineSegment, pickBoard, pushUndo, setAddLineStart],
+    [
+      addLineStart,
+      addLineSegment,
+      paths,
+      pickBoard,
+      pushUndo,
+      setAddLineStart,
+    ],
   );
 
-  if (editTool !== "addLine") return null;
+  if (editTool !== "addLine" || !locked) return null;
 
   return (
     <>
-      <mesh position={[0, y, 0]} rotation={[-Math.PI / 2, 0, 0]} onPointerDown={onPlaneClick}>
-        <planeGeometry args={[500, 500]} />
-        <meshBasicMaterial transparent opacity={0} depthWrite={false} />
-      </mesh>
+      {view === "top" ? (
+        <mesh
+          position={[0, y, 0]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          onPointerDown={onPlaneClick}
+        >
+          <planeGeometry args={[500, 500]} />
+          <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+        </mesh>
+      ) : (
+        <mesh position={[0, 0, centerZ]} onPointerDown={onPlaneClick}>
+          <planeGeometry args={[500, 500]} />
+          <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+        </mesh>
+      )}
+      {ghostPoints ? (
+        <Line
+          points={ghostPoints}
+          color={GHOST_LINE_COLOR}
+          lineWidth={2}
+          transparent
+          opacity={0.38}
+          depthTest={false}
+          renderOrder={1002}
+          dashed
+          dashSize={0.12}
+          gapSize={0.08}
+        />
+      ) : null}
       {addLineStart ? (
         <mesh position={addLineStart} renderOrder={1003}>
           <sphereGeometry args={[0.12, 10, 8]} />
           <meshBasicMaterial color="#a5d6a7" depthTest={false} />
+        </mesh>
+      ) : null}
+      {previewEnd && ghostPoints ? (
+        <mesh position={previewEnd} renderOrder={1003}>
+          <sphereGeometry args={[0.07, 8, 6]} />
+          <meshBasicMaterial
+            color={GHOST_LINE_COLOR}
+            transparent
+            opacity={0.45}
+            depthTest={false}
+          />
         </mesh>
       ) : null}
     </>
@@ -335,47 +416,124 @@ function AddLineTool({ paths }: { paths: GridPath[] }) {
 function PickLine({
   id,
   waypoints,
-  onSelect,
+  beginMove,
+  shiftMoveHandledByOverlay,
 }: {
   id: string;
   waypoints: Vec3[];
-  onSelect: (id: string) => void;
+  beginMove: (
+    clientX: number,
+    clientY: number,
+    lineIds: string[],
+    meshIds: string[],
+  ) => boolean;
+  shiftMoveHandledByOverlay: boolean;
 }) {
   const editTool = useCircuitTuning((s) => s.editTool);
-  const positions = useMemo(() => {
-    const arr = new Float32Array(waypoints.length * 3);
-    for (let i = 0; i < waypoints.length; i++) {
-      arr[i * 3] = waypoints[i][0];
-      arr[i * 3 + 1] = waypoints[i][1];
-      arr[i * 3 + 2] = waypoints[i][2];
-    }
-    return arr;
-  }, [waypoints]);
+  const positions = useMemo(
+    () => waypoints as [number, number, number][],
+    [waypoints],
+  );
+
+  const { gl } = useThree();
+
+  const onPointerDown = useCallback(
+    (e: ThreeEvent<PointerEvent>) => {
+      if (editTool !== "select") return;
+      e.stopPropagation();
+
+      const store = useCircuitTuning.getState();
+
+      if (e.shiftKey) {
+        if (shiftMoveHandledByOverlay) return;
+
+        const resolved = resolveLineMoveSelection(
+          id,
+          store.selectedLineIds,
+          store.selectedMeshIds,
+          e.metaKey,
+        );
+        if (!resolved || resolved.selectOnly) return;
+
+        if (
+          resolved.lineIds.length === 1 &&
+          resolved.meshIds.length === 0 &&
+          !store.selectedLineIds.includes(id)
+        ) {
+          store.setBoxSelection(resolved.lineIds, resolved.meshIds);
+        }
+
+        if (
+          beginMove(
+            e.clientX,
+            e.clientY,
+            resolved.lineIds,
+            resolved.meshIds,
+          )
+        ) {
+          gl.domElement.setPointerCapture(e.pointerId);
+        }
+        return;
+      }
+
+      if (e.metaKey) {
+        const next = store.selectedLineIds.includes(id)
+          ? store.selectedLineIds.filter((lineId) => lineId !== id)
+          : [...store.selectedLineIds, id];
+        store.setBoxSelection(next, store.selectedMeshIds);
+        return;
+      }
+
+      if (
+        !store.selectedLineIds.includes(id) ||
+        store.selectedMeshIds.length > 0
+      ) {
+        store.setBoxSelection([id], []);
+      }
+    },
+    [beginMove, editTool, gl.domElement, id, shiftMoveHandledByOverlay],
+  );
 
   if (editTool === "addLine") return null;
 
   return (
-    <line
-      onPointerDown={(e) => {
-        e.stopPropagation();
-        onSelect(id);
-      }}
-    >
-      <bufferGeometry>
-        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
-      </bufferGeometry>
-      <lineBasicMaterial transparent opacity={0} depthWrite={false} />
-    </line>
+    <Line
+      points={positions}
+      lineWidth={6}
+      transparent
+      opacity={0}
+      depthWrite={false}
+      renderOrder={10}
+      onPointerDown={onPointerDown}
+    />
   );
 }
 
-function PickProxies({ paths }: { paths: GridPath[] }) {
-  const select = useCircuitTuning((s) => s.select);
+function PickProxies({
+  paths,
+  beginMove,
+  shiftMoveHandledByOverlay,
+}: {
+  paths: GridPath[];
+  beginMove: (
+    clientX: number,
+    clientY: number,
+    lineIds: string[],
+    meshIds: string[],
+  ) => boolean;
+  shiftMoveHandledByOverlay: boolean;
+}) {
   return (
     <group>
       {paths.map((p) =>
         p.id && !p.hidden ? (
-          <PickLine key={p.id} id={p.id} waypoints={p.waypoints} onSelect={select} />
+          <PickLine
+            key={p.id}
+            id={p.id}
+            waypoints={p.waypoints}
+            beginMove={beginMove}
+            shiftMoveHandledByOverlay={shiftMoveHandledByOverlay}
+          />
         ) : null,
       )}
     </group>
@@ -407,30 +565,112 @@ function SpawnMarkers({ paths }: { paths: GridPath[] }) {
 
 function SelectionHighlight({ paths }: { paths: GridPath[] }) {
   const selectedLineIds = useCircuitTuning((s) => s.selectedLineIds);
-  const selectedId = selectedLineIds[0] ?? null;
-  const selected = useMemo(
-    () => paths.find((p) => p.id === selectedId) ?? null,
-    [paths, selectedId],
-  );
-  if (!selected || selected.waypoints.length < 2) return null;
+  const selected = useMemo(() => {
+    const ids = new Set(selectedLineIds);
+    return paths.filter((p) => p.id && ids.has(p.id) && p.waypoints.length >= 2);
+  }, [paths, selectedLineIds]);
+  if (selected.length === 0) return null;
   return (
-    <Line
-      points={selected.waypoints as [number, number, number][]}
-      color="#ffffff"
-      lineWidth={4}
-      transparent
-      opacity={0.95}
-      depthTest={false}
-      renderOrder={999}
-    />
+    <group>
+      {selected.map((p) => (
+        <Line
+          key={p.id}
+          points={p.waypoints as [number, number, number][]}
+          color="#ffffff"
+          lineWidth={4}
+          transparent
+          opacity={0.95}
+          depthTest={false}
+          renderOrder={999}
+        />
+      ))}
+    </group>
   );
 }
 
-export default function CircuitSelectionLayer({ paths }: { paths: GridPath[] }) {
+/** Click-to-place or drag-drop from the mesh palette. */
+function AddMeshTool({ paths }: { paths: GridPath[] }) {
+  const editTool = useCircuitTuning((s) => s.editTool);
+  const addMeshKind = useCircuitTuning((s) => s.addMeshKind);
+  const addMeshAt = useCircuitTuning((s) => s.addMeshAt);
+  const pushUndo = useCircuitTuning((s) => s.pushUndo);
+
+  const { camera, gl } = useThree();
+  const y = useMemo(() => boardY(paths), [paths]);
+
+  const onPlaneClick = useCallback(
+    (e: ThreeEvent<PointerEvent>) => {
+      if (!addMeshKind) return;
+      e.stopPropagation();
+      const point = pickBoardPoint(
+        e.clientX,
+        e.clientY,
+        camera,
+        gl.domElement,
+        y,
+      );
+      if (!point) return;
+      pushUndo();
+      addMeshAt(addMeshKind, point[0], point[2]);
+    },
+    [addMeshKind, addMeshAt, camera, gl.domElement, pushUndo, y],
+  );
+
+  if (editTool !== "addMesh" || !addMeshKind) return null;
+
+  return (
+    <mesh
+      position={[0, y, 0]}
+      rotation={[-Math.PI / 2, 0, 0]}
+      onPointerDown={onPlaneClick}
+    >
+      <planeGeometry args={[500, 500]} />
+      <meshBasicMaterial transparent opacity={0} depthWrite={false} />
+    </mesh>
+  );
+}
+
+export default function CircuitSelectionLayer({
+  paths,
+  meshes = [],
+  view = "top",
+  locked = true,
+  centerZ,
+  beginMove: beginMoveProp,
+  shiftMoveHandledByOverlay = false,
+}: {
+  paths: GridPath[];
+  meshes?: CircuitMesh[];
+  view?: BoardPickView;
+  locked?: boolean;
+  centerZ?: number;
+  beginMove?: (
+    clientX: number,
+    clientY: number,
+    lineIds: string[],
+    meshIds: string[],
+  ) => boolean;
+  /** When true, shift+move is handled by the HTML overlay (3D editor box-select layer). */
+  shiftMoveHandledByOverlay?: boolean;
+}) {
+  const { beginMove: hookBeginMove } = useCircuitSelectionMove(paths, meshes);
+  const beginMove = beginMoveProp ?? hookBeginMove;
+  const pickCenterZ = centerZ ?? boardCenterZ(paths);
+
   return (
     <>
-      <AddLineTool paths={paths} />
-      <PickProxies paths={paths} />
+      <AddLineTool
+        paths={paths}
+        view={view}
+        locked={locked}
+        centerZ={pickCenterZ}
+      />
+      <AddMeshTool paths={paths} />
+      <PickProxies
+        paths={paths}
+        beginMove={beginMove}
+        shiftMoveHandledByOverlay={shiftMoveHandledByOverlay}
+      />
       <SelectionHighlight paths={paths} />
       <VertexHandles paths={paths} />
       <SpawnMarkers paths={paths} />

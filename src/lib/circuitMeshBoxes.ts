@@ -16,6 +16,9 @@ export type MeshKind =
   | "via";
 
 /** Palette order for the editor mesh menu (matches circuit-painter). */
+/** MIME type for dragging a mesh kind from the palette onto the board. */
+export const MESH_KIND_DRAG_TYPE = "application/x-circuit-mesh-kind";
+
 export const MESH_PALETTE: MeshKind[] = [
   "qfp",
   "soic",

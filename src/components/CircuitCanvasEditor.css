@@ -84,6 +84,24 @@
   border-color: #2fd6c2;
 }
 
+.cce__btn--flash {
+  animation: cce-btn-flash 240ms ease-out;
+}
+
+@keyframes cce-btn-flash {
+  0%,
+  100% {
+    filter: brightness(1);
+    box-shadow: none;
+  }
+
+  45% {
+    filter: brightness(1.4);
+    border-color: rgba(156, 248, 248, 0.9);
+    box-shadow: 0 0 14px rgba(94, 232, 216, 0.65);
+  }
+}
+
 .cce__btn--danger:hover:not(:disabled) {
   background: rgba(120, 40, 44, 0.8);
   border-color: rgba(220, 90, 90, 0.6);

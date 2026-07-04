@@ -1,6 +1,10 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import type { GridPath, Vec3 } from "../lib/gridBuilder";
 import { useCircuitTuning } from "../stores/circuitTuning";
+import {
+  SHORTCUT_BTN,
+  useShortcutButtonFlash,
+} from "../hooks/useShortcutButtonFlash";
 import "./CircuitTuner.css";
 
 interface SliderProps {
@@ -127,6 +131,7 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
   const resetAll = useCircuitTuning((s) => s.resetAll);
   const exportJSON = useCircuitTuning((s) => s.exportJSON);
   const importJSON = useCircuitTuning((s) => s.importJSON);
+  const { btnClass } = useShortcutButtonFlash();
   const saveAsDefault = useCircuitTuning((s) => s.saveAsDefault);
 
   const [minimized, setMinimized] = useState(false);
@@ -311,7 +316,10 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
                   <span>Hidden</span>
                 </label>
                 <button
-                  className="tuner__btn tuner__btn--wide"
+                  className={btnClass(
+                    SHORTCUT_BTN.delete,
+                    "tuner__btn tuner__btn--wide",
+                  )}
                   type="button"
                   onClick={() => deleteSelectedSegment()}
                 >
@@ -343,7 +351,10 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
             </p>
             <div className="tuner__edit-row">
               <button
-                className={`tuner__btn ${editTool === "addLine" ? "tuner__btn--active" : ""}`}
+                className={btnClass(
+                  SHORTCUT_BTN.addLine,
+                  `tuner__btn ${editTool === "addLine" ? "tuner__btn--active" : ""}`,
+                )}
                 type="button"
                 onClick={() =>
                   editTool === "addLine"
@@ -365,7 +376,7 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
             {editTool === "addLine" ? (
               <p className="tuner__hint">
                 {addLineStart
-                  ? "Click the second point to finish the line."
+                  ? "Click to place the next point. Esc cancels."
                   : "Click the first point on the board."}
               </p>
             ) : null}
@@ -375,7 +386,7 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
             </p>
             <div className="tuner__edit-row">
               <button
-                className="tuner__btn"
+                className={btnClass(SHORTCUT_BTN.undo, "tuner__btn")}
                 type="button"
                 onClick={undo}
                 disabled={undoStack.length === 0}
@@ -383,7 +394,7 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
                 Undo
               </button>
               <button
-                className="tuner__btn"
+                className={btnClass(SHORTCUT_BTN.redo, "tuner__btn")}
                 type="button"
                 onClick={redo}
                 disabled={redoStack.length === 0}

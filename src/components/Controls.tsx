@@ -63,8 +63,8 @@ function formatTime(t: number): string {
 }
 
 export type ControlsCameraProps = {
-  topView: boolean;
-  onTopViewChange: (value: boolean) => void;
+  cinematicMode: boolean;
+  onCinematicModeChange: (value: boolean) => void;
   fov: number;
   onFovChange: (value: number) => void;
 };
@@ -182,10 +182,10 @@ export default function Controls({ camera }: ControlsProps = {}) {
                   <input
                     className="controls__checkbox"
                     type="checkbox"
-                    checked={camera.topView}
-                    onChange={(e) => camera.onTopViewChange(e.target.checked)}
+                    checked={camera.cinematicMode}
+                    onChange={(e) => camera.onCinematicModeChange(e.target.checked)}
                   />
-                  <span className="controls__checkbox-label">Top view on appear</span>
+                  <span className="controls__checkbox-label">Cinematic mode</span>
                 </label>
                 <Slider
                   label="FOV"
@@ -195,7 +195,7 @@ export default function Controls({ camera }: ControlsProps = {}) {
                   step={1}
                   onChange={camera.onFovChange}
                 />
-                <h5 className="controls__subgroup-title">Top view scan</h5>
+                <h5 className="controls__subgroup-title">Cinematic scan</h5>
                 <Slider
                   label="Height"
                   value={topViewCamera.heightFactor}

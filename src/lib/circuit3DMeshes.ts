@@ -7,6 +7,7 @@ import {
   componentFootprintsDetailed,
   type ComponentFootprintDetailed,
 } from "./circuitComponentFootprints";
+import type { MeshKind } from "./circuitMeshBoxes";
 import type { CircuitMesh, MeshBounds } from "./circuitMeshes";
 import type { GridPath, Vec3 } from "./gridBuilder";
 
@@ -14,6 +15,24 @@ function partBaseId(segmentId: string): string | null {
   if (!segmentId.startsWith("part-")) return null;
   const segIdx = segmentId.indexOf("-seg-");
   return segIdx >= 0 ? segmentId.slice(0, segIdx) : segmentId;
+}
+
+/** One outline color per mesh kind (traces keep the global cyan). */
+const MESH_KIND_OUTLINE_COLORS: Record<MeshKind, string> = {
+  qfp: "#66f0f0",
+  soic: "#6eb4ff",
+  capacitor: "#ffb86e",
+  heatsink: "#ff6eb4",
+  drum: "#b86eff",
+  header: "#b4ff6e",
+  connector: "#f0f066",
+  smd: "#6effc8",
+  pad: "#ff6e6e",
+  via: "#a0ffa0",
+};
+
+export function meshOutlineColorForKind(kind: MeshKind): string {
+  return MESH_KIND_OUTLINE_COLORS[kind];
 }
 
 export type OutlineModel = {
@@ -91,6 +110,7 @@ export function transformedOutlinePaths(
   for (const [comp, segments] of model.segmentsByComp) {
     const cur = curById.get(comp);
     if (!cur) continue; // deleted component
+    const lineColor = meshOutlineColorForKind(cur.kind);
     const orig = model.origBounds.get(comp)!;
     const t = affineXZ(orig, cur);
     const identity =
@@ -101,11 +121,12 @@ export function transformedOutlinePaths(
 
     for (const seg of segments) {
       if (identity) {
-        out.push(seg);
+        out.push({ ...seg, lineColor });
         continue;
       }
       out.push({
         ...seg,
+        lineColor,
         waypoints: seg.waypoints.map(
           ([x, y, z]) =>
             [

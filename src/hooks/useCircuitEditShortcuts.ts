@@ -1,5 +1,9 @@
 import { useEffect } from "react";
 import { useCircuitTuning } from "../stores/circuitTuning";
+import {
+  SHORTCUT_BTN,
+  flashShortcutButton,
+} from "./useShortcutButtonFlash";
 
 /** Global edit shortcuts: undo, redo, delete, copy/paste, cancel tool. */
 export function useCircuitEditShortcuts() {
@@ -24,6 +28,9 @@ export function useCircuitEditShortcuts() {
         if (editTool !== "select") {
           e.preventDefault();
           cancelEditTool();
+          flashShortcutButton(
+            editTool === "addLine" ? SHORTCUT_BTN.addLine : SHORTCUT_BTN.select,
+          );
         }
         return;
       }
@@ -34,17 +41,24 @@ export function useCircuitEditShortcuts() {
           if (!hasSelection) return;
           e.preventDefault();
           deleteSelection();
+          flashShortcutButton(SHORTCUT_BTN.delete);
         }
         return;
       }
 
       if (e.key === "z" || e.key === "Z") {
         e.preventDefault();
-        if (e.shiftKey) redo();
-        else undo();
+        if (e.shiftKey) {
+          redo();
+          flashShortcutButton(SHORTCUT_BTN.redo);
+        } else {
+          undo();
+          flashShortcutButton(SHORTCUT_BTN.undo);
+        }
       } else if (e.key === "y" || e.key === "Y") {
         e.preventDefault();
         redo();
+        flashShortcutButton(SHORTCUT_BTN.redo);
       } else if (e.key === "c" || e.key === "C") {
         if (copySelectedLines()) e.preventDefault();
       } else if (e.key === "v" || e.key === "V") {

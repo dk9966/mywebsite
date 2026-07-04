@@ -15,6 +15,7 @@ import {
 import type { GridPath, Vec3 } from "../lib/gridBuilder";
 import {
   addMeshToEdits,
+  DEFAULT_MESH_SIZE,
   deleteMeshInEdits,
   EMPTY_MESH_EDITS,
   setMeshBoundsInEdits,
@@ -23,6 +24,7 @@ import {
   type MeshBounds,
 } from "../lib/circuitMeshes";
 import type { MeshKind } from "../lib/circuitMeshBoxes";
+import type { MeshSize } from "../lib/meshVariations";
 import {
   DEFAULT_MERGE_EPS,
   snapAnglesToGrid,
@@ -292,6 +294,7 @@ interface CircuitTuningStore extends CircuitTuning {
   editTool: EditTool;
   addLineStart: Vec3 | null;
   addMeshKind: MeshKind | null;
+  addMeshSize: MeshSize | null;
   isDraggingVertex: boolean;
   undoStack: EditSnapshot[];
   redoStack: EditSnapshot[];
@@ -302,7 +305,7 @@ interface CircuitTuningStore extends CircuitTuning {
   clearSelection: () => void;
   selectVertex: (end: 0 | 1 | null) => void;
   setEditTool: (tool: EditTool) => void;
-  startAddMesh: (kind: MeshKind) => void;
+  startAddMesh: (kind: MeshKind, size?: MeshSize) => void;
   setAddLineStart: (point: Vec3 | null) => void;
   setDraggingVertex: (dragging: boolean) => void;
   pushUndo: () => void;
@@ -373,6 +376,7 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
     editTool: "select",
     addLineStart: null,
     addMeshKind: null,
+    addMeshSize: null,
     isDraggingVertex: false,
     undoStack: [],
     redoStack: [],
@@ -408,27 +412,48 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
         editTool: tool,
         addLineStart: null,
         addMeshKind: tool === "addMesh" ? get().addMeshKind : null,
+        addMeshSize: tool === "addMesh" ? get().addMeshSize : null,
         selectedLineIds: [],
         selectedVertex: null,
         selectedMeshIds: [],
       }),
 
-    startAddMesh: (kind) =>
+    startAddMesh: (kind, size) => {
+      const s = get();
+      if (s.editTool === "addMesh" && s.addMeshKind === kind) {
+        const nextSize = size ?? DEFAULT_MESH_SIZE[kind];
+        const sameSize =
+          s.addMeshSize != null &&
+          s.addMeshSize.w === nextSize.w &&
+          s.addMeshSize.h === nextSize.h;
+        if (sameSize) {
+          set({
+            editTool: "select",
+            addMeshKind: null,
+            addMeshSize: null,
+            addLineStart: null,
+            selectedVertex: null,
+          });
+          return;
+        }
+      }
       set({
         editTool: "addMesh",
         addMeshKind: kind,
+        addMeshSize: size ?? DEFAULT_MESH_SIZE[kind],
         addLineStart: null,
         selectedLineIds: [],
         selectedVertex: null,
         selectedMeshIds: [],
-      }),
+      });
+    },
 
     setAddLineStart: (point) => set({ addLineStart: point }),
 
     setDraggingVertex: (dragging) => set({ isDraggingVertex: dragging }),
 
     cancelEditTool: () =>
-      set({ editTool: "select", addLineStart: null, addMeshKind: null }),
+      set({ editTool: "select", addLineStart: null, addMeshKind: null, addMeshSize: null }),
 
     copySelectedLines: () => {
       const { selectedLineIds, topology } = get();
@@ -681,8 +706,9 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
       set({
         topology: next,
         selectedLineIds: [id],
-        addLineStart: null,
+        addLineStart: end,
         addMeshKind: null,
+        addMeshSize: null,
         selectedVertex: null,
         selectedMeshIds: [],
       });
@@ -694,12 +720,14 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
       })),
 
     addMeshAt: (kind, cx, cz) => {
-      const { edits, mesh } = addMeshToEdits(get().meshEdits, kind, cx, cz);
+      const size = get().addMeshSize ?? DEFAULT_MESH_SIZE[kind];
+      const { edits, mesh } = addMeshToEdits(get().meshEdits, kind, cx, cz, size);
       set({
         meshEdits: edits,
         selectedMeshIds: [mesh.id],
         editTool: "select",
         addMeshKind: null,
+        addMeshSize: null,
         selectedLineIds: [],
         selectedVertex: null,
       });
@@ -714,6 +742,7 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
         editTool: "select",
         addLineStart: null,
         addMeshKind: null,
+        addMeshSize: null,
         isDraggingVertex: false,
         undoStack: [],
         redoStack: [],
@@ -757,6 +786,7 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
           editTool: "select",
           addLineStart: null,
           addMeshKind: null,
+          addMeshSize: null,
           undoStack: [],
           redoStack: [],
         });

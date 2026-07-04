@@ -13,15 +13,29 @@ import {
   useMemo,
   useRef,
   useState,
+  type CSSProperties,
   type ElementRef,
 } from "react";
 import * as THREE from "three";
 import {
   buildOutlineModel,
+  meshOutlineColorForKind,
   transformedOutlinePaths,
   type OutlineModel,
 } from "../lib/circuit3DMeshes";
-import { MESH_LABELS, MESH_PALETTE } from "../lib/circuitMeshBoxes";
+import type { ScreenRect } from "../lib/circuitBoxSelect";
+import {
+  boardPickXZ,
+  boardY,
+  type BoardPickView,
+  type BoardPickXZ,
+} from "../lib/circuitBoardPick";
+import { MESH_LABELS, type MeshKind } from "../lib/circuitMeshBoxes";
+import { DEFAULT_MESH_SIZE } from "../lib/circuitMeshes";
+import {
+  MESH_TYPE_GROUPS,
+  type MeshSize,
+} from "../lib/meshVariations";
 import {
   footprintsToMeshes,
   moveMeshBounds,
@@ -40,19 +54,108 @@ import {
 } from "../lib/tronPathsFromCircuitsTraced";
 import { setEditPathsGetter, useCircuitTuning } from "../stores/circuitTuning";
 import { useLineConfig } from "../stores/lineConfig";
+import {
+  SHORTCUT_BTN,
+  useShortcutButtonFlash,
+} from "../hooks/useShortcutButtonFlash";
 import "./Circuit3DEditor.css";
 import CircuitSelectionLayer from "./CircuitSelection";
+import {
+  BoxSelectLayer,
+  BoxSelectOverlay,
+  CameraRefBridge,
+} from "./CircuitBoxSelect";
 import TronGrid from "./TronGrid";
+
+const PALETTE_DRAG_THRESHOLD = 5;
+
+type PaletteDrag = {
+  kind: MeshKind;
+  size: MeshSize;
+  startX: number;
+  startY: number;
+  dragging: boolean;
+  pointerId: number;
+};
+
+type BoardPickApi = {
+  pick: BoardPickXZ;
+  canvas: HTMLCanvasElement;
+};
+
+/** Exposes board raycast picking to the HTML palette (outside the Canvas). */
+function BoardPickBridge({
+  paths,
+  view,
+  centerZ,
+  onReady,
+}: {
+  paths: GridPath[];
+  view: ViewKind;
+  centerZ: number;
+  onReady: (api: BoardPickApi | null) => void;
+}) {
+  const { camera, gl } = useThree();
+  const y = useMemo(() => boardY(paths), [paths]);
+  const onReadyRef = useRef(onReady);
+  onReadyRef.current = onReady;
+
+  useEffect(() => {
+    const pick: BoardPickXZ = (clientX, clientY) =>
+      boardPickXZ(clientX, clientY, camera, gl.domElement, y, view, centerZ);
+    onReadyRef.current({ pick, canvas: gl.domElement });
+    return () => onReadyRef.current(null);
+  }, [camera, centerZ, gl.domElement, view, y]);
+
+  return null;
+}
 
 const OUTLINE_GLB_URL = "/models/circuits-traced-outline.glb";
 useGLTF.preload(OUTLINE_GLB_URL);
 
-const FOV = 40;
 /** Camera distance as a multiple of the board span (fits the wide board). */
 const VIEW_DIST_FACTOR = 1.5;
 const VIEW_ANIM_MS = 300;
+const FOV = 40;
 
-type ViewKind = "top" | "side";
+type ProjectionKind = "ortho" | "perspective";
+
+/** Extra breathing room around the board when the ortho zoom is fit to it. */
+const FIT_MARGIN = 1.12;
+
+/**
+ * Orthographic zoom that frames `span` world units within the smaller viewport
+ * dimension. R3F's default ortho frustum is pixel-sized (1 unit = 1px at zoom
+ * 1), so visible world width = viewportPx / zoom → zoom = viewportPx / worldSpan.
+ */
+function fitOrthoZoom(
+  size: { width: number; height: number },
+  span: number,
+): number {
+  const minDim = Math.min(size.width, size.height);
+  return minDim / (Math.max(span, 1) * FIT_MARGIN);
+}
+
+function applyFitCamera(
+  camera: THREE.Camera,
+  preset: ViewPreset,
+  target: THREE.Vector3,
+  size: { width: number; height: number },
+  span: number,
+): number {
+  const distance = preset.pos.distanceTo(target);
+  if (camera instanceof THREE.OrthographicCamera) {
+    camera.zoom = fitOrthoZoom(size, span);
+    camera.updateProjectionMatrix();
+    return distance;
+  }
+  camera.position.copy(preset.pos);
+  camera.up.copy(preset.up);
+  camera.lookAt(target);
+  return distance;
+}
+
+type ViewKind = BoardPickView;
 
 /** Screen-pixel stroke width — stays readable at any zoom without bloom. */
 const EDITOR_SCREEN_LINE_WIDTH = 2.5;
@@ -149,23 +252,32 @@ type CameraRigProps = {
   layout: CircuitsTracedLayout;
   view: ViewKind;
   locked: boolean;
+  projection: ProjectionKind;
   viewToken: number;
   fitToken: number;
+  projectionToken: number;
 };
 
 function CameraRig({
   layout,
   view,
   locked,
+  projection,
   viewToken,
   fitToken,
+  projectionToken,
 }: CameraRigProps) {
   const camera = useThree((s) => s.camera);
   const gl = useThree((s) => s.gl);
+  const size = useThree((s) => s.size);
   const controlsRef = useRef<ElementRef<typeof OrbitControls> | null>(null);
   const presets = useMemo(() => computePresets(layout), [layout]);
   const presetsRef = useRef(presets);
   presetsRef.current = presets;
+  const spanRef = useRef(layout.span);
+  spanRef.current = layout.span;
+  const sizeRef = useRef(size);
+  sizeRef.current = size;
   const viewDistanceRef = useRef(
     presets.top.pos.distanceTo(presets.target),
   );
@@ -181,15 +293,30 @@ function CameraRig({
 
     const p = presetsRef.current;
     const preset = view === "top" ? p.top : p.side;
-    const distance = preset.pos.distanceTo(p.target);
     controls.target.copy(p.target);
-    viewDistanceRef.current = distance;
+    viewDistanceRef.current = applyFitCamera(
+      camera,
+      preset,
+      p.target,
+      sizeRef.current,
+      spanRef.current,
+    );
     if (lockedRef.current) {
-      snapLockedCamera(view, camera, p.target, distance, preset.up);
-      controls.update();
+      snapLockedCamera(
+        view,
+        camera,
+        p.target,
+        viewDistanceRef.current,
+        preset.up,
+      );
     }
+    controls.update();
     setControlsReady(true);
   }, [view, camera, controlsReady]);
+
+  useEffect(() => {
+    setControlsReady(false);
+  }, [projection, projectionToken]);
 
   const bindControls = useCallback(
     (node: ElementRef<typeof OrbitControls> | null) => {
@@ -206,6 +333,16 @@ function CameraRig({
   const syncMouseButtons = useCallback((shift: boolean) => {
     const controls = controlsRef.current;
     if (!controls) return;
+    const selectTool = useCircuitTuning.getState().editTool === "select";
+    if (selectTool && shift) {
+      // Shift+drag is box-select — don't map left button to pan/rotate.
+      controls.mouseButtons = {
+        LEFT: THREE.MOUSE.ROTATE,
+        MIDDLE: THREE.MOUSE.DOLLY,
+        RIGHT: THREE.MOUSE.PAN,
+      };
+      return;
+    }
     if (lockedRef.current) {
       // Pinned to top/side: drag only pans, never rotates.
       controls.mouseButtons = {
@@ -302,10 +439,6 @@ function CameraRig({
   // Animate to a locked preset. Layout edits must not retrigger this — only
   // explicit view / fit / lock changes do.
   useEffect(() => {
-    if (!locked) {
-      anim.current = null;
-      return;
-    }
     if (!controlsReady) return;
 
     const p = presetsRef.current;
@@ -314,13 +447,36 @@ function CameraRig({
     const isFit = fitToken !== prevFitToken.current;
     prevFitToken.current = fitToken;
 
+    // Free orbit: the user drives the camera. Fit still recenters + reframes.
+    if (!locked) {
+      anim.current = null;
+      if (isFit && controls) {
+        controls.target.copy(p.target);
+        viewDistanceRef.current = applyFitCamera(
+          camera,
+          preset,
+          p.target,
+          sizeRef.current,
+          spanRef.current,
+        );
+        controls.update();
+      }
+      return;
+    }
+
     const lookTarget = isFit
       ? p.target.clone()
       : (controls?.target.clone() ?? p.target.clone());
 
     if (isFit && controls) {
       controls.target.copy(lookTarget);
-      viewDistanceRef.current = preset.pos.distanceTo(p.target);
+      viewDistanceRef.current = applyFitCamera(
+        camera,
+        preset,
+        p.target,
+        sizeRef.current,
+        spanRef.current,
+      );
     }
 
     const axis = LOCKED_VIEW_AXIS[view].clone().multiplyScalar(
@@ -334,7 +490,16 @@ function CameraRig({
       lookTarget,
       start: performance.now(),
     };
-  }, [view, locked, viewToken, fitToken, camera, controlsReady]);
+  }, [
+    view,
+    locked,
+    projection,
+    viewToken,
+    fitToken,
+    projectionToken,
+    camera,
+    controlsReady,
+  ]);
 
   useFrame(() => {
     const controls = controlsRef.current;
@@ -379,8 +544,16 @@ function CameraRig({
     }
 
     const st = useCircuitTuning.getState();
-    const block = st.isDraggingVertex || st.editTool !== "select";
-    controls.enabled = true;
+    const shiftBoxSelect =
+      st.editTool === "select" && shiftHeld.current;
+    const block =
+      st.isDraggingVertex ||
+      st.editTool !== "select" ||
+      shiftBoxSelect;
+    controls.enabled =
+      !shiftBoxSelect &&
+      !st.isDraggingVertex &&
+      st.editTool === "select";
     controls.enableRotate = !locked && !block;
     controls.enablePan = !block;
     controls.enableZoom = true;
@@ -392,8 +565,10 @@ function CameraRig({
       makeDefault
       enableDamping
       dampingFactor={0.12}
+      minZoom={1}
+      maxZoom={4000}
       minDistance={0.5}
-      maxDistance={4000}
+      maxDistance={8000}
     />
   );
 }
@@ -547,10 +722,11 @@ function MeshItem({
   const onPointerDown = useCallback(
     (e: ThreeEvent<PointerEvent>) => {
       if (editTool !== "select") return;
+      if (e.shiftKey) return;
       e.stopPropagation();
       const store = useCircuitTuning.getState();
 
-      if (e.metaKey || e.shiftKey) {
+      if (e.metaKey) {
         const next = store.selectedMeshIds.includes(mesh.id)
           ? store.selectedMeshIds.filter((id) => id !== mesh.id)
           : [...store.selectedMeshIds, mesh.id];
@@ -632,12 +808,30 @@ function MeshItem({
         <meshBasicMaterial transparent opacity={0} depthWrite={false} />
       </mesh>
 
-      {/* User-placed meshes have no real outline, so show a faint solid box. */}
+      {/* User-placed meshes have no real outline — show a visible placeholder box. */}
       {!hasOutline ? (
-        <mesh position={[cx, midY, cz]}>
-          <boxGeometry args={[Math.max(w, 0.2), boxH, Math.max(h, 0.2)]} />
-          <meshBasicMaterial color="#1bbfac" transparent opacity={0.12} />
-        </mesh>
+        <>
+          <mesh position={[cx, midY, cz]}>
+            <boxGeometry args={[Math.max(w, 0.2), boxH, Math.max(h, 0.2)]} />
+            <meshBasicMaterial
+              color="#2fd6c2"
+              transparent
+              opacity={0.28}
+              depthWrite={false}
+            />
+          </mesh>
+          <lineSegments renderOrder={998}>
+            <bufferGeometry>
+              <bufferAttribute attach="attributes-position" args={[edges, 3]} />
+            </bufferGeometry>
+            <lineBasicMaterial
+              color="#2fd6c2"
+              transparent
+              opacity={0.7}
+              depthTest={false}
+            />
+          </lineSegments>
+        </>
       ) : null}
 
       {selected ? (
@@ -720,15 +914,23 @@ type SceneData = { paths: GridPath[]; meshes: CircuitMesh[] };
 function EditorScene({
   view,
   locked,
+  projection,
   viewToken,
   fitToken,
+  projectionToken,
   onData,
+  onBoardPickReady,
+  cameraRef,
 }: {
   view: ViewKind;
   locked: boolean;
+  projection: ProjectionKind;
   viewToken: number;
   fitToken: number;
+  projectionToken: number;
   onData: (d: SceneData) => void;
+  onBoardPickReady: (api: BoardPickApi | null) => void;
+  cameraRef: React.MutableRefObject<THREE.Camera | null>;
 }) {
   const { scene } = useGLTF(OUTLINE_GLB_URL);
   const topology = useCircuitTuning((s) => s.topology);
@@ -775,8 +977,10 @@ function EditorScene({
         layout={layout}
         view={view}
         locked={locked}
+        projection={projection}
         viewToken={viewToken}
         fitToken={fitToken}
+        projectionToken={projectionToken}
       />
       {/* Real component outlines (the "meshes") — static, full length. */}
       <TronGrid
@@ -793,7 +997,21 @@ function EditorScene({
         screenLineWidth={EDITOR_SCREEN_LINE_WIDTH}
       />
       <MeshLayer meshes={resolvedMeshes} model={model} />
-      <CircuitSelectionLayer paths={editablePaths} />
+      <BoardPickBridge
+        paths={editablePaths}
+        view={view}
+        centerZ={layout.center[2]}
+        onReady={onBoardPickReady}
+      />
+      <CameraRefBridge cameraRef={cameraRef} />
+      <CircuitSelectionLayer
+        paths={editablePaths}
+        meshes={resolvedMeshes}
+        view={view}
+        locked={locked}
+        centerZ={layout.center[2]}
+        shiftMoveHandledByOverlay
+      />
     </>
   );
 }
@@ -807,19 +1025,48 @@ export default function Circuit3DEditor() {
 
   const [view, setView] = useState<ViewKind>("top");
   const [locked, setLocked] = useState(true);
+  const [projection, setProjection] = useState<ProjectionKind>("ortho");
   const [viewToken, setViewToken] = useState(0);
   const [fitToken, setFitToken] = useState(0);
+  const [projectionToken, setProjectionToken] = useState(0);
   const [status, setStatus] = useState("");
   const [loaded, setLoaded] = useState(false);
+  const [boxSelectRect, setBoxSelectRect] = useState<ScreenRect | null>(null);
+  const [pickCanvas, setPickCanvas] = useState<HTMLCanvasElement | null>(null);
+  const [shiftHeld, setShiftHeld] = useState(false);
+  const { flash: flashShortcut, btnClass } = useShortcutButtonFlash();
 
   const dataRef = useRef<SceneData>({ paths: [], meshes: [] });
+  const cameraRef = useRef<THREE.Camera | null>(null);
+  const boardPickRef = useRef<BoardPickApi | null>(null);
+  const paletteDragRef = useRef<PaletteDrag | null>(null);
   const onData = useCallback((d: SceneData) => {
     dataRef.current = d;
     if (d.paths.length > 0) setLoaded(true);
   }, []);
+  const onBoardPickReady = useCallback((api: BoardPickApi | null) => {
+    boardPickRef.current = api;
+    setPickCanvas(api?.canvas ?? null);
+  }, []);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Shift") setShiftHeld(true);
+    };
+    const onKeyUp = (e: KeyboardEvent) => {
+      if (e.key === "Shift") setShiftHeld(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keyup", onKeyUp);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("keyup", onKeyUp);
+    };
+  }, []);
 
   const editTool = useCircuitTuning((s) => s.editTool);
   const addMeshKind = useCircuitTuning((s) => s.addMeshKind);
+  const addMeshSize = useCircuitTuning((s) => s.addMeshSize);
   const selectedLineIds = useCircuitTuning((s) => s.selectedLineIds);
   const selectedMeshIds = useCircuitTuning((s) => s.selectedMeshIds);
   const snapMergeEps = useCircuitTuning((s) => s.snapMergeEps);
@@ -827,7 +1074,69 @@ export default function Circuit3DEditor() {
   const setTool = useCircuitTuning((s) => s.setEditTool);
   const startAddMesh = useCircuitTuning((s) => s.startAddMesh);
 
-  const flash = useCallback((msg: string) => {
+  const endPalettePointer = useCallback(() => {
+    paletteDragRef.current = null;
+    document.body.classList.remove("c3d--palette-dragging");
+  }, []);
+
+  const onPalettePointerMove = useCallback((e: PointerEvent) => {
+    const d = paletteDragRef.current;
+    if (!d || e.pointerId !== d.pointerId) return;
+    if (
+      !d.dragging &&
+      Math.hypot(e.clientX - d.startX, e.clientY - d.startY) >=
+        PALETTE_DRAG_THRESHOLD
+    ) {
+      d.dragging = true;
+      document.body.classList.add("c3d--palette-dragging");
+    }
+  }, []);
+
+  const onPalettePointerUp = useCallback(
+    (e: PointerEvent) => {
+      const d = paletteDragRef.current;
+      if (!d || e.pointerId !== d.pointerId) return;
+
+      window.removeEventListener("pointermove", onPalettePointerMove);
+      window.removeEventListener("pointerup", onPalettePointerUp);
+      window.removeEventListener("pointercancel", onPalettePointerUp);
+
+      if (d.dragging) {
+        const pt = boardPickRef.current?.pick(e.clientX, e.clientY);
+        if (pt) {
+          useCircuitTuning.getState().pushUndo();
+          useCircuitTuning.setState({ addMeshSize: d.size });
+          useCircuitTuning.getState().addMeshAt(d.kind, pt.x, pt.z);
+        }
+      } else {
+        startAddMesh(d.kind, d.size);
+      }
+
+      endPalettePointer();
+    },
+    [endPalettePointer, onPalettePointerMove, startAddMesh],
+  );
+
+  const onPalettePointerDown = useCallback(
+    (e: React.PointerEvent, kind: MeshKind, size: MeshSize) => {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      paletteDragRef.current = {
+        kind,
+        size,
+        startX: e.clientX,
+        startY: e.clientY,
+        dragging: false,
+        pointerId: e.pointerId,
+      };
+      window.addEventListener("pointermove", onPalettePointerMove);
+      window.addEventListener("pointerup", onPalettePointerUp);
+      window.addEventListener("pointercancel", onPalettePointerUp);
+    },
+    [onPalettePointerMove, onPalettePointerUp],
+  );
+
+  const flashStatus = useCallback((msg: string) => {
     setStatus(msg);
     window.setTimeout(() => setStatus(""), 2500);
   }, []);
@@ -846,8 +1155,8 @@ export default function Circuit3DEditor() {
       parts.push(
         `connected ${meshSnapped} endpoint${meshSnapped === 1 ? "" : "s"}`,
       );
-    flash(parts.length ? parts.join(", ") : "nothing to snap or merge");
-  }, [flash]);
+    flashStatus(parts.length ? parts.join(", ") : "nothing to snap or merge");
+  }, [flashStatus]);
 
   const toggleView = useCallback(() => {
     setView((v) => (v === "top" ? "side" : "top"));
@@ -855,13 +1164,25 @@ export default function Circuit3DEditor() {
     setViewToken((n) => n + 1);
   }, []);
 
+  const toggleProjection = useCallback(() => {
+    setProjection((p) => (p === "ortho" ? "perspective" : "ortho"));
+    setProjectionToken((n) => n + 1);
+    setFitToken((n) => n + 1);
+  }, []);
+
+  useEffect(() => {
+    if (!locked && editTool === "addLine") {
+      setTool("select");
+    }
+  }, [editTool, locked, setTool]);
+
   // Register the path resolver so the store's copy reads live trace geometry.
   useEffect(() => {
     setEditPathsGetter(() => dataRef.current.paths);
     return () => setEditPathsGetter(null);
   }, []);
 
-  // Editor shortcuts: a (add line), s (snap 45), t (toggle view), l (lock).
+  // Editor shortcuts: a (add line), r (snap 45), f (toggle view), l (lock).
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
@@ -870,31 +1191,41 @@ export default function Circuit3DEditor() {
       const k = e.key.toLowerCase();
       if (k === "a") {
         e.preventDefault();
+        if (!locked) return;
         const store = useCircuitTuning.getState();
-        store.setEditTool(store.editTool === "addLine" ? "select" : "addLine");
-      } else if (k === "s") {
+        const next = store.editTool === "addLine" ? "select" : "addLine";
+        store.setEditTool(next);
+        flashShortcut(next === "addLine" ? SHORTCUT_BTN.addLine : SHORTCUT_BTN.select);
+      } else if (k === "r") {
         e.preventDefault();
+        flashShortcut(SHORTCUT_BTN.snap45);
         onSnap45();
-      } else if (k === "t") {
+      } else if (k === "f") {
         e.preventDefault();
+        flashShortcut(view === "top" ? SHORTCUT_BTN.side : SHORTCUT_BTN.top);
         toggleView();
       } else if (k === "l") {
         e.preventDefault();
+        flashShortcut(SHORTCUT_BTN.lock);
         setLocked((v) => !v);
+      } else if (k === "o") {
+        e.preventDefault();
+        flashShortcut(SHORTCUT_BTN.projection);
+        toggleProjection();
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [onSnap45, toggleView]);
+  }, [flashShortcut, locked, onSnap45, toggleProjection, toggleView, view]);
 
   const onSave = useCallback(async () => {
     const ok = await useCircuitTuning.getState().saveAsDefault();
-    flash(
+    flashStatus(
       ok
         ? "saved to circuits-tuning.json"
         : "downloaded JSON (dev save unavailable)",
     );
-  }, [flash]);
+  }, [flashStatus]);
 
   const onExport = useCallback(() => {
     const text = useCircuitTuning.getState().exportJSON();
@@ -915,52 +1246,84 @@ export default function Circuit3DEditor() {
       if (!file) return;
       const text = await file.text();
       const ok = useCircuitTuning.getState().importJSON(text);
-      flash(ok ? "imported tuning" : "import failed: invalid JSON");
+      flashStatus(ok ? "imported tuning" : "import failed: invalid JSON");
     },
-    [flash],
+    [flashStatus],
   );
 
   const hasSelection = selectedLineIds.length > 0 || selectedMeshIds.length > 0;
 
   return (
     <div className="c3d">
-      <Canvas
-        className="c3d__canvas"
-        gl={{ antialias: true, alpha: false }}
-        onPointerMissed={() => useCircuitTuning.getState().clearSelection()}
-        onCreated={(state) => {
-          state.raycaster.params.Line = { threshold: 0.3 };
-        }}
-        camera={{ position: [0, 60, 0], fov: FOV, near: 0.1, far: 4000 }}
-      >
-        <Suspense fallback={null}>
-          <EditorScene
-            view={view}
-            locked={locked}
-            viewToken={viewToken}
-            fitToken={fitToken}
-            onData={onData}
-          />
-        </Suspense>
-      </Canvas>
+      <div className="c3d__viewport">
+        <Canvas
+          className="c3d__canvas"
+          gl={{ antialias: true, alpha: false }}
+          onPointerMissed={(e) => {
+            const st = useCircuitTuning.getState();
+            if (e.shiftKey || st.isDraggingVertex) return;
+            st.clearSelection();
+          }}
+          onCreated={(state) => {
+            state.raycaster.params.Line = { threshold: 0.3 };
+            setPickCanvas(state.gl.domElement);
+          }}
+          orthographic={projection === "ortho"}
+          camera={
+            projection === "ortho"
+              ? { position: [0, 60, 0], zoom: 20, near: 0.1, far: 4000 }
+              : { position: [0, 60, 0], fov: FOV, near: 0.1, far: 4000 }
+          }
+        >
+          <Suspense fallback={null}>
+            <EditorScene
+              view={view}
+              locked={locked}
+              projection={projection}
+              viewToken={viewToken}
+              fitToken={fitToken}
+              projectionToken={projectionToken}
+              onData={onData}
+              onBoardPickReady={onBoardPickReady}
+              cameraRef={cameraRef}
+            />
+          </Suspense>
+        </Canvas>
+
+        <BoxSelectLayer
+          active={shiftHeld && editTool === "select"}
+          canvas={pickCanvas}
+          cameraRef={cameraRef}
+          dataRef={dataRef}
+          onRectChange={setBoxSelectRect}
+        />
+        <BoxSelectOverlay rect={boxSelectRect} canvas={pickCanvas} />
+      </div>
 
       <div className="c3d__toolbar">
         <div className="c3d__group">
           <button
             type="button"
-            className={
-              editTool === "select" ? "c3d__btn c3d__btn--active" : "c3d__btn"
-            }
+            className={btnClass(
+              SHORTCUT_BTN.select,
+              editTool === "select" ? "c3d__btn c3d__btn--active" : "c3d__btn",
+            )}
             onClick={() => setTool("select")}
           >
             Select
           </button>
           <button
             type="button"
-            className={
-              editTool === "addLine" ? "c3d__btn c3d__btn--active" : "c3d__btn"
-            }
-            onClick={() => setTool("addLine")}
+            className={btnClass(
+              SHORTCUT_BTN.addLine,
+              editTool === "addLine" ? "c3d__btn c3d__btn--active" : "c3d__btn",
+            )}
+            disabled={!locked}
+            title={locked ? undefined : "Lock the view to add lines"}
+            onClick={() => {
+              if (!locked) return;
+              setTool(editTool === "addLine" ? "select" : "addLine");
+            }}
           >
             Add line
           </button>
@@ -983,13 +1346,17 @@ export default function Circuit3DEditor() {
           </button>
           <button
             type="button"
-            className="c3d__btn c3d__btn--danger"
+            className={btnClass(SHORTCUT_BTN.delete, "c3d__btn c3d__btn--danger")}
             disabled={!hasSelection}
             onClick={() => useCircuitTuning.getState().deleteSelection()}
           >
             Delete
           </button>
-          <button type="button" className="c3d__btn" onClick={onSnap45}>
+          <button
+            type="button"
+            className={btnClass(SHORTCUT_BTN.snap45, "c3d__btn")}
+            onClick={onSnap45}
+          >
             Snap 45°
           </button>
           <label className="c3d__snap-merge">
@@ -1014,9 +1381,10 @@ export default function Circuit3DEditor() {
         <div className="c3d__group">
           <button
             type="button"
-            className={
-              view === "top" ? "c3d__btn c3d__btn--active" : "c3d__btn"
-            }
+            className={btnClass(
+              SHORTCUT_BTN.top,
+              view === "top" ? "c3d__btn c3d__btn--active" : "c3d__btn",
+            )}
             onClick={() => {
               setView("top");
               setLocked(true);
@@ -1027,9 +1395,10 @@ export default function Circuit3DEditor() {
           </button>
           <button
             type="button"
-            className={
-              view === "side" ? "c3d__btn c3d__btn--active" : "c3d__btn"
-            }
+            className={btnClass(
+              SHORTCUT_BTN.side,
+              view === "side" ? "c3d__btn c3d__btn--active" : "c3d__btn",
+            )}
             onClick={() => {
               setView("side");
               setLocked(true);
@@ -1040,7 +1409,10 @@ export default function Circuit3DEditor() {
           </button>
           <button
             type="button"
-            className={locked ? "c3d__btn c3d__btn--active" : "c3d__btn"}
+            className={btnClass(
+              SHORTCUT_BTN.lock,
+              locked ? "c3d__btn c3d__btn--active" : "c3d__btn",
+            )}
             onClick={() => setLocked((v) => !v)}
           >
             {locked ? "Locked" : "Free"}
@@ -1052,6 +1424,18 @@ export default function Circuit3DEditor() {
           >
             Fit
           </button>
+          <button
+            type="button"
+            className={btnClass(
+              SHORTCUT_BTN.projection,
+              projection === "ortho"
+                ? "c3d__btn c3d__btn--active"
+                : "c3d__btn",
+            )}
+            onClick={toggleProjection}
+          >
+            {projection === "ortho" ? "Ortho" : "Persp"}
+          </button>
         </div>
 
         <div className="c3d__sep" />
@@ -1059,14 +1443,14 @@ export default function Circuit3DEditor() {
         <div className="c3d__group">
           <button
             type="button"
-            className="c3d__btn"
+            className={btnClass(SHORTCUT_BTN.undo, "c3d__btn")}
             onClick={() => useCircuitTuning.getState().undo()}
           >
             Undo
           </button>
           <button
             type="button"
-            className="c3d__btn"
+            className={btnClass(SHORTCUT_BTN.redo, "c3d__btn")}
             onClick={() => useCircuitTuning.getState().redo()}
           >
             Redo
@@ -1107,22 +1491,74 @@ export default function Circuit3DEditor() {
 
       <aside className="c3d__palette">
         <p className="c3d__palette-title">Meshes</p>
-        {MESH_PALETTE.map((kind) => (
-          <button
-            key={kind}
-            type="button"
-            className={
-              editTool === "addMesh" && addMeshKind === kind
-                ? "c3d__palette-item c3d__palette-item--active"
-                : "c3d__palette-item"
-            }
-            onClick={() => startAddMesh(kind)}
-            title={`Place ${MESH_LABELS[kind]}`}
-          >
-            <span className="c3d__palette-preview">{MESH_LABELS[kind]}</span>
-            <span>{MESH_LABELS[kind]}</span>
-          </button>
-        ))}
+        <ul className="c3d__palette-types">
+          {MESH_TYPE_GROUPS.map((group) => {
+            const { w, h } = DEFAULT_MESH_SIZE[group.kind];
+            const active =
+              editTool === "addMesh" && addMeshKind === group.kind;
+            const accent = meshOutlineColorForKind(group.kind);
+            return (
+              <li className="c3d__palette-type" key={group.kind}>
+                <button
+                  type="button"
+                  className={
+                    active
+                      ? "c3d__palette-type-btn c3d__palette-type-btn--active"
+                      : "c3d__palette-type-btn"
+                  }
+                  style={{ "--mesh-accent": accent } as CSSProperties}
+                  onPointerDown={(e) =>
+                    onPalettePointerDown(e, group.kind, group.variations[0].size)
+                  }
+                  title={`Place ${group.label} (click or drag onto board)`}
+                >
+                  <span
+                    className="c3d__palette-preview"
+                    style={{ aspectRatio: `${w} / ${h}` }}
+                    aria-hidden
+                  />
+                  <span className="c3d__palette-label">{group.label}</span>
+                </button>
+                <div className="c3d__palette-flyout" role="group" aria-label={`${group.label} variations`}>
+                  {group.variations.map((variation) => {
+                    const vActive =
+                      active &&
+                      addMeshSize?.w === variation.size.w &&
+                      addMeshSize?.h === variation.size.h;
+                    return (
+                      <button
+                        key={variation.id}
+                        type="button"
+                        className={
+                          vActive
+                            ? "c3d__palette-variation c3d__palette-variation--active"
+                            : "c3d__palette-variation"
+                        }
+                        style={{ "--mesh-accent": accent } as CSSProperties}
+                        onPointerDown={(e) => {
+                          e.stopPropagation();
+                          onPalettePointerDown(e, group.kind, variation.size);
+                        }}
+                        title={`Place ${variation.label}`}
+                      >
+                        <span
+                          className="c3d__palette-variation-preview"
+                          style={{
+                            aspectRatio: `${variation.size.w} / ${variation.size.h}`,
+                          }}
+                          aria-hidden
+                        />
+                        <span className="c3d__palette-variation-label">
+                          {variation.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       </aside>
 
       <div className="c3d__status">
@@ -1141,18 +1577,20 @@ export default function Circuit3DEditor() {
                   .filter(Boolean)
                   .join(", ")
               : editTool === "addMesh" && addMeshKind
-                ? `click to place ${MESH_LABELS[addMeshKind]}`
+                ? `click to place ${MESH_LABELS[addMeshKind]} · click again to cancel`
                 : editTool === "addLine"
-                  ? "click two points to add a line"
+                  ? `click two points to add a line · ${view} view`
                   : locked
-                    ? `${view} view · locked · drag: pan`
-                    : "free · drag: rotate · shift+drag: pan"
+                    ? `${view} view · locked · ${projection} · drag: pan`
+                    : `${projection} · free · drag: rotate · shift+drag: pan`
             : "loading board..."}
         </span>
         <span className="c3d__hint">
-          t: top/side view · l: lock/free · locked drag: pan · free drag:
-          rotate (shift: pan) · a: add line · s: snap 45° · drag mesh: move ·
-          corners: scale · ⌘C/⌘V: copy/paste · del: delete · auto-saves
+          f: top/side view · l: lock/free · o: ortho/persp · locked drag: pan ·
+          free drag: rotate (shift: pan) · shift-drag: box select / move · a:
+          add line (locked) · r: snap 45° · drag mesh: move · mesh panel: click or drag
+          to place · drag to place · corners: scale · ⌘-click: add to group ·
+          ⌘C/⌘V: copy/paste
         </span>
       </div>
     </div>

@@ -9,6 +9,8 @@ export type GridPath = {
   id?: string;
   /** When true the path is kept in the layout but neither drawn nor picked. */
   hidden?: boolean;
+  /** Override the global line color for this path (hex, e.g. component outlines). */
+  lineColor?: string;
 };
 
 /** Split a polyline into individual two-point segments, each with its own id. */

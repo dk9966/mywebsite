@@ -289,6 +289,24 @@
   color: #cfd8dc;
 }
 
+.tuner__btn--flash {
+  animation: tuner-btn-flash 240ms ease-out;
+}
+
+@keyframes tuner-btn-flash {
+  0%,
+  100% {
+    filter: brightness(1);
+    box-shadow: none;
+  }
+
+  45% {
+    filter: brightness(1.35);
+    border-color: rgba(128, 203, 196, 0.75);
+    box-shadow: 0 0 10px rgba(128, 203, 196, 0.45);
+  }
+}
+
 .tuner__btn--wide {
   display: block;
   width: 100%;
