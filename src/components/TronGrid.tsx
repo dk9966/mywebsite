@@ -19,9 +19,32 @@ const sharedTipGeo = new THREE.SphereGeometry(0.5, 8, 6);
 const _xAxis = new THREE.Vector3(1, 0, 0);
 const _dir = new THREE.Vector3();
 const _lineDisplayColor = new THREE.Color();
+const _tipDisplayColor = new THREE.Color();
 
 function lineDisplayColor(cfg: LineConfig, out = _lineDisplayColor): THREE.Color {
   return out.set(cfg.lineColor).multiplyScalar(cfg.lineEmission);
+}
+
+function pathLineDisplayColor(
+  pathLineColor: string | undefined,
+  cfg: LineConfig,
+  out = _lineDisplayColor,
+): THREE.Color {
+  if (pathLineColor) {
+    return out.set(pathLineColor).multiplyScalar(cfg.lineEmission);
+  }
+  return lineDisplayColor(cfg, out);
+}
+
+function pathTipDisplayColor(
+  pathLineColor: string | undefined,
+  cfg: LineConfig,
+  out = _tipDisplayColor,
+): THREE.Color {
+  if (pathLineColor) {
+    return out.set(pathLineColor).multiplyScalar(cfg.lineEmission * 1.35);
+  }
+  return out.set(cfg.tipColor);
 }
 
 function lineColorDirty(next: LineConfig, prev: LineConfig): boolean {
@@ -42,6 +65,7 @@ type AnimatedLine = {
   colorsVert: Float32Array;
   lastLeadSlot: number;
   savedLinePos: [number, number, number];
+  pathLineColor?: string;
 };
 
 let sharedFatLineMaterial: LineMaterial | null = null;
@@ -225,11 +249,13 @@ function drawFullLine(a: AnimatedLine, cfg: LineConfig): void {
   const segDone = Math.max(0, a.pointCount - 1);
   a.lineGeo.instanceCount = segDone;
   a.tip.visible = false;
+  const lineBase = pathLineDisplayColor(a.pathLineColor, cfg);
+  const tipColor = pathTipDisplayColor(a.pathLineColor, cfg);
   updateTipColors(
     a.colorsVert,
     a.pointCount,
-    lineDisplayColor(cfg),
-    new THREE.Color(cfg.tipColor),
+    lineBase,
+    tipColor,
     cfg.tipPointCount,
   );
   syncLineSegmentBuffers(a.lineGeo, a.positions, a.colorsVert, segDone);
@@ -247,13 +273,13 @@ function tickAnims(
   } else {
     applyFatLineSharedStyle(cfg);
   }
-  const lineBase = lineDisplayColor(cfg);
-  const tipColorVal = new THREE.Color(cfg.tipColor);
 
   for (const a of anims) {
+    const lineBase = pathLineDisplayColor(a.pathLineColor, cfg);
+    const tipColorVal = pathTipDisplayColor(a.pathLineColor, cfg);
     const speed = a.cursorSpeed;
     const tipMat = a.tip.material as THREE.MeshBasicMaterial;
-    tipMat.color.set(cfg.tipColor);
+    tipMat.color.copy(tipColorVal);
     tipMat.opacity = cfg.tipOpacity;
     a.tip.scale.set(cfg.tipLength, cfg.tipWidth, cfg.tipWidth);
 
@@ -442,13 +468,13 @@ export default function TronGrid({
 
     const anims: AnimatedLine[] = [];
     const cfg = useLineConfig.getState().config;
-    const lineBase = lineDisplayColor(cfg);
 
     for (const path of gridPaths) {
       if (path.hidden) continue;
       const pts = waypointsToPoints(path.waypoints, gridSpacing);
       const cumDist = computeCumDist(pts);
       const pointCount = pts.length;
+      const lineBase = pathLineDisplayColor(path.lineColor, cfg);
 
       const positions = new Float32Array(pointCount * 3);
       for (let i = 0; i < pointCount; i++) {
@@ -468,7 +494,7 @@ export default function TronGrid({
       line.frustumCulled = false;
 
       const tipMat = new THREE.MeshBasicMaterial({
-        color: cfg.tipColor,
+        color: pathTipDisplayColor(path.lineColor, cfg),
         transparent: true,
         opacity: cfg.tipOpacity,
         toneMapped: false,
@@ -496,6 +522,7 @@ export default function TronGrid({
         colorsVert,
         lastLeadSlot: -1,
         savedLinePos: [0, 0, 0],
+        pathLineColor: path.lineColor,
       });
     }
 
@@ -512,8 +539,8 @@ export default function TronGrid({
     // instead of fossilizing the initial one.
     const unsubscribe = useLineConfig.subscribe((state, prev) => {
       if (!lineColorDirty(state.config, prev.config)) return;
-      const newBase = lineDisplayColor(state.config);
       for (const a of anims) {
+        const newBase = pathLineDisplayColor(a.pathLineColor, state.config);
         fillBodyColor(a.colorsVert, a.pointCount, newBase);
         const segAll = Math.max(0, a.pointCount - 1);
         syncLineSegmentBuffers(a.lineGeo, a.positions, a.colorsVert, segAll);
@@ -535,8 +562,8 @@ export default function TronGrid({
     if (animated) return;
     return useLineConfig.subscribe((state, prev) => {
       if (!lineColorDirty(state.config, prev.config)) return;
-      const lineBase = lineDisplayColor(state.config);
       for (const a of animRef.current) {
+        const lineBase = pathLineDisplayColor(a.pathLineColor, state.config);
         fillBodyColor(a.colorsVert, a.pointCount, lineBase);
         const segAll = Math.max(0, a.pointCount - 1);
         syncLineSegmentBuffers(a.lineGeo, a.positions, a.colorsVert, segAll);

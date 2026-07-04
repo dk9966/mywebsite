@@ -18,7 +18,14 @@ export const useClock = create<ClockStore>((set, get) => ({
   duration: DEFAULT_DURATION,
   paused: false,
   tick: (delta) => {
-    if (!get().paused) set({ time: get().time + delta });
+    const { paused, time, duration } = get();
+    if (paused) return;
+    const next = time + delta;
+    if (next >= duration) {
+      set({ time: duration, paused: true });
+    } else {
+      set({ time: next });
+    }
   },
   seek: (time) => {
     const duration = get().duration;

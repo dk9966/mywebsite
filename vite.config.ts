@@ -8,6 +8,13 @@ export default defineConfig({
     port: 5174,
     strictPort: true,
   },
+  optimizeDeps: {
+    include: [
+      'three/addons/lines/Line2.js',
+      'three/addons/lines/LineGeometry.js',
+      'three/addons/lines/LineMaterial.js',
+    ],
+  },
   plugins: [react(), circuitsTuningSavePlugin()],
   resolve: {
     alias: {

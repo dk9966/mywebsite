@@ -1,12 +1,12 @@
-import { StrictMode, Suspense, useCallback, useEffect, useRef, useState } from "react";
-import type { ElementRef } from "react";
+import { StrictMode, Suspense, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { ArcballControls } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
 import TronCircuitsOutline from "./components/TronCircuitsOutline";
 import CircuitsOutlineCamera from "./components/CircuitsOutlineCamera";
+import FreeOrbitMouseBindings from "./components/FreeOrbitMouseBindings";
 import CircuitSelectionLayer from "./components/CircuitSelection";
 import Controls from "./components/Controls";
 import CircuitTuner from "./components/CircuitTuner";
@@ -101,26 +101,16 @@ function EditPlaybackFreeze() {
 function CircuitsOutlineScene({
   layout,
   onLayout,
-  topView,
+  cinematicMode,
   fov,
 }: {
   layout: CircuitsTracedLayout;
   onLayout: (layout: CircuitsTracedLayout) => void;
-  topView: boolean;
+  cinematicMode: boolean;
   fov: number;
 }) {
   useEffect(() => {
     useLineConfig.getState().set(CIRCUITS_CONFIG_OVERRIDES);
-  }, []);
-
-  const configureArcball = useCallback((ctrl: ElementRef<typeof ArcballControls> | null) => {
-    if (!ctrl) return;
-    ctrl.setGizmosVisible(false);
-    (
-      ctrl as unknown as {
-        setMouseAction(operation: string, mouse: number | string, key?: string | null): boolean;
-      }
-    ).setMouseAction("PAN", 0, "SHIFT");
   }, []);
 
   const [cx, cy, cz] = layout.center;
@@ -128,21 +118,28 @@ function CircuitsOutlineScene({
   return (
     <>
       <color attach="background" args={["#000000"]} />
-      <ArcballControls
-        ref={configureArcball}
+      <OrbitControls
         makeDefault
-        target={[cx, cy, cz]}
-        cursorZoom
+        enableDamping
         dampingFactor={0.12}
         minDistance={layout.span * 0.06}
         maxDistance={layout.span * 6}
+        target={[cx, cy, cz]}
       />
+      <FreeOrbitMouseBindings active={!cinematicMode} />
       <Suspense fallback={null}>
-        <TronCircuitsOutline onLayout={onLayout} />
+        <TronCircuitsOutline
+          onLayout={onLayout}
+          screenLineWidth={cinematicMode ? undefined : 3}
+        />
       </Suspense>
       <EditPlaybackFreeze />
       <CircuitSelectionLayer paths={layout.paths} />
-      <CircuitsOutlineCamera layout={layout} topView={topView} />
+      <CircuitsOutlineCamera
+        layout={layout}
+        cinematicMode={cinematicMode}
+        fov={fov}
+      />
       <CameraFovSync fov={fov} />
       <TronPostFX />
     </>
@@ -153,7 +150,7 @@ function App() {
   useCircuitEditShortcuts();
 
   const [layout, setLayout] = useState(fallbackLayout);
-  const [topView, setTopView] = useState(true);
+  const [cinematicMode, setCinematicMode] = useState(true);
   const [fov, setFov] = useState(DEFAULT_FOV);
   const [cx, , cz] = layout.center;
   const camHeight = layout.span * 1.35;
@@ -186,14 +183,14 @@ function App() {
         <CircuitsOutlineScene
           layout={layout}
           onLayout={setLayout}
-          topView={topView}
+          cinematicMode={cinematicMode}
           fov={fov}
         />
       </Canvas>
       <Controls
         camera={{
-          topView,
-          onTopViewChange: setTopView,
+          cinematicMode,
+          onCinematicModeChange: setCinematicMode,
           fov,
           onFovChange: setFov,
         }}

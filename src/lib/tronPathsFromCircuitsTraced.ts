@@ -982,6 +982,20 @@ function transformWaypoints(
 }
 
 /**
+ * Waypoint transformer matching what `scheduledBaseline` applies to the visible
+ * path set — for auxiliary geometry (e.g. mesh rise wireframes) that must land
+ * in the same world space as the tuned board. Pass the SAME visible paths that
+ * `applyTuning` will schedule so the rotation/scale pivot matches exactly.
+ */
+export function makeBoardTransform(
+  visiblePaths: GridPath[],
+  transform: CircuitTuning["transform"],
+): (waypoints: Vec3[]) => Vec3[] {
+  const center = boardCenterXZ(visiblePaths);
+  return (waypoints) => transformWaypoints(waypoints, transform, center);
+}
+
+/**
  * Geometry + automatic schedule with NO per-line spawn/speed overrides applied.
  * Useful for showing the auto baseline in the tuner and for "bake" snapshots.
  */
