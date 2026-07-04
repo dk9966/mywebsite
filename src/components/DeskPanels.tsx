@@ -1,6 +1,15 @@
 import type { ReactNode } from "react";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { contact } from "../data/resume";
+import {
+  BOOT_TOTAL_MS,
+  bootPanelStartMs,
+  bootSkipped,
+  panelPulseDelayForCell,
+  startBootClock,
+  type PanelBoot,
+} from "../lib/bootSequence";
+import { useBootClock } from "../stores/bootClock";
 import {
   availableColumnHeight,
   availableWidth,
@@ -14,6 +23,7 @@ import {
 import { useDeskLayout } from "../stores/deskLayout";
 import {
   ContactHeaderIcons,
+  EducationPanel,
   ExperiencePanel,
   FeaturedPanel,
   ProfilePanel,
@@ -49,10 +59,11 @@ const CELL_META: Record<CellId, CellMeta> = {
     tag: "03",
     content: <FeaturedPanel />,
   },
-  experience: { title: "Experiences", tag: "04", content: <ExperiencePanel /> },
+  education: { title: "Education", tag: "04", content: <EducationPanel /> },
+  experience: { title: "Experiences", tag: "05", content: <ExperiencePanel /> },
   contact: {
     title: "Contact",
-    tag: "05",
+    tag: "06",
     headerAside: <ContactHeaderIcons />,
     headerOnly: true,
     headerLinks: contact.map((c) => ({ href: c.href, label: c.label })),
@@ -65,6 +76,34 @@ type EdgeRules = {
   top?: (frac: number) => void;
   bottom?: (frac: number) => void;
 };
+
+// Deterministic flicker seeds so each screen blinks to its own rhythm.
+const BOOT_SEEDS: Record<CellId, number> = {
+  profile: 1,
+  skills: 2,
+  featured: 3,
+  education: 4,
+  experience: 5,
+  contact: 6,
+};
+
+// True from mount until the boot sequence has fully played out. Arms the
+// shared clock (WebGL envelopes + CSS delays measure from the same commit)
+// and tears all boot scaffolding down after BOOT_TOTAL_MS.
+function useBootActive(): boolean {
+  const elapsedMs = useBootClock((s) => s.elapsedMs);
+  const paused = useBootClock((s) => s.paused);
+  const scrubbing = useBootClock((s) => s.scrubbing);
+
+  useEffect(() => {
+    if (bootSkipped()) return;
+    startBootClock();
+  }, []);
+
+  if (bootSkipped()) return false;
+  if (paused || scrubbing) return true;
+  return elapsedMs < BOOT_TOTAL_MS;
+}
 
 function handleEdges(handle: ResizeHandle): {
   h?: "left" | "right";
@@ -100,12 +139,15 @@ export default function DeskPanels() {
   const wallHeightPx = useDeskLayout((s) => s.wallHeightPx);
   const colFrac = useDeskLayout((s) => s.colFrac);
   const leftSplit = useDeskLayout((s) => s.leftSplit);
+  const rightSplit = useDeskLayout((s) => s.rightSplit);
   const contactHeightPx = useDeskLayout((s) => s.contactHeightPx);
   const minimizedPanels = useDeskLayout((s) => s.minimizedPanels);
-  const togglePanelMinimized = useDeskLayout((s) => s.togglePanelMinimized);
+
+  const bootActive = useBootActive();
 
   const adjustColBoundary = useDeskLayout((s) => s.adjustColBoundary);
   const adjustLeftSplit = useDeskLayout((s) => s.adjustLeftSplit);
+  const adjustRightSplit = useDeskLayout((s) => s.adjustRightSplit);
 
   const wall = useMemo<WallSize>(
     () => ({ width: wallWidthPx, height: wallHeightPx, gap: WALL_GAP_PX }),
@@ -113,8 +155,8 @@ export default function DeskPanels() {
   );
 
   const fractions = useMemo(
-    () => ({ colFrac, leftSplit, contactHeightPx }),
-    [colFrac, leftSplit, contactHeightPx],
+    () => ({ colFrac, leftSplit, rightSplit, contactHeightPx }),
+    [colFrac, leftSplit, rightSplit, contactHeightPx],
   );
 
   const cells = useMemo(
@@ -144,14 +186,19 @@ export default function DeskPanels() {
         left: (f) => adjustColBoundary(0, -f),
         right: (f) => adjustColBoundary(1, f),
       },
+      education: {
+        left: (f) => adjustColBoundary(1, -f),
+        bottom: (f) => adjustRightSplit(f),
+      },
       experience: {
         left: (f) => adjustColBoundary(1, -f),
+        top: (f) => adjustRightSplit(-f),
       },
       contact: {
         left: (f) => adjustColBoundary(1, -f),
       },
     }),
-    [adjustColBoundary, adjustLeftSplit],
+    [adjustColBoundary, adjustLeftSplit, adjustRightSplit],
   );
 
   const onResize =
@@ -170,6 +217,16 @@ export default function DeskPanels() {
       bent.position[2] * WORLD_PER_CSS_PX,
     ];
     const meta = CELL_META[cell.id];
+    // Staggered power-on per panel; the final pulse sweeps the wall left →
+    // right, so its delay follows the cell's horizontal position.
+    const boot: PanelBoot | undefined =
+      bootActive && !dockIcon
+        ? {
+            startMs: bootPanelStartMs(cell.id),
+            pulseDelayMs: panelPulseDelayForCell(cell.x, wallWidthPx),
+            seed: BOOT_SEEDS[cell.id],
+          }
+        : undefined;
     return (
       <HudScreen
         key={dockIcon ? `dock-${cell.id}` : cell.id}
@@ -189,8 +246,7 @@ export default function DeskPanels() {
         headerOnly={dockIcon ? false : meta.headerOnly}
         compactPadding={meta.compactPadding}
         dockIcon={dockIcon}
-        onMinimize={dockIcon ? undefined : () => togglePanelMinimized(cell.id)}
-        onRestore={dockIcon ? () => togglePanelMinimized(cell.id) : undefined}
+        boot={boot}
         onResizeDelta={dockIcon ? undefined : onResize(cell.id)}
       >
         {meta.content ?? null}

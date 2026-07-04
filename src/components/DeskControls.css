@@ -1,8 +1,6 @@
 .desk-controls {
   position: fixed;
-  top: 12px;
-  left: 12px;
-  width: 260px;
+  width: 300px;
   max-height: calc(100vh - 24px);
   overflow-y: auto;
   background: rgba(8, 14, 18, 0.9);
@@ -17,6 +15,16 @@
   isolation: isolate;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  cursor: grab;
+  user-select: none;
+}
+
+.desk-controls--dragging {
+  cursor: grabbing;
+}
+
+.desk-controls--dragging * {
+  cursor: grabbing;
 }
 
 .desk-controls--minimized {
@@ -90,10 +98,86 @@
 
 .desk-controls__field {
   display: grid;
-  grid-template-columns: 64px 1fr 40px;
+  grid-template-columns: 72px 1fr 40px;
   align-items: center;
   gap: 8px;
   margin-bottom: 6px;
+}
+
+.desk-controls__playback {
+  margin-bottom: 4px;
+}
+
+.desk-controls__playback-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.desk-controls__time {
+  margin-left: auto;
+  color: rgba(174, 234, 238, 0.65);
+  font-variant-numeric: tabular-nums;
+  font-size: 10px;
+}
+
+.desk-controls__slider--time {
+  width: 100%;
+}
+
+.desk-controls__checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.desk-controls__checkbox {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: #66f0f0;
+  cursor: pointer;
+}
+
+.desk-controls__checkbox-label {
+  color: rgba(174, 234, 238, 0.9);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.desk-controls__boot-part {
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(102, 240, 240, 0.08);
+}
+
+.desk-controls__boot-part-title {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(174, 234, 238, 0.75);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.desk-controls__boot-part:last-of-type {
+  border-bottom: none;
+  margin-bottom: 4px;
+}
+
+.desk-controls__boot-stage-actions {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.desk-controls__boot-stage-actions .desk-controls__btn {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 10px;
 }
 
 .desk-controls__label {

@@ -1,0 +1,436 @@
+/* Boot-sequence overlays and content reveal for the desk HUD panels.
+ *
+ * Timeline is scrub-driven: every animation stays paused and its delay is
+ * recomputed each frame from --boot-elapsed (published on :root by
+ * BootClockDriver). Per-part offsets/durations come from --boot-off-* /
+ * --boot-dur-* (bootTuning store). Visibility toggles use --boot-show-* (0|1).
+ * Keep in sync with src/lib/bootParts.ts and src/lib/bootSequence.ts.
+ */
+
+.boot-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+  color: #9cf8f8;
+  animation: boot-fx-out var(--boot-dur-scaffoldFade) linear
+    calc(var(--boot-off-scaffoldFade) - var(--boot-elapsed)) both paused;
+}
+
+.boot-fx:not(.boot-fx--scaffold-fade) {
+  animation: none;
+}
+
+@keyframes boot-fx-out {
+  to {
+    opacity: 0;
+  }
+}
+
+.boot-fx__flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 90% at 50% 45%,
+    rgba(156, 248, 248, 0.28),
+    rgba(30, 90, 110, 0.08) 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  animation: boot-flash var(--boot-dur-powerFlash) linear
+    calc(var(--boot-delay) + var(--boot-off-powerFlash) - var(--boot-elapsed)) both
+    paused;
+}
+
+.boot-fx__flash:not(.boot-fx__part--on) {
+  display: none;
+}
+
+@keyframes boot-flash {
+  0% { opacity: 0; }
+  6% { opacity: 0.55; }
+  9% { opacity: 0; }
+  18% { opacity: 0.3; }
+  22% { opacity: 0.04; }
+  34% { opacity: 0.65; }
+  38% { opacity: 0; }
+  55% { opacity: 0.35; }
+  60% { opacity: 0.05; }
+  78% { opacity: 0.5; }
+  84% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.boot-fx__noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  mix-blend-mode: screen;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(156, 248, 248, 0.14) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(120, 220, 255, 0.1) 0 2px,
+      transparent 2px 5px,
+      rgba(156, 248, 248, 0.06) 5px 7px,
+      transparent 7px 11px
+    );
+  animation:
+    boot-noise-burst var(--boot-dur-staticNoise) steps(8, jump-none)
+      calc(var(--boot-delay) + var(--boot-off-staticNoise) - var(--boot-elapsed)) both
+      paused,
+    boot-noise-shift var(--boot-dur-staticNoise) steps(7)
+      calc(var(--boot-delay) + var(--boot-off-staticNoise) - var(--boot-elapsed)) both
+      paused;
+}
+
+.boot-fx__noise:not(.boot-fx__part--on) {
+  display: none;
+}
+
+@keyframes boot-noise-burst {
+  0% { opacity: 0; }
+  10% { opacity: 0.8; }
+  25% { opacity: 0.1; }
+  40% { opacity: 0.65; }
+  55% { opacity: 0.15; }
+  70% { opacity: 0.5; }
+  85% { opacity: 0.08; }
+  100% { opacity: 0; }
+}
+
+@keyframes boot-noise-shift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 -46px, 37px 0; }
+}
+
+.boot-fx__scan {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  top: -3px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(156, 248, 248, 0.9),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(156, 248, 248, 0.7);
+  opacity: 0;
+}
+
+.boot-fx__scan--a {
+  animation: boot-scan var(--boot-dur-scanA) cubic-bezier(0.3, 0, 0.7, 1)
+    calc(var(--boot-delay) + var(--boot-off-scanA) - var(--boot-elapsed)) both paused;
+}
+
+.boot-fx__scan--b {
+  animation: boot-scan var(--boot-dur-scanB) cubic-bezier(0.4, 0, 0.6, 1)
+    calc(var(--boot-delay) + var(--boot-off-scanB) - var(--boot-elapsed)) both paused;
+}
+
+.boot-fx__scan:not(.boot-fx__part--on) {
+  display: none;
+}
+
+@keyframes boot-scan {
+  0% { top: -3px; opacity: 0; }
+  8% { opacity: 0.9; }
+  45% { opacity: 0.5; }
+  90% { opacity: 0.85; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.boot-fx__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-image:
+    linear-gradient(rgba(156, 248, 248, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(156, 248, 248, 0.13) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: boot-grid var(--boot-dur-alignGrid) steps(3, jump-none)
+    calc(var(--boot-delay) + var(--boot-off-alignGrid) - var(--boot-elapsed)) forwards
+    paused;
+}
+
+.boot-fx__grid:not(.boot-fx__part--on) {
+  display: none;
+}
+
+@keyframes boot-grid {
+  0% { opacity: 0; }
+  40% { opacity: 0.6; }
+  60% { opacity: 0.12; }
+  100% { opacity: 0.3; }
+}
+
+.boot-fx__diag {
+  position: absolute;
+  top: 8%;
+  left: 6%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+  font-family: "SF Mono", "Cascadia Mono", Consolas, monospace;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.boot-fx__diag--compact {
+  top: 12%;
+  font-size: 12px;
+  gap: 0.25em;
+}
+
+.boot-fx__diag:not(.boot-fx__part--on) {
+  display: none;
+}
+
+.boot-fx__diag-line {
+  opacity: 0;
+  animation: boot-diag var(--boot-dur-diagText) steps(2, jump-none)
+    calc(var(--boot-delay) + var(--boot-off-diagText) + var(--i) * var(--boot-diag-stagger) - var(--boot-elapsed))
+    forwards paused;
+}
+
+@keyframes boot-diag {
+  0% { opacity: 0; }
+  25% { opacity: 0.85; }
+  45% { opacity: 0.15; }
+  70% { opacity: 0.7; }
+  88% { opacity: 0.12; }
+  100% { opacity: 0; }
+}
+
+.boot-fx__reticle {
+  position: absolute;
+  right: 7%;
+  top: 50%;
+  width: 32%;
+  max-width: 170px;
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: currentColor;
+  opacity: 0;
+  animation: boot-reticle-in var(--boot-reticle-in-dur) linear
+    calc(var(--boot-delay) + var(--boot-off-reticle) - var(--boot-elapsed)) forwards paused;
+}
+
+.boot-fx__reticle:not(.boot-fx__part--on) {
+  display: none;
+}
+
+@keyframes boot-reticle-in {
+  from { opacity: 0; }
+  to { opacity: 0.5; }
+}
+
+.boot-fx__arc {
+  stroke-width: 1.6;
+  stroke-dashoffset: 100;
+  transform-origin: 60px 60px;
+}
+
+.boot-fx__arc--outer {
+  stroke-dasharray: 42 58;
+  animation: boot-arc var(--boot-dur-reticle) cubic-bezier(0.2, 0, 0.3, 1)
+    calc(var(--boot-delay) + var(--boot-off-reticle) - var(--boot-elapsed)) both paused;
+}
+
+.boot-fx__arc--mid {
+  stroke-dasharray: 26 74;
+  animation:
+    boot-arc var(--boot-dur-reticle) cubic-bezier(0.2, 0, 0.3, 1)
+      calc(var(--boot-delay) + var(--boot-off-reticle) + var(--boot-reticle-arc-offset-mid) - var(--boot-elapsed)) both
+      paused,
+    boot-spin var(--boot-reticle-spin-dur) linear
+      calc(var(--boot-delay) + var(--boot-off-reticle) + var(--boot-reticle-arc-offset-mid) - var(--boot-elapsed)) both
+      paused;
+}
+
+.boot-fx__arc--inner {
+  stroke-dasharray: 14 86;
+  animation: boot-arc calc(var(--boot-dur-reticle) * 0.86) cubic-bezier(0.2, 0, 0.3, 1)
+    calc(var(--boot-delay) + var(--boot-off-reticle) + var(--boot-reticle-arc-offset-inner) - var(--boot-elapsed)) both
+    paused;
+}
+
+@keyframes boot-arc {
+  from { stroke-dashoffset: 100; }
+  to { stroke-dashoffset: 22; }
+}
+
+@keyframes boot-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(80deg); }
+}
+
+.boot-fx__readout {
+  position: absolute;
+  left: 6%;
+  bottom: 9%;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 12%;
+  max-height: 46px;
+}
+
+.boot-fx__readout:not(.boot-fx__part--on) {
+  display: none;
+}
+
+.boot-fx__bar {
+  width: 7px;
+  height: calc(18% + var(--i) * 13%);
+  background: linear-gradient(
+    180deg,
+    rgba(156, 248, 248, 0.85),
+    rgba(156, 248, 248, 0.2)
+  );
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: boot-bar var(--boot-dur-readoutBars) steps(4, jump-none)
+    calc(
+      var(--boot-delay) + var(--boot-off-readoutBars) + var(--i) * var(--boot-readout-stagger) -
+        var(--boot-elapsed)
+    )
+    both paused;
+}
+
+@keyframes boot-bar {
+  0% { transform: scaleY(0); }
+  35% { transform: scaleY(1.15); }
+  55% { transform: scaleY(0.5); }
+  100% { transform: scaleY(1); }
+}
+
+.boot-fx-pulse {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.boot-fx-pulse:not(.boot-fx__part--on) {
+  display: none;
+}
+
+.boot-fx-pulse::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  bottom: -10%;
+  left: -10%;
+  width: 6.8%;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(180, 255, 255, 0.16) 35%,
+    rgba(215, 255, 255, 0.34) 50%,
+    rgba(180, 255, 255, 0.16) 65%,
+    transparent
+  );
+  filter: blur(2px);
+  animation: boot-pulse var(--boot-dur-onlinePulse) cubic-bezier(0.3, 0, 0.4, 1)
+    calc(var(--pulse-delay) - var(--boot-elapsed)) both paused;
+}
+
+/* Sweep in panel-relative units (left %) rather than element-relative
+   translateX %, so the bar crosses the full panel no matter how thin it is
+   (left % resolves against the container; translateX % against the bar). */
+@keyframes boot-pulse {
+  from { left: -10%; }
+  to { left: 104%; }
+}
+
+.hud-screen__face--boot {
+  animation: boot-jitter var(--boot-dur-contentJitter) steps(2, jump-none)
+    calc(var(--boot-delay) + var(--boot-off-contentJitter) - var(--boot-elapsed)) both
+    paused;
+}
+
+.hud-screen__face--boot:not(.boot-part--contentJitter) {
+  animation: none;
+}
+
+@keyframes boot-jitter {
+  0%, 100% { transform: translate(0, 0); }
+  12% { transform: translate(1.5px, -1px); }
+  26% { transform: translate(-1.5px, 0.5px); }
+  41% { transform: translate(1px, 1px); }
+  58% { transform: translate(-1px, -1.5px); }
+  74% { transform: translate(0.5px, 1px); }
+  88% { transform: translate(-0.5px, 0); }
+}
+
+.hud-screen__face--boot.boot-part--titleReveal .hud-screen__handle {
+  animation: boot-text-in var(--boot-dur-titleReveal) linear
+    calc(var(--boot-delay) + var(--boot-off-titleReveal) - var(--boot-elapsed)) both
+    paused;
+}
+
+.hud-screen__face--boot:not(.boot-part--titleReveal) .hud-screen__handle {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes boot-text-in {
+  0% { opacity: 0; clip-path: inset(0 82% 0 0); transform: translateX(-3px); }
+  10% { opacity: 0.75; }
+  16% { opacity: 0.1; }
+  28% { opacity: 0.8; clip-path: inset(0 46% 0 0); }
+  36% { opacity: 0.25; }
+  52% { opacity: 0.9; clip-path: inset(0 12% 0 0); transform: translateX(1.5px); }
+  62% { opacity: 0.4; }
+  78% { opacity: 1; clip-path: inset(0 0 0 0); transform: translateX(0); }
+  86% { opacity: 0.6; }
+  100% { opacity: 1; clip-path: inset(0 0 0 0); transform: none; }
+}
+
+.hud-screen__face--boot.boot-part--bodyReveal .hud-screen__body {
+  animation: boot-body-in var(--boot-dur-bodyReveal) linear
+    calc(var(--boot-delay) + var(--boot-off-bodyReveal) - var(--boot-elapsed)) both
+    paused;
+}
+
+.hud-screen__face--boot:not(.boot-part--bodyReveal) .hud-screen__body {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes boot-body-in {
+  0% { opacity: 0; clip-path: inset(4% 0 78% 0); transform: translateY(5px); }
+  9% { opacity: 0.5; }
+  14% { opacity: 0.08; }
+  26% { opacity: 0.55; clip-path: inset(0 0 52% 0); }
+  34% { opacity: 0.2; transform: translateY(3px); }
+  48% { opacity: 0.7; clip-path: inset(0 0 26% 0); }
+  58% { opacity: 0.35; }
+  72% { opacity: 0.85; clip-path: inset(0 0 6% 0); transform: translateY(1px); }
+  82% { opacity: 0.55; }
+  100% { opacity: 1; clip-path: inset(0); transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-fx,
+  .boot-fx-pulse {
+    display: none;
+  }
+
+  .hud-screen__face--boot,
+  .hud-screen__face--boot .hud-screen__handle,
+  .hud-screen__face--boot .hud-screen__body {
+    animation: none;
+  }
+}

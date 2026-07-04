@@ -1,6 +1,6 @@
 // Pure layout math for the desk HUD. Two responsibilities, no React:
 //
-//   solveWall      grid fractions -> 5 flat panel rects (in wall CSS px)
+//   solveWall      grid fractions -> 6 flat panel rects (in wall CSS px)
 //   wallToCylinder a flat point   -> a 3D position + yaw on a vertical cylinder
 //
 // Keeping these pure makes the reflow easy to reason about and test: the
@@ -11,6 +11,7 @@ export type CellId =
   | "profile"
   | "skills"
   | "featured"
+  | "education"
   | "experience"
   | "contact";
 
@@ -23,6 +24,7 @@ export const CELL_ORDER: CellId[] = [
   "profile",
   "skills",
   "featured",
+  "education",
   "experience",
   "contact",
 ];
@@ -32,6 +34,8 @@ export interface WallFractions {
   colFrac: [number, number, number];
   /** Fraction of the left column's height given to its top cell. */
   leftSplit: number;
+  /** Fraction of the education/experience stack given to education. */
+  rightSplit: number;
   /** Fixed height of the contact strip in CSS px. */
   contactHeightPx: number;
 }
@@ -143,13 +147,13 @@ export function solveWall(
   const profileMin = isMinimized(minimized, "profile");
   const skillsMin = isMinimized(minimized, "skills");
   const featuredMin = isMinimized(minimized, "featured");
+  const educationMin = isMinimized(minimized, "education");
   const experienceMin = isMinimized(minimized, "experience");
   const contactMin = isMinimized(minimized, "contact");
 
   const leftTopH = f.leftSplit * availH;
   const leftBottomH = availH - leftTopH;
   const rightBottomH = Math.min(f.contactHeightPx, availH - availH * 0.22);
-  const rightTopH = availH - rightBottomH;
 
   // Stacked cells: top cell sits in the upper half, bottom in the lower.
   const topCy = (h: number) => size.height / 2 - h / 2;
@@ -190,14 +194,113 @@ export function solveWall(
     cells.push({ id: "featured", x: cx1, y: 0, width: w1, height: size.height });
   }
 
-  if (!experienceMin && !contactMin) {
+  const showEducation = !educationMin;
+  const showExperience = !experienceMin;
+  const showContact = !contactMin;
+  const rightCount =
+    Number(showEducation) + Number(showExperience) + Number(showContact);
+
+  if (rightCount === 1) {
+    if (showContact) {
+      cells.push({
+        id: "contact",
+        x: cx2,
+        y: bottomCy(rightBottomH),
+        width: w2,
+        height: rightBottomH,
+      });
+    } else if (showEducation) {
+      cells.push({
+        id: "education",
+        x: cx2,
+        y: 0,
+        width: w2,
+        height: availH,
+      });
+    } else {
+      cells.push({
+        id: "experience",
+        x: cx2,
+        y: 0,
+        width: w2,
+        height: availH,
+      });
+    }
+  } else if (rightCount === 2) {
+    if (showEducation && showExperience) {
+      const topH = f.rightSplit * availH;
+      const bottomH = availH - topH;
+      cells.push(
+        {
+          id: "education",
+          x: cx2,
+          y: topCy(topH),
+          width: w2,
+          height: topH,
+        },
+        {
+          id: "experience",
+          x: cx2,
+          y: bottomCy(bottomH),
+          width: w2,
+          height: bottomH,
+        },
+      );
+    } else if (showEducation && showContact) {
+      const eduH = size.height - rightBottomH - size.gap;
+      cells.push(
+        {
+          id: "education",
+          x: cx2,
+          y: topCy(eduH),
+          width: w2,
+          height: eduH,
+        },
+        {
+          id: "contact",
+          x: cx2,
+          y: bottomCy(rightBottomH),
+          width: w2,
+          height: rightBottomH,
+        },
+      );
+    } else {
+      const expH = availH - rightBottomH;
+      cells.push(
+        {
+          id: "experience",
+          x: cx2,
+          y: topCy(expH),
+          width: w2,
+          height: expH,
+        },
+        {
+          id: "contact",
+          x: cx2,
+          y: bottomCy(rightBottomH),
+          width: w2,
+          height: rightBottomH,
+        },
+      );
+    }
+  } else if (rightCount === 3) {
+    const stackAvail = size.height - rightBottomH - 2 * size.gap;
+    const eduH = f.rightSplit * stackAvail;
+    const expH = stackAvail - eduH;
     cells.push(
+      {
+        id: "education",
+        x: cx2,
+        y: topCy(eduH),
+        width: w2,
+        height: eduH,
+      },
       {
         id: "experience",
         x: cx2,
-        y: topCy(rightTopH),
+        y: size.height / 2 - eduH - size.gap - expH / 2,
         width: w2,
-        height: rightTopH,
+        height: expH,
       },
       {
         id: "contact",
@@ -207,22 +310,6 @@ export function solveWall(
         height: rightBottomH,
       },
     );
-  } else if (!experienceMin) {
-    cells.push({
-      id: "experience",
-      x: cx2,
-      y: 0,
-      width: w2,
-      height: availH,
-    });
-  } else if (!contactMin) {
-    cells.push({
-      id: "contact",
-      x: cx2,
-      y: bottomCy(rightBottomH),
-      width: w2,
-      height: rightBottomH,
-    });
   }
 
   return cells;

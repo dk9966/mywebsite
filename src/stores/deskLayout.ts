@@ -3,7 +3,7 @@ import type { CellId } from "../lib/panelWall";
 
 // Shared source of truth for the desk HUD: camera, the global panel
 // curvature + glass look, and the flat-wall grid fractions that the layout
-// solver turns into 5 panel rects. The 3D resize drags and the HTML slider
+// solver turns into 6 panel rects. The 3D resize drags and the HTML slider
 // overlay both read/write here so they stay in sync.
 
 export interface DeskCamera {
@@ -44,7 +44,23 @@ export interface DeskLayoutDefaults {
   contactIconSizePx: number;
   colFrac: [number, number, number];
   leftSplit: number;
+  rightSplit: number;
+  /** Timeline body base size in CSS px — Education panel. */
+  eduBaseFontPx: number;
+  eduDegreeEm: number;
+  eduDateEm: number;
+  eduSchoolEm: number;
+  /** Timeline body base size in CSS px — Experience panel. */
+  expBaseFontPx: number;
+  expRoleEm: number;
+  expDateEm: number;
+  expOrgEm: number;
 }
+
+const MIN_TIMELINE_FONT_PX = 10;
+export const MAX_TIMELINE_FONT_PX = 36;
+const MIN_TYPE_EM = 0.6;
+export const MAX_TYPE_EM = 1.6;
 
 const FACTORY_DEFAULTS: DeskLayoutDefaults = {
   camera: { x: 0, y: 2.15, z: 2.8, fov: 40 },
@@ -52,22 +68,31 @@ const FACTORY_DEFAULTS: DeskLayoutDefaults = {
   wallAnchor: { x: 0, y: 2.05, z: -1.85 },
   wallWidthPx: 2050,
   wallHeightPx: 1010,
-  curveRadiusPx: 880,
+  curveRadiusPx: 1425,
   bgOpacity: 0.5,
   bgBlur: 3,
-  bezelEmission: 2.4,
-  bezelLineWidth: 2.6,
+  bezelEmission: 1.4,
+  bezelLineWidth: 1.3,
   bezelOpacity: 1,
-  bloomIntensity: 1.1,
+  bloomIntensity: 3.45,
   bloomThreshold: 0.82,
   bloomRadius: 0.75,
-  bloomSmoothing: 0.15,
-  headerFontPx: 28,
-  contentPaddingPx: 20,
+  bloomSmoothing: 0.63,
+  headerFontPx: 38,
+  contentPaddingPx: 39,
   contactHeightPx: 96,
   contactIconSizePx: 40,
-  colFrac: [0.3, 0.4, 0.3],
+  colFrac: [0.3, 0.35, 0.35],
   leftSplit: 0.56,
+  rightSplit: 0.44,
+  eduBaseFontPx: 22,
+  eduDegreeEm: 1.05,
+  eduDateEm: 0.82,
+  eduSchoolEm: 0.94,
+  expBaseFontPx: 20,
+  expRoleEm: 1.12,
+  expDateEm: 0.82,
+  expOrgEm: 0.94,
 };
 
 const STORAGE_KEY = "desk-layout-defaults";
@@ -77,9 +102,12 @@ const STORAGE_KEY = "desk-layout-defaults";
 const MIN_HEADER_FONT_PX = 9;
 export const MAX_HEADER_FONT_PX = 56;
 const MIN_SPLIT = 0.22;
+export const MIN_PANEL_SPLIT = MIN_SPLIT;
+export const MAX_PANEL_SPLIT = 1 - MIN_SPLIT;
 export const MIN_CONTACT_HEIGHT_PX = 64;
 export const MAX_CONTACT_HEIGHT_PX = 160;
-const MIN_COL_FRAC = MIN_SPLIT;
+export const MIN_COL_FRAC = MIN_SPLIT;
+export const MAX_COL_FRAC = 1 - 2 * MIN_COL_FRAC;
 
 const clampContactHeightPx = (px: number, wallHeightPx: number) => {
   const availH = wallHeightPx - 28;
@@ -110,6 +138,15 @@ function normalizeLayoutDefaults(
   }
   return {
     ...cloneDefaults(d),
+    rightSplit: d.rightSplit ?? FACTORY_DEFAULTS.rightSplit,
+    eduBaseFontPx: d.eduBaseFontPx ?? FACTORY_DEFAULTS.eduBaseFontPx,
+    eduDegreeEm: d.eduDegreeEm ?? FACTORY_DEFAULTS.eduDegreeEm,
+    eduDateEm: d.eduDateEm ?? FACTORY_DEFAULTS.eduDateEm,
+    eduSchoolEm: d.eduSchoolEm ?? FACTORY_DEFAULTS.eduSchoolEm,
+    expBaseFontPx: d.expBaseFontPx ?? FACTORY_DEFAULTS.expBaseFontPx,
+    expRoleEm: d.expRoleEm ?? FACTORY_DEFAULTS.expRoleEm,
+    expDateEm: d.expDateEm ?? FACTORY_DEFAULTS.expDateEm,
+    expOrgEm: d.expOrgEm ?? FACTORY_DEFAULTS.expOrgEm,
     contactHeightPx: clampContactHeightPx(
       contactHeightPx ?? FACTORY_DEFAULTS.contactHeightPx,
       wallHeightPx,
@@ -152,6 +189,15 @@ function snapshotDefaults(state: DeskLayoutStore): DeskLayoutDefaults {
     contactIconSizePx: state.contactIconSizePx,
     colFrac: state.colFrac,
     leftSplit: state.leftSplit,
+    rightSplit: state.rightSplit,
+    eduBaseFontPx: state.eduBaseFontPx,
+    eduDegreeEm: state.eduDegreeEm,
+    eduDateEm: state.eduDateEm,
+    eduSchoolEm: state.eduSchoolEm,
+    expBaseFontPx: state.expBaseFontPx,
+    expRoleEm: state.expRoleEm,
+    expDateEm: state.expDateEm,
+    expOrgEm: state.expOrgEm,
   });
 }
 
@@ -183,15 +229,27 @@ interface DeskLayoutStore extends DeskLayoutDefaults {
   setContentPaddingPx: (v: number) => void;
   setContactHeightPx: (v: number) => void;
   setContactIconSizePx: (v: number) => void;
+  setEduBaseFontPx: (v: number) => void;
+  setEduDegreeEm: (v: number) => void;
+  setEduDateEm: (v: number) => void;
+  setEduSchoolEm: (v: number) => void;
+  setExpBaseFontPx: (v: number) => void;
+  setExpRoleEm: (v: number) => void;
+  setExpDateEm: (v: number) => void;
+  setExpOrgEm: (v: number) => void;
 
   // Move the shared boundary between two adjacent columns. boundary 0 sits
   // between col 0 and col 1, boundary 1 between col 1 and col 2. A positive
   // delta grows the left column at the expense of the right one; the total
   // width never changes.
   adjustColBoundary: (boundary: 0 | 1, deltaFrac: number) => void;
+  /** Set one column's width fraction; an adjacent column absorbs the delta. */
+  setColFrac: (column: 0 | 1 | 2, frac: number) => void;
   // Move the horizontal splitter inside the left / right column. A positive
   // delta grows the top cell at the expense of the bottom one.
   adjustLeftSplit: (deltaFrac: number) => void;
+  adjustRightSplit: (deltaFrac: number) => void;
+  setRightSplit: (v: number) => void;
 
   reset: () => void;
   /** Persist the live slider values as what "Reset defaults" restores to. */
@@ -214,13 +272,17 @@ export const useDeskLayout = create<DeskLayoutStore>((set, get) => ({
 
   setCamera: (patch) => set({ camera: { ...get().camera, ...patch } }),
   setLookAt: (patch) => set({ lookAt: { ...get().lookAt, ...patch } }),
-  setWallAnchor: (patch) => set({ wallAnchor: { ...get().wallAnchor, ...patch } }),
+  setWallAnchor: (patch) =>
+    set({ wallAnchor: { ...get().wallAnchor, ...patch } }),
   setWallWidthPx: (v) => set({ wallWidthPx: clamp(v, 800, 2400) }),
   setWallHeightPx: (v) => {
     const wallHeightPx = clamp(v, 300, 1800);
     set({
       wallHeightPx,
-      contactHeightPx: clampContactHeightPx(get().contactHeightPx, wallHeightPx),
+      contactHeightPx: clampContactHeightPx(
+        get().contactHeightPx,
+        wallHeightPx,
+      ),
     });
   },
   setCurveRadiusPx: (v) => set({ curveRadiusPx: clamp(v, 500, 1500) }),
@@ -241,6 +303,23 @@ export const useDeskLayout = create<DeskLayoutStore>((set, get) => ({
       contactHeightPx: clampContactHeightPx(v, get().wallHeightPx),
     }),
   setContactIconSizePx: (v) => set({ contactIconSizePx: clamp(v, 20, 72) }),
+
+  setEduBaseFontPx: (v) =>
+    set({
+      eduBaseFontPx: clamp(v, MIN_TIMELINE_FONT_PX, MAX_TIMELINE_FONT_PX),
+    }),
+  setEduDegreeEm: (v) =>
+    set({ eduDegreeEm: clamp(v, MIN_TYPE_EM, MAX_TYPE_EM) }),
+  setEduDateEm: (v) => set({ eduDateEm: clamp(v, MIN_TYPE_EM, MAX_TYPE_EM) }),
+  setEduSchoolEm: (v) =>
+    set({ eduSchoolEm: clamp(v, MIN_TYPE_EM, MAX_TYPE_EM) }),
+  setExpBaseFontPx: (v) =>
+    set({
+      expBaseFontPx: clamp(v, MIN_TIMELINE_FONT_PX, MAX_TIMELINE_FONT_PX),
+    }),
+  setExpRoleEm: (v) => set({ expRoleEm: clamp(v, MIN_TYPE_EM, MAX_TYPE_EM) }),
+  setExpDateEm: (v) => set({ expDateEm: clamp(v, MIN_TYPE_EM, MAX_TYPE_EM) }),
+  setExpOrgEm: (v) => set({ expOrgEm: clamp(v, MIN_TYPE_EM, MAX_TYPE_EM) }),
 
   adjustColBoundary: (boundary, delta) => {
     const f = [...get().colFrac] as [number, number, number];
@@ -263,8 +342,33 @@ export const useDeskLayout = create<DeskLayoutStore>((set, get) => ({
     set({ colFrac: f });
   },
 
+  setColFrac: (column, frac) => {
+    frac = clamp(frac, MIN_COL_FRAC, MAX_COL_FRAC);
+    const f = get().colFrac;
+    const delta = frac - f[column];
+    if (Math.abs(delta) < 1e-6) return;
+    if (column === 0) {
+      get().adjustColBoundary(0, delta);
+    } else if (column === 1) {
+      if (delta > 0) get().adjustColBoundary(1, delta);
+      else get().adjustColBoundary(0, delta);
+    } else {
+      get().adjustColBoundary(1, -delta);
+    }
+  },
+
   adjustLeftSplit: (delta) =>
-    set({ leftSplit: clamp(get().leftSplit + delta, MIN_SPLIT, 1 - MIN_SPLIT) }),
+    set({
+      leftSplit: clamp(get().leftSplit + delta, MIN_SPLIT, 1 - MIN_SPLIT),
+    }),
+
+  adjustRightSplit: (delta) =>
+    set({
+      rightSplit: clamp(get().rightSplit + delta, MIN_SPLIT, 1 - MIN_SPLIT),
+    }),
+
+  setRightSplit: (v) =>
+    set({ rightSplit: clamp(v, MIN_PANEL_SPLIT, MAX_PANEL_SPLIT) }),
 
   reset: () => set({ ...cloneDefaults(savedDefaults), minimizedPanels: [] }),
 

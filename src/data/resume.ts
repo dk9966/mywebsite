@@ -45,16 +45,16 @@ export interface ContactLink {
 export const profile = {
   initials: "DK",
   name: "Daniel Ku",
-  role: "Full-Stack Software Engineer",
+  role: "Full-stack Developer",
   education: [
     {
-      degree: "M.S. Computer Science",
-      school: "UIUC",
+      degree: "MCS Computer Science",
+      school: "University of Illinois Urbana-Champaign",
       period: "Jan 2025 – Present",
     },
     {
       degree: "B.S. Computer Science, Honors",
-      school: "UIUC",
+      school: "University of Illinois Urbana-Champaign",
       period: "Aug 2021 – Dec 2024",
     },
   ] satisfies EducationEntry[],
@@ -66,7 +66,10 @@ export const profile = {
 };
 
 export const skillGroups: SkillGroup[] = [
-  { label: "Languages", items: ["Python", "TypeScript", "Java", "C++", "Rust"] },
+  {
+    label: "Languages",
+    items: ["Python", "TypeScript", "Java", "C++", "Rust"],
+  },
   {
     label: "DevOps & Cloud",
     items: ["Cursor MCP", "Docker", "AWS", "Railway"],

@@ -1,9 +1,16 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import type { CSSProperties, PointerEvent as ReactPointerEvent, ReactNode } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { Html, Line as DreiLine } from "@react-three/drei";
 import * as THREE from "three";
 import { useDeskLayout } from "../stores/deskLayout";
+import { useBootTuning } from "../stores/bootTuning";
+import {
+  bootElapsedMs,
+  panelBootVisual,
+  type PanelBoot,
+} from "../lib/bootSequence";
+import { BootFx, BootPulse } from "./BootFx";
 import "./HudScreen.css";
 import "./hudContactPortal.css";
 
@@ -51,7 +58,6 @@ type ResizeDrag = {
   pointerId: number;
   prevX: number;
   prevY: number;
-  cssScale: number;
   handle: ResizeHandle;
 };
 
@@ -86,6 +92,8 @@ export interface HudScreenProps {
   compactPadding?: boolean;
   /** Collapsed dock icon — shows the first letter and restores on click. */
   dockIcon?: boolean;
+  /** Power-on boot config; present only while the startup sequence runs. */
+  boot?: PanelBoot;
   onMinimize?: () => void;
   onRestore?: () => void;
   /** Incremental resize feedback: dW/dH are this panel's signed size change
@@ -111,17 +119,36 @@ export default function HudScreen({
   hideHeader = false,
   compactPadding = false,
   dockIcon = false,
+  boot,
   onMinimize,
   onRestore,
   onResizeDelta,
   children,
 }: HudScreenProps) {
   const contentPaddingPx = useDeskLayout((s) => s.contentPaddingPx);
+  const bootParts = useBootTuning((s) => s.parts);
   const groupRef = useRef<THREE.Group>(null);
-  const camera = useThree((s) => s.camera);
-  const size = useThree((s) => s.size);
+  const handlesRef = useRef<HTMLDivElement>(null);
 
   const resizeDrag = useRef<ResizeDrag | null>(null);
+
+  // Map screen-pointer travel to panel CSS px using the handle overlay's
+  // projected size — accurate on CSS3D bent panels (camera distance alone is not).
+  const screenToPanelScale = useCallback(() => {
+    const el = handlesRef.current;
+    if (!el) return null;
+    const rect = el.getBoundingClientRect();
+    if (rect.width < 1 || rect.height < 1) return null;
+    return { sx: widthPx / rect.width, sy: heightPx / rect.height };
+  }, [widthPx, heightPx]);
+
+  // Bow toward the viewer makes the bent bezel read wider than a flat W×H box;
+  // extend horizontal hit zones so grabs sit on the visible edge, not inside it.
+  const edgeOutsetPx = useMemo(() => {
+    const halfAngle = widthPx / (2 * curveRadiusPx);
+    const bowPx = curveRadiusPx * (1 - Math.cos(halfAngle));
+    return Math.round(Math.min(12, 5 + bowPx * 0.02));
+  }, [widthPx, curveRadiusPx]);
 
   useEffect(() => {
     const g = groupRef.current;
@@ -135,47 +162,37 @@ export default function HudScreen({
   // Screen-px → panel-CSS-px scale at the panel's current depth. Collapses to
   // ~1 when the panel sits at its calibrated distance, so cursor and edge
   // travel match 1:1 there.
-  const captureCssScale = useCallback((): number | null => {
-    const g = groupRef.current;
-    if (!g) return null;
-    const persp = camera as THREE.PerspectiveCamera;
-    const distance = camera.position.distanceTo(g.position);
-    const fovRad = (persp.fov * Math.PI) / 180;
-    const pixelToWorld = (2 * distance * Math.tan(fovRad / 2)) / size.height;
-    return pixelToWorld / WORLD_PER_CSS_PX;
-  }, [camera, size.height]);
-
   const onResizePointerDown = useCallback(
     (handle: ResizeHandle) => (e: ReactPointerEvent<HTMLDivElement>) => {
       e.stopPropagation();
-      const cssScale = captureCssScale();
-      if (cssScale == null) return;
+      if (!screenToPanelScale()) return;
       resizeDrag.current = {
         pointerId: e.pointerId,
         prevX: e.clientX,
         prevY: e.clientY,
-        cssScale,
         handle,
       };
       e.currentTarget.setPointerCapture(e.pointerId);
     },
-    [captureCssScale],
+    [screenToPanelScale],
   );
 
   const onResizePointerMove = useCallback(
     (e: ReactPointerEvent<HTMLDivElement>) => {
       const d = resizeDrag.current;
       if (!d || d.pointerId !== e.pointerId) return;
+      const scale = screenToPanelScale();
+      if (!scale) return;
       const dxScreen = e.clientX - d.prevX;
       const dyScreen = e.clientY - d.prevY;
       d.prevX = e.clientX;
       d.prevY = e.clientY;
       const { sx, sy } = HANDLE_SIGN[d.handle];
-      const dW = sx * dxScreen * d.cssScale;
-      const dH = sy * dyScreen * d.cssScale;
+      const dW = sx * dxScreen * scale.sx;
+      const dH = sy * dyScreen * scale.sy;
       if (dW !== 0 || dH !== 0) onResizeDelta?.(d.handle, dW, dH);
     },
-    [onResizeDelta],
+    [onResizeDelta, screenToPanelScale],
   );
 
   const endResizeDrag = useCallback((e: ReactPointerEvent<HTMLDivElement>) => {
@@ -195,6 +212,7 @@ export default function HudScreen({
   const panelStyle: CSSProperties = {
     width: `${widthPx}px`,
     height: `${heightPx}px`,
+    "--edge-outset": `${edgeOutsetPx}px`,
   };
 
   // The visible panel face — handle bar + content. Rendered once per slice as
@@ -223,20 +241,32 @@ export default function HudScreen({
     </button>
   ) : (
     <div
-      className={
+      className={[
         hideHeader
           ? "hud-screen__face hud-screen__face--headerless"
           : headerOnly
             ? "hud-screen__face hud-screen__face--header-only"
             : compactPadding
               ? "hud-screen__face hud-screen__face--compact"
-              : "hud-screen__face"
-      }
+              : "hud-screen__face",
+        boot ? "hud-screen__face--boot" : "",
+        boot && bootParts.contentJitter.visible ? "boot-part--contentJitter" : "",
+        boot && bootParts.titleReveal.visible ? "boot-part--titleReveal" : "",
+        boot && bootParts.bodyReveal.visible ? "boot-part--bodyReveal" : "",
+      ]
+        .join(" ")
+        .trim()}
       style={{
         padding: hideHeader
           ? `${facePadV}px ${facePadH}px`
           : `${facePadV}px ${facePadH}px`,
         gap: headerOnly ? "0px" : `${faceGap}px`,
+        ...(boot
+          ? ({
+              "--boot-delay": `${boot.startMs}ms`,
+              "--pulse-delay": `${Math.round(boot.pulseDelayMs)}ms`,
+            } as CSSProperties)
+          : null),
       }}
     >
       {!hideHeader ? (
@@ -270,6 +300,15 @@ export default function HudScreen({
           {children}
         </div>
       ) : null}
+      {boot ? (
+        <>
+          <BootFx
+            seed={boot.seed}
+            compact={headerOnly || hideHeader || heightPx < 220}
+          />
+          <BootPulse />
+        </>
+      ) : null}
     </div>
   );
 
@@ -288,6 +327,7 @@ export default function HudScreen({
         heightPx={heightPx}
         curveRadiusPx={curveRadiusPx}
         opacity={bgOpacity}
+        boot={boot}
       />
       <CurvedFaceSlices
         widthPx={widthPx}
@@ -305,9 +345,14 @@ export default function HudScreen({
         widthPx={widthPx}
         heightPx={heightPx}
         curveRadiusPx={curveRadiusPx}
+        boot={boot}
       />
       <Html transform center zIndexRange={[110, 0]} pointerEvents="none">
-        <div className="hud-screen hud-screen--handles" style={panelStyle}>
+        <div
+          ref={handlesRef}
+          className="hud-screen hud-screen--handles"
+          style={panelStyle}
+        >
           {!dockIcon ? (
             <>
               <div className="hud-screen__edge hud-screen__edge--top" {...handleProps("top")} />
@@ -531,11 +576,13 @@ function CurvedFillMesh({
   heightPx,
   curveRadiusPx,
   opacity,
+  boot,
 }: {
   widthPx: number;
   heightPx: number;
   curveRadiusPx: number;
   opacity: number;
+  boot?: PanelBoot;
 }) {
   const geometry = useMemo(
     () => buildCurvedFillGeometry(widthPx, heightPx, curveRadiusPx),
@@ -548,13 +595,24 @@ function CurvedFillMesh({
   useEffect(() => () => geometry.dispose(), [geometry]);
   useEffect(() => () => texture.dispose(), [texture]);
 
+  // Boot: the glass flickers up from black following the shared timeline.
+  const matRef = useRef<THREE.MeshBasicMaterial>(null);
+  useFrame(() => {
+    if (!boot || !matRef.current) return;
+    const v = panelBootVisual(bootElapsedMs(), boot);
+    matRef.current.opacity = opacity * v.fill;
+  });
+
   return (
     // Nudged a hair behind the bezel so the crisp outline always reads on top.
     <mesh geometry={geometry} position={[0, 0, -0.003]} renderOrder={-1}>
       <meshBasicMaterial
+        // Remount on boot end so the steady JSX opacity re-applies cleanly.
+        key={boot ? "boot" : "steady"}
+        ref={matRef}
         map={texture}
         transparent
-        opacity={opacity}
+        opacity={boot ? 0 : opacity}
         depthWrite={false}
         toneMapped={false}
         side={THREE.DoubleSide}
@@ -674,14 +732,26 @@ function roundedRectOutline(
   return pts;
 }
 
+// Structural type for drei's fat lines (Line2) — three-stdlib isn't directly
+// importable here (pnpm strict node_modules), so type just what we touch.
+type FatLine = THREE.Object3D & {
+  material: THREE.Material & {
+    dashSize: number;
+    gapSize: number;
+    color: THREE.Color;
+  };
+};
+
 function BezelLines({
   widthPx,
   heightPx,
   curveRadiusPx,
+  boot,
 }: {
   widthPx: number;
   heightPx: number;
   curveRadiusPx: number;
+  boot?: PanelBoot;
 }) {
   const bezelEmission = useDeskLayout((s) => s.bezelEmission);
   const bezelLineWidth = useDeskLayout((s) => s.bezelLineWidth);
@@ -709,6 +779,71 @@ function BezelLines({
     () => new THREE.Color(BEZEL_COLOR).multiplyScalar(bezelEmission),
     [bezelEmission],
   );
+
+  // Total outline length in local units — the dash draw-on sweeps 0..len.
+  const outlineLength = useMemo(() => {
+    let len = 0;
+    for (let i = 1; i < outline.length; i++) {
+      const [x0, y0, z0] = outline[i - 1];
+      const [x1, y1, z1] = outline[i];
+      len += Math.hypot(x1 - x0, y1 - y0, z1 - z0);
+    }
+    return len;
+  }, [outline]);
+
+  // Boot: a faint full outline carries the edge glow / power flicker, while a
+  // second dashed line draws the crisp frame around the panel in partial arcs.
+  const glowRef = useRef<FatLine | null>(null);
+  const drawRef = useRef<FatLine | null>(null);
+
+  useFrame(() => {
+    if (!boot) return;
+    const v = panelBootVisual(bootElapsedMs(), boot);
+    const glow = glowRef.current?.material;
+    if (glow) glow.opacity = bezelOpacity * v.glow;
+    const draw = drawRef.current?.material;
+    if (draw) {
+      draw.opacity = bezelOpacity * v.drawOpacity;
+      draw.dashSize = Math.max(outlineLength * v.draw, 1e-5);
+      draw.gapSize = outlineLength * 2;
+      // The final online pulse briefly over-drives the bezel emission.
+      draw.color.copy(lineColor).multiplyScalar(1 + v.boost);
+    }
+  });
+
+  if (boot) {
+    return (
+      <>
+        <DreiLine
+          ref={(obj) => {
+            glowRef.current = obj as unknown as FatLine | null;
+          }}
+          points={outline}
+          color={lineColor}
+          lineWidth={bezelLineWidth}
+          transparent
+          opacity={0}
+          toneMapped={false}
+          depthWrite={false}
+        />
+        <DreiLine
+          ref={(obj) => {
+            drawRef.current = obj as unknown as FatLine | null;
+          }}
+          points={outline}
+          color={lineColor}
+          lineWidth={bezelLineWidth}
+          transparent
+          opacity={0}
+          dashed
+          dashSize={1e-5}
+          gapSize={1000}
+          toneMapped={false}
+          depthWrite={false}
+        />
+      </>
+    );
+  }
 
   return (
     <DreiLine

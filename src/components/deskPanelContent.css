@@ -1,4 +1,4 @@
-/* Resume content for the five curved HUD panels. Shares the cyan glass look:
+/* Resume content for the six curved HUD panels. Shares the cyan glass look:
    thin inset borders, cyan rules, and a compact type hierarchy. Body text
    inherits 12px / #cfe8ec from .hud-screen__body. */
 
@@ -13,20 +13,38 @@
 /* Profile (01) --------------------------------------------------------------*/
 
 .hud-profile {
-  display: flex;
-  flex-direction: column;
+  container-type: size;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 10px;
+  justify-items: center;
+  gap: min(5cqi, 18px);
   height: 100%;
-  padding-top: 4px;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: min(3cqi, 10px) min(4cqi, 8px);
+  text-align: center;
+}
+
+.hud-profile__avatar-wrap {
+  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 
 .hud-profile__avatar {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  flex: 0 0 auto;
+  width: min(92cqmin, 100%);
+  height: min(92cqmin, 100%);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
   border-radius: 50%;
   box-shadow: inset 0 0 0 1px rgba(140, 235, 240, 0.6);
   background: radial-gradient(
@@ -35,86 +53,37 @@
     rgba(15, 40, 50, 0.5)
   );
   color: #d6f4f7;
-  font-size: 22px;
+  font-size: min(22cqi, 52px);
   font-weight: 600;
   letter-spacing: 0.08em;
 }
 
-.hud-profile__name {
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #e4f6f8;
-}
-
-.hud-profile__role {
-  margin-top: -4px;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #9cf8f8;
-}
-
-.hud-profile__edu {
-  width: 100%;
-  margin: 6px 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.hud-profile__edu-item {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding-top: 12px;
-  box-shadow: inset 0 1px 0 rgba(102, 240, 240, 0.15);
-}
-
-.hud-profile__edu-degree {
-  font-size: 12.5px;
-  color: #dbf0f3;
-}
-
-.hud-profile__edu-meta {
-  font-size: 10.5px;
-  letter-spacing: 0.02em;
-  color: rgba(174, 234, 238, 0.6);
-}
-
-.hud-profile__stats {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-  margin-top: auto;
-  padding-top: 14px;
-  box-shadow: inset 0 1px 0 rgba(102, 240, 240, 0.15);
-}
-
-.hud-profile__stat {
-  flex: 1 1 0;
+.hud-profile__text {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 10px 4px;
-  border-radius: 6px;
-  box-shadow: inset 0 0 0 1px rgba(102, 240, 240, 0.18);
+  flex: 0 0 auto;
+  gap: min(4cqi, 14px);
+  width: 100%;
+  max-width: 100%;
+  padding-bottom: min(2cqi, 6px);
 }
 
-.hud-profile__stat-value {
-  font-size: 18px;
+.hud-profile__name {
+  max-width: 100%;
+  font-size: min(11cqi, 35px);
   font-weight: 600;
+  letter-spacing: 0.04em;
   color: #e4f6f8;
+  line-height: 1.15;
 }
 
-.hud-profile__stat-label {
-  font-size: 9.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(174, 234, 238, 0.62);
+.hud-profile__role {
+  max-width: 100%;
+  font-size: min(14cqi, 25px);
+  letter-spacing: 0.1em;
+  color: #9cf8f8;
+  line-height: 1.25;
 }
 
 /* Skills (02) ---------------------------------------------------------------*/
@@ -233,10 +202,128 @@
   color: rgba(207, 232, 236, 0.82);
 }
 
-/* Experience (04) -----------------------------------------------------------*/
-/* Timeline: a circular icon ring per entry joined down the column by a thin
-   connector line, with role / date / org / highlight beside each ring.
-   Type scales with the panel via container queries; overflow scrolls. */
+/* Education (04) ------------------------------------------------------------*/
+/* Timeline scroll syncs across bent panel slices in deskPanelContent.tsx. */
+
+.hud-edu-wrap {
+  container-type: size;
+  container-name: edu-panel;
+  font-size: var(--edu-base-font, 22px);
+  height: 100%;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  pointer-events: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(102, 240, 240, 0.35) transparent;
+}
+
+.hud-edu-wrap::-webkit-scrollbar {
+  width: 4px;
+}
+
+.hud-edu-wrap::-webkit-scrollbar-thumb {
+  background: rgba(102, 240, 240, 0.35);
+  border-radius: 2px;
+}
+
+.hud-edu {
+  font-size: inherit;
+  margin: 0;
+  padding: 0 0.15em 0.2em 0;
+}
+
+.hud-edu__timeline {
+  display: grid;
+  grid-template-columns: 2.3em minmax(0, 1fr);
+  column-gap: 0.95em;
+  align-items: stretch;
+}
+
+.hud-edu__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+}
+
+.hud-edu__marker {
+  flex: 0 0 auto;
+  width: 2.3em;
+  height: 2.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(140, 235, 240, 0.55);
+  background: radial-gradient(
+    circle at 40% 30%,
+    rgba(102, 240, 240, 0.12),
+    rgba(15, 40, 50, 0.4)
+  );
+  color: #9cf8f8;
+}
+
+.hud-edu__marker .hud-icon {
+  width: 1.05em;
+  height: 1.05em;
+}
+
+.hud-edu__rail-line {
+  flex: 1 1 auto;
+  width: 2px;
+  transform: scaleX(0.5);
+  transform-origin: center top;
+  margin-top: 0.45em;
+  min-height: 1.5em;
+  background: rgba(102, 240, 240, 0.35);
+}
+
+.hud-edu__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85em;
+  min-width: 0;
+  padding-top: 0.42em;
+}
+
+.hud-edu__degrees {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+}
+
+.hud-edu__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+}
+
+.hud-edu__school {
+  margin: 0;
+  font-size: calc(1em * var(--edu-school-em, 0.94));
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #e4f6f8;
+  line-height: 1.25;
+}
+
+.hud-edu__degree {
+  font-size: calc(1em * var(--edu-degree-em, 1.05));
+  letter-spacing: 0.04em;
+  color: #9cf8f8;
+}
+
+.hud-edu__date {
+  font-size: calc(1em * var(--edu-date-em, 0.82));
+  letter-spacing: 0.04em;
+  color: rgba(174, 234, 238, 0.6);
+}
+
+/* Experience (05) -----------------------------------------------------------*/
+/* Timeline: icon rings joined by a connector line. Scroll syncs across bent
+   panel slices in deskPanelContent.tsx so the whole panel moves together. */
 
 .hud-exp-wrap {
   container-type: size;
@@ -261,8 +348,7 @@
 }
 
 .hud-exp {
-  /* Blend height + width so type stays readable at any panel aspect ratio. */
-  font-size: clamp(0.7rem, 0.35cqw + 2.4cqh, 1.25rem);
+  font-size: var(--exp-base-font, 20px);
   display: flex;
   flex-direction: column;
   gap: 1.35em;
@@ -335,29 +421,22 @@
 }
 
 .hud-exp__role {
-  font-size: 1.12em;
+  font-size: calc(1em * var(--exp-role-em, 1.12));
   font-weight: 600;
   color: #e4f6f8;
 }
 
 .hud-exp__date {
   flex: 0 0 auto;
-  font-size: 0.82em;
+  font-size: calc(1em * var(--exp-date-em, 0.82));
   letter-spacing: 0.04em;
   color: rgba(174, 234, 238, 0.6);
 }
 
 .hud-exp__org {
-  font-size: 0.94em;
+  font-size: calc(1em * var(--exp-org-em, 0.94));
   letter-spacing: 0.04em;
   color: #9cf8f8;
-}
-
-.hud-exp__highlight {
-  margin: 0;
-  font-size: 0.94em;
-  line-height: 1.45;
-  color: rgba(207, 232, 236, 0.78);
 }
 
 @container exp-panel (max-width: 14em) {
@@ -368,7 +447,7 @@
   }
 }
 
-/* Contact (05) --------------------------------------------------------------*/
+/* Contact (06) --------------------------------------------------------------*/
 
 .hud-contact {
   display: flex;
@@ -378,8 +457,9 @@
   flex: 1 1 auto;
   min-width: 0;
   margin: 0;
-  padding: 0;
+  padding: 0 8px;
   list-style: none;
+  gap: 24px;
   pointer-events: none;
 }
 

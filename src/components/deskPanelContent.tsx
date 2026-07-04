@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import {
   contact,
   experience,
@@ -10,7 +10,7 @@ import {
 import { useDeskLayout } from "../stores/deskLayout";
 import "./deskPanelContent.css";
 
-// Real resume content for the five curved HUD panels, sourced from
+// Real resume content for the curved HUD panels, sourced from
 // src/data/resume.ts. Each panel keeps the cyan glass aesthetic: line-art
 // icons stroked in currentColor, thin rules, and a small type hierarchy.
 
@@ -19,28 +19,12 @@ import "./deskPanelContent.css";
 export function ProfilePanel() {
   return (
     <div className="hud-profile">
-      <div className="hud-profile__avatar">{profile.initials}</div>
-      <div className="hud-profile__name">{profile.name}</div>
-      <div className="hud-profile__role">{profile.role}</div>
-
-      <ul className="hud-profile__edu">
-        {profile.education.map((e) => (
-          <li className="hud-profile__edu-item" key={e.degree}>
-            <span className="hud-profile__edu-degree">{e.degree}</span>
-            <span className="hud-profile__edu-meta">
-              {e.school} · {e.period}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="hud-profile__stats">
-        {profile.stats.map((s) => (
-          <div className="hud-profile__stat" key={s.label}>
-            <span className="hud-profile__stat-value">{s.value}</span>
-            <span className="hud-profile__stat-label">{s.label}</span>
-          </div>
-        ))}
+      <div className="hud-profile__avatar-wrap">
+        <div className="hud-profile__avatar">{profile.initials}</div>
+      </div>
+      <div className="hud-profile__text">
+        <div className="hud-profile__name">{profile.name}</div>
+        <div className="hud-profile__role">{profile.role}</div>
       </div>
     </div>
   );
@@ -95,7 +79,65 @@ export function FeaturedPanel() {
   );
 }
 
-// Experience (04) ------------------------------------------------------------
+// Education (04) -------------------------------------------------------------
+
+const GRAD_CAP = (
+  <>
+    <path d="M3.5 8.5 10 5l6.5 3.5" />
+    <path d="M6 10v3.5c0 .8 1.8 1.5 4 1.5s4-.7 4-1.5V10" />
+    <path d="M16.5 8.5V12" />
+  </>
+);
+
+export function EducationPanel() {
+  const scrollRef = useSyncedPanelScroll("education");
+  const eduBaseFontPx = useDeskLayout((s) => s.eduBaseFontPx);
+  const eduDegreeEm = useDeskLayout((s) => s.eduDegreeEm);
+  const eduDateEm = useDeskLayout((s) => s.eduDateEm);
+  const eduSchoolEm = useDeskLayout((s) => s.eduSchoolEm);
+
+  const typeStyle = {
+    "--edu-base-font": `${eduBaseFontPx}px`,
+    "--edu-degree-em": eduDegreeEm,
+    "--edu-date-em": eduDateEm,
+    "--edu-school-em": eduSchoolEm,
+  } as CSSProperties;
+
+  return (
+    <div
+      ref={scrollRef}
+      className="hud-edu-wrap"
+      data-hud-scroll-group="education"
+      style={typeStyle}
+    >
+      <div className="hud-edu">
+        <div className="hud-edu__timeline">
+          <div className="hud-edu__rail" aria-hidden="true">
+            <span className="hud-edu__marker">
+              <HudIcon>{GRAD_CAP}</HudIcon>
+            </span>
+            <span className="hud-edu__rail-line" />
+          </div>
+          <div className="hud-edu__body">
+            {profile.education[0] ? (
+              <p className="hud-edu__school">{profile.education[0].school}</p>
+            ) : null}
+            <div className="hud-edu__degrees">
+              {profile.education.map((entry) => (
+                <div className="hud-edu__item" key={entry.degree}>
+                  <span className="hud-edu__degree">{entry.degree}</span>
+                  <span className="hud-edu__date">{entry.period}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Experience (05) ------------------------------------------------------------
 
 const BRIEFCASE = (
   <>
@@ -105,8 +147,26 @@ const BRIEFCASE = (
 );
 
 export function ExperiencePanel() {
+  const scrollRef = useSyncedPanelScroll("experience");
+  const expBaseFontPx = useDeskLayout((s) => s.expBaseFontPx);
+  const expRoleEm = useDeskLayout((s) => s.expRoleEm);
+  const expDateEm = useDeskLayout((s) => s.expDateEm);
+  const expOrgEm = useDeskLayout((s) => s.expOrgEm);
+
+  const typeStyle = {
+    "--exp-base-font": `${expBaseFontPx}px`,
+    "--exp-role-em": expRoleEm,
+    "--exp-date-em": expDateEm,
+    "--exp-org-em": expOrgEm,
+  } as CSSProperties;
+
   return (
-    <div className="hud-exp-wrap">
+    <div
+      ref={scrollRef}
+      className="hud-exp-wrap"
+      data-hud-scroll-group="experience"
+      style={typeStyle}
+    >
       <ol className="hud-exp">
         {experience.map((e) => (
           <li className="hud-exp__row" key={e.company}>
@@ -121,7 +181,6 @@ export function ExperiencePanel() {
               <span className="hud-exp__org">
                 {e.company} · {e.location}
               </span>
-              <p className="hud-exp__highlight">{e.highlight}</p>
             </div>
           </li>
         ))}
@@ -130,7 +189,7 @@ export function ExperiencePanel() {
   );
 }
 
-// Contact (05) ---------------------------------------------------------------
+// Contact (06) ---------------------------------------------------------------
 
 const CONTACT_ICONS: Record<ContactKind, ReactNode> = {
   linkedin: (
@@ -188,4 +247,33 @@ function HudIcon({ children }: { children: ReactNode }) {
       {children}
     </svg>
   );
+}
+
+// Bent panels duplicate DOM per vertical slice; keep scrollTop in sync so the
+// full panel moves together instead of one strip scrolling on its own.
+function useSyncedPanelScroll(group: string) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const syncing = useRef(false);
+
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+
+    const onScroll = () => {
+      if (syncing.current) return;
+      syncing.current = true;
+      const top = el.scrollTop;
+      document
+        .querySelectorAll<HTMLElement>(`[data-hud-scroll-group="${group}"]`)
+        .forEach((node) => {
+          if (node !== el && node.scrollTop !== top) node.scrollTop = top;
+        });
+      syncing.current = false;
+    };
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [group]);
+
+  return wrapRef;
 }

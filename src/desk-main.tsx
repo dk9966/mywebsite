@@ -7,6 +7,7 @@ import * as THREE from "three";
 import DeskTable from "./components/DeskTable";
 import DeskPanels from "./components/DeskPanels";
 import DeskControls from "./components/DeskControls";
+import BootClockDriver from "./components/BootClockDriver";
 import { useDeskLayout } from "./stores/deskLayout";
 
 const DEFAULT_NEAR = 0.05;
@@ -360,6 +361,7 @@ export function DeskApp() {
         <DeskScene />
       </Canvas>
       <DeskControls />
+      <BootClockDriver />
       <Hint />
     </div>
   );

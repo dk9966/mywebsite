@@ -1,9 +1,24 @@
-import { useState, type PointerEvent as ReactPointerEvent } from "react";
+import { useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import {
+  BOOT_TOTAL_MS,
+  BOOT_PARTS,
+  BOOT_PANEL_LABELS,
+  type BootPanelId,
+  type BootPartId,
+} from "../lib/bootParts";
+import { useBootClock } from "../stores/bootClock";
+import { useBootTuning } from "../stores/bootTuning";
 import {
   useDeskLayout,
   MAX_HEADER_FONT_PX,
+  MAX_TIMELINE_FONT_PX,
+  MAX_TYPE_EM,
   MIN_CONTACT_HEIGHT_PX,
   MAX_CONTACT_HEIGHT_PX,
+  MIN_COL_FRAC,
+  MAX_COL_FRAC,
+  MIN_PANEL_SPLIT,
+  MAX_PANEL_SPLIT,
 } from "../stores/deskLayout";
 import "./DeskControls.css";
 
@@ -38,6 +53,87 @@ function Slider({ label, value, min, max, step, decimals = 0, onChange }: Slider
       <span className="desk-controls__value">{value.toFixed(decimals)}</span>
     </div>
   );
+}
+
+function formatBootMs(ms: number): string {
+  return `${(ms / 1000).toFixed(2)}s`;
+}
+
+interface BootPartRowProps {
+  index: number;
+  id: BootPartId;
+  label: string;
+  scope: "panel" | "global";
+  showCheckbox: boolean;
+  visible: boolean;
+  delayMs: number;
+  durationMs: number;
+  onVisible: (v: boolean) => void;
+  onDelay: (v: number) => void;
+  onDuration: (v: number) => void;
+}
+
+function BootPartRow({
+  index,
+  label,
+  scope,
+  showCheckbox,
+  visible,
+  delayMs,
+  durationMs,
+  onVisible,
+  onDelay,
+  onDuration,
+}: BootPartRowProps) {
+  const stopBubble = (e: ReactPointerEvent) => e.stopPropagation();
+  const delayLabel = scope === "global" ? "Start ms" : "Delay ms";
+
+  return (
+    <div className="desk-controls__boot-part">
+      {showCheckbox ? (
+        <label className="desk-controls__checkbox-field">
+          <input
+            className="desk-controls__checkbox"
+            type="checkbox"
+            checked={visible}
+            onChange={(e) => onVisible(e.target.checked)}
+            onPointerDown={stopBubble}
+          />
+          <span className="desk-controls__checkbox-label">
+            {index}. {label}
+          </span>
+        </label>
+      ) : (
+        <span className="desk-controls__boot-part-title">
+          {index}. {label}
+        </span>
+      )}
+      <Slider
+        label={delayLabel}
+        value={delayMs}
+        min={0}
+        max={BOOT_TOTAL_MS}
+        step={10}
+        onChange={onDelay}
+      />
+      <Slider
+        label="Duration"
+        value={durationMs}
+        min={1}
+        max={2000}
+        step={10}
+        onChange={onDuration}
+      />
+    </div>
+  );
+}
+
+const DRAG_BLOCK =
+  "input, button, label, textarea, select, option, a, .desk-controls__slider";
+
+function isPanelDragTarget(target: EventTarget | null): boolean {
+  if (!(target instanceof Element)) return false;
+  return !target.closest(DRAG_BLOCK);
 }
 
 export default function DeskControls() {
@@ -79,13 +175,114 @@ export default function DeskControls() {
   const setContactHeightPx = useDeskLayout((s) => s.setContactHeightPx);
   const contactIconSizePx = useDeskLayout((s) => s.contactIconSizePx);
   const setContactIconSizePx = useDeskLayout((s) => s.setContactIconSizePx);
+  const eduBaseFontPx = useDeskLayout((s) => s.eduBaseFontPx);
+  const setEduBaseFontPx = useDeskLayout((s) => s.setEduBaseFontPx);
+  const eduDegreeEm = useDeskLayout((s) => s.eduDegreeEm);
+  const setEduDegreeEm = useDeskLayout((s) => s.setEduDegreeEm);
+  const eduDateEm = useDeskLayout((s) => s.eduDateEm);
+  const setEduDateEm = useDeskLayout((s) => s.setEduDateEm);
+  const eduSchoolEm = useDeskLayout((s) => s.eduSchoolEm);
+  const setEduSchoolEm = useDeskLayout((s) => s.setEduSchoolEm);
+  const expBaseFontPx = useDeskLayout((s) => s.expBaseFontPx);
+  const setExpBaseFontPx = useDeskLayout((s) => s.setExpBaseFontPx);
+  const expRoleEm = useDeskLayout((s) => s.expRoleEm);
+  const setExpRoleEm = useDeskLayout((s) => s.setExpRoleEm);
+  const expDateEm = useDeskLayout((s) => s.expDateEm);
+  const setExpDateEm = useDeskLayout((s) => s.setExpDateEm);
+  const expOrgEm = useDeskLayout((s) => s.expOrgEm);
+  const setExpOrgEm = useDeskLayout((s) => s.setExpOrgEm);
+  const colFrac = useDeskLayout((s) => s.colFrac);
+  const setColFrac = useDeskLayout((s) => s.setColFrac);
+  const rightSplit = useDeskLayout((s) => s.rightSplit);
+  const setRightSplit = useDeskLayout((s) => s.setRightSplit);
   const reset = useDeskLayout((s) => s.reset);
   const saveAsDefault = useDeskLayout((s) => s.saveAsDefault);
 
+  const bootElapsedMs = useBootClock((s) => s.elapsedMs);
+  const bootPaused = useBootClock((s) => s.paused);
+  const bootSeek = useBootClock((s) => s.seek);
+  const bootRestart = useBootClock((s) => s.restart);
+  const bootTogglePause = useBootClock((s) => s.togglePause);
+  const setBootScrubbing = useBootClock((s) => s.setScrubbing);
+
+  const bootParts = useBootTuning((s) => s.parts);
+  const panelStartMs = useBootTuning((s) => s.panelStartMs);
+  const stabilizeMs = useBootTuning((s) => s.stabilizeMs);
+  const pulseBaseMs = useBootTuning((s) => s.pulseBaseMs);
+  const pulseSweepMs = useBootTuning((s) => s.pulseSweepMs);
+  const setPartVisible = useBootTuning((s) => s.setPartVisible);
+  const setAllPartsVisible = useBootTuning((s) => s.setAllPartsVisible);
+  const setPartDelay = useBootTuning((s) => s.setPartDelay);
+  const setPartDuration = useBootTuning((s) => s.setPartDuration);
+  const setPanelStart = useBootTuning((s) => s.setPanelStart);
+  const setStabilizeMs = useBootTuning((s) => s.setStabilizeMs);
+  const setPulseBaseMs = useBootTuning((s) => s.setPulseBaseMs);
+  const setPulseSweepMs = useBootTuning((s) => s.setPulseSweepMs);
+  const resetBootTuning = useBootTuning((s) => s.reset);
+
   const [minimized, setMinimized] = useState(false);
   const [savedFlash, setSavedFlash] = useState(false);
+  const [pos, setPos] = useState({ x: 12, y: 12 });
+  const [dragging, setDragging] = useState(false);
+  const dragRef = useRef<{
+    pointerId: number;
+    startX: number;
+    startY: number;
+    originX: number;
+    originY: number;
+  } | null>(null);
+  const panelRef = useRef<HTMLElement>(null);
 
   const stopBubble = (e: ReactPointerEvent) => e.stopPropagation();
+
+  const onPanelPointerDown = (e: ReactPointerEvent<HTMLElement>) => {
+    stopBubble(e);
+    if (e.button !== 0 || !isPanelDragTarget(e.target)) return;
+
+    dragRef.current = {
+      pointerId: e.pointerId,
+      startX: e.clientX,
+      startY: e.clientY,
+      originX: pos.x,
+      originY: pos.y,
+    };
+    setDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const onPanelPointerMove = (e: ReactPointerEvent<HTMLElement>) => {
+    stopBubble(e);
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+
+    const dx = e.clientX - drag.startX;
+    const dy = e.clientY - drag.startY;
+    const panel = panelRef.current;
+    const maxX = panel
+      ? Math.max(0, window.innerWidth - panel.offsetWidth)
+      : window.innerWidth;
+    const maxY = panel
+      ? Math.max(0, window.innerHeight - panel.offsetHeight)
+      : window.innerHeight;
+
+    setPos({
+      x: Math.max(0, Math.min(maxX, drag.originX + dx)),
+      y: Math.max(0, Math.min(maxY, drag.originY + dy)),
+    });
+  };
+
+  const endPanelDrag = (e: ReactPointerEvent<HTMLElement>) => {
+    stopBubble(e);
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== e.pointerId) return;
+    dragRef.current = null;
+    setDragging(false);
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // Pointer may already be released.
+    }
+  };
 
   const onSaveAsDefault = () => {
     saveAsDefault();
@@ -95,10 +292,19 @@ export default function DeskControls() {
 
   return (
     <aside
-      className={`desk-controls ${minimized ? "desk-controls--minimized" : ""}`}
-      onPointerDown={stopBubble}
-      onPointerMove={stopBubble}
-      onPointerUp={stopBubble}
+      ref={panelRef}
+      className={[
+        "desk-controls",
+        minimized ? "desk-controls--minimized" : "",
+        dragging ? "desk-controls--dragging" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      style={{ left: pos.x, top: pos.y }}
+      onPointerDown={onPanelPointerDown}
+      onPointerMove={onPanelPointerMove}
+      onPointerUp={endPanelDrag}
+      onPointerCancel={endPanelDrag}
     >
       <div className="desk-controls__header">
         <h3 className="desk-controls__title">HUD Tuning</h3>
@@ -114,6 +320,136 @@ export default function DeskControls() {
 
       {!minimized && (
         <>
+          <section className="desk-controls__group desk-controls__playback">
+            <h4 className="desk-controls__group-title">Boot sequence</h4>
+            <div className="desk-controls__playback-row">
+              <button
+                className="desk-controls__btn"
+                type="button"
+                onClick={bootRestart}
+                title="Restart boot"
+              >
+                {"<<"}
+              </button>
+              <button
+                className="desk-controls__btn"
+                type="button"
+                onClick={bootTogglePause}
+                title={bootPaused ? "Play" : "Pause"}
+              >
+                {bootPaused ? ">" : "||"}
+              </button>
+              <span className="desk-controls__time">
+                {formatBootMs(bootElapsedMs)} / {formatBootMs(BOOT_TOTAL_MS)}
+              </span>
+            </div>
+            <input
+              className="desk-controls__slider desk-controls__slider--time"
+              type="range"
+              min={0}
+              max={BOOT_TOTAL_MS}
+              step={10}
+              value={Math.min(bootElapsedMs, BOOT_TOTAL_MS)}
+              onPointerDown={() => setBootScrubbing(true)}
+              onPointerUp={() => setBootScrubbing(false)}
+              onChange={(e) => bootSeek(Number(e.target.value))}
+            />
+          </section>
+
+          <hr className="desk-controls__divider" />
+
+          <section className="desk-controls__group">
+            <h4 className="desk-controls__group-title">Panel power-on</h4>
+            {(Object.keys(BOOT_PANEL_LABELS) as BootPanelId[]).map((id) => (
+              <Slider
+                key={id}
+                label={BOOT_PANEL_LABELS[id]}
+                value={panelStartMs[id]}
+                min={0}
+                max={2000}
+                step={10}
+                onChange={(v) => setPanelStart(id, v)}
+              />
+            ))}
+          </section>
+
+          <hr className="desk-controls__divider" />
+
+          <section className="desk-controls__group">
+            <h4 className="desk-controls__group-title">Global sync</h4>
+            <Slider
+              label="Stabilize"
+              value={stabilizeMs}
+              min={1500}
+              max={BOOT_TOTAL_MS}
+              step={10}
+              onChange={setStabilizeMs}
+            />
+            <Slider
+              label="Pulse base"
+              value={pulseBaseMs}
+              min={2000}
+              max={BOOT_TOTAL_MS}
+              step={10}
+              onChange={setPulseBaseMs}
+            />
+            <Slider
+              label="Pulse sweep"
+              value={pulseSweepMs}
+              min={0}
+              max={800}
+              step={10}
+              onChange={setPulseSweepMs}
+            />
+          </section>
+
+          <hr className="desk-controls__divider" />
+
+          <section className="desk-controls__group">
+            <h4 className="desk-controls__group-title">Boot stages</h4>
+            <div className="desk-controls__boot-stage-actions">
+              <button
+                className="desk-controls__btn"
+                type="button"
+                onClick={() => setAllPartsVisible(true)}
+              >
+                Select all
+              </button>
+              <button
+                className="desk-controls__btn"
+                type="button"
+                onClick={() => setAllPartsVisible(false)}
+              >
+                Deselect all
+              </button>
+            </div>
+            {BOOT_PARTS.map((def, i) => (
+              <BootPartRow
+                key={def.id}
+                index={i + 1}
+                id={def.id}
+                label={def.label}
+                scope={def.scope}
+                showCheckbox={!def.hideCheckbox}
+                visible={bootParts[def.id].visible}
+                delayMs={bootParts[def.id].delayMs}
+                durationMs={bootParts[def.id].durationMs}
+                onVisible={(v) => setPartVisible(def.id, v)}
+                onDelay={(v) => setPartDelay(def.id, v)}
+                onDuration={(v) => setPartDuration(def.id, v)}
+              />
+            ))}
+            <button
+              className="desk-controls__reset"
+              type="button"
+              onClick={resetBootTuning}
+            >
+              Reset boot timing
+            </button>
+          </section>
+
+          <hr className="desk-controls__divider" />
+
           <section className="desk-controls__group">
             <h4 className="desk-controls__group-title">Camera</h4>
             <Slider label="Pos X" value={camera.x} min={-4} max={4} step={0.05} decimals={2} onChange={(v) => setCamera({ x: v })} />
@@ -135,10 +471,128 @@ export default function DeskControls() {
             <Slider label="Wall W" value={wallWidthPx} min={800} max={2400} step={10} onChange={setWallWidthPx} />
             <Slider label="Wall H" value={wallHeightPx} min={300} max={1800} step={10} onChange={setWallHeightPx} />
             <Slider label="Curvature" value={curveRadiusPx} min={500} max={1500} step={5} onChange={setCurveRadiusPx} />
+            <Slider
+              label="Profile W"
+              value={colFrac[0]}
+              min={MIN_COL_FRAC}
+              max={MAX_COL_FRAC}
+              step={0.01}
+              decimals={2}
+              onChange={(v) => setColFrac(0, v)}
+            />
+            <Slider
+              label="Projects W"
+              value={colFrac[1]}
+              min={MIN_COL_FRAC}
+              max={MAX_COL_FRAC}
+              step={0.01}
+              decimals={2}
+              onChange={(v) => setColFrac(1, v)}
+            />
+            <Slider
+              label="Right W"
+              value={colFrac[2]}
+              min={MIN_COL_FRAC}
+              max={MAX_COL_FRAC}
+              step={0.01}
+              decimals={2}
+              onChange={(v) => setColFrac(2, v)}
+            />
             <Slider label="Header" value={headerFontPx} min={9} max={MAX_HEADER_FONT_PX} step={1} onChange={setHeaderFontPx} />
             <Slider label="Padding" value={contentPaddingPx} min={4} max={56} step={1} onChange={setContentPaddingPx} />
             <Slider label="BG opacity" value={bgOpacity} min={0} max={1} step={0.01} decimals={2} onChange={setBgOpacity} />
             <Slider label="BG blur" value={bgBlur} min={0} max={16} step={0.5} decimals={1} onChange={setBgBlur} />
+          </section>
+
+          <hr className="desk-controls__divider" />
+
+          <section className="desk-controls__group">
+            <h4 className="desk-controls__group-title">Education text</h4>
+            <Slider
+              label="Panel H"
+              value={rightSplit}
+              min={MIN_PANEL_SPLIT}
+              max={MAX_PANEL_SPLIT}
+              step={0.01}
+              decimals={2}
+              onChange={setRightSplit}
+            />
+            <Slider
+              label="Base px"
+              value={eduBaseFontPx}
+              min={10}
+              max={MAX_TIMELINE_FONT_PX}
+              step={1}
+              onChange={setEduBaseFontPx}
+            />
+            <Slider
+              label="Degree"
+              value={eduDegreeEm}
+              min={0.6}
+              max={MAX_TYPE_EM}
+              step={0.01}
+              decimals={2}
+              onChange={setEduDegreeEm}
+            />
+            <Slider
+              label="Date"
+              value={eduDateEm}
+              min={0.6}
+              max={MAX_TYPE_EM}
+              step={0.01}
+              decimals={2}
+              onChange={setEduDateEm}
+            />
+            <Slider
+              label="School"
+              value={eduSchoolEm}
+              min={0.6}
+              max={MAX_TYPE_EM}
+              step={0.01}
+              decimals={2}
+              onChange={setEduSchoolEm}
+            />
+          </section>
+
+          <hr className="desk-controls__divider" />
+
+          <section className="desk-controls__group">
+            <h4 className="desk-controls__group-title">Experience text</h4>
+            <Slider
+              label="Base px"
+              value={expBaseFontPx}
+              min={10}
+              max={MAX_TIMELINE_FONT_PX}
+              step={1}
+              onChange={setExpBaseFontPx}
+            />
+            <Slider
+              label="Role"
+              value={expRoleEm}
+              min={0.6}
+              max={MAX_TYPE_EM}
+              step={0.01}
+              decimals={2}
+              onChange={setExpRoleEm}
+            />
+            <Slider
+              label="Date"
+              value={expDateEm}
+              min={0.6}
+              max={MAX_TYPE_EM}
+              step={0.01}
+              decimals={2}
+              onChange={setExpDateEm}
+            />
+            <Slider
+              label="Org"
+              value={expOrgEm}
+              min={0.6}
+              max={MAX_TYPE_EM}
+              step={0.01}
+              decimals={2}
+              onChange={setExpOrgEm}
+            />
           </section>
 
           <hr className="desk-controls__divider" />
