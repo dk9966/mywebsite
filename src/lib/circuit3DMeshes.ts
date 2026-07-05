@@ -29,6 +29,11 @@ const MESH_KIND_OUTLINE_COLORS: Record<MeshKind, string> = {
   smd: "#6effc8",
   pad: "#ff6e6e",
   via: "#a0ffa0",
+  cpu: "#66f0f0",
+  io: "#f0f066",
+  dimm: "#b4ff6e",
+  pcie: "#b86eff",
+  vrm: "#ffb86e",
 };
 
 export function meshOutlineColorForKind(kind: MeshKind): string {

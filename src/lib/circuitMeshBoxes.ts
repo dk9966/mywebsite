@@ -2,7 +2,11 @@
 // type label (matching circuit-painter palette names). No pin tabs — the box
 // edge is the connection boundary and traces meet it directly.
 
-/** Mesh kinds aligned with circuit-painter/js/components.js palette ids. */
+/**
+ * Mesh kinds. The first block matches the legacy circuit-painter palette ids
+ * (kept for baseline board classification + persisted edits). The second block
+ * are the PCB-package categories carried by the qfp-variants.glb catalog.
+ */
 export type MeshKind =
   | "qfp"
   | "soic"
@@ -13,7 +17,12 @@ export type MeshKind =
   | "connector"
   | "smd"
   | "pad"
-  | "via";
+  | "via"
+  | "cpu"
+  | "io"
+  | "dimm"
+  | "pcie"
+  | "vrm";
 
 /** Palette order for the editor mesh menu (matches circuit-painter). */
 /** MIME type for dragging a mesh kind from the palette onto the board. */
@@ -43,6 +52,11 @@ export const MESH_LABELS: Record<MeshKind, string> = {
   smd: "SMD",
   pad: "Pad",
   via: "Via",
+  cpu: "CPU",
+  io: "IO",
+  dimm: "DIMM",
+  pcie: "PCIe",
+  vrm: "VRM",
 };
 
 export type MeshStyle = { fg: string; bg: string };

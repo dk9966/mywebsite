@@ -9,12 +9,21 @@ export type CircuitMesh = {
   maxX: number;
   minZ: number;
   maxZ: number;
+  /**
+   * Catalog variant id (e.g. "q4-l-pins") for meshes placed from the
+   * qfp-variants palette. When set, the mesh renders that variant's real
+   * outline geometry instead of a placeholder box.
+   */
+  variant?: string;
 };
 
 export type MeshBounds = Pick<
   CircuitMesh,
   "minX" | "maxX" | "minZ" | "maxZ"
 >;
+
+/** Footprint size on the board plane (world units). */
+export type MeshSize = { w: number; h: number };
 
 export type MeshOverride = Partial<MeshBounds> & { kind?: MeshKind };
 
@@ -35,7 +44,7 @@ export type MeshHandle = "nw" | "ne" | "sw" | "se";
 const MIN_MESH_DIM = 0.8;
 
 /** Default world size when placing a new mesh from the palette. */
-export const DEFAULT_MESH_SIZE: Record<MeshKind, { w: number; h: number }> = {
+export const DEFAULT_MESH_SIZE: Record<MeshKind, MeshSize> = {
   qfp: { w: 3.5, h: 3.5 },
   soic: { w: 4, h: 2 },
   capacitor: { w: 2, h: 2 },
@@ -46,6 +55,11 @@ export const DEFAULT_MESH_SIZE: Record<MeshKind, { w: number; h: number }> = {
   smd: { w: 2.5, h: 1.5 },
   pad: { w: 1.2, h: 1.2 },
   via: { w: 1, h: 1 },
+  cpu: { w: 5, h: 5 },
+  io: { w: 4.5, h: 2 },
+  dimm: { w: 6, h: 1.6 },
+  pcie: { w: 6.5, h: 1.6 },
+  vrm: { w: 4.5, h: 2 },
 };
 
 export function footprintsToMeshes(
@@ -135,6 +149,7 @@ export function addMeshToEdits(
   cx: number,
   cz: number,
   size = DEFAULT_MESH_SIZE[kind],
+  variant?: string,
 ): { edits: CircuitMeshEdits; mesh: CircuitMesh } {
   const { w, h } = size;
   const id = nextUserMeshId(edits);
@@ -145,6 +160,7 @@ export function addMeshToEdits(
     maxX: cx + w / 2,
     minZ: cz - h / 2,
     maxZ: cz + h / 2,
+    ...(variant ? { variant } : {}),
   };
   return {
     mesh,
@@ -194,7 +210,40 @@ function clampMinDim(
   return { x: nx, z: nz };
 }
 
-/** Resize by dragging one corner; opposite corner stays fixed. */
+/** Keep aspect ratio: corner moves along the diagonal from anchor. */
+function cornerOnUniformDiagonal(
+  anchorX: number,
+  anchorZ: number,
+  armX: number,
+  armZ: number,
+  x: number,
+  z: number,
+  minDim: number,
+): { x: number; z: number } {
+  const w = Math.abs(armX);
+  const h = Math.abs(armZ);
+  const len2 = armX * armX + armZ * armZ;
+  if (len2 < 1e-12) {
+    return clampMinDim(anchorX, anchorZ, x, z, minDim);
+  }
+
+  const dx = x - anchorX;
+  const dz = z - anchorZ;
+  let t = (dx * armX + dz * armZ) / len2;
+  const tMin = Math.max(minDim / w, minDim / h);
+  if (t >= 0) {
+    t = Math.max(t, tMin);
+  } else {
+    t = Math.min(t, -tMin);
+  }
+
+  return {
+    x: anchorX + t * armX,
+    z: anchorZ + t * armZ,
+  };
+}
+
+/** Resize by dragging one corner; opposite corner stays fixed, aspect ratio locked. */
 export function resizeMeshFromCorner(
   bounds: MeshBounds,
   handle: MeshHandle,
@@ -202,29 +251,31 @@ export function resizeMeshFromCorner(
   z: number,
   minDim = MIN_MESH_DIM,
 ): MeshBounds {
+  const w = bounds.maxX - bounds.minX;
+  const h = bounds.maxZ - bounds.minZ;
   let { minX, maxX, minZ, maxZ } = bounds;
 
   switch (handle) {
     case "nw": {
-      const p = clampMinDim(maxX, maxZ, x, z, minDim);
+      const p = cornerOnUniformDiagonal(maxX, maxZ, -w, -h, x, z, minDim);
       minX = p.x;
       minZ = p.z;
       break;
     }
     case "ne": {
-      const p = clampMinDim(minX, maxZ, x, z, minDim);
+      const p = cornerOnUniformDiagonal(minX, maxZ, w, -h, x, z, minDim);
       maxX = p.x;
       minZ = p.z;
       break;
     }
     case "sw": {
-      const p = clampMinDim(maxX, minZ, x, z, minDim);
+      const p = cornerOnUniformDiagonal(maxX, minZ, -w, h, x, z, minDim);
       minX = p.x;
       maxZ = p.z;
       break;
     }
     case "se": {
-      const p = clampMinDim(minX, minZ, x, z, minDim);
+      const p = cornerOnUniformDiagonal(minX, minZ, w, h, x, z, minDim);
       maxX = p.x;
       maxZ = p.z;
       break;

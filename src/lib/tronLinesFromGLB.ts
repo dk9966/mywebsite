@@ -187,3 +187,30 @@ export function tronLinesFromGLB(
   paths.sort((a, b) => a.spawnTime - b.spawnTime || a._order - b._order);
   return paths.map(({ _order: _, ...p }) => p);
 }
+
+export type NamedTronPolyline = {
+  /** Full node name, e.g. "TronLine_0007_0_00_part_q4-l-pins". */
+  name: string;
+  /** Tokens after `<order>_<delay>`, e.g. ["part", "q4-l-pins"]. */
+  tags: string[];
+  order: number;
+  waypoints: Vec3[];
+};
+
+/**
+ * Like {@link tronLinesFromGLB} but keeps each node's name and tags so callers
+ * can group polylines by an embedded identifier (e.g. a variant name). Sorted
+ * by authoring order.
+ */
+export function tronPolylinesFromGLB(root: THREE.Object3D): NamedTronPolyline[] {
+  const out: NamedTronPolyline[] = [];
+  root.traverse((obj) => {
+    const parsed = parseTronLineName(obj.name);
+    if (!parsed) return;
+    const waypoints = extractOrderedWaypoints(obj);
+    if (!waypoints) return;
+    out.push({ name: obj.name, tags: parsed.tags, order: parsed.order, waypoints });
+  });
+  out.sort((a, b) => a.order - b.order);
+  return out;
+}
