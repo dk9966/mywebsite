@@ -11,9 +11,37 @@ export const SHORTCUT_BTN = {
   projection: "projection",
   undo: "undo",
   redo: "redo",
+  copy: "copy",
+  paste: "paste",
 } as const;
 
 export type ShortcutButtonId = (typeof SHORTCUT_BTN)[keyof typeof SHORTCUT_BTN];
+
+/** Keyboard hints shown on toolbar button hover (Mac-style mod labels). */
+export const SHORTCUT_HINTS: Record<ShortcutButtonId, string> = {
+  select: "A",
+  addLine: "A",
+  snap45: "R",
+  delete: "Del",
+  top: "F",
+  side: "F",
+  lock: "L",
+  projection: "O",
+  undo: "⌘Z",
+  redo: "⌘⇧Z",
+  copy: "⌘C",
+  paste: "⌘V",
+};
+
+export function shortcutButtonTitle(
+  id: ShortcutButtonId,
+  detail?: string,
+): string {
+  const hint = SHORTCUT_HINTS[id];
+  if (detail && hint) return `${detail} (${hint})`;
+  if (detail) return detail;
+  return hint;
+}
 
 const FLASH_MS = 240;
 
@@ -79,5 +107,10 @@ export function useShortcutButtonFlash() {
     [flashing],
   );
 
-  return { flash, btnClass };
+  const btnTitle = useCallback(
+    (id: ShortcutButtonId, detail?: string) => shortcutButtonTitle(id, detail),
+    [],
+  );
+
+  return { flash, btnClass, btnTitle };
 }

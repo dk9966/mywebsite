@@ -4,8 +4,9 @@ import {
   deleteSegmentInTopology,
   EMPTY_TOPOLOGY,
   joinVertexInTopology,
-  midpoint,
+  nearestOnSegmentXZ,
   resolveSegmentGeom,
+  resolveSegmentGeomById,
   setVertexInTopology,
   splitSegmentInTopology,
   type CircuitTopology,
@@ -22,9 +23,9 @@ import {
   type CircuitMesh,
   type CircuitMeshEdits,
   type MeshBounds,
+  type MeshSize,
 } from "../lib/circuitMeshes";
 import type { MeshKind } from "../lib/circuitMeshBoxes";
-import type { MeshSize } from "../lib/meshVariations";
 import {
   DEFAULT_MERGE_EPS,
   snapAnglesToGrid,
@@ -211,6 +212,7 @@ const SAVE_DEFAULT_ROUTE = "/__save-circuits-tuning";
 const PASTE_OFFSET = 0.5;
 
 let lineClipboard: SegmentGeom[] = [];
+let pasteGeneration = 0;
 let editPathsGetter: (() => GridPath[]) | null = null;
 
 function isEditableLine(id: string): boolean {
@@ -281,7 +283,7 @@ async function writeDefault(
   }
 }
 
-export type EditTool = "select" | "addLine" | "addMesh";
+export type EditTool = "select" | "addLine" | "addMesh" | "split";
 
 function vecTooClose(a: Vec3, b: Vec3): boolean {
   return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]) < 0.05;
@@ -295,9 +297,13 @@ interface CircuitTuningStore extends CircuitTuning {
   addLineStart: Vec3 | null;
   addMeshKind: MeshKind | null;
   addMeshSize: MeshSize | null;
+  /** Catalog variant id pending placement (null for a plain box). */
+  addMeshVariant: string | null;
   isDraggingVertex: boolean;
   undoStack: EditSnapshot[];
   redoStack: EditSnapshot[];
+  /** Lines currently on the clipboard (0 when empty). */
+  clipboardLineCount: number;
 
   select: (id: string | null) => void;
   selectMesh: (id: string | null) => void;
@@ -305,7 +311,7 @@ interface CircuitTuningStore extends CircuitTuning {
   clearSelection: () => void;
   selectVertex: (end: 0 | 1 | null) => void;
   setEditTool: (tool: EditTool) => void;
-  startAddMesh: (kind: MeshKind, size?: MeshSize) => void;
+  startAddMesh: (kind: MeshKind, size?: MeshSize, variant?: string | null) => void;
   setAddLineStart: (point: Vec3 | null) => void;
   setDraggingVertex: (dragging: boolean) => void;
   pushUndo: () => void;
@@ -346,12 +352,17 @@ interface CircuitTuningStore extends CircuitTuning {
   deleteSelectedSegment: () => void;
   deleteSelectedMesh: () => void;
   deleteSelection: () => void;
-  splitSelectedSegment: (paths: GridPath[]) => void;
+  /** Split a segment at the point on it nearest the given world point. */
+  splitSegmentAtPoint: (
+    paths: GridPath[],
+    segmentId: string,
+    point: Vec3,
+  ) => boolean;
   /** Snap every line to its nearest 45° step, keeping junctions intact. */
   snapAnglesToGrid: (
     paths: GridPath[],
     meshes?: CircuitMesh[],
-  ) => { changed: number; merged: number; meshSnapped: number };
+  ) => { changed: number; merged: number; collapsed: number; meshSnapped: number };
   addLineSegment: (start: Vec3, end: Vec3) => void;
   setMeshBounds: (id: string, bounds: MeshBounds) => void;
   addMeshAt: (kind: MeshKind, cx: number, cz: number) => void;
@@ -377,9 +388,11 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
     addLineStart: null,
     addMeshKind: null,
     addMeshSize: null,
+    addMeshVariant: null,
     isDraggingVertex: false,
     undoStack: [],
     redoStack: [],
+    clipboardLineCount: 0,
 
     select: (id) =>
       set({
@@ -413,14 +426,21 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
         addLineStart: null,
         addMeshKind: tool === "addMesh" ? get().addMeshKind : null,
         addMeshSize: tool === "addMesh" ? get().addMeshSize : null,
-        selectedLineIds: [],
+        addMeshVariant: tool === "addMesh" ? get().addMeshVariant : null,
+        // Split acts on the already-selected line, so keep it selected when
+        // entering the tool; every other tool starts from a clean slate.
+        selectedLineIds: tool === "split" ? get().selectedLineIds : [],
         selectedVertex: null,
         selectedMeshIds: [],
       }),
 
-    startAddMesh: (kind, size) => {
+    startAddMesh: (kind, size, variant = null) => {
       const s = get();
-      if (s.editTool === "addMesh" && s.addMeshKind === kind) {
+      if (
+        s.editTool === "addMesh" &&
+        s.addMeshKind === kind &&
+        s.addMeshVariant === variant
+      ) {
         const nextSize = size ?? DEFAULT_MESH_SIZE[kind];
         const sameSize =
           s.addMeshSize != null &&
@@ -431,6 +451,7 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
             editTool: "select",
             addMeshKind: null,
             addMeshSize: null,
+            addMeshVariant: null,
             addLineStart: null,
             selectedVertex: null,
           });
@@ -441,6 +462,7 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
         editTool: "addMesh",
         addMeshKind: kind,
         addMeshSize: size ?? DEFAULT_MESH_SIZE[kind],
+        addMeshVariant: variant,
         addLineStart: null,
         selectedLineIds: [],
         selectedVertex: null,
@@ -453,7 +475,13 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
     setDraggingVertex: (dragging) => set({ isDraggingVertex: dragging }),
 
     cancelEditTool: () =>
-      set({ editTool: "select", addLineStart: null, addMeshKind: null, addMeshSize: null }),
+      set({
+        editTool: "select",
+        addLineStart: null,
+        addMeshKind: null,
+        addMeshSize: null,
+        addMeshVariant: null,
+      }),
 
     copySelectedLines: () => {
       const { selectedLineIds, topology } = get();
@@ -463,9 +491,7 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
       const paths = getEditPaths();
       const entries: SegmentGeom[] = [];
       for (const id of editable) {
-        const seg = paths.find((p) => p.id === id);
-        if (!seg) continue;
-        const geom = resolveSegmentGeom(seg, topology);
+        const geom = resolveSegmentGeomById(id, paths, topology);
         if (!geom) continue;
         entries.push({
           start: [...geom.start] as Vec3,
@@ -474,24 +500,28 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
       }
       if (entries.length === 0) return false;
       lineClipboard = entries;
+      pasteGeneration = 0;
+      set({ clipboardLineCount: entries.length });
       return true;
     },
 
     pasteLines: () => {
       if (lineClipboard.length === 0) return false;
       get().pushUndo();
+      pasteGeneration += 1;
+      const offset = PASTE_OFFSET * pasteGeneration;
       let topology = get().topology;
       const newIds: string[] = [];
       for (const geom of lineClipboard) {
         const start: Vec3 = [
-          geom.start[0] + PASTE_OFFSET,
+          geom.start[0] + offset,
           geom.start[1],
-          geom.start[2] + PASTE_OFFSET,
+          geom.start[2] + offset,
         ];
         const end: Vec3 = [
-          geom.end[0] + PASTE_OFFSET,
+          geom.end[0] + offset,
           geom.end[1],
-          geom.end[2] + PASTE_OFFSET,
+          geom.end[2] + offset,
         ];
         const result = addSegmentToTopology(topology, start, end);
         topology = result.topology;
@@ -668,32 +698,38 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
       });
     },
 
-    splitSelectedSegment: (paths) => {
-      const { selectedLineIds, topology } = get();
-      if (selectedLineIds.length !== 1) return;
-      const selectedId = selectedLineIds[0];
-      const seg = paths.find((p) => p.id === selectedId);
-      if (!seg) return;
+    splitSegmentAtPoint: (paths, segmentId, point) => {
+      const { topology } = get();
+      const seg = paths.find((p) => p.id === segmentId);
+      if (!seg) return false;
       const geom = resolveSegmentGeom(seg, topology);
-      if (!geom) return;
+      if (!geom) return false;
+      const hit = nearestOnSegmentXZ(point, geom.start, geom.end);
+      // Ignore clicks at the very ends; there's nothing to split off there.
+      if (hit.t <= 0.02 || hit.t >= 0.98) return false;
       get().pushUndo();
-      const splitPoint = midpoint(geom.start, geom.end);
-      const next = splitSegmentInTopology(seg, splitPoint, topology);
-      set({ topology: next, selectedLineIds: [], selectedVertex: null });
+      const next = splitSegmentInTopology(seg, hit.point, topology);
+      set({
+        topology: next,
+        selectedLineIds: [],
+        selectedVertex: null,
+        editTool: "select",
+      });
+      return true;
     },
 
     snapAnglesToGrid: (paths, meshes) => {
-      const { topology, changed, merged, meshSnapped } = snapAnglesToGrid(
+      const { topology, changed, merged, collapsed, meshSnapped } = snapAnglesToGrid(
         paths,
         get().topology,
         { meshes, mergeEps: get().snapMergeEps },
       );
-      if (changed === 0 && merged === 0 && meshSnapped === 0) {
-        return { changed: 0, merged: 0, meshSnapped: 0 };
+      if (changed === 0 && merged === 0 && collapsed === 0 && meshSnapped === 0) {
+        return { changed: 0, merged: 0, collapsed: 0, meshSnapped: 0 };
       }
       get().pushUndo();
       set({ topology });
-      return { changed, merged, meshSnapped };
+      return { changed, merged, collapsed, meshSnapped };
     },
 
     addLineSegment: (start, end) => {
@@ -709,6 +745,7 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
         addLineStart: end,
         addMeshKind: null,
         addMeshSize: null,
+        addMeshVariant: null,
         selectedVertex: null,
         selectedMeshIds: [],
       });
@@ -721,13 +758,22 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
 
     addMeshAt: (kind, cx, cz) => {
       const size = get().addMeshSize ?? DEFAULT_MESH_SIZE[kind];
-      const { edits, mesh } = addMeshToEdits(get().meshEdits, kind, cx, cz, size);
+      const variant = get().addMeshVariant ?? undefined;
+      const { edits, mesh } = addMeshToEdits(
+        get().meshEdits,
+        kind,
+        cx,
+        cz,
+        size,
+        variant,
+      );
       set({
         meshEdits: edits,
         selectedMeshIds: [mesh.id],
         editTool: "select",
         addMeshKind: null,
         addMeshSize: null,
+        addMeshVariant: null,
         selectedLineIds: [],
         selectedVertex: null,
       });
@@ -743,6 +789,7 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
         addLineStart: null,
         addMeshKind: null,
         addMeshSize: null,
+        addMeshVariant: null,
         isDraggingVertex: false,
         undoStack: [],
         redoStack: [],
@@ -787,6 +834,7 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
           addLineStart: null,
           addMeshKind: null,
           addMeshSize: null,
+          addMeshVariant: null,
           undoStack: [],
           redoStack: [],
         });

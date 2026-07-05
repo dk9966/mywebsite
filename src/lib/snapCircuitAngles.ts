@@ -2,8 +2,10 @@ import type { CircuitMesh, MeshBounds } from "./circuitMeshes";
 import type { GridPath, Vec3 } from "./gridBuilder";
 import {
   deleteSegmentInTopology,
+  mergeSegmentsInTopology,
   nearestOnSegmentXZ,
   resolveSegmentGeom,
+  splitParentId,
   type CircuitTopology,
   type SegmentGeom,
 } from "./circuitTopology";
@@ -25,7 +27,9 @@ import {
  *
  * After snapping, nearby endpoints are welded together (and endpoints near a
  * segment body are pulled onto it) so almost-touching junctions become real joins.
- * Endpoints near component mesh boxes are then snapped to the nearest box edge.
+ * Collinear pairs that meet at a degree-2 junction are then collapsed back into
+ * one segment so split lines fully rejoin. Endpoints near component mesh boxes
+ * are finally snapped to the nearest box edge.
  */
 
 const QUARTER = Math.PI / 4;
@@ -63,7 +67,7 @@ type SnapSegment = {
 type EndpointRef = { segId: string; end: 0 | 1; x: number; z: number; y: number };
 
 export interface SnapAnglesOptions {
-  /** Junctions within this XZ distance are treated as one shared point. */
+  /** Junctions within this XZ distance are one shared point during the angle solve. Defaults to mergeEps. */
   clusterEps?: number;
   /** Lines whose angle is within this many degrees of a step count as aligned. */
   angleTolDeg?: number;
@@ -79,6 +83,8 @@ export interface SnapAnglesResult {
   changed: number;
   /** How many endpoint joins were made (endpoint pairs + edge snaps). */
   merged: number;
+  /** How many collinear segment pairs were collapsed into one line. */
+  collapsed: number;
   /** How many endpoints were snapped to a mesh box edge. */
   meshSnapped: number;
 }
@@ -88,9 +94,9 @@ export function snapAnglesToGrid(
   topology: CircuitTopology,
   opts: SnapAnglesOptions = {},
 ): SnapAnglesResult {
-  const clusterEps = opts.clusterEps ?? 0.02;
   const angleTol = ((opts.angleTolDeg ?? 0.25) * Math.PI) / 180;
   const mergeEps = opts.mergeEps ?? DEFAULT_MERGE_EPS;
+  const clusterEps = opts.clusterEps ?? mergeEps;
 
   const vertices: Vertex[] = [];
   const segments: SnapSegment[] = [];
@@ -156,21 +162,26 @@ export function snapAnglesToGrid(
     mergeEps,
   );
 
+  const { topology: collapsedTopology, collapsed } = collapseCollinearSegments(
+    paths,
+    mergedTopology,
+  );
+
   const meshes = opts.meshes ?? [];
-  let finalTopology = mergedTopology;
+  let finalTopology = collapsedTopology;
   let meshSnapped = 0;
 
   if (meshes.length > 0) {
-    const geoms = collectEditableGeoms(paths, mergedTopology);
+    const geoms = collectEditableGeoms(paths, collapsedTopology);
     if (geoms.size > 0) {
       meshSnapped = snapEndpointsToMeshes(geoms, meshes, mergeEps);
       if (meshSnapped > 0) {
-        finalTopology = applyGeomEdits(mergedTopology, geoms);
+        finalTopology = applyGeomEdits(collapsedTopology, geoms);
       }
     }
   }
 
-  return { topology: finalTopology, changed, merged, meshSnapped };
+  return { topology: finalTopology, changed, merged, collapsed, meshSnapped };
 }
 
 type SolvedVertex = { x: number; y: number; z: number };
@@ -504,4 +515,146 @@ function joinNearbyVertices(
 
   if (totalMerged === 0) return { topology, merged: 0 };
   return { topology: current, merged: totalMerged };
+}
+
+type XZDir = { x: number; z: number };
+
+function xzDir(from: Vec3, to: Vec3): XZDir | null {
+  const x = to[0] - from[0];
+  const z = to[2] - from[2];
+  const len = Math.hypot(x, z);
+  if (len < MIN_SEGMENT_LEN) return null;
+  return { x: x / len, z: z / len };
+}
+
+function parallelDirs(a: XZDir, b: XZDir): boolean {
+  const cross = a.x * b.z - a.z * b.x;
+  return Math.abs(cross) < 1e-3;
+}
+
+function pickMergedSegmentId(idA: string, idB: string): string {
+  const parentA = splitParentId(idA);
+  const parentB = splitParentId(idB);
+  if (parentA && parentA === parentB) return parentA;
+  if (!splitParentId(idA)) return idA;
+  if (!splitParentId(idB)) return idB;
+  return idA;
+}
+
+/** Merge two collinear segments that meet at one endpoint pair. */
+function collinearMerge(
+  a: SegmentGeom,
+  endA: 0 | 1,
+  b: SegmentGeom,
+  endB: 0 | 1,
+): SegmentGeom | null {
+  const dirA = xzDir(a.start, a.end);
+  const dirB = xzDir(b.start, b.end);
+  if (!dirA || !dirB || !parallelDirs(dirA, dirB)) return null;
+
+  const dot = dirA.x * dirB.x + dirA.z * dirB.z;
+
+  if (endA === 1 && endB === 0) {
+    if (dot <= 0.99) return null;
+    return { start: [...a.start] as Vec3, end: [...b.end] as Vec3 };
+  }
+  if (endA === 1 && endB === 1) {
+    if (dot >= -0.99) return null;
+    return { start: [...a.start] as Vec3, end: [...b.start] as Vec3 };
+  }
+  if (endA === 0 && endB === 0) {
+    if (dot <= 0.99) return null;
+    return { start: [...a.end] as Vec3, end: [...b.end] as Vec3 };
+  }
+  if (endA === 0 && endB === 1) {
+    if (dot >= -0.99) return null;
+    return { start: [...a.end] as Vec3, end: [...b.start] as Vec3 };
+  }
+  return null;
+}
+
+function endpointClusters(
+  refs: EndpointRef[],
+  eps: number,
+): EndpointRef[][] {
+  if (refs.length < 2) return [];
+
+  const parent = refs.map((_, i) => i);
+  const find = (i: number): number => {
+    while (parent[i] !== i) {
+      parent[i] = parent[parent[i]];
+      i = parent[i];
+    }
+    return i;
+  };
+  const unite = (a: number, b: number) => {
+    const ra = find(a);
+    const rb = find(b);
+    if (ra !== rb) parent[rb] = ra;
+  };
+
+  for (let i = 0; i < refs.length; i++) {
+    for (let j = i + 1; j < refs.length; j++) {
+      if (Math.hypot(refs[i].x - refs[j].x, refs[i].z - refs[j].z) <= eps) {
+        unite(i, j);
+      }
+    }
+  }
+
+  const groups = new Map<number, EndpointRef[]>();
+  for (let i = 0; i < refs.length; i++) {
+    const root = find(i);
+    const list = groups.get(root);
+    if (list) list.push(refs[i]);
+    else groups.set(root, [refs[i]]);
+  }
+
+  return [...groups.values()];
+}
+
+/** Collapse degree-2 collinear junctions back into single segments. */
+function collapseCollinearSegments(
+  paths: GridPath[],
+  topology: CircuitTopology,
+): { topology: CircuitTopology; collapsed: number } {
+  let current = topology;
+  let collapsed = 0;
+
+  for (let pass = 0; pass < MAX_MERGE_PASSES; pass++) {
+    const geoms = collectEditableGeoms(paths, current);
+    if (geoms.size < 2) break;
+
+    const groups = endpointClusters(endpointRefs(geoms), JOIN_EPS);
+    let didCollapse = false;
+
+    for (const group of groups) {
+      if (group.length !== 2) continue;
+      const [r0, r1] = group;
+      if (r0.segId === r1.segId) continue;
+
+      const g0 = geoms.get(r0.segId);
+      const g1 = geoms.get(r1.segId);
+      if (!g0 || !g1) continue;
+
+      const combined = collinearMerge(g0, r0.end, g1, r1.end);
+      if (!combined) continue;
+
+      const mergedId = pickMergedSegmentId(r0.segId, r1.segId);
+      current = mergeSegmentsInTopology(
+        current,
+        r0.segId,
+        r1.segId,
+        mergedId,
+        combined,
+      );
+      collapsed += 1;
+      didCollapse = true;
+      break;
+    }
+
+    if (!didCollapse) break;
+  }
+
+  if (collapsed === 0) return { topology, collapsed: 0 };
+  return { topology: current, collapsed };
 }

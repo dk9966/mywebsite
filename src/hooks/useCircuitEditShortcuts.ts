@@ -60,9 +60,15 @@ export function useCircuitEditShortcuts() {
         redo();
         flashShortcutButton(SHORTCUT_BTN.redo);
       } else if (e.key === "c" || e.key === "C") {
-        if (copySelectedLines()) e.preventDefault();
+        if (copySelectedLines()) {
+          e.preventDefault();
+          flashShortcutButton(SHORTCUT_BTN.copy);
+        }
       } else if (e.key === "v" || e.key === "V") {
-        if (pasteLines()) e.preventDefault();
+        if (pasteLines()) {
+          e.preventDefault();
+          flashShortcutButton(SHORTCUT_BTN.paste);
+        }
       }
     };
 

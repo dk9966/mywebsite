@@ -45,6 +45,24 @@ export function resolveSegmentGeom(
   return segmentGeom(path);
 }
 
+/** Resolve segment geometry by id from live paths and/or topology edits. */
+export function resolveSegmentGeomById(
+  id: string,
+  paths: GridPath[],
+  topology: CircuitTopology,
+): SegmentGeom | null {
+  if (topology.deleted.includes(id)) return null;
+  const path = paths.find((p) => p.id === id);
+  if (path) return resolveSegmentGeom(path, topology);
+  const ov = topology.geometry[id];
+  if (ov) return ov;
+  const added = topology.added.find((a) => a.id === id);
+  if (added) {
+    return topology.geometry[id] ?? { start: added.start, end: added.end };
+  }
+  return null;
+}
+
 /** Merge topology edits onto baseline segment paths. */
 export function applyTopology(
   paths: GridPath[],
@@ -265,6 +283,12 @@ export function previewSnapPoint(
   return findSnapTarget(point, paths, excludeSegmentId, axis)?.point ?? point;
 }
 
+/** Id before the first `~` split suffix, e.g. `trace-3-seg-1~a` → `trace-3-seg-1`. */
+export function splitParentId(id: string): string | null {
+  const i = id.indexOf("~");
+  return i >= 0 ? id.slice(0, i) : null;
+}
+
 function splitId(baseId: string, topology: CircuitTopology): [string, string] {
   let n = 0;
   const exists = (id: string) =>
@@ -360,6 +384,52 @@ export function joinVertexInTopology(
   let next = splitSegmentInTopology(target.segment, target.point, topology);
   next = setVertexInTopology(next, segmentId, end, target.point, baseGeom);
   return next;
+}
+
+/** Replace two segments with one; restores a split parent id when applicable. */
+export function mergeSegmentsInTopology(
+  topology: CircuitTopology,
+  idA: string,
+  idB: string,
+  mergedId: string,
+  geom: SegmentGeom,
+): CircuitTopology {
+  const geometry = { ...topology.geometry };
+  delete geometry[idA];
+  delete geometry[idB];
+  geometry[mergedId] = geom;
+
+  const deleted = new Set(topology.deleted);
+  deleted.add(idA);
+  deleted.add(idB);
+  deleted.delete(mergedId);
+
+  const idAWasAdded = topology.added.some((a) => a.id === idA);
+  const idBWasAdded = topology.added.some((a) => a.id === idB);
+  const parentA = splitParentId(idA);
+  const parentB = splitParentId(idB);
+  const splitParent =
+    parentA !== null && parentA === parentB ? parentA : null;
+  // Baseline trace segments live in raw paths; user-drawn ones only exist in added.
+  const restoringBaselineSplit =
+    splitParent === mergedId && !mergedId.startsWith("user-");
+  const keepInAdded =
+    !restoringBaselineSplit &&
+    (idAWasAdded || idBWasAdded || mergedId.startsWith("user-"));
+
+  let added = topology.added.filter((a) => a.id !== idA && a.id !== idB);
+  if (keepInAdded) {
+    const entry: AddedSegment = {
+      id: mergedId,
+      start: [...geom.start] as Vec3,
+      end: [...geom.end] as Vec3,
+    };
+    const idx = added.findIndex((a) => a.id === mergedId);
+    if (idx >= 0) added[idx] = entry;
+    else added.push(entry);
+  }
+
+  return { geometry, deleted: [...deleted], added };
 }
 
 export function deleteSegmentInTopology(

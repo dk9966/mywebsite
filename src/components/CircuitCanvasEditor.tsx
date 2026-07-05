@@ -483,11 +483,12 @@ export default function CircuitCanvasEditor() {
 
   const [loaded, setLoaded] = useState(false);
   const [status, setStatus] = useState("");
-  const { flash, btnClass } = useShortcutButtonFlash();
+  const { flash: flashShortcutBtn, btnClass, btnTitle } = useShortcutButtonFlash();
 
   const editTool = useCircuitTuning((s) => s.editTool);
   const selectedLineIds = useCircuitTuning((s) => s.selectedLineIds);
   const selectedMeshIds = useCircuitTuning((s) => s.selectedMeshIds);
+  const clipboardLineCount = useCircuitTuning((s) => s.clipboardLineCount);
   const selectedLineSet = useMemo(
     () => new Set(selectedLineIds),
     [selectedLineIds],
@@ -1023,6 +1024,15 @@ export default function CircuitCanvasEditor() {
         return;
       }
 
+      if (store.editTool === "split") {
+        const hitId = lineHitTest(sx, sy);
+        if (hitId && store.selectedLineIds.includes(hitId)) {
+          store.splitSegmentAtPoint(getPaths(), hitId, worldPointAt(sx, sy));
+          drawRef.current();
+        }
+        return;
+      }
+
       if (e.shiftKey && store.editTool === "select") {
         interactionRef.current = {
           kind: "boxSelect",
@@ -1459,7 +1469,6 @@ export default function CircuitCanvasEditor() {
 
   const setTool = useCircuitTuning((s) => s.setEditTool);
   const startAddMesh = useCircuitTuning((s) => s.startAddMesh);
-  const splitSelected = useCircuitTuning((s) => s.splitSelectedSegment);
   const snapAngles = useCircuitTuning((s) => s.snapAnglesToGrid);
   const snapMergeEps = useCircuitTuning((s) => s.snapMergeEps);
   const setSnapMergeEps = useCircuitTuning((s) => s.setSnapMergeEps);
@@ -1468,13 +1477,37 @@ export default function CircuitCanvasEditor() {
   const redo = useCircuitTuning((s) => s.redo);
   const resetAll = useCircuitTuning((s) => s.resetAll);
 
-  const flash = useCallback((msg: string) => {
+  const flashStatus = useCallback((msg: string) => {
     setStatus(msg);
     window.setTimeout(() => setStatus(""), 2500);
   }, []);
 
+  const onCopy = useCallback(() => {
+    const count = useCircuitTuning.getState().selectedLineIds.filter(
+      (id) => id.startsWith("trace-") || id.startsWith("user-"),
+    ).length;
+    if (count === 0) {
+      flashStatus("Select one or more lines to copy");
+      return;
+    }
+    if (useCircuitTuning.getState().copySelectedLines()) {
+      flashStatus(`Copied ${count} line${count === 1 ? "" : "s"}`);
+      drawRef.current();
+    }
+  }, [flashStatus]);
+
+  const onPaste = useCallback(() => {
+    if (!useCircuitTuning.getState().pasteLines()) {
+      flashStatus("Nothing to paste — copy lines first");
+      return;
+    }
+    const count = useCircuitTuning.getState().selectedLineIds.length;
+    flashStatus(`Pasted ${count} line${count === 1 ? "" : "s"}`);
+    drawRef.current();
+  }, [flashStatus]);
+
   const onSnap45 = useCallback(() => {
-    const { changed, merged, meshSnapped } = snapAngles(getPaths(), getMeshes());
+    const { changed, merged, collapsed, meshSnapped } = snapAngles(getPaths(), getMeshes());
     drawRef.current();
     const parts: string[] = [];
     if (changed > 0) {
@@ -1487,17 +1520,22 @@ export default function CircuitCanvasEditor() {
         `merged ${merged} vertex${merged === 1 ? "" : "es"}`,
       );
     }
+    if (collapsed > 0) {
+      parts.push(
+        `rejoined ${collapsed} split line${collapsed === 1 ? "" : "s"}`,
+      );
+    }
     if (meshSnapped > 0) {
       parts.push(
         `connected ${meshSnapped} endpoint${meshSnapped === 1 ? "" : "s"} to mesh${meshSnapped === 1 ? "" : "es"}`,
       );
     }
     if (parts.length === 0) {
-      flash("Nothing to snap or merge");
+      flashStatus("Nothing to snap or merge");
     } else {
-      flash(parts.join(", "));
+      flashStatus(parts.join(", "));
     }
-  }, [flash, getMeshes, getPaths, snapAngles]);
+  }, [flashStatus, getMeshes, getPaths, snapAngles]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -1509,23 +1547,23 @@ export default function CircuitCanvasEditor() {
         const store = useCircuitTuning.getState();
         const next = store.editTool === "addLine" ? "select" : "addLine";
         store.setEditTool(next);
-        flash(next === "addLine" ? SHORTCUT_BTN.addLine : SHORTCUT_BTN.select);
+        flashShortcutBtn(next === "addLine" ? SHORTCUT_BTN.addLine : SHORTCUT_BTN.select);
         return;
       }
       if (e.key === "r" || e.key === "R") {
         e.preventDefault();
-        flash(SHORTCUT_BTN.snap45);
+        flashShortcutBtn(SHORTCUT_BTN.snap45);
         onSnap45();
       }
     };
     canvas.addEventListener("keydown", onKeyDown);
     return () => canvas.removeEventListener("keydown", onKeyDown);
-  }, [flash, onSnap45]);
+  }, [flashShortcutBtn, onSnap45]);
 
   const onSave = useCallback(async () => {
     const ok = await useCircuitTuning.getState().saveAsDefault();
-    flash(ok ? "Saved to circuits-tuning.json" : "Downloaded JSON (dev save unavailable)");
-  }, [flash]);
+    flashStatus(ok ? "Saved to circuits-tuning.json" : "Downloaded JSON (dev save unavailable)");
+  }, [flashStatus]);
 
   const onExport = useCallback(() => {
     const text = useCircuitTuning.getState().exportJSON();
@@ -1546,13 +1584,13 @@ export default function CircuitCanvasEditor() {
       if (!file) return;
       const text = await file.text();
       const ok = useCircuitTuning.getState().importJSON(text);
-      flash(ok ? "Imported tuning" : "Import failed: invalid JSON");
+      flashStatus(ok ? "Imported tuning" : "Import failed: invalid JSON");
     },
-    [flash],
+    [flashStatus],
   );
 
   const cursorClass =
-    editTool === "addLine" || editTool === "addMesh"
+    editTool === "addLine" || editTool === "addMesh" || editTool === "split"
       ? "cce__canvas cce__canvas--add"
       : "cce__canvas";
 
@@ -1582,6 +1620,7 @@ export default function CircuitCanvasEditor() {
               SHORTCUT_BTN.select,
               editTool === "select" ? "cce__btn cce__btn--active" : "cce__btn",
             )}
+            title={btnTitle(SHORTCUT_BTN.select)}
             onClick={() => setTool("select")}
           >
             Select
@@ -1592,6 +1631,7 @@ export default function CircuitCanvasEditor() {
               SHORTCUT_BTN.addLine,
               editTool === "addLine" ? "cce__btn cce__btn--active" : "cce__btn",
             )}
+            title={btnTitle(SHORTCUT_BTN.addLine)}
             onClick={() => setTool("addLine")}
           >
             Add line
@@ -1603,9 +1643,11 @@ export default function CircuitCanvasEditor() {
         <div className="cce__group">
           <button
             type="button"
-            className="cce__btn"
-            disabled={selectedLineIds.length !== 1}
-            onClick={() => splitSelected(getPaths())}
+            className={
+              editTool === "split" ? "cce__btn cce__btn--active" : "cce__btn"
+            }
+            disabled={selectedLineIds.length !== 1 && editTool !== "split"}
+            onClick={() => setTool(editTool === "split" ? "select" : "split")}
           >
             Split
           </button>
@@ -1613,6 +1655,7 @@ export default function CircuitCanvasEditor() {
             type="button"
             className={btnClass(SHORTCUT_BTN.delete, "cce__btn cce__btn--danger")}
             disabled={!hasSelection}
+            title={btnTitle(SHORTCUT_BTN.delete)}
             onClick={onDelete}
           >
             Delete
@@ -1620,6 +1663,7 @@ export default function CircuitCanvasEditor() {
           <button
             type="button"
             className={btnClass(SHORTCUT_BTN.snap45, "cce__btn")}
+            title={btnTitle(SHORTCUT_BTN.snap45)}
             onClick={onSnap45}
           >
             Snap 45°
@@ -1644,10 +1688,38 @@ export default function CircuitCanvasEditor() {
         <div className="cce__sep" />
 
         <div className="cce__group">
-          <button type="button" className={btnClass(SHORTCUT_BTN.undo, "cce__btn")} onClick={() => undo()}>
+          <button
+            type="button"
+            className={btnClass(SHORTCUT_BTN.copy, "cce__btn")}
+            disabled={selectedLineIds.length === 0}
+            title={btnTitle(SHORTCUT_BTN.copy)}
+            onClick={onCopy}
+          >
+            Copy
+          </button>
+          <button
+            type="button"
+            className={btnClass(SHORTCUT_BTN.paste, "cce__btn")}
+            disabled={clipboardLineCount === 0}
+            title={btnTitle(SHORTCUT_BTN.paste)}
+            onClick={onPaste}
+          >
+            Paste
+          </button>
+          <button
+            type="button"
+            className={btnClass(SHORTCUT_BTN.undo, "cce__btn")}
+            title={btnTitle(SHORTCUT_BTN.undo)}
+            onClick={() => undo()}
+          >
             Undo
           </button>
-          <button type="button" className={btnClass(SHORTCUT_BTN.redo, "cce__btn")} onClick={() => redo()}>
+          <button
+            type="button"
+            className={btnClass(SHORTCUT_BTN.redo, "cce__btn")}
+            title={btnTitle(SHORTCUT_BTN.redo)}
+            onClick={() => redo()}
+          >
             Redo
           </button>
           <button
@@ -1683,7 +1755,7 @@ export default function CircuitCanvasEditor() {
             className="cce__btn"
             onClick={() => {
               resetAll();
-              flash("Reset to committed default");
+              flashStatus("Reset to committed default");
             }}
           >
             Reset
@@ -1723,7 +1795,9 @@ export default function CircuitCanvasEditor() {
         {status && <span className="cce__status-line--accent">{status}</span>}
         <span>
           {loaded
-            ? hasSelection
+            ? editTool === "split"
+              ? "click on the selected line where you want to split it"
+              : hasSelection
               ? [
                   selectedLineIds.length > 0
                     ? `${selectedLineIds.length} line${selectedLineIds.length === 1 ? "" : "s"}`

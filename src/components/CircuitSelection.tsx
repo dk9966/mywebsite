@@ -418,6 +418,7 @@ function PickLine({
   waypoints,
   beginMove,
   shiftMoveHandledByOverlay,
+  onSplit,
 }: {
   id: string;
   waypoints: Vec3[];
@@ -428,6 +429,7 @@ function PickLine({
     meshIds: string[],
   ) => boolean;
   shiftMoveHandledByOverlay: boolean;
+  onSplit: (clientX: number, clientY: number, id: string) => void;
 }) {
   const editTool = useCircuitTuning((s) => s.editTool);
   const positions = useMemo(
@@ -439,6 +441,11 @@ function PickLine({
 
   const onPointerDown = useCallback(
     (e: ThreeEvent<PointerEvent>) => {
+      if (editTool === "split") {
+        e.stopPropagation();
+        onSplit(e.clientX, e.clientY, id);
+        return;
+      }
       if (editTool !== "select") return;
       e.stopPropagation();
 
@@ -491,7 +498,7 @@ function PickLine({
         store.setBoxSelection([id], []);
       }
     },
-    [beginMove, editTool, gl.domElement, id, shiftMoveHandledByOverlay],
+    [beginMove, editTool, gl.domElement, id, onSplit, shiftMoveHandledByOverlay],
   );
 
   if (editTool === "addLine") return null;
@@ -513,6 +520,7 @@ function PickProxies({
   paths,
   beginMove,
   shiftMoveHandledByOverlay,
+  onSplit,
 }: {
   paths: GridPath[];
   beginMove: (
@@ -522,6 +530,7 @@ function PickProxies({
     meshIds: string[],
   ) => boolean;
   shiftMoveHandledByOverlay: boolean;
+  onSplit: (clientX: number, clientY: number, id: string) => void;
 }) {
   return (
     <group>
@@ -533,6 +542,7 @@ function PickProxies({
             waypoints={p.waypoints}
             beginMove={beginMove}
             shiftMoveHandledByOverlay={shiftMoveHandledByOverlay}
+            onSplit={onSplit}
           />
         ) : null,
       )}
@@ -657,6 +667,29 @@ export default function CircuitSelectionLayer({
   const beginMove = beginMoveProp ?? hookBeginMove;
   const pickCenterZ = centerZ ?? boardCenterZ(paths);
 
+  const { camera, gl } = useThree();
+  const splitY = useMemo(() => boardY(paths), [paths]);
+  const onSplit = useCallback(
+    (clientX: number, clientY: number, id: string) => {
+      const store = useCircuitTuning.getState();
+      if (store.editTool !== "split") return;
+      // Only the selected line is splittable — clicks on others are ignored.
+      if (!store.selectedLineIds.includes(id)) return;
+      const point = pickBoardPoint(
+        clientX,
+        clientY,
+        camera,
+        gl.domElement,
+        splitY,
+        view,
+        pickCenterZ,
+      );
+      if (!point) return;
+      store.splitSegmentAtPoint(paths, id, point);
+    },
+    [camera, gl.domElement, paths, pickCenterZ, splitY, view],
+  );
+
   return (
     <>
       <AddLineTool
@@ -670,6 +703,7 @@ export default function CircuitSelectionLayer({
         paths={paths}
         beginMove={beginMove}
         shiftMoveHandledByOverlay={shiftMoveHandledByOverlay}
+        onSplit={onSplit}
       />
       <SelectionHighlight paths={paths} />
       <VertexHandles paths={paths} />

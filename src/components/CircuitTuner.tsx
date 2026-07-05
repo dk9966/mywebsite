@@ -118,7 +118,6 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
   const deleteSelectedSegment = useCircuitTuning(
     (s) => s.deleteSelectedSegment,
   );
-  const splitSelectedSegment = useCircuitTuning((s) => s.splitSelectedSegment);
   const setEditTool = useCircuitTuning((s) => s.setEditTool);
   const cancelEditTool = useCircuitTuning((s) => s.cancelEditTool);
   const editTool = useCircuitTuning((s) => s.editTool);
@@ -131,7 +130,7 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
   const resetAll = useCircuitTuning((s) => s.resetAll);
   const exportJSON = useCircuitTuning((s) => s.exportJSON);
   const importJSON = useCircuitTuning((s) => s.importJSON);
-  const { btnClass } = useShortcutButtonFlash();
+  const { btnClass, btnTitle } = useShortcutButtonFlash();
   const saveAsDefault = useCircuitTuning((s) => s.saveAsDefault);
 
   const [minimized, setMinimized] = useState(false);
@@ -321,6 +320,7 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
                     "tuner__btn tuner__btn--wide",
                   )}
                   type="button"
+                  title={btnTitle(SHORTCUT_BTN.delete)}
                   onClick={() => deleteSelectedSegment()}
                 >
                   Delete line
@@ -345,9 +345,9 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
           <section className="tuner__group">
             <h4 className="tuner__group-title">Edit</h4>
             <p className="tuner__hint tuner__hint--spawn">
-              Add line: click start, then end on the board. Split: breaks the
-              selected segment in half. Join: drag a handle onto another line.
-              Esc cancels add mode.
+              Add line: click start, then end on the board. Split: select a line,
+              then click it where you want the break. Join: drag a handle onto
+              another line. Esc cancels the active tool.
             </p>
             <div className="tuner__edit-row">
               <button
@@ -356,6 +356,7 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
                   `tuner__btn ${editTool === "addLine" ? "tuner__btn--active" : ""}`,
                 )}
                 type="button"
+                title={btnTitle(SHORTCUT_BTN.addLine)}
                 onClick={() =>
                   editTool === "addLine"
                     ? cancelEditTool()
@@ -365,10 +366,12 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
                 {editTool === "addLine" ? "Cancel add" : "Add line"}
               </button>
               <button
-                className="tuner__btn"
+                className={`tuner__btn ${editTool === "split" ? "tuner__btn--active" : ""}`}
                 type="button"
-                disabled={!selectedId}
-                onClick={() => splitSelectedSegment(paths)}
+                disabled={!selectedId && editTool !== "split"}
+                onClick={() =>
+                  setEditTool(editTool === "split" ? "select" : "split")
+                }
               >
                 Split
               </button>
@@ -380,6 +383,12 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
                   : "Click the first point on the board."}
               </p>
             ) : null}
+            {editTool === "split" ? (
+              <p className="tuner__hint">
+                Click the highlighted line where you want to split it. Esc
+                cancels.
+              </p>
+            ) : null}
             <p className="tuner__hint tuner__hint--spawn">
               Delete / Backspace removes the selected line. Ctrl+Z undo,
               Ctrl+Shift+Z redo.
@@ -388,6 +397,7 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
               <button
                 className={btnClass(SHORTCUT_BTN.undo, "tuner__btn")}
                 type="button"
+                title={btnTitle(SHORTCUT_BTN.undo)}
                 onClick={undo}
                 disabled={undoStack.length === 0}
               >
@@ -396,6 +406,7 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
               <button
                 className={btnClass(SHORTCUT_BTN.redo, "tuner__btn")}
                 type="button"
+                title={btnTitle(SHORTCUT_BTN.redo)}
                 onClick={redo}
                 disabled={redoStack.length === 0}
               >
