@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import { circuitsTuningSavePlugin } from './scripts/vite-circuits-tuning-save'
+import { jsonFileSavePlugin } from './scripts/vite-json-file-save'
 
 export default defineConfig({
   server: {
@@ -13,6 +14,7 @@ export default defineConfig({
       ignored: [
         '**/src/data/circuits-tuning.json',
         '**/src/data/circuit-versions/**',
+        '**/src/data/desk-layout-defaults.json',
       ],
     },
   },
@@ -23,7 +25,15 @@ export default defineConfig({
       'three/addons/lines/LineMaterial.js',
     ],
   },
-  plugins: [react(), circuitsTuningSavePlugin()],
+  plugins: [
+    react(),
+    circuitsTuningSavePlugin(),
+    jsonFileSavePlugin({
+      name: 'desk-layout-save',
+      route: '/__save-desk-layout',
+      relPath: 'src/data/desk-layout-defaults.json',
+    }),
+  ],
   resolve: {
     alias: {
       react: path.resolve('./node_modules/react'),

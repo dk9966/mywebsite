@@ -1,0 +1,49 @@
+{
+  "camera": {
+    "x": 0,
+    "y": 2.15,
+    "z": 2.8,
+    "fov": 35
+  },
+  "lookAt": {
+    "x": 0,
+    "y": 2,
+    "z": -1.05
+  },
+  "wallAnchor": {
+    "x": 0,
+    "y": 2.05,
+    "z": -1.85
+  },
+  "wallWidthPx": 2050,
+  "wallHeightPx": 1010,
+  "curveRadiusPx": 1425,
+  "bgOpacity": 0.5,
+  "bgBlur": 3,
+  "bezelEmission": 1.4,
+  "bezelLineWidth": 1.3,
+  "bezelOpacity": 1,
+  "bloomIntensity": 3.45,
+  "bloomThreshold": 0.82,
+  "bloomRadius": 0.75,
+  "bloomSmoothing": 0.63,
+  "headerFontPx": 38,
+  "contentPaddingPx": 39,
+  "contactHeightPx": 96,
+  "contactIconSizePx": 40,
+  "colFrac": [
+    0.3,
+    0.35,
+    0.35
+  ],
+  "leftSplit": 0.56,
+  "rightSplit": 0.44,
+  "eduBaseFontPx": 22,
+  "eduDegreeEm": 1.05,
+  "eduDateEm": 0.82,
+  "eduSchoolEm": 0.94,
+  "expBaseFontPx": 20,
+  "expRoleEm": 1.12,
+  "expDateEm": 0.82,
+  "expOrgEm": 0.94
+}

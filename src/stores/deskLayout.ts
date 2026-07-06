@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type { CellId } from "../lib/panelWall";
+import committedDefaults from "../data/desk-layout-defaults.json";
 
 // Shared source of truth for the desk HUD: camera, the global panel
 // curvature + glass look, and the flat-wall grid fractions that the layout
@@ -95,7 +96,11 @@ const FACTORY_DEFAULTS: DeskLayoutDefaults = {
   expOrgEm: 0.94,
 };
 
-const STORAGE_KEY = "desk-layout-defaults";
+// Dev route backed by src/data/desk-layout-defaults.json (see
+// scripts/vite-json-file-save.ts). "Set as default" POSTs the live values here
+// so they're committed to source and shared across browsers, instead of living
+// in one browser's localStorage.
+const SAVE_ROUTE = "/__save-desk-layout";
 
 // Minimum share of the wall a column / stacked cell may keep, so reflow
 // never collapses a panel to nothing.
@@ -154,17 +159,13 @@ function normalizeLayoutDefaults(
   };
 }
 
-function loadSavedDefaults(): DeskLayoutDefaults | null {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as DeskLayoutDefaults;
-    if (!parsed || typeof parsed !== "object") return null;
-    return normalizeLayoutDefaults({ ...FACTORY_DEFAULTS, ...parsed });
-  } catch {
-    return null;
-  }
-}
+// Committed baseline, bundled from the JSON file at build time and re-read on
+// every full page reload in dev — so localhost effectively serves whatever was
+// last saved. Factory values fill any gaps if the file is partial/older.
+const PUBLISHED: DeskLayoutDefaults = normalizeLayoutDefaults({
+  ...FACTORY_DEFAULTS,
+  ...(committedDefaults as Partial<DeskLayoutDefaults>),
+});
 
 function snapshotDefaults(state: DeskLayoutStore): DeskLayoutDefaults {
   return cloneDefaults({
@@ -201,9 +202,30 @@ function snapshotDefaults(state: DeskLayoutStore): DeskLayoutDefaults {
   });
 }
 
-let savedDefaults: DeskLayoutDefaults = normalizeLayoutDefaults(
-  loadSavedDefaults() ?? FACTORY_DEFAULTS,
-);
+// What Reset restores to. Starts at the committed file; a successful save or a
+// disk fetch updates it so Reset tracks the newest default.
+let savedDefaults: DeskLayoutDefaults = cloneDefaults(PUBLISHED);
+
+/**
+ * Read the committed file straight off disk via the dev server. The bundled
+ * `PUBLISHED` import is a snapshot from when the server started, and the file is
+ * intentionally hidden from the HMR watcher, so a save isn't reflected by the
+ * import on reload. Fetching is what makes a reload — and other browsers — see
+ * the latest "Set as default".
+ */
+async function fetchCommittedFromDisk(): Promise<DeskLayoutDefaults | null> {
+  if (typeof window === "undefined") return null;
+  try {
+    const res = await fetch(SAVE_ROUTE, {
+      headers: { "Cache-Control": "no-store" },
+    });
+    if (!res.ok) return null;
+    const json = (await res.json()) as Partial<DeskLayoutDefaults>;
+    return normalizeLayoutDefaults({ ...FACTORY_DEFAULTS, ...json });
+  } catch {
+    return null;
+  }
+}
 
 interface DeskLayoutStore extends DeskLayoutDefaults {
   /** Panels collapsed to letter icons in the dock below contact. */
@@ -251,9 +273,15 @@ interface DeskLayoutStore extends DeskLayoutDefaults {
   adjustRightSplit: (deltaFrac: number) => void;
   setRightSplit: (v: number) => void;
 
-  reset: () => void;
-  /** Persist the live slider values as what "Reset defaults" restores to. */
-  saveAsDefault: () => void;
+  /** Restore the committed defaults, re-fetched from disk when the dev server is up. */
+  reset: () => Promise<void>;
+  /**
+   * Write the live values to the committed defaults file via the dev server, so
+   * every browser sees them after a reload. Resolves true on success; on failure
+   * (e.g. no dev server) it downloads the JSON to commit by hand and resolves
+   * false.
+   */
+  saveAsDefault: () => Promise<boolean>;
 }
 
 export const useDeskLayout = create<DeskLayoutStore>((set, get) => ({
@@ -370,14 +398,59 @@ export const useDeskLayout = create<DeskLayoutStore>((set, get) => ({
   setRightSplit: (v) =>
     set({ rightSplit: clamp(v, MIN_PANEL_SPLIT, MAX_PANEL_SPLIT) }),
 
-  reset: () => set({ ...cloneDefaults(savedDefaults), minimizedPanels: [] }),
+  reset: async () => {
+    // Prefer the live file (reflects saves from any browser); fall back to the
+    // session baseline if the dev route is unavailable.
+    const fromDisk = await fetchCommittedFromDisk();
+    if (fromDisk) savedDefaults = fromDisk;
+    set({ ...cloneDefaults(savedDefaults), minimizedPanels: [] });
+  },
 
-  saveAsDefault: () => {
-    savedDefaults = normalizeLayoutDefaults(snapshotDefaults(get()));
+  saveAsDefault: async () => {
+    const snap = normalizeLayoutDefaults(snapshotDefaults(get()));
+    const body = JSON.stringify(snap, null, 2);
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(savedDefaults));
+      const res = await fetch(SAVE_ROUTE, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body,
+      });
+      if (!res.ok) throw new Error("save failed");
+      savedDefaults = snap;
+      return true;
     } catch {
-      // Quota or private browsing — in-memory save still works this session.
+      downloadDefaults(body);
+      return false;
     }
   },
 }));
+
+/** Fallback when the dev route is unavailable: hand back the file to commit. */
+function downloadDefaults(body: string): void {
+  if (typeof document === "undefined") return;
+  const blob = new Blob([`${body.trimEnd()}\n`], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "desk-layout-defaults.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// On load, pull the committed file from disk so a reload reflects the latest
+// "Set as default" instead of the stale bundled import. Only hydrate while the
+// state still matches the bundle, so a late fetch never clobbers edits the user
+// already started making this session.
+if (typeof window !== "undefined") {
+  const bundled = JSON.stringify(PUBLISHED);
+  void fetchCommittedFromDisk().then((fromDisk) => {
+    if (!fromDisk) return;
+    savedDefaults = fromDisk;
+    const current = JSON.stringify(
+      normalizeLayoutDefaults(snapshotDefaults(useDeskLayout.getState())),
+    );
+    if (current === bundled) {
+      useDeskLayout.setState(cloneDefaults(fromDisk));
+    }
+  });
+}

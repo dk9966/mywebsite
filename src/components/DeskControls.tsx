@@ -221,7 +221,9 @@ export default function DeskControls() {
   const resetBootTuning = useBootTuning((s) => s.reset);
 
   const [minimized, setMinimized] = useState(false);
-  const [savedFlash, setSavedFlash] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "downloaded">(
+    "idle",
+  );
   const [pos, setPos] = useState({ x: 12, y: 12 });
   const [dragging, setDragging] = useState(false);
   const dragRef = useRef<{
@@ -284,10 +286,10 @@ export default function DeskControls() {
     }
   };
 
-  const onSaveAsDefault = () => {
-    saveAsDefault();
-    setSavedFlash(true);
-    window.setTimeout(() => setSavedFlash(false), 1400);
+  const onSaveAsDefault = async () => {
+    const ok = await saveAsDefault();
+    setSaveStatus(ok ? "saved" : "downloaded");
+    window.setTimeout(() => setSaveStatus("idle"), 1400);
   };
 
   return (
@@ -643,11 +645,15 @@ export default function DeskControls() {
               Reset defaults
             </button>
             <button
-              className={`desk-controls__save ${savedFlash ? "desk-controls__save--flash" : ""}`}
+              className={`desk-controls__save ${saveStatus !== "idle" ? "desk-controls__save--flash" : ""}`}
               type="button"
               onClick={onSaveAsDefault}
             >
-              {savedFlash ? "Saved" : "Set as default"}
+              {saveStatus === "saved"
+                ? "Saved"
+                : saveStatus === "downloaded"
+                  ? "Downloaded"
+                  : "Set as default"}
             </button>
           </div>
         </>
