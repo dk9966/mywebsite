@@ -1,15 +1,19 @@
-import { useCallback, useEffect, useMemo, useRef } from "react";
-import type { CSSProperties, PointerEvent as ReactPointerEvent, ReactNode } from "react";
+import { Line as DreiLine, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Html, Line as DreiLine } from "@react-three/drei";
+import type {
+  CSSProperties,
+  ReactNode,
+  PointerEvent as ReactPointerEvent,
+} from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
-import { useDeskLayout } from "../stores/deskLayout";
-import { useBootTuning } from "../stores/bootTuning";
 import {
   bootElapsedMs,
   panelBootVisual,
   type PanelBoot,
 } from "../lib/bootSequence";
+import { useBootTuning } from "../stores/bootTuning";
+import { useDeskLayout } from "../stores/deskLayout";
 import { BootFx, BootPulse } from "./BootFx";
 import "./HudScreen.css";
 import "./hudContactPortal.css";
@@ -250,7 +254,9 @@ export default function HudScreen({
               ? "hud-screen__face hud-screen__face--compact"
               : "hud-screen__face",
         boot ? "hud-screen__face--boot" : "",
-        boot && bootParts.contentJitter.visible ? "boot-part--contentJitter" : "",
+        boot && bootParts.contentJitter.visible
+          ? "boot-part--contentJitter"
+          : "",
         boot && bootParts.titleReveal.visible ? "boot-part--titleReveal" : "",
         boot && bootParts.bodyReveal.visible ? "boot-part--bodyReveal" : "",
       ]
@@ -270,7 +276,10 @@ export default function HudScreen({
       }}
     >
       {!hideHeader ? (
-        <div className="hud-screen__handle" style={{ fontSize: `${headerFontPx}px` }}>
+        <div
+          className="hud-screen__handle"
+          style={{ fontSize: `${headerFontPx}px` }}
+        >
           <span className="hud-screen__handle-title">{title}</span>
           <div className="hud-screen__handle-actions">
             {headerAside}
@@ -294,7 +303,9 @@ export default function HudScreen({
       {!headerOnly ? (
         <div
           className={
-            compactPadding ? "hud-screen__body hud-screen__body--compact" : "hud-screen__body"
+            compactPadding
+              ? "hud-screen__body hud-screen__body--compact"
+              : "hud-screen__body"
           }
         >
           {children}
@@ -355,17 +366,38 @@ export default function HudScreen({
         >
           {!dockIcon ? (
             <>
-              <div className="hud-screen__edge hud-screen__edge--top" {...handleProps("top")} />
+              <div
+                className="hud-screen__edge hud-screen__edge--top"
+                {...handleProps("top")}
+              />
               <div
                 className="hud-screen__edge hud-screen__edge--bottom"
                 {...handleProps("bottom")}
               />
-              <div className="hud-screen__edge hud-screen__edge--left" {...handleProps("left")} />
-              <div className="hud-screen__edge hud-screen__edge--right" {...handleProps("right")} />
-              <div className="hud-screen__corner hud-screen__corner--tl" {...handleProps("tl")} />
-              <div className="hud-screen__corner hud-screen__corner--tr" {...handleProps("tr")} />
-              <div className="hud-screen__corner hud-screen__corner--bl" {...handleProps("bl")} />
-              <div className="hud-screen__corner hud-screen__corner--br" {...handleProps("br")} />
+              <div
+                className="hud-screen__edge hud-screen__edge--left"
+                {...handleProps("left")}
+              />
+              <div
+                className="hud-screen__edge hud-screen__edge--right"
+                {...handleProps("right")}
+              />
+              <div
+                className="hud-screen__corner hud-screen__corner--tl"
+                {...handleProps("tl")}
+              />
+              <div
+                className="hud-screen__corner hud-screen__corner--tr"
+                {...handleProps("tr")}
+              />
+              <div
+                className="hud-screen__corner hud-screen__corner--bl"
+                {...handleProps("bl")}
+              />
+              <div
+                className="hud-screen__corner hud-screen__corner--br"
+                {...handleProps("br")}
+              />
             </>
           ) : null}
         </div>
@@ -504,7 +536,10 @@ const FILL_SEG_PX = 14;
 // A canvas texture carries the vertical glass gradient and the rounded-corner
 // alpha mask, so the mesh itself can stay a plain bent rectangle while still
 // reading as a rounded glass panel.
-function makeGlassTexture(widthPx: number, heightPx: number): THREE.CanvasTexture {
+function makeGlassTexture(
+  widthPx: number,
+  heightPx: number,
+): THREE.CanvasTexture {
   const cap = 512;
   const scale = Math.min(1, cap / Math.max(widthPx, heightPx));
   const w = Math.max(2, Math.round(widthPx * scale));
@@ -644,7 +679,11 @@ function CurvedFaceSlices({
   return (
     <>
       {slices.map((slice) => (
-        <group key={slice.key} position={slice.position} rotation={[0, slice.yaw, 0]}>
+        <group
+          key={slice.key}
+          position={slice.position}
+          rotation={[0, slice.yaw, 0]}
+        >
           <Html
             transform
             center
@@ -720,10 +759,10 @@ function roundedRectOutline(
 
   // Clockwise from the top edge, starting just right of the top-left arc.
   pushLine(-(halfW - r), halfW - r, halfH, 8);
-  pushArc( halfW - r, halfH - r, Math.PI / 2, 0);
-  pushVLine( halfW, halfH - r, -(halfH - r), 4);
-  pushArc( halfW - r, -(halfH - r), 0, -Math.PI / 2);
-  pushLine( halfW - r, -(halfW - r), -halfH, 8);
+  pushArc(halfW - r, halfH - r, Math.PI / 2, 0);
+  pushVLine(halfW, halfH - r, -(halfH - r), 4);
+  pushArc(halfW - r, -(halfH - r), 0, -Math.PI / 2);
+  pushLine(halfW - r, -(halfW - r), -halfH, 8);
   pushArc(-(halfW - r), -(halfH - r), -Math.PI / 2, -Math.PI);
   pushVLine(-halfW, -(halfH - r), halfH - r, 4);
   pushArc(-(halfW - r), halfH - r, Math.PI, Math.PI / 2);

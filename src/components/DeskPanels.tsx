@@ -9,7 +9,6 @@ import {
   startBootClock,
   type PanelBoot,
 } from "../lib/bootSequence";
-import { useBootClock } from "../stores/bootClock";
 import {
   availableColumnHeight,
   availableWidth,
@@ -20,6 +19,7 @@ import {
   type CellId,
   type WallSize,
 } from "../lib/panelWall";
+import { useBootClock } from "../stores/bootClock";
 import { useDeskLayout } from "../stores/deskLayout";
 import {
   ContactHeaderIcons,
@@ -27,6 +27,7 @@ import {
   ExperiencePanel,
   FeaturedPanel,
   ProfilePanel,
+  ProjectsNav,
   SkillsPanel,
 } from "./deskPanelContent";
 import HudScreen, { type ResizeHandle } from "./HudScreen";
@@ -58,6 +59,7 @@ const CELL_META: Record<CellId, CellMeta> = {
     title: "Projects",
     tag: "03",
     content: <FeaturedPanel />,
+    headerAside: <ProjectsNav />,
   },
   education: { title: "Education", tag: "04", content: <EducationPanel /> },
   experience: { title: "Experiences", tag: "05", content: <ExperiencePanel /> },

@@ -1,7 +1,11 @@
-import { armBootClock, bootAnchorElapsedMs, useBootClock } from "../stores/bootClock";
+import {
+  armBootClock,
+  bootAnchorElapsedMs,
+  useBootClock,
+} from "../stores/bootClock";
 import { bootPartScale, useBootTuning } from "../stores/bootTuning";
 import type { BootPanelId } from "./bootParts";
-import { BOOT_TOTAL_MS, DEFAULT_PANEL_START_MS, bootScaleMs } from "./bootParts";
+import { DEFAULT_PANEL_START_MS, bootScaleMs } from "./bootParts";
 import type { CellId } from "./panelWall";
 
 /** Per-panel power-on offsets (ms from mount). Deliberately not sorted
@@ -81,14 +85,25 @@ export interface BootVisual {
   boost: number;
 }
 
-const DARK: BootVisual = { glow: 0, draw: 0, drawOpacity: 0, fill: 0, boost: 0 };
+const DARK: BootVisual = {
+  glow: 0,
+  draw: 0,
+  drawOpacity: 0,
+  fill: 0,
+  boost: 0,
+};
 
-function partEnd(id: "edgeGlow" | "flickerFill" | "bezelDraw" | "glassAssembly"): number {
+function partEnd(
+  id: "edgeGlow" | "flickerFill" | "bezelDraw" | "glassAssembly",
+): number {
   const p = useBootTuning.getState().parts[id];
   return p.delayMs + p.durationMs;
 }
 
-export function panelBootVisual(elapsedMs: number, boot: PanelBoot): BootVisual {
+export function panelBootVisual(
+  elapsedMs: number,
+  boot: PanelBoot,
+): BootVisual {
   const stabilizeMs = bootStabilizeMs();
   const pulseDur = useBootTuning.getState().parts.onlinePulse.durationMs;
 
@@ -134,7 +149,9 @@ export function panelBootVisual(elapsedMs: number, boot: PanelBoot): BootVisual 
     if (bootPartScale("flickerFill") === 0) return DARK;
     const glow = n > 0.78 ? 0.85 : n > 0.5 ? 0.28 : 0.1;
     const fill =
-      n > 0.66 ? 0.05 + 0.28 * hash01(boot.seed + Math.floor(elapsedMs / 41)) : 0.04;
+      n > 0.66
+        ? 0.05 + 0.28 * hash01(boot.seed + Math.floor(elapsedMs / 41))
+        : 0.04;
     return {
       glow: glow * bootPartScale("edgeGlow"),
       draw: 0,
@@ -171,7 +188,8 @@ export function panelBootVisual(elapsedMs: number, boot: PanelBoot): BootVisual 
 }
 
 /** Legacy export — prefer bootPanelStartMs() for live tuning values. */
-export const BOOT_PANEL_START_MS: Record<CellId, number> = DEFAULT_PANEL_START_MS;
+export const BOOT_PANEL_START_MS: Record<CellId, number> =
+  DEFAULT_PANEL_START_MS;
 
 export const BOOT_STABILIZE_MS = bootScaleMs(2900);
 export const BOOT_PULSE_DELAY_MS = bootScaleMs(3050);

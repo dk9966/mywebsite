@@ -128,78 +128,217 @@
 }
 
 /* Featured Projects (03) ----------------------------------------------------*/
+/* Carousel controls live in the panel header (ProjectsNav); the body holds a
+   single project card. Sizes scale with panel width via container queries. */
 
 .hud-projects {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  container-type: size;
   height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.hud-projects-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  pointer-events: auto;
+}
+
+.hud-projects-nav__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  color: rgba(156, 248, 248, 0.75);
+  background: rgba(102, 240, 240, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(102, 240, 240, 0.28);
+  cursor: pointer;
+  pointer-events: auto;
+  /* Lift above duplicate slice layers so the controls stay clickable on the bend. */
+  transform: translateZ(2px);
+  transition: color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hud-projects-nav__arrow:hover {
+  color: #d6f4f7;
+  background: rgba(102, 240, 240, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(102, 240, 240, 0.45);
+}
+
+.hud-projects-nav__arrow .hud-icon {
+  width: 0.9em;
+  height: 0.9em;
+}
+
+.hud-projects-nav__dots {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.hud-projects__item {
+.hud-projects-nav__dot {
+  display: block;
+  width: 0.42em;
+  height: 0.42em;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(156, 248, 248, 0.3);
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateZ(2px);
+  transition: background 0.15s ease;
+}
+
+.hud-projects-nav__dot--active {
+  background: #9cf8f8;
+}
+
+.hud-projects__card {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  flex: 0 1 auto;
-  padding-bottom: 18px;
+  gap: min(4.5cqi, 20px);
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: min(5cqi, 22px);
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(102, 240, 240, 0.28);
+  background: linear-gradient(
+    160deg,
+    rgba(102, 240, 240, 0.05),
+    rgba(15, 40, 50, 0.28)
+  );
+  pointer-events: none;
 }
 
-.hud-projects__item + .hud-projects__item {
-  padding-top: 18px;
-  box-shadow: inset 0 1px 0 rgba(102, 240, 240, 0.15);
+.hud-projects__media {
+  flex: 1 1 0;
+  min-height: min(30cqi, 80px);
+  box-sizing: border-box;
 }
 
-.hud-projects__head {
+.hud-projects__media-placeholder {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: min(5cqi, 20px);
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(102, 240, 240, 0.28);
+  background: linear-gradient(
+    145deg,
+    rgba(102, 240, 240, 0.08),
+    rgba(15, 40, 50, 0.35)
+  );
+}
+
+.hud-projects__media-label {
+  font-size: min(5cqi, 14px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(174, 234, 238, 0.45);
 }
 
 .hud-projects__name {
-  font-size: 14px;
+  font-size: min(16cqi, 40px);
   font-weight: 600;
+  line-height: 1.2;
   color: #e4f6f8;
 }
 
-.hud-projects__period {
-  flex: 0 0 auto;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  color: rgba(174, 234, 238, 0.6);
+.hud-projects__tagline {
+  margin: 0;
+  font-size: min(10cqi, 25px);
+  line-height: 1.45;
+  color: rgba(207, 232, 236, 0.9);
 }
 
 .hud-projects__stack {
   display: flex;
+  flex-direction: column;
+  gap: min(2.2cqi, 9px);
+}
+
+.hud-projects__stack-label {
+  font-size: min(4.4cqi, 12px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(156, 248, 248, 0.7);
+}
+
+.hud-projects__tags {
+  display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: min(2.4cqi, 8px);
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .hud-projects__tag {
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 9.5px;
+  padding: min(1.8cqi, 6px) min(3.4cqi, 13px);
+  border-radius: 5px;
+  font-size: min(5cqi, 14px);
   letter-spacing: 0.04em;
   color: rgba(219, 240, 243, 0.85);
   box-shadow: inset 0 0 0 1px rgba(102, 240, 240, 0.22);
 }
 
-.hud-projects__tag--context {
-  color: #9cf8f8;
-  box-shadow: inset 0 0 0 1px rgba(102, 240, 240, 0.45);
-}
-
 .hud-projects__summary {
   margin: 0;
-  font-size: 11.5px;
-  line-height: 1.5;
-  color: rgba(207, 232, 236, 0.82);
+  flex: 0 0 auto;
+  min-height: 0;
+  font-size: min(3cqi, 25px);
+  line-height: 1.55;
+  color: rgba(174, 234, 238, 0.62);
+}
+
+.hud-projects__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: min(3cqi, 12px);
+  margin-top: min(1cqi, 4px);
+  padding: min(2.8cqi, 12px) 0 0;
+  border: none;
+  border-top: 1px solid rgba(102, 240, 240, 0.2);
+  background: transparent;
+  color: rgba(156, 248, 248, 0.85);
+  font: inherit;
+  font-size: min(5.4cqi, 15px);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  pointer-events: auto;
+  /* Lift above duplicate slice layers so the link stays clickable on the bend. */
+  transform: translateZ(2px);
+  transition: color 0.15s ease;
+}
+
+.hud-projects__link:hover {
+  color: #d6f4f7;
+}
+
+.hud-projects__link-label {
+  display: inline-flex;
+  align-items: center;
+  gap: min(2.4cqi, 10px);
+}
+
+.hud-projects__link .hud-icon {
+  width: min(5.6cqi, 16px);
+  height: min(5.6cqi, 16px);
 }
 
 /* Education (04) ------------------------------------------------------------*/

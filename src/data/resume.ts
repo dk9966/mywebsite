@@ -23,7 +23,12 @@ export interface Project {
   context: string;
   stack: string[];
   period: string;
+  /** One-line pitch shown under the title. */
+  tagline: string;
+  /** Longer paragraph with the technical detail. */
   summary: string;
+  /** Repository link for the "View on GitHub" action. */
+  href: string;
 }
 
 export interface ExperienceEntry {
@@ -61,7 +66,7 @@ export const profile = {
   stats: [
     { value: "3.81", label: "GPA / 4.0" },
     { value: "3", label: "Internships" },
-    { value: "3", label: "Projects" },
+    { value: "2", label: "Projects" },
   ] satisfies ProfileStat[],
 };
 
@@ -80,28 +85,26 @@ export const skillGroups: SkillGroup[] = [
 
 export const projects: Project[] = [
   {
-    name: "Rotarygolf.info",
+    name: "Multiplayer Mahjong",
     context: "Personal",
-    stack: ["React", "TypeScript", "PostgreSQL"],
-    period: "Sep 2025 – Present",
+    stack: ["Node.js", "TypeScript", "WebSockets"],
+    period: "2025 – Present",
+    tagline:
+      "Real-time multiplayer Mahjong with authoritative server, matchmaking, and tick-based state sync.",
     summary:
-      "Full-stack golf tournament platform for a 50-member club (scaling to ~100 in Taipei): OCR score capture, role-based auth, real-time leaderboards, and automated award calculations.",
+      "Four-player Taiwanese mahjong over WebSockets: authoritative server, lobby matchmaking, and tick-based state sync, with explicit handling of concurrent turns, reconnects, and client/server race conditions.",
+    href: "https://github.com/dk9966",
   },
   {
-    name: "IoT Bicycle Hazard Detection",
-    context: "CS 437",
-    stack: ["C++", "Python", "Raspberry Pi"],
-    period: "Jan – May 2024",
+    name: "Self-Hosted LLM Chatbot",
+    context: "Personal",
+    stack: ["C++", "CUDA", "TypeScript", "Llama"],
+    period: "2025 – Present",
+    tagline:
+      "Self-hosted LLM inference in C++/CUDA, serving this site's chatbot without a third-party API.",
     summary:
-      "Low-latency hazard detection on Raspberry Pi + Coral TPU with a BLE smart taillight on ESP32-S3 driving a real-time 8×8 LED alert array via multiprocessing queues.",
-  },
-  {
-    name: "Numerical Methods for Shallow-Water PDEs",
-    context: "CS 555",
-    stack: ["Python"],
-    period: "Jan – May 2025",
-    summary:
-      "Finite-volume solvers for shallow-water PDEs; optimized timestep selection and memory layout for numerically stable simulations, with visualizations comparing triangular vs. uniform grids.",
+      "Open-source inference for this site's chatbot via tiny-vllm—a C++/CUDA engine with PagedAttention, continuous batching, and KV cache—serving Llama 3.2 1B locally instead of a third-party API.",
+    href: "https://github.com/dk9966",
   },
 ];
 

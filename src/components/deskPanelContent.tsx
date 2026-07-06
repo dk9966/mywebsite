@@ -1,4 +1,11 @@
-import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+  type ReactNode,
+} from "react";
 import {
   contact,
   experience,
@@ -53,29 +60,152 @@ export function SkillsPanel() {
 
 // Featured Projects (03) -----------------------------------------------------
 
-export function FeaturedPanel() {
+const CHEVRON_LEFT = <path d="M12.5 5 7.5 10l5 5" />;
+const CHEVRON_RIGHT = <path d="M7.5 5 12.5 10l-5 5" />;
+const ARROW_RIGHT = <path d="M3.5 10h13M11 4.5l5.5 5.5-5.5 5.5" />;
+const GITHUB = (
+  <path d="M10 2.5a7.5 7.5 0 0 0-2.4 14.6c.4.1.5-.2.5-.4v-1.3c-2 .4-2.5-.5-2.7-1-.1-.3-.6-1-1-1.2-.3-.2-.8-.6 0-.6.7 0 1.2.7 1.4 1 .8 1.3 2 1 2.5.7.1-.6.3-1 .6-1.2-1.8-.2-3.6-.9-3.6-3.9 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.4 7.4 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.5 1.1.2 1.9.1 2.1.5.5.8 1.2.8 2.1 0 3-1.8 3.7-3.6 3.9.3.3.6.8.6 1.6v2.3c0 .2.1.5.5.4A7.5 7.5 0 0 0 10 2.5z" />
+);
+
+// Bent panels mount one FeaturedPanel per vertical slice; keep carousel index
+// in sync so every strip shows the same project after prev/next.
+let sharedProjectIndex = 0;
+const projectIndexListeners = new Set<(index: number) => void>();
+
+function setSharedProjectIndex(next: number) {
+  sharedProjectIndex = next;
+  projectIndexListeners.forEach((fn) => fn(next));
+}
+
+function useSyncedProjectIndex(count: number) {
+  const [index, setIndex] = useState(sharedProjectIndex);
+
+  useEffect(() => {
+    projectIndexListeners.add(setIndex);
+    return () => {
+      projectIndexListeners.delete(setIndex);
+    };
+  }, []);
+
+  const goPrev = () =>
+    setSharedProjectIndex((sharedProjectIndex - 1 + count) % count);
+  const goNext = () => setSharedProjectIndex((sharedProjectIndex + 1) % count);
+  const goTo = (next: number) =>
+    setSharedProjectIndex(((next % count) + count) % count);
+
+  return { index, goPrev, goNext, goTo };
+}
+
+// Carousel controls live in the panel header (upper right). Prev/next chevrons
+// flank a dot per project; the shared index keeps them in step with the card.
+export function ProjectsNav() {
+  const count = projects.length;
+  const { index, goPrev, goNext, goTo } = useSyncedProjectIndex(count);
+
+  if (count <= 1) return null;
+
+  const stopNavPointer = (e: ReactPointerEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+  };
+
   return (
-    <ul className="hud-projects">
-      {projects.map((p) => (
-        <li className="hud-projects__item" key={p.name}>
-          <div className="hud-projects__head">
-            <span className="hud-projects__name">{p.name}</span>
-            <span className="hud-projects__period">{p.period}</span>
+    <div className="hud-projects-nav">
+      <button
+        type="button"
+        className="hud-projects-nav__arrow"
+        onClick={goPrev}
+        onPointerDown={stopNavPointer}
+        aria-label="Previous project"
+      >
+        <HudIcon>{CHEVRON_LEFT}</HudIcon>
+      </button>
+      <ul className="hud-projects-nav__dots">
+        {projects.map((project, i) => (
+          <li key={project.name}>
+            <button
+              type="button"
+              className={
+                i === index
+                  ? "hud-projects-nav__dot hud-projects-nav__dot--active"
+                  : "hud-projects-nav__dot"
+              }
+              onClick={() => goTo(i)}
+              onPointerDown={stopNavPointer}
+              aria-label={`Show ${project.name}`}
+              aria-current={i === index}
+            />
+          </li>
+        ))}
+      </ul>
+      <button
+        type="button"
+        className="hud-projects-nav__arrow"
+        onClick={goNext}
+        onPointerDown={stopNavPointer}
+        aria-label="Next project"
+      >
+        <HudIcon>{CHEVRON_RIGHT}</HudIcon>
+      </button>
+    </div>
+  );
+}
+
+export function FeaturedPanel() {
+  const count = projects.length;
+  const { index } = useSyncedProjectIndex(count);
+  const project = projects[index];
+
+  if (!project) return null;
+
+  const openRepo = (e: ReactPointerEvent<HTMLButtonElement> | MouseEvent) => {
+    e.stopPropagation();
+    if (project.href) {
+      window.open(project.href, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  return (
+    <div className="hud-projects">
+      <article className="hud-projects__card" key={project.name}>
+        <div className="hud-projects__media" aria-hidden="true">
+          <div className="hud-projects__media-placeholder">
+            <span className="hud-projects__media-label">Preview</span>
           </div>
-          <ul className="hud-projects__stack">
-            <li className="hud-projects__tag hud-projects__tag--context">
-              {p.context}
-            </li>
-            {p.stack.map((tech) => (
+        </div>
+
+        <span className="hud-projects__name">{project.name}</span>
+
+        <p className="hud-projects__tagline">{project.tagline}</p>
+
+        <div className="hud-projects__stack">
+          <span className="hud-projects__stack-label">Tech Stack</span>
+          <ul className="hud-projects__tags">
+            {project.stack.map((tech) => (
               <li className="hud-projects__tag" key={tech}>
                 {tech}
               </li>
             ))}
           </ul>
-          <p className="hud-projects__summary">{p.summary}</p>
-        </li>
-      ))}
-    </ul>
+        </div>
+
+        <p className="hud-projects__summary">{project.summary}</p>
+
+        {project.href ? (
+          <button
+            type="button"
+            className="hud-projects__link"
+            onClick={openRepo}
+            onPointerDown={(e) => e.stopPropagation()}
+          >
+            <span className="hud-projects__link-label">
+              <HudIcon>{GITHUB}</HudIcon>
+              View on GitHub
+            </span>
+            <HudIcon>{ARROW_RIGHT}</HudIcon>
+          </button>
+        ) : null}
+      </article>
+    </div>
   );
 }
 
@@ -198,9 +328,7 @@ const CONTACT_ICONS: Record<ContactKind, ReactNode> = {
       <path d="M6.5 8.5V14M6.5 5.6v.01M9.5 14V8.5M9.5 11c0-1.4.9-2.5 2.3-2.5S14 9.4 14 11v3" />
     </>
   ),
-  github: (
-    <path d="M10 2.5a7.5 7.5 0 0 0-2.4 14.6c.4.1.5-.2.5-.4v-1.3c-2 .4-2.5-.5-2.7-1-.1-.3-.6-1-1-1.2-.3-.2-.8-.6 0-.6.7 0 1.2.7 1.4 1 .8 1.3 2 1 2.5.7.1-.6.3-1 .6-1.2-1.8-.2-3.6-.9-3.6-3.9 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.4 7.4 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.5 1.1.2 1.9.1 2.1.5.5.8 1.2.8 2.1 0 3-1.8 3.7-3.6 3.9.3.3.6.8.6 1.6v2.3c0 .2.1.5.5.4A7.5 7.5 0 0 0 10 2.5z" />
-  ),
+  github: GITHUB,
   x: (
     <path d="M5.8 4h2.1l2.9 4.1L14.2 4h2l-3.9 5.3L16.8 16h-2.1l-3.2-4.5L7.5 16H5.4l4.1-5.5L5.8 4z" />
   ),
