@@ -21,6 +21,8 @@
     "build-circuits-tracing": "python3 scripts/build-circuits-tracing-snapshot.py",
     "build-component-reference-outline": "python3 scripts/build-component-reference-outline-glb.py",
     "export-board-spatial": "tsx scripts/export-board-spatial.ts",
+    "export-mesh-variant-catalog": "tsx scripts/export-mesh-variant-catalog.ts",
+    "insert-circuit-mesh": "tsx scripts/insert-circuit-mesh.ts",
     "check-circuit-line-geometry": "tsx scripts/check-circuit-line-geometry.ts"
   },
   "dependencies": {

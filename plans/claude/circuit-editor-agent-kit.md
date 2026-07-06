@@ -48,6 +48,37 @@ editor or the tuning file. Regenerate it after edits to see the new state.
 
 Both live in the tuning JSON (`circuits-tuning.json` or a version file).
 
+### Mesh variant catalog (palette labels → ids)
+
+The 3D editor palette ("QFP 3", "SOIC 5", …) maps to stable variant ids in
+`qfp-variants.glb`. An agent should **not** guess ids from the build script.
+
+```bash
+pnpm run export-mesh-variant-catalog   # writes src/data/mesh-variant-catalog.json
+```
+
+Read `src/data/mesh-variant-catalog.json`:
+
+| Field | Meaning |
+|-------|---------|
+| `lookup` | `"QFP 3"` → `"q3-plain-prism"` (also maps ids to themselves) |
+| `variants[]` | Full list: `id`, `label`, `kind`, `placeSize`, `natural` |
+| `defaultMeshSize` | Fallback footprint per kind when no variant is set |
+| `meshEditsExample` | Copy-paste shape for a new `meshEdits.added` entry |
+
+**Quick insert (preferred for agents):**
+
+```bash
+pnpm run insert-circuit-mesh -- --variant "QFP 3" --at 12,6
+pnpm run insert-circuit-mesh -- --variant "QFP 3" --at 12,6 --version 2
+pnpm run insert-circuit-mesh -- --variant "QFP 3" --at 12,6 --dry-run
+```
+
+This resolves the label, picks the next `mesh-user-N` id, appends to
+`meshEdits.added`, and warns on bbox overlap with existing added meshes.
+
+**Manual insert:** use `lookup` + `placeSize` to build the entry below.
+
 ### Traces → `topology`
 
 ```jsonc
@@ -91,8 +122,9 @@ Rules for a new line:
   smd, pad, via, cpu, io, dimm, pcie, vrm`.
 - A box is just `minX/maxX/minZ/maxZ`; center and size are derived.
 - New ids use `mesh-user-N`; never reuse a `deleted` id.
-- `variant` is optional (catalog outline from `qfp-variants.glb`); omit for a
-  plain box.
+- `variant` is optional but **required for real 3D outlines** from the palette.
+  Resolve labels via `mesh-variant-catalog.json` (`"QFP 3"` → `q3-plain-prism`).
+  Omit `variant` for a plain labeled box (2D editor style).
 
 ## Step 4 — routing intent
 
@@ -116,10 +148,12 @@ the editor to see the result.
 
 1. In the editor (dev server on `5174`), create/select version `2`.
 2. `pnpm run export-board-spatial -- --version 2`
-3. Read `board-spatial.json` for context; edit `src/data/circuit-versions/2.json`
-   (`topology` for lines, `meshEdits` for components).
-4. `pnpm run check-circuit-line-geometry`
-5. Reload version `2` in the editor to view; iterate.
+3. Read `board-spatial.json` for open corridors; pick a placement center.
+4. Insert a mesh: `pnpm run insert-circuit-mesh -- --variant "QFP 3" --at cx,cz --version 2`
+   (or edit `meshEdits` manually using `mesh-variant-catalog.json`).
+5. `pnpm run export-board-spatial -- --version 2` to refresh the spatial map.
+6. `pnpm run check-circuit-line-geometry` if you also edited traces.
+7. Reload version `2` in the editor to view; iterate.
 
 ## Files
 
@@ -127,6 +161,9 @@ the editor to see the result.
 |------|------|
 | `scripts/export-board-spatial.ts` | Generates the read-only spatial map |
 | `src/data/board-spatial.json` | The generated map (regenerate after edits) |
+| `scripts/export-mesh-variant-catalog.ts` | Generates palette label → id manifest |
+| `src/data/mesh-variant-catalog.json` | Variant lookup for agents (`QFP 3` → `q3-plain-prism`) |
+| `scripts/insert-circuit-mesh.ts` | CLI to append a palette mesh to meshEdits |
 | `src/data/circuits-tuning.json` | Committed board (traces + components) |
 | `src/data/circuit-versions/*.json` | Named snapshots to edit safely |
 | `scripts/check-circuit-line-geometry.ts` | Geometry validator |

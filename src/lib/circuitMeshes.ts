@@ -138,6 +138,28 @@ function meshExists(edits: CircuitMeshEdits, id: string): boolean {
 
 let userMeshCounter = 0;
 
+/** Pick the next unused mesh-user-N id from persisted edits (deterministic for scripts). */
+export function nextMeshUserIdFromEdits(edits: CircuitMeshEdits): string {
+  const used = new Set<string>();
+  for (const id of edits.deleted) {
+    if (id.startsWith("mesh-user-")) used.add(id);
+  }
+  for (const m of edits.added) used.add(m.id);
+  for (const id of Object.keys(edits.geometry)) {
+    if (id.startsWith("mesh-user-")) used.add(id);
+  }
+  let max = 0;
+  for (const id of used) {
+    const n = Number.parseInt(id.slice("mesh-user-".length), 10);
+    if (Number.isFinite(n) && n > max) max = n;
+  }
+  for (let n = max + 1; n < 100000; n++) {
+    const id = `mesh-user-${n}`;
+    if (!meshExists(edits, id)) return id;
+  }
+  return `mesh-user-${Date.now()}`;
+}
+
 export function nextUserMeshId(edits: CircuitMeshEdits): string {
   do {
     userMeshCounter += 1;

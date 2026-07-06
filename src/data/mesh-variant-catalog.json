@@ -1,0 +1,1441 @@
+{
+  "generatedAt": "2026-07-06T13:52:17.762Z",
+  "sourceGlb": "public/models/qfp-variants.glb",
+  "note": "Resolve a palette label (e.g. QFP 3) via lookup, then append to meshEdits.added in circuits-tuning.json or circuit-versions/N.json. Or run: pnpm run insert-circuit-mesh -- --variant \"QFP 3\" --at 12,6",
+  "defaultMeshSize": {
+    "qfp": {
+      "w": 3.5,
+      "h": 3.5
+    },
+    "soic": {
+      "w": 4,
+      "h": 2
+    },
+    "capacitor": {
+      "w": 2,
+      "h": 2
+    },
+    "heatsink": {
+      "w": 4.5,
+      "h": 2.5
+    },
+    "drum": {
+      "w": 3,
+      "h": 3
+    },
+    "header": {
+      "w": 4,
+      "h": 1.5
+    },
+    "connector": {
+      "w": 4,
+      "h": 1.8
+    },
+    "smd": {
+      "w": 2.5,
+      "h": 1.5
+    },
+    "pad": {
+      "w": 1.2,
+      "h": 1.2
+    },
+    "via": {
+      "w": 1,
+      "h": 1
+    },
+    "cpu": {
+      "w": 5,
+      "h": 5
+    },
+    "io": {
+      "w": 4.5,
+      "h": 2
+    },
+    "dimm": {
+      "w": 6,
+      "h": 1.6
+    },
+    "pcie": {
+      "w": 6.5,
+      "h": 1.6
+    },
+    "vrm": {
+      "w": 4.5,
+      "h": 2
+    }
+  },
+  "lookup": {
+    "q1-prism-frustum": "q1-prism-frustum",
+    "QFP 1": "q1-prism-frustum",
+    "q2-beveled": "q2-beveled",
+    "QFP 2": "q2-beveled",
+    "q3-plain-prism": "q3-plain-prism",
+    "QFP 3": "q3-plain-prism",
+    "q4-l-pins": "q4-l-pins",
+    "QFP 4": "q4-l-pins",
+    "q5-l-pins-plain-small": "q5-l-pins-plain-small",
+    "QFP 5": "q5-l-pins-plain-small",
+    "q6-connected-ring": "q6-connected-ring",
+    "QFP 6": "q6-connected-ring",
+    "q7-gullwing-90": "q7-gullwing-90",
+    "QFP 7": "q7-gullwing-90",
+    "q8-gullwing-slant": "q8-gullwing-slant",
+    "QFP 8": "q8-gullwing-slant",
+    "q9-gw90-plain-small": "q9-gw90-plain-small",
+    "QFP 9": "q9-gw90-plain-small",
+    "q10-layered-gw-slant": "q10-layered-gw-slant",
+    "QFP 10": "q10-layered-gw-slant",
+    "q11-tall-layer-stack": "q11-tall-layer-stack",
+    "QFP 11": "q11-tall-layer-stack",
+    "q12-choke": "q12-choke",
+    "QFP 12": "q12-choke",
+    "q13-cap-can": "q13-cap-can",
+    "QFP 13": "q13-cap-can",
+    "q14-tall-gw90": "q14-tall-gw90",
+    "QFP 14": "q14-tall-gw90",
+    "q15-transformer": "q15-transformer",
+    "QFP 15": "q15-transformer",
+    "q16-radial-cap": "q16-radial-cap",
+    "QFP 16": "q16-radial-cap",
+    "r1-rect-beveled": "r1-rect-beveled",
+    "SOIC 1": "r1-rect-beveled",
+    "r2-long-plain": "r2-long-plain",
+    "SOIC 2": "r2-long-plain",
+    "r3-soic-2side": "r3-soic-2side",
+    "SOIC 3": "r3-soic-2side",
+    "r4-rect-gw-slant": "r4-rect-gw-slant",
+    "SOIC 4": "r4-rect-gw-slant",
+    "r5-rect-l-pins": "r5-rect-l-pins",
+    "SOIC 5": "r5-rect-l-pins",
+    "r6-rect-ring": "r6-rect-ring",
+    "SOIC 6": "r6-rect-ring",
+    "r7-rect-layered-gw90": "r7-rect-layered-gw90",
+    "SOIC 7": "r7-rect-layered-gw90",
+    "r8-small-flat-slant": "r8-small-flat-slant",
+    "SOIC 8": "r8-small-flat-slant",
+    "r9-wide-thin-layers": "r9-wide-thin-layers",
+    "SOIC 9": "r9-wide-thin-layers",
+    "r10-relay": "r10-relay",
+    "SOIC 10": "r10-relay",
+    "r11-pin-header": "r11-pin-header",
+    "SOIC 11": "r11-pin-header",
+    "r12-tall-bar-gw": "r12-tall-bar-gw",
+    "SOIC 12": "r12-tall-bar-gw",
+    "r13-crystal-osc": "r13-crystal-osc",
+    "SOIC 13": "r13-crystal-osc",
+    "r14-tantalum-pair": "r14-tantalum-pair",
+    "SOIC 14": "r14-tantalum-pair",
+    "c1-lga": "c1-lga",
+    "CPU 1": "c1-lga",
+    "c2-die-stack": "c2-die-stack",
+    "CPU 2": "c2-die-stack",
+    "c3-chiplets": "c3-chiplets",
+    "CPU 3": "c3-chiplets",
+    "c4-pga": "c4-pga",
+    "CPU 4": "c4-pga",
+    "c5-wafer-stack": "c5-wafer-stack",
+    "CPU 5": "c5-wafer-stack",
+    "c6-lga-gullwing": "c6-lga-gullwing",
+    "CPU 6": "c6-lga-gullwing",
+    "c7-heatspreader-stack": "c7-heatspreader-stack",
+    "CPU 7": "c7-heatspreader-stack",
+    "c8-cpu-tower": "c8-cpu-tower",
+    "CPU 8": "c8-cpu-tower",
+    "c9-stacked-dies-tall": "c9-stacked-dies-tall",
+    "CPU 9": "c9-stacked-dies-tall",
+    "c10-hbm-towers": "c10-hbm-towers",
+    "CPU 10": "c10-hbm-towers",
+    "c11-monolith-cpu": "c11-monolith-cpu",
+    "CPU 11": "c11-monolith-cpu",
+    "c12-tall-lga-gw": "c12-tall-lga-gw",
+    "CPU 12": "c12-tall-lga-gw",
+    "h1-classic-fins": "h1-classic-fins",
+    "Heatsink 1": "h1-classic-fins",
+    "h2-wide-plates": "h2-wide-plates",
+    "Heatsink 2": "h2-wide-plates",
+    "h3-dense-thin": "h3-dense-thin",
+    "Heatsink 3": "h3-dense-thin",
+    "h4-tall-fins": "h4-tall-fins",
+    "Heatsink 4": "h4-tall-fins",
+    "h5-pin-fin": "h5-pin-fin",
+    "Heatsink 5": "h5-pin-fin",
+    "h6-stepped-stack": "h6-stepped-stack",
+    "Heatsink 6": "h6-stepped-stack",
+    "h7-two-tier": "h7-two-tier",
+    "Heatsink 7": "h7-two-tier",
+    "io1-usb-stack": "io1-usb-stack",
+    "IO 1": "io1-usb-stack",
+    "io2-eth-usb": "io2-eth-usb",
+    "IO 2": "io2-eth-usb",
+    "io3-audio-trio": "io3-audio-trio",
+    "IO 3": "io3-audio-trio",
+    "io4-video-out": "io4-video-out",
+    "IO 4": "io4-video-out",
+    "io5-full-cluster": "io5-full-cluster",
+    "IO 5": "io5-full-cluster",
+    "d1-dimm-populated": "d1-dimm-populated",
+    "DIMM 1": "d1-dimm-populated",
+    "d2-sodimm": "d2-sodimm",
+    "DIMM 2": "d2-sodimm",
+    "d3-dimm-empty": "d3-dimm-empty",
+    "DIMM 3": "d3-dimm-empty",
+    "d4-dimm-pair": "d4-dimm-pair",
+    "DIMM 4": "d4-dimm-pair",
+    "d5-dimm-bank": "d5-dimm-bank",
+    "DIMM 5": "d5-dimm-bank",
+    "p1-gpu-long": "p1-gpu-long",
+    "PCIe 1": "p1-gpu-long",
+    "p2-nic-short": "p2-nic-short",
+    "PCIe 2": "p2-nic-short",
+    "p3-slot-empty": "p3-slot-empty",
+    "PCIe 3": "p3-slot-empty",
+    "p4-accel-mid": "p4-accel-mid",
+    "PCIe 4": "p4-accel-mid",
+    "p5-m2-stick": "p5-m2-stick",
+    "PCIe 5": "p5-m2-stick",
+    "v1-vrm-4phase": "v1-vrm-4phase",
+    "VRM 1": "v1-vrm-4phase",
+    "v2-vrm-8dense": "v2-vrm-8dense",
+    "VRM 2": "v2-vrm-8dense",
+    "v3-vrm-6caps": "v3-vrm-6caps",
+    "VRM 3": "v3-vrm-6caps",
+    "v4-vrm-alt": "v4-vrm-alt",
+    "VRM 4": "v4-vrm-alt",
+    "v5-vrm-double": "v5-vrm-double",
+    "VRM 5": "v5-vrm-double"
+  },
+  "categories": [
+    {
+      "kind": "qfp",
+      "label": "QFP",
+      "variantIds": [
+        "q1-prism-frustum",
+        "q2-beveled",
+        "q3-plain-prism",
+        "q4-l-pins",
+        "q5-l-pins-plain-small",
+        "q6-connected-ring",
+        "q7-gullwing-90",
+        "q8-gullwing-slant",
+        "q9-gw90-plain-small",
+        "q10-layered-gw-slant",
+        "q11-tall-layer-stack",
+        "q12-choke",
+        "q13-cap-can",
+        "q14-tall-gw90",
+        "q15-transformer",
+        "q16-radial-cap"
+      ]
+    },
+    {
+      "kind": "soic",
+      "label": "SOIC",
+      "variantIds": [
+        "r1-rect-beveled",
+        "r2-long-plain",
+        "r3-soic-2side",
+        "r4-rect-gw-slant",
+        "r5-rect-l-pins",
+        "r6-rect-ring",
+        "r7-rect-layered-gw90",
+        "r8-small-flat-slant",
+        "r9-wide-thin-layers",
+        "r10-relay",
+        "r11-pin-header",
+        "r12-tall-bar-gw",
+        "r13-crystal-osc",
+        "r14-tantalum-pair"
+      ]
+    },
+    {
+      "kind": "cpu",
+      "label": "CPU",
+      "variantIds": [
+        "c1-lga",
+        "c2-die-stack",
+        "c3-chiplets",
+        "c4-pga",
+        "c5-wafer-stack",
+        "c6-lga-gullwing",
+        "c7-heatspreader-stack",
+        "c8-cpu-tower",
+        "c9-stacked-dies-tall",
+        "c10-hbm-towers",
+        "c11-monolith-cpu",
+        "c12-tall-lga-gw"
+      ]
+    },
+    {
+      "kind": "heatsink",
+      "label": "Heatsink",
+      "variantIds": [
+        "h1-classic-fins",
+        "h2-wide-plates",
+        "h3-dense-thin",
+        "h4-tall-fins",
+        "h5-pin-fin",
+        "h6-stepped-stack",
+        "h7-two-tier"
+      ]
+    },
+    {
+      "kind": "io",
+      "label": "IO",
+      "variantIds": [
+        "io1-usb-stack",
+        "io2-eth-usb",
+        "io3-audio-trio",
+        "io4-video-out",
+        "io5-full-cluster"
+      ]
+    },
+    {
+      "kind": "dimm",
+      "label": "DIMM",
+      "variantIds": [
+        "d1-dimm-populated",
+        "d2-sodimm",
+        "d3-dimm-empty",
+        "d4-dimm-pair",
+        "d5-dimm-bank"
+      ]
+    },
+    {
+      "kind": "pcie",
+      "label": "PCIe",
+      "variantIds": [
+        "p1-gpu-long",
+        "p2-nic-short",
+        "p3-slot-empty",
+        "p4-accel-mid",
+        "p5-m2-stick"
+      ]
+    },
+    {
+      "kind": "vrm",
+      "label": "VRM",
+      "variantIds": [
+        "v1-vrm-4phase",
+        "v2-vrm-8dense",
+        "v3-vrm-6caps",
+        "v4-vrm-alt",
+        "v5-vrm-double"
+      ]
+    }
+  ],
+  "variants": [
+    {
+      "id": "q1-prism-frustum",
+      "label": "QFP 1",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 0,
+      "placeSize": {
+        "w": 3.5,
+        "h": 3.5
+      },
+      "natural": {
+        "w": 1,
+        "d": 1,
+        "h": 0.2600000128149986
+      }
+    },
+    {
+      "id": "q2-beveled",
+      "label": "QFP 2",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 1,
+      "placeSize": {
+        "w": 3.5,
+        "h": 3.5
+      },
+      "natural": {
+        "w": 1,
+        "d": 1,
+        "h": 0.2600000128149986
+      }
+    },
+    {
+      "id": "q3-plain-prism",
+      "label": "QFP 3",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 2,
+      "placeSize": {
+        "w": 3.5,
+        "h": 3.5
+      },
+      "natural": {
+        "w": 1,
+        "d": 1,
+        "h": 0.24000000208616257
+      }
+    },
+    {
+      "id": "q4-l-pins",
+      "label": "QFP 4",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 3,
+      "placeSize": {
+        "w": 3.5,
+        "h": 3.4999996839148033
+      },
+      "natural": {
+        "w": 1.320000171661377,
+        "d": 1.3200000524520874,
+        "h": 0.30000001192092896
+      }
+    },
+    {
+      "id": "q5-l-pins-plain-small",
+      "label": "QFP 5",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 4,
+      "placeSize": {
+        "w": 3.499999627470972,
+        "h": 3.5
+      },
+      "natural": {
+        "w": 1.119999885559082,
+        "d": 1.1200000047683716,
+        "h": 0.2800000011920929
+      }
+    },
+    {
+      "id": "q6-connected-ring",
+      "label": "QFP 6",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 5,
+      "placeSize": {
+        "w": 3.5000000000000004,
+        "h": 3.4999984195745895
+      },
+      "natural": {
+        "w": 1.3200006484985352,
+        "d": 1.3200000524520874,
+        "h": 0.300000011920929
+      }
+    },
+    {
+      "id": "q7-gullwing-90",
+      "label": "QFP 7",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 6,
+      "placeSize": {
+        "w": 3.4999996862913534,
+        "h": 3.5
+      },
+      "natural": {
+        "w": 1.3299999237060547,
+        "d": 1.3300000429153442,
+        "h": 0.30000001192092896
+      }
+    },
+    {
+      "id": "q8-gullwing-slant",
+      "label": "QFP 8",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 7,
+      "placeSize": {
+        "w": 3.5,
+        "h": 3.4999982735215425
+      },
+      "natural": {
+        "w": 1.4500007629394531,
+        "d": 1.4500000476837158,
+        "h": 0.30000001192092896
+      }
+    },
+    {
+      "id": "q9-gw90-plain-small",
+      "label": "QFP 9",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 8,
+      "placeSize": {
+        "w": 3.4999959491987864,
+        "h": 3.5
+      },
+      "natural": {
+        "w": 1.029998779296875,
+        "d": 1.0299999713897705,
+        "h": 0.2800000011920929
+      }
+    },
+    {
+      "id": "q10-layered-gw-slant",
+      "label": "QFP 10",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 9,
+      "placeSize": {
+        "w": 3.5,
+        "h": 3.4999982735215425
+      },
+      "natural": {
+        "w": 1.4500007629394531,
+        "d": 1.4500000476837158,
+        "h": 0.4000000059604645
+      }
+    },
+    {
+      "id": "q11-tall-layer-stack",
+      "label": "QFP 11",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 10,
+      "placeSize": {
+        "w": 3.4999986092249187,
+        "h": 3.5
+      },
+      "natural": {
+        "w": 0.8999996185302734,
+        "d": 0.8999999761581421,
+        "h": 0.47999998182058334
+      }
+    },
+    {
+      "id": "q12-choke",
+      "label": "QFP 12",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 11,
+      "placeSize": {
+        "w": 3.499996609985879,
+        "h": 3.5
+      },
+      "natural": {
+        "w": 0.7999992370605469,
+        "d": 0.800000011920929,
+        "h": 0.5200000032782555
+      }
+    },
+    {
+      "id": "q13-cap-can",
+      "label": "QFP 13",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 12,
+      "placeSize": {
+        "w": 3.5,
+        "h": 3.4999952893167086
+      },
+      "natural": {
+        "w": 0.6200008392333984,
+        "d": 0.6200000047683716,
+        "h": 0.7199999913573265
+      }
+    },
+    {
+      "id": "q14-tall-gw90",
+      "label": "QFP 14",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 13,
+      "placeSize": {
+        "w": 3.4999974153737994,
+        "h": 3.4999999999999996
+      },
+      "natural": {
+        "w": 1.1299991607666016,
+        "d": 1.1299999952316284,
+        "h": 0.49000000953674316
+      }
+    },
+    {
+      "id": "q15-transformer",
+      "label": "QFP 15",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 14,
+      "placeSize": {
+        "w": 3.5,
+        "h": 3.1499999165534973
+      },
+      "natural": {
+        "w": 1,
+        "d": 0.8999999761581421,
+        "h": 0.5600000247359276
+      }
+    },
+    {
+      "id": "q16-radial-cap",
+      "label": "QFP 16",
+      "kind": "qfp",
+      "categoryLabel": "QFP",
+      "index": 15,
+      "placeSize": {
+        "w": 3.5,
+        "h": 3.499992793271582
+      },
+      "natural": {
+        "w": 0.5500011444091797,
+        "d": 0.550000011920929,
+        "h": 0.8399999961256981
+      }
+    },
+    {
+      "id": "r1-rect-beveled",
+      "label": "SOIC 1",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 0,
+      "placeSize": {
+        "w": 4,
+        "h": 1.9999998509883903
+      },
+      "natural": {
+        "w": 1.600000023841858,
+        "d": 0.7999999523162842,
+        "h": 0.2600000128149986
+      }
+    },
+    {
+      "id": "r2-long-plain",
+      "label": "SOIC 2",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 1,
+      "placeSize": {
+        "w": 4,
+        "h": 1.4000000953674316
+      },
+      "natural": {
+        "w": 2,
+        "d": 0.7000000476837158,
+        "h": 0.24000000208616257
+      }
+    },
+    {
+      "id": "r3-soic-2side",
+      "label": "SOIC 3",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 2,
+      "placeSize": {
+        "w": 4,
+        "h": 2.9428568606474155
+      },
+      "natural": {
+        "w": 1.4000000953674316,
+        "d": 1.0299999713897705,
+        "h": 0.2800000011920929
+      }
+    },
+    {
+      "id": "r4-rect-gw-slant",
+      "label": "SOIC 4",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 3,
+      "placeSize": {
+        "w": 4,
+        "h": 2.4390239307102175
+      },
+      "natural": {
+        "w": 2.0500001907348633,
+        "d": 1.2499998807907104,
+        "h": 0.30000001192092896
+      }
+    },
+    {
+      "id": "r5-rect-l-pins",
+      "label": "SOIC 5",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 4,
+      "placeSize": {
+        "w": 3.9999999999999996,
+        "h": 2.421052994820668
+      },
+      "natural": {
+        "w": 1.5199995040893555,
+        "d": 0.9199998378753662,
+        "h": 0.30000001192092896
+      }
+    },
+    {
+      "id": "r6-rect-ring",
+      "label": "SOIC 6",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 5,
+      "placeSize": {
+        "w": 4,
+        "h": 2.837208928386278
+      },
+      "natural": {
+        "w": 1.7200002670288086,
+        "d": 1.2200000286102295,
+        "h": 0.300000011920929
+      }
+    },
+    {
+      "id": "r7-rect-layered-gw90",
+      "label": "SOIC 7",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 6,
+      "placeSize": {
+        "w": 4,
+        "h": 2.4976538707103666
+      },
+      "natural": {
+        "w": 2.1299991607666016,
+        "d": 1.3300001621246338,
+        "h": 0.3799999952316284
+      }
+    },
+    {
+      "id": "r8-small-flat-slant",
+      "label": "SOIC 8",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 7,
+      "placeSize": {
+        "w": 3.999998940361702,
+        "h": 4
+      },
+      "natural": {
+        "w": 0.8999996185302734,
+        "d": 0.8999998569488525,
+        "h": 0.2800000011920929
+      }
+    },
+    {
+      "id": "r9-wide-thin-layers",
+      "label": "SOIC 9",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 8,
+      "placeSize": {
+        "w": 4,
+        "h": 2.1818175118819108
+      },
+      "natural": {
+        "w": 2.200000762939453,
+        "d": 1.2000000476837158,
+        "h": 0.2499999925494194
+      }
+    },
+    {
+      "id": "r10-relay",
+      "label": "SOIC 10",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 9,
+      "placeSize": {
+        "w": 4,
+        "h": 1.923078051686244
+      },
+      "natural": {
+        "w": 1.2999992370605469,
+        "d": 0.625,
+        "h": 0.5899999737739563
+      }
+    },
+    {
+      "id": "r11-pin-header",
+      "label": "SOIC 11",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 10,
+      "placeSize": {
+        "w": 4,
+        "h": 1.7499997019768472
+      },
+      "natural": {
+        "w": 1.6000003814697266,
+        "d": 0.7000000476837158,
+        "h": 0.5800000056624413
+      }
+    },
+    {
+      "id": "r12-tall-bar-gw",
+      "label": "SOIC 12",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 11,
+      "placeSize": {
+        "w": 4,
+        "h": 3.099998251598198
+      },
+      "natural": {
+        "w": 1.2000007629394531,
+        "d": 0.9300000667572021,
+        "h": 0.49000000953674316
+      }
+    },
+    {
+      "id": "r13-crystal-osc",
+      "label": "SOIC 13",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 12,
+      "placeSize": {
+        "w": 4,
+        "h": 2.2000040054397685
+      },
+      "natural": {
+        "w": 0.9999980926513672,
+        "d": 0.5499999523162842,
+        "h": 0.42000000923871994
+      }
+    },
+    {
+      "id": "r14-tantalum-pair",
+      "label": "SOIC 14",
+      "kind": "soic",
+      "categoryLabel": "SOIC",
+      "index": 13,
+      "placeSize": {
+        "w": 4,
+        "h": 1.7777784253346869
+      },
+      "natural": {
+        "w": 1.7999992370605469,
+        "d": 0.7999999523162842,
+        "h": 0.5200000032782555
+      }
+    },
+    {
+      "id": "c1-lga",
+      "label": "CPU 1",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 0,
+      "placeSize": {
+        "w": 4.999999337726239,
+        "h": 5
+      },
+      "natural": {
+        "w": 1.7999999523162842,
+        "d": 1.8000001907348633,
+        "h": 0.369999997317791
+      }
+    },
+    {
+      "id": "c2-die-stack",
+      "label": "CPU 2",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 1,
+      "placeSize": {
+        "w": 4.999999372582718,
+        "h": 5
+      },
+      "natural": {
+        "w": 1.8999998569488525,
+        "d": 1.9000000953674316,
+        "h": 0.46000000089406967
+      }
+    },
+    {
+      "id": "c3-chiplets",
+      "label": "CPU 3",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 2,
+      "placeSize": {
+        "w": 5,
+        "h": 3.7499995032947457
+      },
+      "natural": {
+        "w": 2.40000057220459,
+        "d": 1.8000001907348633,
+        "h": 0.3499999865889549
+      }
+    },
+    {
+      "id": "c4-pga",
+      "label": "CPU 4",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 3,
+      "placeSize": {
+        "w": 5,
+        "h": 5
+      },
+      "natural": {
+        "w": 1.6999998092651367,
+        "d": 1.6999998092651367,
+        "h": 0.3100000023841858
+      }
+    },
+    {
+      "id": "c5-wafer-stack",
+      "label": "CPU 5",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 4,
+      "placeSize": {
+        "w": 5,
+        "h": 5
+      },
+      "natural": {
+        "w": 1.5,
+        "d": 1.5,
+        "h": 0.3999999985098839
+      }
+    },
+    {
+      "id": "c6-lga-gullwing",
+      "label": "CPU 6",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 5,
+      "placeSize": {
+        "w": 5,
+        "h": 5
+      },
+      "natural": {
+        "w": 2.130000114440918,
+        "d": 2.130000114440918,
+        "h": 0.36000001430511475
+      }
+    },
+    {
+      "id": "c7-heatspreader-stack",
+      "label": "CPU 7",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 6,
+      "placeSize": {
+        "w": 5,
+        "h": 3.8461532818496
+      },
+      "natural": {
+        "w": 2.6000003814697266,
+        "d": 2,
+        "h": 0.39000000804662704
+      }
+    },
+    {
+      "id": "c8-cpu-tower",
+      "label": "CPU 8",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 7,
+      "placeSize": {
+        "w": 4.999997350904957,
+        "h": 5
+      },
+      "natural": {
+        "w": 1.7999992370605469,
+        "d": 1.8000001907348633,
+        "h": 0.7100000008940697
+      }
+    },
+    {
+      "id": "c9-stacked-dies-tall",
+      "label": "CPU 9",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 8,
+      "placeSize": {
+        "w": 5,
+        "h": 4.999998509884236
+      },
+      "natural": {
+        "w": 1.6000003814697266,
+        "d": 1.5999999046325684,
+        "h": 0.6800000295042992
+      }
+    },
+    {
+      "id": "c10-hbm-towers",
+      "label": "CPU 10",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 9,
+      "placeSize": {
+        "w": 5,
+        "h": 3.6363653112057657
+      },
+      "natural": {
+        "w": 2.1999988555908203,
+        "d": 1.5999999046325684,
+        "h": 0.640000008046627
+      }
+    },
+    {
+      "id": "c11-monolith-cpu",
+      "label": "CPU 11",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 10,
+      "placeSize": {
+        "w": 5,
+        "h": 5
+      },
+      "natural": {
+        "w": 1.5,
+        "d": 1.5,
+        "h": 0.799999974668026
+      }
+    },
+    {
+      "id": "c12-tall-lga-gw",
+      "label": "CPU 12",
+      "kind": "cpu",
+      "categoryLabel": "CPU",
+      "index": 11,
+      "placeSize": {
+        "w": 4.99999478866472,
+        "h": 5
+      },
+      "natural": {
+        "w": 1.8299980163574219,
+        "d": 1.8299999237060547,
+        "h": 0.6899999976158142
+      }
+    },
+    {
+      "id": "h1-classic-fins",
+      "label": "Heatsink 1",
+      "kind": "heatsink",
+      "categoryLabel": "Heatsink",
+      "index": 0,
+      "placeSize": {
+        "w": 4.5,
+        "h": 3.3749994132667864
+      },
+      "natural": {
+        "w": 1.600000023841858,
+        "d": 1.1999998092651367,
+        "h": 0.6400000266730785
+      }
+    },
+    {
+      "id": "h2-wide-plates",
+      "label": "Heatsink 2",
+      "kind": "heatsink",
+      "categoryLabel": "Heatsink",
+      "index": 1,
+      "placeSize": {
+        "w": 4.5,
+        "h": 3.3749996647238536
+      },
+      "natural": {
+        "w": 1.5999999046325684,
+        "d": 1.1999998092651367,
+        "h": 0.6099999956786633
+      }
+    },
+    {
+      "id": "h3-dense-thin",
+      "label": "Heatsink 3",
+      "kind": "heatsink",
+      "categoryLabel": "Heatsink",
+      "index": 2,
+      "placeSize": {
+        "w": 4.5,
+        "h": 3.3000011444091797
+      },
+      "natural": {
+        "w": 1.5,
+        "d": 1.1000003814697266,
+        "h": 0.520000021904707
+      }
+    },
+    {
+      "id": "h4-tall-fins",
+      "label": "Heatsink 4",
+      "kind": "heatsink",
+      "categoryLabel": "Heatsink",
+      "index": 3,
+      "placeSize": {
+        "w": 4.5,
+        "h": 4.5
+      },
+      "natural": {
+        "w": 1.1999998092651367,
+        "d": 1.1999998092651367,
+        "h": 0.9899999909102917
+      }
+    },
+    {
+      "id": "h5-pin-fin",
+      "label": "Heatsink 5",
+      "kind": "heatsink",
+      "categoryLabel": "Heatsink",
+      "index": 4,
+      "placeSize": {
+        "w": 4.5,
+        "h": 3.8571406675853726
+      },
+      "natural": {
+        "w": 1.4000005722045898,
+        "d": 1.1999998092651367,
+        "h": 0.5900000147521496
+      }
+    },
+    {
+      "id": "h6-stepped-stack",
+      "label": "Heatsink 6",
+      "kind": "heatsink",
+      "categoryLabel": "Heatsink",
+      "index": 5,
+      "placeSize": {
+        "w": 4.5,
+        "h": 3.3750006705524935
+      },
+      "natural": {
+        "w": 1.5999994277954102,
+        "d": 1.1999998092651367,
+        "h": 0.6400000266730785
+      }
+    },
+    {
+      "id": "h7-two-tier",
+      "label": "Heatsink 7",
+      "kind": "heatsink",
+      "categoryLabel": "Heatsink",
+      "index": 6,
+      "placeSize": {
+        "w": 4.5,
+        "h": 3.3749986588958123
+      },
+      "natural": {
+        "w": 1.6000003814697266,
+        "d": 1.1999998092651367,
+        "h": 0.720000009983778
+      }
+    },
+    {
+      "id": "io1-usb-stack",
+      "label": "IO 1",
+      "kind": "io",
+      "categoryLabel": "IO",
+      "index": 0,
+      "placeSize": {
+        "w": 4.5,
+        "h": 4.2954513312372
+      },
+      "natural": {
+        "w": 0.550000011920929,
+        "d": 0.5249996185302734,
+        "h": 0.7499999813735485
+      }
+    },
+    {
+      "id": "io2-eth-usb",
+      "label": "IO 2",
+      "kind": "io",
+      "categoryLabel": "IO",
+      "index": 1,
+      "placeSize": {
+        "w": 4.5,
+        "h": 1.990384028155401
+      },
+      "natural": {
+        "w": 1.2999999523162842,
+        "d": 0.5749998092651367,
+        "h": 0.8500000052154064
+      }
+    },
+    {
+      "id": "io3-audio-trio",
+      "label": "IO 3",
+      "kind": "io",
+      "categoryLabel": "IO",
+      "index": 2,
+      "placeSize": {
+        "w": 4.5,
+        "h": 1.5423390934481434
+      },
+      "natural": {
+        "w": 1.2400002479553223,
+        "d": 0.4250001907348633,
+        "h": 0.3800000064074993
+      }
+    },
+    {
+      "id": "io4-video-out",
+      "label": "IO 4",
+      "kind": "io",
+      "categoryLabel": "IO",
+      "index": 3,
+      "placeSize": {
+        "w": 4.5,
+        "h": 2.6249992052710662
+      },
+      "natural": {
+        "w": 0.8999996185302734,
+        "d": 0.5249996185302734,
+        "h": 0.5499999932944775
+      }
+    },
+    {
+      "id": "io5-full-cluster",
+      "label": "IO 5",
+      "kind": "io",
+      "categoryLabel": "IO",
+      "index": 4,
+      "placeSize": {
+        "w": 4.5,
+        "h": 1.2650600125471378
+      },
+      "natural": {
+        "w": 2.489999771118164,
+        "d": 0.6999998092651367,
+        "h": 0.8999999761581421
+      }
+    },
+    {
+      "id": "d1-dimm-populated",
+      "label": "DIMM 1",
+      "kind": "dimm",
+      "categoryLabel": "DIMM",
+      "index": 0,
+      "placeSize": {
+        "w": 6,
+        "h": 0.5421690303020684
+      },
+      "natural": {
+        "w": 3.319999933242798,
+        "d": 0.3000001907348633,
+        "h": 0.8199999742209911
+      }
+    },
+    {
+      "id": "d2-sodimm",
+      "label": "DIMM 2",
+      "kind": "dimm",
+      "categoryLabel": "DIMM",
+      "index": 1,
+      "placeSize": {
+        "w": 6,
+        "h": 0.7438022488983975
+      },
+      "natural": {
+        "w": 2.419999599456787,
+        "d": 0.3000001907348633,
+        "h": 0.6799999885261059
+      }
+    },
+    {
+      "id": "d3-dimm-empty",
+      "label": "DIMM 3",
+      "kind": "dimm",
+      "categoryLabel": "DIMM",
+      "index": 2,
+      "placeSize": {
+        "w": 6,
+        "h": 0.5421689134980221
+      },
+      "natural": {
+        "w": 3.320000648498535,
+        "d": 0.3000001907348633,
+        "h": 0.35999999567866325
+      }
+    },
+    {
+      "id": "d4-dimm-pair",
+      "label": "DIMM 4",
+      "kind": "dimm",
+      "categoryLabel": "DIMM",
+      "index": 3,
+      "placeSize": {
+        "w": 6,
+        "h": 1.653845554272782
+      },
+      "natural": {
+        "w": 3.119999885559082,
+        "d": 0.8599996566772461,
+        "h": 0.8199999742209911
+      }
+    },
+    {
+      "id": "d5-dimm-bank",
+      "label": "DIMM 5",
+      "kind": "dimm",
+      "categoryLabel": "DIMM",
+      "index": 4,
+      "placeSize": {
+        "w": 6,
+        "h": 2.9178082997097827
+      },
+      "natural": {
+        "w": 2.9200000762939453,
+        "d": 1.4200000762939453,
+        "h": 0.8199999742209911
+      }
+    },
+    {
+      "id": "p1-gpu-long",
+      "label": "PCIe 1",
+      "kind": "pcie",
+      "categoryLabel": "PCIe",
+      "index": 0,
+      "placeSize": {
+        "w": 6.5,
+        "h": 0.5864683941938875
+      },
+      "natural": {
+        "w": 3.325000047683716,
+        "d": 0.3000011444091797,
+        "h": 1.4500000476837158
+      }
+    },
+    {
+      "id": "p2-nic-short",
+      "label": "PCIe 2",
+      "kind": "pcie",
+      "categoryLabel": "PCIe",
+      "index": 1,
+      "placeSize": {
+        "w": 6.5,
+        "h": 1.01299077685559
+      },
+      "natural": {
+        "w": 1.9250001907348633,
+        "d": 0.3000011444091797,
+        "h": 1.149999976158142
+      }
+    },
+    {
+      "id": "p3-slot-empty",
+      "label": "PCIe 3",
+      "kind": "pcie",
+      "categoryLabel": "PCIe",
+      "index": 2,
+      "placeSize": {
+        "w": 6.500000000000001,
+        "h": 0.6499994834263298
+      },
+      "natural": {
+        "w": 2.3999996185302734,
+        "d": 0.23999977111816406,
+        "h": 0.1600000075995922
+      }
+    },
+    {
+      "id": "p4-accel-mid",
+      "label": "PCIe 4",
+      "kind": "pcie",
+      "categoryLabel": "PCIe",
+      "index": 3,
+      "placeSize": {
+        "w": 6.5,
+        "h": 0.7155989598826893
+      },
+      "natural": {
+        "w": 2.7250003814697266,
+        "d": 0.3000011444091797,
+        "h": 1.2999999523162842
+      }
+    },
+    {
+      "id": "p5-m2-stick",
+      "label": "PCIe 5",
+      "kind": "pcie",
+      "categoryLabel": "PCIe",
+      "index": 4,
+      "placeSize": {
+        "w": 6.5,
+        "h": 1.6436803721741915
+      },
+      "natural": {
+        "w": 1.739999771118164,
+        "d": 0.4400005340576172,
+        "h": 0.16999999806284904
+      }
+    },
+    {
+      "id": "v1-vrm-4phase",
+      "label": "VRM 1",
+      "kind": "vrm",
+      "categoryLabel": "VRM",
+      "index": 0,
+      "placeSize": {
+        "w": 4.499999999999999,
+        "h": 1.9084798356955397
+      },
+      "natural": {
+        "w": 2.240000009536743,
+        "d": 0.9499988555908203,
+        "h": 0.38999999687075615
+      }
+    },
+    {
+      "id": "v2-vrm-8dense",
+      "label": "VRM 2",
+      "kind": "vrm",
+      "categoryLabel": "VRM",
+      "index": 1,
+      "placeSize": {
+        "w": 4.5,
+        "h": 1.4540799706242342
+      },
+      "natural": {
+        "w": 2.93999981880188,
+        "d": 0.9499988555908203,
+        "h": 0.2900000028312206
+      }
+    },
+    {
+      "id": "v3-vrm-6caps",
+      "label": "VRM 3",
+      "kind": "vrm",
+      "categoryLabel": "VRM",
+      "index": 2,
+      "placeSize": {
+        "w": 4.5,
+        "h": 1.5833312582088832
+      },
+      "natural": {
+        "w": 2.700000286102295,
+        "d": 0.9499988555908203,
+        "h": 0.32999999448657036
+      }
+    },
+    {
+      "id": "v4-vrm-alt",
+      "label": "VRM 4",
+      "kind": "vrm",
+      "categoryLabel": "VRM",
+      "index": 3,
+      "placeSize": {
+        "w": 4.5,
+        "h": 0.9166686387711023
+      },
+      "natural": {
+        "w": 2.6999998092651367,
+        "d": 0.5500011444091797,
+        "h": 0.3619999997317791
+      }
+    },
+    {
+      "id": "v5-vrm-double",
+      "label": "VRM 5",
+      "kind": "vrm",
+      "categoryLabel": "VRM",
+      "index": 4,
+      "placeSize": {
+        "w": 4.5,
+        "h": 2.4340911573614092
+      },
+      "natural": {
+        "w": 2.200000762939453,
+        "d": 1.1900005340576172,
+        "h": 0.32999999448657036
+      }
+    }
+  ],
+  "meshEditsExample": {
+    "id": "mesh-user-41",
+    "kind": "qfp",
+    "minX": 10.25,
+    "maxX": 13.75,
+    "minZ": 4.25,
+    "maxZ": 7.75,
+    "variant": "q3-plain-prism"
+  }
+}

@@ -176,7 +176,8 @@ function categoryOfId(id: string): { kind: MeshKind; num: number } | null {
   return { kind, num: Number.parseInt(m[2], 10) };
 }
 
-function buildCatalog(scene: THREE.Object3D): VariantCatalog {
+/** Build the palette catalog from a loaded qfp-variants.glb scene. */
+export function buildCatalogFromScene(scene: THREE.Object3D): VariantCatalog {
   const groups = new Map<string, Vec3[][]>();
   for (const poly of tronPolylinesFromGLB(scene)) {
     const i = poly.name.indexOf("_part_");
@@ -227,7 +228,7 @@ export function loadVariantCatalog(): Promise<VariantCatalog> {
   if (!catalogPromise) {
     catalogPromise = new GLTFLoader()
       .loadAsync(CATALOG_URL)
-      .then((gltf) => buildCatalog(gltf.scene));
+      .then((gltf) => buildCatalogFromScene(gltf.scene));
   }
   return catalogPromise;
 }
