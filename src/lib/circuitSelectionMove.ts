@@ -1,5 +1,9 @@
 import type * as THREE from "three";
-import { boardPickXZ, boardY } from "./circuitBoardPick";
+import {
+  boardPickXZ,
+  boardY,
+  type BoardPickView,
+} from "./circuitBoardPick";
 import { lineIdAtScreenPoint, meshIdAtScreenPoint } from "./circuitBoxSelect";
 import type { CircuitMesh, MeshBounds } from "./circuitMeshes";
 import { moveMeshBounds } from "./circuitMeshes";
@@ -136,6 +140,26 @@ export function resolveLineMoveSelection(
   return { lineIds: [hitId], meshIds: [], selectOnly: false };
 }
 
+export function resolveMeshMoveSelection(
+  hitId: string,
+  selectedLineIds: string[],
+  selectedMeshIds: string[],
+  additiveKey: boolean,
+): { lineIds: string[]; meshIds: string[]; selectOnly: boolean } | null {
+  if (additiveKey) {
+    const next = selectedMeshIds.includes(hitId)
+      ? selectedMeshIds.filter((id) => id !== hitId)
+      : [...selectedMeshIds, hitId];
+    return { lineIds: selectedLineIds, meshIds: next, selectOnly: true };
+  }
+
+  if (selectedMeshIds.includes(hitId)) {
+    return { lineIds: selectedLineIds, meshIds: selectedMeshIds, selectOnly: false };
+  }
+
+  return { lineIds: [], meshIds: [hitId], selectOnly: false };
+}
+
 export function applySelectionMove(
   snapshot: Pick<SelectionSnapshot, "lineGeoms" | "meshBounds">,
   dx: number,
@@ -182,6 +206,8 @@ export function resolveShiftPointerTarget(
   selectedMeshIds: string[],
   topology: CircuitTopology,
   metaKey: boolean,
+  view: BoardPickView = "top",
+  centerZ = 0,
 ): ShiftPointerTarget {
   const hitLineId = lineIdAtScreenPoint(paths, camera, canvas, sx, sy);
   if (hitLineId) {
@@ -208,20 +234,38 @@ export function resolveShiftPointerTarget(
 
   const y = boardY(paths);
   const hitMeshId = meshIdAtScreenPoint(meshes, y, camera, canvas, sx, sy);
-  if (
-    hitMeshId &&
-    hasMovableSelection(selectedLineIds, selectedMeshIds) &&
-    selectedMeshIds.includes(hitMeshId)
-  ) {
+  if (hitMeshId) {
+    const resolved = resolveMeshMoveSelection(
+      hitMeshId,
+      selectedLineIds,
+      selectedMeshIds,
+      metaKey,
+    );
+    if (!resolved) return { mode: "box" };
+    if (resolved.selectOnly) {
+      return {
+        mode: "toggle",
+        lineIds: resolved.lineIds,
+        meshIds: resolved.meshIds,
+      };
+    }
     return {
       mode: "move",
-      lineIds: selectedLineIds,
-      meshIds: selectedMeshIds,
+      lineIds: resolved.lineIds,
+      meshIds: resolved.meshIds,
     };
   }
 
   if (hasMovableSelection(selectedLineIds, selectedMeshIds)) {
-    const hit = boardPickXZ(clientX, clientY, camera, canvas, y);
+    const hit = boardPickXZ(
+      clientX,
+      clientY,
+      camera,
+      canvas,
+      y,
+      view,
+      centerZ,
+    );
     if (hit) {
       const snap = captureSelectionSnapshot(
         paths,
@@ -258,13 +302,18 @@ export function beginSelectionMoveDrag(
   lineIds: string[],
   meshIds: string[],
   topology: CircuitTopology,
+  view: BoardPickView = "top",
+  centerZ = 0,
 ): SelectionMoveDrag | null {
+  const y = boardY(paths);
   const hit = boardPickXZ(
     clientX,
     clientY,
     camera,
     canvas,
-    boardY(paths),
+    y,
+    view,
+    centerZ,
   );
   if (!hit) return null;
 
@@ -295,6 +344,8 @@ export function stepSelectionMoveDrag(
   camera: THREE.Camera,
   canvas: HTMLCanvasElement,
   paths: GridPath[],
+  view: BoardPickView = "top",
+  centerZ = 0,
 ): SelectionMoveDrag {
   const hit = boardPickXZ(
     clientX,
@@ -302,6 +353,8 @@ export function stepSelectionMoveDrag(
     camera,
     canvas,
     boardY(paths),
+    view,
+    centerZ,
   );
   if (!hit) return drag;
 

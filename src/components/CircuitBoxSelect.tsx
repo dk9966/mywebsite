@@ -1,15 +1,17 @@
 import { useEffect, useRef } from "react";
 import { useThree } from "@react-three/fiber";
 import type * as THREE from "three";
-import { boardY } from "../lib/circuitBoardPick";
+import { boardPickXZ, boardY, type BoardPickView } from "../lib/circuitBoardPick";
 import {
   BOX_SELECT_DRAG_THRESHOLD,
   canvasLocalPoint,
   linesInScreenBox,
+  meshCornerAtScreenPoint,
   meshesInScreenBox,
   type ScreenRect,
 } from "../lib/circuitBoxSelect";
-import type { CircuitMesh } from "../lib/circuitMeshes";
+import type { CircuitMesh, MeshBounds, MeshHandle } from "../lib/circuitMeshes";
+import { resizeMeshFromCorner } from "../lib/circuitMeshes";
 import {
   beginSelectionMoveDrag,
   resolveShiftPointerTarget,
@@ -35,7 +37,23 @@ type MoveDragState = {
   move: SelectionMoveDrag;
 };
 
-type DragState = BoxDragState | MoveDragState;
+type ResizeDragState = {
+  kind: "resize";
+  pointerId: number;
+  meshId: string;
+  handle: MeshHandle;
+  startBounds: MeshBounds;
+};
+
+type DragState = BoxDragState | MoveDragState | ResizeDragState;
+
+type EditorPickContext = {
+  paths: GridPath[];
+  meshes: CircuitMesh[];
+  boardY: number;
+  boxTop: number;
+  centerZ: number;
+};
 
 /** Keeps the live camera on a ref for HTML-layer box select (outside the Canvas). */
 export function CameraRefBridge({
@@ -58,12 +76,14 @@ export function BoxSelectLayer({
   canvas,
   cameraRef,
   dataRef,
+  view,
   onRectChange,
 }: {
   active: boolean;
   canvas: HTMLCanvasElement | null;
   cameraRef: React.MutableRefObject<THREE.Camera | null>;
-  dataRef: React.MutableRefObject<{ paths: GridPath[]; meshes: CircuitMesh[] }>;
+  dataRef: React.MutableRefObject<EditorPickContext>;
+  view: BoardPickView;
   onRectChange: (rect: ScreenRect | null) => void;
 }) {
   const dragRef = useRef<DragState | null>(null);
@@ -85,7 +105,7 @@ export function BoxSelectLayer({
 
       if (drag.kind === "move") {
         e.preventDefault();
-        const { paths } = dataRef.current;
+        const { paths, centerZ } = dataRef.current;
         drag.move = stepSelectionMoveDrag(
           drag.move,
           e.clientX,
@@ -93,6 +113,28 @@ export function BoxSelectLayer({
           camera,
           canvasEl,
           paths,
+          view,
+          centerZ,
+        );
+        return;
+      }
+
+      if (drag.kind === "resize") {
+        e.preventDefault();
+        const { boardY, centerZ } = dataRef.current;
+        const hit = boardPickXZ(
+          e.clientX,
+          e.clientY,
+          camera,
+          canvasEl,
+          boardY,
+          view,
+          centerZ,
+        );
+        if (!hit) return;
+        useCircuitTuning.getState().setMeshBounds(
+          drag.meshId,
+          resizeMeshFromCorner(drag.startBounds, drag.handle, hit.x, hit.z),
         );
         return;
       }
@@ -125,7 +167,7 @@ export function BoxSelectLayer({
       const camera = cameraRef.current;
       if (!drag || !canvasEl || !camera || drag.pointerId !== e.pointerId) return;
 
-      if (drag.kind === "move") {
+      if (drag.kind === "move" || drag.kind === "resize") {
         e.preventDefault();
         endDrag();
         return;
@@ -179,7 +221,7 @@ export function BoxSelectLayer({
       window.removeEventListener("pointercancel", onPointerUp, true);
       endDrag();
     };
-  }, [cameraRef, canvas, dataRef]);
+  }, [cameraRef, canvas, dataRef, view]);
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!active || e.button !== 0 || !canvas) return;
@@ -193,7 +235,40 @@ export function BoxSelectLayer({
     const camera = cameraRef.current;
     if (!camera) return;
 
-    const { paths, meshes } = dataRef.current;
+    const { paths, meshes, boardY, boxTop, centerZ } = dataRef.current;
+
+    const corner = meshCornerAtScreenPoint(
+      meshes,
+      boxTop,
+      camera,
+      canvas,
+      sx,
+      sy,
+      store.selectedMeshIds,
+      store.selectedLineIds,
+    );
+    if (corner) {
+      const mesh = meshes.find((m) => m.id === corner.meshId);
+      if (mesh) {
+        store.pushUndo();
+        dragRef.current = {
+          kind: "resize",
+          pointerId: e.pointerId,
+          meshId: corner.meshId,
+          handle: corner.handle,
+          startBounds: {
+            minX: mesh.minX,
+            maxX: mesh.maxX,
+            minZ: mesh.minZ,
+            maxZ: mesh.maxZ,
+          },
+        };
+        store.setDraggingVertex(true);
+        e.currentTarget.setPointerCapture(e.pointerId);
+        return;
+      }
+    }
+
     const target = resolveShiftPointerTarget(
       sx,
       sy,
@@ -207,6 +282,8 @@ export function BoxSelectLayer({
       store.selectedMeshIds,
       store.topology,
       e.metaKey,
+      view,
+      centerZ,
     );
 
     if (target.mode === "toggle") {
@@ -222,6 +299,13 @@ export function BoxSelectLayer({
       ) {
         store.setBoxSelection(target.lineIds, target.meshIds);
       }
+      if (
+        target.meshIds.length === 1 &&
+        target.lineIds.length === 0 &&
+        !store.selectedMeshIds.includes(target.meshIds[0])
+      ) {
+        store.setBoxSelection(target.lineIds, target.meshIds);
+      }
 
       const move = beginSelectionMoveDrag(
         e.clientX,
@@ -233,6 +317,8 @@ export function BoxSelectLayer({
         target.lineIds,
         target.meshIds,
         store.topology,
+        view,
+        centerZ,
       );
       if (!move) return;
 

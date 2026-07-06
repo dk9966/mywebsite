@@ -114,6 +114,35 @@
   color: #ffd9d9;
 }
 
+.c3d__version-select {
+  appearance: none;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1;
+  padding: 7px 24px 7px 10px;
+  max-width: 160px;
+  color: #bfe6e0;
+  background-color: rgba(20, 50, 54, 0.6);
+  background-image: linear-gradient(45deg, transparent 50%, #8fb6b1 50%),
+    linear-gradient(135deg, #8fb6b1 50%, transparent 50%);
+  background-position: right 11px center, right 7px center;
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(70, 160, 165, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.c3d__version-select:hover {
+  background-color: rgba(30, 78, 82, 0.8);
+  border-color: rgba(90, 200, 200, 0.5);
+}
+
+.c3d__version-select option {
+  color: #bfe6e0;
+  background: #0a1c1f;
+}
+
 .c3d__snap-merge {
   display: flex;
   align-items: center;

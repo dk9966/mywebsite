@@ -45,13 +45,11 @@ import {
 } from "../lib/qfpVariantCatalog";
 import {
   footprintsToMeshes,
-  moveMeshBounds,
-  resizeMeshFromCorner,
   resolveMeshes,
   type CircuitMesh,
-  type MeshBounds,
   type MeshHandle,
   type MeshSize,
+  type MeshBounds,
 } from "../lib/circuitMeshes";
 import { applyTopology } from "../lib/circuitTopology";
 import type { GridPath, Vec3 } from "../lib/gridBuilder";
@@ -60,7 +58,17 @@ import {
   layoutFromPaths,
   type CircuitsTracedLayout,
 } from "../lib/tronPathsFromCircuitsTraced";
-import { setEditPathsGetter, useCircuitTuning } from "../stores/circuitTuning";
+import {
+  createBlankVersion,
+  DEFAULT_CIRCUIT_VERSION,
+  deleteVersion,
+  emptyVersionJSON,
+  listVersions,
+  loadVersion,
+  saveToVersion,
+  setEditPathsGetter,
+  useCircuitTuning,
+} from "../stores/circuitTuning";
 import { useLineConfig } from "../stores/lineConfig";
 import {
   SHORTCUT_BTN,
@@ -78,6 +86,7 @@ import TronGrid from "./TronGrid";
 
 const PALETTE_SCALE_KEY = "c3d-palette-scale";
 const PALETTE_W_KEY = "c3d-palette-w";
+const VIEWPORT_STORAGE_KEY = "c3d-viewport";
 const DEFAULT_PALETTE_SCALE = 1;
 const MIN_PALETTE_SCALE = 0.75;
 const MAX_PALETTE_SCALE = 2.5;
@@ -276,6 +285,92 @@ function applyFitCamera(
 
 type ViewKind = BoardPickView;
 
+type EditorViewport = {
+  view?: ViewKind;
+  locked?: boolean;
+  projection?: ProjectionKind;
+  position?: [number, number, number];
+  target?: [number, number, number];
+  up?: [number, number, number];
+  zoom?: number;
+  viewDistance?: number;
+};
+
+function readStoredViewport(): EditorViewport | null {
+  try {
+    const raw = sessionStorage.getItem(VIEWPORT_STORAGE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw) as EditorViewport;
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredViewport(v: EditorViewport): void {
+  try {
+    sessionStorage.setItem(VIEWPORT_STORAGE_KEY, JSON.stringify(v));
+  } catch {
+    /* ignore quota / private mode */
+  }
+}
+
+function readInitialEditorUi(): {
+  view: ViewKind;
+  locked: boolean;
+  projection: ProjectionKind;
+} {
+  const stored = readStoredViewport();
+  return {
+    view: stored?.view ?? "top",
+    locked: stored?.locked ?? true,
+    projection: stored?.projection ?? "ortho",
+  };
+}
+
+function hasStoredCamera(v: EditorViewport | null | undefined): v is EditorViewport & {
+  position: [number, number, number];
+  target: [number, number, number];
+} {
+  return (
+    v != null &&
+    Array.isArray(v.position) &&
+    v.position.length === 3 &&
+    Array.isArray(v.target) &&
+    v.target.length === 3
+  );
+}
+
+function applyStoredCamera(
+  camera: THREE.Camera,
+  controls: { target: THREE.Vector3; update: () => void },
+  viewport: EditorViewport & {
+    position: [number, number, number];
+    target: [number, number, number];
+  },
+  viewDistanceRef: React.MutableRefObject<number>,
+  orbitTargetRef: React.MutableRefObject<THREE.Vector3>,
+): void {
+  controls.target.set(...viewport.target);
+  orbitTargetRef.current.set(...viewport.target);
+  camera.position.set(...viewport.position);
+  if (viewport.up) camera.up.set(...viewport.up).normalize();
+  else camera.lookAt(controls.target);
+  if (
+    camera instanceof THREE.OrthographicCamera &&
+    viewport.zoom != null &&
+    Number.isFinite(viewport.zoom)
+  ) {
+    camera.zoom = viewport.zoom;
+    camera.updateProjectionMatrix();
+  }
+  if (viewport.viewDistance != null && Number.isFinite(viewport.viewDistance)) {
+    viewDistanceRef.current = viewport.viewDistance;
+  } else {
+    viewDistanceRef.current = camera.position.distanceTo(controls.target);
+  }
+  controls.update();
+}
+
 /** Screen-pixel stroke width — stays readable at any zoom without bloom. */
 const EDITOR_SCREEN_LINE_WIDTH = 2.5;
 
@@ -319,32 +414,6 @@ function computePresets(layout: CircuitsTracedLayout): Presets {
   };
 }
 
-// --- Board-plane picking ----------------------------------------------------
-
-const _ray = new THREE.Raycaster();
-const _ndc = new THREE.Vector2();
-const _plane = new THREE.Plane();
-const _hit = new THREE.Vector3();
-
-function pickBoard(
-  clientX: number,
-  clientY: number,
-  y: number,
-  camera: THREE.Camera,
-  dom: HTMLCanvasElement,
-): { x: number; z: number } | null {
-  const rect = dom.getBoundingClientRect();
-  _ndc.set(
-    ((clientX - rect.left) / rect.width) * 2 - 1,
-    -((clientY - rect.top) / rect.height) * 2 + 1,
-  );
-  _ray.setFromCamera(_ndc, camera);
-  _plane.set(new THREE.Vector3(0, 1, 0), -y);
-  return _ray.ray.intersectPlane(_plane, _hit)
-    ? { x: _hit.x, z: _hit.z }
-    : null;
-}
-
 // --- Camera rig (presets, t-animation, lock/unlock) -------------------------
 
 const LOCKED_VIEW_AXIS: Record<ViewKind, THREE.Vector3> = {
@@ -373,6 +442,9 @@ type CameraRigProps = {
   locked: boolean;
   viewToken: number;
   fitToken: number;
+  initialViewport: EditorViewport | null;
+  onViewportCapture: (patch: EditorViewport) => void;
+  captureViewportRef?: React.MutableRefObject<(() => void) | null>;
 };
 
 function CameraRig({
@@ -381,6 +453,9 @@ function CameraRig({
   locked,
   viewToken,
   fitToken,
+  initialViewport,
+  onViewportCapture,
+  captureViewportRef,
 }: CameraRigProps) {
   const camera = useThree((s) => s.camera);
   const gl = useThree((s) => s.gl);
@@ -402,10 +477,51 @@ function CameraRig({
   const shiftHeld = useRef(false);
   const lockedRef = useRef(locked);
   lockedRef.current = locked;
+  const onViewportCaptureRef = useRef(onViewportCapture);
+  onViewportCaptureRef.current = onViewportCapture;
+  const skipNextAnimRef = useRef(hasStoredCamera(initialViewport));
+
+  const captureViewport = useCallback(() => {
+    const controls = controlsRef.current;
+    if (!controls) return;
+    onViewportCaptureRef.current({
+      position: [
+        camera.position.x,
+        camera.position.y,
+        camera.position.z,
+      ],
+      target: [controls.target.x, controls.target.y, controls.target.z],
+      up: [camera.up.x, camera.up.y, camera.up.z],
+      zoom:
+        camera instanceof THREE.OrthographicCamera ? camera.zoom : undefined,
+      viewDistance: viewDistanceRef.current,
+    });
+  }, [camera]);
+
+  useEffect(() => {
+    if (!captureViewportRef) return;
+    captureViewportRef.current = captureViewport;
+    return () => {
+      captureViewportRef.current = null;
+    };
+  }, [captureViewport, captureViewportRef]);
 
   const initControlsTarget = useCallback(() => {
     const controls = controlsRef.current;
     if (!controls || controlsReady) return;
+
+    if (hasStoredCamera(initialViewport)) {
+      applyStoredCamera(
+        camera,
+        controls,
+        initialViewport,
+        viewDistanceRef,
+        orbitTargetRef,
+      );
+      controls.update();
+      setControlsReady(true);
+      return;
+    }
 
     const p = presetsRef.current;
     const preset = view === "top" ? p.top : p.side;
@@ -429,7 +545,18 @@ function CameraRig({
     }
     controls.update();
     setControlsReady(true);
-  }, [view, camera, controlsReady]);
+  }, [view, camera, controlsReady, initialViewport]);
+
+  useEffect(() => {
+    const dom = gl.domElement;
+    const save = () => captureViewport();
+    dom.addEventListener("pointerup", save);
+    dom.addEventListener("wheel", save, { passive: true });
+    return () => {
+      dom.removeEventListener("pointerup", save);
+      dom.removeEventListener("wheel", save);
+    };
+  }, [gl, captureViewport]);
 
   const bindControls = useCallback(
     (node: ElementRef<typeof OrbitControls> | null) => {
@@ -586,6 +713,10 @@ function CameraRig({
   // explicit view / fit / lock changes do.
   useEffect(() => {
     if (!controlsReady) return;
+    if (skipNextAnimRef.current) {
+      skipNextAnimRef.current = false;
+      return;
+    }
 
     const p = presetsRef.current;
     const controls = controlsRef.current;
@@ -752,77 +883,9 @@ function boxEdgePositions(b: MeshBounds, y0: number, y1: number): Float32Array {
   return arr;
 }
 
-function CornerHandle({
-  meshId,
-  handle,
-  position,
-  startBounds,
-  boardY,
-}: {
-  meshId: string;
-  handle: MeshHandle;
-  position: Vec3;
-  startBounds: MeshBounds;
-  boardY: number;
-}) {
-  const { camera, gl } = useThree();
-  const pushUndo = useCircuitTuning((s) => s.pushUndo);
-  const setMeshBounds = useCircuitTuning((s) => s.setMeshBounds);
-  const setDraggingVertex = useCircuitTuning((s) => s.setDraggingVertex);
-  const dragging = useRef(false);
-
-  const onPointerDown = useCallback(
-    (e: ThreeEvent<PointerEvent>) => {
-      e.stopPropagation();
-      e.nativeEvent.preventDefault();
-      pushUndo();
-      dragging.current = true;
-      setDraggingVertex(true);
-      gl.domElement.setPointerCapture(e.pointerId);
-    },
-    [pushUndo, setDraggingVertex, gl.domElement],
-  );
-
-  useEffect(() => {
-    const onMove = (e: PointerEvent) => {
-      if (!dragging.current) return;
-      const hit = pickBoard(
-        e.clientX,
-        e.clientY,
-        boardY,
-        camera,
-        gl.domElement,
-      );
-      if (!hit) return;
-      setMeshBounds(
-        meshId,
-        resizeMeshFromCorner(startBounds, handle, hit.x, hit.z),
-      );
-    };
-    const onUp = () => {
-      if (!dragging.current) return;
-      dragging.current = false;
-      setDraggingVertex(false);
-    };
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerup", onUp);
-    return () => {
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerup", onUp);
-    };
-  }, [
-    meshId,
-    handle,
-    startBounds,
-    boardY,
-    camera,
-    gl.domElement,
-    setMeshBounds,
-    setDraggingVertex,
-  ]);
-
+function CornerHandle({ position }: { position: Vec3 }) {
   return (
-    <mesh position={position} renderOrder={1001} onPointerDown={onPointerDown}>
+    <mesh position={position} renderOrder={1001}>
       <sphereGeometry args={[0.18, 12, 10]} />
       <meshBasicMaterial color="#ffffff" depthTest={false} />
     </mesh>
@@ -857,14 +920,7 @@ function MeshItem({
   boxTop: number;
   hasOutline: boolean;
 }) {
-  const { camera, gl } = useThree();
   const editTool = useCircuitTuning((s) => s.editTool);
-  const move = useRef<{
-    start: MeshBounds;
-    hitX: number;
-    hitZ: number;
-    pushed: boolean;
-  } | null>(null);
 
   const cx = (mesh.minX + mesh.maxX) / 2;
   const cz = (mesh.minZ + mesh.maxZ) / 2;
@@ -889,65 +945,9 @@ function MeshItem({
       }
 
       store.selectMesh(mesh.id);
-      const hit = pickBoard(
-        e.clientX,
-        e.clientY,
-        boardY,
-        camera,
-        gl.domElement,
-      );
-      if (!hit) return;
-      move.current = {
-        start: {
-          minX: mesh.minX,
-          maxX: mesh.maxX,
-          minZ: mesh.minZ,
-          maxZ: mesh.maxZ,
-        },
-        hitX: hit.x,
-        hitZ: hit.z,
-        pushed: false,
-      };
-      store.setDraggingVertex(true);
-      gl.domElement.setPointerCapture(e.pointerId);
     },
-    [editTool, mesh, boardY, camera, gl.domElement],
+    [editTool, mesh.id],
   );
-
-  useEffect(() => {
-    const onMove = (e: PointerEvent) => {
-      const m = move.current;
-      if (!m) return;
-      const hit = pickBoard(
-        e.clientX,
-        e.clientY,
-        boardY,
-        camera,
-        gl.domElement,
-      );
-      if (!hit) return;
-      const dx = hit.x - m.hitX;
-      const dz = hit.z - m.hitZ;
-      const store = useCircuitTuning.getState();
-      if (!m.pushed && (Math.abs(dx) > 0.02 || Math.abs(dz) > 0.02)) {
-        store.pushUndo();
-        m.pushed = true;
-      }
-      if (m.pushed)
-        store.setMeshBounds(mesh.id, moveMeshBounds(m.start, dx, dz));
-    };
-    const onUp = () => {
-      if (!move.current) return;
-      move.current = null;
-      useCircuitTuning.getState().setDraggingVertex(false);
-    };
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerup", onUp);
-    return () => {
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerup", onUp);
-    };
-  }, [mesh.id, boardY, camera, gl.domElement]);
 
   const edges = useMemo(
     () => boxEdgePositions(mesh, boardY, boxTop),
@@ -956,7 +956,7 @@ function MeshItem({
 
   return (
     <group>
-      {/* Invisible pick body for selection + drag-move. */}
+      {/* Invisible pick body for selection. Move/scale via shift+drag overlay. */}
       <mesh position={[cx, midY, cz]} onPointerDown={onPointerDown}>
         <boxGeometry args={[Math.max(w, 0.2), boxH, Math.max(h, 0.2)]} />
         <meshBasicMaterial transparent opacity={0} depthWrite={false} />
@@ -1004,19 +1004,7 @@ function MeshItem({
             const hz =
               handle === "nw" || handle === "ne" ? mesh.minZ : mesh.maxZ;
             return (
-              <CornerHandle
-                key={handle}
-                meshId={mesh.id}
-                handle={handle}
-                position={[hx, boxTop, hz]}
-                startBounds={{
-                  minX: mesh.minX,
-                  maxX: mesh.maxX,
-                  minZ: mesh.minZ,
-                  maxZ: mesh.maxZ,
-                }}
-                boardY={boardY}
-              />
+              <CornerHandle key={handle} position={[hx, boxTop, hz]} />
             );
           })
         : null}
@@ -1197,7 +1185,18 @@ function MeshLayer({
 
 // --- Scene ------------------------------------------------------------------
 
-type SceneData = { paths: GridPath[]; meshes: CircuitMesh[] };
+type SceneData = {
+  paths: GridPath[];
+  meshes: CircuitMesh[];
+  boardY: number;
+  boxTop: number;
+  centerZ: number;
+};
+
+type BaselineIds = {
+  lineIds: string[];
+  meshIds: string[];
+};
 
 function EditorScene({
   view,
@@ -1205,8 +1204,12 @@ function EditorScene({
   projection,
   viewToken,
   fitToken,
+  initialViewport,
+  onViewportCapture,
+  captureViewportRef,
   paletteGhost,
   onData,
+  onBaselineIds,
   onBoardPickReady,
   cameraRef,
 }: {
@@ -1215,8 +1218,12 @@ function EditorScene({
   projection: ProjectionKind;
   viewToken: number;
   fitToken: number;
+  initialViewport: EditorViewport | null;
+  onViewportCapture: (patch: EditorViewport) => void;
+  captureViewportRef?: React.MutableRefObject<(() => void) | null>;
   paletteGhost: PaletteMeshGhost | null;
   onData: (d: SceneData) => void;
+  onBaselineIds: (ids: BaselineIds) => void;
   onBoardPickReady: (api: BoardPickApi | null) => void;
   cameraRef: React.MutableRefObject<THREE.Camera | null>;
 }) {
@@ -1260,8 +1267,23 @@ function EditorScene({
   );
 
   useEffect(() => {
-    onData({ paths: editablePaths, meshes: resolvedMeshes });
-  }, [editablePaths, resolvedMeshes, onData]);
+    onBaselineIds({
+      lineIds: editableBaseline
+        .map((p) => p.id)
+        .filter((id): id is string => !!id),
+      meshIds: baselineMeshes.map((m) => m.id),
+    });
+  }, [baselineMeshes, editableBaseline, onBaselineIds]);
+
+  useEffect(() => {
+    onData({
+      paths: editablePaths,
+      meshes: resolvedMeshes,
+      boardY: model.yMin,
+      boxTop: Math.max(model.yMax, model.yMin + 0.6),
+      centerZ: layout.center[2],
+    });
+  }, [editablePaths, layout.center, model.yMax, model.yMin, onData, resolvedMeshes]);
 
   return (
     <>
@@ -1280,6 +1302,9 @@ function EditorScene({
         locked={locked}
         viewToken={viewToken}
         fitToken={fitToken}
+        initialViewport={initialViewport}
+        onViewportCapture={onViewportCapture}
+        captureViewportRef={captureViewportRef}
       />
       {/* Real component outlines (the "meshes") — static, full length. */}
       <TronGrid
@@ -1332,9 +1357,13 @@ export default function Circuit3DEditor() {
     useLineConfig.getState().set(LINE_CONFIG_OVERRIDES);
   }, []);
 
-  const [view, setView] = useState<ViewKind>("top");
-  const [locked, setLocked] = useState(true);
-  const [projection, setProjection] = useState<ProjectionKind>("ortho");
+  const initialUi = useMemo(() => readInitialEditorUi(), []);
+  const initialViewportRef = useRef(readStoredViewport());
+  const [view, setView] = useState<ViewKind>(() => initialUi.view);
+  const [locked, setLocked] = useState(() => initialUi.locked);
+  const [projection, setProjection] = useState<ProjectionKind>(
+    () => initialUi.projection,
+  );
   const [viewToken, setViewToken] = useState(0);
   const [fitToken, setFitToken] = useState(0);
   const [status, setStatus] = useState("");
@@ -1342,9 +1371,18 @@ export default function Circuit3DEditor() {
   const [boxSelectRect, setBoxSelectRect] = useState<ScreenRect | null>(null);
   const [pickCanvas, setPickCanvas] = useState<HTMLCanvasElement | null>(null);
   const [shiftHeld, setShiftHeld] = useState(false);
+  const [versions, setVersions] = useState<string[]>([]);
+  const [activeVersion, setActiveVersion] = useState(DEFAULT_CIRCUIT_VERSION);
   const { flash: flashShortcut, btnClass, btnTitle } = useShortcutButtonFlash();
 
-  const dataRef = useRef<SceneData>({ paths: [], meshes: [] });
+  const dataRef = useRef<SceneData>({
+    paths: [],
+    meshes: [],
+    boardY: 0,
+    boxTop: 0.6,
+    centerZ: 0,
+  });
+  const baselineIdsRef = useRef<BaselineIds>({ lineIds: [], meshIds: [] });
   const cameraRef = useRef<THREE.Camera | null>(null);
   const boardPickRef = useRef<BoardPickApi | null>(null);
   const paletteDragRef = useRef<PaletteDrag | null>(null);
@@ -1366,10 +1404,40 @@ export default function Circuit3DEditor() {
     dataRef.current = d;
     if (d.paths.length > 0) setLoaded(true);
   }, []);
+  const onBaselineIds = useCallback((ids: BaselineIds) => {
+    baselineIdsRef.current = ids;
+  }, []);
   const onBoardPickReady = useCallback((api: BoardPickApi | null) => {
     boardPickRef.current = api;
     setPickCanvas(api?.canvas ?? null);
   }, []);
+
+  const viewportCaptureRef = useRef<(() => void) | null>(null);
+
+  const persistEditorViewport = useCallback(
+    (patch: EditorViewport = {}) => {
+      const prev = readStoredViewport() ?? {};
+      writeStoredViewport({
+        ...prev,
+        view,
+        locked,
+        projection,
+        ...patch,
+      });
+    },
+    [view, locked, projection],
+  );
+
+  const onViewportCapture = useCallback(
+    (patch: EditorViewport) => {
+      persistEditorViewport(patch);
+    },
+    [persistEditorViewport],
+  );
+
+  useEffect(() => {
+    persistEditorViewport();
+  }, [persistEditorViewport]);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -1664,13 +1732,23 @@ export default function Circuit3DEditor() {
   }, [flashShortcut, locked, onSnap45, toggleProjection, toggleView, view]);
 
   const onSave = useCallback(async () => {
-    const ok = await useCircuitTuning.getState().saveAsDefault();
+    viewportCaptureRef.current?.();
+    const ok = await saveToVersion(activeVersion);
     flashStatus(
       ok
-        ? "saved to circuits-tuning.json"
-        : "downloaded JSON (dev save unavailable)",
+        ? `saved version "${activeVersion}"`
+        : "save failed (dev server only)",
     );
-  }, [flashStatus]);
+  }, [activeVersion, flashStatus]);
+
+  const onReset = useCallback(async () => {
+    const ok = await useCircuitTuning.getState().resetToVersion(activeVersion);
+    flashStatus(
+      ok
+        ? `reset to saved version "${activeVersion}"`
+        : `reset failed — no saved "${activeVersion}" on disk`,
+    );
+  }, [activeVersion, flashStatus]);
 
   const onCopy = useCallback(() => {
     const count = useCircuitTuning.getState().selectedLineIds.filter(
@@ -1718,6 +1796,73 @@ export default function Circuit3DEditor() {
     [flashStatus],
   );
 
+  const refreshVersions = useCallback(async () => {
+    setVersions(await listVersions());
+  }, []);
+
+  useEffect(() => {
+    void (async () => {
+      const list = await listVersions();
+      setVersions(list);
+      if (list.includes(DEFAULT_CIRCUIT_VERSION)) {
+        await loadVersion(DEFAULT_CIRCUIT_VERSION);
+        setActiveVersion(DEFAULT_CIRCUIT_VERSION);
+      }
+    })();
+  }, []);
+
+  const onSelectVersion = useCallback(
+    async (name: string) => {
+      const ok = await loadVersion(name);
+      setActiveVersion(ok ? name : activeVersion);
+      flashStatus(ok ? `loaded version "${name}"` : `failed to load "${name}"`);
+    },
+    [activeVersion, flashStatus],
+  );
+
+  const onAddVersion = useCallback(async () => {
+    const { lineIds, meshIds } = baselineIdsRef.current;
+    if (lineIds.length === 0 && meshIds.length === 0) {
+      flashStatus("wait for the board to finish loading");
+      return;
+    }
+    const nums = versions
+      .map((v) => Number(v))
+      .filter((n) => Number.isInteger(n) && n > 0);
+    const name = String((nums.length > 0 ? Math.max(...nums) : 0) + 1);
+    const ok = await createBlankVersion(
+      name,
+      emptyVersionJSON(lineIds, meshIds),
+    );
+    if (!ok) {
+      flashStatus("could not create version (dev server only)");
+      return;
+    }
+    await refreshVersions();
+    const loaded = await loadVersion(name);
+    if (!loaded) {
+      flashStatus(`created version "${name}" but failed to load it`);
+      return;
+    }
+    setActiveVersion(name);
+    flashStatus(`added blank version "${name}"`);
+  }, [flashStatus, refreshVersions, versions]);
+
+  const onDeleteVersion = useCallback(async () => {
+    if (activeVersion === DEFAULT_CIRCUIT_VERSION) return;
+    if (!window.confirm(`Delete version "${activeVersion}"?`)) return;
+    const deleted = activeVersion;
+    const ok = await deleteVersion(deleted);
+    if (!ok) {
+      flashStatus("could not delete version");
+      return;
+    }
+    await refreshVersions();
+    await loadVersion(DEFAULT_CIRCUIT_VERSION);
+    setActiveVersion(DEFAULT_CIRCUIT_VERSION);
+    flashStatus(`deleted version "${deleted}"`);
+  }, [activeVersion, flashStatus, refreshVersions]);
+
   const hasSelection = selectedLineIds.length > 0 || selectedMeshIds.length > 0;
 
   return (
@@ -1747,8 +1892,12 @@ export default function Circuit3DEditor() {
               projection={projection}
               viewToken={viewToken}
               fitToken={fitToken}
+              initialViewport={initialViewportRef.current}
+              onViewportCapture={onViewportCapture}
+              captureViewportRef={viewportCaptureRef}
               paletteGhost={paletteGhost}
               onData={onData}
+              onBaselineIds={onBaselineIds}
               onBoardPickReady={onBoardPickReady}
               cameraRef={cameraRef}
             />
@@ -1760,6 +1909,7 @@ export default function Circuit3DEditor() {
           canvas={pickCanvas}
           cameraRef={cameraRef}
           dataRef={dataRef}
+          view={view}
           onRectChange={setBoxSelectRect}
         />
         <BoxSelectOverlay rect={boxSelectRect} canvas={pickCanvas} />
@@ -1962,15 +2112,39 @@ export default function Circuit3DEditor() {
           >
             Import
           </button>
+          <button type="button" className="c3d__btn" onClick={onReset}>
+            Reset
+          </button>
+        </div>
+
+        <div className="c3d__sep" />
+
+        <div className="c3d__group">
+          <select
+            className="c3d__version-select"
+            value={activeVersion}
+            title="Switch circuit version"
+            onChange={(e) => onSelectVersion(e.target.value)}
+          >
+            <option value={DEFAULT_CIRCUIT_VERSION}>0</option>
+            {versions
+              .filter((name) => name !== DEFAULT_CIRCUIT_VERSION)
+              .map((name) => (
+                <option key={name} value={name}>
+                  {name}
+                </option>
+              ))}
+          </select>
+          <button type="button" className="c3d__btn" onClick={onAddVersion}>
+            Add
+          </button>
           <button
             type="button"
-            className="c3d__btn"
-            onClick={() => {
-              useCircuitTuning.getState().resetAll();
-              flashStatus("reset to committed default");
-            }}
+            className="c3d__btn c3d__btn--danger"
+            disabled={activeVersion === DEFAULT_CIRCUIT_VERSION}
+            onClick={onDeleteVersion}
           >
-            Reset
+            Delete version
           </button>
         </div>
 
@@ -2124,10 +2298,9 @@ export default function Circuit3DEditor() {
         </span>
         <span className="c3d__hint">
           f: top/side view · l: lock/free · o: ortho/persp · locked drag: pan ·
-          free drag: rotate (shift: pan) · shift-drag: box select / move · a:
-          add line (locked) · r: snap 45° · drag mesh: move · mesh panel: click or drag
-          to place · drag to place · corners: scale · ⌘-click: add to group ·
-          ⌘C/⌘V: copy/paste
+          free drag: rotate (shift: pan) · shift-drag: box select / move mesh ·
+          a: add line (locked) · r: snap 45° · mesh panel: click or drag to place ·
+          shift+corners: scale mesh · ⌘-click: add to group · ⌘C/⌘V: copy/paste
         </span>
       </div>
     </div>

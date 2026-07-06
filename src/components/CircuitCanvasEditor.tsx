@@ -1753,9 +1753,9 @@ export default function CircuitCanvasEditor() {
           <button
             type="button"
             className="cce__btn"
-            onClick={() => {
-              resetAll();
-              flashStatus("Reset to committed default");
+            onClick={async () => {
+              await resetAll();
+              flashStatus("Reset to saved circuits-tuning.json");
             }}
           >
             Reset
@@ -1820,7 +1820,7 @@ export default function CircuitCanvasEditor() {
         <span className="cce__hint">
           wheel: zoom · a: add line · r: snap 45° · space/middle-drag: pan ·
           ⌘-click: add to group · shift-drag: box select · drag line/body: move ·
-          group corners: scale · ⌘C: copy · ⌘V: paste · del: delete · auto-saves
+          group corners: scale · ⌘C: copy · ⌘V: paste · del: delete · auto-saves · Save: json
         </span>
       </div>
     </div>

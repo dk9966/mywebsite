@@ -7,6 +7,14 @@ export default defineConfig({
   server: {
     port: 5174,
     strictPort: true,
+    // Dev save writes circuits-tuning.json in-process; the store already holds
+    // the committed payload — reloading would reset the editor camera.
+    watch: {
+      ignored: [
+        '**/src/data/circuits-tuning.json',
+        '**/src/data/circuit-versions/**',
+      ],
+    },
   },
   optimizeDeps: {
     include: [

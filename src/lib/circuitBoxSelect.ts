@@ -1,5 +1,6 @@
 import * as THREE from "three";
-import type { CircuitMesh } from "./circuitMeshes";
+import type { CircuitMesh, MeshHandle } from "./circuitMeshes";
+import { meshHandleWorld } from "./circuitMeshes";
 import type { GridPath } from "./gridBuilder";
 
 export type ScreenRect = { l: number; t: number; r: number; b: number };
@@ -290,6 +291,34 @@ function meshScreenRect(
     b = Math.max(b, p.sy);
   }
   return { l, r, t, b };
+}
+
+/** Screen-pixel tolerance for clicking a mesh scale handle. */
+export const MESH_HANDLE_PX = 12;
+
+/** Sole-selected mesh corner under a canvas-local point, if any. */
+export function meshCornerAtScreenPoint(
+  meshes: CircuitMesh[],
+  boxTop: number,
+  camera: THREE.Camera,
+  canvas: HTMLCanvasElement,
+  sx: number,
+  sy: number,
+  selectedMeshIds: string[],
+  selectedLineIds: string[],
+): { meshId: string; handle: MeshHandle } | null {
+  if (selectedMeshIds.length !== 1 || selectedLineIds.length !== 0) return null;
+  const mesh = meshes.find((m) => m.id === selectedMeshIds[0]);
+  if (!mesh) return null;
+  for (const handle of ["nw", "ne", "sw", "se"] as const) {
+    const { x, z } = meshHandleWorld(mesh, handle);
+    const p = worldToCanvasLocal(x, boxTop, z, camera, canvas);
+    if (!p) continue;
+    if (Math.hypot(sx - p.sx, sy - p.sy) <= MESH_HANDLE_PX) {
+      return { meshId: mesh.id, handle };
+    }
+  }
+  return null;
 }
 
 /** Component footprint under a canvas-local point, if any. */

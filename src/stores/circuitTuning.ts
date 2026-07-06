@@ -91,7 +91,7 @@ const FACTORY_TUNING: CircuitTuning = {
 const STORAGE_KEY = "circuit-tuning:v2";
 const MAX_UNDO = 60;
 
-/** Browser draft overlay; absent/false means load committed src/data/circuits-tuning.json. */
+/** Browser draft overlay; merged on load. Reset ignores this and uses committed JSON only. */
 type StoredTuning = Partial<CircuitTuning> & { _draft?: boolean };
 
 type EditSnapshot = {
@@ -119,12 +119,17 @@ function snapshot(state: EditSnapshot): EditSnapshot {
   };
 }
 
-function persistCommitted(payload: CircuitTuning): void {
+function commitBaseline(payload: CircuitTuning): void {
+  runtimePublished = cloneTuning(payload);
+}
+
+function syncDraftToStorage(payload: CircuitTuning): void {
   if (typeof window === "undefined") return;
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+    const draft: StoredTuning = { ...payload, _draft: true };
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
   } catch {
-    // Ignore quota failures; JSON file is still the source of truth.
+    // Quota or private browsing — in-memory state still works this session.
   }
 }
 
@@ -197,10 +202,10 @@ function mergeTuning(input: Partial<CircuitTuning>): CircuitTuning {
   };
 }
 
-/** The committed tuning, normalized over the factory baseline. */
+/** Bundled src/data/circuits-tuning.json — the committed baseline after Save + reload. */
 const PUBLISHED: CircuitTuning = mergeTuning(PUBLISHED_TUNING);
 
-/** Updated when "Save as default" succeeds (dev write or manual import). */
+/** Last successful Save / Import this session; Reset uses this, not the localStorage draft. */
 let runtimePublished: CircuitTuning | null = null;
 
 function getPublishedBaseline(): CircuitTuning {
@@ -208,6 +213,59 @@ function getPublishedBaseline(): CircuitTuning {
 }
 
 const SAVE_DEFAULT_ROUTE = "/__save-circuits-tuning";
+const VERSIONS_ROUTE = "/__circuit-versions";
+
+/**
+ * Read the committed JSON straight off disk via the dev server. The bundled
+ * `PUBLISHED` is only a snapshot from page-load, so a save in another tab/browser
+ * isn't visible to it — fetching keeps Reset honest across sessions.
+ */
+async function fetchCommittedFromDisk(): Promise<CircuitTuning | null> {
+  if (typeof window === "undefined") return null;
+  try {
+    const res = await fetch(SAVE_DEFAULT_ROUTE, {
+      method: "GET",
+      headers: { "Cache-Control": "no-store" },
+    });
+    if (!res.ok) return null;
+    const json = (await res.json()) as Partial<CircuitTuning>;
+    return mergeTuning(json);
+  } catch {
+    return null;
+  }
+}
+
+async function fetchVersionFromDisk(name: string): Promise<CircuitTuning | null> {
+  if (typeof window === "undefined") return null;
+  try {
+    const res = await fetch(
+      `${VERSIONS_ROUTE}?name=${encodeURIComponent(name)}`,
+      { headers: { "Cache-Control": "no-store" } },
+    );
+    if (!res.ok) return null;
+    const json = (await res.json()) as Partial<CircuitTuning>;
+    return mergeTuning(json);
+  } catch {
+    return null;
+  }
+}
+
+function applyTuningBaseline(baseline: CircuitTuning): void {
+  useCircuitTuning.setState({
+    ...cloneTuning(baseline),
+    selectedLineIds: [],
+    selectedMeshIds: [],
+    selectedVertex: null,
+    editTool: "select",
+    addLineStart: null,
+    addMeshKind: null,
+    addMeshSize: null,
+    addMeshVariant: null,
+    isDraggingVertex: false,
+    undoStack: [],
+    redoStack: [],
+  });
+}
 
 const PASTE_OFFSET = 0.5;
 
@@ -264,8 +322,8 @@ async function writeDefault(
       body,
     });
     if (!res.ok) throw new Error("save failed");
-    runtimePublished = cloneTuning(payload);
-    persistCommitted(payload);
+    commitBaseline(payload);
+    syncDraftToStorage(payload);
     return true;
   } catch {
     if (opts.downloadOnFailure) {
@@ -370,7 +428,9 @@ interface CircuitTuningStore extends CircuitTuning {
   copySelectedLines: () => boolean;
   pasteLines: () => boolean;
 
-  resetAll: () => void;
+  resetAll: () => Promise<void>;
+  /** Revert to the named version file on disk (dev server). */
+  resetToVersion: (name: string) => Promise<boolean>;
   exportJSON: () => string;
   importJSON: (text: string) => boolean;
   /** Write current tuning to src/data/circuits-tuning.json (dev) or download fallback. */
@@ -779,21 +839,20 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
       });
     },
 
-    resetAll: () =>
-      set({
-        ...cloneTuning(getPublishedBaseline()),
-        selectedLineIds: [],
-        selectedMeshIds: [],
-        selectedVertex: null,
-        editTool: "select",
-        addLineStart: null,
-        addMeshKind: null,
-        addMeshSize: null,
-        addMeshVariant: null,
-        isDraggingVertex: false,
-        undoStack: [],
-        redoStack: [],
-      }),
+    resetAll: async () => {
+      // Prefer the live file on disk (reflects saves from any tab/browser);
+      // fall back to this session's committed baseline if the dev route is down.
+      const fromDisk = await fetchCommittedFromDisk();
+      if (fromDisk) commitBaseline(fromDisk);
+      applyTuningBaseline(fromDisk ?? getPublishedBaseline());
+    },
+
+    resetToVersion: async (name) => {
+      const fromDisk = await fetchVersionFromDisk(name);
+      if (!fromDisk) return false;
+      applyTuningBaseline(fromDisk);
+      return true;
+    },
 
     exportJSON: () => {
       const {
@@ -823,8 +882,6 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
     importJSON: (text) => {
       try {
         const merged = mergeTuning(JSON.parse(text) as Partial<CircuitTuning>);
-        runtimePublished = cloneTuning(merged);
-        persistCommitted(merged);
         set({
           ...merged,
           selectedLineIds: [],
@@ -850,6 +907,114 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
     },
   };
 });
+
+/** Default editor version — stored as src/data/circuit-versions/0.json. */
+export const DEFAULT_CIRCUIT_VERSION = "0";
+
+/**
+ * Named version snapshots, each a JSON file the dev server serves from
+ * src/data/circuit-versions (including version 0). Save / Reset in the 3D
+ * editor use the active version file, not circuits-tuning.json.
+ * Only works while the dev server is running.
+ */
+function versionUrl(name: string): string {
+  return `${VERSIONS_ROUTE}?name=${encodeURIComponent(name)}`;
+}
+
+export function emptyVersionJSON(
+  lineIds: string[],
+  meshIds: string[],
+): string {
+  return JSON.stringify(
+    {
+      topology: {
+        geometry: {},
+        deleted: lineIds,
+        added: [],
+      },
+      meshEdits: {
+        geometry: {},
+        deleted: meshIds,
+        added: [],
+      },
+    },
+    null,
+    2,
+  );
+}
+
+export async function listVersions(): Promise<string[]> {
+  if (typeof window === "undefined") return [];
+  try {
+    const res = await fetch(VERSIONS_ROUTE, {
+      headers: { "Cache-Control": "no-store" },
+    });
+    if (!res.ok) return [];
+    const json = (await res.json()) as { versions?: string[] };
+    return json.versions ?? [];
+  } catch {
+    return [];
+  }
+}
+
+/** Write the current tuning to the named version file (creating it if needed). */
+export async function saveVersion(name: string): Promise<boolean> {
+  const body = JSON.stringify(tuningPayload(useCircuitTuning.getState()), null, 2);
+  try {
+    const res = await fetch(versionUrl(name), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+/** Save the editor state to a version file under circuit-versions/. */
+export async function saveToVersion(name: string): Promise<boolean> {
+  return saveVersion(name);
+}
+
+/** Create a new version file with an empty board (no baseline lines or meshes). */
+export async function createBlankVersion(
+  name: string,
+  body: string,
+): Promise<boolean> {
+  try {
+    const res = await fetch(versionUrl(name), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
+/** Load a named version into the editor, replacing current tuning. */
+export async function loadVersion(name: string): Promise<boolean> {
+  try {
+    const res = await fetch(versionUrl(name), {
+      headers: { "Cache-Control": "no-store" },
+    });
+    if (!res.ok) return false;
+    return useCircuitTuning.getState().importJSON(await res.text());
+  } catch {
+    return false;
+  }
+}
+
+export async function deleteVersion(name: string): Promise<boolean> {
+  try {
+    const res = await fetch(versionUrl(name), { method: "DELETE" });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
 
 if (typeof window !== "undefined") {
   useCircuitTuning.subscribe((state) => {

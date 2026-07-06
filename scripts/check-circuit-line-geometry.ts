@@ -139,7 +139,7 @@ async function main() {
   console.log("Circuit line geometry check");
   console.log("Source: src/data/circuits-tuning.json + GLB baseline");
   console.log(
-    "(Browser localStorage draft overrides are not visible from this script.)",
+    "(Browser localStorage drafts are not visible from this script.)",
   );
   console.log("");
   console.log(`Editable segments analyzed: ${reports.length}`);

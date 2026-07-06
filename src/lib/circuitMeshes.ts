@@ -128,7 +128,11 @@ export function meshContains(m: MeshBounds, x: number, z: number): boolean {
 
 function meshExists(edits: CircuitMeshEdits, id: string): boolean {
   return (
-    edits.added.some((m) => m.id === id) || edits.geometry[id] !== undefined
+    edits.added.some((m) => m.id === id) ||
+    edits.geometry[id] !== undefined ||
+    // Deleted ids are tombstones: resolveMeshes hides any mesh whose id is in
+    // the deleted list, so a new mesh must never reuse one.
+    edits.deleted.includes(id)
   );
 }
 
@@ -183,10 +187,15 @@ export function deleteMeshInEdits(
   edits: CircuitMeshEdits,
   id: string,
 ): CircuitMeshEdits {
+  // User-added meshes are removed outright; only baseline meshes need a
+  // tombstone. Tombstoning added ids would permanently poison those ids
+  // (the persisted deleted list outlives the session's id counter).
+  const wasAdded = edits.added.some((m) => m.id === id);
   return {
-    deleted: edits.deleted.includes(id)
-      ? edits.deleted
-      : [...edits.deleted, id],
+    deleted:
+      wasAdded || edits.deleted.includes(id)
+        ? edits.deleted
+        : [...edits.deleted, id],
     geometry: { ...edits.geometry },
     added: edits.added.filter((m) => m.id !== id),
   };

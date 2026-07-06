@@ -19,7 +19,9 @@
     "render-circuit-pcb": "node scripts/render-circuit-pcb.mjs",
     "trace-reference-lines": "node scripts/trace-reference-lines.mjs",
     "build-circuits-tracing": "python3 scripts/build-circuits-tracing-snapshot.py",
-    "build-component-reference-outline": "python3 scripts/build-component-reference-outline-glb.py"
+    "build-component-reference-outline": "python3 scripts/build-component-reference-outline-glb.py",
+    "export-board-spatial": "tsx scripts/export-board-spatial.ts",
+    "check-circuit-line-geometry": "tsx scripts/check-circuit-line-geometry.ts"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
