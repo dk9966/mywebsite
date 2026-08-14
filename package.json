@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:site": "SITE_ONLY=1 vite build",
+    "deploy:site": "vercel build --prod --yes && vercel deploy --prebuilt --prod --yes",
     "lint": "eslint .",
     "preview": "vite preview",
     "capture-site-gif": "tsx scripts/capture-site-gif.ts",
@@ -23,7 +25,8 @@
     "export-board-spatial": "tsx scripts/export-board-spatial.ts",
     "export-mesh-variant-catalog": "tsx scripts/export-mesh-variant-catalog.ts",
     "insert-circuit-mesh": "tsx scripts/insert-circuit-mesh.ts",
-    "check-circuit-line-geometry": "tsx scripts/check-circuit-line-geometry.ts"
+    "check-circuit-line-geometry": "tsx scripts/check-circuit-line-geometry.ts",
+    "export-secret-base-world": "node secret-base/scripts/export-world.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
