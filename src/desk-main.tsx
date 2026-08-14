@@ -360,7 +360,7 @@ export function DeskApp() {
       >
         <DeskScene />
       </Canvas>
-      <DeskControls />
+      {import.meta.env.DEV ? <DeskControls /> : null}
       <BootClockDriver />
       <Hint />
     </div>

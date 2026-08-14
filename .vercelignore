@@ -1,0 +1,17 @@
+blender/
+models/
+plans/
+output/
+node_modules/
+circuit-painter/
+circuit-painter-2/
+circuit-board/
+circuit-flow/
+circuit-road/
+circuit-generator/
+circuit-pcb/
+joyce/
+tools/
+pcb-circuits/
+scripts/
+.cursor/

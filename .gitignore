@@ -68,3 +68,4 @@ plans/clips/
 .env
 .env.*
 !.env.example
+.vercel
