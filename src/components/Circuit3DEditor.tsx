@@ -1695,7 +1695,8 @@ export default function Circuit3DEditor() {
     return () => setEditPathsGetter(null);
   }, []);
 
-  // Editor shortcuts: a (add line), r (snap 45), f (toggle view), l (lock).
+  // Editor shortcuts: a (add line), r (snap 45), f (toggle view), l (lock),
+  // o (projection), g (rotate selected meshes 90°).
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
@@ -1725,11 +1726,32 @@ export default function Circuit3DEditor() {
         e.preventDefault();
         flashShortcut(SHORTCUT_BTN.projection);
         toggleProjection();
+      } else if (k === "g") {
+        const store = useCircuitTuning.getState();
+        if (store.selectedMeshIds.length === 0) return;
+        e.preventDefault();
+        if (
+          store.rotateSelectedMeshes(dataRef.current.meshes)
+        ) {
+          flashStatus(
+            `rotated ${store.selectedMeshIds.length} mesh${
+              store.selectedMeshIds.length === 1 ? "" : "es"
+            } 90°`,
+          );
+        }
       }
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [flashShortcut, locked, onSnap45, toggleProjection, toggleView, view]);
+  }, [
+    flashShortcut,
+    flashStatus,
+    locked,
+    onSnap45,
+    toggleProjection,
+    toggleView,
+    view,
+  ]);
 
   const onSave = useCallback(async () => {
     viewportCaptureRef.current?.();
@@ -2299,8 +2321,9 @@ export default function Circuit3DEditor() {
         <span className="c3d__hint">
           f: top/side view · l: lock/free · o: ortho/persp · locked drag: pan ·
           free drag: rotate (shift: pan) · shift-drag: box select / move mesh ·
-          a: add line (locked) · r: snap 45° · mesh panel: click or drag to place ·
-          shift+corners: scale mesh · ⌘-click: add to group · ⌘C/⌘V: copy/paste
+          a: add line (locked) · r: snap 45° · g: rotate mesh 90° ·
+          mesh panel: click or drag to place · shift+corners: scale mesh ·
+          ⌘-click: add to group · ⌘C/⌘V: copy/paste
         </span>
       </div>
     </div>

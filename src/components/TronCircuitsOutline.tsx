@@ -4,6 +4,10 @@ import { buildOutlineModel, transformedOutlinePaths } from "../lib/circuit3DMesh
 import { footprintsToMeshes, resolveMeshes } from "../lib/circuitMeshes";
 import type { GridPath } from "../lib/gridBuilder";
 import {
+  useVariantCatalog,
+  variantOutlinePaths,
+} from "../lib/qfpVariantCatalog";
+import {
   applyTuning,
   boardBoundsX,
   buildRawCircuitPaths,
@@ -37,6 +41,7 @@ export default function TronCircuitsOutline({
   screenLineWidth,
 }: TronCircuitsOutlineProps) {
   const { scene } = useGLTF(OUTLINE_GLB_URL);
+  const catalog = useVariantCatalog();
 
   const timing = useCircuitTuning((s) => s.timing);
   const transform = useCircuitTuning((s) => s.transform);
@@ -58,12 +63,21 @@ export default function TronCircuitsOutline({
   );
 
   const layout = useMemo(() => {
-    // Same composition as the editor: outlines transformed by mesh edits,
-    // plus the editable traces. What you arranged there is what plays here.
+    // Match the editor's composition: mesh outlines are never run through
+    // topology (that path is for two-point circuit segments and would shred
+    // multi-point variant polylines). Traces get full applyTuning.
     const resolvedMeshes = resolveMeshes(baselineMeshes, meshEdits);
-    const outlinePaths = transformedOutlinePaths(model, resolvedMeshes);
+    // One shared color for the whole board (Controls → Line), not per-mesh tints.
+    const baselineOutlines = transformedOutlinePaths(
+      model,
+      resolvedMeshes,
+      "global",
+    );
+    const variantOutlines = catalog
+      ? variantOutlinePaths(resolvedMeshes, catalog, model.yMin, "global")
+      : [];
+    const outlinePaths = [...baselineOutlines, ...variantOutlines];
     const editablePaths = rawPaths.filter((p) => isEditableLine(p.id));
-    const combined = [...outlinePaths, ...editablePaths];
 
     const tuning = {
       timing,
@@ -74,12 +88,19 @@ export default function TronCircuitsOutline({
       meshEdits,
       snapMergeEps,
     };
-    return layoutFromPaths(applyTuning(combined, tuning));
+    // Outlines: board transform + scan schedule only (empty topology).
+    const tunedOutlines = applyTuning(outlinePaths, {
+      ...tuning,
+      topology: { geometry: {}, deleted: [], added: [] },
+    });
+    const tunedTraces = applyTuning(editablePaths, tuning);
+    return layoutFromPaths([...tunedOutlines, ...tunedTraces]);
   }, [
     rawPaths,
     model,
     baselineMeshes,
     meshEdits,
+    catalog,
     timing,
     transform,
     topViewCamera,

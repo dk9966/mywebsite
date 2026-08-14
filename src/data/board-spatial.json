@@ -1,13 +1,13 @@
 {
   "source": "version 2",
-  "generatedAt": "2026-07-06T02:58:11.050Z",
+  "generatedAt": "2026-07-09T15:54:55.074Z",
   "note": "Read-only spatial map for editing circuits-tuning topology + meshEdits. Traces live in topology; components live in meshEdits.",
   "counts": {
-    "components": 16,
-    "traces": 253,
-    "junctions": 179,
-    "attachments": 114,
-    "corridors": 7,
+    "components": 15,
+    "traces": 232,
+    "junctions": 178,
+    "attachments": 103,
+    "corridors": 4,
     "anomalies": 0
   },
   "board": {
@@ -273,153 +273,133 @@
       }
     },
     {
-      "id": "mesh-user-40",
-      "kind": "header",
-      "label": "Header",
+      "id": "mesh-user-35",
+      "kind": "qfp",
+      "label": "QFP",
+      "variant": "q6-connected-ring",
       "bbox": {
-        "minX": -8,
-        "maxX": -4,
-        "minZ": 15.5,
-        "maxZ": 17.1
+        "minX": -3.75,
+        "maxX": -0.25,
+        "minZ": 4.25,
+        "maxZ": 7.75
       },
       "center": {
-        "x": -6,
-        "z": 16.3
+        "x": -2,
+        "z": 6
+      },
+      "size": {
+        "w": 3.5,
+        "h": 3.5
+      },
+      "edges": {
+        "north": 4.25,
+        "south": 7.75,
+        "east": -0.25,
+        "west": -3.75
+      }
+    },
+    {
+      "id": "mesh-user-36",
+      "kind": "qfp",
+      "label": "QFP",
+      "variant": "q12-choke",
+      "bbox": {
+        "minX": -10.75,
+        "maxX": -7.25,
+        "minZ": 10.25,
+        "maxZ": 13.75
+      },
+      "center": {
+        "x": -9,
+        "z": 12
+      },
+      "size": {
+        "w": 3.5,
+        "h": 3.5
+      },
+      "edges": {
+        "north": 10.25,
+        "south": 13.75,
+        "east": -7.25,
+        "west": -10.75
+      }
+    },
+    {
+      "id": "mesh-user-37",
+      "kind": "soic",
+      "label": "SOIC",
+      "variant": "r13-crystal-osc",
+      "bbox": {
+        "minX": 3.5,
+        "maxX": 7.5,
+        "minZ": 9.9,
+        "maxZ": 12.1
+      },
+      "center": {
+        "x": 5.5,
+        "z": 11
       },
       "size": {
         "w": 4,
-        "h": 1.6
+        "h": 2.2
       },
       "edges": {
-        "north": 15.5,
-        "south": 17.1,
-        "east": -4,
-        "west": -8
+        "north": 9.9,
+        "south": 12.1,
+        "east": 7.5,
+        "west": 3.5
       }
     },
     {
-      "id": "mesh-user-41",
+      "id": "mesh-user-38",
+      "kind": "qfp",
+      "label": "QFP",
+      "variant": "q16-radial-cap",
+      "bbox": {
+        "minX": -26.75,
+        "maxX": -23.25,
+        "minZ": 10.25,
+        "maxZ": 13.75
+      },
+      "center": {
+        "x": -25,
+        "z": 12
+      },
+      "size": {
+        "w": 3.5,
+        "h": 3.5
+      },
+      "edges": {
+        "north": 10.25,
+        "south": 13.75,
+        "east": -23.25,
+        "west": -26.75
+      }
+    },
+    {
+      "id": "mesh-user-39",
       "kind": "soic",
       "label": "SOIC",
+      "variant": "r11-pin-header",
       "bbox": {
-        "minX": 5.2,
-        "maxX": 7.8,
-        "minZ": 15.3,
-        "maxZ": 16.7
+        "minX": 26,
+        "maxX": 30,
+        "minZ": 14.125,
+        "maxZ": 15.875
       },
       "center": {
-        "x": 6.5,
-        "z": 16
+        "x": 28,
+        "z": 15
       },
       "size": {
-        "w": 2.6,
-        "h": 1.4
+        "w": 4,
+        "h": 1.75
       },
       "edges": {
-        "north": 15.3,
-        "south": 16.7,
-        "east": 7.8,
-        "west": 5.2
-      }
-    },
-    {
-      "id": "mesh-user-42",
-      "kind": "connector",
-      "label": "Connector",
-      "bbox": {
-        "minX": 29.8,
-        "maxX": 34.2,
-        "minZ": 15.6,
-        "maxZ": 17.3
-      },
-      "center": {
-        "x": 32,
-        "z": 16.45
-      },
-      "size": {
-        "w": 4.4,
-        "h": 1.7
-      },
-      "edges": {
-        "north": 15.6,
-        "south": 17.3,
-        "east": 34.2,
-        "west": 29.8
-      }
-    },
-    {
-      "id": "mesh-user-43",
-      "kind": "drum",
-      "label": "Drum",
-      "bbox": {
-        "minX": -42,
-        "maxX": -40.8,
-        "minZ": 12,
-        "maxZ": 13.2
-      },
-      "center": {
-        "x": -41.4,
-        "z": 12.6
-      },
-      "size": {
-        "w": 1.2,
-        "h": 1.2
-      },
-      "edges": {
-        "north": 12,
-        "south": 13.2,
-        "east": -40.8,
-        "west": -42
-      }
-    },
-    {
-      "id": "mesh-user-44",
-      "kind": "drum",
-      "label": "Drum",
-      "bbox": {
-        "minX": -42,
-        "maxX": -40.8,
-        "minZ": 14,
-        "maxZ": 15.2
-      },
-      "center": {
-        "x": -41.4,
-        "z": 14.6
-      },
-      "size": {
-        "w": 1.2,
-        "h": 1.2
-      },
-      "edges": {
-        "north": 14,
-        "south": 15.2,
-        "east": -40.8,
-        "west": -42
-      }
-    },
-    {
-      "id": "mesh-user-45",
-      "kind": "smd",
-      "label": "SMD",
-      "bbox": {
-        "minX": 46,
-        "maxX": 49,
-        "minZ": 0.2,
-        "maxZ": 1.8
-      },
-      "center": {
-        "x": 47.5,
-        "z": 1
-      },
-      "size": {
-        "w": 3,
-        "h": 1.6
-      },
-      "edges": {
-        "north": 0.2,
-        "south": 1.8,
-        "east": 49,
-        "west": 46
+        "north": 14.125,
+        "south": 15.875,
+        "east": 30,
+        "west": 26
       }
     }
   ],
@@ -2716,1761 +2696,1425 @@
       "id": "user-50",
       "chain": "user-50",
       "start": [
-        -27.6567,
+        -15.9986,
         0.003,
-        5.4
+        5.6
       ],
       "end": [
-        -20.9986,
+        -12.5,
         0.003,
-        5.4
+        5.6
       ],
       "angleDeg": 0,
-      "length": 6.6581
+      "length": 3.4986
     },
     {
       "id": "user-51",
       "chain": "user-51",
       "start": [
-        -27.6567,
+        -12.5,
         0.003,
-        6
+        5.6
       ],
       "end": [
-        -20.9986,
+        -11.7,
         0.003,
-        6
+        4.8
       ],
-      "angleDeg": 0,
-      "length": 6.6581
+      "angleDeg": 135,
+      "length": 1.1314
     },
     {
       "id": "user-52",
       "chain": "user-52",
       "start": [
-        -27.6567,
+        -11.7,
         0.003,
-        6.6
+        4.8
       ],
       "end": [
-        -20.9986,
+        -8.3,
         0.003,
-        6.6
+        4.8
       ],
       "angleDeg": 0,
-      "length": 6.6581
+      "length": 3.4
     },
     {
       "id": "user-53",
       "chain": "user-53",
       "start": [
-        -20.9986,
+        -8.3,
         0.003,
-        2.6
+        4.8
       ],
       "end": [
-        -23.4,
+        -7.5,
         0.003,
-        2.6
-      ],
-      "angleDeg": 0,
-      "length": 2.4014
-    },
-    {
-      "id": "user-54",
-      "chain": "user-54",
-      "start": [
-        -23.4,
-        0.003,
-        2.6
-      ],
-      "end": [
-        -24,
-        0.003,
-        2
-      ],
-      "angleDeg": 45,
-      "length": 0.8485
-    },
-    {
-      "id": "user-55",
-      "chain": "user-55",
-      "start": [
-        -24,
-        0.003,
-        2
-      ],
-      "end": [
-        -24,
-        0.003,
-        -9.6
-      ],
-      "angleDeg": 90,
-      "length": 11.6
-    },
-    {
-      "id": "user-56",
-      "chain": "user-56",
-      "start": [
-        -20.9986,
-        0.003,
-        3.4
-      ],
-      "end": [
-        -24.2,
-        0.003,
-        3.4
-      ],
-      "angleDeg": 0,
-      "length": 3.2014
-    },
-    {
-      "id": "user-57",
-      "chain": "user-57",
-      "start": [
-        -24.2,
-        0.003,
-        3.4
-      ],
-      "end": [
-        -25,
-        0.003,
-        2.6
+        5.6
       ],
       "angleDeg": 45,
       "length": 1.1314
     },
     {
+      "id": "user-54",
+      "chain": "user-54",
+      "start": [
+        -7.5,
+        0.003,
+        5.6
+      ],
+      "end": [
+        -3.75,
+        0.003,
+        5.6
+      ],
+      "angleDeg": 0,
+      "length": 3.75
+    },
+    {
+      "id": "user-55",
+      "chain": "user-55",
+      "start": [
+        -15.9986,
+        0.003,
+        6.5
+      ],
+      "end": [
+        -13.2,
+        0.003,
+        6.5
+      ],
+      "angleDeg": 0,
+      "length": 2.7986
+    },
+    {
+      "id": "user-56",
+      "chain": "user-56",
+      "start": [
+        -13.2,
+        0.003,
+        6.5
+      ],
+      "end": [
+        -12.4,
+        0.003,
+        7.3
+      ],
+      "angleDeg": 45,
+      "length": 1.1314
+    },
+    {
+      "id": "user-57",
+      "chain": "user-57",
+      "start": [
+        -12.4,
+        0.003,
+        7.3
+      ],
+      "end": [
+        -6.2,
+        0.003,
+        7.3
+      ],
+      "angleDeg": 0,
+      "length": 6.2
+    },
+    {
       "id": "user-58",
       "chain": "user-58",
       "start": [
-        -25,
+        -6.2,
         0.003,
-        2.6
+        7.3
       ],
       "end": [
-        -25,
+        -5.6,
         0.003,
-        -9.6
+        6.7
       ],
-      "angleDeg": 90,
-      "length": 12.2
+      "angleDeg": 135,
+      "length": 0.8485
     },
     {
       "id": "user-59",
       "chain": "user-59",
       "start": [
-        -20.9986,
+        -5.6,
         0.003,
-        4.2
+        6.7
       ],
       "end": [
-        -25,
+        -3.75,
         0.003,
-        4.2
+        6.7
       ],
       "angleDeg": 0,
-      "length": 4.0014
+      "length": 1.85
     },
     {
       "id": "user-60",
       "chain": "user-60",
       "start": [
-        -25,
+        -15.9986,
         0.003,
-        4.2
+        4.4
       ],
       "end": [
-        -26,
+        -14,
         0.003,
-        3.2
+        4.4
       ],
-      "angleDeg": 45,
-      "length": 1.4142
+      "angleDeg": 0,
+      "length": 1.9986
     },
     {
       "id": "user-61",
       "chain": "user-61",
       "start": [
-        -26,
+        -14,
         0.003,
-        3.2
+        4.4
       ],
       "end": [
-        -26,
+        -13.2,
         0.003,
-        -9.6
+        3.6
       ],
-      "angleDeg": 90,
-      "length": 12.8
+      "angleDeg": 135,
+      "length": 1.1314
     },
     {
       "id": "user-62",
       "chain": "user-62",
       "start": [
-        -15.9986,
+        -13.2,
         0.003,
-        3
+        3.6
       ],
       "end": [
-        -14.5,
+        -7,
         0.003,
-        3
+        3.6
       ],
       "angleDeg": 0,
-      "length": 1.4986
+      "length": 6.2
     },
     {
       "id": "user-63",
       "chain": "user-63",
       "start": [
-        -14.5,
+        -7,
         0.003,
-        3
+        3.6
       ],
       "end": [
-        -12.8,
+        -6.2,
         0.003,
-        1.3
+        4.4
       ],
-      "angleDeg": 135,
-      "length": 2.4042
+      "angleDeg": 45,
+      "length": 1.1314
     },
     {
       "id": "user-64",
       "chain": "user-64",
       "start": [
-        -12.8,
+        -6.2,
         0.003,
-        1.3
+        4.4
       ],
       "end": [
-        21,
+        -3.75,
         0.003,
-        1.3
+        4.4
       ],
       "angleDeg": 0,
-      "length": 33.8
+      "length": 2.45
     },
     {
       "id": "user-65",
       "chain": "user-65",
       "start": [
-        21,
+        -0.25,
         0.003,
-        1.3
-      ],
-      "end": [
-        23.3626,
-        0.003,
-        3.6626
-      ],
-      "angleDeg": 45,
-      "length": 3.3412
-    },
-    {
-      "id": "user-66",
-      "chain": "user-66",
-      "start": [
-        -15.9986,
-        0.003,
-        4
-      ],
-      "end": [
-        -12,
-        0.003,
-        4
-      ],
-      "angleDeg": 0,
-      "length": 3.9986
-    },
-    {
-      "id": "user-67",
-      "chain": "user-67",
-      "start": [
-        -12,
-        0.003,
-        4
-      ],
-      "end": [
-        -10.3,
-        0.003,
-        2.3
-      ],
-      "angleDeg": 135,
-      "length": 2.4042
-    },
-    {
-      "id": "user-68",
-      "chain": "user-68",
-      "start": [
-        -10.3,
-        0.003,
-        2.3
-      ],
-      "end": [
-        20.1374,
-        0.003,
-        2.3
-      ],
-      "angleDeg": 0,
-      "length": 30.4374
-    },
-    {
-      "id": "user-69",
-      "chain": "user-69",
-      "start": [
-        20.1374,
-        0.003,
-        2.3
-      ],
-      "end": [
-        21.5,
-        0.003,
-        3.6626
-      ],
-      "angleDeg": 45,
-      "length": 1.927
-    },
-    {
-      "id": "user-70",
-      "chain": "user-70",
-      "start": [
-        -15.9986,
-        0.003,
-        5.001
-      ],
-      "end": [
-        2.758,
-        0.003,
-        5.001
-      ],
-      "angleDeg": 0,
-      "length": 18.7566
-    },
-    {
-      "id": "user-71",
-      "chain": "user-71",
-      "start": [
-        2.758,
-        0.003,
-        5.001
+        5.801
       ],
       "end": [
         3.558,
         0.003,
         5.801
       ],
-      "angleDeg": 45,
-      "length": 1.1314
+      "angleDeg": 0,
+      "length": 3.808
     },
     {
-      "id": "user-72",
-      "chain": "user-72",
+      "id": "user-66",
+      "chain": "user-66",
       "start": [
-        -15.9986,
+        -0.25,
         0.003,
-        6
+        6.9
       ],
       "end": [
-        11.9718,
+        1.8,
         0.003,
-        6
+        6.9
       ],
       "angleDeg": 0,
-      "length": 27.9704
+      "length": 2.05
     },
     {
-      "id": "user-73",
-      "chain": "user-73",
+      "id": "user-67",
+      "chain": "user-67",
       "start": [
-        -15.9986,
+        1.8,
         0.003,
-        6.6
+        6.9
       ],
       "end": [
-        5,
+        2.7,
         0.003,
-        6.6
-      ],
-      "angleDeg": 0,
-      "length": 20.9986
-    },
-    {
-      "id": "user-74",
-      "chain": "user-74",
-      "start": [
-        5,
-        0.003,
-        6.6
-      ],
-      "end": [
-        6.4,
-        0.003,
-        8
+        7.8
       ],
       "angleDeg": 45,
-      "length": 1.9799
+      "length": 1.2728
     },
     {
-      "id": "user-75",
-      "chain": "user-75",
+      "id": "user-68",
+      "chain": "user-68",
       "start": [
-        6.4,
+        2.7,
         0.003,
-        8
+        7.8
       ],
       "end": [
-        11.9718,
+        9.5,
         0.003,
-        8
-      ],
-      "angleDeg": 0,
-      "length": 5.5718
-    },
-    {
-      "id": "user-76",
-      "chain": "user-76",
-      "start": [
-        -20.5,
-        0.003,
-        1.9642
-      ],
-      "end": [
-        -20.5,
-        0.003,
-        0.8
-      ],
-      "angleDeg": 90,
-      "length": 1.1642
-    },
-    {
-      "id": "user-77",
-      "chain": "user-77",
-      "start": [
-        -18.5,
-        0.003,
-        1.9642
-      ],
-      "end": [
-        -18.5,
-        0.003,
-        0.8
-      ],
-      "angleDeg": 90,
-      "length": 1.1642
-    },
-    {
-      "id": "user-78",
-      "chain": "user-78",
-      "start": [
-        -16.5,
-        0.003,
-        1.9642
-      ],
-      "end": [
-        -16.5,
-        0.003,
-        0.8
-      ],
-      "angleDeg": 90,
-      "length": 1.1642
-    },
-    {
-      "id": "user-79",
-      "chain": "user-79",
-      "start": [
-        -21.5,
-        0.003,
-        0.8
-      ],
-      "end": [
-        -20.5,
-        0.003,
-        0.8
-      ],
-      "angleDeg": 0,
-      "length": 1
-    },
-    {
-      "id": "user-80",
-      "chain": "user-80",
-      "start": [
-        -20.5,
-        0.003,
-        0.8
-      ],
-      "end": [
-        -18.5,
-        0.003,
-        0.8
-      ],
-      "angleDeg": 0,
-      "length": 2
-    },
-    {
-      "id": "user-81",
-      "chain": "user-81",
-      "start": [
-        -18.5,
-        0.003,
-        0.8
-      ],
-      "end": [
-        -16.5,
-        0.003,
-        0.8
-      ],
-      "angleDeg": 0,
-      "length": 2
-    },
-    {
-      "id": "user-82",
-      "chain": "user-82",
-      "start": [
-        -16.5,
-        0.003,
-        0.8
-      ],
-      "end": [
-        -14.5,
-        0.003,
-        0.8
-      ],
-      "angleDeg": 0,
-      "length": 2
-    },
-    {
-      "id": "user-83",
-      "chain": "user-83",
-      "start": [
-        -21.5,
-        0.003,
-        0.8
-      ],
-      "end": [
-        -22.3,
-        0.003,
-        0
-      ],
-      "angleDeg": 45,
-      "length": 1.1314
-    },
-    {
-      "id": "user-84",
-      "chain": "user-84",
-      "start": [
-        -22.3,
-        0.003,
-        0
-      ],
-      "end": [
-        -22.3,
-        0.003,
-        -9.6
-      ],
-      "angleDeg": 90,
-      "length": 9.6
-    },
-    {
-      "id": "user-85",
-      "chain": "user-85",
-      "start": [
-        -14.5,
-        0.003,
-        0.8
-      ],
-      "end": [
-        -13.5,
-        0.003,
-        -0.2
-      ],
-      "angleDeg": 135,
-      "length": 1.4142
-    },
-    {
-      "id": "user-86",
-      "chain": "user-86",
-      "start": [
-        -13.5,
-        0.003,
-        -0.2
-      ],
-      "end": [
-        -13.5,
-        0.003,
-        -9.6
-      ],
-      "angleDeg": 90,
-      "length": 9.4
-    },
-    {
-      "id": "user-87",
-      "chain": "user-87",
-      "start": [
-        -20.3,
-        0.003,
-        6.9642
-      ],
-      "end": [
-        -20.3,
-        0.003,
-        8.2
-      ],
-      "angleDeg": 90,
-      "length": 1.2358
-    },
-    {
-      "id": "user-88",
-      "chain": "user-88",
-      "start": [
-        -19,
-        0.003,
-        6.9642
-      ],
-      "end": [
-        -19,
-        0.003,
-        8.2
-      ],
-      "angleDeg": 90,
-      "length": 1.2358
-    },
-    {
-      "id": "user-89",
-      "chain": "user-89",
-      "start": [
-        -17.7,
-        0.003,
-        6.9642
-      ],
-      "end": [
-        -17.7,
-        0.003,
-        8.2
-      ],
-      "angleDeg": 90,
-      "length": 1.2358
-    },
-    {
-      "id": "user-90",
-      "chain": "user-90",
-      "start": [
-        -16.4,
-        0.003,
-        6.9642
-      ],
-      "end": [
-        -16.4,
-        0.003,
-        8.2
-      ],
-      "angleDeg": 90,
-      "length": 1.2358
-    },
-    {
-      "id": "user-91",
-      "chain": "user-91",
-      "start": [
-        -21.3,
-        0.003,
-        8.2
-      ],
-      "end": [
-        -20.3,
-        0.003,
-        8.2
-      ],
-      "angleDeg": 0,
-      "length": 1
-    },
-    {
-      "id": "user-92",
-      "chain": "user-92",
-      "start": [
-        -20.3,
-        0.003,
-        8.2
-      ],
-      "end": [
-        -19,
-        0.003,
-        8.2
-      ],
-      "angleDeg": 0,
-      "length": 1.3
-    },
-    {
-      "id": "user-93",
-      "chain": "user-93",
-      "start": [
-        -19,
-        0.003,
-        8.2
-      ],
-      "end": [
-        -17.7,
-        0.003,
-        8.2
-      ],
-      "angleDeg": 0,
-      "length": 1.3
-    },
-    {
-      "id": "user-94",
-      "chain": "user-94",
-      "start": [
-        -17.7,
-        0.003,
-        8.2
-      ],
-      "end": [
-        -16.4,
-        0.003,
-        8.2
-      ],
-      "angleDeg": 0,
-      "length": 1.3
-    },
-    {
-      "id": "user-95",
-      "chain": "user-95",
-      "start": [
-        -16.4,
-        0.003,
-        8.2
-      ],
-      "end": [
-        -15.4,
-        0.003,
-        8.2
-      ],
-      "angleDeg": 0,
-      "length": 1
-    },
-    {
-      "id": "user-96",
-      "chain": "user-96",
-      "start": [
-        -21.3,
-        0.003,
-        8.2
-      ],
-      "end": [
-        -22.3,
-        0.003,
-        9.2
-      ],
-      "angleDeg": 135,
-      "length": 1.4142
-    },
-    {
-      "id": "user-97",
-      "chain": "user-97",
-      "start": [
-        -22.3,
-        0.003,
-        9.2
-      ],
-      "end": [
-        -34.5,
-        0.003,
-        9.2
-      ],
-      "angleDeg": 0,
-      "length": 12.2
-    },
-    {
-      "id": "user-98",
-      "chain": "user-98",
-      "start": [
-        -34.5,
-        0.003,
-        9.2
-      ],
-      "end": [
-        -36.5,
-        0.003,
-        9.2
-      ],
-      "angleDeg": 0,
-      "length": 2
-    },
-    {
-      "id": "user-99",
-      "chain": "user-99",
-      "start": [
-        -36.5,
-        0.003,
-        9.2
-      ],
-      "end": [
-        -40,
-        0.003,
-        9.2
-      ],
-      "angleDeg": 0,
-      "length": 3.5
-    },
-    {
-      "id": "user-100",
-      "chain": "user-100",
-      "start": [
-        -40,
-        0.003,
-        9.2
-      ],
-      "end": [
-        -40,
-        0.003,
-        12.6
-      ],
-      "angleDeg": 90,
-      "length": 3.4
-    },
-    {
-      "id": "user-101",
-      "chain": "user-101",
-      "start": [
-        -40,
-        0.003,
-        12.6
-      ],
-      "end": [
-        -40,
-        0.003,
-        14.6
-      ],
-      "angleDeg": 90,
-      "length": 2
-    },
-    {
-      "id": "user-102",
-      "chain": "user-102",
-      "start": [
-        -40,
-        0.003,
-        14.6
-      ],
-      "end": [
-        -40,
-        0.003,
-        18.9
-      ],
-      "angleDeg": 90,
-      "length": 4.3
-    },
-    {
-      "id": "user-103",
-      "chain": "user-103",
-      "start": [
-        -36.5,
-        0.003,
-        9.2
-      ],
-      "end": [
-        -36.5,
-        0.003,
-        10.1376
-      ],
-      "angleDeg": 90,
-      "length": 0.9376
-    },
-    {
-      "id": "user-104",
-      "chain": "user-104",
-      "start": [
-        -34.5,
-        0.003,
-        9.2
-      ],
-      "end": [
-        -34.5,
-        0.003,
-        10.1376
-      ],
-      "angleDeg": 90,
-      "length": 0.9376
-    },
-    {
-      "id": "user-105",
-      "chain": "user-105",
-      "start": [
-        -40.8,
-        0.003,
-        12.6
-      ],
-      "end": [
-        -40,
-        0.003,
-        12.6
-      ],
-      "angleDeg": 0,
-      "length": 0.8
-    },
-    {
-      "id": "user-106",
-      "chain": "user-106",
-      "start": [
-        -40.8,
-        0.003,
-        14.6
-      ],
-      "end": [
-        -40,
-        0.003,
-        14.6
-      ],
-      "angleDeg": 0,
-      "length": 0.8
-    },
-    {
-      "id": "user-107",
-      "chain": "user-107",
-      "start": [
-        -15.4,
-        0.003,
-        8.2
-      ],
-      "end": [
-        -14.6,
-        0.003,
-        9
-      ],
-      "angleDeg": 45,
-      "length": 1.1314
-    },
-    {
-      "id": "user-108",
-      "chain": "user-108",
-      "start": [
-        -14.6,
-        0.003,
-        9
-      ],
-      "end": [
-        11.9718,
-        0.003,
-        9
-      ],
-      "angleDeg": 0,
-      "length": 26.5718
-    },
-    {
-      "id": "user-109",
-      "chain": "user-109",
-      "start": [
-        -33.1295,
-        0.003,
-        11.2
-      ],
-      "end": [
-        21.6824,
-        0.003,
-        11.2
-      ],
-      "angleDeg": 0,
-      "length": 54.8119
-    },
-    {
-      "id": "user-110",
-      "chain": "user-110",
-      "start": [
-        -33.1295,
-        0.003,
-        12.2
-      ],
-      "end": [
-        21.6824,
-        0.003,
-        12.2
-      ],
-      "angleDeg": 0,
-      "length": 54.8119
-    },
-    {
-      "id": "user-111",
-      "chain": "user-111",
-      "start": [
-        -33.1295,
-        0.003,
-        13.2
-      ],
-      "end": [
-        -6,
-        0.003,
-        13.2
-      ],
-      "angleDeg": 0,
-      "length": 27.1295
-    },
-    {
-      "id": "user-112",
-      "chain": "user-112",
-      "start": [
-        -6,
-        0.003,
-        13.2
-      ],
-      "end": [
-        6.5,
-        0.003,
-        13.2
-      ],
-      "angleDeg": 0,
-      "length": 12.5
-    },
-    {
-      "id": "user-113",
-      "chain": "user-113",
-      "start": [
-        6.5,
-        0.003,
-        13.2
-      ],
-      "end": [
-        18,
-        0.003,
-        13.2
-      ],
-      "angleDeg": 0,
-      "length": 11.5
-    },
-    {
-      "id": "user-114",
-      "chain": "user-114",
-      "start": [
-        18,
-        0.003,
-        13.2
-      ],
-      "end": [
-        19.5,
-        0.003,
-        14.7
-      ],
-      "angleDeg": 45,
-      "length": 2.1213
-    },
-    {
-      "id": "user-115",
-      "chain": "user-115",
-      "start": [
-        19.5,
-        0.003,
-        14.7
-      ],
-      "end": [
-        22.5,
-        0.003,
-        14.7
-      ],
-      "angleDeg": 0,
-      "length": 3
-    },
-    {
-      "id": "user-116",
-      "chain": "user-116",
-      "start": [
-        22.5,
-        0.003,
-        14.7
-      ],
-      "end": [
-        24.2,
-        0.003,
-        14.7
-      ],
-      "angleDeg": 0,
-      "length": 1.7
-    },
-    {
-      "id": "user-117",
-      "chain": "user-117",
-      "start": [
-        24.2,
-        0.003,
-        14.7
-      ],
-      "end": [
-        31,
-        0.003,
-        14.7
+        7.8
       ],
       "angleDeg": 0,
       "length": 6.8
     },
     {
-      "id": "user-118",
-      "chain": "user-118",
+      "id": "user-69",
+      "chain": "user-69",
       "start": [
-        31,
+        9.5,
+        0.003,
+        7.8
+      ],
+      "end": [
+        10.3,
+        0.003,
+        8.6
+      ],
+      "angleDeg": 45,
+      "length": 1.1314
+    },
+    {
+      "id": "user-70",
+      "chain": "user-70",
+      "start": [
+        10.3,
+        0.003,
+        8.6
+      ],
+      "end": [
+        11.9718,
+        0.003,
+        8.6
+      ],
+      "angleDeg": 0,
+      "length": 1.6718
+    },
+    {
+      "id": "user-71",
+      "chain": "user-71",
+      "start": [
+        -20.9986,
+        0.003,
+        5.5
+      ],
+      "end": [
+        -23.3,
+        0.003,
+        5.5
+      ],
+      "angleDeg": 0,
+      "length": 2.3014
+    },
+    {
+      "id": "user-72",
+      "chain": "user-72",
+      "start": [
+        -23.3,
+        0.003,
+        5.5
+      ],
+      "end": [
+        -24.1,
+        0.003,
+        6.3
+      ],
+      "angleDeg": 135,
+      "length": 1.1314
+    },
+    {
+      "id": "user-73",
+      "chain": "user-73",
+      "start": [
+        -24.1,
+        0.003,
+        6.3
+      ],
+      "end": [
+        -27.6567,
+        0.003,
+        6.3
+      ],
+      "angleDeg": 0,
+      "length": 3.5567
+    },
+    {
+      "id": "user-74",
+      "chain": "user-74",
+      "start": [
+        -20.9986,
+        0.003,
+        6.4
+      ],
+      "end": [
+        -22.5,
+        0.003,
+        6.4
+      ],
+      "angleDeg": 0,
+      "length": 1.5014
+    },
+    {
+      "id": "user-75",
+      "chain": "user-75",
+      "start": [
+        -22.5,
+        0.003,
+        6.4
+      ],
+      "end": [
+        -23.2,
+        0.003,
+        7.1
+      ],
+      "angleDeg": 135,
+      "length": 0.9899
+    },
+    {
+      "id": "user-76",
+      "chain": "user-76",
+      "start": [
+        -23.2,
+        0.003,
+        7.1
+      ],
+      "end": [
+        -27.6567,
+        0.003,
+        7.1
+      ],
+      "angleDeg": 0,
+      "length": 4.4567
+    },
+    {
+      "id": "user-77",
+      "chain": "user-77",
+      "start": [
+        -20.9986,
+        0.003,
+        4.5
+      ],
+      "end": [
+        -24.8,
+        0.003,
+        4.5
+      ],
+      "angleDeg": 0,
+      "length": 3.8014
+    },
+    {
+      "id": "user-78",
+      "chain": "user-78",
+      "start": [
+        -24.8,
+        0.003,
+        4.5
+      ],
+      "end": [
+        -25.6,
+        0.003,
+        3.7
+      ],
+      "angleDeg": 45,
+      "length": 1.1314
+    },
+    {
+      "id": "user-79",
+      "chain": "user-79",
+      "start": [
+        -25.6,
+        0.003,
+        3.7
+      ],
+      "end": [
+        -30,
+        0.003,
+        3.7
+      ],
+      "angleDeg": 0,
+      "length": 4.4
+    },
+    {
+      "id": "user-80",
+      "chain": "user-80",
+      "start": [
+        -30,
+        0.003,
+        3.7
+      ],
+      "end": [
+        -30,
+        0.003,
+        4.9535
+      ],
+      "angleDeg": 90,
+      "length": 1.2535
+    },
+    {
+      "id": "user-81",
+      "chain": "user-81",
+      "start": [
+        -19.8,
+        0.003,
+        6.9642
+      ],
+      "end": [
+        -19.8,
+        0.003,
+        8.3
+      ],
+      "angleDeg": 90,
+      "length": 1.3358
+    },
+    {
+      "id": "user-82",
+      "chain": "user-82",
+      "start": [
+        -19.8,
+        0.003,
+        8.3
+      ],
+      "end": [
+        -20.6,
+        0.003,
+        9.1
+      ],
+      "angleDeg": 135,
+      "length": 1.1314
+    },
+    {
+      "id": "user-83",
+      "chain": "user-83",
+      "start": [
+        -20.6,
+        0.003,
+        9.1
+      ],
+      "end": [
+        -24,
+        0.003,
+        9.1
+      ],
+      "angleDeg": 0,
+      "length": 3.4
+    },
+    {
+      "id": "user-84",
+      "chain": "user-84",
+      "start": [
+        -24,
+        0.003,
+        9.1
+      ],
+      "end": [
+        -24,
+        0.003,
+        10.25
+      ],
+      "angleDeg": 90,
+      "length": 1.15
+    },
+    {
+      "id": "user-85",
+      "chain": "user-85",
+      "start": [
+        -17,
+        0.003,
+        6.9642
+      ],
+      "end": [
+        -17,
+        0.003,
+        7.9
+      ],
+      "angleDeg": 90,
+      "length": 0.9358
+    },
+    {
+      "id": "user-86",
+      "chain": "user-86",
+      "start": [
+        -17,
+        0.003,
+        7.9
+      ],
+      "end": [
+        -16.2,
+        0.003,
+        8.7
+      ],
+      "angleDeg": 45,
+      "length": 1.1314
+    },
+    {
+      "id": "user-87",
+      "chain": "user-87",
+      "start": [
+        -16.2,
+        0.003,
+        8.7
+      ],
+      "end": [
+        -11.6,
+        0.003,
+        8.7
+      ],
+      "angleDeg": 0,
+      "length": 4.6
+    },
+    {
+      "id": "user-88",
+      "chain": "user-88",
+      "start": [
+        -11.6,
+        0.003,
+        8.7
+      ],
+      "end": [
+        -10.05,
+        0.003,
+        10.25
+      ],
+      "angleDeg": 45,
+      "length": 2.192
+    },
+    {
+      "id": "user-89",
+      "chain": "user-89",
+      "start": [
+        -7.25,
+        0.003,
+        11.2
+      ],
+      "end": [
+        -4,
+        0.003,
+        11.2
+      ],
+      "angleDeg": 0,
+      "length": 3.25
+    },
+    {
+      "id": "user-90",
+      "chain": "user-90",
+      "start": [
+        -4,
+        0.003,
+        11.2
+      ],
+      "end": [
+        -3.3,
+        0.003,
+        10.5
+      ],
+      "angleDeg": 135,
+      "length": 0.9899
+    },
+    {
+      "id": "user-91",
+      "chain": "user-91",
+      "start": [
+        -3.3,
+        0.003,
+        10.5
+      ],
+      "end": [
+        3.5,
+        0.003,
+        10.5
+      ],
+      "angleDeg": 0,
+      "length": 6.8
+    },
+    {
+      "id": "user-92",
+      "chain": "user-92",
+      "start": [
+        -7.25,
+        0.003,
+        12.6
+      ],
+      "end": [
+        -2,
+        0.003,
+        12.6
+      ],
+      "angleDeg": 0,
+      "length": 5.25
+    },
+    {
+      "id": "user-93",
+      "chain": "user-93",
+      "start": [
+        -2,
+        0.003,
+        12.6
+      ],
+      "end": [
+        -1,
+        0.003,
+        11.6
+      ],
+      "angleDeg": 135,
+      "length": 1.4142
+    },
+    {
+      "id": "user-94",
+      "chain": "user-94",
+      "start": [
+        -1,
+        0.003,
+        11.6
+      ],
+      "end": [
+        3.5,
+        0.003,
+        11.6
+      ],
+      "angleDeg": 0,
+      "length": 4.5
+    },
+    {
+      "id": "user-95",
+      "chain": "user-95",
+      "start": [
+        7.5,
+        0.003,
+        10.8
+      ],
+      "end": [
+        13.5,
+        0.003,
+        10.8
+      ],
+      "angleDeg": 0,
+      "length": 6
+    },
+    {
+      "id": "user-96",
+      "chain": "user-96",
+      "start": [
+        13.5,
+        0.003,
+        10.8
+      ],
+      "end": [
+        14.3,
+        0.003,
+        11.6
+      ],
+      "angleDeg": 45,
+      "length": 1.1314
+    },
+    {
+      "id": "user-97",
+      "chain": "user-97",
+      "start": [
+        14.3,
+        0.003,
+        11.6
+      ],
+      "end": [
+        21.6824,
+        0.003,
+        11.6
+      ],
+      "angleDeg": 0,
+      "length": 7.3824
+    },
+    {
+      "id": "user-98",
+      "chain": "user-98",
+      "start": [
+        -26.75,
+        0.003,
+        12.5
+      ],
+      "end": [
+        -31,
+        0.003,
+        12.5
+      ],
+      "angleDeg": 0,
+      "length": 4.25
+    },
+    {
+      "id": "user-99",
+      "chain": "user-99",
+      "start": [
+        -31,
+        0.003,
+        12.5
+      ],
+      "end": [
+        -31.8,
+        0.003,
+        11.7
+      ],
+      "angleDeg": 45,
+      "length": 1.1314
+    },
+    {
+      "id": "user-100",
+      "chain": "user-100",
+      "start": [
+        -31.8,
+        0.003,
+        11.7
+      ],
+      "end": [
+        -33.1295,
+        0.003,
+        11.7
+      ],
+      "angleDeg": 0,
+      "length": 1.3295
+    },
+    {
+      "id": "user-101",
+      "chain": "user-101",
+      "start": [
+        -26.75,
+        0.003,
+        11
+      ],
+      "end": [
+        -33.1295,
+        0.003,
+        11
+      ],
+      "angleDeg": 0,
+      "length": 6.3795
+    },
+    {
+      "id": "user-102",
+      "chain": "user-102",
+      "start": [
+        -37.6295,
+        0.003,
+        12.4
+      ],
+      "end": [
+        -40.5,
+        0.003,
+        12.4
+      ],
+      "angleDeg": 0,
+      "length": 2.8705
+    },
+    {
+      "id": "user-103",
+      "chain": "user-103",
+      "start": [
+        -40.5,
+        0.003,
+        12.4
+      ],
+      "end": [
+        -41.6,
+        0.003,
+        13.5
+      ],
+      "angleDeg": 135,
+      "length": 1.5556
+    },
+    {
+      "id": "user-104",
+      "chain": "user-104",
+      "start": [
+        -41.6,
+        0.003,
+        13.5
+      ],
+      "end": [
+        -44,
+        0.003,
+        13.5
+      ],
+      "angleDeg": 0,
+      "length": 2.4
+    },
+    {
+      "id": "user-105",
+      "chain": "user-105",
+      "start": [
+        -44,
+        0.003,
+        13.5
+      ],
+      "end": [
+        -45.2,
+        0.003,
+        14.7
+      ],
+      "angleDeg": 135,
+      "length": 1.6971
+    },
+    {
+      "id": "user-106",
+      "chain": "user-106",
+      "start": [
+        -45.2,
         0.003,
         14.7
       ],
       "end": [
-        33,
+        -50,
         0.003,
         14.7
       ],
       "angleDeg": 0,
-      "length": 2
+      "length": 4.8
+    },
+    {
+      "id": "user-107",
+      "chain": "user-107",
+      "start": [
+        -50,
+        0.003,
+        14.7
+      ],
+      "end": [
+        -51.3,
+        0.003,
+        16
+      ],
+      "angleDeg": 135,
+      "length": 1.8385
+    },
+    {
+      "id": "user-108",
+      "chain": "user-108",
+      "start": [
+        -51.3,
+        0.003,
+        16
+      ],
+      "end": [
+        -53,
+        0.003,
+        16
+      ],
+      "angleDeg": 0,
+      "length": 1.7
+    },
+    {
+      "id": "user-109",
+      "chain": "user-109",
+      "start": [
+        -53,
+        0.003,
+        16
+      ],
+      "end": [
+        -53,
+        0.003,
+        18.9
+      ],
+      "angleDeg": 90,
+      "length": 2.9
+    },
+    {
+      "id": "user-110",
+      "chain": "user-110",
+      "start": [
+        -19.5,
+        0.003,
+        1.9642
+      ],
+      "end": [
+        -19.5,
+        0.003,
+        0.9
+      ],
+      "angleDeg": 90,
+      "length": 1.0642
+    },
+    {
+      "id": "user-111",
+      "chain": "user-111",
+      "start": [
+        -19.5,
+        0.003,
+        0.9
+      ],
+      "end": [
+        -20.3,
+        0.003,
+        0.1
+      ],
+      "angleDeg": 45,
+      "length": 1.1314
+    },
+    {
+      "id": "user-112",
+      "chain": "user-112",
+      "start": [
+        -20.3,
+        0.003,
+        0.1
+      ],
+      "end": [
+        -22.6,
+        0.003,
+        0.1
+      ],
+      "angleDeg": 0,
+      "length": 2.3
+    },
+    {
+      "id": "user-113",
+      "chain": "user-113",
+      "start": [
+        -22.6,
+        0.003,
+        0.1
+      ],
+      "end": [
+        -22.6,
+        0.003,
+        -9.6
+      ],
+      "angleDeg": 90,
+      "length": 9.7
+    },
+    {
+      "id": "user-114",
+      "chain": "user-114",
+      "start": [
+        -17.5,
+        0.003,
+        1.9642
+      ],
+      "end": [
+        -17.5,
+        0.003,
+        1.1
+      ],
+      "angleDeg": 90,
+      "length": 0.8642
+    },
+    {
+      "id": "user-115",
+      "chain": "user-115",
+      "start": [
+        -17.5,
+        0.003,
+        1.1
+      ],
+      "end": [
+        -16.6,
+        0.003,
+        0.2
+      ],
+      "angleDeg": 135,
+      "length": 1.2728
+    },
+    {
+      "id": "user-116",
+      "chain": "user-116",
+      "start": [
+        -16.6,
+        0.003,
+        0.2
+      ],
+      "end": [
+        -13.4,
+        0.003,
+        0.2
+      ],
+      "angleDeg": 0,
+      "length": 3.2
+    },
+    {
+      "id": "user-117",
+      "chain": "user-117",
+      "start": [
+        -13.4,
+        0.003,
+        0.2
+      ],
+      "end": [
+        -13.4,
+        0.003,
+        -9.6
+      ],
+      "angleDeg": 90,
+      "length": 9.8
+    },
+    {
+      "id": "user-118",
+      "chain": "user-118",
+      "start": [
+        23.5,
+        0.003,
+        12.2541
+      ],
+      "end": [
+        23.5,
+        0.003,
+        13.3
+      ],
+      "angleDeg": 90,
+      "length": 1.0459
     },
     {
       "id": "user-119",
       "chain": "user-119",
       "start": [
-        33,
+        23.5,
         0.003,
-        14.7
+        13.3
       ],
       "end": [
-        38,
+        24.7,
         0.003,
-        14.7
+        14.5
       ],
-      "angleDeg": 0,
-      "length": 5
+      "angleDeg": 45,
+      "length": 1.6971
     },
     {
       "id": "user-120",
       "chain": "user-120",
       "start": [
-        38,
+        24.7,
         0.003,
-        14.7
+        14.5
       ],
       "end": [
-        56.5,
+        26,
         0.003,
-        14.7
+        14.5
       ],
       "angleDeg": 0,
-      "length": 18.5
+      "length": 1.3
     },
     {
       "id": "user-121",
       "chain": "user-121",
       "start": [
-        22.5,
+        30,
         0.003,
-        12.2541
+        15.2
       ],
       "end": [
-        22.5,
+        35,
         0.003,
-        14.7
+        15.2
       ],
-      "angleDeg": 90,
-      "length": 2.4459
+      "angleDeg": 0,
+      "length": 5
     },
     {
       "id": "user-122",
       "chain": "user-122",
       "start": [
-        24.2,
+        35,
         0.003,
-        12.2541
+        15.2
       ],
       "end": [
-        24.2,
+        36,
         0.003,
-        14.7
+        14.2
       ],
-      "angleDeg": 90,
-      "length": 2.4459
+      "angleDeg": 135,
+      "length": 1.4142
     },
     {
       "id": "user-123",
       "chain": "user-123",
       "start": [
-        -6,
+        36,
         0.003,
-        15.5
+        14.2
       ],
       "end": [
-        -6,
+        44,
         0.003,
-        13.2
+        14.2
       ],
-      "angleDeg": 90,
-      "length": 2.3
+      "angleDeg": 0,
+      "length": 8
     },
     {
       "id": "user-124",
       "chain": "user-124",
       "start": [
-        6.5,
+        44,
         0.003,
-        15.3
+        14.2
       ],
       "end": [
-        6.5,
+        45,
         0.003,
-        13.2
+        15.2
       ],
-      "angleDeg": 90,
-      "length": 2.1
+      "angleDeg": 45,
+      "length": 1.4142
     },
     {
       "id": "user-125",
       "chain": "user-125",
       "start": [
-        31,
+        45,
         0.003,
-        15.6
+        15.2
       ],
       "end": [
-        31,
+        56.5,
         0.003,
-        14.7
+        15.2
       ],
-      "angleDeg": 90,
-      "length": 0.9
+      "angleDeg": 0,
+      "length": 11.5
     },
     {
       "id": "user-126",
       "chain": "user-126",
       "start": [
-        33,
+        41.5,
         0.003,
-        15.6
+        10.9089
       ],
       "end": [
-        33,
+        41.5,
         0.003,
-        14.7
+        11.9
       ],
       "angleDeg": 90,
-      "length": 0.9
+      "length": 0.9911
     },
     {
       "id": "user-127",
       "chain": "user-127",
       "start": [
-        -30.4,
+        41.5,
         0.003,
-        4.9535
+        11.9
       ],
       "end": [
-        -30.4,
+        42.6,
         0.003,
-        4.1
+        13
       ],
-      "angleDeg": 90,
-      "length": 0.8535
+      "angleDeg": 45,
+      "length": 1.5556
     },
     {
       "id": "user-128",
       "chain": "user-128",
       "start": [
-        -29.4,
+        42.6,
         0.003,
-        4.9535
+        13
       ],
       "end": [
-        -29.4,
+        53.4,
         0.003,
-        4.1
+        13
       ],
-      "angleDeg": 90,
-      "length": 0.8535
+      "angleDeg": 0,
+      "length": 10.8
     },
     {
       "id": "user-129",
       "chain": "user-129",
       "start": [
-        -28.4,
+        53.4,
         0.003,
-        4.9535
+        13
       ],
       "end": [
-        -28.4,
+        54.8,
         0.003,
-        4.1
-      ],
-      "angleDeg": 90,
-      "length": 0.8535
-    },
-    {
-      "id": "user-130",
-      "chain": "user-130",
-      "start": [
-        -31.2,
-        0.003,
-        4.1
-      ],
-      "end": [
-        -30.4,
-        0.003,
-        4.1
-      ],
-      "angleDeg": 0,
-      "length": 0.8
-    },
-    {
-      "id": "user-131",
-      "chain": "user-131",
-      "start": [
-        -30.4,
-        0.003,
-        4.1
-      ],
-      "end": [
-        -29.4,
-        0.003,
-        4.1
-      ],
-      "angleDeg": 0,
-      "length": 1
-    },
-    {
-      "id": "user-132",
-      "chain": "user-132",
-      "start": [
-        -29.4,
-        0.003,
-        4.1
-      ],
-      "end": [
-        -28.4,
-        0.003,
-        4.1
-      ],
-      "angleDeg": 0,
-      "length": 1
-    },
-    {
-      "id": "user-133",
-      "chain": "user-133",
-      "start": [
-        -31.2,
-        0.003,
-        4.1
-      ],
-      "end": [
-        -32.2,
-        0.003,
-        3.1
-      ],
-      "angleDeg": 45,
-      "length": 1.4142
-    },
-    {
-      "id": "user-134",
-      "chain": "user-134",
-      "start": [
-        -32.2,
-        0.003,
-        3.1
-      ],
-      "end": [
-        -44,
-        0.003,
-        3.1
-      ],
-      "angleDeg": 0,
-      "length": 11.8
-    },
-    {
-      "id": "user-135",
-      "chain": "user-135",
-      "start": [
-        -44,
-        0.003,
-        3.1
-      ],
-      "end": [
-        -45.3,
-        0.003,
-        1.8
-      ],
-      "angleDeg": 45,
-      "length": 1.8385
-    },
-    {
-      "id": "user-136",
-      "chain": "user-136",
-      "start": [
-        -45.3,
-        0.003,
-        1.8
-      ],
-      "end": [
-        -45.3,
-        0.003,
-        -9.6
-      ],
-      "angleDeg": 90,
-      "length": 11.4
-    },
-    {
-      "id": "user-137",
-      "chain": "user-137",
-      "start": [
-        41,
-        0.003,
-        10.9089
-      ],
-      "end": [
-        41,
-        0.003,
-        12
-      ],
-      "angleDeg": 90,
-      "length": 1.0911
-    },
-    {
-      "id": "user-138",
-      "chain": "user-138",
-      "start": [
-        42.8,
-        0.003,
-        10.9089
-      ],
-      "end": [
-        42.8,
-        0.003,
-        12
-      ],
-      "angleDeg": 90,
-      "length": 1.0911
-    },
-    {
-      "id": "user-139",
-      "chain": "user-139",
-      "start": [
-        39.4,
-        0.003,
-        12
-      ],
-      "end": [
-        41,
-        0.003,
-        12
-      ],
-      "angleDeg": 0,
-      "length": 1.6
-    },
-    {
-      "id": "user-140",
-      "chain": "user-140",
-      "start": [
-        41,
-        0.003,
-        12
-      ],
-      "end": [
-        42.8,
-        0.003,
-        12
-      ],
-      "angleDeg": 0,
-      "length": 1.8
-    },
-    {
-      "id": "user-141",
-      "chain": "user-141",
-      "start": [
-        42.8,
-        0.003,
-        12
-      ],
-      "end": [
-        44.4,
-        0.003,
-        12
-      ],
-      "angleDeg": 0,
-      "length": 1.6
-    },
-    {
-      "id": "user-142",
-      "chain": "user-142",
-      "start": [
-        39.4,
-        0.003,
-        12
-      ],
-      "end": [
-        38,
-        0.003,
-        13.4
+        11.6
       ],
       "angleDeg": 135,
       "length": 1.9799
     },
     {
-      "id": "user-143",
-      "chain": "user-143",
+      "id": "user-130",
+      "chain": "user-130",
       "start": [
-        38,
+        54.8,
         0.003,
-        13.4
+        11.6
       ],
       "end": [
-        38,
-        0.003,
-        14.7
-      ],
-      "angleDeg": 90,
-      "length": 1.3
-    },
-    {
-      "id": "user-144",
-      "chain": "user-144",
-      "start": [
-        38,
-        0.003,
-        14.7
-      ],
-      "end": [
-        38,
-        0.003,
-        18.9
-      ],
-      "angleDeg": 90,
-      "length": 4.2
-    },
-    {
-      "id": "user-145",
-      "chain": "user-145",
-      "start": [
-        44.4,
-        0.003,
-        12
-      ],
-      "end": [
-        45.4,
-        0.003,
-        13
-      ],
-      "angleDeg": 45,
-      "length": 1.4142
-    },
-    {
-      "id": "user-146",
-      "chain": "user-146",
-      "start": [
-        45.4,
-        0.003,
-        13
-      ],
-      "end": [
-        54.5,
-        0.003,
-        13
-      ],
-      "angleDeg": 0,
-      "length": 9.1
-    },
-    {
-      "id": "user-147",
-      "chain": "user-147",
-      "start": [
-        54.5,
-        0.003,
-        13
-      ],
-      "end": [
-        54.5,
+        54.8,
         0.003,
         8.7803
       ],
       "angleDeg": 90,
-      "length": 4.2197
+      "length": 2.8197
     },
     {
-      "id": "user-148",
-      "chain": "user-148",
+      "id": "user-131",
+      "chain": "user-131",
       "start": [
-        55,
+        23,
         0.003,
-        5.0916
+        3.6626
       ],
       "end": [
-        55,
+        23,
         0.003,
-        3.8
+        2.6
       ],
       "angleDeg": 90,
-      "length": 1.2916
+      "length": 1.0626
     },
     {
-      "id": "user-149",
-      "chain": "user-149",
+      "id": "user-132",
+      "chain": "user-132",
       "start": [
-        55,
+        23,
         0.003,
-        3.8
+        2.6
       ],
       "end": [
-        54.2,
+        22.2,
         0.003,
-        3
+        1.8
       ],
       "angleDeg": 45,
       "length": 1.1314
     },
     {
-      "id": "user-150",
-      "chain": "user-150",
+      "id": "user-133",
+      "chain": "user-133",
       "start": [
-        54.2,
+        22.2,
         0.003,
-        3
+        1.8
       ],
       "end": [
-        47.5,
+        19,
         0.003,
-        3
+        1.8
       ],
       "angleDeg": 0,
-      "length": 6.7
+      "length": 3.2
     },
     {
-      "id": "user-151",
-      "chain": "user-151",
+      "id": "user-134",
+      "chain": "user-134",
       "start": [
-        47.5,
+        19,
         0.003,
-        3
+        1.8
       ],
       "end": [
-        45.6,
+        18.2,
         0.003,
-        3
-      ],
-      "angleDeg": 0,
-      "length": 1.9
-    },
-    {
-      "id": "user-152",
-      "chain": "user-152",
-      "start": [
-        45.6,
-        0.003,
-        3
-      ],
-      "end": [
-        44.8,
-        0.003,
-        2.2
+        1
       ],
       "angleDeg": 45,
       "length": 1.1314
     },
     {
-      "id": "user-153",
-      "chain": "user-153",
+      "id": "user-135",
+      "chain": "user-135",
       "start": [
-        44.8,
+        18.2,
         0.003,
-        2.2
+        1
       ],
       "end": [
-        42,
+        10,
         0.003,
-        2.2
-      ],
-      "angleDeg": 0,
-      "length": 2.8
-    },
-    {
-      "id": "user-154",
-      "chain": "user-154",
-      "start": [
-        42,
-        0.003,
-        2.2
-      ],
-      "end": [
-        41.2,
-        0.003,
-        1.4
-      ],
-      "angleDeg": 45,
-      "length": 1.1314
-    },
-    {
-      "id": "user-155",
-      "chain": "user-155",
-      "start": [
-        41.2,
-        0.003,
-        1.4
-      ],
-      "end": [
-        33,
-        0.003,
-        1.4
+        1
       ],
       "angleDeg": 0,
       "length": 8.2
     },
     {
-      "id": "user-156",
-      "chain": "user-156",
+      "id": "user-136",
+      "chain": "user-136",
       "start": [
-        33,
+        10,
         0.003,
-        1.4
+        1
       ],
       "end": [
-        32.4,
+        9.2,
         0.003,
-        0.8
+        0.2
       ],
       "angleDeg": 45,
-      "length": 0.8485
+      "length": 1.1314
     },
     {
-      "id": "user-157",
-      "chain": "user-157",
+      "id": "user-137",
+      "chain": "user-137",
       "start": [
-        32.4,
+        9.2,
         0.003,
-        0.8
+        0.2
       ],
       "end": [
-        26.5,
+        4,
         0.003,
-        0.8
+        0.2
       ],
       "angleDeg": 0,
-      "length": 5.9
+      "length": 5.2
     },
     {
-      "id": "user-158",
-      "chain": "user-158",
+      "id": "user-138",
+      "chain": "user-138",
       "start": [
-        26.5,
+        4,
         0.003,
-        0.8
+        0.2
       ],
       "end": [
-        26.5,
+        4,
         0.003,
         -9.6
       ],
       "angleDeg": 90,
-      "length": 10.4
-    },
-    {
-      "id": "user-159",
-      "chain": "user-159",
-      "start": [
-        47.5,
-        0.003,
-        1.8
-      ],
-      "end": [
-        47.5,
-        0.003,
-        3
-      ],
-      "angleDeg": 90,
-      "length": 1.2
+      "length": 9.8
     }
   ],
   "junctions": [
@@ -4988,7 +4632,7 @@
       ],
       "segments": [
         "trace-19-seg-0",
-        "user-71"
+        "user-65"
       ]
     },
     {
@@ -5712,9 +5356,42 @@
     },
     {
       "at": [
-        -23.4,
+        -12.5,
         0.003,
-        2.6
+        5.6
+      ],
+      "segments": [
+        "user-50",
+        "user-51"
+      ]
+    },
+    {
+      "at": [
+        -11.7,
+        0.003,
+        4.8
+      ],
+      "segments": [
+        "user-51",
+        "user-52"
+      ]
+    },
+    {
+      "at": [
+        -8.3,
+        0.003,
+        4.8
+      ],
+      "segments": [
+        "user-52",
+        "user-53"
+      ]
+    },
+    {
+      "at": [
+        -7.5,
+        0.003,
+        5.6
       ],
       "segments": [
         "user-53",
@@ -5723,20 +5400,20 @@
     },
     {
       "at": [
-        -24,
+        -13.2,
         0.003,
-        2
+        6.5
       ],
       "segments": [
-        "user-54",
-        "user-55"
+        "user-55",
+        "user-56"
       ]
     },
     {
       "at": [
-        -24.2,
+        -12.4,
         0.003,
-        3.4
+        7.3
       ],
       "segments": [
         "user-56",
@@ -5745,9 +5422,9 @@
     },
     {
       "at": [
-        -25,
+        -6.2,
         0.003,
-        2.6
+        7.3
       ],
       "segments": [
         "user-57",
@@ -5756,20 +5433,20 @@
     },
     {
       "at": [
-        -25,
+        -5.6,
         0.003,
-        4.2
+        6.7
       ],
       "segments": [
-        "user-59",
-        "user-60"
+        "user-58",
+        "user-59"
       ]
     },
     {
       "at": [
-        -26,
+        -14,
         0.003,
-        3.2
+        4.4
       ],
       "segments": [
         "user-60",
@@ -5778,9 +5455,20 @@
     },
     {
       "at": [
-        -14.5,
+        -13.2,
         0.003,
-        3
+        3.6
+      ],
+      "segments": [
+        "user-61",
+        "user-62"
+      ]
+    },
+    {
+      "at": [
+        -7,
+        0.003,
+        3.6
       ],
       "segments": [
         "user-62",
@@ -5789,9 +5477,9 @@
     },
     {
       "at": [
-        -12.8,
+        -6.2,
         0.003,
-        1.3
+        4.4
       ],
       "segments": [
         "user-63",
@@ -5800,20 +5488,9 @@
     },
     {
       "at": [
-        21,
+        1.8,
         0.003,
-        1.3
-      ],
-      "segments": [
-        "user-64",
-        "user-65"
-      ]
-    },
-    {
-      "at": [
-        -12,
-        0.003,
-        4
+        6.9
       ],
       "segments": [
         "user-66",
@@ -5822,9 +5499,9 @@
     },
     {
       "at": [
-        -10.3,
+        2.7,
         0.003,
-        2.3
+        7.8
       ],
       "segments": [
         "user-67",
@@ -5833,9 +5510,9 @@
     },
     {
       "at": [
-        20.1374,
+        9.5,
         0.003,
-        2.3
+        7.8
       ],
       "segments": [
         "user-68",
@@ -5844,31 +5521,42 @@
     },
     {
       "at": [
-        2.758,
+        10.3,
         0.003,
-        5.001
+        8.6
       ],
       "segments": [
-        "user-70",
-        "user-71"
+        "user-69",
+        "user-70"
       ]
     },
     {
       "at": [
-        5,
+        -23.3,
         0.003,
-        6.6
+        5.5
       ],
       "segments": [
-        "user-73",
-        "user-74"
+        "user-71",
+        "user-72"
       ]
     },
     {
       "at": [
-        6.4,
+        -24.1,
         0.003,
-        8
+        6.3
+      ],
+      "segments": [
+        "user-72",
+        "user-73"
+      ]
+    },
+    {
+      "at": [
+        -22.5,
+        0.003,
+        6.4
       ],
       "segments": [
         "user-74",
@@ -5877,67 +5565,75 @@
     },
     {
       "at": [
-        -20.5,
+        -23.2,
         0.003,
-        0.8
+        7.1
       ],
       "segments": [
-        "user-76",
+        "user-75",
+        "user-76"
+      ]
+    },
+    {
+      "at": [
+        -24.8,
+        0.003,
+        4.5
+      ],
+      "segments": [
+        "user-77",
+        "user-78"
+      ]
+    },
+    {
+      "at": [
+        -25.6,
+        0.003,
+        3.7
+      ],
+      "segments": [
+        "user-78",
+        "user-79"
+      ]
+    },
+    {
+      "at": [
+        -30,
+        0.003,
+        3.7
+      ],
+      "segments": [
         "user-79",
         "user-80"
       ]
     },
     {
       "at": [
-        -18.5,
+        -19.8,
         0.003,
-        0.8
+        8.3
       ],
       "segments": [
-        "user-77",
-        "user-80",
-        "user-81"
-      ]
-    },
-    {
-      "at": [
-        -16.5,
-        0.003,
-        0.8
-      ],
-      "segments": [
-        "user-78",
         "user-81",
         "user-82"
       ]
     },
     {
       "at": [
-        -21.5,
+        -20.6,
         0.003,
-        0.8
+        9.1
       ],
       "segments": [
-        "user-79",
+        "user-82",
         "user-83"
       ]
     },
     {
       "at": [
-        -14.5,
+        -24,
         0.003,
-        0.8
-      ],
-      "segments": [
-        "user-82",
-        "user-85"
-      ]
-    },
-    {
-      "at": [
-        -22.3,
-        0.003,
-        0
+        9.1
       ],
       "segments": [
         "user-83",
@@ -5946,9 +5642,9 @@
     },
     {
       "at": [
-        -13.5,
+        -17,
         0.003,
-        -0.2
+        7.9
       ],
       "segments": [
         "user-85",
@@ -5957,79 +5653,86 @@
     },
     {
       "at": [
-        -20.3,
+        -16.2,
         0.003,
-        8.2
+        8.7
       ],
       "segments": [
-        "user-87",
-        "user-91",
-        "user-92"
+        "user-86",
+        "user-87"
       ]
     },
     {
       "at": [
-        -19,
+        -11.6,
         0.003,
-        8.2
+        8.7
       ],
       "segments": [
-        "user-88",
+        "user-87",
+        "user-88"
+      ]
+    },
+    {
+      "at": [
+        -4,
+        0.003,
+        11.2
+      ],
+      "segments": [
+        "user-89",
+        "user-90"
+      ]
+    },
+    {
+      "at": [
+        -3.3,
+        0.003,
+        10.5
+      ],
+      "segments": [
+        "user-90",
+        "user-91"
+      ]
+    },
+    {
+      "at": [
+        -2,
+        0.003,
+        12.6
+      ],
+      "segments": [
         "user-92",
         "user-93"
       ]
     },
     {
       "at": [
-        -17.7,
+        -1,
         0.003,
-        8.2
+        11.6
       ],
       "segments": [
-        "user-89",
         "user-93",
         "user-94"
       ]
     },
     {
       "at": [
-        -16.4,
+        13.5,
         0.003,
-        8.2
+        10.8
       ],
       "segments": [
-        "user-90",
-        "user-94",
-        "user-95"
-      ]
-    },
-    {
-      "at": [
-        -21.3,
-        0.003,
-        8.2
-      ],
-      "segments": [
-        "user-91",
+        "user-95",
         "user-96"
       ]
     },
     {
       "at": [
-        -15.4,
+        14.3,
         0.003,
-        8.2
-      ],
-      "segments": [
-        "user-95",
-        "user-107"
-      ]
-    },
-    {
-      "at": [
-        -22.3,
-        0.003,
-        9.2
+        11.6
       ],
       "segments": [
         "user-96",
@@ -6038,33 +5741,20 @@
     },
     {
       "at": [
-        -34.5,
+        -31,
         0.003,
-        9.2
+        12.5
       ],
       "segments": [
-        "user-97",
         "user-98",
-        "user-104"
+        "user-99"
       ]
     },
     {
       "at": [
-        -36.5,
+        -31.8,
         0.003,
-        9.2
-      ],
-      "segments": [
-        "user-98",
-        "user-99",
-        "user-103"
-      ]
-    },
-    {
-      "at": [
-        -40,
-        0.003,
-        9.2
+        11.7
       ],
       "segments": [
         "user-99",
@@ -6073,33 +5763,64 @@
     },
     {
       "at": [
-        -40,
+        -40.5,
         0.003,
-        12.6
+        12.4
       ],
       "segments": [
-        "user-100",
-        "user-101",
+        "user-102",
+        "user-103"
+      ]
+    },
+    {
+      "at": [
+        -41.6,
+        0.003,
+        13.5
+      ],
+      "segments": [
+        "user-103",
+        "user-104"
+      ]
+    },
+    {
+      "at": [
+        -44,
+        0.003,
+        13.5
+      ],
+      "segments": [
+        "user-104",
         "user-105"
       ]
     },
     {
       "at": [
-        -40,
+        -45.2,
         0.003,
-        14.6
+        14.7
       ],
       "segments": [
-        "user-101",
-        "user-102",
+        "user-105",
         "user-106"
       ]
     },
     {
       "at": [
-        -14.6,
+        -50,
         0.003,
-        9
+        14.7
+      ],
+      "segments": [
+        "user-106",
+        "user-107"
+      ]
+    },
+    {
+      "at": [
+        -51.3,
+        0.003,
+        16
       ],
       "segments": [
         "user-107",
@@ -6108,44 +5829,53 @@
     },
     {
       "at": [
-        -6,
+        -53,
         0.003,
-        13.2
+        16
+      ],
+      "segments": [
+        "user-108",
+        "user-109"
+      ]
+    },
+    {
+      "at": [
+        -19.5,
+        0.003,
+        0.9
+      ],
+      "segments": [
+        "user-110",
+        "user-111"
+      ]
+    },
+    {
+      "at": [
+        -20.3,
+        0.003,
+        0.1
       ],
       "segments": [
         "user-111",
-        "user-112",
-        "user-123"
+        "user-112"
       ]
     },
     {
       "at": [
-        6.5,
+        -22.6,
         0.003,
-        13.2
+        0.1
       ],
       "segments": [
         "user-112",
-        "user-113",
-        "user-124"
+        "user-113"
       ]
     },
     {
       "at": [
-        18,
+        -17.5,
         0.003,
-        13.2
-      ],
-      "segments": [
-        "user-113",
-        "user-114"
-      ]
-    },
-    {
-      "at": [
-        19.5,
-        0.003,
-        14.7
+        1.1
       ],
       "segments": [
         "user-114",
@@ -6154,116 +5884,163 @@
     },
     {
       "at": [
-        22.5,
+        -16.6,
         0.003,
-        14.7
+        0.2
       ],
       "segments": [
         "user-115",
-        "user-116",
-        "user-121"
+        "user-116"
       ]
     },
     {
       "at": [
-        24.2,
+        -13.4,
         0.003,
-        14.7
+        0.2
       ],
       "segments": [
         "user-116",
-        "user-117",
+        "user-117"
+      ]
+    },
+    {
+      "at": [
+        23.5,
+        0.003,
+        13.3
+      ],
+      "segments": [
+        "user-118",
+        "user-119"
+      ]
+    },
+    {
+      "at": [
+        24.7,
+        0.003,
+        14.5
+      ],
+      "segments": [
+        "user-119",
+        "user-120"
+      ]
+    },
+    {
+      "at": [
+        35,
+        0.003,
+        15.2
+      ],
+      "segments": [
+        "user-121",
         "user-122"
       ]
     },
     {
       "at": [
-        31,
+        36,
         0.003,
-        14.7
+        14.2
       ],
       "segments": [
-        "user-117",
-        "user-118",
+        "user-122",
+        "user-123"
+      ]
+    },
+    {
+      "at": [
+        44,
+        0.003,
+        14.2
+      ],
+      "segments": [
+        "user-123",
+        "user-124"
+      ]
+    },
+    {
+      "at": [
+        45,
+        0.003,
+        15.2
+      ],
+      "segments": [
+        "user-124",
         "user-125"
       ]
     },
     {
       "at": [
-        33,
+        41.5,
         0.003,
-        14.7
+        11.9
       ],
       "segments": [
-        "user-118",
-        "user-119",
-        "user-126"
+        "user-126",
+        "user-127"
       ]
     },
     {
       "at": [
-        38,
+        42.6,
         0.003,
-        14.7
-      ],
-      "segments": [
-        "user-119",
-        "user-120",
-        "user-143",
-        "user-144"
-      ]
-    },
-    {
-      "at": [
-        -30.4,
-        0.003,
-        4.1
+        13
       ],
       "segments": [
         "user-127",
-        "user-130",
-        "user-131"
+        "user-128"
       ]
     },
     {
       "at": [
-        -29.4,
+        53.4,
         0.003,
-        4.1
+        13
       ],
       "segments": [
         "user-128",
+        "user-129"
+      ]
+    },
+    {
+      "at": [
+        54.8,
+        0.003,
+        11.6
+      ],
+      "segments": [
+        "user-129",
+        "user-130"
+      ]
+    },
+    {
+      "at": [
+        23,
+        0.003,
+        2.6
+      ],
+      "segments": [
         "user-131",
         "user-132"
       ]
     },
     {
       "at": [
-        -28.4,
+        22.2,
         0.003,
-        4.1
+        1.8
       ],
       "segments": [
-        "user-129",
-        "user-132"
-      ]
-    },
-    {
-      "at": [
-        -31.2,
-        0.003,
-        4.1
-      ],
-      "segments": [
-        "user-130",
+        "user-132",
         "user-133"
       ]
     },
     {
       "at": [
-        -32.2,
+        19,
         0.003,
-        3.1
+        1.8
       ],
       "segments": [
         "user-133",
@@ -6272,9 +6049,9 @@
     },
     {
       "at": [
-        -44,
+        18.2,
         0.003,
-        3.1
+        1
       ],
       "segments": [
         "user-134",
@@ -6283,9 +6060,9 @@
     },
     {
       "at": [
-        -45.3,
+        10,
         0.003,
-        1.8
+        1
       ],
       "segments": [
         "user-135",
@@ -6294,192 +6071,24 @@
     },
     {
       "at": [
-        41,
+        9.2,
         0.003,
-        12
+        0.2
+      ],
+      "segments": [
+        "user-136",
+        "user-137"
+      ]
+    },
+    {
+      "at": [
+        4,
+        0.003,
+        0.2
       ],
       "segments": [
         "user-137",
-        "user-139",
-        "user-140"
-      ]
-    },
-    {
-      "at": [
-        42.8,
-        0.003,
-        12
-      ],
-      "segments": [
-        "user-138",
-        "user-140",
-        "user-141"
-      ]
-    },
-    {
-      "at": [
-        39.4,
-        0.003,
-        12
-      ],
-      "segments": [
-        "user-139",
-        "user-142"
-      ]
-    },
-    {
-      "at": [
-        44.4,
-        0.003,
-        12
-      ],
-      "segments": [
-        "user-141",
-        "user-145"
-      ]
-    },
-    {
-      "at": [
-        38,
-        0.003,
-        13.4
-      ],
-      "segments": [
-        "user-142",
-        "user-143"
-      ]
-    },
-    {
-      "at": [
-        45.4,
-        0.003,
-        13
-      ],
-      "segments": [
-        "user-145",
-        "user-146"
-      ]
-    },
-    {
-      "at": [
-        54.5,
-        0.003,
-        13
-      ],
-      "segments": [
-        "user-146",
-        "user-147"
-      ]
-    },
-    {
-      "at": [
-        55,
-        0.003,
-        3.8
-      ],
-      "segments": [
-        "user-148",
-        "user-149"
-      ]
-    },
-    {
-      "at": [
-        54.2,
-        0.003,
-        3
-      ],
-      "segments": [
-        "user-149",
-        "user-150"
-      ]
-    },
-    {
-      "at": [
-        47.5,
-        0.003,
-        3
-      ],
-      "segments": [
-        "user-150",
-        "user-151",
-        "user-159"
-      ]
-    },
-    {
-      "at": [
-        45.6,
-        0.003,
-        3
-      ],
-      "segments": [
-        "user-151",
-        "user-152"
-      ]
-    },
-    {
-      "at": [
-        44.8,
-        0.003,
-        2.2
-      ],
-      "segments": [
-        "user-152",
-        "user-153"
-      ]
-    },
-    {
-      "at": [
-        42,
-        0.003,
-        2.2
-      ],
-      "segments": [
-        "user-153",
-        "user-154"
-      ]
-    },
-    {
-      "at": [
-        41.2,
-        0.003,
-        1.4
-      ],
-      "segments": [
-        "user-154",
-        "user-155"
-      ]
-    },
-    {
-      "at": [
-        33,
-        0.003,
-        1.4
-      ],
-      "segments": [
-        "user-155",
-        "user-156"
-      ]
-    },
-    {
-      "at": [
-        32.4,
-        0.003,
-        0.8
-      ],
-      "segments": [
-        "user-156",
-        "user-157"
-      ]
-    },
-    {
-      "at": [
-        26.5,
-        0.003,
-        0.8
-      ],
-      "segments": [
-        "user-157",
-        "user-158"
+        "user-138"
       ]
     }
   ],
@@ -6942,152 +6551,124 @@
     {
       "traceId": "user-50",
       "endpoint": "start",
-      "componentId": "mesh-user-12",
+      "componentId": "mesh-user-34",
       "edge": "east",
       "distXZ": 0
     },
     {
-      "traceId": "user-50",
+      "traceId": "user-54",
       "endpoint": "end",
-      "componentId": "mesh-user-34",
+      "componentId": "mesh-user-35",
       "edge": "west",
       "distXZ": 0
     },
     {
-      "traceId": "user-51",
+      "traceId": "user-55",
       "endpoint": "start",
-      "componentId": "mesh-user-12",
+      "componentId": "mesh-user-34",
       "edge": "east",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-51",
-      "endpoint": "end",
-      "componentId": "mesh-user-34",
-      "edge": "west",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-52",
-      "endpoint": "start",
-      "componentId": "mesh-user-12",
-      "edge": "east",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-52",
-      "endpoint": "end",
-      "componentId": "mesh-user-34",
-      "edge": "west",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-53",
-      "endpoint": "start",
-      "componentId": "mesh-user-34",
-      "edge": "west",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-56",
-      "endpoint": "start",
-      "componentId": "mesh-user-34",
-      "edge": "west",
       "distXZ": 0
     },
     {
       "traceId": "user-59",
-      "endpoint": "start",
-      "componentId": "mesh-user-34",
+      "endpoint": "end",
+      "componentId": "mesh-user-35",
       "edge": "west",
       "distXZ": 0
     },
     {
-      "traceId": "user-62",
+      "traceId": "user-60",
       "endpoint": "start",
       "componentId": "mesh-user-34",
       "edge": "east",
       "distXZ": 0
     },
     {
-      "traceId": "user-65",
+      "traceId": "user-64",
       "endpoint": "end",
-      "componentId": "comp-5",
-      "edge": "north",
+      "componentId": "mesh-user-35",
+      "edge": "west",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-65",
+      "endpoint": "start",
+      "componentId": "mesh-user-35",
+      "edge": "east",
       "distXZ": 0
     },
     {
       "traceId": "user-66",
       "endpoint": "start",
-      "componentId": "mesh-user-34",
+      "componentId": "mesh-user-35",
       "edge": "east",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-69",
-      "endpoint": "end",
-      "componentId": "comp-5",
-      "edge": "north",
       "distXZ": 0
     },
     {
       "traceId": "user-70",
-      "endpoint": "start",
-      "componentId": "mesh-user-34",
-      "edge": "east",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-72",
-      "endpoint": "start",
-      "componentId": "mesh-user-34",
-      "edge": "east",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-72",
       "endpoint": "end",
       "componentId": "mesh-user-2",
+      "edge": "west",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-71",
+      "endpoint": "start",
+      "componentId": "mesh-user-34",
       "edge": "west",
       "distXZ": 0
     },
     {
       "traceId": "user-73",
-      "endpoint": "start",
-      "componentId": "mesh-user-34",
+      "endpoint": "end",
+      "componentId": "mesh-user-12",
       "edge": "east",
       "distXZ": 0
     },
     {
-      "traceId": "user-75",
-      "endpoint": "end",
-      "componentId": "mesh-user-2",
+      "traceId": "user-74",
+      "endpoint": "start",
+      "componentId": "mesh-user-34",
       "edge": "west",
       "distXZ": 0
     },
     {
       "traceId": "user-76",
-      "endpoint": "start",
-      "componentId": "mesh-user-34",
-      "edge": "north",
+      "endpoint": "end",
+      "componentId": "mesh-user-12",
+      "edge": "east",
       "distXZ": 0
     },
     {
       "traceId": "user-77",
       "endpoint": "start",
       "componentId": "mesh-user-34",
+      "edge": "west",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-80",
+      "endpoint": "end",
+      "componentId": "mesh-user-12",
       "edge": "north",
       "distXZ": 0
     },
     {
-      "traceId": "user-78",
+      "traceId": "user-81",
       "endpoint": "start",
       "componentId": "mesh-user-34",
+      "edge": "south",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-84",
+      "endpoint": "end",
+      "componentId": "mesh-user-38",
       "edge": "north",
       "distXZ": 0
     },
     {
-      "traceId": "user-87",
+      "traceId": "user-85",
       "endpoint": "start",
       "componentId": "mesh-user-34",
       "edge": "south",
@@ -7095,208 +6676,146 @@
     },
     {
       "traceId": "user-88",
-      "endpoint": "start",
-      "componentId": "mesh-user-34",
-      "edge": "south",
+      "endpoint": "end",
+      "componentId": "mesh-user-36",
+      "edge": "north",
       "distXZ": 0
     },
     {
       "traceId": "user-89",
       "endpoint": "start",
-      "componentId": "mesh-user-34",
-      "edge": "south",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-90",
-      "endpoint": "start",
-      "componentId": "mesh-user-34",
-      "edge": "south",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-103",
-      "endpoint": "end",
-      "componentId": "mesh-user-33",
-      "edge": "north",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-104",
-      "endpoint": "end",
-      "componentId": "mesh-user-33",
-      "edge": "north",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-105",
-      "endpoint": "start",
-      "componentId": "mesh-user-43",
+      "componentId": "mesh-user-36",
       "edge": "east",
       "distXZ": 0
     },
     {
-      "traceId": "user-106",
-      "endpoint": "start",
-      "componentId": "mesh-user-44",
-      "edge": "east",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-108",
+      "traceId": "user-91",
       "endpoint": "end",
-      "componentId": "mesh-user-2",
+      "componentId": "mesh-user-37",
       "edge": "west",
       "distXZ": 0
     },
     {
-      "traceId": "user-109",
+      "traceId": "user-92",
       "endpoint": "start",
-      "componentId": "mesh-user-33",
+      "componentId": "mesh-user-36",
       "edge": "east",
       "distXZ": 0
     },
     {
-      "traceId": "user-109",
+      "traceId": "user-94",
+      "endpoint": "end",
+      "componentId": "mesh-user-37",
+      "edge": "west",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-95",
+      "endpoint": "start",
+      "componentId": "mesh-user-37",
+      "edge": "east",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-97",
       "endpoint": "end",
       "componentId": "comp-4",
       "edge": "west",
       "distXZ": 0
     },
     {
-      "traceId": "user-110",
+      "traceId": "user-98",
       "endpoint": "start",
-      "componentId": "mesh-user-33",
-      "edge": "east",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-110",
-      "endpoint": "end",
-      "componentId": "comp-4",
+      "componentId": "mesh-user-38",
       "edge": "west",
       "distXZ": 0
     },
     {
-      "traceId": "user-111",
-      "endpoint": "start",
+      "traceId": "user-100",
+      "endpoint": "end",
       "componentId": "mesh-user-33",
       "edge": "east",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-101",
+      "endpoint": "start",
+      "componentId": "mesh-user-38",
+      "edge": "west",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-101",
+      "endpoint": "end",
+      "componentId": "mesh-user-33",
+      "edge": "east",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-102",
+      "endpoint": "start",
+      "componentId": "mesh-user-33",
+      "edge": "west",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-110",
+      "endpoint": "start",
+      "componentId": "mesh-user-34",
+      "edge": "north",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-114",
+      "endpoint": "start",
+      "componentId": "mesh-user-34",
+      "edge": "north",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-118",
+      "endpoint": "start",
+      "componentId": "comp-4",
+      "edge": "south",
+      "distXZ": 0
+    },
+    {
+      "traceId": "user-120",
+      "endpoint": "end",
+      "componentId": "mesh-user-39",
+      "edge": "west",
       "distXZ": 0
     },
     {
       "traceId": "user-121",
       "endpoint": "start",
-      "componentId": "comp-4",
-      "edge": "south",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-122",
-      "endpoint": "start",
-      "componentId": "comp-4",
-      "edge": "south",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-123",
-      "endpoint": "start",
-      "componentId": "mesh-user-40",
-      "edge": "north",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-124",
-      "endpoint": "start",
-      "componentId": "mesh-user-41",
-      "edge": "north",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-125",
-      "endpoint": "start",
-      "componentId": "mesh-user-42",
-      "edge": "north",
+      "componentId": "mesh-user-39",
+      "edge": "east",
       "distXZ": 0
     },
     {
       "traceId": "user-126",
       "endpoint": "start",
-      "componentId": "mesh-user-42",
-      "edge": "north",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-127",
-      "endpoint": "start",
-      "componentId": "mesh-user-12",
-      "edge": "north",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-128",
-      "endpoint": "start",
-      "componentId": "mesh-user-12",
-      "edge": "north",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-129",
-      "endpoint": "start",
-      "componentId": "mesh-user-12",
-      "edge": "north",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-137",
-      "endpoint": "start",
       "componentId": "comp-2",
       "edge": "south",
       "distXZ": 0
     },
     {
-      "traceId": "user-138",
-      "endpoint": "start",
-      "componentId": "comp-2",
-      "edge": "south",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-147",
+      "traceId": "user-130",
       "endpoint": "end",
       "componentId": "comp-3",
       "edge": "south",
       "distXZ": 0
     },
     {
-      "traceId": "user-148",
+      "traceId": "user-131",
       "endpoint": "start",
-      "componentId": "comp-3",
+      "componentId": "comp-5",
       "edge": "north",
-      "distXZ": 0
-    },
-    {
-      "traceId": "user-159",
-      "endpoint": "start",
-      "componentId": "mesh-user-45",
-      "edge": "south",
       "distXZ": 0
     }
   ],
   "corridors": [
-    {
-      "between": [
-        "mesh-user-43",
-        "mesh-user-44"
-      ],
-      "axis": "z",
-      "gap": 0.8,
-      "center": {
-        "x": -41.4,
-        "z": 13.6
-      },
-      "span": 1.2
-    },
     {
       "between": [
         "comp-1",
@@ -7325,19 +6844,6 @@
     },
     {
       "between": [
-        "mesh-user-33",
-        "mesh-user-43"
-      ],
-      "axis": "x",
-      "gap": 3.1705,
-      "center": {
-        "x": -39.2147,
-        "z": 12.6
-      },
-      "span": 1.2
-    },
-    {
-      "between": [
         "comp-2",
         "comp-6"
       ],
@@ -7348,19 +6854,6 @@
         "z": 9.8867
       },
       "span": 2.0443
-    },
-    {
-      "between": [
-        "comp-6",
-        "mesh-user-42"
-      ],
-      "axis": "z",
-      "gap": 4.046,
-      "center": {
-        "x": 33.6095,
-        "z": 13.577
-      },
-      "span": 1.181
     },
     {
       "between": [

@@ -15,6 +15,12 @@ export type CircuitMesh = {
    * outline geometry instead of a placeholder box.
    */
   variant?: string;
+  /**
+   * Yaw on the board plane in degrees (0 / 90 / 180 / 270). The AABB is the
+   * axis-aligned footprint of the rotated mesh; outline geometry is spun by
+   * this amount around the footprint center.
+   */
+  rotationYDeg?: number;
 };
 
 export type MeshBounds = Pick<
@@ -25,7 +31,10 @@ export type MeshBounds = Pick<
 /** Footprint size on the board plane (world units). */
 export type MeshSize = { w: number; h: number };
 
-export type MeshOverride = Partial<MeshBounds> & { kind?: MeshKind };
+export type MeshOverride = Partial<MeshBounds> & {
+  kind?: MeshKind;
+  rotationYDeg?: number;
+};
 
 export interface CircuitMeshEdits {
   geometry: Record<string, MeshOverride>;
@@ -329,6 +338,56 @@ export function moveMeshBounds(
     maxX: bounds.maxX + dx,
     minZ: bounds.minZ + dz,
     maxZ: bounds.maxZ + dz,
+  };
+}
+
+/** Normalize yaw to {0, 90, 180, 270}. */
+export function normalizeMeshRotationYDeg(deg: number): number {
+  const n = ((Math.round(deg / 90) % 4) + 4) % 4;
+  return n * 90;
+}
+
+/**
+ * Swap width/depth about the center — the AABB of a mesh after a +90° yaw
+ * (right-hand, +Y up: (x,z) → (z, −x)).
+ */
+export function rotateMeshBounds90(bounds: MeshBounds): MeshBounds {
+  const { cx, cz } = meshCenter(bounds);
+  const hw = (bounds.maxX - bounds.minX) / 2;
+  const hd = (bounds.maxZ - bounds.minZ) / 2;
+  return {
+    minX: cx - hd,
+    maxX: cx + hd,
+    minZ: cz - hw,
+    maxZ: cz + hw,
+  };
+}
+
+/** Un-rotated footprint size implied by the current AABB + yaw. */
+export function meshFootprintSize(mesh: CircuitMesh): MeshSize {
+  const w = mesh.maxX - mesh.minX;
+  const h = mesh.maxZ - mesh.minZ;
+  const turns = normalizeMeshRotationYDeg(mesh.rotationYDeg ?? 0) / 90;
+  return turns % 2 === 1 ? { w: h, h: w } : { w, h };
+}
+
+/** Persist a +90° yaw for one mesh (bounds swap + rotationYDeg). */
+export function rotateMeshInEdits(
+  edits: CircuitMeshEdits,
+  mesh: CircuitMesh,
+): CircuitMeshEdits {
+  const bounds = rotateMeshBounds90(mesh);
+  const rotationYDeg = normalizeMeshRotationYDeg((mesh.rotationYDeg ?? 0) + 90);
+  return {
+    ...edits,
+    geometry: {
+      ...edits.geometry,
+      [mesh.id]: {
+        ...edits.geometry[mesh.id],
+        ...bounds,
+        rotationYDeg,
+      },
+    },
   };
 }
 

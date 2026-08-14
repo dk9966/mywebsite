@@ -9,6 +9,10 @@ import {
 } from "./circuitComponentFootprints";
 import type { MeshKind } from "./circuitMeshBoxes";
 import type { CircuitMesh, MeshBounds } from "./circuitMeshes";
+import {
+  meshFootprintSize,
+  normalizeMeshRotationYDeg,
+} from "./circuitMeshes";
 import type { GridPath, Vec3 } from "./gridBuilder";
 
 function partBaseId(segmentId: string): string | null {
@@ -92,22 +96,21 @@ export function buildOutlineModel(raw: GridPath[]): OutlineModel {
   return { footprints, origBounds, segmentsByComp, yMin, yMax };
 }
 
-function affineXZ(orig: MeshBounds, cur: MeshBounds) {
-  const ow = Math.max(orig.maxX - orig.minX, 1e-6);
-  const oh = Math.max(orig.maxZ - orig.minZ, 1e-6);
-  const sx = (cur.maxX - cur.minX) / ow;
-  const sz = (cur.maxZ - cur.minZ) / oh;
-  return { sx, sz, ox: orig.minX, oz: orig.minZ, cx: cur.minX, cz: cur.minZ };
-}
+export type OutlineColorMode = "kind" | "global";
 
 /**
  * Real outline segments transformed by the current mesh edits. A component
- * whose box was moved/scaled drags its outline along; a deleted component drops
- * out entirely. User-added meshes have no outline and are ignored here.
+ * whose box was moved/scaled/rotated drags its outline along; a deleted
+ * component drops out entirely. User-added meshes have no outline and are
+ * ignored here.
+ *
+ * `colorMode: "kind"` (default) tints each component by mesh kind.
+ * `colorMode: "global"` omits per-path color so TronGrid uses lineConfig.
  */
 export function transformedOutlinePaths(
   model: OutlineModel,
   resolved: CircuitMesh[],
+  colorMode: OutlineColorMode = "kind",
 ): GridPath[] {
   const curById = new Map(resolved.map((m) => [m.id, m]));
   const out: GridPath[] = [];
@@ -115,31 +118,46 @@ export function transformedOutlinePaths(
   for (const [comp, segments] of model.segmentsByComp) {
     const cur = curById.get(comp);
     if (!cur) continue; // deleted component
-    const lineColor = meshOutlineColorForKind(cur.kind);
+    const lineColor =
+      colorMode === "kind" ? meshOutlineColorForKind(cur.kind) : undefined;
     const orig = model.origBounds.get(comp)!;
-    const t = affineXZ(orig, cur);
+    const ow = Math.max(orig.maxX - orig.minX, 1e-6);
+    const oh = Math.max(orig.maxZ - orig.minZ, 1e-6);
+    const { w: fw, h: fd } = meshFootprintSize(cur);
+    const sx = fw / ow;
+    const sz = fd / oh;
+    const ocx = (orig.minX + orig.maxX) / 2;
+    const ocz = (orig.minZ + orig.maxZ) / 2;
+    const ccx = (cur.minX + cur.maxX) / 2;
+    const ccz = (cur.minZ + cur.maxZ) / 2;
+    const rot = normalizeMeshRotationYDeg(cur.rotationYDeg ?? 0);
+    const rad = (rot * Math.PI) / 180;
+    const cos = Math.cos(rad);
+    const sin = Math.sin(rad);
     const identity =
-      Math.abs(t.sx - 1) < 1e-6 &&
-      Math.abs(t.sz - 1) < 1e-6 &&
-      Math.abs(t.cx - t.ox) < 1e-6 &&
-      Math.abs(t.cz - t.oz) < 1e-6;
+      rot === 0 &&
+      Math.abs(sx - 1) < 1e-6 &&
+      Math.abs(sz - 1) < 1e-6 &&
+      Math.abs(ccx - ocx) < 1e-6 &&
+      Math.abs(ccz - ocz) < 1e-6;
 
     for (const seg of segments) {
+      const colored = lineColor ? { ...seg, lineColor } : { ...seg };
       if (identity) {
-        out.push({ ...seg, lineColor });
+        out.push(colored);
         continue;
       }
       out.push({
-        ...seg,
-        lineColor,
-        waypoints: seg.waypoints.map(
-          ([x, y, z]) =>
-            [
-              t.cx + (x - t.ox) * t.sx,
-              y,
-              t.cz + (z - t.oz) * t.sz,
-            ] as Vec3,
-        ),
+        ...colored,
+        waypoints: seg.waypoints.map(([x, y, z]) => {
+          const lx = (x - ocx) * sx;
+          const lz = (z - ocz) * sz;
+          return [
+            ccx + lx * cos + lz * sin,
+            y,
+            ccz - lx * sin + lz * cos,
+          ] as Vec3;
+        }),
       });
     }
   }

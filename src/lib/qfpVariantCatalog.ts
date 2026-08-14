@@ -12,7 +12,11 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { meshOutlineColorForKind } from "./circuit3DMeshes";
 import { MESH_LABELS, type MeshKind } from "./circuitMeshBoxes";
 import type { CircuitMesh } from "./circuitMeshes";
-import { DEFAULT_MESH_SIZE } from "./circuitMeshes";
+import {
+  DEFAULT_MESH_SIZE,
+  meshFootprintSize,
+  normalizeMeshRotationYDeg,
+} from "./circuitMeshes";
 import type { GridPath, Vec3 } from "./gridBuilder";
 import { tronPolylinesFromGLB } from "./tronLinesFromGLB";
 
@@ -252,13 +256,17 @@ export function useVariantCatalog(): VariantCatalog | null {
 
 /**
  * Real outline geometry for meshes placed from the variant palette. Each
- * variant's centered polylines are affine-mapped from their authored footprint
- * onto the mesh bounds and lifted to the board plane.
+ * variant's centered polylines are scaled to the un-rotated footprint, yawed
+ * by `rotationYDeg`, then lifted to the board plane.
+ *
+ * `colorMode: "kind"` (default) tints by mesh kind; `"global"` omits
+ * per-path color so the renderer uses lineConfig.
  */
 export function variantOutlinePaths(
   meshes: CircuitMesh[],
   catalog: VariantCatalog,
   boardY: number,
+  colorMode: "kind" | "global" = "kind",
 ): GridPath[] {
   const out: GridPath[] = [];
   for (const m of meshes) {
@@ -266,21 +274,33 @@ export function variantOutlinePaths(
     const v = catalog.byId.get(m.variant);
     if (!v) continue;
 
-    const color = meshOutlineColorForKind(m.kind);
-    const sx = (m.maxX - m.minX) / v.natural.w;
-    const sz = (m.maxZ - m.minZ) / v.natural.d;
+    const lineColor =
+      colorMode === "kind" ? meshOutlineColorForKind(m.kind) : undefined;
+    const { w: fw, h: fd } = meshFootprintSize(m);
+    const sx = fw / v.natural.w;
+    const sz = fd / v.natural.d;
     const sy = Math.sqrt(Math.max(sx * sz, 1e-9));
     const cx = (m.minX + m.maxX) / 2;
     const cz = (m.minZ + m.maxZ) / 2;
+    const rad =
+      (normalizeMeshRotationYDeg(m.rotationYDeg ?? 0) * Math.PI) / 180;
+    const cos = Math.cos(rad);
+    const sin = Math.sin(rad);
 
     v.polylines.forEach((poly, i) => {
       out.push({
         id: `${m.id}-v-${i}`,
         spawnTime: 0,
-        lineColor: color,
-        waypoints: poly.map(
-          ([x, y, z]) => [cx + x * sx, boardY + y * sy, cz + z * sz] as Vec3,
-        ),
+        ...(lineColor ? { lineColor } : {}),
+        waypoints: poly.map(([x, y, z]) => {
+          const lx = x * sx;
+          const lz = z * sz;
+          return [
+            cx + lx * cos + lz * sin,
+            boardY + y * sy,
+            cz - lx * sin + lz * cos,
+          ] as Vec3;
+        }),
       });
     });
   }

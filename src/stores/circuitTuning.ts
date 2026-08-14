@@ -19,6 +19,7 @@ import {
   DEFAULT_MESH_SIZE,
   deleteMeshInEdits,
   EMPTY_MESH_EDITS,
+  rotateMeshInEdits,
   setMeshBoundsInEdits,
   type CircuitMesh,
   type CircuitMeshEdits,
@@ -424,6 +425,8 @@ interface CircuitTuningStore extends CircuitTuning {
   addLineSegment: (start: Vec3, end: Vec3) => void;
   setMeshBounds: (id: string, bounds: MeshBounds) => void;
   addMeshAt: (kind: MeshKind, cx: number, cz: number) => void;
+  /** Rotate each selected mesh +90° about its center (AABB swap + yaw). */
+  rotateSelectedMeshes: (resolvedMeshes: CircuitMesh[]) => boolean;
   cancelEditTool: () => void;
   copySelectedLines: () => boolean;
   pasteLines: () => boolean;
@@ -816,6 +819,24 @@ export const useCircuitTuning = create<CircuitTuningStore>((set, get) => {
         meshEdits: setMeshBoundsInEdits(s.meshEdits, id, bounds),
       })),
 
+    rotateSelectedMeshes: (resolvedMeshes) => {
+      const { selectedMeshIds, meshEdits } = get();
+      if (selectedMeshIds.length === 0) return false;
+      const byId = new Map(resolvedMeshes.map((m) => [m.id, m]));
+      let next = meshEdits;
+      let changed = false;
+      for (const id of selectedMeshIds) {
+        const mesh = byId.get(id);
+        if (!mesh) continue;
+        next = rotateMeshInEdits(next, mesh);
+        changed = true;
+      }
+      if (!changed) return false;
+      get().pushUndo();
+      set({ meshEdits: next });
+      return true;
+    },
+
     addMeshAt: (kind, cx, cz) => {
       const size = get().addMeshSize ?? DEFAULT_MESH_SIZE[kind];
       const variant = get().addMeshVariant ?? undefined;
@@ -1017,8 +1038,9 @@ export async function deleteVersion(name: string): Promise<boolean> {
 }
 
 if (typeof window !== "undefined") {
-  useCircuitTuning.subscribe((state) => {
+  const persistDraft = () => {
     try {
+      const state = useCircuitTuning.getState();
       const payload: StoredTuning = {
         timing: state.timing,
         transform: state.transform,
@@ -1033,5 +1055,29 @@ if (typeof window !== "undefined") {
     } catch {
       // Ignore quota/serialization failures; tuning still works in-session.
     }
+  };
+
+  // Every edit fires this subscription — including each pointermove of a vertex
+  // drag or group move. Serializing the whole board (tens of KB) and writing it
+  // synchronously to localStorage that often stalled the main thread. Coalesce
+  // into a single write once edits settle, and flush on page hide so the latest
+  // draft is never lost.
+  const PERSIST_DEBOUNCE_MS = 400;
+  let persistTimer: number | undefined;
+  const schedulePersist = () => {
+    if (persistTimer !== undefined) window.clearTimeout(persistTimer);
+    persistTimer = window.setTimeout(() => {
+      persistTimer = undefined;
+      persistDraft();
+    }, PERSIST_DEBOUNCE_MS);
+  };
+
+  useCircuitTuning.subscribe(schedulePersist);
+
+  window.addEventListener("pagehide", () => {
+    if (persistTimer === undefined) return;
+    window.clearTimeout(persistTimer);
+    persistTimer = undefined;
+    persistDraft();
   });
 }

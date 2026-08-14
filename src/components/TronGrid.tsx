@@ -471,7 +471,12 @@ export default function TronGrid({
 
     for (const path of gridPaths) {
       if (path.hidden) continue;
-      const pts = waypointsToPoints(path.waypoints, gridSpacing);
+      // Densifying a segment into evenly spaced points only matters for the
+      // animated cursor sweep. Static lines (editor) draw at full length, so the
+      // raw waypoints are enough — skipping this keeps per-edit rebuilds cheap.
+      const pts = animated
+        ? waypointsToPoints(path.waypoints, gridSpacing)
+        : path.waypoints.map(([x, y, z]) => new THREE.Vector3(x, y, z));
       const cumDist = computeCumDist(pts);
       const pointCount = pts.length;
       const lineBase = pathLineDisplayColor(path.lineColor, cfg);

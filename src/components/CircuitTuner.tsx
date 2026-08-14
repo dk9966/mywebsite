@@ -1,6 +1,11 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { GridPath, Vec3 } from "../lib/gridBuilder";
-import { useCircuitTuning } from "../stores/circuitTuning";
+import {
+  DEFAULT_CIRCUIT_VERSION,
+  listVersions,
+  loadVersion,
+  useCircuitTuning,
+} from "../stores/circuitTuning";
 import {
   SHORTCUT_BTN,
   useShortcutButtonFlash,
@@ -135,7 +140,36 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
 
   const [minimized, setMinimized] = useState(false);
   const [saveStatus, setSaveStatus] = useState<string | null>(null);
+  const [versions, setVersions] = useState<string[]>([]);
+  const [activeVersion, setActiveVersion] = useState(DEFAULT_CIRCUIT_VERSION);
+  const [versionStatus, setVersionStatus] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    void (async () => {
+      const list = await listVersions();
+      setVersions(list);
+      if (list.includes(DEFAULT_CIRCUIT_VERSION)) {
+        const ok = await loadVersion(DEFAULT_CIRCUIT_VERSION);
+        if (ok) setActiveVersion(DEFAULT_CIRCUIT_VERSION);
+      } else if (list.length > 0) {
+        const name = list[0]!;
+        const ok = await loadVersion(name);
+        if (ok) setActiveVersion(name);
+      }
+    })();
+  }, []);
+
+  const onSelectVersion = useCallback(async (name: string) => {
+    const ok = await loadVersion(name);
+    if (ok) {
+      setActiveVersion(name);
+      setVersionStatus(`loaded version "${name}"`);
+    } else {
+      setVersionStatus(`failed to load "${name}" (dev server only)`);
+    }
+    window.setTimeout(() => setVersionStatus(null), 3000);
+  }, []);
 
   const selectedPath = useMemo(
     () => paths.find((p) => p.id === selectedId) ?? null,
@@ -190,6 +224,34 @@ export default function CircuitTuner({ paths }: { paths: GridPath[] }) {
 
       {!minimized && (
         <>
+          <section className="tuner__group">
+            <h4 className="tuner__group-title">Board version</h4>
+            <select
+              className="tuner__version-select"
+              value={activeVersion}
+              title="Switch circuit board version from the 3D editor"
+              onChange={(e) => void onSelectVersion(e.target.value)}
+            >
+              {(versions.length > 0
+                ? versions
+                : [DEFAULT_CIRCUIT_VERSION]
+              ).map((name) => (
+                <option key={name} value={name}>
+                  {name}
+                </option>
+              ))}
+            </select>
+            {versionStatus ? (
+              <p className="tuner__hint tuner__hint--status">{versionStatus}</p>
+            ) : (
+              <p className="tuner__hint">
+                Same snapshots as the Tron circuits editor.
+              </p>
+            )}
+          </section>
+
+          <hr className="tuner__divider" />
+
           <section className="tuner__group">
             <h4 className="tuner__group-title">Timing</h4>
             <Slider

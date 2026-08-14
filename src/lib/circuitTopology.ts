@@ -73,9 +73,21 @@ export function applyTopology(
 
   for (const p of paths) {
     if (!p.id || deleted.has(p.id)) continue;
-    const geom = resolveSegmentGeom(p, topology);
-    if (!geom) continue;
-    out.push({ ...p, waypoints: [geom.start, geom.end] });
+    const ov = topology.geometry[p.id];
+    if (ov) {
+      // Explicit endpoint override — always a two-point circuit segment.
+      out.push({ ...p, waypoints: [ov.start, ov.end] });
+      continue;
+    }
+    // Variant mesh outlines (and any other multi-point polyline) keep their
+    // full shape. Collapsing them to start→end was shredding palette meshes
+    // on the outline page when they ran through applyTuning.
+    if (p.waypoints.length !== 2) {
+      if (p.waypoints.length < 2) continue;
+      out.push(p);
+      continue;
+    }
+    out.push({ ...p, waypoints: [p.waypoints[0], p.waypoints[1]] });
   }
 
   for (const added of topology.added) {

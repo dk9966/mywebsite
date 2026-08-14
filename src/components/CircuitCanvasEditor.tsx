@@ -1554,11 +1554,24 @@ export default function CircuitCanvasEditor() {
         e.preventDefault();
         flashShortcutBtn(SHORTCUT_BTN.snap45);
         onSnap45();
+        return;
+      }
+      if (e.key === "g" || e.key === "G") {
+        const store = useCircuitTuning.getState();
+        if (store.selectedMeshIds.length === 0) return;
+        e.preventDefault();
+        if (store.rotateSelectedMeshes(getMeshes())) {
+          flashStatus(
+            `rotated ${store.selectedMeshIds.length} mesh${
+              store.selectedMeshIds.length === 1 ? "" : "es"
+            } 90°`,
+          );
+        }
       }
     };
     canvas.addEventListener("keydown", onKeyDown);
     return () => canvas.removeEventListener("keydown", onKeyDown);
-  }, [flashShortcutBtn, onSnap45]);
+  }, [flashShortcutBtn, flashStatus, getMeshes, onSnap45]);
 
   const onSave = useCallback(async () => {
     const ok = await useCircuitTuning.getState().saveAsDefault();
