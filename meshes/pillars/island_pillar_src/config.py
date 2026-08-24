@@ -133,12 +133,18 @@ FILL_POWER = 2.0
 BUILD_DIR = 'build'                               # intermediate texture maps
 
 # ---------------------------------------------------------------- shading
-# Quads get cut into triangles, and where a quad is not perfectly flat its two
-# halves face slightly different ways. Flat-shaded, that cut line shows up as a
-# visible triangle. Averaging the normal across any edge that bends less than
-# this makes the pair read as one panel; anything sharper stays a crease.
+# Flat. This asset is chiseled stone: every face the generator emits is a
+# planar quad, so both halves of the cut share one normal and the diagonal is
+# invisible -- flat shading has zero interpolation artifacts here.
+#
+# The old smoothing threshold (28 deg) existed for the *imported* mesh, whose
+# quads were warped enough that the diagonal showed when flat-shaded. On the
+# generated mesh that same smoothing became the artifact: averaged vertex
+# normals interpolated across large triangles paint soft triangular gradients
+# over faces that are geometrically flat, which reads as faceting damage
+# rather than chiseled facets.
 SHADING = {
-    'smooth_deg': 28.0,
+    'smooth_deg': 0.0,      # 0 = flat faces; raise only for an imported mesh
 }
 
 # ---------------------------------------------------------------- body material

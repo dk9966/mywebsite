@@ -23,6 +23,7 @@
   <b>island world</b><br>
   drag to orbit · scroll to zoom · right-drag to pan
   <div id="stats"></div>
+  <label><input type="checkbox" id="plain" checked> plain mesh</label>
   <label><input type="checkbox" id="bloom" checked> bloom</label>
   <label><input type="checkbox" id="atmo" checked> atmosphere</label>
   <label><input type="checkbox" id="spin"> auto-spin</label>
@@ -145,18 +146,36 @@ const domeMat = new THREE.ShaderMaterial({
 // blue from below exactly where the background shows it. (The env copy has
 // its own fixed radius: PMREM's cube camera only sees out to ~100 units.)
 const pmrem = new THREE.PMREMGenerator(renderer);
+let envTex;
 {
   const envScene = new THREE.Scene();
   envScene.add(new THREE.Mesh(new THREE.SphereGeometry(50, 48, 32), domeMat));
-  scene.environment = pmrem.fromScene(envScene, 0.06).texture;
+  envTex = pmrem.fromScene(envScene, 0.06).texture;
+  scene.environment = envTex;
 }
 
 // Lit from underneath: the hemisphere's GROUND is the bright side.
-scene.add(new THREE.HemisphereLight(0x0e1626, 0x2f6fe0, 0.55));
+const caveRig = new THREE.Group();
+caveRig.add(new THREE.HemisphereLight(0x0e1626, 0x2f6fe0, 0.55));
 const key = new THREE.DirectionalLight(0x9fc2ff, 0.4);   // faint cool key for form
-key.position.set(30, 50, 20); scene.add(key);
+key.position.set(30, 50, 20); caveRig.add(key);
 const under = new THREE.DirectionalLight(0x2e7bff, 0.55);  // abyss uplight
-under.position.set(-8, -40, -6); scene.add(under);
+under.position.set(-8, -40, -6); caveRig.add(under);
+scene.add(caveRig);
+
+// Plain inspection mode: geometry only. One neutral grey override material,
+// a white three-point rig, no environment, no emissive, no post. This is
+// the view that tells the truth about the mesh.
+const plainRig = new THREE.Group();
+plainRig.add(new THREE.HemisphereLight(0xffffff, 0x30343a, 0.85));
+const pKey = new THREE.DirectionalLight(0xffffff, 1.4);
+pKey.position.set(35, 55, 25); plainRig.add(pKey);
+const pFill = new THREE.DirectionalLight(0xdfe8ff, 0.35);
+pFill.position.set(-40, 10, -30); plainRig.add(pFill);
+plainRig.visible = false;
+scene.add(plainRig);
+const plainMat = new THREE.MeshStandardMaterial({
+  color: 0x9aa0a8, roughness: 0.62, metalness: 0.0 });
 
 const camera = new THREE.PerspectiveCamera(35, innerWidth / innerHeight, 0.1, 2000);
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -298,6 +317,7 @@ document.getElementById('stats').textContent =
 const cb = document.getElementById('bloom');
 const at = document.getElementById('atmo');
 const sp = document.getElementById('spin');
+const pl = document.getElementById('plain');
 addEventListener('resize', () => {
   camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight);
@@ -307,10 +327,16 @@ const clock = new THREE.Clock();
 renderer.setAnimationLoop(() => {
   const dt = Math.min(clock.getDelta(), 0.1);
   if (sp.checked) world.rotation.y += 0.0015;
-  const on = at.checked;
+  const plain = pl.checked;
+  const on = at.checked && !plain;
   atmo.visible = on;
   scene.fog = on ? fog : null;
   document.getElementById('vig').style.display = on ? 'block' : 'none';
+  scene.overrideMaterial = plain ? plainMat : null;
+  scene.environment = plain ? null : envTex;
+  scene.background = plain ? new THREE.Color(0x1a1d22) : null;
+  caveRig.visible = !plain;
+  plainRig.visible = plain;
   const mp = motes.geometry.attributes.position;
   const { lo, hi, speed } = motes.userData;
   for (let i = 0; i < mp.count; i++) {
@@ -320,7 +346,7 @@ renderer.setAnimationLoop(() => {
   }
   mp.needsUpdate = true;
   controls.update();
-  bloom.enabled = cb.checked;
+  bloom.enabled = cb.checked && !plain;
   composer.render();
 });
 </script>
