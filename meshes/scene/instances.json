@@ -1,0 +1,1847 @@
+{
+ "models": {
+  "pillar_small": "../pillars/island_pillar.glb",
+  "pillar_large": "../pillars/island_pillar_large.glb",
+  "pillar_huge": "../pillars/island_pillar_huge.glb",
+  "railings": "../railings/railings.glb",
+  "bridge_garage_projects": "../bridge/spans/bridge_garage_projects.glb",
+  "bridge_projects_about": "../bridge/spans/bridge_projects_about.glb",
+  "bridge_projects_workshop": "../bridge/spans/bridge_projects_workshop.glb",
+  "bridge_projects_experiences": "../bridge/spans/bridge_projects_experiences.glb",
+  "bridge_experiences_contact": "../bridge/spans/bridge_experiences_contact.glb",
+  "bridge_projects_minecraft": "../bridge/spans/bridge_projects_minecraft.glb",
+  "bridge_workshop_garage": "../bridge/spans/bridge_workshop_garage.glb"
+ },
+ "instances": [
+  {
+   "model": "pillar_huge",
+   "name": "projects",
+   "position": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotation_y": 0.0,
+   "scale": [
+    2.5,
+    2.5,
+    2.5
+   ]
+  },
+  {
+   "model": "pillar_large",
+   "name": "about",
+   "position": [
+    -18.916,
+    1.65,
+    -8.107
+   ],
+   "rotation_y": 0.0,
+   "scale": [
+    2.5,
+    2.5,
+    2.5
+   ]
+  },
+  {
+   "model": "pillar_large",
+   "name": "workshop",
+   "position": [
+    -21.619,
+    -1.1,
+    9.459
+   ],
+   "rotation_y": 0.0,
+   "scale": [
+    2.5,
+    2.5,
+    2.5
+   ]
+  },
+  {
+   "model": "pillar_large",
+   "name": "experiences",
+   "position": [
+    18.916,
+    1.65,
+    -8.107
+   ],
+   "rotation_y": 0.0,
+   "scale": [
+    2.5,
+    2.5,
+    2.5
+   ]
+  },
+  {
+   "model": "pillar_small",
+   "name": "contact",
+   "position": [
+    27.023,
+    0.0,
+    1.083
+   ],
+   "rotation_y": 0.0,
+   "scale": [
+    2.5,
+    2.5,
+    2.5
+   ]
+  },
+  {
+   "model": "pillar_large",
+   "name": "minecraft",
+   "position": [
+    18.377,
+    -1.32,
+    14.325
+   ],
+   "rotation_y": 0.0,
+   "scale": [
+    2.5,
+    2.5,
+    2.5
+   ]
+  },
+  {
+   "model": "pillar_small",
+   "name": "garage",
+   "position": [
+    3.313,
+    -1.76,
+    20.573
+   ],
+   "rotation_y": 0.0,
+   "scale": [
+    2.5,
+    2.5,
+    2.5
+   ]
+  },
+  {
+   "model": "bridge_garage_projects",
+   "name": "bridge_garage_projects",
+   "position": [
+    2.93,
+    13.24,
+    18.196
+   ],
+   "rotation_y": -4.55272,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "bridge_projects_about",
+   "name": "bridge_projects_about",
+   "position": [
+    -5.586,
+    18.75,
+    -2.394
+   ],
+   "rotation_y": -3.54649,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "bridge_projects_workshop",
+   "name": "bridge_projects_workshop",
+   "position": [
+    -5.567,
+    18.75,
+    2.436
+   ],
+   "rotation_y": -2.72916,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "bridge_projects_experiences",
+   "name": "bridge_projects_experiences",
+   "position": [
+    5.586,
+    18.75,
+    -2.394
+   ],
+   "rotation_y": 0.4049,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "bridge_experiences_contact",
+   "name": "bridge_experiences_contact",
+   "position": [
+    21.367,
+    18.15,
+    -5.328
+   ],
+   "rotation_y": -0.84793,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "bridge_projects_minecraft",
+   "name": "bridge_projects_minecraft",
+   "position": [
+    4.793,
+    18.75,
+    3.736
+   ],
+   "rotation_y": -0.66212,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "bridge_workshop_garage",
+   "name": "bridge_workshop_garage",
+   "position": [
+    -18.235,
+    15.4,
+    10.968
+   ],
+   "rotation_y": -0.41933,
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    6.0769,
+    18.75,
+    0.0
+   ],
+   "rotation_y": -1.5708,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    5.994,
+    18.75,
+    1.0002
+   ],
+   "rotation_y": -1.73614,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    5.7476,
+    18.75,
+    1.9732
+   ],
+   "rotation_y": -1.90149,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    3.3237,
+    18.75,
+    5.0874
+   ],
+   "rotation_y": -2.56288,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -1.4918,
+    18.75,
+    5.8909
+   ],
+   "rotation_y": -3.38961,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -2.4411,
+    18.75,
+    5.5651
+   ],
+   "rotation_y": -3.55496,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -3.3237,
+    18.75,
+    5.0874
+   ],
+   "rotation_y": -3.72031,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -4.1158,
+    18.75,
+    4.4709
+   ],
+   "rotation_y": -3.88565,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -6.0769,
+    18.75,
+    0.0
+   ],
+   "rotation_y": -4.71239,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -4.1158,
+    18.75,
+    -4.4709
+   ],
+   "rotation_y": -5.53912,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -3.3237,
+    18.75,
+    -5.0874
+   ],
+   "rotation_y": -5.70447,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -2.4411,
+    18.75,
+    -5.5651
+   ],
+   "rotation_y": -5.86982,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -1.4918,
+    18.75,
+    -5.8909
+   ],
+   "rotation_y": -6.03516,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -0.5018,
+    18.75,
+    -6.0561
+   ],
+   "rotation_y": -6.20051,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    0.5018,
+    18.75,
+    -6.0561
+   ],
+   "rotation_y": -6.36586,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    1.4918,
+    18.75,
+    -5.8909
+   ],
+   "rotation_y": -6.53121,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    2.4411,
+    18.75,
+    -5.5651
+   ],
+   "rotation_y": -6.69655,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    3.3237,
+    18.75,
+    -5.0874
+   ],
+   "rotation_y": -6.8619,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    4.1158,
+    18.75,
+    -4.4709
+   ],
+   "rotation_y": -7.02725,
+   "scale": [
+    1.0048,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -17.2114,
+    18.15,
+    -4.8173
+   ],
+   "rotation_y": -2.66352,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -18.1622,
+    18.15,
+    -4.4794
+   ],
+   "rotation_y": -2.93671,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -19.1688,
+    18.15,
+    -4.4105
+   ],
+   "rotation_y": -3.20989,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -20.1568,
+    18.15,
+    -4.6158
+   ],
+   "rotation_y": -3.48307,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -21.0527,
+    18.15,
+    -5.08
+   ],
+   "rotation_y": -3.75625,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -21.7901,
+    18.15,
+    -5.7687
+   ],
+   "rotation_y": -4.02943,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -22.3144,
+    18.15,
+    -6.6309
+   ],
+   "rotation_y": -4.30262,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -22.5866,
+    18.15,
+    -7.6025
+   ],
+   "rotation_y": -4.5758,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -22.5866,
+    18.15,
+    -8.6115
+   ],
+   "rotation_y": -4.84898,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -22.3144,
+    18.15,
+    -9.5831
+   ],
+   "rotation_y": -5.12216,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -21.7901,
+    18.15,
+    -10.4453
+   ],
+   "rotation_y": -5.39534,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -21.0527,
+    18.15,
+    -11.134
+   ],
+   "rotation_y": -5.66853,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -20.1568,
+    18.15,
+    -11.5982
+   ],
+   "rotation_y": -5.94171,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -19.1688,
+    18.15,
+    -11.8035
+   ],
+   "rotation_y": -6.21489,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -18.1622,
+    18.15,
+    -11.7346
+   ],
+   "rotation_y": -6.48807,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -17.2114,
+    18.15,
+    -11.3967
+   ],
+   "rotation_y": -6.76125,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -16.387,
+    18.15,
+    -10.8149
+   ],
+   "rotation_y": -7.03444,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -15.7503,
+    18.15,
+    -10.0321
+   ],
+   "rotation_y": -7.30762,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -15.3483,
+    18.15,
+    -9.1066
+   ],
+   "rotation_y": -7.5808,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -19.9144,
+    15.4,
+    12.7487
+   ],
+   "rotation_y": -2.66352,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -20.8652,
+    15.4,
+    13.0866
+   ],
+   "rotation_y": -2.93671,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -21.8718,
+    15.4,
+    13.1555
+   ],
+   "rotation_y": -3.20989,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -22.8598,
+    15.4,
+    12.9502
+   ],
+   "rotation_y": -3.48307,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -23.7557,
+    15.4,
+    12.486
+   ],
+   "rotation_y": -3.75625,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -24.4931,
+    15.4,
+    11.7973
+   ],
+   "rotation_y": -4.02943,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -25.0174,
+    15.4,
+    10.9351
+   ],
+   "rotation_y": -4.30262,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -25.2896,
+    15.4,
+    9.9635
+   ],
+   "rotation_y": -4.5758,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -25.2896,
+    15.4,
+    8.9545
+   ],
+   "rotation_y": -4.84898,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -25.0174,
+    15.4,
+    7.9829
+   ],
+   "rotation_y": -5.12216,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -24.4931,
+    15.4,
+    7.1207
+   ],
+   "rotation_y": -5.39534,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -23.7557,
+    15.4,
+    6.432
+   ],
+   "rotation_y": -5.66853,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -22.8598,
+    15.4,
+    5.9678
+   ],
+   "rotation_y": -5.94171,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -21.8718,
+    15.4,
+    5.7625
+   ],
+   "rotation_y": -6.21489,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -20.8652,
+    15.4,
+    5.8314
+   ],
+   "rotation_y": -6.48807,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    -19.9144,
+    15.4,
+    6.1693
+   ],
+   "rotation_y": -6.76125,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    22.6211,
+    18.15,
+    -8.107
+   ],
+   "rotation_y": -1.5708,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    22.4837,
+    18.15,
+    -7.1074
+   ],
+   "rotation_y": -1.84398,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    18.6632,
+    18.15,
+    -4.4105
+   ],
+   "rotation_y": -3.20989,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    17.6752,
+    18.15,
+    -4.6158
+   ],
+   "rotation_y": -3.48307,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    16.7793,
+    18.15,
+    -5.08
+   ],
+   "rotation_y": -3.75625,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    15.2454,
+    18.15,
+    -8.6115
+   ],
+   "rotation_y": -4.84898,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    15.5176,
+    18.15,
+    -9.5831
+   ],
+   "rotation_y": -5.12216,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    16.0419,
+    18.15,
+    -10.4453
+   ],
+   "rotation_y": -5.39534,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    16.7793,
+    18.15,
+    -11.134
+   ],
+   "rotation_y": -5.66853,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    17.6752,
+    18.15,
+    -11.5982
+   ],
+   "rotation_y": -5.94171,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    18.6632,
+    18.15,
+    -11.8035
+   ],
+   "rotation_y": -6.21489,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    19.6698,
+    18.15,
+    -11.7346
+   ],
+   "rotation_y": -6.48807,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    20.6206,
+    18.15,
+    -11.3967
+   ],
+   "rotation_y": -6.76125,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    21.445,
+    18.15,
+    -10.8149
+   ],
+   "rotation_y": -7.03444,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    22.0817,
+    18.15,
+    -10.0321
+   ],
+   "rotation_y": -7.30762,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    22.4837,
+    18.15,
+    -9.1066
+   ],
+   "rotation_y": -7.5808,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    29.4306,
+    15.0,
+    1.083
+   ],
+   "rotation_y": -1.5708,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    29.2224,
+    15.0,
+    2.0623
+   ],
+   "rotation_y": -1.98968,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    28.634,
+    15.0,
+    2.8722
+   ],
+   "rotation_y": -2.40855,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    27.767,
+    15.0,
+    3.3727
+   ],
+   "rotation_y": -2.82743,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    26.7713,
+    15.0,
+    3.4774
+   ],
+   "rotation_y": -3.24631,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    25.8192,
+    15.0,
+    3.168
+   ],
+   "rotation_y": -3.66519,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    25.0752,
+    15.0,
+    2.4981
+   ],
+   "rotation_y": -4.08407,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    24.668,
+    15.0,
+    1.5836
+   ],
+   "rotation_y": -4.50295,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    27.767,
+    15.0,
+    -1.2067
+   ],
+   "rotation_y": -6.59734,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    28.634,
+    15.0,
+    -0.7062
+   ],
+   "rotation_y": -7.01622,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    29.2224,
+    15.0,
+    0.1037
+   ],
+   "rotation_y": -7.4351,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    22.0821,
+    15.18,
+    14.325
+   ],
+   "rotation_y": -1.5708,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    21.9447,
+    15.18,
+    15.3246
+   ],
+   "rotation_y": -1.84398,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    21.5427,
+    15.18,
+    16.2501
+   ],
+   "rotation_y": -2.11716,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    20.906,
+    15.18,
+    17.0329
+   ],
+   "rotation_y": -2.39034,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    20.0816,
+    15.18,
+    17.6147
+   ],
+   "rotation_y": -2.66352,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    19.1308,
+    15.18,
+    17.9526
+   ],
+   "rotation_y": -2.93671,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    18.1242,
+    15.18,
+    18.0215
+   ],
+   "rotation_y": -3.20989,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    17.1362,
+    15.18,
+    17.8162
+   ],
+   "rotation_y": -3.48307,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    16.2403,
+    15.18,
+    17.352
+   ],
+   "rotation_y": -3.75625,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    15.5029,
+    15.18,
+    16.6633
+   ],
+   "rotation_y": -4.02943,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    14.9786,
+    15.18,
+    15.8011
+   ],
+   "rotation_y": -4.30262,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    14.7064,
+    15.18,
+    14.8295
+   ],
+   "rotation_y": -4.5758,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    17.1362,
+    15.18,
+    10.8338
+   ],
+   "rotation_y": -5.94171,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    18.1242,
+    15.18,
+    10.6285
+   ],
+   "rotation_y": -6.21489,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    19.1308,
+    15.18,
+    10.6974
+   ],
+   "rotation_y": -6.48807,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    20.0816,
+    15.18,
+    11.0353
+   ],
+   "rotation_y": -6.76125,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    20.906,
+    15.18,
+    11.6171
+   ],
+   "rotation_y": -7.03444,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    21.5427,
+    15.18,
+    12.3999
+   ],
+   "rotation_y": -7.30762,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    21.9447,
+    15.18,
+    13.3254
+   ],
+   "rotation_y": -7.5808,
+   "scale": [
+    1.0122,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    5.7206,
+    13.24,
+    20.573
+   ],
+   "rotation_y": -1.5708,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    5.5124,
+    13.24,
+    21.5523
+   ],
+   "rotation_y": -1.98968,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    4.924,
+    13.24,
+    22.3622
+   ],
+   "rotation_y": -2.40855,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    4.057,
+    13.24,
+    22.8627
+   ],
+   "rotation_y": -2.82743,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    3.0613,
+    13.24,
+    22.9674
+   ],
+   "rotation_y": -3.24631,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    2.1092,
+    13.24,
+    22.658
+   ],
+   "rotation_y": -3.66519,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    1.3652,
+    13.24,
+    21.9881
+   ],
+   "rotation_y": -4.08407,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  },
+  {
+   "model": "railings",
+   "node": "Rail_Span",
+   "position": [
+    5.5124,
+    13.24,
+    19.5937
+   ],
+   "rotation_y": -7.4351,
+   "scale": [
+    1.0085,
+    1.0,
+    1.0
+   ]
+  }
+ ]
+}

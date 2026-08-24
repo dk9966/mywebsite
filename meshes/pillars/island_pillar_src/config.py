@@ -174,10 +174,10 @@ GLOW = {
     'band': 0.068,          # world-space reach of a crack including its halo
     # 0 = no cracks. Everything below still works; raise this to bring the blue
     # glow back and it regenerates from the same parameters.
-    'paths': 0,
-    'top_range': (4.15, 5.05),
-    'bottom_range': (0.95, 1.75),
-    'min_extent': 2.5,
+    'paths': 8,
+    'top_range': (4.30, 5.20),
+    'bottom_range': (0.75, 1.60),
+    'min_extent': 3.0,
     'step': 0.11,           # how far a path descends per point
     'jog_chance': 0.13,     # chance per step of stepping sideways
     'jog_degrees': (3.5, 8.0),

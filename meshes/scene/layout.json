@@ -1,0 +1,114 @@
+{
+  "note": "Assembly of meshes/. Positions derived from secret-base layout.ts, scaled by 0.44 so island radii match real pillar top platforms. Pillars are scaled x2.5 to sit correctly against the bridge kit, which is authored at a fixed 4x2 deck size. Spacing solved so every bridged pair has 5 units of clear air between plinths (x1.58).",
+  "models": {
+    "pillar_small": "../pillars/island_pillar.glb",
+    "pillar_large": "../pillars/island_pillar_large.glb",
+    "pillar_huge": "../pillars/island_pillar_huge.glb",
+    "bridge": "../bridge/bridge.glb",
+    "railings": "../railings/railings.glb"
+  },
+  "islands": {
+    "projects": {
+      "pos": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "old_radius": 5.5,
+      "pillar": "huge",
+      "deck_radius": 6.075
+    },
+    "about": {
+      "pos": [
+        -18.916,
+        1.65,
+        -8.107
+      ],
+      "old_radius": 3.2,
+      "pillar": "large",
+      "deck_radius": 3.7
+    },
+    "workshop": {
+      "pos": [
+        -21.619,
+        -1.1,
+        9.459
+      ],
+      "old_radius": 3.8,
+      "pillar": "large",
+      "deck_radius": 3.7
+    },
+    "experiences": {
+      "pos": [
+        18.916,
+        1.65,
+        -8.107
+      ],
+      "old_radius": 4.2,
+      "pillar": "large",
+      "deck_radius": 3.7
+    },
+    "contact": {
+      "pos": [
+        27.023,
+        0.0,
+        1.083
+      ],
+      "old_radius": 2.8,
+      "pillar": "small",
+      "deck_radius": 2.413
+    },
+    "minecraft": {
+      "pos": [
+        18.377,
+        -1.32,
+        14.325
+      ],
+      "old_radius": 3.5,
+      "pillar": "large",
+      "deck_radius": 3.7
+    },
+    "garage": {
+      "pos": [
+        3.313,
+        -1.76,
+        20.573
+      ],
+      "old_radius": 2.6,
+      "pillar": "small",
+      "deck_radius": 2.413
+    }
+  },
+  "bridges": [
+    {
+      "a": "garage",
+      "b": "projects"
+    },
+    {
+      "a": "projects",
+      "b": "about"
+    },
+    {
+      "a": "projects",
+      "b": "workshop"
+    },
+    {
+      "a": "projects",
+      "b": "experiences"
+    },
+    {
+      "a": "experiences",
+      "b": "contact"
+    },
+    {
+      "a": "projects",
+      "b": "minecraft"
+    },
+    {
+      "a": "workshop",
+      "b": "garage"
+    }
+  ],
+  "pillar_scale": 2.5,
+  "spacing_scale": 1.585
+}
