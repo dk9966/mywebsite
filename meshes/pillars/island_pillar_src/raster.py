@@ -23,7 +23,7 @@ def env(d, sun=np.array([0.55,0.62,0.42])):
 
 ENV_AVG=np.array([0.055,0.068,0.092])
 
-def render(pos, idx, uv0, uv1, matid, mats, tang=None, W=520,H=900,
+def render(pos, idx, uv0, uv1, matid, mats, tang=None, vnorm=None, W=520,H=900,
            cam=(7,4.2,8.5), tgt=(0,3.0,0), fov=26.0, bg=(0.045,0.05,0.062), exposure=1.0):
     cam=np.array(cam,float); tgt=np.array(tgt,float)
     f=tgt-cam; f/=np.linalg.norm(f)
@@ -73,11 +73,21 @@ def render(pos, idx, uv0, uv1, matid, mats, tang=None, W=520,H=900,
         alb=samp(mat['base'],uu,vv)
         orm=samp(mat['orm'],uu,vv)
         rough=np.clip(orm[...,1],0.05,1.0); ao=orm[...,0]
+        # interpolate the shading normal; falls back to the flat face normal
+        if vnorm is not None:
+            vn = vnorm[idx[t]]
+            Nsm = (w2[...,None]*vn[0] + w1[...,None]*vn[1] + w0[...,None]*vn[2])
+            Nsm = Nsm/(np.linalg.norm(Nsm,axis=-1,keepdims=True)+1e-12)
+        else:
+            Nsm = None
         if Tg is not None:
             tn=samp(mat['nrm'],uu,vv)*2.0-1.0
             tn[...,:2]*=mat.get('nscale',1.0)
-            Ns=(tn[...,0:1]*Tg[None,None,:]+tn[...,1:2]*Bt[None,None,:]+tn[...,2:3]*N[None,None,:])
+            base = Nsm if Nsm is not None else np.broadcast_to(N, wp.shape)
+            Ns=(tn[...,0:1]*Tg[None,None,:]+tn[...,1:2]*Bt[None,None,:]+tn[...,2:3]*base)
             Ns/=np.linalg.norm(Ns,axis=-1,keepdims=True)+1e-12
+        elif Nsm is not None:
+            Ns=Nsm
         else:
             Ns=np.broadcast_to(N,wp.shape)
         NdL=np.clip(Ns@L,0,1)[...,None]; NdL2=np.clip(Ns@L2,0,1)[...,None]

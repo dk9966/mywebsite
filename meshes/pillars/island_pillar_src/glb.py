@@ -69,6 +69,9 @@ class GLBWriter:
     def add_image(self, path):
         return self.add_view(open(path, 'rb').read())
 
+    def add_image_bytes(self, data):
+        return self.add_view(data)
+
     def add_accessor(self, arr, type_, component_type, target):
         a = np.ascontiguousarray(arr)
         d = {'bufferView': self.add_view(a.tobytes(), target),
