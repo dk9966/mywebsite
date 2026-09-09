@@ -69,3 +69,21 @@ plans/clips/
 .env.*
 !.env.example
 .vercel
+
+# One-off local scripts
+_shot.js
+
+# Codex/agent skill copies (canonical copies live in .cursor/skills)
+.agents/
+
+# Unused stub entry; the live app is secret-base/
+/secret-base.html
+/src/secret-base-main.tsx
+
+# Blender backup copies
+*_backup.blend
+
+# Full-res ideation dumps that have compressed jpg siblings
+/ideation/overall.png
+/ideation/overall no screens.png
+/ideation/pillars.png
