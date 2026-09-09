@@ -56,6 +56,18 @@ export const neonCyanFaint = new THREE.MeshStandardMaterial({
   opacity: 0.7,
 });
 
+/**
+ * The deck's ground rings only. The weakest emitter here on purpose: they run
+ * the full width of the floor, so at neonCyan strength they cut it to ribbons.
+ */
+export const runeGlow = new THREE.MeshStandardMaterial({
+  color: "#04131c",
+  emissive: "#0a3bff",
+  emissiveIntensity: 4.2,
+  roughness: 0.55,
+  metalness: 0,
+});
+
 export const neonMagenta = new THREE.MeshStandardMaterial({
   color: "#2a0526",
   emissive: "#f04dd8",
@@ -146,6 +158,39 @@ export const mcWater = new THREE.MeshStandardMaterial({
   flatShading: true,
 });
 
+/** Desk-wing HUD geometry from the Blender station. Hot enough to bloom. */
+export const hudBlue = new THREE.MeshStandardMaterial({
+  color: "#031528",
+  emissive: "#0a6bff",
+  emissiveIntensity: 2.2,
+  roughness: 0.4,
+  metalness: 0,
+});
+
+/** Front-edge LED strip on the station desk. */
+export const ledBlue = new THREE.MeshStandardMaterial({
+  color: "#03122e",
+  emissive: "#0570ff",
+  emissiveIntensity: 2.8,
+  roughness: 0.35,
+  metalness: 0,
+});
+
+export const glassPane = new THREE.MeshStandardMaterial({
+  color: "#081018",
+  roughness: 0.08,
+  metalness: 0.12,
+  transparent: true,
+  opacity: 0.22,
+  depthWrite: false,
+});
+
+export const metalDark = new THREE.MeshStandardMaterial({
+  color: "#1a2230",
+  roughness: 0.38,
+  metalness: 0.72,
+});
+
 export const hologram = new THREE.MeshBasicMaterial({
   color: "#7fd0ff",
   transparent: true,
@@ -214,6 +259,7 @@ export const MATERIALS: Record<string, THREE.Material> = {
   caveWall,
   neonCyan,
   neonCyanFaint,
+  runeGlow,
   neonMagenta,
   lampWarm,
   screenBlue,
@@ -232,8 +278,34 @@ export const MATERIALS: Record<string, THREE.Material> = {
   mcFlowerRed,
   mcFlowerYellow,
   crateOrange,
+  hudBlue,
+  ledBlue,
+  glassPane,
+  metalDark,
 };
 
 for (const [name, mat] of Object.entries(MATERIALS)) {
   mat.name = name;
+}
+
+/**
+ * Replace GLB materials with the live instances above when the names match.
+ * Unrecognised names (pillar LUT, baked canvases) pass through; unlit maps
+ * skip tone mapping so they stay as authored.
+ */
+export function rebindMaterials(root: THREE.Object3D) {
+  const swap = (m: THREE.Material): THREE.Material => {
+    const shared = MATERIALS[m.name];
+    if (shared) return shared;
+    const basic = m as THREE.MeshBasicMaterial;
+    if (basic.isMeshBasicMaterial && basic.map) basic.toneMapped = false;
+    return m;
+  };
+  root.traverse((obj) => {
+    const mesh = obj as THREE.Mesh;
+    if (!mesh.isMesh) return;
+    mesh.material = Array.isArray(mesh.material)
+      ? mesh.material.map(swap)
+      : swap(mesh.material);
+  });
 }

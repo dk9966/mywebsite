@@ -7,6 +7,9 @@ The scene has two layers:
 - **World** (all 7 islands, pillars, bridges, signs, props): rendered from
   `secret-base/models/world.glb` by default. This is the file you edit
   in Blender.
+- **Station** (`/secret-base/?station`): the workshop pillar exported from
+  `base.blend` as `secret-base/models/pillar.glb`, with live holographic
+  screens parented onto `holoLocator_*` empties.
 
 Routes:
 
@@ -14,6 +17,13 @@ Routes:
 | --- | --- |
 | `/secret-base/` | Baked `world.glb` (your Blender edits) |
 | `/secret-base/?procedural` | Code-generated world (source for the GLB) |
+| `/secret-base/?station` | Workshop pillar from `base.blend` + live holos |
+
+Re-export the station pillar after Blender edits:
+
+```python
+exec(open("/Users/danielku/mywebsite/secret-base/export_pillar.py").read())
+```
 
 ## 1. Get the GLB into Blender
 

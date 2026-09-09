@@ -118,6 +118,35 @@ function drawScreen(variant: ScreenVariant): HTMLCanvasElement {
   return canvas;
 }
 
+function ScreenFace({
+  texture,
+  glow = 0,
+  transparent = false,
+}: {
+  texture: THREE.Texture;
+  glow?: number;
+  transparent?: boolean;
+}) {
+  if (glow > 0) {
+    return (
+      <meshStandardMaterial
+        map={texture}
+        color="#000000"
+        emissive="#ffffff"
+        emissiveMap={texture}
+        emissiveIntensity={glow}
+        roughness={1}
+        metalness={0}
+        toneMapped={false}
+        transparent={transparent}
+        depthWrite={!transparent}
+        side={transparent ? THREE.DoubleSide : THREE.FrontSide}
+      />
+    );
+  }
+  return <meshBasicMaterial map={texture} toneMapped={false} />;
+}
+
 /** Emissive UI screen with a dark frame and optional stand. */
 export function Screen({
   variant = "ui",
@@ -128,6 +157,8 @@ export function Screen({
   stand = false,
   frame = true,
   round = false,
+  glow = 0,
+  transparent = false,
 }: {
   variant?: ScreenVariant;
   width?: number;
@@ -138,6 +169,9 @@ export function Screen({
   frame?: boolean;
   /** circular screen: uses `width` as diameter, ignores `height` */
   round?: boolean;
+  /** emissive intensity; values above ~1 trip the scene bloom */
+  glow?: number;
+  transparent?: boolean;
 }) {
   const texture = useMemo(() => {
     const tex = new THREE.CanvasTexture(drawScreen(variant));
@@ -162,7 +196,7 @@ export function Screen({
         )}
         <mesh>
           <circleGeometry args={[width / 2, 32]} />
-          <meshBasicMaterial map={texture} toneMapped={false} />
+          <ScreenFace texture={texture} glow={glow} transparent={transparent} />
         </mesh>
       </group>
     );
@@ -177,7 +211,7 @@ export function Screen({
       )}
       <mesh>
         <planeGeometry args={[width, height]} />
-        <meshBasicMaterial map={texture} toneMapped={false} />
+        <ScreenFace texture={texture} glow={glow} transparent={transparent} />
       </mesh>
       {stand && (
         <>

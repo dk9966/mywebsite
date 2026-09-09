@@ -10,20 +10,15 @@ import { ContactIsland } from "./ContactIsland";
 import { MinecraftIsland } from "./MinecraftIsland";
 import { GarageIsland } from "./GarageIsland";
 import { BakedWorld } from "./BakedWorld";
+import { ImportedPillar } from "./ImportedPillar";
 import { islandLayout, rimPoint } from "./layout";
 import { useViewStore } from "./viewStore";
+import { sceneMode } from "./sceneMode";
 import type { ThreeEvent } from "@react-three/fiber";
 import type { Object3D } from "three";
 
 const L = islandLayout;
-
-// The world group (islands + bridges) has two sources:
-//  - baked (default): public/models/secret-base/world.glb — edit it in Blender
-//  - procedural (?procedural): generated from the components below — this is
-//    what gets exported to the GLB via `npm run export-secret-base-world`
-const USE_PROCEDURAL =
-  typeof window !== "undefined" &&
-  new URLSearchParams(window.location.search).has("procedural");
+const MODE = sceneMode();
 
 // Minecraft is a voxel island, so its bridge landing is computed by hand:
 // edge blocks (height 1) have their top surface ≈ 0.36 above the group origin.
@@ -102,15 +97,25 @@ export function PortfolioWorld() {
 
   return (
     <group name="portfolioWorld">
-      <Lighting />
-      <CaveShell />
-      <Dust />
+      {MODE !== "station" && (
+        <>
+          <Lighting />
+          <CaveShell />
+          <Dust />
+        </>
+      )}
       <group
         onClick={handleClick}
         onPointerOver={handleOver}
         onPointerOut={handleOut}
       >
-        {USE_PROCEDURAL ? <ProceduralWorld /> : <BakedWorld />}
+        {MODE === "station" ? (
+          <ImportedPillar />
+        ) : MODE === "procedural" ? (
+          <ProceduralWorld />
+        ) : (
+          <BakedWorld />
+        )}
       </group>
     </group>
   );

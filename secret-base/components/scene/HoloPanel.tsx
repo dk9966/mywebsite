@@ -240,10 +240,13 @@ export function HoloPanel({
   position,
   rotation = [0, 0, 0],
   width = 5.6,
+  glow = 0,
 }: {
   position: Vec3;
   rotation?: Vec3;
   width?: number;
+  /** emissive intensity; values above ~1 trip the scene bloom */
+  glow?: number;
 }) {
   const texture = useMemo(() => {
     const tex = new THREE.CanvasTexture(drawPanel());
@@ -258,13 +261,29 @@ export function HoloPanel({
     <group position={position} rotation={rotation} name="holoPanel">
       <mesh>
         <planeGeometry args={[width, height]} />
-        <meshBasicMaterial
-          map={texture}
-          transparent
-          toneMapped={false}
-          side={THREE.DoubleSide}
-          depthWrite={false}
-        />
+        {glow > 0 ? (
+          <meshStandardMaterial
+            map={texture}
+            color="#000000"
+            emissive="#ffffff"
+            emissiveMap={texture}
+            emissiveIntensity={glow}
+            roughness={1}
+            metalness={0}
+            transparent
+            toneMapped={false}
+            side={THREE.DoubleSide}
+            depthWrite={false}
+          />
+        ) : (
+          <meshBasicMaterial
+            map={texture}
+            transparent
+            toneMapped={false}
+            side={THREE.DoubleSide}
+            depthWrite={false}
+          />
+        )}
       </mesh>
     </group>
   );

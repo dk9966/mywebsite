@@ -1,7 +1,6 @@
 import { Suspense, useMemo } from "react";
-import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
-import { MATERIALS } from "./materials";
+import { rebindMaterials } from "./materials";
 
 // Lives inside secret-base/ and is bundled as a Vite asset.
 export const WORLD_GLB_URL = new URL(
@@ -19,22 +18,7 @@ function Model() {
   const { scene } = useGLTF(WORLD_GLB_URL);
 
   useMemo(() => {
-    const swap = (m: THREE.Material): THREE.Material => {
-      const shared = MATERIALS[m.name];
-      if (shared) return shared;
-      // unlit texture panels (signs/screens) should ignore tone mapping,
-      // matching how they were authored
-      const basic = m as THREE.MeshBasicMaterial;
-      if (basic.isMeshBasicMaterial && basic.map) basic.toneMapped = false;
-      return m;
-    };
-    scene.traverse((obj) => {
-      const mesh = obj as THREE.Mesh;
-      if (!mesh.isMesh) return;
-      mesh.material = Array.isArray(mesh.material)
-        ? mesh.material.map(swap)
-        : swap(mesh.material);
-    });
+    rebindMaterials(scene);
   }, [scene]);
 
   return <primitive object={scene} />;

@@ -35,6 +35,13 @@ const VIEWS = {
     minDistance: 3.5,
     maxPolarAngle: 1.52,
   },
+  // workshop pillar from base.blend — three-quarter of the whole island
+  station: {
+    position: [-6.4, 6.2, 9.2] as const,
+    target: [0.3, -0.8, -0.4] as const,
+    minDistance: 4,
+    maxPolarAngle: 1.48,
+  },
 };
 
 /**
@@ -47,15 +54,19 @@ export function CameraRig() {
   const controlsRef = useRef<ControlsLike | null>(null);
   const view = useViewStore((s) => s.view);
   const setView = useViewStore((s) => s.setView);
+  const startView = useRef(view);
+  const flown = useRef(false);
+  const start = VIEWS[startView.current];
 
   useLayoutEffect(() => {
-    const [x, y, z] = VIEWS.overview.position;
+    const [x, y, z] = start.position;
     camera.position.set(x, y, z);
-  }, [camera]);
+  }, [camera, start.position]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setView("overview");
+      if (e.key !== "Escape") return;
+      setView(startView.current === "station" ? "station" : "overview");
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -65,6 +76,15 @@ export function CameraRig() {
     const controls = controlsRef.current;
     if (!controls) return;
     const v = VIEWS[view];
+
+    if (!flown.current) {
+      flown.current = true;
+      controls.target.set(v.target[0], v.target[1], v.target[2]);
+      controls.minDistance = v.minDistance;
+      controls.maxPolarAngle = v.maxPolarAngle;
+      controls.update();
+      return;
+    }
 
     // relax constraints for the flight, tighten to the view's own afterwards
     controls.enabled = false;
@@ -102,14 +122,14 @@ export function CameraRig() {
   return (
     <OrbitControls
       ref={controlsRef as never}
-      target={[0.6, -0.2, 0.2]}
+      target={[start.target[0], start.target[1], start.target[2]]}
       enableDamping
       dampingFactor={0.08}
       enablePan={false}
-      minDistance={14}
-      maxDistance={55}
+      minDistance={start.minDistance}
+      maxDistance={startView.current === "station" ? 32 : 55}
       minPolarAngle={0.25}
-      maxPolarAngle={1.35}
+      maxPolarAngle={start.maxPolarAngle}
       rotateSpeed={0.6}
       zoomSpeed={0.7}
     />
