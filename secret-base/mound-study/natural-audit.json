@@ -1,0 +1,33 @@
+{
+  "vertices": 8127,
+  "triangles": 16250,
+  "boundary": 0,
+  "manifold": 24375,
+  "nonmanifold": 0,
+  "iteration": 6,
+  "source": "/Users/danielku/mywebsite/meshes/pillars/island_pillar_src/shape.py",
+  "cross_column_patch_count": 42,
+  "saddle_fixes": 0,
+  "angular_samples": 128,
+  "height_samples": 52,
+  "rock_top": 6.64117862701416,
+  "deck_top": 6.87117862701416,
+  "blend": "/Users/danielku/mywebsite/secret-base/mound-study/central-platform-rock-mound-natural.blend",
+  "mesh_objects_in_mound": 1,
+  "finished_mesh": {
+    "vertices": 43382,
+    "triangles": 86760,
+    "boundary": 0,
+    "manifold": 130140,
+    "nonmanifold": 0,
+    "connected_components": 1,
+    "component_vertex_counts": [
+      43382
+    ]
+  },
+  "scenes": [
+    "01 Central mound - platform close-up",
+    "02 Full layout - new central terrain",
+    "03 Rock only - geometry inspection"
+  ]
+}

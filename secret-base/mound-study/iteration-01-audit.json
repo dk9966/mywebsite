@@ -1,0 +1,16 @@
+{
+  "vertices": 9227,
+  "triangles": 18450,
+  "boundary": 0,
+  "manifold": 27675,
+  "nonmanifold": 0,
+  "iteration": 1,
+  "source": "/Users/danielku/mywebsite/meshes/pillars/island_pillar_src/shape.py",
+  "cross_column_patch_count": 100,
+  "angular_samples": 128,
+  "height_samples": 52,
+  "rock_top": 6.64117862701416,
+  "deck_top": 6.87117862701416,
+  "blend": "/Users/danielku/mywebsite/secret-base/mound-study/iteration-01.blend",
+  "mesh_objects_in_mound": 1
+}

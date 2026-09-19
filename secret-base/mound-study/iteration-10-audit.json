@@ -1,0 +1,27 @@
+{
+  "vertices": 9540,
+  "triangles": 19076,
+  "boundary": 0,
+  "manifold": 28614,
+  "nonmanifold": 0,
+  "iteration": 10,
+  "source": "/Users/danielku/mywebsite/meshes/pillars/island_pillar_src/shape.py",
+  "cross_column_patch_count": 42,
+  "saddle_fixes": 0,
+  "added_shallow_extrusions": 36,
+  "angular_samples": 128,
+  "height_samples": 52,
+  "rock_top": 6.64117862701416,
+  "deck_top": 6.87117862701416,
+  "blend": "/Users/danielku/mywebsite/secret-base/mound-study/iteration-10.blend",
+  "mesh_objects_in_mound": 1,
+  "microscopic_fragment_vertices_removed": 40,
+  "cross_section_elevations": [
+    0.0,
+    0.26,
+    0.52,
+    0.76,
+    1.0
+  ],
+  "lower_flare_factor": 1.12
+}
