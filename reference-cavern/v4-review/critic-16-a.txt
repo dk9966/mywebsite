@@ -1,0 +1,7 @@
+**Overall similarity: 7.5/10.** The candidate captures the layout and identity of all five stations well, but the cavern geometry and lighting still prevent a strong 8.5 match.
+
+1. **Break up the rocks and roof into more irregular cuboids.** The target has staggered, chipped blocks with varied depths, fractured faces, and dense ceiling overhangs. The candidate reads as long vertical columns, flat wall sections, and a relatively simple ceiling opening. Add shorter offset blocks, deeper recesses, and hanging roof clusters; reduce continuous vertical seams.
+
+2. **Soften and redistribute the lighting.** The target has diffuse blue-gray haze, broad overhead light cones, gentle floor reflections, and a warmly illuminated workshop. The candidate has stronger black voids, sharper cyan outlines, and concentrated pools of light. Increase subtle atmospheric fill, soften emissive edges, and spread warm workshop light across its surrounding surfaces.
+
+3. **Match the platforms’ perspective and integration.** The image aspect ratios are essentially identical, and station placement is close. However, the candidate’s decks feel more front-facing and vertically compressed, especially About Me; its central platform also has a heavier front fascia. Slightly increase the downward viewing angle, give decks more visible depth, and slim their front edges. Extend irregular rock ledges around the platforms so they feel embedded in the cavern.

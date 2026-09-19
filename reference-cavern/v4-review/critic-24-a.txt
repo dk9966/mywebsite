@@ -1,0 +1,7 @@
+**Overall: 7.3/10.** The candidate preserves the platform layout and reads as a modular cuboid cavern, but falls short of the target’s spatial depth and lighting. The smooth matte material is appropriate and is **not a defect**.
+
+1. **Rock assembly needs tighter, more cohesive packing.** Large isolated protrusions, dark seams, and vertically stacked blocks make the walls and central pillar feel assembled from scattered boxes. Close gaps, interlock adjacent modules, and use smaller cuboids to fill transitions while retaining smooth faces.
+
+2. **The roof hangs too low and feels too bulky.** Oversized foreground blocks compress the cavern, especially above the central opening. Reduce their downward projection and build a tighter, stepped ceiling perimeter that restores the target’s open central volume. Keep platforms fixed.
+
+3. **Lighting and perspective flatten the scene.** The central beam forms a bright, sharply bounded opening while surrounding rock loses readable depth; platforms also appear more front-on than in the target. Match the target’s camera elevation and aim with the platform positions locked, then soften the shaft boundaries and add restrained cool fill to reveal receding rock layers. The aspect ratio already appears closely matched.

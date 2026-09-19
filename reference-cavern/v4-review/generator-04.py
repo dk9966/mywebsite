@@ -1,0 +1,170 @@
+"""Deterministic V4 block-jointed cavern rebuild. Keeps source scene recoverable.
+Run with Blender --background --python rebuild_v4.py -- --pass 1.
+"""
+import bpy,bmesh,math,random,os,sys,argparse,json
+from mathutils import Vector
+from mathutils.noise import noise
+R=os.path.dirname(os.path.abspath(__file__)); OUT=R+'/v4-review'
+p=argparse.ArgumentParser();p.add_argument('--pass',dest='stage',type=int,default=1);p.add_argument('--width',type=int,default=1272);p.add_argument('--samples',type=int,default=40);a=p.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+bpy.ops.wm.open_mainfile(filepath=OUT+'/before-v4.blend');s=bpy.context.scene
+rng=random.Random(416)
+# Hide the prior geological treatment, retaining all editable source meshes.
+for c in bpy.data.collections:
+ if c.name[:2] in ('01','02','03','04','25'):
+  for o in c.objects:o.hide_render=True;o.hide_set(True)
+for o in s.objects:
+ if o.type=='LIGHT':o.hide_render=True
+co=bpy.data.collections.new('30 | V4 • jointed basalt walls and roof');s.collection.children.link(co)
+li=bpy.data.collections.new('31 | V4 • practical lighting and atmosphere');s.collection.children.link(li)
+def mat(n,c,rough=.85,emit=0):
+ m=bpy.data.materials.new(n);m.diffuse_color=(*c,1);m.use_nodes=True;p=m.node_tree.nodes.get('Principled BSDF');p.inputs['Base Color'].default_value=(*c,1);p.inputs['Roughness'].default_value=rough;p.inputs['Emission Color'].default_value=(*c,1);p.inputs['Emission Strength'].default_value=emit;return m
+rock=mat('V4 | fractured matte charcoal basalt',(.048,.058,.07))
+nt=rock.node_tree;n=nt.nodes;l=nt.links;bs=n.get('Principled BSDF');tc=n.new('ShaderNodeTexCoord');tex=n.new('ShaderNodeTexNoise');tex.inputs['Scale'].default_value=6;tex.inputs['Detail'].default_value=4;l.new(tc.outputs['Object'],tex.inputs['Vector'])
+vor=n.new('ShaderNodeTexVoronoi');vor.feature='DISTANCE_TO_EDGE';vor.inputs['Scale'].default_value=6;l.new(tc.outputs['Object'],vor.inputs['Vector'])
+ramp=n.new('ShaderNodeValToRGB');ramp.color_ramp.elements[0].position=.014;ramp.color_ramp.elements[0].color=(.028,.035,.043,1);ramp.color_ramp.elements[1].position=.095;ramp.color_ramp.elements[1].color=(.059,.07,.084,1);l.new(vor.outputs['Distance'],ramp.inputs[0]);l.new(ramp.outputs[0],bs.inputs['Base Color'])
+b=n.new('ShaderNodeBump');b.inputs['Strength'].default_value=.48;b.inputs['Distance'].default_value=.065;l.new(vor.outputs['Distance'],b.inputs['Height']);b2=n.new('ShaderNodeBump');b2.inputs['Strength'].default_value=.32;b2.inputs['Distance'].default_value=.065;l.new(tex.outputs['Fac'],b2.inputs['Height']);l.new(b.outputs[0],b2.inputs['Normal']);l.new(b2.outputs[0],bs.inputs['Normal'])
+# Scanned fracture normal, with triplanar stone color on the block faces.
+rock=bpy.data.materials['GEOLOGY | eroded stratified dark limestone'].copy();rock.name='V4 | scanned matte fractured basalt'
+nt=rock.node_tree;tc=nt.nodes.new('ShaderNodeTexCoord');mapping=nt.nodes.new('ShaderNodeVectorMath');mapping.operation='SCALE';mapping.inputs[3].default_value=.48;nt.links.new(tc.outputs['Object'],mapping.inputs[0])
+for nod in nt.nodes:
+ if nod.type=='TEX_IMAGE':nod.projection='BOX';nod.projection_blend=.14;nt.links.new(mapping.outputs[0],nod.inputs['Vector'])
+ if nod.type=='NORMAL_MAP':nod.inputs['Strength'].default_value=1.35
+# Shared chipped orthogonal chunks; broad faces stay planar, corners fracture.
+variants=[]
+for k in range(24):
+ bm=bmesh.new();bmesh.ops.create_cube(bm,size=1)
+ for v in bm.verts:v.co+=Vector(tuple(rng.uniform(-.025,.025) for _ in range(3)))
+ bmesh.ops.bevel(bm,geom=list(bm.edges),offset=rng.uniform(.027,.060),segments=1,affect='EDGES')
+ bmesh.ops.subdivide_edges(bm,edges=list(bm.edges),cuts=3,use_grid_fill=True)
+ bm.normal_update()
+ for v in bm.verts:v.co+=v.normal*(noise(v.co*9+Vector((k,0,0)))*.065)
+ bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));me=bpy.data.meshes.new('V4 | chipped joint block %02d'%k);bm.to_mesh(me);bm.free();me.materials.append(rock)
+ uv=me.uv_layers.new(name='Fracture face UV')
+ for f in me.polygons:
+  axis=max(range(3),key=lambda j:abs(f.normal[j]));ax=(0,1) if axis==2 else (0,2) if axis==1 else (1,2)
+  for j in f.loop_indices:
+   v=me.vertices[me.loops[j].vertex_index].co;uv.data[j].uv=(v[ax[0]]*.7+k*.173,v[ax[1]]*.7+k*.233)
+ variants.append(me)
+def block(n,loc,scale):
+ ob=bpy.data.objects.new(n,rng.choice(variants));co.objects.link(ob);ob.location=loc;ob.scale=scale;ob.rotation_euler.z=rng.uniform(-.016,.016);return ob
+def mass(tag,cx,cy,rx,ry,z0,z1,cell=1.25):
+ # Each column has discrete shoulders and staggered break planes; no taper/cones.
+ for ix in range(-math.ceil(rx/cell),math.ceil(rx/cell)+1):
+  for iy in range(-math.ceil(ry/cell),math.ceil(ry/cell)+1):
+   x=cx+ix*cell;y=cy+iy*cell
+   d=(ix*cell/rx)**2+(iy*cell/ry)**2
+   if d>1+rng.uniform(-.16,.16):continue
+   top=z1-rng.uniform(.0,1.8)-max(0,d-.20)*rng.uniform(2,5)
+   z=z0+rng.uniform(-.5,.5)
+   column_dx=rng.uniform(-.35,.35);column_dy=rng.uniform(-.6,.6)
+   while z<top:
+    h=min(rng.choice([.85,1.1,1.35,1.65]),top-z)
+    if h<.18:break
+    tier=math.floor(z/3.4)
+    bulge=.80+.28*math.sin(tier*1.71+cx)+.18*math.cos(tier*2.3+cy)
+    if d<bulge:
+     step_x=.70*math.sin(tier*1.3+cy)+column_dx;step_y=.8*math.sin(tier*2.1+cx)+column_dy
+     block('V4 | '+tag,(x+step_x+rng.uniform(-.09,.09),y+step_y+rng.uniform(-.09,.09),z+h/2),(cell*rng.uniform(1.03,1.23),cell*rng.uniform(1.03,1.23),h-.012))
+    z+=h
+# Deep independent pedestal roots.
+for data in [('Projects root',0,5.3,4.1,3.9,-16,6.9),('Contact root',-12.8,11,3.65,3.7,-15,10.6),('Experiences root',-15,-4,5.0,4.3,-16,3.8),('About root',14.3,-.6,4.8,3.9,-16,6.9),('Workshop root',14,14,5.4,4,-12,10.6)]:mass(*data)
+# Foreground sidewalls never obscure station fronts.
+for data in [('Left edge',-25,3,3.3,9,-15,30),('Right edge',25,6,3.5,11,-15,30),('Left inner cliff',-20,16,3.8,4.5,-14,29),('Right inner cliff',21,19,3.8,4,-14,29),('Rear left buttress',-6.8,25,3.2,4,-14,28),('Rear right buttress',8,29,3.3,4,-14,29)]:mass(*data,cell=1.45)
+for x,y,z in [(-16,34,25),(-10,40,27),(-2,40,25),(6,42,27),(15,39,29),(-4,27,9),(5,29,12)]:mass('Receding cliffs',x,y,3.4,3,-17,z,1.6)
+for data in [('Projects front shoulder',1,.7,2.2,1.7,-16,3.5),('Projects left shoulder',-3.3,3,1.6,2,-16,4.8),('About front shoulder',13,-4,2.4,1.8,-16,3.7),('Left foreground ledge',-21,-7,2.2,3,-16,6),('Right foreground ledge',23,-5,2.4,3,-16,8),('Left wall inward step',-21,7,2.3,3,-16,14),('Rear hub buttress',-6.5,22,3,3,-16,15)]:mass(*data,cell=1.1)
+# Discrete front outcrops give the pedestal a broken geological silhouette.
+for data in [('Projects large ledge',1.7,.3,1.7,1.4,-16,5.2),('Projects broken flank',-3.9,1.5,1.5,1.7,-16,2.7),('Contact block ledge',-16,7,1.7,1.5,-16,8.3),('Left lower cliff',-21,-8,2.4,2.0,-16,5.0),('Right broken cliff',22,-9,2.6,2,-16,5.8)]:mass(*data,cell=1.1)
+# Roof: continuous uneven upper mass with stepped pendent outcrops.
+for ix in range(-18,19):
+ x=ix*1.45
+ for iy in range(7):
+  y=8+iy*2.6+2.4*math.sin(ix*.61)
+  bottom=21.1+.7*math.sin(ix*.7)+.45*math.cos(iy+ix*.2)
+  for iz in range(2):block('V4 | continuous rock roof',(x,y,bottom+iz*1.2),(1.47,2.65,1.23))
+for x,y,low in [(-23,11,15),(-18,23,15),(-7,25,15),(5,30,17),(20,23,15),(24,12,15)]:mass('Roof hanging step',x,y,2.1,2,low,22,1.15)
+# Remove rounded architectural rock awnings from the old style.
+for ob in s.objects:
+ if ob.type=='MESH' and any(m and m.name.startswith(('GEOLOGY','ROCK |')) for m in ob.data.materials):
+  if not ob.name.startswith('V4 |'):ob.hide_render=True
+# Chunky horizontal shoulders project into the top framing, with thick roofs.
+for data in [('Roof left foreground',-17,6,3.1,2.7,20.4,25),('Roof central shelf',-5,10,3.0,3.6,20.5,25),('Roof right shelf',7,12,3.1,3.6,19.8,25)]:mass(*data,cell=1.3)
+# Slightly wider matching 1.832:1 camera gate.
+s.render.resolution_x=a.width;s.render.resolution_y=round(a.width*927/1696);s.render.resolution_percentage=100;s.render.pixel_aspect_x=1;s.render.pixel_aspect_y=1
+s.camera.data.ortho_scale=49.2;s.camera.location.z=31.4;s.camera.rotation_euler.x=math.radians(72)
+# Dim neutral world, with visible localized illumination.
+s.world.node_tree.nodes.get('Background').inputs[0].default_value=(.12,.16,.21,1);s.world.node_tree.nodes.get('Background').inputs[1].default_value=.11
+s.view_settings.exposure=.1
+white=mat('V4 | ceiling luminous strip',(.70,.82,1),.3,7)
+label=mat('V4 | icy blue illuminated typography',(.25,.42,1),.45,2.4)
+for ob in s.objects:
+ if ob.type=='FONT' and 'lettering' in ob.name:ob.data.materials.clear();ob.data.materials.append(label)
+ # Make the central pool visibly blue instead of hollow black.
+ if ob.type=='MESH' and any(m and 'Secondary table' in m.name for m in ob.data.materials):
+  for m in ob.data.materials:
+   if m and m.use_nodes:
+    p=m.node_tree.nodes.get('Principled BSDF')
+    if p:p.inputs['Emission Color'].default_value=(.018,.29,.62,1);p.inputs['Emission Strength'].default_value=1.8
+
+def light(n,pos,target,power,size=1,kind='AREA',color=(.72,.82,1),angle=.65):
+ d=bpy.data.lights.new('V4 | '+n,kind);d.energy=power;d.color=color
+ if kind=='AREA':d.shape='DISK';d.size=size
+ if kind=='SPOT':d.spot_size=angle;d.spot_blend=.55;d.shadow_soft_size=.18
+ ob=bpy.data.objects.new(d.name,d);li.objects.link(ob);ob.location=pos;ob.rotation_euler=(Vector(target)-ob.location).to_track_quat('-Z','Y').to_euler();return ob
+
+def fixture(n,pos,target,power,angle=.65):
+ ob=block('Lamp housing '+n,pos,(1.05,.6,.14));ob.data=ob.data.copy();ob.data.materials.clear();ob.data.materials.append(bpy.data.materials['STRUCTURE | graphite powdercoat'])
+ for dy in [-.18,.18]:
+  ob=block('White lamp strip '+n,(pos[0],pos[1]+dy,pos[2]-.08),(.86,.06,.035));ob.data=ob.data.copy();ob.data.materials.clear();ob.data.materials.append(white)
+ light(n,(pos[0],pos[1],pos[2]-.25),target,power,kind='SPOT',angle=angle)
+fixture('Contact overhead',(-13.5,9,18.4),(-12.8,10,10),3800,.78)
+fixture('Central overhead',(-.6,13,18.5),(0,10,3),9500,1.05)
+fixture('Workshop overhead',(14,12,16.8),(14,13,10),2400,.9)
+fixture('Education ceiling',(-16.6,-1,9.1),(-15,-4,5),950,1.1)
+fixture('About ceiling',(14.3,1.5,11.8),(14,-1,7),1500,1.05)
+light('Soft camera bounce',(0,-18,20),(0,8,9),2200,18)
+light('Rear depth',(0,34,22),(0,22,10),1700,8)
+light('Left rock grazing',(-17,-4,19),(-24,8,12),350,8)
+light('Right rock grazing',(17,-4,20),(24,8,12),350,8)
+light('Projects screen',(0,7,10),(0,4,7.5),120,3,color=(.08,.4,1))
+light('About blue pool',(14,-1,9),(14,-1,7),70,2,color=(.04,.38,1))
+for ob in s.objects:
+ if ob.type=='LIGHT' and ('Workshop | warm task' in ob.name or 'Practical | workshop' in ob.name):ob.hide_render=False;ob.data.energy*=1.0
+ if ob.type=='LIGHT' and 'Bollard | pool' in ob.name:ob.hide_render=False;ob.data.energy=5;ob.data.color=(1,.72,.43)
+# Filled luminous holographic surface at the real table top.
+light('Experience work floor',(-14,-6,9),(-14,-6,4.8),500,4,color=(.8,.86,1))
+for ob in s.objects:
+ if ob.type=='MESH' and any(m and 'luminous blue surface' in m.name for m in ob.data.materials):
+  for m in ob.data.materials:
+   if m and m.use_nodes:
+    pp=m.node_tree.nodes.get('Principled BSDF')
+    if pp:pp.inputs['Emission Color'].default_value=(.022,.25,.65,1);pp.inputs['Emission Strength'].default_value=2.0
+# Luminous inset explicitly replaces legacy connected emission graph.
+inset=bpy.data.objects['Holo table | luminous inset'];inset.data=inset.data.copy();inset.data.materials.clear();inset.data.materials.append(mat('V4 | filled blue table',(.006,.16,.42),.45,.65))
+for ob in s.objects:
+ if ob.name.startswith('Holo table | blue vent'):
+  ob.data=ob.data.copy();ob.data.materials.clear();ob.data.materials.append(white)
+# Broad station pools complement the ceiling shafts.
+light('Projects ceiling bounce',(0,3,14),(0,5,7),1800,5,color=(.72,.8,1))
+light('Contact soft white',(-12,7,17),(-12,11,11),350,4,color=(.85,.88,1))
+light('About soft white',(13,-1,12),(14,-1,7.6),700,4,color=(.8,.87,1))
+# Bottom haze is illuminated behind the rock roots, not from the camera.
+light('Deep abyss mist',(0,18,-1),(0,3,-7),1600,9,color=(.36,.46,.60))
+light('Left abyss mist',(-7,14,0),(-7,0,-8),700,7,color=(.36,.46,.60))
+# Reduce the tower's height to the reference silhouette, anchored on its deck.
+for ob in bpy.data.collections['20 | CONTACT • antenna & operations'].objects:
+ if 'mast' in ob.name.lower() or 'antenna' in ob.name.lower():
+  ob.location.z=11.35+(ob.location.z-11.35)*.82;ob.scale.z*=.82
+# Physically scattering fog in a continuous abyss, no visible water plane.
+vol=bpy.data.materials.new('V4 | fine cool suspended cavern haze');vol.use_nodes=True;nt=vol.node_tree;nt.nodes.clear();out=nt.nodes.new('ShaderNodeOutputMaterial');pv=nt.nodes.new('ShaderNodeVolumePrincipled');pv.inputs['Density'].default_value=.009;pv.inputs['Color'].default_value=(.40,.47,.56,1);pv.inputs['Anisotropy'].default_value=.28;nt.links.new(pv.outputs['Volume'],out.inputs['Volume'])
+bpy.ops.mesh.primitive_cube_add(size=1,location=(0,18,5));fog=bpy.context.object;fog.name='V4 | atmospheric chasm volume';fog.scale=(62,65,66);fog.data.materials.append(vol)
+# Persist full camera aspect and rendering settings in the artifact.
+s.render.engine='CYCLES';s.cycles.samples=a.samples;s.cycles.use_denoising=True
+try:
+ prefs=bpy.context.preferences.addons['cycles'].preferences;prefs.compute_device_type='METAL';prefs.get_devices()
+ for dev in prefs.devices:dev.use=True
+ s.cycles.device='GPU'
+except Exception:s.cycles.device='CPU'
+s.render.filepath=OUT+'/pass-%02d.png'%a.stage
+s['v4_reference']='design-references/misty-abyss/blockwork-cavern-central-light-v4.png';s['v4_generator']='rebuild_v4.py';s['v4_seed']=416
+bpy.ops.wm.save_as_mainfile(filepath=OUT+'/pass-%02d.blend'%a.stage)
+bpy.ops.render.render(write_still=True)

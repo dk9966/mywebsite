@@ -1,0 +1,84 @@
+{
+  "source_objects": 4175,
+  "evaluated_triangles": 1283276,
+  "camera": {
+    "position": [
+      0.0,
+      -64.0,
+      38.0
+    ],
+    "quaternion": [
+      0.8342623710632324,
+      0.5513676404953003,
+      0.0,
+      0.0
+    ],
+    "horizontal_span": 44.5,
+    "vertical_span": 24.322818396226417
+  },
+  "water_elevation": 0.9,
+  "runtime_notes": [
+    "GLB has batched unique geometry and EXT_mesh_gpu_instancing for repeated modules.",
+    "CC0 2K rock and metal color, roughness and normal maps are packed in the GLB with metric UVs. Render-only volumes and lights are excluded.",
+    "Recreate localized light pools, graded fog and restrained bloom in Three.js using atmosphere-runtime.json.",
+    "Editable labels and curves remain in the .blend; the GLB contains converted mesh lettering.",
+    "Use GLTFLoader with a Draco decoder; EXT_mesh_gpu_instancing retains shared repeated modules. Instance names are preserved in node extras."
+  ],
+  "runtime_objects_before_instancing": 2362,
+  "area_batches": 16,
+  "area_anchors_blender_z_up": {
+    "Projects": [
+      0.0,
+      5.400000095367432,
+      7.650000095367432
+    ],
+    "Experiences": [
+      -13.699999809265137,
+      -5.0,
+      5.5
+    ],
+    "Education": [
+      -14.81546401977539,
+      -2.902116298675537,
+      6.349999904632568
+    ],
+    "Work": [
+      -12.685940742492676,
+      -6.907166957855225,
+      4.849999904632568
+    ],
+    "Contact": [
+      -12.5,
+      11.0,
+      11.34999942779541
+    ],
+    "About Me": [
+      13.75,
+      -1.2000001668930054,
+      7.700000286102295
+    ],
+    "Workshop": [
+      14.699999809265137,
+      14.100000381469727,
+      11.449999809265137
+    ],
+    "Minecraft": [
+      6.5,
+      18.5,
+      9.6
+    ]
+  },
+  "glb_bytes": 25702712,
+  "gltf_nodes": 119,
+  "gltf_meshes": 110,
+  "gpu_instance_groups": 94,
+  "gpu_instances": 2346,
+  "gltf_materials": 53,
+  "gltf_extensions": [
+    "KHR_draco_mesh_compression",
+    "KHR_materials_emissive_strength",
+    "KHR_materials_specular",
+    "KHR_materials_ior",
+    "EXT_mesh_gpu_instancing"
+  ]
+}

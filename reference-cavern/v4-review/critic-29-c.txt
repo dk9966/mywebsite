@@ -1,0 +1,7 @@
+**6.3/10 fulfillment.** The candidate preserves the station layout and central abyss, but falls clearly below 8.5 because the rock environment reads as architectural paneling rather than excavated stone.
+
+1. **Rock masses are too elongated and regular.** Tall rectangular strips, flat walls, and broad horizontal shelves replace the reference’s irregular stepped clusters. Retain solid support cores, then recursively subdivide their outer volumes at unequal sizes and depths. Form connected stepped silhouettes with small corner chips and smooth, matte broad faces.
+
+2. **Lighting exposes flat surfaces more than cavern depth.** The central shaft is a large pale wash, while peripheral rock disappears into black. Narrow the overhead beam, soften its falloff, and add restrained cool bounce across successive rock layers so foreground, supports, and distant walls remain distinguishable.
+
+3. **The framing feels tighter and more frontal.** The aspect ratio is close, but the candidate lacks the reference’s enclosing ceiling formations and foreground rock edges; the platforms consequently dominate. Match the reference camera elevation and aim, then restore ceiling overhangs and edge clusters while preserving open space around the central platform.

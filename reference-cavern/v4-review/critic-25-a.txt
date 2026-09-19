@@ -1,0 +1,7 @@
+**7.2/10 — recognizable and fairly close, but below strong fulfillment at 8.5.** Platform placement matches well, and the smooth matte rock is consistent with your preference. The main gaps are framing, light distribution, and how the rock modules fit together.
+
+1. **Camera feels more top-down and wide-angle.** The candidate exposes more platform flooring, and the lower-right walkway descends at a steeper screen angle. Reduce the downward camera tilt and perspective exaggeration, then adjust camera distance to preserve platform screen positions. The image aspect ratio itself is already close.
+
+2. **Lighting is too concentrated into bright surfaces and isolated beams.** The central opening reads as a bright overhead patch, while much of the surrounding cavern loses depth in blackness. Broaden the central atmospheric light down through the chasm, add restrained cool fill to reveal rock faces, and soften the saturated cyan screens and About Me surface.
+
+3. **Rockwork reads as protruding tiles and long vertical slabs rather than tightly fitted cuboid modules.** The ceiling especially lacks the target’s substantial stepped overhangs. Build larger, distinct rock masses from closely packed cuboids with shallow seams, reduce random face offsets, and break long vertical strips into staggered blocks. Preserve the smooth matte finish; texture roughness is not needed.

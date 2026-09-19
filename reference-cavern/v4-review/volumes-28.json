@@ -1,0 +1,317 @@
+[
+  {
+    "name": "Projects solid foundation",
+    "kind": "support",
+    "bounds": [
+      -4.4,
+      4.4,
+      -0.6,
+      8,
+      -20,
+      7.3
+    ],
+    "blocks": 417,
+    "solid_volume": 1995.9792229134305,
+    "partition_volume": 1995.9792229134307
+  },
+  {
+    "name": "Contact solid foundation",
+    "kind": "support",
+    "bounds": [
+      -16.8,
+      -8.8,
+      6.8,
+      15,
+      -20,
+      10.8
+    ],
+    "blocks": 381,
+    "solid_volume": 1945.15476468248,
+    "partition_volume": 1945.15476468248
+  },
+  {
+    "name": "Experiences solid foundation",
+    "kind": "support",
+    "bounds": [
+      -20,
+      -10,
+      -8.3,
+      0.3,
+      -20,
+      3.9
+    ],
+    "blocks": 440,
+    "solid_volume": 1964.031657593008,
+    "partition_volume": 1964.0316575930083
+  },
+  {
+    "name": "About solid foundation",
+    "kind": "support",
+    "bounds": [
+      9.5,
+      19.1,
+      -4.6,
+      3.6,
+      -20,
+      7.0
+    ],
+    "blocks": 398,
+    "solid_volume": 2038.6109378052695,
+    "partition_volume": 2038.6109378052693
+  },
+  {
+    "name": "Workshop solid foundation",
+    "kind": "support",
+    "bounds": [
+      8.6,
+      19.4,
+      10,
+      18,
+      -20,
+      10.7
+    ],
+    "blocks": 503,
+    "solid_volume": 2568.3118009971554,
+    "partition_volume": 2568.3118009971554
+  },
+  {
+    "name": "Left edge wall",
+    "kind": "wall",
+    "bounds": [
+      -28,
+      -22,
+      -8,
+      24,
+      -20,
+      28
+    ],
+    "blocks": 2582,
+    "solid_volume": 9078.809363861947,
+    "partition_volume": 9078.809363861947
+  },
+  {
+    "name": "Right edge wall",
+    "kind": "wall",
+    "bounds": [
+      22,
+      29,
+      -7,
+      27,
+      -20,
+      28
+    ],
+    "blocks": 3349,
+    "solid_volume": 11215.46341681636,
+    "partition_volume": 11215.463416816357
+  },
+  {
+    "name": "Left inner cliff",
+    "kind": "wall",
+    "bounds": [
+      -24,
+      -19,
+      15,
+      26,
+      -20,
+      28
+    ],
+    "blocks": 1119,
+    "solid_volume": 2522.329937949479,
+    "partition_volume": 2522.329937949479
+  },
+  {
+    "name": "Right inner cliff",
+    "kind": "wall",
+    "bounds": [
+      19,
+      25,
+      18,
+      29,
+      -20,
+      28
+    ],
+    "blocks": 966,
+    "solid_volume": 3047.126069473937,
+    "partition_volume": 3047.126069473937
+  },
+  {
+    "name": "Rear left buttress",
+    "kind": "wall",
+    "bounds": [
+      -10,
+      -4,
+      24,
+      31,
+      -20,
+      28
+    ],
+    "blocks": 630,
+    "solid_volume": 1875.9231756238494,
+    "partition_volume": 1875.9231756238494
+  },
+  {
+    "name": "Rear right buttress",
+    "kind": "wall",
+    "bounds": [
+      5,
+      11,
+      28,
+      35,
+      -20,
+      28
+    ],
+    "blocks": 660,
+    "solid_volume": 1902.3671193202215,
+    "partition_volume": 1902.3671193202215
+  },
+  {
+    "name": "Receding cliffs left",
+    "kind": "wall",
+    "bounds": [
+      -20,
+      -10,
+      38,
+      45,
+      -20,
+      28
+    ],
+    "blocks": 823,
+    "solid_volume": 3201.369014343462,
+    "partition_volume": 3201.369014343462
+  },
+  {
+    "name": "Receding cliffs center",
+    "kind": "wall",
+    "bounds": [
+      -8,
+      5,
+      44,
+      50,
+      -20,
+      28
+    ],
+    "blocks": 993,
+    "solid_volume": 3530.2881941577143,
+    "partition_volume": 3530.2881941577143
+  },
+  {
+    "name": "Receding cliffs right",
+    "kind": "wall",
+    "bounds": [
+      11,
+      22,
+      40,
+      47,
+      -20,
+      28
+    ],
+    "blocks": 764,
+    "solid_volume": 3468.2558226063106,
+    "partition_volume": 3468.2558226063106
+  },
+  {
+    "name": "Roof canopy left",
+    "kind": "roof",
+    "bounds": [
+      -28,
+      -8,
+      5,
+      30,
+      21,
+      26
+    ],
+    "blocks": 471,
+    "solid_volume": 2196.631930654694,
+    "partition_volume": 2196.6319306546934
+  },
+  {
+    "name": "Roof canopy center",
+    "kind": "roof",
+    "bounds": [
+      -8,
+      7,
+      8,
+      32,
+      22,
+      27
+    ],
+    "blocks": 356,
+    "solid_volume": 1419.061649780375,
+    "partition_volume": 1419.061649780375
+  },
+  {
+    "name": "Roof canopy right",
+    "kind": "roof",
+    "bounds": [
+      7,
+      29,
+      7,
+      32,
+      21,
+      26
+    ],
+    "blocks": 442,
+    "solid_volume": 2354.873830611801,
+    "partition_volume": 2354.873830611801
+  },
+  {
+    "name": "Roof hanging left",
+    "kind": "roof",
+    "bounds": [
+      -8,
+      -4,
+      15,
+      23,
+      14,
+      22
+    ],
+    "blocks": 132,
+    "solid_volume": 220.87341323924898,
+    "partition_volume": 220.87341323924898
+  },
+  {
+    "name": "Roof hanging right",
+    "kind": "roof",
+    "bounds": [
+      7,
+      11,
+      21,
+      28,
+      16,
+      21
+    ],
+    "blocks": 63,
+    "solid_volume": 112.35061741625331,
+    "partition_volume": 112.35061741625331
+  },
+  {
+    "name": "Experiences cavern brow",
+    "kind": "roof",
+    "bounds": [
+      -21,
+      -10,
+      1,
+      4.5,
+      9.5,
+      11.5
+    ],
+    "blocks": 41,
+    "solid_volume": 62.090562780082465,
+    "partition_volume": 62.090562780082465
+  },
+  {
+    "name": "About cavern brow",
+    "kind": "roof",
+    "bounds": [
+      9,
+      20,
+      4,
+      7,
+      10.5,
+      12.0
+    ],
+    "blocks": 47,
+    "solid_volume": 42.827942407542544,
+    "partition_volume": 42.827942407542544
+  }
+]

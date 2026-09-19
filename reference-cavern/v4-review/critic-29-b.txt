@@ -1,0 +1,7 @@
+**6.5/10 — recognizable composition, but below strong fulfillment (8.5).** Solid support cores are present, and the major platforms align reasonably well with the reference.
+
+1. **Rock reads as architectural slabs.** Tall, flat columns and oversized horizontal ledges lack the reference’s irregular stepped silhouettes. Recursively subdivide attached rock masses at unequal scales, keeping coherent solid cores and avoiding floating or intersecting cube piles.
+
+2. **Rock surfaces lack edge character.** Broad matte faces are appropriate, but edges remain too straight and pristine. Add small, sparse corner chips and shallow face offsets; preserve smooth broad surfaces rather than covering them in noise.
+
+3. **Camera framing and lighting flatten the cavern.** The candidate feels more frontal, with a thinner overhead rock canopy and a brighter, broader central haze. Match the reference’s camera elevation and platform foreshortening, restore the stepped ceiling enclosure, and narrow the central light shaft while adding subtle grazing light to reveal rock depth.

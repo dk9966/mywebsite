@@ -1,0 +1,9 @@
+**Overall: 7/10.** The platform arrangement and scene identity are close, but the cavern geometry and lighting still fall short of strong fulfillment. Smooth matte rock and modular construction fit the brief; surface texture is not the issue.
+
+1. **Rock pieces need tighter packing and more consistent scale.** The candidate has oversized smooth slabs, conspicuous gaps, and isolated protruding cubes, especially beneath Projects and along the side walls. Build densely fitted modular rock clusters with smaller stepped blocks and narrow seams. Preserve matte surfaces while reducing the scattered, stacked-box appearance.
+
+2. **The roof needs a more continuous, articulated canopy.** The candidate’s ceiling reads as a heavy, near-black band with large flat undersides. Use tightly packed, smaller modules to create layered overhangs and irregular descending edges, with subtle illumination revealing their depth. Keep the central light opening.
+
+3. **Lighting needs softer distribution and better depth separation.** The candidate’s central shaft looks like a sharply bounded bright opening, while surrounding rock and bridges disappear into black; screens and the About Me pool are comparatively saturated cyan. Soften the shaft with gradual atmospheric falloff, add restrained cool fill across rock faces and walkways, and reduce cyan intensity.
+
+**Camera/aspect:** The wide aspect and main platform locations are already close. The candidate’s Projects platform feels more frontal and thick-rimmed; a small camera elevation/pitch adjustment could better match the target’s view across its floor. Keep platform positions fixed.

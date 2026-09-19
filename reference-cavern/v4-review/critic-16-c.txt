@@ -1,0 +1,7 @@
+**Overall similarity: 7.4/10.** The candidate clearly matches the scene layout and theme, but falls short of an 8.5 strong match in rock structure, lighting, and spatial composition.
+
+1. **Match the camera and platform proportions.** The aspect ratio is close, but the candidate feels more frontal and vertically stretched. The target exposes more platform floor area, with a broader central disc and a larger About Me platform. Increase the downward viewing angle slightly, widen those platforms, and give the bridges the target’s gentler, more horizontal profiles.
+
+2. **Replace continuous rock columns with fractured cuboid masses, especially overhead.** The candidate’s walls read as long vertical stacks with shallow surface texture; its roof reads as a heavy, nearly flat dark band. The target has staggered blocks, deep recesses, irregular broken faces, and many distinct ceiling overhangs. Break up the columns at multiple scales and build a more visibly stepped, interlocking roof silhouette.
+
+3. **Rebalance light toward atmospheric depth.** The candidate has a bright blue opening behind the central lamp, while much of the foreground rock collapses into black. The target distributes softer light through several smoky shafts, revealing more rock edges and bridge detail; its workshop also has a richer warm glow. Reduce the bright upper opening, broaden the volumetric shafts, and add restrained cool fill plus warmer workshop spill.

@@ -1,0 +1,7 @@
+**Overall similarity: 7.6/10.** The candidate clearly matches the layout and concept, but the cavern geometry and lighting keep it below a strong 8.5 match.
+
+1. **Camera and proportions:** The aspect ratio matches closely. The candidate shows more platform floor and makes the platforms feel deeper and rounder; the target feels flatter and more horizontally spread. Lower the camera’s elevation slightly and reduce platform depth, particularly Projects and Experiences.
+
+2. **Lighting:** The candidate has a brighter, broader central light shaft, more uniformly readable rock, and sharper cyan screens. The target uses deeper shadow, softer blue illumination, and smaller warm pools along walkways. Narrow and soften the central shaft, lower rock fill light, and add restrained warm walkway lights.
+
+3. **Fractured cuboid rocks and roof:** The candidate’s rocks look like regular blocks covered in fine crack texture, with long, straight vertical stacks. The target has larger irregular fractures, chipped silhouettes, staggered protrusions, and more layered ceiling shelves. Vary block sizes and offsets, break up the tall columns, and extend uneven roof ledges into the open space.

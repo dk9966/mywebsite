@@ -1,0 +1,7 @@
+**Overall: 7.4/10.** The candidate captures the target’s layout and recognizable stations, but the cavern geometry, camera perspective, and lighting still fall short of strong fulfillment. The smooth matte rock material is appropriate and is **not** a defect.
+
+1. **Rock assembly is too vertically stretched and unevenly packed.** Long columns, isolated protruding blocks, and deep seams make the environment read as stacked slabs. Use tighter clusters of shorter cuboids, stagger joints, and fill gaps—especially beneath Projects and along the side walls. Build reusable clusters with varied rotations and offsets to reduce obvious repetition.
+
+2. **Camera perspective compresses the platform floors.** The aspect ratio is close, but Projects and About Me appear flatter and more edge-on than in the target. Increase the downward viewing angle slightly and tune camera distance/focal length while preserving platform locations and their screen-space arrangement.
+
+3. **Lighting and roof geometry make the ceiling too heavy.** The candidate’s broad, low ceiling mass and bright central opening concentrate attention above Projects; the target distributes soft light through a more irregular roof. Break up the ceiling silhouette with tightly fitted, stepped modules, soften the central shaft, and add restrained cool fill to reveal rock depth and bridge surfaces without washing out the darkness.

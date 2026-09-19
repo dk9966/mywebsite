@@ -1,0 +1,7 @@
+**Overall similarity: 7.5/10.** The candidate captures the layout and recognizable stations well, but the cavern geometry and lighting still keep it below a strong 8.5 match.
+
+1. **Camera and proportions:** The aspect ratio matches closely, but the candidate feels more top-down: platform floors occupy more space, and the central disk looks taller and more elliptical. Lower the camera elevation slightly and reduce the visual footprint of the foreground Experiences platform to recover the target’s spacious composition.
+
+2. **Lighting and atmosphere:** The candidate has brighter, flatter illumination across floors and rock faces, with stronger cyan outlines. The target concentrates light into soft overhead shafts, restrained blue accents, and a warm workshop surrounded by deep shadow. Reduce broad surface illumination and cyan intensity; strengthen localized pools of light and layered haze.
+
+3. **Fractured cuboid rocks and roof:** The candidate’s rocks read as long vertical columns covered in fine, repetitive cracks. The target has chunkier, irregular cuboid masses with larger fractured faces, staggered ledges, and deep gaps. Break up the columns, enlarge the fracture pattern, and build a more irregular, projecting ceiling—the candidate roof currently reads too much like a continuous shallow border.

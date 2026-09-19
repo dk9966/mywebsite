@@ -1,0 +1,9 @@
+**Overall visual similarity: 7/10.** The candidate clearly reproduces the scene’s layout and identity, but falls short of an 8.5 strong match primarily in geology, depth, and lighting.
+
+- **Camera and composition:** Aspect ratio is close. The main stations occupy roughly the right positions, but the candidate feels flatter and more front-facing. The central pillar dominates the lower half, bridges have steeper diagonals, and the bottom-right staircase overwhelms its corner. Match the reference’s visible platform-top proportions and bridge endpoints; break back the central pillar and recess the staircase.
+- **Geology — highest-impact fix:** The candidate resembles stacked masonry, with repetitive rectangular seams and long vertical courses. The reference has irregular clusters of fractured blocks, jagged silhouettes, varied recess depths, and smaller broken stone faces. Disrupt the grid, vary block sizes, and add protruding shelves and deep gaps.
+- **Overhead roof:** Present, but reads largely as a dark wall across the top. Build more visible horizontal undersides and irregular hanging block clusters projecting toward the camera, especially above the central opening.
+- **Lighting and depth:** The candidate’s central beam is too sharply bounded and exposes a flat rear surface. Use softer, broader volumetric falloff and layered distant rock silhouettes. Add restrained blue-gray haze through the lower chasm to separate pillars and convey depth.
+- **Local lighting:** The reference workshop has a stronger warm, inhabited glow; the candidate’s lamps and blue screens feel harder and more isolated. Broaden warm light across the workshop and soften cyan spill around Projects and About Me.
+
+The reference’s strongest advantage is the sense of platforms embedded in a vast, irregular cavern. The candidate currently reads as carefully arranged stations against a more uniform block wall.

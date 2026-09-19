@@ -1,0 +1,7 @@
+**Overall similarity: 7.3/10.** The candidate reproduces the layout and recognizable stations well, but its camera, rock structure, and lighting keep it below a strong 8.5 match.
+
+1. **Lower the camera angle and restore the ceiling.** The aspect ratio matches closely, but the candidate looks more steeply downward, exposing more platform flooring and elongating the supporting pillars. The target has a more enclosed, horizontal composition with substantial rock overhangs across the top. Tilt toward a shallower view and add a visible, irregular ceiling.
+
+2. **Break up the rocks into staggered cuboid masses.** Candidate rocks read as tall, continuous vertical columns with dense, uniform surface cracks. The target has chunkier interlocking blocks, varied block sizes, deeper recesses, and more horizontal interruptions. Shorten uninterrupted columns, vary extrusion depths, and build stepped clusters around platforms and overhead.
+
+3. **Reduce broad illumination and concentrate the light.** Candidate walls are too evenly visible, especially along the sides, while the screens and pool feel sharply cyan. The target uses darker surrounding rock, localized overhead light cones, softer blue haze, and restrained blue highlights. Darken peripheral walls, strengthen isolated downward beams, and soften the bright emissive surfaces.

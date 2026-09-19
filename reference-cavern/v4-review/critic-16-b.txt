@@ -1,0 +1,7 @@
+**Overall similarity: 7.5/10.** The candidate captures the layout and identity of all five stations, but the cavern geometry and lighting keep it below a strong 8.5 match.
+
+1. **Match the camera and platform proportions.** Aspect ratio is essentially correct. The candidate feels slightly more overhead: decks expose more floor, and the lower-left station looks broad and flattened. Lower the viewing angle slightly and give platforms more visible vertical depth to approach the target’s balanced frontal/overhead view.
+
+2. **Break up the rocks and close the roof.** Candidate rocks read as long, repetitive vertical columns with comparatively flat faces. The target has irregular cuboid clusters, fractured surfaces, staggered ledges, and a substantial overhanging ceiling. Subdivide tall columns into offset blocks, vary their depth and size, and extend layered roof masses across the upper openings.
+
+3. **Rebalance the lighting and haze.** The candidate’s upper central opening is brighter, while its lower cavern and platform undersides fall into heavier black. The target distributes soft haze through the abyss, with broader overhead light cones, stronger blue console spill, and warmer workshop illumination. Reduce the bright opening, add restrained atmospheric fill at lower depths, and soften the transitions between illuminated surfaces and shadow.

@@ -1,0 +1,7 @@
+**Overall similarity: 7.5/10.** The layout and station identities match well, but the candidate lacks the target’s spacious depth and restrained lighting.
+
+1. **Camera and proportions:** Aspect ratio is essentially matched. The candidate feels more top-down: more floor is exposed, the Experiences platform appears broader, and the central platform feels closer. Lower the viewing angle slightly and reduce the foreground platforms’ visual footprint to restore open abyss around them.
+
+2. **Lighting:** The candidate’s rocks are brighter and more uniformly readable, while its screens are large, flat cyan panels. Darken ambient rock illumination, reduce screen fill brightness, and concentrate light into softer overhead shafts and localized pools. Preserve the target’s deeper shadows and distant haze.
+
+3. **Fractured cuboid rocks and roof:** The candidate uses densely repeated cracked blocks, tall straight stacks, and a relatively continuous ceiling band. The target has more varied block sizes, irregular broken faces, staggered overhangs, and substantial ceiling recesses. Break up the repeated columns and roof silhouette, vary fracture scale, and add larger dark gaps between hanging rock masses.

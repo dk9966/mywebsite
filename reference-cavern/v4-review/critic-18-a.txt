@@ -1,0 +1,7 @@
+**Overall similarity: 7.4/10.** The candidate clearly matches the layout and subject, but differs noticeably in cavern structure, camera perspective, and atmosphere.
+
+1. **Camera and proportions:** Both use nearly identical wide aspect ratios, but the candidate feels more steeply downward-looking: platforms expose more floor, and the lower stations feel larger and closer. Lower the camera elevation slightly, flatten the perspective, and reduce the lower stations’ apparent size to recover the target’s spacious composition.
+
+2. **Fractured cuboid rocks and roof:** The target has irregular, chunky blocks with visibly broken faces, varied depths, and staggered ledges. The candidate reads as elongated vertical columns covered in a finer, repetitive crack texture. Break columns into offset cuboid masses, vary block sizes and face angles, and give the roof deeper, irregular hanging clusters rather than a relatively continuous overhead band.
+
+3. **Lighting and atmosphere:** The candidate has brighter, more uniformly readable foreground rock and harder cyan outlines; the target uses darker framing, softer blue illumination, and localized light pools. Darken peripheral rock, soften screen and platform emission, and strengthen distinct overhead beams with layered haze—especially around the central platform—to create the target’s depth and quieter mood.

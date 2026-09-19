@@ -1,0 +1,7 @@
+**7.4/10 — recognizable and fairly close, but below strong fulfillment at 8.5.** The platform arrangement reads correctly, and the smooth matte rocks suit your preference. The main gaps are framing, rock construction, and lighting.
+
+1. **Camera feels more steeply pitched downward.** The candidate shows more platform floor and makes the central pillar dominate the foreground. Reduce the downward pitch slightly and adjust camera distance to recover the target’s broader cavern view while keeping platform positions fixed. The image aspect ratios already look essentially matched.
+
+2. **Rocks read as protruding blocks rather than tightly assembled modules; the roof feels slab-heavy.** Keep the smooth matte finish, but reduce depth variation between neighboring pieces and close dark gaps within each cluster. Form distinct, tightly packed rock masses separated by larger fissures. Break the ceiling’s broad flat undersides into smaller stepped clusters resembling the target’s hanging formations.
+
+3. **Lighting loses the target’s soft depth and restrained glow.** The candidate’s central overhead opening is conspicuously bright, screens are flatter cyan, and foreground rocks catch too much broad illumination. Narrow and soften the central light into a misty shaft, lower screen fill brightness, and darken foreground rock faces while retaining small edge highlights. Preserve the workshop’s warm local light against the cool cavern.

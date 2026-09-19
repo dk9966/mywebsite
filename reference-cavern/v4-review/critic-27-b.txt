@@ -1,0 +1,7 @@
+**7.2/10.** The candidate preserves the platform arrangement and delivers smooth matte cuboids, but the camera, rock assembly, and lighting still differ enough that it falls short of strong fulfillment.
+
+1. **Camera feels more top-down and wide-angle.** Platform floors are more exposed, and the lower-right walkway descends at a steeper screen angle. Reduce downward pitch and use a longer focal length, adjusting camera distance to preserve platform placement. The image aspect ratio is already close.
+
+2. **Rock modules look like overlapping extruded blocks.** The walls and central pillar have long vertical bars and scattered protrusions; the target has tighter, squatter masonry-like clusters. Shorten elongated pieces, reduce depth variation within each module, and fit neighboring blocks closely. Preserve smooth matte surfaces—texture is not the missing ingredient.
+
+3. **The roof and lighting make the cavern feel shallower.** The candidate’s ceiling forms a broad, chunky foreground canopy, while the target has more irregular recessed pockets and softer shafts reaching into the void. Break the roof into stepped, tightly fitted modules with deeper gaps between modules; soften foreground rock illumination and broaden the atmospheric light shafts behind the platforms.

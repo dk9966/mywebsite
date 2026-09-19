@@ -1,0 +1,7 @@
+**Score: 7.3/10.** The candidate preserves the platform arrangement and achieves smooth matte, modular cuboid rock. It falls short of 8.5 mainly in camera perspective, lighting balance, and rock/ceiling structure—not texture.
+
+1. **Camera feels more wide-angle and tilted downward.** The foreground pillar and lower-right walkway dominate, while the platforms feel more distorted than the target’s composed, distant view. Use a longer focal length, move the camera back to preserve framing, and slightly reduce downward pitch. Keep platform positions fixed.
+
+2. **Lighting lacks the target’s soft separation.** Large areas collapse into black, while the central opening and blue screens draw disproportionate attention. Add restrained cool fill across rock faces, soften the central shaft, and broaden overhead light pools so platforms and bridges remain readable without brightening everything.
+
+3. **Rock modules read as stacked extrusions; the roof feels too uniformly chunky.** Repeated tall rectangular faces and projecting blocks create a manufactured voxel wall. Build tightly fitted clusters with more varied cuboid proportions and shallow offsets, separated by larger recesses. Thin and stagger the ceiling edges to create the target’s irregular overhangs and breathing room. **Keep the smooth matte finish.**

@@ -1,0 +1,7 @@
+**Overall similarity: 7.5/10.** The candidate clearly matches the layout and subject, but falls short of an 8.5 strong match in rock structure, lighting, and spatial framing.
+
+1. **Match the camera and platform proportions.** The aspect ratio is close, but the candidate feels more front-facing and vertically stacked. Its central platform has a taller fascia and denser railings; the side rooms feel narrower and more enclosed. Use a slightly higher viewing angle, widen the side platforms, and reduce platform-edge thickness to recover the target’s broad, open floor surfaces.
+
+2. **Rebalance the lighting.** The candidate has harsher black areas, brighter cyan screens, and a concentrated central light shaft. The target distributes soft blue-gray illumination across the cavern, revealing more rock depth while keeping screens restrained. Lift indirect light on rock faces, soften the overhead beams, and reduce screen saturation and brightness.
+
+3. **Rebuild the fractured cuboid rocks and roof silhouette.** The candidate’s rocks read as repetitive rectangular stacks with fine surface texture; its roof forms a heavy, nearly continuous dark band. The target has larger, irregular cuboid masses with chipped faces, uneven ledges, and staggered ceiling projections. Vary block dimensions and depth more aggressively, break up straight pillar edges, and open distinct recesses between roof overhangs.

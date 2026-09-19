@@ -1,0 +1,7 @@
+**Overall: 7.2/10.** The candidate captures the layout and cavern concept well, but falls short of 8.5 because the rock construction and lighting still change the scene’s character substantially. Smooth matte rock is appropriate; missing surface texture is not a defect.
+
+1. **Rock blocks still read as scattered protruding boxes.** The walls and central support have conspicuous gaps, isolated blocks, and long rectangular faces. Pack modular pieces more tightly into continuous rock masses, reduce protrusion depth, and vary their proportions. Use restrained chipped edges while keeping surfaces smooth and matte.
+
+2. **The roof needs stronger, more continuous overhangs.** The target has a visibly layered ceiling with broad shelves and descending rock clusters; the candidate’s upper area reads mostly as a dark wall with hanging cuboids. Build tightly joined ceiling modules that extend toward the camera, with enough grazing light to reveal their undersides.
+
+3. **Lighting and framing need a closer match.** The candidate has a narrower-looking composition, a brighter central shaft, crushed peripheral shadows, and excessively saturated cyan screens and pool. Match the target’s wider aspect and camera framing without moving platforms, then soften the shaft, lift subtle ambient illumination across the rock, and reduce cyan intensity. Aim for readable depth throughout the cavern and a softer atmospheric falloff.

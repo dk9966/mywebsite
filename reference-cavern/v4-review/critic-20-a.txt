@@ -1,0 +1,7 @@
+**Overall similarity: 7.5/10.** The candidate captures the layout and identity of every station well, but the cavern geometry and lighting still noticeably differ.
+
+1. **Camera and proportions:** The aspect ratio matches closely, but the candidate looks more steeply downward: floor surfaces are more exposed, and the stations feel flatter and broader. Lower the camera elevation slightly and tune perspective to restore the target’s taller, more substantial platform fronts.
+
+2. **Lighting and depth:** The candidate has brighter cyan screens and sharper pools of light against nearly black rock. The target distributes soft illumination across more rock faces, with subtler screens and smoother atmospheric depth. Reduce screen saturation, lift indirect rock illumination, and soften the spotlight transitions.
+
+3. **Fractured cuboid rocks and roof:** The candidate’s stone reads as oversized stacked blocks with fine surface cracks; several voids have conspicuous stair-step silhouettes. The target uses more irregular, interlocking cuboids with chipped faces and varied protrusions. Break up the large planar masses, especially around the central pillar, and replace the candidate’s heavy, continuous ceiling band with a more articulated roof of staggered hanging blocks and recessed gaps.

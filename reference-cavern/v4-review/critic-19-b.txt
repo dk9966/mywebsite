@@ -1,0 +1,7 @@
+**Overall similarity: 7.3/10.** The candidate captures the layout and identity of all five stations, but the cavern geometry, camera angle, and lighting still noticeably differ from the target.
+
+1. **Lower the camera and soften the perspective.** Aspect ratio is effectively matched, but the candidate looks down more steeply: platform floors expose more area, and the lower-right walkway becomes a broad diagonal. Match the target’s shallower view, slimmer bridge profiles, and less dominant foreground platforms.
+
+2. **Rebuild the rock silhouette and roof with more varied cuboid masses.** The candidate has repetitive vertical columns, densely crackled surfaces, and conspicuous stair-step voids. The target uses irregular clusters of fractured blocks with stronger size variation and deeper local recesses. Break up the continuous upper rock band with layered hanging blocks and uneven ceiling overhangs.
+
+3. **Reduce broad illumination and concentrate the light.** Candidate rocks and floors are too uniformly readable, while the cyan screens and workshop tool wall feel overly bright and flat. Darken ambient rock illumination, temper screen saturation, and use localized overhead pools with softer atmospheric beams. Preserve deeper shadow between stations to recover the target’s spacious, misty abyss.

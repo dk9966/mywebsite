@@ -1,0 +1,9 @@
+**Overall: 7/10.** The platform layout and scene identity are convincing, but the cavern and lighting still fall short of strong fulfillment. Smooth matte rock is a valid choice; missing rough texture is not a defect.
+
+1. **Rock modules need tighter packing and more cohesive masses.** The candidate reads as stacked rectangular extrusions, with deep seams and isolated protrusions—especially beneath Projects and along the side walls. Close gaps, bury more blocks into adjoining pieces, and use smaller modules to bridge transitions. Keep matte surfaces while varying block proportions.
+
+2. **The roof needs a more deliberate stepped overhang.** The candidate’s ceiling reads as a heavy, nearly black band; the target has readable interlocking ledges, hanging clusters, and recesses framing the central shaft. Build densely joined modular ceiling clusters with staggered depths, then add enough grazing light to reveal their silhouettes.
+
+3. **Lighting is too locally bright and globally obscured.** The central beam forms a conspicuous rectangular patch on the rear wall, while much of the surrounding rock disappears. Broaden and soften the shaft, lift cool ambient illumination slightly, and reduce the saturated cyan of the About Me surface. Preserve warm workshop accents and let subtle reflected light connect platforms to rock.
+
+**Camera/aspect:** Aspect is close, and the main platform placements track the target well. The candidate feels somewhat more frontal and vertically compressed in its platform surfaces; a small increase in downward camera pitch could help, with framing adjusted to preserve their screen positions.

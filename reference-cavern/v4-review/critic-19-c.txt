@@ -1,0 +1,7 @@
+**Overall similarity: 7.3/10.** The candidate captures the layout and subject well, but the cavern geometry and lighting still give it a noticeably different character.
+
+1. **Camera and proportions:** The aspect ratio matches closely, but the candidate feels more top-down, with deeper visible platform floors. Experiences is broader, while Workshop is narrower and taller. Lower the viewing angle slightly, flatten platform ellipses, and widen Workshop to match the target’s horizontal alcove.
+
+2. **Lighting:** The candidate’s foreground rocks are brighter and more uniformly blue-gray; its screens are brighter, flatter cyan. The target concentrates light into soft overhead shafts and localized pools, leaving more surrounding rock almost black. Darken ambient rock illumination, soften the central shaft, and reduce screen fill brightness while retaining crisp blue accents.
+
+3. **Fractured cuboid rocks and roof:** The candidate reads as stacked rectangular masonry with fine crack textures and some abrupt stepped silhouettes. The target uses larger, irregular cuboid masses with visibly chipped, fractured faces and a more substantial overhanging roof. Vary block depth and size, break straight edges with coarse angular fractures, and extend layered ceiling projections downward around the light openings.

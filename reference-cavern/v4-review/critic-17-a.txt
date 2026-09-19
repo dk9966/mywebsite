@@ -1,0 +1,7 @@
+**Overall similarity: 7/10.** The candidate matches the station layout and industrial cavern concept well, but the camera, rock structure, and lighting still noticeably differ.
+
+1. **Camera and framing:** Both images have essentially the same wide aspect ratio. The candidate looks down more steeply, exposing more platform flooring and making the stations feel flatter. Lower the camera elevation and reduce the downward tilt while preserving the station positions.
+
+2. **Fractured cuboid rocks and roof:** The target has irregular, chunky block clusters with broken silhouettes, staggered ledges, and a substantial overhanging rock ceiling. The candidate emphasizes long vertical pillars with fine, repetitive surface cracking; its roof barely reads. Break pillars into varied cuboid masses, add deeper gaps and lateral protrusions, and build ceiling shelves across the upper frame.
+
+3. **Lighting and atmosphere:** The target uses darker surrounding rock, distinct overhead light cones, and softer mist to separate the platforms from the abyss. The candidate illuminates too much wall texture evenly, while cyan screens and the About Me pool appear more saturated. Reduce broad rock illumination, strengthen localized overhead beams, soften blue emission, and introduce layered haze behind and below the platforms.
