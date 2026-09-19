@@ -82,6 +82,23 @@ _shot.js
 
 # Blender backup copies
 *_backup.blend
+/secret-base/base.before-*.blend
+/secret-base/base.*-iteration-*.blend
+/secret-base/*-review/before-*.blend
+/secret-base/*-review/iteration-*.png
+/secret-base/mound-study/iteration-*.blend
+/secret-base/mound-study/iteration-*.png
+/reference-cavern/checkpoint-*.blend
+/reference-cavern/*-review/before-*.blend
+/reference-cavern/*-review/pass-*.blend
+
+# Intermediate cavern renders; retain the final image from each review series.
+/reference-cavern/atmosphere-review/pass-*.png
+!/reference-cavern/atmosphere-review/pass-29.png
+/reference-cavern/v4-review/pass-*.png
+!/reference-cavern/v4-review/pass-30.png
+/reference-cavern/renders/pass-*.png
+!/reference-cavern/renders/pass-11.png
 
 # Full-res ideation dumps that have compressed jpg siblings
 /ideation/overall.png

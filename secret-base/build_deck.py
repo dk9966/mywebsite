@@ -887,99 +887,14 @@ def build_deck(host, coll_name, back_kind="library", suffix=""):
 
 
     # ------------------------------------------------------- 9b. pillar veins
-    # Long continuous fissures down the shaft, like the reference art. Each one is
-    # a ribbon raycast onto the pillar surface so it hugs the masonry instead of
-    # floating, meanders slightly, and tapers to a point at both ends.
-    mw = host.matrix_world
-    mwi = mw.inverted()
-
-
-    def surface_r(a, z):
-        """World radius of the pillar surface at azimuth `a`, height `z`."""
-        o = mwi @ Vector((CX + 5.0 * math.cos(a), CY + 5.0 * math.sin(a), z))
-        d = (mwi.to_3x3() @ Vector((-math.cos(a), -math.sin(a), 0.0))).normalized()
-        hit, loc, _nrm, _i = host.ray_cast(o, d, distance=14.0)
-        if not hit:
-            return None
-        p = mw @ loc
-        return math.hypot(p.x - CX, p.y - CY)
-
-
-    VEIN_N = 11
-    VEIN_TOP = ZT - 0.20                # just under the deck's overhang
-    VEIN_BOT = 0.30                     # near the tip
-    vrnd = random.Random(90311)
-    vein_bm = {"neonCyan": bmesh.new(), "neonCyanFaint": bmesh.new()}
-
-
-    def smooth_radii(pts, win=3, off=0.014):
-        """Surface radius under each (a, z), running-maxed so a recessed block
-        can never swallow the strip and break it into dashes."""
-        raw = [surface_r(a, z) for a, z in pts]
-        hits = [j for j, v in enumerate(raw) if v is not None]
-        if not hits:
-            return None
-        for k in range(len(raw)):
-            if raw[k] is None:
-                raw[k] = raw[min(hits, key=lambda j: abs(j - k))]
-        return [max(raw[max(0, k - win):k + win + 1]) + off for k in range(len(raw))]
-
-
-    def _ribbon(bm, pts, rs, w, vertical):
-        edge = []
-        for (a, z), r in zip(pts, rs):
-            if vertical:
-                hw = (w * 0.5) / max(r, 0.1)
-                edge.append((bm.verts.new((r * math.cos(a - hw), r * math.sin(a - hw), z)),
-                             bm.verts.new((r * math.cos(a + hw), r * math.sin(a + hw), z))))
-            else:
-                edge.append((bm.verts.new((r * math.cos(a), r * math.sin(a), z - w * 0.5)),
-                             bm.verts.new((r * math.cos(a), r * math.sin(a), z + w * 0.5))))
-        for k in range(len(edge) - 1):
-            try:
-                bm.faces.new((edge[k][0], edge[k][1], edge[k + 1][1], edge[k + 1][0]))
-            except ValueError:
-                pass
-
-
-    def strip_v(bm, a, z0, z1, w):
-        n = max(2, int(abs(z1 - z0) / 0.11))
-        pts = [(a, z0 + (z1 - z0) * k / n) for k in range(n + 1)]
-        rs = smooth_radii(pts)
-        if rs:
-            _ribbon(bm, pts, rs, w, True)
-
-
-    def strip_h(bm, a0, a1, z, w):
-        n = max(2, int(abs(a1 - a0) / D(1.2)))
-        pts = [(a0 + (a1 - a0) * k / n, z) for k in range(n + 1)]
-        rs = smooth_radii(pts)
-        if rs:
-            _ribbon(bm, pts, rs, w, False)
-
-
-    # Each vein is a right-angled trace: vertical runs joined by short horizontal
-    # jogs, like a circuit route. Start heights are scattered up and down the
-    # shaft rather than all hanging from the deck.
-    for i in range(VEIN_N):
-        a = TAU * (i + vrnd.uniform(-0.30, 0.30)) / VEIN_N
-        total = vrnd.uniform(1.3, 2.5)
-        z = vrnd.uniform(VEIN_BOT + total + 0.15, VEIN_TOP)
-        w = vrnd.uniform(0.016, 0.026)
-        bm = vein_bm["neonCyanFaint" if vrnd.random() < 0.35 else "neonCyan"]
-        left = total
-        while left > 0.05:
-            run = min(left, vrnd.uniform(0.55, 1.50))
-            strip_v(bm, a, z, z - run, w)
-            z -= run
-            left -= run
-            if left > 0.30:                       # jog sideways, square corner
-                jog = vrnd.uniform(D(3.0), D(9.0)) * vrnd.choice((-1, 1))
-                strip_h(bm, a, a + jog, z, w)
-                a += jog
-
-    for key in sorted(vein_bm):
-        finish(f"deck_pillar_veins_{key}", vein_bm[key], key, shade_flat=False)
+    # One connected path per vein, seated on the exposed stone faces and ledges.
+    import runpy
+    from pathlib import Path
+    vein_path = Path(bpy.path.abspath("//pillar_veins.py"))
+    if not vein_path.exists():
+        vein_path = Path(__file__).resolve().with_name("pillar_veins.py")
+    vein_module = runpy.run_path(str(vein_path), run_name="pillar_veins_module")
+    vein_module["build_pillar_veins"](host, coll, suffix, TAU / 30 if suffix else 0)
 
     # ------------------------------------------------------------- 10. lighting
     def light(name, kind, pos, energy, color, radius=0.08, size=1.0, rot=(0, 0, 0)):

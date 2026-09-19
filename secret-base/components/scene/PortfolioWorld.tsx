@@ -105,9 +105,11 @@ export function PortfolioWorld() {
         </>
       )}
       <group
-        onClick={handleClick}
-        onPointerOver={handleOver}
-        onPointerOut={handleOut}
+        // Station meshes have no island click targets. Avoid raycasting the
+        // entire imported model on every pointer move over the preview.
+        onClick={MODE === "station" ? undefined : handleClick}
+        onPointerOver={MODE === "station" ? undefined : handleOver}
+        onPointerOut={MODE === "station" ? undefined : handleOut}
       >
         {MODE === "station" ? (
           <ImportedPillar />

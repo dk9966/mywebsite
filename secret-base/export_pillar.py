@@ -15,9 +15,9 @@ import math
 import os
 from mathutils import Vector
 
-ROOT = "/Users/danielku/mywebsite/secret-base"
-OUT = os.path.join(ROOT, "models", "pillar.glb")
-HOST_NAME = "island_pillar_workshop"
+ROOT = os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else os.path.dirname(bpy.data.filepath)
+OUT = os.environ.get("BLENDER_EXPORT_OUT", os.path.join(ROOT, "models", "pillar.glb"))
+HOST_NAME = "island_pillar_project" if bpy.data.objects.get("island_pillar_project") else "island_pillar_workshop"
 LOCATOR_NAMES = (
     "holoLocator_main",
     "holoLocator_left",
@@ -98,8 +98,23 @@ make_empty("holoLocator_seat", seat, coll, host)
 
 bpy.ops.object.select_all(action="DESELECT")
 host.select_set(True)
+descendants = set(host.children_recursive)
+empty_pillar = bpy.data.objects.get("island_pillar_experience") or bpy.data.objects.get("island_pillar_empty")
+for island in (empty_pillar, bpy.data.objects.get("island_pillar_about"), bpy.data.objects.get("island_pillar_contact")):
+    if island:
+        descendants.add(island)
+        descendants.update(island.children_recursive)
+# Contact's bridge is world-positioned in its own collection, not parented
+# to either island. Include it explicitly alongside the island hierarchies.
+contact_bridge = bpy.data.collections.get("bridge_project_contact")
+if contact_bridge and not contact_bridge.hide_render:
+    descendants.update(contact_bridge.all_objects)
 for obj in list(bpy.data.objects):
-    if obj.parent is host and obj.type in {"MESH", "EMPTY"}:
+    # Superseded workshop lantern assembly still sits at the old world origin.
+    # Keep it in Blender, but never export its detached bulbs or posts.
+    if obj.name in {"deck_lantern_glass_b", "deck_lantern_posts_b"}:
+        continue
+    if obj in descendants and not obj.hide_render and obj.type in {"MESH", "EMPTY", "CURVE", "FONT"}:
         obj.select_set(True)
     # Workshop lamps live in the same file; they are not all parented to the pillar.
     if obj.type == "LIGHT" and obj.name.endswith("_b"):
@@ -117,8 +132,8 @@ kwargs = dict(
 )
 optional = {
     "export_lights": False,
-    "export_apply": False,
-    "export_extras": False,
+    "export_apply": True,
+    "export_extras": True,
     "export_animations": False,
     "export_skins": False,
     "export_morph": False,
@@ -127,7 +142,7 @@ optional = {
 
 # Drop flags this Blender build does not recognise.
 try:
-    rna = bpy.types.EXPORT_SCENE_OT_gltf.bl_rna
+    rna = bpy.ops.export_scene.gltf.get_rna_type()
     known = set(rna.properties.keys())
     for key, value in optional.items():
         if key in known:

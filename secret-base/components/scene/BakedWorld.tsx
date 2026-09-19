@@ -1,9 +1,9 @@
 import { Suspense, useMemo } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useLiveBlenderModel } from "./useLiveBlenderModel";
 import { rebindMaterials } from "./materials";
 
 // Lives inside secret-base/ and is bundled as a Vite asset.
-export const WORLD_GLB_URL = new URL(
+const WORLD_GLB_URL = new URL(
   "../../models/world.glb",
   import.meta.url,
 ).href;
@@ -15,13 +15,13 @@ export const WORLD_GLB_URL = new URL(
  * Unknown materials (e.g. baked sign/screen canvas textures) are kept as-is.
  */
 function Model() {
-  const { scene } = useGLTF(WORLD_GLB_URL);
+  const scene = useLiveBlenderModel(WORLD_GLB_URL, 'world');
 
   useMemo(() => {
-    rebindMaterials(scene);
+    if (scene) rebindMaterials(scene);
   }, [scene]);
 
-  return <primitive object={scene} />;
+  return scene ? <primitive object={scene} /> : null;
 }
 
 export function BakedWorld() {
@@ -31,5 +31,3 @@ export function BakedWorld() {
     </Suspense>
   );
 }
-
-useGLTF.preload(WORLD_GLB_URL);

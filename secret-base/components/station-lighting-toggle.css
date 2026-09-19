@@ -1,0 +1,31 @@
+.station-lighting-toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid #426074;
+  border-radius: 8px;
+  background: #09121ef2;
+  color: #c4d4df;
+  font: 12px/1.4 system-ui, sans-serif;
+}
+.station-lighting-toggle span { padding: 0 6px; }
+.station-lighting-toggle button {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 6px 9px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.station-lighting-toggle button[aria-pressed="true"] {
+  background: #233e51;
+  color: #e4f7ff;
+  border-color: #597c93;
+}
+.station-lighting-toggle button:focus-visible { outline: 2px solid #a3e5ff; }

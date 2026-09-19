@@ -1,0 +1,21 @@
+{
+  "scope": "Environment style match to approved pillars; pillar geometry and station assets preserved",
+  "iteration": 2,
+  "render": "environment-style-2.png",
+  "reviews": [
+    {
+      "reviewer": "review_rock",
+      "score": 8.1,
+      "necessary_fixes": []
+    },
+    {
+      "reviewer": "review_art",
+      "score": 8.2,
+      "necessary_fixes": []
+    }
+  ],
+  "previous_scores": [
+    7.2,
+    7.4
+  ]
+}

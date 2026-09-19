@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import type * as THREE from "three";
@@ -35,14 +35,38 @@ const VIEWS = {
     minDistance: 3.5,
     maxPolarAngle: 1.52,
   },
-  // workshop pillar from base.blend — three-quarter of the whole island
+  // workshop pillar from base.blend, framed exactly like the `deck_cam_b`
+  // render camera (Blender world coords shifted by ImportedPillar's recenter).
   station: {
-    position: [-6.4, 6.2, 9.2] as const,
-    target: [0.3, -0.8, -0.4] as const,
-    minDistance: 4,
+    position: [-19.25, 20, 25.98] as const,
+    target: [0, -1.7, 0] as const,
+    minDistance: 1.2,
     maxPolarAngle: 1.48,
   },
 };
+
+/**
+ * Reproduces Blender's `deck_cam_b` lens: 55 mm on a 36 mm sensor with AUTO
+ * sensor fit, so the 36 mm spans the *longer* viewport axis.
+ *
+ * `setFocalLength` derives the vertical fov from `filmGauge / max(aspect, 1)`,
+ * which is the same rule — so rescaling the focal length from Blender's 36 mm
+ * sensor to three's 35 mm gauge lands on Blender's framing at any aspect. It
+ * has to re-run whenever the canvas resizes, since fov is vertical and the
+ * lens is not.
+ */
+export function BlenderLens({ lens = 55, sensor = 36 }) {
+  const invalidate = useThree((s) => s.invalidate);
+  const camera = useThree((s) => s.camera) as THREE.PerspectiveCamera;
+  const size = useThree((s) => s.size);
+
+  useLayoutEffect(() => {
+    camera.setFocalLength((lens * camera.filmGauge) / sensor);
+    invalidate();
+  }, [camera, size.width, size.height, lens, sensor, invalidate]);
+
+  return null;
+}
 
 /**
  * Cinematic front three-quarter camera with click-drag orbit.
@@ -52,11 +76,29 @@ const VIEWS = {
 export function CameraRig() {
   const camera = useThree((s) => s.camera);
   const controlsRef = useRef<ControlsLike | null>(null);
+  const setDpr = useThree((s) => s.setDpr);
+  const invalidate = useThree((s) => s.invalidate);
+  const qualityTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const view = useViewStore((s) => s.view);
   const setView = useViewStore((s) => s.setView);
-  const startView = useRef(view);
+  const [startView] = useState(view);
   const flown = useRef(false);
-  const start = VIEWS[startView.current];
+  const start = VIEWS[startView];
+
+  useEffect(() => () => clearTimeout(qualityTimer.current), []);
+  const moving = () => {
+    if (startView !== "station") return;
+    clearTimeout(qualityTimer.current);
+    setDpr(Math.min(window.devicePixelRatio, 1.25));
+  };
+  const settled = () => {
+    if (startView !== "station") return;
+    clearTimeout(qualityTimer.current);
+    qualityTimer.current = setTimeout(() => {
+      setDpr(Math.min(window.devicePixelRatio, 2));
+      invalidate();
+    }, 350);
+  };
 
   useLayoutEffect(() => {
     const [x, y, z] = start.position;
@@ -66,11 +108,11 @@ export function CameraRig() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Escape") return;
-      setView(startView.current === "station" ? "station" : "overview");
+      setView(startView === "station" ? "station" : "overview");
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [setView]);
+  }, [setView, startView]);
 
   useEffect(() => {
     const controls = controlsRef.current;
@@ -121,13 +163,15 @@ export function CameraRig() {
 
   return (
     <OrbitControls
+      onStart={moving}
+      onEnd={settled}
       ref={controlsRef as never}
       target={[start.target[0], start.target[1], start.target[2]]}
       enableDamping
       dampingFactor={0.08}
-      enablePan={false}
+      enablePan={view === "station"}
       minDistance={start.minDistance}
-      maxDistance={startView.current === "station" ? 32 : 55}
+      maxDistance={startView === "station" ? 60 : 55}
       minPolarAngle={0.25}
       maxPolarAngle={start.maxPolarAngle}
       rotateSpeed={0.6}

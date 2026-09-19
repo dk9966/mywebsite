@@ -19,7 +19,48 @@ Routes:
 | `/secret-base/?procedural` | Code-generated world (source for the GLB) |
 | `/secret-base/?station` | Workshop pillar from `base.blend` + live holos |
 
-Re-export the station pillar after Blender edits:
+## Live station preview
+
+Run these in two terminals from the project root:
+
+```sh
+npm run dev
+npm run watch:blender
+```
+
+Open `http://localhost:5174/secret-base/?station`, edit `secret-base/base.blend`
+in Blender, and save. The watcher also exports once when it starts. After a
+save settles for one second, a separate Blender process exports the pillar
+and its descendants (including applied modifiers), then atomically replaces
+`models/pillar.glb`. The page checks every 1.5 seconds and replaces only the
+model, preserving the camera. Failed exports/loads keep the last good model.
+Unsaved edits are not exported; save after running a `bpy` modeling script too.
+
+The station now shows `island_pillar_project`, `island_pillar_experience`, and
+`island_pillar_about`. Other pillars are hidden in the viewport and render.
+Both side islands reuse the Experience deck, curved bridge, fixtures, and lights.
+Their bridges angle behind Projects and run radially from its circular rim,
+perpendicular to the tangent at each entrance. `radial_bridges.py` reapplies
+this layout; `align_bridges_to_table.py` is the superseded table-edge layout.
+Labels are web-only, centered above the live deck bounds by
+`StationIslandHeadings.tsx`; no title geometry is stored in Blender.
+
+The exporter includes all three hierarchies and their visible bridge geometry.
+Website architectural lights follow each island's exported rotation and scale;
+lantern lights use the actual exported bulb positions. The default station
+camera frames all three islands. `base.before-three-islands.blend` preserves
+the scene before this layout change.
+Stop the watcher with Ctrl+C. If Vite was already running when this feature
+was added, restart it once to enable the polling endpoint.
+
+The default Blender executable is `/Applications/Blender.app/Contents/MacOS/Blender`
+on macOS, or `blender` elsewhere. Override with `BLENDER_BIN` if needed.
+An alternate station source can be passed as `npm run watch:blender -- path/to/file.blend`;
+it must contain the same station hierarchy and still exports to `pillar.glb`.
+The world page also refreshes automatically when `world.glb` is exported,
+but this watcher only builds the station.
+
+To re-export the station pillar manually from Blender:
 
 ```python
 exec(open("/Users/danielku/mywebsite/secret-base/export_pillar.py").read())
@@ -61,12 +102,8 @@ the GLB is a build artifact).
 - Mesh: **Apply Modifiers on**
 - Material: export, images **auto**
 
-Tip: in Blender 4.x, set this up once as a **Collection Exporter** on your
-root collection (Properties → Collection → Exporters) so every Ctrl+S
-re-exports automatically.
-
-Then just reload `http://localhost:5174/secret-base/` — Vite serves the new
-file immediately (hard-refresh if the old GLB is cached).
+With the development server running, the world page automatically picks up
+the completed export. Production builds load the bundled model once.
 
 ## 4. Regenerating the GLB from code
 

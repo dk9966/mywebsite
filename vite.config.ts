@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 import { circuitsTuningSavePlugin } from './scripts/vite-circuits-tuning-save'
 import { jsonFileSavePlugin } from './scripts/vite-json-file-save'
+import { blenderLivePlugin } from './scripts/vite-blender-live'
 
 const siteOnly = process.env.SITE_ONLY === '1'
 
@@ -55,6 +56,9 @@ export default defineConfig({
     // the committed payload — reloading would reset the editor camera.
     watch: {
       ignored: [
+        '**/*.blend',
+        '**/*.blend1',
+        '**/secret-base/models/*.glb',
         '**/src/data/circuits-tuning.json',
         '**/src/data/circuit-versions/**',
         '**/src/data/desk-layout-defaults.json',
@@ -70,6 +74,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    blenderLivePlugin(),
     secretBaseRedirect(),
     circuitsTuningSavePlugin(),
     jsonFileSavePlugin({
