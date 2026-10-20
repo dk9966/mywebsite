@@ -1,5 +1,7 @@
 # Inspiration Sources
 
+Panel title flicker (About me, Experiences, and the rest): see [title-flicker-references.md](title-flicker-references.md).
+
 ## Underrated portfolio / web sources
 
 - **Three.js Journey showcase** (threejs-journey.com) - Student final projects. Raw, experimental work before it gets polished into agency pieces. Good for ideas nobody else is using yet.
