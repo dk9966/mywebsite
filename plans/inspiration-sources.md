@@ -1,6 +1,6 @@
 # Inspiration Sources
 
-Panel title flicker (About me, Experiences, and the rest): see [title-flicker-references.md](title-flicker-references.md).
+Panel titles, two parts (how the word appears from blank, and how it looks once it is still): [title-flicker-references.md](title-flicker-references.md).
 
 ## Underrated portfolio / web sources
 
