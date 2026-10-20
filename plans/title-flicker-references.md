@@ -4,42 +4,41 @@ Two separate problems for the panel titles (Profile, Skills, Projects, Education
 
 The titles today are Inter, weight 600, uppercase, tracked at `0.18em`, color `#aeeaee`. Default size is 38px (`headerFontPx` in `src/stores/deskLayout.ts`). The entrance is `boot-text-in` in `src/components/BootFx.css`: the whole word wipes in from the left, blinks opacity several times, and shifts a few pixels. The `01`–`06` tags exist on each panel in `src/components/DeskPanels.tsx` and are dropped in `HudScreen` (`tag: _tag`).
 
-## 1. How the title appears from blank
+## 1. Examples of the flicker-on
 
-The letters should already own their final positions. The word does not grow, slide, or blink as one block. A caret walks left to right. Only the letter under the caret is unstable. Then the word holds.
+The motion to match is the whole word blinking on. It is blank, then the finished word flashes a few uneven times, then it holds. Letters do not decode, type on, or rise out of a mask.
 
-That is the label reveal used on film HUDs. In After Effects it is an opacity animator driven by a range selector: opacity on the animator is 0, and the selector's end runs from 0% to 100%, so characters turn on in order. Adobe's own write-up of that setup is [Animating text in After Effects](https://helpx.adobe.com/after-effects/desktop/animating-text/text-animation/animating-text.html). The short preset people copy is [Tracking and Opacity](https://blog.motionarray.com/learn/after-effects/free-after-effects-text-animation-presets/) (Motion Array). Use the opacity half. Leave tracking alone during the reveal, or the header width jumps while the panel is booting.
+That is already the family of `boot-text-in` and `boot-diag` on the desk panels. `boot-diag` is the cleaner version of it: stepped opacity, no sideways wipe. The title version adds a left-to-right clip and a small shake, which is the part that feels off. There is no separate panels page under a projects folder in this repo. The still of these panels once the text has caught is `plans/desk-hud-reference.png`.
 
-### The pass
+Open these and watch the first second. Replay if the page loops.
 
-1. The title is in the DOM at full size, final tracking, opacity 0 per character. Blank, but the slot is reserved, so nothing reflows when letters arrive.
-2. A caret (a 1px bar, or the next glyph flashing) moves one character at a time.
-3. The character under the caret gets one hitch: a single random glyph, or a brightness spike, for one or two frames. Then the real letter at full opacity.
-4. Earlier letters stay still. They do not keep flickering.
-5. When the last letter locks, the whole word dips once (about 0.7 opacity) and returns to 1. That dip is the only moment the finished word blinks.
+- [CodeFronts, neon power-on](https://codefronts.com/motion/css-text-animations/css-neon-glow-text-animation/). The diner sign. Each word ignites, stutters, then holds a steady glow. The cocktail sign above it is the other version: one letter keeps buzzing after the rest is on. The diner is the one.
+- [shadcn Neon Text](https://www.shadcn.io/text/neon-text). On load, four to six blinks in under 600ms, then the word stays lit. That timing is the right length for "Experiences".
+- [CrazyGL Flicker Text](https://crazygl.com/hero/flicker-text). A heading with three patterns: every letter together, letters in order, or letters at random. Styles are neon, LED, CRT, and electric. Set it to play once (`transition`, not a loop). Sequential on a short uppercase word is the closest to a panel label catching.
+- [Animista, flicker-in](https://animista.net/play/entrances/flicker-in). Plays once. Useful for feeling the rhythm. The default runs long and blinks too evenly. Shorten it and make the gaps uneven.
+- [GSAPify, Neon Flicker](https://gsapify.com/gsap-text-animations). Opacity jumps, then a glow. Same page has CRT Boot, which opens the whole line like a monitor. The panel glass can do that. The word itself is the neon flicker.
 
-Duration is per character, about 30–40ms. "Skills" is roughly a fifth of a second. "Experiences" is roughly 400ms. Cap the whole title near 450ms so a long word does not lag the boot. The charset for the hitch should be short and square: `01`, or a few block glyphs. A full alphabet makes the header look like a captcha.
+Clips already listed in `plans/clips-reference.html`:
 
-### Where to watch this exact motion
+- 01, Tron Title Disney Intro. Flashing lights and flickering.
+- 11, Futuristic Digital Credits Reveal. Neon circuit text on black with glitch.
 
-These are text entrances from blank or from noise in the letter boxes. They are not panel boots.
+Film versions of the same blink, if the web demos feel too much like a diner sign:
 
-- [Framer Scramble Label](https://www.framer.com/marketplace/components/scramble-label/). Each glyph is drawn on top of the letter it replaces, so the line never reflows and the end state is the typed word. Triggers include on load. This is the closest live control for "from blank, into the final boxes."
-- [Motion scramble text](https://motion.dev/docs/text-animation) and the live [scramble example](https://examples.motion.dev/react/scramble-text-hover). Same docs page has the [typewriter](https://examples.motion.dev/react/typewriter), which appends characters onto an empty string. That grows the label. Fine for a terminal line. Wrong for a header that has to stay put.
-- [Scrambl recipes](https://scrambl.vikingz.me/examples/recipes/). The typewriter recipe starts from an empty override and reveals left to right with a block cursor. The password-mask recipe reveals through a stand-in glyph. Both start from blank.
-- [GSAP ScrambleText](https://gsap.com/docs/v3/Plugins/ScrambleTextPlugin/) and the [demo](https://demos.gsap.com/demo/text-scrambling/). Left-to-right lock. `revealDelay` is the beat of pure noise before letters commit. Keep that beat under ~80ms on a title or it becomes a loading gag. [React Bits Decrypted Text](https://reactbits.dev/text-animations/decrypted-text) is the same idea with a sequential, start-to-end mode you can slow down.
-- [GSAPify, CRT Boot next to Neon Flicker](https://gsapify.com/gsap-text-animations). Neon Flicker is the opacity strobe already in `boot-text-in`. CRT Boot is a line opening once. Steal the single settle from CRT Boot, not the strobe.
+- The TRON: Legacy trailer title flickers on. Noted in [this After Effects roundup](http://aeportal.blogspot.com/2011/01/few-tron-titles-in-after-effects.html), which also links Nick Khoo's [TRON title tutorials](https://lesterbanks.com/2011/01/creating-tron-legacy-style-titles-in-after-effects/). The useful part of those is the blink, not the 3D extrusion.
+- A fan recreation of the TRON credits flicker: [youtu.be/VCfpEvZoc6c](https://youtu.be/VCfpEvZoc6c).
+- Iron Man 2, the garage waking up (`plans/daddyshome.png` is the settled frame). The screens strobe on before the labels sit. Search `Iron Man 2 garage HUD wakeup`.
 
-### Entrances that are about text, and still the wrong text
+These look related and are a different motion. Skip them for this title:
 
-- [Codrops stagger reveal](https://tympanus.net/codrops/2020/06/17/making-stagger-reveal-animations-for-text/) (the Dani Morales / Thibaud Allie letter rise). Letters clip up from a mask. That is an editorial about-page. It reads as a portfolio heading, not a system naming a panel.
-- [Codrops kinetic type transition](https://tympanus.net/codrops/2021/09/29/kinetic-typography-page-transition/). Words rotate and scale. Too large for a 38px header.
-- [React Bits Glitch Text](https://reactbits.dev/text-animations/glitch-text) and [Codrops CSS glitch](https://tympanus.net/codrops/2017/12/21/css-glitch-effect/). A one-frame RGB split on the caret is enough. A looping slice glitch is the cheap flicker.
-- Magic UI blur and slide. Marketing entrance. The word is never blank in a mechanical sense. It is just out of focus.
+- Letter scramble and decrypt ([GSAP ScrambleText](https://demos.gsap.com/demo/text-scrambling/), [React Bits Decrypted Text](https://reactbits.dev/text-animations/decrypted-text)).
+- A typewriter that grows the string ([Motion typewriter](https://examples.motion.dev/react/typewriter)).
+- Letters rising out of a clip ([Codrops stagger reveal](https://tympanus.net/codrops/2020/06/17/making-stagger-reveal-animations-for-text/)).
+- A neon sign that never stops buzzing ([Silvia O'Dwyer](https://codepen.io/silvia-odwyer/pen/yLgKePK)). The title has to catch and stay.
 
 ## 2. How the title looks after it appears
 
-Once the caret is gone, nothing on the word moves. No scanline, no glow pulse, no chromatic fringe. The panel can keep breathing. The title is a label that has finished its job.
+Once the blinks stop, nothing on the word moves. No scanline, no glow pulse, no chromatic fringe. The panel can keep breathing. The title is a label that has finished its job. The settled frame to match is `plans/desk-hud-reference.png`: small uppercase, wide tracking, cyan, sitting in the top of the glass.
 
 ### The row
 
