@@ -4,37 +4,51 @@ Two separate problems for the panel titles (Profile, Skills, Projects, Education
 
 The titles today are Inter, weight 600, uppercase, tracked at `0.18em`, color `#aeeaee`. Default size is 38px (`headerFontPx` in `src/stores/deskLayout.ts`). The entrance is `boot-text-in` in `src/components/BootFx.css`: the whole word wipes in from the left, blinks opacity several times, and shifts a few pixels. The `01`–`06` tags exist on each panel in `src/components/DeskPanels.tsx` and are dropped in `HudScreen` (`tag: _tag`).
 
-## 1. Examples of the flicker-on
+## The Disney intro, on these panels
 
-The motion to match is the whole word blinking on. It is blank, then the finished word flashes a few uneven times, then it holds. Letters do not decode, type on, or rise out of a mask.
+Clip 01 in `plans/clips-reference.html` is the TRON: Legacy Disney castle. Prologue made it (Danny Yount, castle design by Daniel Klöhn, animation including Eric Demeusy). It is not a title that types on. The castle is already the castle. Light fails to hold, catches, drops out, and then the drawing stays lit. People describe that as the castle rezzing up.
 
-That is already the family of `boot-text-in` and `boot-diag` on the desk panels. `boot-diag` is the cleaner version of it: stepped opacity, no sideways wipe. The title version adds a left-to-right clip and a small shake, which is the part that feels off. There is no separate panels page under a projects folder in this repo. The still of these panels once the text has caught is `plans/desk-hud-reference.png`.
+The desk panels already rez. During `flickerFill`, `panelBootVisual` in `src/lib/bootSequence.ts` samples `bootNoise` about every 33ms. Most samples leave the glass nearly dark. A sample above 0.66 flashes the fill. A sample above 0.78 flashes the edge. When the window ends, the glass eases up and holds. Each panel has its own seed, so they do not blink together. That is the projects-panel version of the same catch.
 
-Open these and watch the first second. Replay if the page loops.
+The title should be one more thing on that catch, not its own wipe.
 
-- [CodeFronts, neon power-on](https://codefronts.com/motion/css-text-animations/css-neon-glow-text-animation/). The diner sign. Each word ignites, stutters, then holds a steady glow. The cocktail sign above it is the other version: one letter keeps buzzing after the rest is on. The diner is the one.
-- [shadcn Neon Text](https://www.shadcn.io/text/neon-text). On load, four to six blinks in under 600ms, then the word stays lit. That timing is the right length for "Experiences".
-- [CrazyGL Flicker Text](https://crazygl.com/hero/flicker-text). A heading with three patterns: every letter together, letters in order, or letters at random. Styles are neon, LED, CRT, and electric. Set it to play once (`transition`, not a loop). Sequential on a short uppercase word is the closest to a panel label catching.
-- [Animista, flicker-in](https://animista.net/play/entrances/flicker-in). Plays once. Useful for feeling the rhythm. The default runs long and blinks too evenly. Shorten it and make the gaps uneven.
-- [GSAPify, Neon Flicker](https://gsapify.com/gsap-text-animations). Opacity jumps, then a glow. Same page has CRT Boot, which opens the whole line like a monitor. The panel glass can do that. The word itself is the neon flicker.
+1. The word is in its final place the whole time. No clip, no tracking change, no per-letter scramble. A faint copy (opacity around 0.08) can sit there first, the way the castle is a line drawing before the light holds.
+2. While that panel is inside `flickerFill`, the title opacity comes from the same `bootNoise(elapsed, seed)` as the glass. Dim by default. A high sample snaps it to full, one sample even brighter than the resting color (near white), then it drops out again.
+3. One sample in that window may shift the word 1px sideways. One sample. Then it is back. That is the tear in the castle's light, not a shake loop.
+4. When `flickerFill` ends, opacity is 1 and the offset is 0. A single late dropout is allowed while the bezel draws (`n > 0.92` already does this to the bezel). After that, the word does not move.
+5. Do not run this on a second clock. If the glass flashes and the word flashes on different frames, it reads as two effects. `BootClockDriver` already publishes `--boot-elapsed`. The title can read the same noise in that driver instead of the hand-authored blinks inside `boot-text-in`.
 
-Clips already listed in `plans/clips-reference.html`:
+`boot-text-in` is the part to replace. It wipes from the left and eases between blinks. The castle and the glass both hold a state until the next sample. `steps()` on the keyframes, or writing opacity from `bootNoise`, is the rendition. A new CSS animation with eased fades is the diner sign, which is a cousin, not this.
 
-- 01, Tron Title Disney Intro. Flashing lights and flickering.
-- 11, Futuristic Digital Credits Reveal. Neon circuit text on black with glitch.
+## Watch the castle, then the cousins
 
-Film versions of the same blink, if the web demos feel too much like a diner sign:
+The ident itself:
 
-- The TRON: Legacy trailer title flickers on. Noted in [this After Effects roundup](http://aeportal.blogspot.com/2011/01/few-tron-titles-in-after-effects.html), which also links Nick Khoo's [TRON title tutorials](https://lesterbanks.com/2011/01/creating-tron-legacy-style-titles-in-after-effects/). The useful part of those is the blink, not the 3D extrusion.
-- A fan recreation of the TRON credits flicker: [youtu.be/VCfpEvZoc6c](https://youtu.be/VCfpEvZoc6c).
-- Iron Man 2, the garage waking up (`plans/daddyshome.png` is the settled frame). The screens strobe on before the labels sit. Search `Iron Man 2 garage HUD wakeup`.
+- [Disney Castle, TRON Legacy intro](https://www.youtube.com/watch?v=lNXFJXmkLJ0). The clip the page is named after.
+- [Ident Gallery, Walt Disney / Tron Legacy (2010)](https://theident.gallery/player.php/FILM-VIDEO-ID-DISNEY-2010-TRONLEGACY-1). About 24 seconds.
+- [Eric Demeusy, castle stills](http://www.ericdemeusy.com/tronlegacy). He animated it. The line "the castle rezzes up" is quoted on that page.
+- [OTAS, Disney castle](https://otas.tv/work/tronlegacy/). Same Prologue sequence, plus the end credits.
+- [Danny Yount on the castle and the type](https://www.artofvfx.com/tron-legacy-prologue-films/). The castle was pushed from the normal flying Disney logo into a Tron drawing. The end credits were supposed to be type only, and Klöhn's type was built to feel like the Grid.
+- [Daniel Klöhn, TRON Legacy](https://cargocollective.com/danielkloehn/TRON-LEGACY). The end-credit type. Letters behave like light on the Grid, which is the text version of the castle.
+- [Prologue, Tron Legacy](https://prologue.com/portfolio-item/tron-legacy/).
 
-These look related and are a different motion. Skip them for this title:
+Same catch, other films and clips:
 
-- Letter scramble and decrypt ([GSAP ScrambleText](https://demos.gsap.com/demo/text-scrambling/), [React Bits Decrypted Text](https://reactbits.dev/text-animations/decrypted-text)).
-- A typewriter that grows the string ([Motion typewriter](https://examples.motion.dev/react/typewriter)).
-- Letters rising out of a clip ([Codrops stagger reveal](https://tympanus.net/codrops/2020/06/17/making-stagger-reveal-animations-for-text/)).
-- A neon sign that never stops buzzing ([Silvia O'Dwyer](https://codepen.io/silvia-odwyer/pen/yLgKePK)). The title has to catch and stay.
+- [GMUNK, TRON opening titles](https://gmunk.com/TRON-Opening-Titles). Not the castle. Light walls resolving into a city. Same rule: the drawing is decided, the light is what arrives.
+- Clip 11 in `plans/clips-reference.html`, Futuristic Digital Credits Reveal.
+- Rinzler at the end of the film: the red lights go out, then the white lights flicker back on. Written up in the [scene notes](https://tron.popapostle.com/html/episodes/Legacy.htm). A program catching, then holding.
+- Iron Man 2 garage (`plans/daddyshome.png`). Prologue was on those holograms in the same year. The screens strobe, then the labels are just there.
+- A fan TRON credits flicker: [youtu.be/VCfpEvZoc6c](https://youtu.be/VCfpEvZoc6c). Nick Khoo's [title tutorials](https://lesterbanks.com/2011/01/creating-tron-legacy-style-titles-in-after-effects/) are the homemade version. Use the blink. Leave the extruded 3D letters.
+
+Flat type that ignites and then holds. Useful for timing, softer than the castle:
+
+- [CodeFronts, diner power-on](https://codefronts.com/motion/css-text-animations/css-neon-glow-text-animation/). Words stutter, then a steady glow. The cocktail sign above it keeps buzzing. That buzz is the failure mode.
+- [shadcn Neon Text](https://www.shadcn.io/text/neon-text). A handful of blinks, under 600ms, then lit.
+- [CrazyGL Flicker Text](https://crazygl.com/hero/flicker-text). Play once, all letters together.
+- [Animista, flicker-in](https://animista.net/play/entrances/flicker-in). The default is too even. The castle's gaps are irregular, which is what `bootNoise` already is.
+- [GSAPify, Neon Flicker](https://gsapify.com/gsap-text-animations).
+
+Skip for this rendition: scramble and decrypt, a typewriter that grows the string, letters rising out of a mask, and any neon that never stops buzzing ([this pen](https://codepen.io/silvia-odwyer/pen/yLgKePK) is the loop). A sliced RGB glitch that keeps running ([Codrops](https://tympanus.net/codrops/2017/12/21/css-glitch-effect/)) is a broken signal. The castle finishes resolving.
 
 ## 2. How the title looks after it appears
 
