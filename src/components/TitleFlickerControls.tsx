@@ -3,6 +3,7 @@ import { BOOT_TOTAL_MS } from "../lib/bootParts";
 import { useBootClock } from "../stores/bootClock";
 import {
   TITLE_FONTS,
+  TITLE_TYPE_SLIDERS,
   TITLE_FLICKER_ASPECTS,
   TITLE_FLICKER_SLIDERS,
   useTitleFlicker,
@@ -28,6 +29,9 @@ export default function TitleFlickerControls() {
 
   const fontIndex = useTitleFlicker((s) => s.fontIndex);
   const cycleFont = useTitleFlicker((s) => s.cycleFont);
+  const typography = useTitleFlicker((s) => s.typography);
+  const setTypography = useTitleFlicker((s) => s.setTypography);
+  const resetTypography = useTitleFlicker((s) => s.resetTypography);
   const durationMs = useTitleFlicker((s) => s.durationMs);
   const setDuration = useTitleFlicker((s) => s.setDuration);
   const tuning = useTitleFlicker((s) => s.tuning);
@@ -116,6 +120,27 @@ export default function TitleFlickerControls() {
               <span aria-live="polite">{TITLE_FONTS[fontIndex].label}</span>
               <button className="desk-controls__btn" type="button" aria-label="Next font" onClick={() => cycleFont(1)}>→</button>
             </div>
+          </section>
+          <hr className="desk-controls__divider" />
+
+          <section className="desk-controls__group" aria-label="Typography">
+            <h4 className="desk-controls__group-title">Typography</h4>
+            {TITLE_TYPE_SLIDERS.map((slider) => (
+              <label className="desk-controls__field" key={slider.id}
+                title={slider.id === "weight" && fontIndex !== 0 ? "Weight variants are available for Chakra Petch; Thickness works with every font." : undefined}>
+                <span className="desk-controls__label">{slider.label}</span>
+                <input className="desk-controls__slider" type="range"
+                  min={slider.min} max={slider.max} step={slider.step}
+                  value={slider.id === "weight" && fontIndex !== 0 ? TITLE_FONTS[fontIndex].weight : typography[slider.id]}
+                  disabled={slider.id === "weight" && fontIndex !== 0}
+                  aria-label={`Font ${slider.label.toLowerCase()}`}
+                  onChange={(e) => setTypography(slider.id, Number(e.target.value))} />
+                <span className="desk-controls__value">
+                  {Number((slider.id === "weight" && fontIndex !== 0 ? TITLE_FONTS[fontIndex].weight : typography[slider.id]).toFixed(2))}{slider.unit}
+                </span>
+              </label>
+            ))}
+            <button className="desk-controls__btn" type="button" onClick={resetTypography}>Reset typography</button>
           </section>
           <hr className="desk-controls__divider" />
 

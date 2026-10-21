@@ -26,6 +26,7 @@
 .title-preview__item .neon-title {
   position: relative;
   display: inline-block;
+  --title-transform-origin: center;
 }
 
 @media (max-width: 1550px) {

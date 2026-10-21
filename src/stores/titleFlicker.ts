@@ -15,6 +15,35 @@ export const TITLE_FONTS = [
   { label: "Varela Round", family: '"Varela Round", sans-serif', weight: 400 },
 ];
 
+export const DEFAULT_TITLE_TYPE = {
+  size: 100,
+  weight: 600,
+  thickness: 0,
+  spacing: 0.01,
+  width: 100,
+  slant: 0,
+  outlineWidth: 1,
+};
+
+export type TitleType = typeof DEFAULT_TITLE_TYPE;
+
+export const TITLE_TYPE_SLIDERS: {
+  id: keyof TitleType;
+  label: string;
+  min: number;
+  max: number;
+  step: number;
+  unit: string;
+}[] = [
+  { id: "size", label: "Size", min: 50, max: 200, step: 1, unit: "%" },
+  { id: "weight", label: "Weight", min: 300, max: 700, step: 100, unit: "" },
+  { id: "thickness", label: "Thickness", min: 0, max: 3, step: 0.1, unit: "px" },
+  { id: "spacing", label: "Letter spacing", min: -0.05, max: 0.3, step: 0.01, unit: "em" },
+  { id: "width", label: "Width", min: 60, max: 150, step: 1, unit: "%" },
+  { id: "slant", label: "Slant", min: -20, max: 20, step: 1, unit: "°" },
+  { id: "outlineWidth", label: "Outline width", min: 0.25, max: 3, step: 0.25, unit: "px" },
+];
+
 export const TITLE_FLICKER_ASPECTS: {
   id: keyof TitleFlickerAspects;
   label: string;
@@ -49,6 +78,9 @@ const DEFAULT_DURATION_MS = 1000;
 
 interface TitleFlickerStore {
   fontIndex: number;
+  typography: TitleType;
+  setTypography: (id: keyof TitleType, value: number) => void;
+  resetTypography: () => void;
   cycleFont: (direction: -1 | 1) => void;
   durationMs: number;
   aspects: TitleFlickerAspects;
@@ -61,6 +93,16 @@ interface TitleFlickerStore {
 
 export const useTitleFlicker = create<TitleFlickerStore>((set) => ({
   fontIndex: 0,
+  typography: { ...DEFAULT_TITLE_TYPE },
+  setTypography: (id, value) => {
+    if (!Number.isFinite(value)) return;
+    const slider = TITLE_TYPE_SLIDERS.find((item) => item.id === id)!;
+    set((s) => ({ typography: {
+      ...s.typography,
+      [id]: Math.max(slider.min, Math.min(slider.max, value)),
+    } }));
+  },
+  resetTypography: () => set({ typography: { ...DEFAULT_TITLE_TYPE } }),
   cycleFont: (direction) => set((s) => ({
     fontIndex: (s.fontIndex + direction + TITLE_FONTS.length) % TITLE_FONTS.length,
   })),
@@ -82,6 +124,7 @@ export const useTitleFlicker = create<TitleFlickerStore>((set) => ({
   reset: () =>
     set({
       fontIndex: 0,
+      typography: { ...DEFAULT_TITLE_TYPE },
       durationMs: DEFAULT_DURATION_MS,
       aspects: { ...DEFAULT_TITLE_FLICKER_ASPECTS },
       tuning: { ...DEFAULT_TITLE_FLICKER_TUNING },

@@ -38,6 +38,7 @@ export default function RezTitle({
   const delayMs = useBootTuning((s) => s.parts.titleReveal.delayMs);
   const durationMs = useTitleFlicker((s) => s.durationMs);
   const fontIndex = useTitleFlicker((s) => s.fontIndex);
+  const typography = useTitleFlicker((s) => s.typography);
   const tuning = useTitleFlicker((s) => s.tuning);
   const aspects = useTitleFlicker((s) => s.aspects);
 
@@ -54,7 +55,7 @@ export default function RezTitle({
       el.style.transform = c.x ? `translateX(${c.x.toFixed(3)}em)` : "none";
       el.style.color = c.hot ? "#ffffff" : c.ghost ? "rgba(170,240,255,0.7)" : "#b9f5ff";
       el.style.webkitTextFillColor = c.outline ? "transparent" : "currentColor";
-      el.style.webkitTextStroke = c.outline ? "1px currentColor" : "0px";
+      el.style.webkitTextStroke = `${c.outline ? typography.outlineWidth : typography.thickness}px currentColor`;
       el.dataset.phase = c.opacity === 0 ? "dark" : c.outline ? "outline" : "filled";
       // Text shadows paint solid glyphs, so hollow letters use drop shadows
       // of the stroke itself to keep their centers empty, including doubles.
@@ -68,6 +69,7 @@ export default function RezTitle({
   }, [
     aspects,
     tuning,
+    typography,
     boot.seed,
     boot.startMs,
     delayMs,
@@ -82,9 +84,12 @@ export default function RezTitle({
       className={center ? "neon-title neon-title--center" : "neon-title"}
       aria-label={title}
       style={{
-        fontSize: `var(--title-preview-font-size, ${Math.round(headerFontPx * 1.35)}px)`,
+        fontSize: `calc(var(--title-preview-font-size, ${Math.round(headerFontPx * 1.35)}px) * ${typography.size / 100})`,
         fontFamily: TITLE_FONTS[fontIndex].family,
-        fontWeight: TITLE_FONTS[fontIndex].weight,
+        fontWeight: fontIndex === 0 ? typography.weight : TITLE_FONTS[fontIndex].weight,
+        letterSpacing: `${typography.spacing}em`,
+        transform: `${center ? "translateY(-50%) " : ""}scaleX(${typography.width / 100}) skewX(${-typography.slant}deg)`,
+        transformOrigin: "var(--title-transform-origin, left center)",
         left: `${padX}px`,
         top: center ? "50%" : `${padY}px`,
       }}
