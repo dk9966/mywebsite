@@ -24,6 +24,24 @@ export const DEFAULT_TITLE_FLICKER_ASPECTS: TitleFlickerAspects = {
   glow: true,
 };
 
+export interface TitleFlickerTuning {
+  catchSpread: number;
+  flickerHz: number;
+  ghostOpacity: number;
+  jumpEm: number;
+  flashMs: number;
+  glowStrength: number;
+}
+
+export const DEFAULT_TITLE_FLICKER_TUNING: TitleFlickerTuning = {
+  catchSpread: 0.65,
+  flickerHz: 30,
+  ghostOpacity: 0.38,
+  jumpEm: 0.25,
+  flashMs: 65,
+  glowStrength: 1,
+};
+
 export interface LetterCatch {
   opacity: number;
   /** Sideways jump, em. */
@@ -53,20 +71,19 @@ export function letterCatch(
   seed: number,
   index: number,
   aspects: TitleFlickerAspects,
+  tuning: TitleFlickerTuning = DEFAULT_TITLE_FLICKER_TUNING,
 ): LetterCatch {
   const t = elapsedMs - startMs;
   if (t < 0) return DARK;
 
   const dur = Math.max(STEP_MS * 4, durationMs);
-  const glowOf = (amount: number) => (aspects.glow ? amount : 0);
+  const glowOf = (amount: number) => (aspects.glow ? amount * tuning.glowStrength : 0);
   const key = aspects.letters ? seed * 13.7 + index * 3.17 : seed * 13.7;
-  const lockFrac = aspects.letters ? 0.45 + 0.5 * hash01(key + 0.5) : 0.85;
+  const lockFrac = aspects.letters ? 0.95 - tuning.catchSpread * (1 - hash01(key + 0.5)) : 0.85;
   const lockMs = dur * lockFrac;
 
   if (t >= lockMs) {
-    const lockStep = Math.floor((startMs + lockMs) / STEP_MS);
-    const flashing =
-      aspects.whiteHot && Math.floor(elapsedMs / STEP_MS) <= lockStep + 1;
+    const flashing = aspects.whiteHot && t - lockMs < tuning.flashMs;
     return {
       opacity: 1,
       x: 0,
@@ -77,18 +94,18 @@ export function letterCatch(
   }
 
   const p = t / lockMs;
-  const n = bootNoise(elapsedMs, key);
+  const step = Math.floor(t * tuning.flickerHz / 1000);
+  const n = bootNoise(step * STEP_MS, key);
   const onAbove = 0.9 - 0.4 * p;
-  const step = Math.floor(elapsedMs / STEP_MS);
   const x = aspects.scatter
-    ? (hash01(step * 1.31 + key) - 0.5) * 0.5 * (1 - p * 0.6)
+    ? (hash01(step * 1.31 + key) - 0.5) * 2 * tuning.jumpEm * (1 - p * 0.6)
     : 0;
 
   if (n > onAbove) {
     return { opacity: 0.9, x, ghost: false, hot: false, glow: glowOf(0.8) };
   }
   if (aspects.ghost && n > onAbove - 0.32) {
-    return { opacity: 0.38, x, ghost: true, hot: false, glow: glowOf(0.35) };
+    return { opacity: tuning.ghostOpacity, x, ghost: true, hot: false, glow: glowOf(0.35) };
   }
   return DARK;
 }

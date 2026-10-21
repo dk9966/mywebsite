@@ -3,9 +3,11 @@ import { BOOT_TOTAL_MS } from "../lib/bootParts";
 import { useBootClock } from "../stores/bootClock";
 import {
   TITLE_FLICKER_ASPECTS,
+  TITLE_FLICKER_SLIDERS,
   useTitleFlicker,
 } from "../stores/titleFlicker";
 import "./DeskControls.css";
+import "./TitleFlickerControls.css";
 
 function formatBootMs(ms: number): string {
   return `${(ms / 1000).toFixed(2)}s`;
@@ -13,7 +15,7 @@ function formatBootMs(ms: number): string {
 
 /**
  * Tuner for the Disney title rez. Same chrome as the root HUD panel:
- * a time scrub, one slider for the catch, and a checkbox per aspect.
+ * a time scrub, sliders for the catch, and a checkbox per aspect.
  */
 export default function TitleFlickerControls() {
   const elapsedMs = useBootClock((s) => s.elapsedMs);
@@ -25,6 +27,8 @@ export default function TitleFlickerControls() {
 
   const durationMs = useTitleFlicker((s) => s.durationMs);
   const setDuration = useTitleFlicker((s) => s.setDuration);
+  const tuning = useTitleFlicker((s) => s.tuning);
+  const setTuning = useTitleFlicker((s) => s.setTuning);
   const aspects = useTitleFlicker((s) => s.aspects);
   const setAspect = useTitleFlicker((s) => s.setAspect);
   const reset = useTitleFlicker((s) => s.reset);
@@ -36,7 +40,7 @@ export default function TitleFlickerControls() {
   return (
     <aside
       className={[
-        "desk-controls",
+        "desk-controls title-flicker-controls",
         minimized ? "desk-controls--minimized" : "",
       ]
         .filter(Boolean)
@@ -89,8 +93,13 @@ export default function TitleFlickerControls() {
               step={10}
               value={Math.min(elapsedMs, BOOT_TOTAL_MS)}
               aria-label="Scrub title catch"
-              onPointerDown={() => setScrubbing(true)}
+              onPointerDown={(e) => {
+                e.currentTarget.setPointerCapture(e.pointerId);
+                setScrubbing(true);
+              }}
               onPointerUp={() => setScrubbing(false)}
+              onPointerCancel={() => setScrubbing(false)}
+              onLostPointerCapture={() => setScrubbing(false)}
               onChange={(e) => seek(Number(e.target.value))}
             />
           </section>
@@ -113,6 +122,25 @@ export default function TitleFlickerControls() {
               />
               <span className="desk-controls__value">{durationMs}</span>
             </div>
+            {TITLE_FLICKER_SLIDERS.map((slider) => (
+              <label className="desk-controls__field" key={slider.id}>
+                <span className="desk-controls__label">{slider.label}</span>
+                <input
+                  className="desk-controls__slider"
+                  type="range"
+                  min={slider.min}
+                  max={slider.max}
+                  step={slider.step}
+                  value={tuning[slider.id]}
+                  disabled={slider.aspect ? !aspects[slider.aspect] : false}
+                  aria-label={slider.label}
+                  onChange={(e) => setTuning(slider.id, Number(e.target.value))}
+                />
+                <span className="desk-controls__value">
+                  {Number(tuning[slider.id].toFixed(2))}{slider.unit}
+                </span>
+              </label>
+            ))}
           </section>
 
           <hr className="desk-controls__divider" />
