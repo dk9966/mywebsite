@@ -398,3 +398,30 @@
   opacity: var(--fill-power);
   text-shadow: var(--fill-glow);
 }
+
+/* Emissive outline copies sit BEHIND the crisp tube/core, so visible light
+   can spill into the background without blurring the actual letter edge. */
+.neon-title__letter {
+  position: relative;
+  isolation: isolate;
+}
+.neon-title__letter::before,
+.neon-title__letter::after {
+  content: attr(data-glyph);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  opacity: calc(var(--outline-spill, 0) * 0.85);
+}
+.neon-title__letter::before {
+  -webkit-text-stroke: calc(var(--outline-spill-width, 1px) + 7px) #268eff;
+  filter: blur(4px);
+}
+.neon-title__letter::after {
+  -webkit-text-stroke: calc(var(--outline-spill-width, 1px) + 12px) #125dff;
+  filter: blur(12px);
+  opacity: calc(var(--outline-spill, 0) * 0.55);
+}

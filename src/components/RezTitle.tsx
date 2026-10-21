@@ -54,6 +54,12 @@ export default function RezTitle({
       const c = bootSkipped()
         ? { ...HELD, glow: aspects.glow ? tuning.glowStrength * tuning.settledBloom : 0 }
         : letterCatch(elapsed, start, durationMs, boot.seed, i, aspects, tuning);
+      // Bloom is a separate emissive layer; the foreground stroke stays sharp.
+      const outlinePower = tubeMode
+        ? (tubeLights && aspects.outline && aspects.glow ? tuning.outlineBloom * tuning.glowStrength : 0)
+        : (c.outline ? c.glow : 0);
+      el.style.setProperty("--outline-spill", String(1 - Math.exp(-0.65 * outlinePower)));
+      el.style.setProperty("--outline-spill-width", `${typography.outlineWidth}px`);
       if (tubeMode) {
         // Visible tube outlines are already illuminated. Only their fill
         // follows the catch clock; outline bloom does not wait for ignition.
@@ -91,7 +97,7 @@ export default function RezTitle({
       el.style.textShadow = c.outline ? "none" : c.ghost ? ghostTextShadow(c.glow) : neonTextShadow(c.glow, c.hot);
       const outlineFilters = [
         ...(c.ghost ? ["drop-shadow(0.09em 0.03em rgba(110,226,255,0.4))", "drop-shadow(-0.06em 0 rgba(110,226,255,0.25))"] : []),
-        ...(c.glow > 0 ? [outlineBloomFilter(c.glow)] : []),
+
       ];
       el.style.filter = c.outline ? outlineFilters.join(" ") || "none" : c.ghost ? "blur(0.6px)" : "none";
     });
@@ -132,6 +138,7 @@ export default function RezTitle({
             letterRefs.current[i] = el;
           }}
           className={`neon-title__letter${tubeMode ? " neon-title__letter--tube" : ""}`}
+          data-glyph={ch}
           aria-hidden
         >
           {tubeMode ? <>
