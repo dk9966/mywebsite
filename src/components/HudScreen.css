@@ -122,6 +122,42 @@
   pointer-events: none;
 }
 
+.hud-screen__handle-title--rez-spacer {
+  visibility: hidden;
+}
+
+@font-face {
+  font-family: "Varela Round";
+  src: url("/fonts/VarelaRound-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* Neon title on the unsliced handle layer. The halo is one glow, not a
+   slice of the bent face. */
+.neon-title {
+  position: absolute;
+  z-index: 4;
+  margin: 0;
+  pointer-events: none;
+  font-family: "Varela Round", "Trebuchet MS", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  line-height: 1;
+  color: #f4feff;
+  white-space: nowrap;
+}
+
+.neon-title__letter {
+  display: inline-block;
+  white-space: pre;
+  opacity: 0;
+}
+
+.neon-title--center {
+  transform: translateY(-50%);
+}
+
 .hud-screen__handle-actions {
   display: flex;
   align-items: center;
@@ -267,4 +303,125 @@
   bottom: calc(-1 * var(--edge-outset, 7px));
   right: calc(-1 * var(--edge-outset, 7px));
   cursor: nwse-resize;
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("/fonts/ChakraPetch-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rajdhani";
+  src: url("/fonts/Rajdhani-Medium.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Title JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("/fonts/ChakraPetch-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("/fonts/ChakraPetch-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("/fonts/ChakraPetch-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Chakra Petch";
+  src: url("/fonts/ChakraPetch-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Raised, rounded glass contours. All layers are hollow strokes: even the
+   cast shadow follows the tubes rather than painting a solid glyph. */
+.neon-title__letter--tube { position: relative; }
+.neon-tube__measure { visibility: hidden; }
+.neon-title__letter--tube > span:not(.neon-tube__measure) {
+  position: absolute;
+  inset: 0;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: var(--tube-radius) currentColor;
+}
+.neon-tube__depth {
+  color: #171c20;
+  transform: translate(1.4px, 2.3px);
+  -webkit-text-stroke-width: calc(var(--tube-radius) + 2px) !important;
+  filter: drop-shadow(1px 2px 1px #000);
+}
+.neon-tube__glass {
+  color: #424b50;
+  -webkit-text-stroke-width: calc(var(--tube-radius) + 1.6px) !important;
+}
+.neon-tube__rim {
+  color: #879196;
+  transform: translate(-0.35px, -0.55px);
+  -webkit-text-stroke-width: calc(var(--tube-radius) * 0.65) !important;
+}
+.neon-tube__reflection {
+  color: #c1c9ca;
+  opacity: 0.65;
+  transform: translate(-0.65px, -0.85px);
+  -webkit-text-stroke-width: 0.45px !important;
+}
+.neon-tube__light {
+  color: var(--tube-core);
+  opacity: var(--tube-power);
+  filter: var(--tube-bloom);
+  transform: translateX(var(--tube-jump));
+}
+.neon-title__letter--tube > .neon-tube__fill {
+  color: var(--fill-color);
+  -webkit-text-fill-color: currentColor;
+  -webkit-text-stroke-width: var(--fill-stroke);
+  opacity: var(--fill-power);
+  text-shadow: var(--fill-glow);
+}
+
+/* Emissive outline copies sit BEHIND the crisp tube/core, so visible light
+   can spill into the background without blurring the actual letter edge. */
+.neon-title__letter {
+  position: relative;
+  isolation: isolate;
+}
+.neon-title__letter::before,
+.neon-title__letter::after {
+  content: attr(data-glyph);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  opacity: calc(var(--outline-spill, 0) * 0.85);
+}
+.neon-title__letter::before {
+  -webkit-text-stroke: calc(var(--outline-spill-width, 1px) + 7px) #78e4ff;
+  filter: blur(4px);
+}
+.neon-title__letter::after {
+  -webkit-text-stroke: calc(var(--outline-spill-width, 1px) + 12px) #78e4ff;
+  filter: blur(12px);
+  opacity: calc(var(--outline-spill, 0) * 0.55);
 }

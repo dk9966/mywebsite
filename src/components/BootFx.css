@@ -385,6 +385,14 @@
   opacity: 0;
 }
 
+/* Disney rez: the word stays in place and the clock drives its opacity.
+   The wipe on boot-text-in must not run over that. */
+.hud-screen__face--boot.hud-screen__face--rez .hud-screen__handle {
+  animation: none;
+  clip-path: none;
+  transform: none;
+}
+
 @keyframes boot-text-in {
   0% { opacity: 0; clip-path: inset(0 82% 0 0); transform: translateX(-3px); }
   10% { opacity: 0.75; }

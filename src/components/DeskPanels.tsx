@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useEffect, useMemo } from "react";
 import { contact } from "../data/resume";
+import { isCaveTitles } from "../lib/caveRoute";
 import {
   BOOT_TOTAL_MS,
   bootPanelStartMs,
@@ -221,14 +222,15 @@ export default function DeskPanels() {
     const meta = CELL_META[cell.id];
     // Staggered power-on per panel; the final pulse sweeps the wall left →
     // right, so its delay follows the cell's horizontal position.
+    const bootTiming: PanelBoot = {
+      startMs: bootPanelStartMs(cell.id),
+      pulseDelayMs: panelPulseDelayForCell(cell.x, wallWidthPx),
+      seed: BOOT_SEEDS[cell.id],
+    };
     const boot: PanelBoot | undefined =
-      bootActive && !dockIcon
-        ? {
-            startMs: bootPanelStartMs(cell.id),
-            pulseDelayMs: panelPulseDelayForCell(cell.x, wallWidthPx),
-            seed: BOOT_SEEDS[cell.id],
-          }
-        : undefined;
+      bootActive && !dockIcon ? bootTiming : undefined;
+    const neonBoot: PanelBoot | undefined =
+      isCaveTitles() && !dockIcon ? bootTiming : undefined;
     return (
       <HudScreen
         key={dockIcon ? `dock-${cell.id}` : cell.id}
@@ -249,6 +251,7 @@ export default function DeskPanels() {
         compactPadding={meta.compactPadding}
         dockIcon={dockIcon}
         boot={boot}
+        neonBoot={neonBoot}
         onResizeDelta={dockIcon ? undefined : onResize(cell.id)}
       >
         {meta.content ?? null}

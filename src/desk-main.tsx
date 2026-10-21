@@ -7,7 +7,9 @@ import * as THREE from "three";
 import DeskTable from "./components/DeskTable";
 import DeskPanels from "./components/DeskPanels";
 import DeskControls from "./components/DeskControls";
+import TitlePreview from "./components/TitlePreview";
 import BootClockDriver from "./components/BootClockDriver";
+import { caveRoute } from "./lib/caveRoute";
 import { useDeskLayout } from "./stores/deskLayout";
 
 const DEFAULT_NEAR = 0.05;
@@ -338,6 +340,9 @@ function HeadLook({
 
 export function DeskApp() {
   const initialCamera = useDeskLayout.getState().camera;
+  const route = caveRoute();
+
+  if (route === "cave-title") return <TitlePreview />;
 
   return (
     <div
@@ -360,7 +365,7 @@ export function DeskApp() {
       >
         <DeskScene />
       </Canvas>
-      <DeskControls />
+      {route === "desk" ? <DeskControls /> : null}
       <BootClockDriver />
       <Hint />
     </div>

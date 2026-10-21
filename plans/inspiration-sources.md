@@ -1,5 +1,7 @@
 # Inspiration Sources
 
+Panel titles, two parts (how the word appears from blank, and how it looks once it is still): [title-flicker-references.md](title-flicker-references.md).
+
 ## Underrated portfolio / web sources
 
 - **Three.js Journey showcase** (threejs-journey.com) - Student final projects. Raw, experimental work before it gets polished into agency pieces. Good for ideas nobody else is using yet.

@@ -1,0 +1,26 @@
+.title-flicker-controls .desk-controls__field {
+  grid-template-columns: 100px minmax(0, 1fr) 44px;
+}
+
+.title-flicker-controls .desk-controls__slider:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.title-flicker-controls .desk-controls__slider:focus-visible {
+  outline: 1px solid #aeeaee;
+  outline-offset: 4px;
+}
+
+.title-flicker-controls__font {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.title-flicker-controls__font button {
+  min-height: 28px;
+  font-size: 18px;
+}
