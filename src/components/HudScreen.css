@@ -122,6 +122,37 @@
   pointer-events: none;
 }
 
+.hud-screen__handle-title--rez-spacer {
+  visibility: hidden;
+}
+
+@font-face {
+  font-family: "Varela Round";
+  src: url("/fonts/VarelaRound-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* Neon title on the unsliced handle layer. The halo is one glow, not a
+   slice of the bent face. */
+.neon-title {
+  position: absolute;
+  z-index: 4;
+  margin: 0;
+  pointer-events: none;
+  font-family: "Varela Round", "Trebuchet MS", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  line-height: 1;
+  color: #f4feff;
+  white-space: nowrap;
+  opacity: 0;
+}
+
+.neon-title--center {
+  transform: translateY(-50%);
+}
+
 .hud-screen__handle-actions {
   display: flex;
   align-items: center;

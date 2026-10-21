@@ -393,11 +393,6 @@
   transform: none;
 }
 
-.hud-screen__handle--rez,
-.hud-screen__handle--rez .hud-screen__handle-title {
-  opacity: 0;
-}
-
 @keyframes boot-text-in {
   0% { opacity: 0; clip-path: inset(0 82% 0 0); transform: translateX(-3px); }
   10% { opacity: 0.75; }

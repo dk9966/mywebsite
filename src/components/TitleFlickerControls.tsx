@@ -45,7 +45,7 @@ export default function TitleFlickerControls() {
       onPointerDown={stop}
     >
       <div className="desk-controls__header">
-        <h3 className="desk-controls__title">Title rez</h3>
+        <h3 className="desk-controls__title">Titles</h3>
         <button
           className="desk-controls__btn"
           type="button"

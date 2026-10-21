@@ -1,30 +1,29 @@
-import { useLayoutEffect, useRef, type ReactNode } from "react";
-import { bootElapsedMs, type PanelBoot } from "../lib/bootSequence";
-import { titleCatch } from "../lib/titleFlicker";
+import { useLayoutEffect, useRef } from "react";
+import { bootElapsedMs, bootSkipped, type PanelBoot } from "../lib/bootSequence";
+import { neonTextShadow, titleCatch } from "../lib/titleFlicker";
 import { useBootClock } from "../stores/bootClock";
 import { useBootTuning } from "../stores/bootTuning";
 import { useTitleFlicker } from "../stores/titleFlicker";
 
 /**
- * Panel title that rezzes with the glass. The word stays put, and its
- * brightness follows the same stepped noise as the panel fill.
- *
- * The title lives in drei's HTML overlay, which is a separate React root.
- * The boot clock store is what moves this; a private animation frame was
- * getting cancelled when that overlay reconciled.
+ * One neon title for a panel. It sits on the flat handle layer so the halo
+ * is a single glow, and it strobes with the boot clock.
  */
 export default function RezTitle({
   boot,
   title,
   headerFontPx,
-  children,
+  padX,
+  padY,
+  center,
 }: {
   boot: PanelBoot;
   title: string;
   headerFontPx: number;
-  children?: ReactNode;
+  padX: number;
+  padY: number;
+  center: boolean;
 }) {
-  const handleRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLSpanElement>(null);
   const elapsedMs = useBootClock((s) => s.elapsedMs);
   const paused = useBootClock((s) => s.paused);
@@ -34,31 +33,33 @@ export default function RezTitle({
   const aspects = useTitleFlicker((s) => s.aspects);
 
   useLayoutEffect(() => {
-    const handle = handleRef.current;
     const el = titleRef.current;
-    if (!handle || !el) return;
+    if (!el) return;
+
+    const paint = (opacity: number, glow: number, hot: boolean) => {
+      el.style.opacity = String(opacity);
+      el.style.color = hot ? "#ffffff" : "#f7feff";
+      el.style.textShadow = neonTextShadow(glow, hot);
+      el.style.filter =
+        glow > 0
+          ? `drop-shadow(0 0 ${Math.round(12 * glow)}px rgba(150, 236, 255, ${hot ? 0.95 : 0.8}))`
+          : "none";
+    };
+
+    if (bootSkipped()) {
+      paint(1, aspects.glow ? 1 : 0, false);
+      return;
+    }
 
     const elapsed = paused || scrubbing ? elapsedMs : bootElapsedMs();
     const start = boot.startMs + delayMs;
     if (elapsed < start) {
-      handle.style.opacity = "0";
-      el.style.opacity = "0";
-      el.style.transform = "none";
-      el.style.color = "";
-      el.style.filter = "none";
-      el.style.textShadow = "";
+      paint(0, 0, false);
       return;
     }
 
-    handle.style.opacity = "1";
     const caught = titleCatch(elapsed, start, durationMs, boot.seed, aspects);
-    el.style.opacity = String(caught.opacity);
-    el.style.transform = caught.x ? `translateX(${caught.x}px)` : "none";
-    el.style.color = caught.hot ? "#f4feff" : "";
-    el.style.filter = caught.hot ? "brightness(1.65)" : "none";
-    el.style.textShadow = caught.hot
-      ? "0 0 8px rgba(244, 254, 255, 0.85)"
-      : "";
+    paint(caught.opacity, caught.glow, caught.hot);
   }, [
     aspects,
     boot.seed,
@@ -71,15 +72,16 @@ export default function RezTitle({
   ]);
 
   return (
-    <div
-      ref={handleRef}
-      className="hud-screen__handle hud-screen__handle--rez"
-      style={{ fontSize: `${headerFontPx}px` }}
+    <span
+      ref={titleRef}
+      className={center ? "neon-title neon-title--center" : "neon-title"}
+      style={{
+        fontSize: `${Math.round(headerFontPx * 1.35)}px`,
+        left: `${padX}px`,
+        top: center ? "50%" : `${padY}px`,
+      }}
     >
-      <span ref={titleRef} className="hud-screen__handle-title">
-        {title}
-      </span>
-      {children}
-    </div>
+      {title}
+    </span>
   );
 }

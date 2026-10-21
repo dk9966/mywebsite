@@ -14,7 +14,6 @@ import {
 } from "../lib/bootSequence";
 import { useBootTuning } from "../stores/bootTuning";
 import { useDeskLayout } from "../stores/deskLayout";
-import { isCaveTitles } from "../lib/caveRoute";
 import { BootFx, BootPulse } from "./BootFx";
 import RezTitle from "./RezTitle";
 import "./HudScreen.css";
@@ -100,6 +99,8 @@ export interface HudScreenProps {
   dockIcon?: boolean;
   /** Power-on boot config; present only while the startup sequence runs. */
   boot?: PanelBoot;
+  /** Cave routes keep this for the neon title after the boot FX unmount. */
+  neonBoot?: PanelBoot;
   onMinimize?: () => void;
   onRestore?: () => void;
   /** Incremental resize feedback: dW/dH are this panel's signed size change
@@ -126,6 +127,7 @@ export default function HudScreen({
   compactPadding = false,
   dockIcon = false,
   boot,
+  neonBoot,
   onMinimize,
   onRestore,
   onResizeDelta,
@@ -133,7 +135,7 @@ export default function HudScreen({
 }: HudScreenProps) {
   const contentPaddingPx = useDeskLayout((s) => s.contentPaddingPx);
   const bootParts = useBootTuning((s) => s.parts);
-  const rezTitles = isCaveTitles();
+  const neonTitle = Boolean(neonBoot) && !hideHeader && !dockIcon;
   const groupRef = useRef<THREE.Group>(null);
   const handlesRef = useRef<HTMLDivElement>(null);
 
@@ -261,7 +263,7 @@ export default function HudScreen({
           ? "boot-part--contentJitter"
           : "",
         boot && bootParts.titleReveal.visible ? "boot-part--titleReveal" : "",
-        rezTitles && boot ? "hud-screen__face--rez" : "",
+        neonTitle && boot ? "hud-screen__face--rez" : "",
         boot && bootParts.bodyReveal.visible ? "boot-part--bodyReveal" : "",
       ]
         .join(" ")
@@ -280,32 +282,19 @@ export default function HudScreen({
       }}
     >
       {!hideHeader ? (
-        rezTitles && boot ? (
-          <RezTitle boot={boot} title={title} headerFontPx={headerFontPx}>
-            <div className="hud-screen__handle-actions">
-              {headerAside}
-              {onMinimize ? (
-                <button
-                  type="button"
-                  className="hud-screen__minimize-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onMinimize();
-                  }}
-                  title="Minimize"
-                  aria-label={`Minimize ${title}`}
-                >
-                  −
-                </button>
-              ) : null}
-            </div>
-          </RezTitle>
-        ) : (
         <div
           className="hud-screen__handle"
           style={{ fontSize: `${headerFontPx}px` }}
         >
-          <span className="hud-screen__handle-title">{title}</span>
+          <span
+            className={
+              neonTitle
+                ? "hud-screen__handle-title hud-screen__handle-title--rez-spacer"
+                : "hud-screen__handle-title"
+            }
+          >
+            {title}
+          </span>
           <div className="hud-screen__handle-actions">
             {headerAside}
             {onMinimize ? (
@@ -324,7 +313,6 @@ export default function HudScreen({
             ) : null}
           </div>
         </div>
-        )
       ) : null}
       {!headerOnly ? (
         <div
@@ -390,6 +378,16 @@ export default function HudScreen({
           className="hud-screen hud-screen--handles"
           style={panelStyle}
         >
+          {neonBoot && !hideHeader ? (
+            <RezTitle
+              boot={neonBoot}
+              title={title}
+              headerFontPx={headerFontPx}
+              padX={facePadH}
+              padY={facePadV}
+              center={headerOnly}
+            />
+          ) : null}
           {!dockIcon ? (
             <>
               <div

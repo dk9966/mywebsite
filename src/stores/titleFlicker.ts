@@ -11,14 +11,14 @@ export const TITLE_FLICKER_ASPECTS: {
   id: keyof TitleFlickerAspects;
   label: string;
 }[] = [
-  { id: "faintWire", label: "Faint drawing" },
-  { id: "flicker", label: "Flicker catch" },
-  { id: "whiteHot", label: "White-hot frame" },
-  { id: "tear", label: "Pixel tear" },
-  { id: "lateDropout", label: "Late dropout" },
+  { id: "glow", label: "Neon glow" },
+  { id: "flicker", label: "Flicker" },
+  { id: "whiteHot", label: "White flash" },
+  { id: "dimTube", label: "Dim tube" },
+  { id: "dropout", label: "Dropout" },
 ];
 
-const DEFAULT_DURATION_MS = bootScaleMs(480);
+const DEFAULT_DURATION_MS = bootScaleMs(980);
 
 interface TitleFlickerStore {
   durationMs: number;

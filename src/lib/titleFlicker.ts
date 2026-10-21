@@ -4,45 +4,43 @@ import { bootNoise } from "./bootSequence";
 const STEP_MS = 33;
 
 export interface TitleFlickerAspects {
-  /** Dim line drawing between flashes, the castle before the light holds. */
-  faintWire: boolean;
-  /** Uneven on/off samples. Off, the word stays dim until it locks. */
+  /** Cyan halo around the lit word. */
+  glow: boolean;
+  /** The tube strobes on and off before it holds. */
   flicker: boolean;
-  /** The brightest sample goes white-hot, then back to the resting cyan. */
+  /** One sample blows out white. */
   whiteHot: boolean;
-  /** A single sample shifts the word 1px, then it snaps back. */
-  tear: boolean;
-  /** One dip after the word has caught, then it holds. */
-  lateDropout: boolean;
+  /** Between flashes the tube stays faintly lit. */
+  dimTube: boolean;
+  /** The word dies once after it has caught, then holds. */
+  dropout: boolean;
 }
 
 export const DEFAULT_TITLE_FLICKER_ASPECTS: TitleFlickerAspects = {
-  faintWire: true,
+  glow: true,
   flicker: true,
   whiteHot: true,
-  tear: true,
-  lateDropout: true,
+  dimTube: true,
+  dropout: true,
 };
 
 export interface TitleCatch {
   opacity: number;
-  /** Horizontal tear, CSS px. */
-  x: number;
+  /** 0 = no halo, 1 = the resting neon, higher = the white flash. */
+  glow: number;
   hot: boolean;
 }
 
-const HELD: TitleCatch = { opacity: 1, x: 0, hot: false };
-const DARK: TitleCatch = { opacity: 0, x: 0, hot: false };
+const DARK: TitleCatch = { opacity: 0, glow: 0, hot: false };
+
+/** Hard on/off beats, as fractions of the catch. */
+const BEATS = [0.08, 0.18, 0.34, 0.46, 0.62];
 
 /**
- * Disney-castle rez for a panel title.
+ * Neon title catch, in the rhythm of the TRON Disney ident.
  *
- * The word already owns its box. During the catch it samples the same
- * stepped noise as the glass (`bootNoise`), so the letters flash on the
- * frames the panel flashes. After `durationMs` the word is on and still.
- *
- * `elapsedMs` is the shared boot clock. `startMs` is when this panel's
- * title catch begins.
+ * The word is a tube that is either dark, faintly lit, or fully on.
+ * It strobes, blows out once, drops out, then holds a steady glow.
  */
 export function titleCatch(
   elapsedMs: number,
@@ -54,41 +52,59 @@ export function titleCatch(
   const t = elapsedMs - startMs;
   if (t < 0) return DARK;
 
-  const dur = Math.max(STEP_MS, durationMs);
-  if (t >= dur) return HELD;
+  const dur = Math.max(STEP_MS * 4, durationMs);
+  const glowOf = (amount: number) => (aspects.glow ? amount : 0);
+  if (t >= dur) return { opacity: 1, glow: glowOf(1), hot: false };
 
   const n = bootNoise(elapsedMs, seed);
   const step = Math.floor(elapsedMs / STEP_MS);
-  const tearStep = Math.floor((startMs + dur * 0.46) / STEP_MS);
-  const hotStep = Math.floor((startMs + dur * 0.58) / STEP_MS);
-  const tearing = aspects.tear && step === tearStep;
-  const dropoutAt = dur * 0.82;
+  const hotStep = Math.floor((startMs + dur * 0.52) / STEP_MS);
+  const onBeat =
+    aspects.flicker &&
+    BEATS.some((b) => step === Math.floor((startMs + dur * b) / STEP_MS));
 
-  let opacity = aspects.faintWire ? 0.08 : 0;
+  let opacity = 0;
+  let glow = 0;
   let hot = false;
 
-  if (aspects.flicker) {
-    if (n > 0.82) {
-      opacity = 1;
-      hot = aspects.whiteHot && n > 0.93;
-    } else if (n > 0.6) {
-      opacity = 0.38;
-    }
+  if (aspects.dimTube && n > 0.42) {
+    opacity = 0.55;
+    glow = glowOf(0.45);
+  }
+
+  if (aspects.flicker && (onBeat || n > 0.74)) {
+    opacity = 1;
+    glow = glowOf(1);
+    hot = aspects.whiteHot && n > 0.92;
   }
 
   if (aspects.whiteHot && step === hotStep) {
     opacity = 1;
+    glow = glowOf(1.6);
     hot = true;
   }
 
-  if (tearing) opacity = 1;
-
-  if (t >= dropoutAt) {
-    const dipping =
-      aspects.lateDropout && t < dropoutAt + STEP_MS * 2;
-    opacity = dipping ? 0.22 : 1;
+  const dropoutAt = dur * 0.78;
+  if (aspects.dropout && t >= dropoutAt && t < dropoutAt + STEP_MS * 3) {
+    opacity = 0;
+    glow = 0;
     hot = false;
   }
 
-  return { opacity, x: tearing ? 1 : 0, hot };
+  return { opacity, glow, hot };
+}
+
+/** Stacked halo. `glow` is 0..~1.6 from `titleCatch`. */
+export function neonTextShadow(glow: number, hot: boolean): string {
+  if (glow <= 0) return "none";
+  const g = glow * (hot ? 1.45 : 1);
+  const core = hot ? 1 : 0.96;
+  return [
+    `0 0 2px rgba(255,255,255,${core})`,
+    `0 0 ${Math.round(7 * g)}px rgba(214,251,255,0.95)`,
+    `0 0 ${Math.round(16 * g)}px rgba(140,236,255,0.9)`,
+    `0 0 ${Math.round(32 * g)}px rgba(70,206,255,0.8)`,
+    `0 0 ${Math.round(58 * g)}px rgba(36,168,255,0.55)`,
+    `0 0 ${Math.round(90 * g)}px rgba(16,120,255,0.28)`,
+  ].join(", ");
 }
