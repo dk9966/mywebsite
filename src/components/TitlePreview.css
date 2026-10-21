@@ -6,6 +6,7 @@
 }
 
 .title-preview__titles {
+  --title-preview-font-size: clamp(26px, 3.5vw, 51px);
   min-height: 100%;
   box-sizing: border-box;
   padding: 64px 48px 64px 390px;
@@ -41,6 +42,7 @@
   }
 
   .title-preview__titles {
+    --title-preview-font-size: clamp(24px, 7vw, 38px);
     min-height: auto;
     padding: 72px 16px;
   }

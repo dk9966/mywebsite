@@ -8,10 +8,18 @@ import {
 
 const STEP_FLOOR = 80;
 
+export const TITLE_FONTS = [
+  { label: "Chakra Petch", family: '"Chakra Petch", sans-serif' },
+  { label: "Rajdhani", family: '"Rajdhani", sans-serif' },
+  { label: "JetBrains Mono", family: '"Title JetBrains Mono", monospace' },
+  { label: "Varela Round", family: '"Varela Round", sans-serif' },
+];
+
 export const TITLE_FLICKER_ASPECTS: {
   id: keyof TitleFlickerAspects;
   label: string;
 }[] = [
+  { id: "outline", label: "Outline before fill" },
   { id: "letters", label: "Letter by letter" },
   { id: "ghost", label: "Ghost doubles" },
   { id: "scatter", label: "Letter jump" },
@@ -40,6 +48,8 @@ export const TITLE_FLICKER_SLIDERS: {
 const DEFAULT_DURATION_MS = 1500;
 
 interface TitleFlickerStore {
+  fontIndex: number;
+  cycleFont: (direction: -1 | 1) => void;
   durationMs: number;
   aspects: TitleFlickerAspects;
   tuning: TitleFlickerTuning;
@@ -50,6 +60,10 @@ interface TitleFlickerStore {
 }
 
 export const useTitleFlicker = create<TitleFlickerStore>((set) => ({
+  fontIndex: 0,
+  cycleFont: (direction) => set((s) => ({
+    fontIndex: (s.fontIndex + direction + TITLE_FONTS.length) % TITLE_FONTS.length,
+  })),
   durationMs: DEFAULT_DURATION_MS,
   aspects: { ...DEFAULT_TITLE_FLICKER_ASPECTS },
   tuning: { ...DEFAULT_TITLE_FLICKER_TUNING },
@@ -67,6 +81,7 @@ export const useTitleFlicker = create<TitleFlickerStore>((set) => ({
 
   reset: () =>
     set({
+      fontIndex: 0,
       durationMs: DEFAULT_DURATION_MS,
       aspects: { ...DEFAULT_TITLE_FLICKER_ASPECTS },
       tuning: { ...DEFAULT_TITLE_FLICKER_TUNING },

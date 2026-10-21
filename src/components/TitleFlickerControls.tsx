@@ -2,6 +2,7 @@ import { useState, type PointerEvent as ReactPointerEvent } from "react";
 import { BOOT_TOTAL_MS } from "../lib/bootParts";
 import { useBootClock } from "../stores/bootClock";
 import {
+  TITLE_FONTS,
   TITLE_FLICKER_ASPECTS,
   TITLE_FLICKER_SLIDERS,
   useTitleFlicker,
@@ -25,6 +26,8 @@ export default function TitleFlickerControls() {
   const togglePause = useBootClock((s) => s.togglePause);
   const setScrubbing = useBootClock((s) => s.setScrubbing);
 
+  const fontIndex = useTitleFlicker((s) => s.fontIndex);
+  const cycleFont = useTitleFlicker((s) => s.cycleFont);
   const durationMs = useTitleFlicker((s) => s.durationMs);
   const setDuration = useTitleFlicker((s) => s.setDuration);
   const tuning = useTitleFlicker((s) => s.tuning);
@@ -104,6 +107,16 @@ export default function TitleFlickerControls() {
             />
           </section>
 
+          <hr className="desk-controls__divider" />
+
+          <section className="desk-controls__group" aria-label="Title font">
+            <h4 className="desk-controls__group-title">Font</h4>
+            <div className="title-flicker-controls__font">
+              <button className="desk-controls__btn" type="button" aria-label="Previous font" onClick={() => cycleFont(-1)}>←</button>
+              <span aria-live="polite">{TITLE_FONTS[fontIndex].label}</span>
+              <button className="desk-controls__btn" type="button" aria-label="Next font" onClick={() => cycleFont(1)}>→</button>
+            </div>
+          </section>
           <hr className="desk-controls__divider" />
 
           <section className="desk-controls__group">

@@ -6,6 +6,8 @@ const STEP_MS = 33;
 export interface TitleFlickerAspects {
   /** Each letter catches on its own, in random order. Off: the word catches as one. */
   letters: boolean;
+  /** Hollow glyphs catch first, then fill at lock. */
+  outline: boolean;
   /** A faint doubled letter shows before it catches. */
   ghost: boolean;
   /** Letters that have not caught jump sideways between frames. */
@@ -18,6 +20,7 @@ export interface TitleFlickerAspects {
 
 export const DEFAULT_TITLE_FLICKER_ASPECTS: TitleFlickerAspects = {
   letters: true,
+  outline: true,
   ghost: true,
   scatter: true,
   whiteHot: true,
@@ -44,6 +47,7 @@ export const DEFAULT_TITLE_FLICKER_TUNING: TitleFlickerTuning = {
 
 export interface LetterCatch {
   opacity: number;
+  outline: boolean;
   /** Sideways jump, em. */
   x: number;
   ghost: boolean;
@@ -52,7 +56,7 @@ export interface LetterCatch {
   glow: number;
 }
 
-const DARK: LetterCatch = { opacity: 0, x: 0, ghost: false, hot: false, glow: 0 };
+const DARK: LetterCatch = { opacity: 0, outline: false, x: 0, ghost: false, hot: false, glow: 0 };
 
 function hash01(n: number): number {
   const s = Math.sin(n * 91.3 + 47.9) * 43758.5453123;
@@ -86,6 +90,7 @@ export function letterCatch(
     const flashing = aspects.whiteHot && t - lockMs < tuning.flashMs;
     return {
       opacity: 1,
+      outline: false,
       x: 0,
       ghost: false,
       hot: flashing,
@@ -101,11 +106,15 @@ export function letterCatch(
     ? (hash01(step * 1.31 + key) - 0.5) * 2 * tuning.jumpEm * (1 - p * 0.6)
     : 0;
 
+  // Keep the hollow shape visible immediately before its solid lock.
+  if (aspects.outline && p >= 0.7) {
+    return { opacity: 0.75, outline: true, x: 0, ghost: false, hot: false, glow: glowOf(0.45) };
+  }
   if (n > onAbove) {
-    return { opacity: 0.9, x, ghost: false, hot: false, glow: glowOf(0.8) };
+    return { opacity: 0.9, outline: aspects.outline, x, ghost: false, hot: false, glow: glowOf(0.8) };
   }
   if (aspects.ghost && n > onAbove - 0.32) {
-    return { opacity: tuning.ghostOpacity, x, ghost: true, hot: false, glow: glowOf(0.35) };
+    return { opacity: tuning.ghostOpacity, outline: aspects.outline, x, ghost: true, hot: false, glow: glowOf(0.35) };
   }
   return DARK;
 }

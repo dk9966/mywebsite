@@ -8,9 +8,9 @@ import {
 } from "../lib/titleFlicker";
 import { useBootClock } from "../stores/bootClock";
 import { useBootTuning } from "../stores/bootTuning";
-import { useTitleFlicker } from "../stores/titleFlicker";
+import { TITLE_FONTS, useTitleFlicker } from "../stores/titleFlicker";
 
-const HELD: LetterCatch = { opacity: 1, x: 0, ghost: false, hot: false, glow: 1 };
+const HELD: LetterCatch = { opacity: 1, outline: false, x: 0, ghost: false, hot: false, glow: 1 };
 
 /**
  * Neon panel title on the flat handle layer, so the halo is one glow. Each
@@ -37,6 +37,7 @@ export default function RezTitle({
   const scrubbing = useBootClock((s) => s.scrubbing);
   const delayMs = useBootTuning((s) => s.parts.titleReveal.delayMs);
   const durationMs = useTitleFlicker((s) => s.durationMs);
+  const fontIndex = useTitleFlicker((s) => s.fontIndex);
   const tuning = useTitleFlicker((s) => s.tuning);
   const aspects = useTitleFlicker((s) => s.aspects);
 
@@ -52,8 +53,17 @@ export default function RezTitle({
       el.style.opacity = String(c.opacity);
       el.style.transform = c.x ? `translateX(${c.x.toFixed(3)}em)` : "none";
       el.style.color = c.hot ? "#ffffff" : c.ghost ? "rgba(170,240,255,0.7)" : "#b9f5ff";
-      el.style.textShadow = c.ghost ? ghostTextShadow(c.glow) : neonTextShadow(c.glow, c.hot);
-      el.style.filter = c.ghost ? "blur(0.6px)" : "none";
+      el.style.webkitTextFillColor = c.outline ? "transparent" : "currentColor";
+      el.style.webkitTextStroke = c.outline ? "1px currentColor" : "0px";
+      el.dataset.phase = c.opacity === 0 ? "dark" : c.outline ? "outline" : "filled";
+      // Text shadows paint solid glyphs, so hollow letters use drop shadows
+      // of the stroke itself to keep their centers empty, including doubles.
+      el.style.textShadow = c.outline ? "none" : c.ghost ? ghostTextShadow(c.glow) : neonTextShadow(c.glow, c.hot);
+      const outlineFilters = [
+        ...(c.ghost ? ["drop-shadow(0.09em 0.03em rgba(110,226,255,0.4))", "drop-shadow(-0.06em 0 rgba(110,226,255,0.25))"] : []),
+        ...(c.glow > 0 ? [`drop-shadow(0 0 ${2 * c.glow}px rgba(90,210,255,0.6))`] : []),
+      ];
+      el.style.filter = c.outline ? outlineFilters.join(" ") || "none" : c.ghost ? "blur(0.6px)" : "none";
     });
   }, [
     aspects,
@@ -72,7 +82,8 @@ export default function RezTitle({
       className={center ? "neon-title neon-title--center" : "neon-title"}
       aria-label={title}
       style={{
-        fontSize: `${Math.round(headerFontPx * 1.35)}px`,
+        fontSize: `var(--title-preview-font-size, ${Math.round(headerFontPx * 1.35)}px)`,
+        fontFamily: TITLE_FONTS[fontIndex].family,
         left: `${padX}px`,
         top: center ? "50%" : `${padY}px`,
       }}
