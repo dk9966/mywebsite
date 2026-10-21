@@ -54,7 +54,7 @@ export default function RezTitle({
         : letterCatch(elapsed, start, durationMs, boot.seed, i, aspects, tuning);
       el.style.opacity = String(c.opacity);
       el.style.transform = c.x ? `translateX(${c.x.toFixed(3)}em)` : "none";
-      el.style.color = c.hot ? "#ffffff" : c.ghost ? "rgba(170,240,255,0.7)" : "#b9f5ff";
+      el.style.color = c.hot ? "#ffffff" : c.ghost ? "rgba(170,240,255,0.7)" : c.outline ? "#edf7ff" : "#b9f5ff";
       el.style.webkitTextFillColor = c.outline ? "transparent" : "currentColor";
       el.style.webkitTextStroke = `${c.outline ? typography.outlineWidth : typography.thickness}px currentColor`;
       el.dataset.phase = c.opacity === 0 ? "dark" : c.outline ? "outline" : "filled";

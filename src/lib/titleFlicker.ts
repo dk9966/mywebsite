@@ -143,17 +143,16 @@ export function neonTextShadow(glow: number, hot: boolean): string {
   ].join(", ");
 }
 
-/** Tight luminous stroke + broad halo, preserving hollow letter centers.
- * Chained drop shadows also bloom the preceding halo. Keeping their radii
- * fixed avoids diluting a one-pixel stroke as the strength slider rises. */
+/** Neon tube halo: a bright narrow core and compact saturated blue spill.
+ * No wide shadow chain: that turns hollow letters into a diffuse cloud.
+ * Strength changes intensity while the tube's apparent width stays stable. */
 export function outlineBloomFilter(glow: number): string {
   if (glow <= 0) return "";
-  const alpha = (gain: number) => Math.min(1, gain * glow).toFixed(3);
+  const alpha = (gain: number) => (1 - Math.exp(-gain * glow)).toFixed(3);
   return [
-    `drop-shadow(0 0 1px rgba(200,250,255,${alpha(0.9)}))`,
-    `drop-shadow(0 0 3px rgba(130,235,255,${alpha(0.8)}))`,
-    `drop-shadow(0 0 8px rgba(80,210,255,${alpha(0.55)}))`,
-    `drop-shadow(0 0 20px rgba(40,180,255,${alpha(0.3)}))`,
+    `drop-shadow(0 0 0.6px rgba(160,215,255,${alpha(1.8)}))`,
+    `drop-shadow(0 0 2px rgba(45,120,255,${alpha(1.2)}))`,
+    `drop-shadow(0 0 5px rgba(25,90,255,${alpha(0.25)}))`,
   ].join(" ");
 }
 
