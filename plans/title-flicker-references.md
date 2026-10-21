@@ -1,5 +1,7 @@
 # Current Disney title animation
 
+Bloom rendering fix: strength now increases halo opacity at fixed near/mid/far radii. Previously it increased blur radii at fixed opacity, which diluted thin outlines and barely changed perceived brightness. Outline bloom now includes tight 1px/3px light plus 8px/20px halos; settled glow uses six fixed radii. Verified actual screenshots with bloom off/on for both phases, not just CSS property changes.
+
 Bloom controls: Outline bloom and Settled bloom independently scale their respective phases, each from 0–3. Defaults are 1.0 for outlines (previously 0.55) and 1.5 for settled text (previously 1.0). Glow strength remains the shared multiplier; fill flashes keep their existing bloom. Reduced-motion titles use Settled bloom too.
 
 Typography controls: Size (50–200% of the enlarged baseline), Weight (real Chakra Petch faces, 300–700), extra filled-letter Thickness (0–3px), Letter spacing (−0.05–0.3em), Width (60–150%), Slant (±20°), and Outline width (0.25–3px). Weight is disabled for the other fonts, which each have one bundled weight; extra Thickness works for all fonts. Reset typography preserves animation settings and playhead; the global Reset restores everything.

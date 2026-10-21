@@ -128,17 +128,33 @@ export function letterCatch(
   };
 }
 
-/** Stacked halo. `glow` is 0..2.2 from `letterCatch`. */
+/** Bloom strength increases light energy, not just blur radius. */
 export function neonTextShadow(glow: number, hot: boolean): string {
   if (glow <= 0) return "none";
   const g = glow * (hot ? 1.3 : 1);
+  const alpha = (gain: number) => Math.min(1, gain * g).toFixed(3);
   return [
-    `0 0 2px rgba(255,255,255,${hot ? 1 : 0.9})`,
-    `0 0 ${Math.round(6 * g)}px rgba(200,248,255,0.9)`,
-    `0 0 ${Math.round(14 * g)}px rgba(120,228,255,0.8)`,
-    `0 0 ${Math.round(28 * g)}px rgba(60,196,255,0.65)`,
-    `0 0 ${Math.round(52 * g)}px rgba(30,150,255,0.4)`,
+    `0 0 2px rgba(235,255,255,${alpha(0.8)})`,
+    `0 0 6px rgba(200,248,255,${alpha(0.7)})`,
+    `0 0 14px rgba(120,228,255,${alpha(0.6)})`,
+    `0 0 28px rgba(60,196,255,${alpha(0.4)})`,
+    `0 0 52px rgba(30,150,255,${alpha(0.25)})`,
+    `0 0 80px rgba(30,150,255,${alpha(0.12)})`,
   ].join(", ");
+}
+
+/** Tight luminous stroke + broad halo, preserving hollow letter centers.
+ * Chained drop shadows also bloom the preceding halo. Keeping their radii
+ * fixed avoids diluting a one-pixel stroke as the strength slider rises. */
+export function outlineBloomFilter(glow: number): string {
+  if (glow <= 0) return "";
+  const alpha = (gain: number) => Math.min(1, gain * glow).toFixed(3);
+  return [
+    `drop-shadow(0 0 1px rgba(200,250,255,${alpha(0.9)}))`,
+    `drop-shadow(0 0 3px rgba(130,235,255,${alpha(0.8)}))`,
+    `drop-shadow(0 0 8px rgba(80,210,255,${alpha(0.55)}))`,
+    `drop-shadow(0 0 20px rgba(40,180,255,${alpha(0.3)}))`,
+  ].join(" ");
 }
 
 /** The doubled, smeared copy a letter shows before it catches. */
