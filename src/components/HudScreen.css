@@ -417,11 +417,11 @@
   opacity: calc(var(--outline-spill, 0) * 0.85);
 }
 .neon-title__letter::before {
-  -webkit-text-stroke: calc(var(--outline-spill-width, 1px) + 7px) #268eff;
+  -webkit-text-stroke: calc(var(--outline-spill-width, 1px) + 7px) #78e4ff;
   filter: blur(4px);
 }
 .neon-title__letter::after {
-  -webkit-text-stroke: calc(var(--outline-spill-width, 1px) + 12px) #125dff;
+  -webkit-text-stroke: calc(var(--outline-spill-width, 1px) + 12px) #78e4ff;
   filter: blur(12px);
   opacity: calc(var(--outline-spill, 0) * 0.55);
 }

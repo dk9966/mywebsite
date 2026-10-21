@@ -137,22 +137,22 @@ export function neonTextShadow(glow: number, hot: boolean): string {
     `0 0 2px rgba(235,255,255,${alpha(0.8)})`,
     `0 0 6px rgba(200,248,255,${alpha(0.7)})`,
     `0 0 14px rgba(120,228,255,${alpha(0.6)})`,
-    `0 0 28px rgba(60,196,255,${alpha(0.4)})`,
-    `0 0 52px rgba(30,150,255,${alpha(0.25)})`,
-    `0 0 80px rgba(30,150,255,${alpha(0.12)})`,
+    `0 0 28px rgba(120,228,255,${alpha(0.4)})`,
+    `0 0 52px rgba(120,228,255,${alpha(0.25)})`,
+    `0 0 80px rgba(120,228,255,${alpha(0.12)})`,
   ].join(", ");
 }
 
-/** Neon tube halo: a bright narrow core and compact saturated blue spill.
+/** Neon tube halo: a bright narrow core and compact light-cyan spill.
  * No wide shadow chain: that turns hollow letters into a diffuse cloud.
  * Strength changes intensity while the tube's apparent width stays stable. */
 export function outlineBloomFilter(glow: number): string {
   if (glow <= 0) return "";
   const alpha = (gain: number) => (1 - Math.exp(-gain * glow)).toFixed(3);
   return [
-    `drop-shadow(0 0 0.6px rgba(160,215,255,${alpha(1.8)}))`,
-    `drop-shadow(0 0 2px rgba(45,120,255,${alpha(1.2)}))`,
-    `drop-shadow(0 0 5px rgba(25,90,255,${alpha(0.25)}))`,
+    `drop-shadow(0 0 0.6px rgba(160,235,255,${alpha(1.8)}))`,
+    `drop-shadow(0 0 2px rgba(120,228,255,${alpha(1.2)}))`,
+    `drop-shadow(0 0 5px rgba(120,228,255,${alpha(0.25)}))`,
   ].join(" ");
 }
 
