@@ -9,10 +9,10 @@ import {
 const STEP_FLOOR = 80;
 
 export const TITLE_FONTS = [
-  { label: "Chakra Petch", family: '"Chakra Petch", sans-serif' },
-  { label: "Rajdhani", family: '"Rajdhani", sans-serif' },
-  { label: "JetBrains Mono", family: '"Title JetBrains Mono", monospace' },
-  { label: "Varela Round", family: '"Varela Round", sans-serif' },
+  { label: "Chakra Petch", family: '"Chakra Petch", sans-serif', weight: 600 },
+  { label: "Rajdhani", family: '"Rajdhani", sans-serif', weight: 400 },
+  { label: "JetBrains Mono", family: '"Title JetBrains Mono", monospace', weight: 400 },
+  { label: "Varela Round", family: '"Varela Round", sans-serif', weight: 400 },
 ];
 
 export const TITLE_FLICKER_ASPECTS: {
@@ -44,8 +44,8 @@ export const TITLE_FLICKER_SLIDERS: {
   { id: "glowStrength", label: "Glow strength", min: 0, max: 2, step: 0.05, unit: "", aspect: "glow" },
 ];
 
-/** The "Walt Disney" line takes about 1.5s to lock in the ident. */
-const DEFAULT_DURATION_MS = 1500;
+/** Compact outline → two fill flashes → grouped lock. */
+const DEFAULT_DURATION_MS = 1000;
 
 interface TitleFlickerStore {
   fontIndex: number;

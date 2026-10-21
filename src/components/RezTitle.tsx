@@ -61,7 +61,7 @@ export default function RezTitle({
       el.style.textShadow = c.outline ? "none" : c.ghost ? ghostTextShadow(c.glow) : neonTextShadow(c.glow, c.hot);
       const outlineFilters = [
         ...(c.ghost ? ["drop-shadow(0.09em 0.03em rgba(110,226,255,0.4))", "drop-shadow(-0.06em 0 rgba(110,226,255,0.25))"] : []),
-        ...(c.glow > 0 ? [`drop-shadow(0 0 ${2 * c.glow}px rgba(90,210,255,0.6))`] : []),
+        ...(c.glow > 0 ? [`drop-shadow(0 0 ${4 * c.glow}px rgba(130,235,255,0.75))`, `drop-shadow(0 0 ${14 * c.glow}px rgba(60,190,255,0.45))`] : []),
       ];
       el.style.filter = c.outline ? outlineFilters.join(" ") || "none" : c.ghost ? "blur(0.6px)" : "none";
     });
@@ -84,6 +84,7 @@ export default function RezTitle({
       style={{
         fontSize: `var(--title-preview-font-size, ${Math.round(headerFontPx * 1.35)}px)`,
         fontFamily: TITLE_FONTS[fontIndex].family,
+        fontWeight: TITLE_FONTS[fontIndex].weight,
         left: `${padX}px`,
         top: center ? "50%" : `${padY}px`,
       }}

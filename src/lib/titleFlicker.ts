@@ -37,7 +37,7 @@ export interface TitleFlickerTuning {
 }
 
 export const DEFAULT_TITLE_FLICKER_TUNING: TitleFlickerTuning = {
-  catchSpread: 0.65,
+  catchSpread: 0.15,
   flickerHz: 30,
   ghostOpacity: 0.38,
   jumpEm: 0.25,
@@ -66,7 +66,7 @@ function hash01(n: number): number {
 /**
  * One letter of a title, in the rhythm of the "Walt Disney" type in the
  * TRON: Legacy ident: letters blink on in random order, show as faint
- * doubled ghosts, jump a little, and lock one by one into a steady glow.
+ * doubled ghosts, jump a little, and fill in three groups with two brief bloom pulses, then hold steady.
  */
 export function letterCatch(
   elapsedMs: number,
@@ -83,43 +83,48 @@ export function letterCatch(
   const dur = Math.max(STEP_MS * 4, durationMs);
   const glowOf = (amount: number) => (aspects.glow ? amount * tuning.glowStrength : 0);
   const key = aspects.letters ? seed * 13.7 + index * 3.17 : seed * 13.7;
-  const lockFrac = aspects.letters ? 0.95 - tuning.catchSpread * (1 - hash01(key + 0.5)) : 0.85;
-  const lockMs = dur * lockFrac;
+  // Three shared catch groups rather than a distinct lock for every letter.
+  const group = aspects.letters ? Math.floor(hash01(key + 0.5) * 3) : 0;
+  const offset = dur * tuning.catchSpread * group / 2;
+  const local = t - offset;
+  const lockMs = dur * 0.72;
+  const pulse = (local >= dur * 0.38 && local < dur * 0.45)
+    || (local >= dur * 0.54 && local < dur * 0.61);
+  const locked = local >= lockMs;
+  const flashing = pulse || (locked && local - lockMs < tuning.flashMs);
 
-  if (t >= lockMs) {
-    const flashing = aspects.whiteHot && t - lockMs < tuning.flashMs;
+  if (pulse || locked) {
     return {
       opacity: 1,
       outline: false,
       x: 0,
       ghost: false,
-      hot: flashing,
-      glow: glowOf(flashing ? 1.7 : 1),
+      hot: aspects.whiteHot && flashing,
+      glow: glowOf(flashing ? 2.2 : 1),
     };
   }
 
-  const p = t / lockMs;
   const step = Math.floor(t * tuning.flickerHz / 1000);
   const n = bootNoise(step * STEP_MS, key);
-  const onAbove = 0.9 - 0.4 * p;
-  const x = aspects.scatter
-    ? (hash01(step * 1.31 + key) - 0.5) * 2 * tuning.jumpEm * (1 - p * 0.6)
+  const ghost = aspects.ghost && local < dur * 0.3 && n > 0.76;
+  const x = aspects.scatter && ghost
+    ? (hash01(step * 1.31 + key) - 0.5) * tuning.jumpEm
     : 0;
 
-  // Keep the hollow shape visible immediately before its solid lock.
-  if (aspects.outline && p >= 0.7) {
-    return { opacity: 0.75, outline: true, x: 0, ghost: false, hot: false, glow: glowOf(0.45) };
-  }
-  if (n > onAbove) {
-    return { opacity: 0.9, outline: aspects.outline, x, ghost: false, hot: false, glow: glowOf(0.8) };
-  }
-  if (aspects.ghost && n > onAbove - 0.32) {
-    return { opacity: tuning.ghostOpacity, outline: aspects.outline, x, ghost: true, hot: false, glow: glowOf(0.35) };
-  }
-  return DARK;
+  if (!aspects.outline) return DARK;
+
+  // A readable, softly blooming outline holds between the two fill flashes.
+  return {
+    opacity: ghost ? 0.5 + tuning.ghostOpacity * 0.4 : 0.85,
+    outline: aspects.outline,
+    x,
+    ghost,
+    hot: false,
+    glow: glowOf(aspects.outline ? 0.55 : 0.35),
+  };
 }
 
-/** Stacked halo. `glow` is 0..~1.7 from `letterCatch`. */
+/** Stacked halo. `glow` is 0..2.2 from `letterCatch`. */
 export function neonTextShadow(glow: number, hot: boolean): string {
   if (glow <= 0) return "none";
   const g = glow * (hot ? 1.3 : 1);
