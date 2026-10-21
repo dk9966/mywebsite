@@ -79,6 +79,10 @@ export const TITLE_FLICKER_SLIDERS: {
 const DEFAULT_DURATION_MS = 1000;
 
 interface TitleFlickerStore {
+  tubeMode: boolean;
+  tubeLights: boolean;
+  setTubeMode: (on: boolean) => void;
+  setTubeLights: (on: boolean) => void;
   fontIndex: number;
   typography: TitleType;
   setTypography: (id: keyof TitleType, value: number) => void;
@@ -94,7 +98,11 @@ interface TitleFlickerStore {
 }
 
 export const useTitleFlicker = create<TitleFlickerStore>((set) => ({
+  tubeMode: false,
+  tubeLights: true,
   fontIndex: 0,
+  setTubeMode: (tubeMode) => set({ tubeMode }),
+  setTubeLights: (tubeLights) => set({ tubeLights }),
   typography: { ...DEFAULT_TITLE_TYPE },
   setTypography: (id, value) => {
     if (!Number.isFinite(value)) return;
@@ -125,6 +133,8 @@ export const useTitleFlicker = create<TitleFlickerStore>((set) => ({
 
   reset: () =>
     set({
+      tubeMode: false,
+      tubeLights: true,
       fontIndex: 0,
       typography: { ...DEFAULT_TITLE_TYPE },
       durationMs: DEFAULT_DURATION_MS,

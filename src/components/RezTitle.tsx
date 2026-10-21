@@ -32,6 +32,8 @@ export default function RezTitle({
   padY: number;
   center: boolean;
 }) {
+  const tubeMode = useTitleFlicker((s) => s.tubeMode);
+  const tubeLights = useTitleFlicker((s) => s.tubeLights);
   const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const elapsedMs = useBootClock((s) => s.elapsedMs);
   const paused = useBootClock((s) => s.paused);
@@ -52,6 +54,32 @@ export default function RezTitle({
       const c = bootSkipped()
         ? { ...HELD, glow: aspects.glow ? tuning.glowStrength * tuning.settledBloom : 0 }
         : letterCatch(elapsed, start, durationMs, boot.seed, i, aspects, tuning);
+      if (tubeMode) {
+        // Visible tube outlines are already illuminated. Only their fill
+        // follows the catch clock; outline bloom does not wait for ignition.
+        el.style.opacity = "1";
+        el.style.transform = "none";
+        el.style.color = "inherit";
+        el.style.webkitTextFillColor = "";
+        el.style.webkitTextStroke = "";
+        el.style.textShadow = "none";
+        el.style.filter = "none";
+        el.style.setProperty("--tube-radius", `${Math.max(1.5, typography.outlineWidth * 1.6)}px`);
+        el.style.setProperty("--tube-power", String(tubeLights ? (aspects.outline ? 1 : c.opacity) : 0));
+        el.style.setProperty("--tube-core", c.hot ? "#ffffff" : "#b9ffff");
+        const tubeFilters = [
+          ...(c.ghost ? ["drop-shadow(0.09em 0.03em rgba(110,226,255,0.4))", "drop-shadow(-0.06em 0 rgba(110,226,255,0.25))"] : []),
+          outlineBloomFilter(aspects.glow ? tuning.outlineBloom * tuning.glowStrength : 0),
+        ].filter(Boolean).join(" ");
+        el.style.setProperty("--tube-bloom", tubeLights ? tubeFilters || "none" : "none");
+        el.style.setProperty("--tube-jump", `${c.x.toFixed(3)}em`);
+        el.style.setProperty("--fill-power", String(c.outline ? 0 : c.opacity));
+        el.style.setProperty("--fill-glow", c.ghost ? ghostTextShadow(c.glow) : neonTextShadow(c.glow, c.hot));
+        el.style.setProperty("--fill-color", c.hot ? "#ffffff" : "#b9f5ff");
+        el.style.setProperty("--fill-stroke", `${typography.thickness}px`);
+        el.dataset.phase = c.opacity === 0 ? "dark" : c.outline ? "outline" : "filled";
+        return;
+      }
       el.style.opacity = String(c.opacity);
       el.style.transform = c.x ? `translateX(${c.x.toFixed(3)}em)` : "none";
       el.style.color = c.hot ? "#ffffff" : c.ghost ? "rgba(170,240,255,0.7)" : c.outline ? "#edf7ff" : "#b9f5ff";
@@ -68,6 +96,8 @@ export default function RezTitle({
       el.style.filter = c.outline ? outlineFilters.join(" ") || "none" : c.ghost ? "blur(0.6px)" : "none";
     });
   }, [
+    tubeMode,
+    tubeLights,
     aspects,
     tuning,
     typography,
@@ -101,10 +131,18 @@ export default function RezTitle({
           ref={(el) => {
             letterRefs.current[i] = el;
           }}
-          className="neon-title__letter"
+          className={`neon-title__letter${tubeMode ? " neon-title__letter--tube" : ""}`}
           aria-hidden
         >
-          {ch}
+          {tubeMode ? <>
+            <span className="neon-tube__measure">{ch}</span>
+            <span className="neon-tube__depth">{ch}</span>
+            <span className="neon-tube__glass">{ch}</span>
+            <span className="neon-tube__rim">{ch}</span>
+            <span className="neon-tube__reflection">{ch}</span>
+            <span className="neon-tube__light">{ch}</span>
+            <span className="neon-tube__fill">{ch}</span>
+          </> : ch}
         </span>
       ))}
     </span>

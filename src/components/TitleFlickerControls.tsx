@@ -27,6 +27,10 @@ export default function TitleFlickerControls() {
   const togglePause = useBootClock((s) => s.togglePause);
   const setScrubbing = useBootClock((s) => s.setScrubbing);
 
+  const tubeMode = useTitleFlicker((s) => s.tubeMode);
+  const tubeLights = useTitleFlicker((s) => s.tubeLights);
+  const setTubeMode = useTitleFlicker((s) => s.setTubeMode);
+  const setTubeLights = useTitleFlicker((s) => s.setTubeLights);
   const fontIndex = useTitleFlicker((s) => s.fontIndex);
   const cycleFont = useTitleFlicker((s) => s.cycleFont);
   const typography = useTitleFlicker((s) => s.typography);
@@ -115,6 +119,16 @@ export default function TitleFlickerControls() {
 
           <section className="desk-controls__group" aria-label="Title font">
             <h4 className="desk-controls__group-title">Font</h4>
+            <label className="desk-controls__checkbox-field">
+              <input className="desk-controls__checkbox" type="checkbox" checked={tubeMode}
+                onChange={(e) => setTubeMode(e.target.checked)} />
+              <span className="desk-controls__checkbox-label">3D neon tubes</span>
+            </label>
+            {tubeMode && <label className="desk-controls__checkbox-field">
+              <input className="desk-controls__checkbox" type="checkbox" checked={tubeLights}
+                onChange={(e) => setTubeLights(e.target.checked)} />
+              <span className="desk-controls__checkbox-label">Tube lights</span>
+            </label>}
             <div className="title-flicker-controls__font">
               <button className="desk-controls__btn" type="button" aria-label="Previous font" onClick={() => cycleFont(-1)}>←</button>
               <span aria-live="polite">{TITLE_FONTS[fontIndex].label}</span>
