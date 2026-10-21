@@ -14,7 +14,9 @@ import {
 } from "../lib/bootSequence";
 import { useBootTuning } from "../stores/bootTuning";
 import { useDeskLayout } from "../stores/deskLayout";
+import { isCaveTitles } from "../lib/caveRoute";
 import { BootFx, BootPulse } from "./BootFx";
+import RezTitle from "./RezTitle";
 import "./HudScreen.css";
 import "./hudContactPortal.css";
 
@@ -131,6 +133,7 @@ export default function HudScreen({
 }: HudScreenProps) {
   const contentPaddingPx = useDeskLayout((s) => s.contentPaddingPx);
   const bootParts = useBootTuning((s) => s.parts);
+  const rezTitles = isCaveTitles();
   const groupRef = useRef<THREE.Group>(null);
   const handlesRef = useRef<HTMLDivElement>(null);
 
@@ -258,6 +261,7 @@ export default function HudScreen({
           ? "boot-part--contentJitter"
           : "",
         boot && bootParts.titleReveal.visible ? "boot-part--titleReveal" : "",
+        rezTitles && boot ? "hud-screen__face--rez" : "",
         boot && bootParts.bodyReveal.visible ? "boot-part--bodyReveal" : "",
       ]
         .join(" ")
@@ -276,6 +280,27 @@ export default function HudScreen({
       }}
     >
       {!hideHeader ? (
+        rezTitles && boot ? (
+          <RezTitle boot={boot} title={title} headerFontPx={headerFontPx}>
+            <div className="hud-screen__handle-actions">
+              {headerAside}
+              {onMinimize ? (
+                <button
+                  type="button"
+                  className="hud-screen__minimize-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onMinimize();
+                  }}
+                  title="Minimize"
+                  aria-label={`Minimize ${title}`}
+                >
+                  −
+                </button>
+              ) : null}
+            </div>
+          </RezTitle>
+        ) : (
         <div
           className="hud-screen__handle"
           style={{ fontSize: `${headerFontPx}px` }}
@@ -299,6 +324,7 @@ export default function HudScreen({
             ) : null}
           </div>
         </div>
+        )
       ) : null}
       {!headerOnly ? (
         <div
