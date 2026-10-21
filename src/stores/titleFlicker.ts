@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { bootScaleMs } from "../lib/bootParts";
 import {
   DEFAULT_TITLE_FLICKER_ASPECTS,
   type TitleFlickerAspects,
@@ -11,14 +10,15 @@ export const TITLE_FLICKER_ASPECTS: {
   id: keyof TitleFlickerAspects;
   label: string;
 }[] = [
+  { id: "letters", label: "Letter by letter" },
+  { id: "ghost", label: "Ghost doubles" },
+  { id: "scatter", label: "Letter jump" },
+  { id: "whiteHot", label: "White flash on lock" },
   { id: "glow", label: "Neon glow" },
-  { id: "flicker", label: "Flicker" },
-  { id: "whiteHot", label: "White flash" },
-  { id: "dimTube", label: "Dim tube" },
-  { id: "dropout", label: "Dropout" },
 ];
 
-const DEFAULT_DURATION_MS = bootScaleMs(980);
+/** The "Walt Disney" line takes about 1.5s to lock in the ident. */
+const DEFAULT_DURATION_MS = 1500;
 
 interface TitleFlickerStore {
   durationMs: number;

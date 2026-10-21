@@ -4,107 +4,110 @@ import { bootNoise } from "./bootSequence";
 const STEP_MS = 33;
 
 export interface TitleFlickerAspects {
-  /** Cyan halo around the lit word. */
-  glow: boolean;
-  /** The tube strobes on and off before it holds. */
-  flicker: boolean;
-  /** One sample blows out white. */
+  /** Each letter catches on its own, in random order. Off: the word catches as one. */
+  letters: boolean;
+  /** A faint doubled letter shows before it catches. */
+  ghost: boolean;
+  /** Letters that have not caught jump sideways between frames. */
+  scatter: boolean;
+  /** A letter blows out white on the frame it locks. */
   whiteHot: boolean;
-  /** Between flashes the tube stays faintly lit. */
-  dimTube: boolean;
-  /** The word dies once after it has caught, then holds. */
-  dropout: boolean;
+  /** Cyan halo around the lit letters. */
+  glow: boolean;
 }
 
 export const DEFAULT_TITLE_FLICKER_ASPECTS: TitleFlickerAspects = {
-  glow: true,
-  flicker: true,
+  letters: true,
+  ghost: true,
+  scatter: true,
   whiteHot: true,
-  dimTube: true,
-  dropout: true,
+  glow: true,
 };
 
-export interface TitleCatch {
+export interface LetterCatch {
   opacity: number;
-  /** 0 = no halo, 1 = the resting neon, higher = the white flash. */
-  glow: number;
+  /** Sideways jump, em. */
+  x: number;
+  ghost: boolean;
   hot: boolean;
+  /** 0 = no halo, 1 = resting neon, higher = the white flash. */
+  glow: number;
 }
 
-const DARK: TitleCatch = { opacity: 0, glow: 0, hot: false };
+const DARK: LetterCatch = { opacity: 0, x: 0, ghost: false, hot: false, glow: 0 };
 
-/** Hard on/off beats, as fractions of the catch. */
-const BEATS = [0.08, 0.18, 0.34, 0.46, 0.62];
+function hash01(n: number): number {
+  const s = Math.sin(n * 91.3 + 47.9) * 43758.5453123;
+  return s - Math.floor(s);
+}
 
 /**
- * Neon title catch, in the rhythm of the TRON Disney ident.
- *
- * The word is a tube that is either dark, faintly lit, or fully on.
- * It strobes, blows out once, drops out, then holds a steady glow.
+ * One letter of a title, in the rhythm of the "Walt Disney" type in the
+ * TRON: Legacy ident: letters blink on in random order, show as faint
+ * doubled ghosts, jump a little, and lock one by one into a steady glow.
  */
-export function titleCatch(
+export function letterCatch(
   elapsedMs: number,
   startMs: number,
   durationMs: number,
   seed: number,
+  index: number,
   aspects: TitleFlickerAspects,
-): TitleCatch {
+): LetterCatch {
   const t = elapsedMs - startMs;
   if (t < 0) return DARK;
 
   const dur = Math.max(STEP_MS * 4, durationMs);
   const glowOf = (amount: number) => (aspects.glow ? amount : 0);
-  if (t >= dur) return { opacity: 1, glow: glowOf(1), hot: false };
+  const key = aspects.letters ? seed * 13.7 + index * 3.17 : seed * 13.7;
+  const lockFrac = aspects.letters ? 0.45 + 0.5 * hash01(key + 0.5) : 0.85;
+  const lockMs = dur * lockFrac;
 
-  const n = bootNoise(elapsedMs, seed);
+  if (t >= lockMs) {
+    const lockStep = Math.floor((startMs + lockMs) / STEP_MS);
+    const flashing =
+      aspects.whiteHot && Math.floor(elapsedMs / STEP_MS) <= lockStep + 1;
+    return {
+      opacity: 1,
+      x: 0,
+      ghost: false,
+      hot: flashing,
+      glow: glowOf(flashing ? 1.7 : 1),
+    };
+  }
+
+  const p = t / lockMs;
+  const n = bootNoise(elapsedMs, key);
+  const onAbove = 0.9 - 0.4 * p;
   const step = Math.floor(elapsedMs / STEP_MS);
-  const hotStep = Math.floor((startMs + dur * 0.52) / STEP_MS);
-  const onBeat =
-    aspects.flicker &&
-    BEATS.some((b) => step === Math.floor((startMs + dur * b) / STEP_MS));
+  const x = aspects.scatter
+    ? (hash01(step * 1.31 + key) - 0.5) * 0.5 * (1 - p * 0.6)
+    : 0;
 
-  let opacity = 0;
-  let glow = 0;
-  let hot = false;
-
-  if (aspects.dimTube && n > 0.42) {
-    opacity = 0.55;
-    glow = glowOf(0.45);
+  if (n > onAbove) {
+    return { opacity: 0.9, x, ghost: false, hot: false, glow: glowOf(0.8) };
   }
-
-  if (aspects.flicker && (onBeat || n > 0.74)) {
-    opacity = 1;
-    glow = glowOf(1);
-    hot = aspects.whiteHot && n > 0.92;
+  if (aspects.ghost && n > onAbove - 0.32) {
+    return { opacity: 0.38, x, ghost: true, hot: false, glow: glowOf(0.35) };
   }
-
-  if (aspects.whiteHot && step === hotStep) {
-    opacity = 1;
-    glow = glowOf(1.6);
-    hot = true;
-  }
-
-  const dropoutAt = dur * 0.78;
-  if (aspects.dropout && t >= dropoutAt && t < dropoutAt + STEP_MS * 3) {
-    opacity = 0;
-    glow = 0;
-    hot = false;
-  }
-
-  return { opacity, glow, hot };
+  return DARK;
 }
 
-/** Stacked halo. `glow` is 0..~1.6 from `titleCatch`. */
+/** Stacked halo. `glow` is 0..~1.7 from `letterCatch`. */
 export function neonTextShadow(glow: number, hot: boolean): string {
   if (glow <= 0) return "none";
-  const g = glow * (hot ? 1.45 : 1);
-  const core = hot ? 1 : 0.96;
+  const g = glow * (hot ? 1.3 : 1);
   return [
-    `0 0 2px rgba(255,255,255,${core})`,
-    `0 0 ${Math.round(7 * g)}px rgba(214,251,255,0.95)`,
-    `0 0 ${Math.round(16 * g)}px rgba(140,236,255,0.9)`,
-    `0 0 ${Math.round(32 * g)}px rgba(70,206,255,0.8)`,
-    `0 0 ${Math.round(58 * g)}px rgba(36,168,255,0.55)`,
-    `0 0 ${Math.round(90 * g)}px rgba(16,120,255,0.28)`,
+    `0 0 2px rgba(255,255,255,${hot ? 1 : 0.9})`,
+    `0 0 ${Math.round(6 * g)}px rgba(200,248,255,0.9)`,
+    `0 0 ${Math.round(14 * g)}px rgba(120,228,255,0.8)`,
+    `0 0 ${Math.round(28 * g)}px rgba(60,196,255,0.65)`,
+    `0 0 ${Math.round(52 * g)}px rgba(30,150,255,0.4)`,
   ].join(", ");
+}
+
+/** The doubled, smeared copy a letter shows before it catches. */
+export function ghostTextShadow(glow: number): string {
+  const halo = glow > 0 ? `, 0 0 ${Math.round(10 * glow + 4)}px rgba(90,210,255,0.5)` : "";
+  return `0.09em 0.03em 0 rgba(110,226,255,0.55), -0.06em 0 1px rgba(110,226,255,0.35)${halo}`;
 }

@@ -1,13 +1,20 @@
 import { useLayoutEffect, useRef } from "react";
 import { bootElapsedMs, bootSkipped, type PanelBoot } from "../lib/bootSequence";
-import { neonTextShadow, titleCatch } from "../lib/titleFlicker";
+import {
+  ghostTextShadow,
+  letterCatch,
+  neonTextShadow,
+  type LetterCatch,
+} from "../lib/titleFlicker";
 import { useBootClock } from "../stores/bootClock";
 import { useBootTuning } from "../stores/bootTuning";
 import { useTitleFlicker } from "../stores/titleFlicker";
 
+const HELD: LetterCatch = { opacity: 1, x: 0, ghost: false, hot: false, glow: 1 };
+
 /**
- * One neon title for a panel. It sits on the flat handle layer so the halo
- * is a single glow, and it strobes with the boot clock.
+ * Neon panel title on the flat handle layer, so the halo is one glow. Each
+ * letter catches on its own, the way "Walt Disney" does in the TRON ident.
  */
 export default function RezTitle({
   boot,
@@ -24,7 +31,7 @@ export default function RezTitle({
   padY: number;
   center: boolean;
 }) {
-  const titleRef = useRef<HTMLSpanElement>(null);
+  const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const elapsedMs = useBootClock((s) => s.elapsedMs);
   const paused = useBootClock((s) => s.paused);
   const scrubbing = useBootClock((s) => s.scrubbing);
@@ -33,33 +40,20 @@ export default function RezTitle({
   const aspects = useTitleFlicker((s) => s.aspects);
 
   useLayoutEffect(() => {
-    const el = titleRef.current;
-    if (!el) return;
-
-    const paint = (opacity: number, glow: number, hot: boolean) => {
-      el.style.opacity = String(opacity);
-      el.style.color = hot ? "#ffffff" : "#f7feff";
-      el.style.textShadow = neonTextShadow(glow, hot);
-      el.style.filter =
-        glow > 0
-          ? `drop-shadow(0 0 ${Math.round(12 * glow)}px rgba(150, 236, 255, ${hot ? 0.95 : 0.8}))`
-          : "none";
-    };
-
-    if (bootSkipped()) {
-      paint(1, aspects.glow ? 1 : 0, false);
-      return;
-    }
-
     const elapsed = paused || scrubbing ? elapsedMs : bootElapsedMs();
     const start = boot.startMs + delayMs;
-    if (elapsed < start) {
-      paint(0, 0, false);
-      return;
-    }
 
-    const caught = titleCatch(elapsed, start, durationMs, boot.seed, aspects);
-    paint(caught.opacity, caught.glow, caught.hot);
+    letterRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const c = bootSkipped()
+        ? { ...HELD, glow: aspects.glow ? 1 : 0 }
+        : letterCatch(elapsed, start, durationMs, boot.seed, i, aspects);
+      el.style.opacity = String(c.opacity);
+      el.style.transform = c.x ? `translateX(${c.x.toFixed(3)}em)` : "none";
+      el.style.color = c.hot ? "#ffffff" : c.ghost ? "rgba(170,240,255,0.7)" : "#f2fdff";
+      el.style.textShadow = c.ghost ? ghostTextShadow(c.glow) : neonTextShadow(c.glow, c.hot);
+      el.style.filter = c.ghost ? "blur(0.6px)" : "none";
+    });
   }, [
     aspects,
     boot.seed,
@@ -73,15 +67,26 @@ export default function RezTitle({
 
   return (
     <span
-      ref={titleRef}
       className={center ? "neon-title neon-title--center" : "neon-title"}
+      aria-label={title}
       style={{
         fontSize: `${Math.round(headerFontPx * 1.35)}px`,
         left: `${padX}px`,
         top: center ? "50%" : `${padY}px`,
       }}
     >
-      {title}
+      {[...title].map((ch, i) => (
+        <span
+          key={i}
+          ref={(el) => {
+            letterRefs.current[i] = el;
+          }}
+          className="neon-title__letter"
+          aria-hidden
+        >
+          {ch}
+        </span>
+      ))}
     </span>
   );
 }

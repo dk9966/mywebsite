@@ -146,6 +146,11 @@
   line-height: 1;
   color: #f4feff;
   white-space: nowrap;
+}
+
+.neon-title__letter {
+  display: inline-block;
+  white-space: pre;
   opacity: 0;
 }
 
