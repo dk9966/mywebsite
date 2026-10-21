@@ -70,6 +70,8 @@ export const TITLE_FLICKER_SLIDERS: {
   { id: "ghostOpacity", label: "Ghost strength", min: 0, max: 0.8, step: 0.01, unit: "", aspect: "ghost" },
   { id: "jumpEm", label: "Jump distance", min: 0, max: 0.5, step: 0.01, unit: "em", aspect: "scatter" },
   { id: "flashMs", label: "Flash length", min: 0, max: 200, step: 5, unit: "ms", aspect: "whiteHot" },
+  { id: "outlineBloom", label: "Outline bloom", min: 0, max: 3, step: 0.05, unit: "", aspect: "glow" },
+  { id: "settledBloom", label: "Settled bloom", min: 0, max: 3, step: 0.05, unit: "", aspect: "glow" },
   { id: "glowStrength", label: "Glow strength", min: 0, max: 2, step: 0.05, unit: "", aspect: "glow" },
 ];
 

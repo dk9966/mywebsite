@@ -34,6 +34,8 @@ export interface TitleFlickerTuning {
   jumpEm: number;
   flashMs: number;
   glowStrength: number;
+  outlineBloom: number;
+  settledBloom: number;
 }
 
 export const DEFAULT_TITLE_FLICKER_TUNING: TitleFlickerTuning = {
@@ -43,6 +45,8 @@ export const DEFAULT_TITLE_FLICKER_TUNING: TitleFlickerTuning = {
   jumpEm: 0.25,
   flashMs: 65,
   glowStrength: 1,
+  outlineBloom: 1,
+  settledBloom: 1.5,
 };
 
 export interface LetterCatch {
@@ -100,7 +104,7 @@ export function letterCatch(
       x: 0,
       ghost: false,
       hot: aspects.whiteHot && flashing,
-      glow: glowOf(flashing ? 2.2 : 1),
+      glow: glowOf(flashing ? 2.2 : tuning.settledBloom),
     };
   }
 
@@ -120,7 +124,7 @@ export function letterCatch(
     x,
     ghost,
     hot: false,
-    glow: glowOf(aspects.outline ? 0.55 : 0.35),
+    glow: glowOf(tuning.outlineBloom),
   };
 }
 

@@ -1,5 +1,7 @@
 # Current Disney title animation
 
+Bloom controls: Outline bloom and Settled bloom independently scale their respective phases, each from 0–3. Defaults are 1.0 for outlines (previously 0.55) and 1.5 for settled text (previously 1.0). Glow strength remains the shared multiplier; fill flashes keep their existing bloom. Reduced-motion titles use Settled bloom too.
+
 Typography controls: Size (50–200% of the enlarged baseline), Weight (real Chakra Petch faces, 300–700), extra filled-letter Thickness (0–3px), Letter spacing (−0.05–0.3em), Width (60–150%), Slant (±20°), and Outline width (0.25–3px). Weight is disabled for the other fonts, which each have one bundled weight; extra Thickness works for all fonts. Reset typography preserves animation settings and playhead; the global Reset restores everything.
 
 Latest tuning: the user supplied the opening of https://youtu.be/y4QBoP4Blv0 strictly as a bloom reference. Outlines hold with a soft two-radius halo; the fill flashes twice with a stronger cyan bloom, then locks in at most three groups. Default Length is 1000ms and Catch spread is 0.15, so locks occur at 720–870ms after each title starts. The settled glow holds without further flickering. Chakra Petch remains the default, now using its bundled 600 semibold face. Preview type is 1.7× larger, capped only as needed to fit narrow screens.

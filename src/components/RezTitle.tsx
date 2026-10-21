@@ -49,7 +49,7 @@ export default function RezTitle({
     letterRefs.current.forEach((el, i) => {
       if (!el) return;
       const c = bootSkipped()
-        ? { ...HELD, glow: aspects.glow ? tuning.glowStrength : 0 }
+        ? { ...HELD, glow: aspects.glow ? tuning.glowStrength * tuning.settledBloom : 0 }
         : letterCatch(elapsed, start, durationMs, boot.seed, i, aspects, tuning);
       el.style.opacity = String(c.opacity);
       el.style.transform = c.x ? `translateX(${c.x.toFixed(3)}em)` : "none";
