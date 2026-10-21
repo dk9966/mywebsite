@@ -2,7 +2,7 @@
 
 The supplied screen recording's title catch is around 17–19s (the recording includes player lead-in). In the 17.0–17.25s pair, faint central letter copies blink; 17.25–17.5s introduces displaced individual letters; 17.5–17.75s spreads those letters across the title; 17.75–18s starts filling separate letters; 18–18.25s adds more bright catches; 18.25–18.5s retains a mixture of faint doubles and solid letters; 18.5–18.75s locks the word; subsequent pairs through 19.75s hold the title while the castle lighting continues. Letter changes snap rather than ease. The camera and castle stay behind the fixed title area.
 
-`/cave-title` uses independent, deterministic letter catches, ghost doubles, small horizontal offsets, brief white lock flashes, and a steady cyan finish. It does not trace glyph outlines. `/cave` shares the animation without controls; `/` keeps its original title wipe and HUD tuner.
+`/cave-title` is a black-background preview of all six titles with the Titles controls, without the table, panels, or scene hints. It uses independent, deterministic letter catches, ghost doubles, small horizontal offsets, brief white lock flashes, and a steady cyan finish. It does not trace glyph outlines. `/cave` shares the animation without controls; `/` keeps its original title wipe and HUD tuner.
 
 The Titles panel provides playback/restart/scrub plus Length, Catch spread, Flicker rate, Ghost strength, Jump distance, Flash length, and Glow strength sliders. Five aspect checkboxes disable letter independence, ghosts, jumps, flashes, or glow; associated sliders disable without losing their values. Reset restores all animation defaults. Values are session-only.
 

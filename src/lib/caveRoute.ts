@@ -1,6 +1,6 @@
 export type CaveRoute = "desk" | "cave" | "cave-title";
 
-/** `/cave` plays the title rez. `/cave-title` is the same scene plus the tuner. */
+/** `/cave` plays the desk title rez. `/cave-title` isolates the titles and tuner. */
 export function caveRoute(): CaveRoute {
   if (typeof window === "undefined") return "desk";
   const path = window.location.pathname.replace(/\/+$/, "") || "/";

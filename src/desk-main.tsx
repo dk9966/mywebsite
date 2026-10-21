@@ -7,7 +7,7 @@ import * as THREE from "three";
 import DeskTable from "./components/DeskTable";
 import DeskPanels from "./components/DeskPanels";
 import DeskControls from "./components/DeskControls";
-import TitleFlickerControls from "./components/TitleFlickerControls";
+import TitlePreview from "./components/TitlePreview";
 import BootClockDriver from "./components/BootClockDriver";
 import { caveRoute } from "./lib/caveRoute";
 import { useDeskLayout } from "./stores/deskLayout";
@@ -342,6 +342,8 @@ export function DeskApp() {
   const initialCamera = useDeskLayout.getState().camera;
   const route = caveRoute();
 
+  if (route === "cave-title") return <TitlePreview />;
+
   return (
     <div
       style={{
@@ -364,7 +366,6 @@ export function DeskApp() {
         <DeskScene />
       </Canvas>
       {route === "desk" ? <DeskControls /> : null}
-      {route === "cave-title" ? <TitleFlickerControls /> : null}
       <BootClockDriver />
       <Hint />
     </div>
