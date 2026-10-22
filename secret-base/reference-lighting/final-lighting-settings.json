@@ -1,0 +1,362 @@
+{
+  "controls": {
+    "Master brightness": 1.0,
+    "Center platform": 1.0,
+    "Rear left platform": 1.0,
+    "Front left platform": 1.0,
+    "Upper right platform": 1.0,
+    "Lower right platform": 1.0,
+    "Spot edge softness": 0.9200000166893005,
+    "Beam width": 1.0399999618530273,
+    "Shadow softness": 1.0,
+    "Soft fill": 1.0800000429153442,
+    "Cave ambience": 1.7999999523162842,
+    "Haze density": 0.0044999998062849045,
+    "Warm accents": 0.5,
+    "Cool light tint": [
+      0.5600000023841858,
+      0.7599999904632568,
+      1.0,
+      1.0
+    ],
+    "Beam visibility": 0.8999999761581421
+  },
+  "lights": [
+    {
+      "name": "RL | Center | soft overhead spot",
+      "type": "SPOT",
+      "power_w": 3600.0,
+      "base_power_w": 3600.0,
+      "local_position": [
+        0.0,
+        0.0,
+        7.0
+      ],
+      "parent": "RL | Center | move lighting group"
+    },
+    {
+      "name": "RL | Center | soft fill -1",
+      "type": "AREA",
+      "power_w": 302.4000244140625,
+      "base_power_w": 280.0,
+      "local_position": [
+        -1.649999976158142,
+        5.0,
+        4.5
+      ],
+      "parent": "RL | Center | move lighting group"
+    },
+    {
+      "name": "RL | Center | soft fill +1",
+      "type": "AREA",
+      "power_w": 302.4000244140625,
+      "base_power_w": 280.0,
+      "local_position": [
+        1.649999976158142,
+        5.0,
+        4.5
+      ],
+      "parent": "RL | Center | move lighting group"
+    },
+    {
+      "name": "RL | Rear left | soft overhead spot",
+      "type": "SPOT",
+      "power_w": 1450.0,
+      "base_power_w": 1450.0,
+      "local_position": [
+        0.0,
+        -0.6000000238418579,
+        3.1500000953674316
+      ],
+      "parent": "RL | Rear left | move lighting group"
+    },
+    {
+      "name": "RL | Rear left | soft fill -1",
+      "type": "AREA",
+      "power_w": 162.0,
+      "base_power_w": 150.0,
+      "local_position": [
+        -1.649999976158142,
+        -1.2000000476837158,
+        2.549999952316284
+      ],
+      "parent": "RL | Rear left | move lighting group"
+    },
+    {
+      "name": "RL | Rear left | soft fill +1",
+      "type": "AREA",
+      "power_w": 162.0,
+      "base_power_w": 150.0,
+      "local_position": [
+        1.649999976158142,
+        -1.2000000476837158,
+        2.549999952316284
+      ],
+      "parent": "RL | Rear left | move lighting group"
+    },
+    {
+      "name": "RL | Rear left | stair spill",
+      "type": "AREA",
+      "power_w": 194.40000915527344,
+      "base_power_w": 180.0,
+      "local_position": [
+        0.0,
+        -3.0,
+        3.0999999046325684
+      ],
+      "parent": "RL | Rear left | move lighting group"
+    },
+    {
+      "name": "RL | Front left | soft overhead spot -1",
+      "type": "SPOT",
+      "power_w": 1200.0,
+      "base_power_w": 1200.0,
+      "local_position": [
+        0.0,
+        -3.0999999046325684,
+        6.199999809265137
+      ],
+      "parent": "RL | Front left | move lighting group"
+    },
+    {
+      "name": "RL | Front left | soft fill -1",
+      "type": "AREA",
+      "power_w": 129.60000610351562,
+      "base_power_w": 120.0,
+      "local_position": [
+        -2.0,
+        0.0,
+        4.5
+      ],
+      "parent": "RL | Front left | move lighting group"
+    },
+    {
+      "name": "RL | Front left | soft overhead spot +1",
+      "type": "SPOT",
+      "power_w": 1200.0,
+      "base_power_w": 1200.0,
+      "local_position": [
+        0.0,
+        3.0999999046325684,
+        6.199999809265137
+      ],
+      "parent": "RL | Front left | move lighting group"
+    },
+    {
+      "name": "RL | Front left | soft fill +1",
+      "type": "AREA",
+      "power_w": 129.60000610351562,
+      "base_power_w": 120.0,
+      "local_position": [
+        2.0,
+        0.0,
+        4.5
+      ],
+      "parent": "RL | Front left | move lighting group"
+    },
+    {
+      "name": "RL | Upper right | soft overhead spot",
+      "type": "SPOT",
+      "power_w": 1200.0,
+      "base_power_w": 1200.0,
+      "local_position": [
+        0.0,
+        0.0,
+        -0.05999999865889549
+      ],
+      "parent": "RL | Upper right | move lighting group"
+    },
+    {
+      "name": "RL | Upper right | soft fill -1",
+      "type": "AREA",
+      "power_w": 151.20001220703125,
+      "base_power_w": 140.0,
+      "local_position": [
+        -1.0499999523162842,
+        0.6499999761581421,
+        -0.1599999964237213
+      ],
+      "parent": "RL | Upper right | move lighting group"
+    },
+    {
+      "name": "RL | Upper right | soft fill +1",
+      "type": "AREA",
+      "power_w": 151.20001220703125,
+      "base_power_w": 140.0,
+      "local_position": [
+        1.0499999523162842,
+        0.6499999761581421,
+        -0.1599999964237213
+      ],
+      "parent": "RL | Upper right | move lighting group"
+    },
+    {
+      "name": "RL | Lower right | soft overhead spot",
+      "type": "SPOT",
+      "power_w": 1050.0,
+      "base_power_w": 1050.0,
+      "local_position": [
+        0.0,
+        0.0,
+        -0.05999999865889549
+      ],
+      "parent": "RL | Lower right | move lighting group"
+    },
+    {
+      "name": "RL | Lower right | soft fill -1",
+      "type": "AREA",
+      "power_w": 97.20000457763672,
+      "base_power_w": 90.0,
+      "local_position": [
+        -1.0499999523162842,
+        0.0,
+        -0.1599999964237213
+      ],
+      "parent": "RL | Lower right | move lighting group"
+    },
+    {
+      "name": "RL | Lower right | soft fill +1",
+      "type": "AREA",
+      "power_w": 97.20000457763672,
+      "base_power_w": 90.0,
+      "local_position": [
+        1.0499999523162842,
+        0.0,
+        -0.1599999964237213
+      ],
+      "parent": "RL | Lower right | move lighting group"
+    },
+    {
+      "name": "RL | Cave | restrained overhead fill",
+      "type": "AREA",
+      "power_w": 468.0,
+      "base_power_w": 260.0,
+      "local_position": [
+        0.0,
+        3.0,
+        16.0
+      ],
+      "parent": "RL | Cave | move lighting group"
+    },
+    {
+      "name": "RL | Cave | soft side bounce -1",
+      "type": "AREA",
+      "power_w": 198.0,
+      "base_power_w": 110.0,
+      "local_position": [
+        -8.0,
+        -4.0,
+        7.5
+      ],
+      "parent": "RL | Cave | move lighting group"
+    },
+    {
+      "name": "RL | Cave | soft side bounce +1",
+      "type": "AREA",
+      "power_w": 198.0,
+      "base_power_w": 110.0,
+      "local_position": [
+        8.0,
+        -4.0,
+        7.5
+      ],
+      "parent": "RL | Cave | move lighting group"
+    },
+    {
+      "name": "RL | Upper right | wall bounce -1",
+      "type": "AREA",
+      "power_w": 81.0,
+      "base_power_w": 75.0,
+      "local_position": [
+        -1.5499999523162842,
+        -1.399999976158142,
+        -0.6000000238418579
+      ],
+      "parent": "RL | Upper right | move lighting group"
+    },
+    {
+      "name": "RL | Lower right | wall bounce -1",
+      "type": "AREA",
+      "power_w": 48.60000228881836,
+      "base_power_w": 45.0,
+      "local_position": [
+        -1.5499999523162842,
+        -1.399999976158142,
+        -0.6000000238418579
+      ],
+      "parent": "RL | Lower right | move lighting group"
+    },
+    {
+      "name": "RL | Upper right | wall bounce +1",
+      "type": "AREA",
+      "power_w": 81.0,
+      "base_power_w": 75.0,
+      "local_position": [
+        1.5499999523162842,
+        -1.399999976158142,
+        -0.6000000238418579
+      ],
+      "parent": "RL | Upper right | move lighting group"
+    },
+    {
+      "name": "RL | Lower right | wall bounce +1",
+      "type": "AREA",
+      "power_w": 48.60000228881836,
+      "base_power_w": 45.0,
+      "local_position": [
+        1.5499999523162842,
+        -1.399999976158142,
+        -0.6000000238418579
+      ],
+      "parent": "RL | Lower right | move lighting group"
+    },
+    {
+      "name": "RL | Cave | lower reflected bounce -1",
+      "type": "AREA",
+      "power_w": 324.0,
+      "base_power_w": 180.0,
+      "local_position": [
+        -4.5,
+        -6.0,
+        3.5
+      ],
+      "parent": "RL | Cave | move lighting group"
+    },
+    {
+      "name": "RL | Cave | lower reflected bounce +1",
+      "type": "AREA",
+      "power_w": 324.0,
+      "base_power_w": 180.0,
+      "local_position": [
+        4.5,
+        -6.0,
+        3.5
+      ],
+      "parent": "RL | Cave | move lighting group"
+    },
+    {
+      "name": "RL | Cave | broad environment fill -1",
+      "type": "AREA",
+      "power_w": 1116.0,
+      "base_power_w": 620.0,
+      "local_position": [
+        -6.5,
+        -10.0,
+        10.5
+      ],
+      "parent": "RL | Cave | move lighting group"
+    },
+    {
+      "name": "RL | Cave | broad environment fill +1",
+      "type": "AREA",
+      "power_w": 1116.0,
+      "base_power_w": 620.0,
+      "local_position": [
+        6.5,
+        -10.0,
+        10.5
+      ],
+      "parent": "RL | Cave | move lighting group"
+    }
+  ]
+}

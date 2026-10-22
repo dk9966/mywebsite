@@ -1,0 +1,8 @@
+{
+  "restored_original_polygons": 6713,
+  "redundant_triangulation_faces_removed": 7302,
+  "vertices": 29945,
+  "faces": 49702,
+  "far_surface_max_deviation": 0.012969044037163258,
+  "far_triangles_over_1mm": 32
+}

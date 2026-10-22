@@ -1,0 +1,40 @@
+{
+  "walls": [
+    {
+      "section": "rear bay 1",
+      "parallel_error": 1.4901161193847656e-07,
+      "vertical_error": 0.0,
+      "planarity_error": 5.960464477539063e-08
+    },
+    {
+      "section": "rear bay 2",
+      "parallel_error": 2.9802322387695312e-08,
+      "vertical_error": 0.0,
+      "planarity_error": 0.0
+    },
+    {
+      "section": "angled corner bay",
+      "parallel_error": 9.08970832824707e-07,
+      "vertical_error": 0.0,
+      "planarity_error": 0.0
+    }
+  ],
+  "rock": [
+    {
+      "name": "Cave | connected reference workshop recess.001",
+      "loose_edges": 0,
+      "nonmanifold_junctions": 0
+    },
+    {
+      "name": "Cave | connected octagon wall recess",
+      "loose_edges": 0,
+      "nonmanifold_junctions": 0
+    }
+  ],
+  "passed": true,
+  "final_rock": {
+    "mesh": "Cave | octagon recess and clear corner lip",
+    "loose_edges": 0,
+    "nonmanifold_junctions": 0
+  }
+}

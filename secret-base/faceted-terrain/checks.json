@@ -1,0 +1,37 @@
+{
+  "terrain": {
+    "150 | continuous cave with oblique carved rooms": {
+      "vertices": 2787,
+      "triangles": 5332,
+      "components": [
+        2787
+      ],
+      "invalid_edges": 0,
+      "boundary_edges": 240
+    },
+    "Central rock mound | continuous cross-column extrusions": {
+      "vertices": 275,
+      "triangles": 546,
+      "components": [
+        275
+      ],
+      "invalid_edges": 0,
+      "boundary_edges": 0
+    }
+  },
+  "platform_changes": [],
+  "standing_intrusions": [],
+  "anchor_gaps": [
+    0.009935432113707066,
+    0.009174658916890621,
+    0.005761885549873114,
+    0.008260160684585571,
+    0.004997527692466974,
+    0.009253483265638351,
+    0.0071497769095003605,
+    0.009170470759272575,
+    0.008246129378676414,
+    0.0085897920653224
+  ],
+  "passed": true
+}

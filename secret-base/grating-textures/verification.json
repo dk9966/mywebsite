@@ -1,0 +1,434 @@
+{
+  "file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "objects": 50,
+  "materials": 10,
+  "before_triangles": 207872,
+  "after_triangles": 4860,
+  "unchanged_objects": 3158,
+  "details": [
+    {
+      "name": "Metal | recessed open grate 00",
+      "before_triangles": 10800,
+      "after_triangles": 180,
+      "vertices": 190,
+      "modifiers": [
+        "NODES"
+      ],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Metal | recessed open grate 01",
+      "before_triangles": 10800,
+      "after_triangles": 180,
+      "vertices": 190,
+      "modifiers": [
+        "NODES"
+      ],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Metal | recessed open grate 02",
+      "before_triangles": 10800,
+      "after_triangles": 180,
+      "vertices": 190,
+      "modifiers": [
+        "NODES"
+      ],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Metal | recessed open grate 03",
+      "before_triangles": 10800,
+      "after_triangles": 180,
+      "vertices": 190,
+      "modifiers": [
+        "NODES"
+      ],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Metal | recessed open grate 04",
+      "before_triangles": 10800,
+      "after_triangles": 180,
+      "vertices": 190,
+      "modifiers": [
+        "NODES"
+      ],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Metal | recessed open grate 05",
+      "before_triangles": 10800,
+      "after_triangles": 180,
+      "vertices": 190,
+      "modifiers": [
+        "NODES"
+      ],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Metal | recessed open grate 06",
+      "before_triangles": 10800,
+      "after_triangles": 180,
+      "vertices": 190,
+      "modifiers": [
+        "NODES"
+      ],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Metal | recessed open grate 07",
+      "before_triangles": 10800,
+      "after_triangles": 180,
+      "vertices": 190,
+      "modifiers": [
+        "NODES"
+      ],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Bridge | fine open welded grating",
+      "before_triangles": 51954,
+      "after_triangles": 1908,
+      "vertices": 960,
+      "modifiers": [
+        "NODES",
+        "BOOLEAN"
+      ],
+      "depth_sheets": 3
+    },
+    {
+      "name": "Left stairs | half-height right-turn landing open grating",
+      "before_triangles": 900,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | upper bridge bay 01 open grating",
+      "before_triangles": 10638,
+      "after_triangles": 192,
+      "vertices": 102,
+      "modifiers": [
+        "BOOLEAN"
+      ],
+      "depth_sheets": 3
+    },
+    {
+      "name": "Left stairs | upper bridge bay 02 open grating",
+      "before_triangles": 636,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | triangle open grating extension",
+      "before_triangles": 552,
+      "after_triangles": 60,
+      "vertices": 70,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 01 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 02 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 03 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 04 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 05 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 06 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 07 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 08 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 09 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 10 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 11 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 12 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 13 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 14 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 15 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 16 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 17 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 18 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 19 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 20 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 21 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | first flight tread 22 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | second flight tread 01 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | second flight tread 02 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | second flight tread 03 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | second flight tread 04 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | second flight tread 05 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Left stairs | second flight tread 06 open grating",
+      "before_triangles": 492,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Rear left | bridge bay 00 open grating",
+      "before_triangles": 13616,
+      "after_triangles": 168,
+      "vertices": 90,
+      "modifiers": [
+        "BOOLEAN"
+      ],
+      "depth_sheets": 3
+    },
+    {
+      "name": "Rear left | bridge bay 01 open grating",
+      "before_triangles": 648,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Rear left | bridge bay 02 open grating",
+      "before_triangles": 648,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Rear left | bridge bay 03 open grating",
+      "before_triangles": 648,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Rear left | bridge bay 04 open grating",
+      "before_triangles": 648,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Rear left | upper side drain 0 open grating",
+      "before_triangles": 1092,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Rear left | upper side drain 1 open grating",
+      "before_triangles": 1092,
+      "after_triangles": 30,
+      "vertices": 40,
+      "modifiers": [],
+      "depth_sheets": 5
+    },
+    {
+      "name": "Upper right | drain crossbar cassette",
+      "before_triangles": 12312,
+      "after_triangles": 6,
+      "vertices": 12,
+      "modifiers": [],
+      "depth_sheets": 3
+    },
+    {
+      "name": "Upper right | drain crossbar cassette.001",
+      "before_triangles": 12312,
+      "after_triangles": 6,
+      "vertices": 12,
+      "modifiers": [],
+      "depth_sheets": 3
+    }
+  ],
+  "depth_refinement": "3\u20135 sparse textured sheets within the original bar depth"
+}

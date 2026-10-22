@@ -1,0 +1,61 @@
+{
+  "objects_added": 91,
+  "posts": 44,
+  "guarded_edges": 5,
+  "rail_heights_m": [
+    0.19,
+    0.345
+  ],
+  "rail_section_m": [
+    0.025,
+    0.018
+  ],
+  "post_section_m": [
+    0.027,
+    0.029
+  ],
+  "maximum_post_spacing_m": 0.57,
+  "platform_top_m": 2.536750555038452,
+  "inset_m": 0.055,
+  "path_world": [
+    [
+      12.137227058410645,
+      -3.4784646034240723,
+      2.536750555038452
+    ],
+    [
+      16.104854583740234,
+      -1.7002151012420654,
+      2.536750555038452
+    ],
+    [
+      16.9045467376709,
+      0.3985232710838318,
+      2.536750555038452
+    ],
+    [
+      12.644845962524414,
+      9.902759552001953,
+      2.536750555038452
+    ],
+    [
+      10.54610824584961,
+      10.7024507522583,
+      2.536750555038452
+    ],
+    [
+      6.5784807205200195,
+      8.924201965332031,
+      2.536750555038452
+    ]
+  ],
+  "existing_objects_unchanged": 1551,
+  "foot_support_checks_passed": 44,
+  "materials": [
+    "Metal | dark structural steel",
+    "Metal | outer walkway alloy"
+  ],
+  "saved": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "nearest_railing_to_final_stair_tread_center_m": 4.210991859436035,
+  "clear_stair_landing": true
+}

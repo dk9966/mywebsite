@@ -1,0 +1,23 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/mound-study/central-platform-rock-mound-balanced.blend",
+  "output": "/Users/danielku/mywebsite/secret-base/central-metal-platform/central-metal-platform.blend",
+  "preserved": {
+    "deck_desk_b": "f0d30702961a3c94fc644ef33fb9f8c91f59df35b7ad06ae9ef2f2c9493cd984",
+    "deck_desk_dark_b": "753ef6358dbf30587ab73884dbdcb615de7e6d0605a7428978bc6547ad39dcde",
+    "deck_desk_neon_b": "16ea1c50f43846b472cd7f928ac08ce8d36548fc3264e93d3fb475495237bfca",
+    "deck_desk_led_b": "14f920b943ab79746ccb15b5ea38bdacf43008f8e47334ca6b1c7929e57a00b1",
+    "deck_desk_glass_b": "0a770a2ea583d33d282169469ce29827e38c47ada7dd752047b39fcd431a1f62",
+    "deck_desk_metal_b": "74b5b1edf7246ec92db0d094e294ccbb26f749c8fff128ee20e8b39d539f6fd0",
+    "deck_desk_hud_b": "37250880b5cfb29d4e821bee7edf651e5637043fe02835fc8097a4468a498382",
+    "Central rock mound | continuous cross-column extrusions": "4fab2497a9effad8e155eb64a3d558cdf862141152cdc1a7882cb11ce67b78f8"
+  },
+  "scene_count": 1,
+  "remaining_bridge_objects": 0,
+  "other_islands": 0,
+  "rock_unchanged": true,
+  "console_unchanged": true,
+  "grate_sectors": 8,
+  "physical_grate_bars": 800,
+  "lamp_count": 8,
+  "floor_height": 6.871178627
+}

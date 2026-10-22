@@ -1,0 +1,32 @@
+{
+  "objects": [
+    {
+      "name": "Right half bridge | bay 01 open welded grating",
+      "before_triangles": 624,
+      "after_triangles": 144,
+      "depth_sheets": 3,
+      "material": "Grating texture | a60a73a313b2c998"
+    },
+    {
+      "name": "Right half bridge | bay 02 open welded grating",
+      "before_triangles": 600,
+      "after_triangles": 10,
+      "depth_sheets": 5,
+      "material": "Grating texture | a60a73a313b2c998"
+    },
+    {
+      "name": "Right half bridge | bay 03 open welded grating",
+      "before_triangles": 600,
+      "after_triangles": 10,
+      "depth_sheets": 5,
+      "material": "Grating texture | a60a73a313b2c998"
+    }
+  ],
+  "before_triangles": 1824,
+  "after_triangles": 164,
+  "reuses_packed_images": [
+    "Grating | a60a73a313b2c998 | color",
+    "Grating | a60a73a313b2c998 | normal"
+  ],
+  "added_images": 0
+}

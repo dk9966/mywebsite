@@ -30,8 +30,6 @@ interface BootTuningStore {
   parts: Record<BootPartId, BootPartState>;
   panelStartMs: Record<BootPanelId, number>;
   stabilizeMs: number;
-  pulseBaseMs: number;
-  pulseSweepMs: number;
 
   setPartVisible: (id: BootPartId, visible: boolean) => void;
   setAllPartsVisible: (visible: boolean) => void;
@@ -39,22 +37,16 @@ interface BootTuningStore {
   setPartDuration: (id: BootPartId, durationMs: number) => void;
   setPanelStart: (id: BootPanelId, ms: number) => void;
   setStabilizeMs: (ms: number) => void;
-  setPulseBaseMs: (ms: number) => void;
-  setPulseSweepMs: (ms: number) => void;
   reset: () => void;
   cssVars: () => Record<string, string>;
 }
 
 const DEFAULT_STABILIZE_MS = bootScaleMs(2900);
-const DEFAULT_PULSE_BASE_MS = bootScaleMs(3050);
-const DEFAULT_PULSE_SWEEP_MS = bootScaleMs(260);
 
 export const useBootTuning = create<BootTuningStore>((set, get) => ({
   parts: defaultParts(),
   panelStartMs: { ...DEFAULT_PANEL_START_MS },
   stabilizeMs: DEFAULT_STABILIZE_MS,
-  pulseBaseMs: DEFAULT_PULSE_BASE_MS,
-  pulseSweepMs: DEFAULT_PULSE_SWEEP_MS,
 
   setPartVisible: (id, visible) =>
     set((s) => ({
@@ -93,16 +85,12 @@ export const useBootTuning = create<BootTuningStore>((set, get) => ({
     })),
 
   setStabilizeMs: (ms) => set({ stabilizeMs: Math.max(0, ms) }),
-  setPulseBaseMs: (ms) => set({ pulseBaseMs: Math.max(0, ms) }),
-  setPulseSweepMs: (ms) => set({ pulseSweepMs: Math.max(0, ms) }),
 
   reset: () =>
     set({
       parts: defaultParts(),
       panelStartMs: { ...DEFAULT_PANEL_START_MS },
       stabilizeMs: DEFAULT_STABILIZE_MS,
-      pulseBaseMs: DEFAULT_PULSE_BASE_MS,
-      pulseSweepMs: DEFAULT_PULSE_SWEEP_MS,
     }),
 
   cssVars: () => {

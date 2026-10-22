@@ -1,0 +1,144 @@
+{
+  "user_source": "/Users/danielku/mywebsite/secret-base/right-bays-user-fit/user-layout-snapshot.blend",
+  "selected_terrain_extension": true,
+  "user_shifts": {
+    "Lower": [
+      1.0472232103347778,
+      0.9413111209869385,
+      0.0
+    ],
+    "Upper": [
+      -0.025683879852294922,
+      0.6281726956367493,
+      1.6516599655151367
+    ]
+  },
+  "bay_info": {
+    "lower": {
+      "z": 6.836178627,
+      "offset_x": -0.5716303065783871,
+      "offset_y": 0.18684959158351666,
+      "poly": [
+        [
+          -5.1,
+          -1.1
+        ],
+        [
+          -2.4355339059327377,
+          -1.1
+        ],
+        [
+          -1.0355339059327378,
+          -2.5
+        ],
+        [
+          1.0355339059327378,
+          -2.5
+        ],
+        [
+          2.5,
+          -1.0355339059327378
+        ],
+        [
+          2.5,
+          1.0355339059327378
+        ],
+        [
+          1.0355339059327378,
+          2.5
+        ],
+        [
+          -1.0355339059327378,
+          2.5
+        ],
+        [
+          -2.4355339059327377,
+          1.1
+        ],
+        [
+          -5.1,
+          1.1
+        ]
+      ]
+    },
+    "upper": {
+      "z": 11.872838592515137,
+      "offset_x": -2.005364490899866,
+      "offset_y": 0.16968921705681003,
+      "poly": [
+        [
+          -4.15,
+          0.05
+        ],
+        [
+          -3.65,
+          -0.45
+        ],
+        [
+          1.7,
+          -0.45
+        ],
+        [
+          2.2,
+          0.05
+        ],
+        [
+          2.2,
+          3.0
+        ],
+        [
+          -4.15,
+          3.0
+        ]
+      ]
+    }
+  },
+  "origin": [
+    7.66411299775205,
+    -1.7071215360212448
+  ],
+  "yaw_degrees": -72,
+  "aligned_stragglers": [
+    "Lower | one-piece structural deck",
+    "Lower | continuous floor footprint",
+    "Lower | octagon-centered registration",
+    "Lower | octagon-centered registration.001",
+    "Lower | octagon-centered registration.002",
+    "Lower | octagon-centered registration.004",
+    "Lower | rock bolting shoe",
+    "Lower | rock bolting shoe.001",
+    "Upper | one-piece structural deck",
+    "Upper | continuous floor footprint"
+  ],
+  "user_placed_mesh_count": 377,
+  "user_placed_changes": [],
+  "middle_changes": [],
+  "wall_components": [
+    58762
+  ],
+  "invalid_wall_edges": 0,
+  "standing_rock_intrusions": [],
+  "anchor_errors": [
+    2.384185791015625e-07,
+    0.0,
+    2.2351741790771484e-08,
+    0.0,
+    2.384185791015625e-07,
+    0.0,
+    4.76837158203125e-07,
+    0.0,
+    5.960464477539063e-08,
+    0.0
+  ],
+  "bridge_start": [
+    2.154369831085205,
+    -1.5085060596466064,
+    6.87117862701416
+  ],
+  "bridge_end": [
+    5.420680522918701,
+    -1.8350090980529785,
+    6.842178821563721
+  ],
+  "passed": true
+}

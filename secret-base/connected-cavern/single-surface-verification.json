@@ -1,0 +1,225 @@
+{
+  "passed": true,
+  "file": "/Users/danielku/mywebsite/secret-base/connected-cavern/connected-cavern-single-surface.blend",
+  "sha256": "d312c3224dbe4fe0cd2435a15319f09094187affb397cb338ec7105215b73ee2",
+  "non_wall_meshes_checked": 1113,
+  "changed_protected_meshes_or_materials": [],
+  "changed_original_lights": [],
+  "surface_components": [
+    76467
+  ],
+  "open_boundary_edges": 7732,
+  "nonmanifold_edges_over_two_faces": 0,
+  "loose_edges": 0,
+  "wall_modifiers": [],
+  "smooth_shaded_faces": 0,
+  "temporary_exterior_faces": 0,
+  "enclosure_gaps_at_sampled_heights": [],
+  "bridge_obstructions": [],
+  "support_anchor_distances": [
+    6.743495646333031e-07,
+    4.76837158203125e-07,
+    8.259061701210157e-07,
+    6.743495646333031e-07,
+    2.384185791015625e-07,
+    4.76837158203125e-07
+  ],
+  "open_ceiling_and_floor": true,
+  "interior_camera_coverage": [
+    {
+      "camera": "Interior | overview",
+      "tested_rays": 28164,
+      "surface_misses": 142,
+      "examples": [
+        [
+          135,
+          14,
+          18.019,
+          18.19
+        ],
+        [
+          135,
+          16,
+          16.459,
+          16.531
+        ],
+        [
+          136,
+          10,
+          15.881,
+          15.932
+        ],
+        [
+          136,
+          14,
+          15.09,
+          15.159
+        ],
+        [
+          137,
+          0,
+          15.915,
+          null
+        ],
+        [
+          137,
+          1,
+          16.14,
+          null
+        ],
+        [
+          141,
+          85,
+          16.954,
+          null
+        ],
+        [
+          141,
+          86,
+          17.899,
+          null
+        ],
+        [
+          141,
+          87,
+          18.953,
+          null
+        ],
+        [
+          142,
+          84,
+          16.133,
+          null
+        ],
+        [
+          142,
+          85,
+          16.986,
+          null
+        ],
+        [
+          142,
+          86,
+          17.932,
+          null
+        ],
+        [
+          142,
+          87,
+          18.988,
+          null
+        ],
+        [
+          143,
+          86,
+          17.966,
+          null
+        ],
+        [
+          143,
+          87,
+          19.024,
+          null
+        ]
+      ]
+    },
+    {
+      "camera": "Interior | reverse",
+      "tested_rays": 27406,
+      "surface_misses": 202,
+      "examples": [
+        [
+          62,
+          0,
+          12.751,
+          12.797
+        ],
+        [
+          63,
+          0,
+          12.868,
+          12.955
+        ],
+        [
+          63,
+          1,
+          12.798,
+          12.858
+        ],
+        [
+          64,
+          0,
+          12.989,
+          13.116
+        ],
+        [
+          64,
+          1,
+          12.918,
+          13.018
+        ],
+        [
+          64,
+          2,
+          12.847,
+          12.92
+        ],
+        [
+          64,
+          3,
+          12.778,
+          12.823
+        ],
+        [
+          65,
+          0,
+          13.113,
+          13.255
+        ],
+        [
+          65,
+          1,
+          13.041,
+          13.162
+        ],
+        [
+          65,
+          2,
+          12.969,
+          13.071
+        ],
+        [
+          65,
+          3,
+          12.898,
+          12.981
+        ],
+        [
+          65,
+          4,
+          12.828,
+          12.887
+        ],
+        [
+          66,
+          0,
+          13.241,
+          13.397
+        ],
+        [
+          66,
+          1,
+          13.167,
+          13.303
+        ],
+        [
+          66,
+          2,
+          13.094,
+          13.21
+        ]
+      ]
+    }
+  ],
+  "old_solid_cap_faces_remaining": []
+}

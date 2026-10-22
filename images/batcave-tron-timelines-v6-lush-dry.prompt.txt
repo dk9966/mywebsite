@@ -1,0 +1,19 @@
+Mode: built-in image_gen image edit
+Source: images/batcave-tron-timelines-v6.png
+Output: images/batcave-tron-timelines-v6-lush-dry.png
+
+Use case: precise-object-edit.
+Asset type: revised cinematic 3D concept image for a personal portfolio website.
+Input image: /Users/danielku/mywebsite/images/batcave-tron-timelines-v6.png is the edit target.
+Edit the provided image directly, preserving its exact wide composition, camera position, perspective, dark cinematic rendered style, rocky cavern framing and all unaffected architecture. Produce a single polished image.
+
+Required changes:
+1. Remove the entire aircraft in the upper-right hangar and the tall control tower immediately to its left. Leave a simple empty recessed rock alcove with the existing horizontal walkway and understated lighting; no aircraft, tower or new focal object.
+2. Remove ALL water everywhere: all waterfalls (left wall, rear center, under the platforms and on the right), all pools, rivers, splashes and water reflections. Replace these areas with a visually readable DRY rocky ravine: matte faceted rock walls and terraced stone shelves receding into a dark cavity with just a little soft atmospheric haze for depth. The former waterfall channels become solid dark rock faces with subtle cool light. This should look feasible to recreate in a real-time website using simple static rock meshes and restrained atmospheric fog. No falling curtains of mist that resemble waterfalls, no liquid or wet-looking floor.
+3. Remove the boat in the lower-left middle distance completely. Replace that boat basin with dry rock ledges consistent with the ravine.
+4. Remove the vertical elevator cage/shaft beside the waterfall between the left display stairs and the rear-center T. rex cave. Fill the elevator area naturally with rock.
+5. Remove the entire T. rex display cave at rear center, including the dinosaur and the poster, AND remove both stacked rooms immediately to its right (the upper lab/workshop and lower lounge). Replace the combined rear-center and rear-right area with ONE broad continuous Minecraft-style LUSH CAVE embedded naturally in the surrounding cavern. It must visibly have Minecraft voxel stone blocks, rich moss-covered block terraces, ferns, hanging vines with small warm glowing berries, and a few subtle azalea plants. Keep this lush cave dry too, with no water. Keep the blocky Minecraft geometry recognizable within the otherwise cinematic cavern. Give this merged green cave a generous, clearly visible entrance.
+6. Make a physically plausible, clearly visible bridge/walkway connection from the rear-right edge of the MIDDLE circular computer platform to the new lush Minecraft cave entrance. Match the existing dark metal walkway and railing language, with a gentle step transition onto the mossy cave floor. The route must visibly meet the central platform and cave ledge, not float or end short. Place the connection where it can be seen to the right of the large central purple screen bank.
+7. Remove the bat-shaped emblem from the center of the middle circular platform. Replace ONLY that emblem with a plain circular brushed-metal floor inset. The concentric circular inlays may remain, but there must be no bat silhouette or insignia on the central platform.
+
+Preserve unchanged as closely as possible: the foreground bridge, circular middle platform and purple computer screens, empty lower-right circular platform, left display-gallery and broad stairs, bottom-left workstation, railings, and the three bottom-left glowing timeline lines with their dots and current diagonal orientation. Preserve the original restrained blue and violet lighting, adding localized green moss and warm berry accents only inside the new lush cave. Keep the original image's aspect ratio and framing. No text or labels, no watermark, no people, no added vehicles. All listed removals must be complete.

@@ -1,0 +1,1312 @@
+{
+  "objects": [
+    {
+      "name": "150 | continuous cave with oblique carved rooms",
+      "vertices": 15236,
+      "polys": 30346,
+      "smooth_faces": 14,
+      "custom_normals": false,
+      "modifiers": [],
+      "materials": [
+        {
+          "name": "Terrain | rough hewn slate.001",
+          "nodes": [
+            {
+              "name": "Rock coordinates",
+              "type": "ShaderNodeTexCoord",
+              "inputs": {}
+            },
+            {
+              "name": "Long irregular clefts",
+              "type": "ShaderNodeVectorMath",
+              "inputs": {
+                "Vector": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "Scale": 1.0
+              }
+            },
+            {
+              "name": "Broad broken rock relief",
+              "type": "ShaderNodeTexNoise",
+              "inputs": {
+                "W": 0.0,
+                "Scale": 1.7000000476837158,
+                "Detail": 3.0,
+                "Roughness": 0.6499999761581421,
+                "Lacunarity": 2.0,
+                "Offset": 0.0,
+                "Gain": 1.0,
+                "Distortion": 0.0
+              }
+            },
+            {
+              "name": "Quiet slate color variation",
+              "type": "ShaderNodeValToRGB",
+              "inputs": {}
+            },
+            {
+              "name": "Weathered broad relief",
+              "type": "ShaderNodeBump",
+              "inputs": {
+                "Strength": 0.41999998688697815,
+                "Distance": 0.20999999344348907,
+                "Filter Width": 0.10000000149011612,
+                "Normal": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            },
+            {
+              "name": "Fine natural stone grain",
+              "type": "ShaderNodeTexNoise",
+              "inputs": {
+                "W": 0.0,
+                "Scale": 45.0,
+                "Detail": 2.0,
+                "Roughness": 0.699999988079071,
+                "Lacunarity": 2.0,
+                "Offset": 0.0,
+                "Gain": 1.0,
+                "Distortion": 0.0
+              }
+            },
+            {
+              "name": "Subtle stone grain",
+              "type": "ShaderNodeBump",
+              "inputs": {
+                "Strength": 0.1899999976158142,
+                "Distance": 0.017999999225139618,
+                "Filter Width": 0.10000000149011612
+              }
+            },
+            {
+              "name": "Matte charcoal slate",
+              "type": "ShaderNodeBsdfPrincipled",
+              "inputs": {
+                "Metallic": 0.0,
+                "Roughness": 0.8299999833106995,
+                "IOR": 1.5,
+                "Alpha": 1.0,
+                "Weight": 0.0,
+                "Diffuse Roughness": 0.0,
+                "Subsurface Weight": 0.0,
+                "Subsurface Radius": [
+                  1.0,
+                  0.20000000298023224,
+                  0.10000000149011612
+                ],
+                "Subsurface Scale": 0.05000000074505806,
+                "Subsurface IOR": 1.399999976158142,
+                "Subsurface Anisotropy": 0.0,
+                "Specular IOR Level": 0.25,
+                "Specular Tint": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "Anisotropic": 0.0,
+                "Anisotropic Rotation": 0.0,
+                "Tangent": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "Transmission Weight": 0.0,
+                "Coat Weight": 0.0,
+                "Coat Roughness": 0.029999999329447746,
+                "Coat IOR": 1.5,
+                "Coat Tint": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "Coat Normal": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "Sheen Weight": 0.0,
+                "Sheen Roughness": 0.5,
+                "Sheen Tint": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "Emission Color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "Emission Strength": 0.0,
+                "Thin Film Thickness": 0.0,
+                "Thin Film IOR": 1.3300000429153442
+              }
+            },
+            {
+              "name": "Surface",
+              "type": "ShaderNodeOutputMaterial",
+              "inputs": {
+                "Displacement": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "Thickness": 0.0
+              }
+            }
+          ],
+          "links": [
+            [
+              "Rock coordinates",
+              "Object",
+              "Long irregular clefts",
+              "Vector"
+            ],
+            [
+              "Long irregular clefts",
+              "Vector",
+              "Broad broken rock relief",
+              "Vector"
+            ],
+            [
+              "Broad broken rock relief",
+              "Factor",
+              "Quiet slate color variation",
+              "Factor"
+            ],
+            [
+              "Broad broken rock relief",
+              "Factor",
+              "Weathered broad relief",
+              "Height"
+            ],
+            [
+              "Rock coordinates",
+              "Object",
+              "Fine natural stone grain",
+              "Vector"
+            ],
+            [
+              "Fine natural stone grain",
+              "Factor",
+              "Subtle stone grain",
+              "Height"
+            ],
+            [
+              "Weathered broad relief",
+              "Normal",
+              "Subtle stone grain",
+              "Normal"
+            ],
+            [
+              "Quiet slate color variation",
+              "Color",
+              "Matte charcoal slate",
+              "Base Color"
+            ],
+            [
+              "Subtle stone grain",
+              "Normal",
+              "Matte charcoal slate",
+              "Normal"
+            ],
+            [
+              "Matte charcoal slate",
+              "BSDF",
+              "Surface",
+              "Surface"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Central rock mound | continuous cross-column extrusions",
+      "vertices": 548,
+      "polys": 1092,
+      "smooth_faces": 0,
+      "custom_normals": false,
+      "modifiers": [
+        [
+          "Rock | subtle broken planes",
+          "DISPLACE"
+        ]
+      ],
+      "materials": [
+        {
+          "name": "Terrain | rough hewn slate",
+          "nodes": [
+            {
+              "name": "Rock coordinates",
+              "type": "ShaderNodeTexCoord",
+              "inputs": {}
+            },
+            {
+              "name": "Long irregular clefts",
+              "type": "ShaderNodeVectorMath",
+              "inputs": {
+                "Vector": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "Scale": 1.0
+              }
+            },
+            {
+              "name": "Broad broken rock relief",
+              "type": "ShaderNodeTexNoise",
+              "inputs": {
+                "W": 0.0,
+                "Scale": 1.7000000476837158,
+                "Detail": 3.0,
+                "Roughness": 0.6499999761581421,
+                "Lacunarity": 2.0,
+                "Offset": 0.0,
+                "Gain": 1.0,
+                "Distortion": 0.0
+              }
+            },
+            {
+              "name": "Quiet slate color variation",
+              "type": "ShaderNodeValToRGB",
+              "inputs": {}
+            },
+            {
+              "name": "Weathered broad relief",
+              "type": "ShaderNodeBump",
+              "inputs": {
+                "Strength": 0.41999998688697815,
+                "Distance": 0.20999999344348907,
+                "Filter Width": 0.10000000149011612,
+                "Normal": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            },
+            {
+              "name": "Fine natural stone grain",
+              "type": "ShaderNodeTexNoise",
+              "inputs": {
+                "W": 0.0,
+                "Scale": 45.0,
+                "Detail": 2.0,
+                "Roughness": 0.699999988079071,
+                "Lacunarity": 2.0,
+                "Offset": 0.0,
+                "Gain": 1.0,
+                "Distortion": 0.0
+              }
+            },
+            {
+              "name": "Subtle stone grain",
+              "type": "ShaderNodeBump",
+              "inputs": {
+                "Strength": 0.1899999976158142,
+                "Distance": 0.017999999225139618,
+                "Filter Width": 0.10000000149011612
+              }
+            },
+            {
+              "name": "Matte charcoal slate",
+              "type": "ShaderNodeBsdfPrincipled",
+              "inputs": {
+                "Metallic": 0.0,
+                "Roughness": 0.8299999833106995,
+                "IOR": 1.5,
+                "Alpha": 1.0,
+                "Weight": 0.0,
+                "Diffuse Roughness": 0.0,
+                "Subsurface Weight": 0.0,
+                "Subsurface Radius": [
+                  1.0,
+                  0.20000000298023224,
+                  0.10000000149011612
+                ],
+                "Subsurface Scale": 0.05000000074505806,
+                "Subsurface IOR": 1.399999976158142,
+                "Subsurface Anisotropy": 0.0,
+                "Specular IOR Level": 0.25,
+                "Specular Tint": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "Anisotropic": 0.0,
+                "Anisotropic Rotation": 0.0,
+                "Tangent": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "Transmission Weight": 0.0,
+                "Coat Weight": 0.0,
+                "Coat Roughness": 0.029999999329447746,
+                "Coat IOR": 1.5,
+                "Coat Tint": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "Coat Normal": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "Sheen Weight": 0.0,
+                "Sheen Roughness": 0.5,
+                "Sheen Tint": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "Emission Color": [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ],
+                "Emission Strength": 0.0,
+                "Thin Film Thickness": 0.0,
+                "Thin Film IOR": 1.3300000429153442
+              }
+            },
+            {
+              "name": "Surface",
+              "type": "ShaderNodeOutputMaterial",
+              "inputs": {
+                "Displacement": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "Thickness": 0.0
+              }
+            }
+          ],
+          "links": [
+            [
+              "Rock coordinates",
+              "Object",
+              "Long irregular clefts",
+              "Vector"
+            ],
+            [
+              "Long irregular clefts",
+              "Vector",
+              "Broad broken rock relief",
+              "Vector"
+            ],
+            [
+              "Broad broken rock relief",
+              "Factor",
+              "Quiet slate color variation",
+              "Factor"
+            ],
+            [
+              "Broad broken rock relief",
+              "Factor",
+              "Weathered broad relief",
+              "Height"
+            ],
+            [
+              "Rock coordinates",
+              "Object",
+              "Fine natural stone grain",
+              "Vector"
+            ],
+            [
+              "Fine natural stone grain",
+              "Factor",
+              "Subtle stone grain",
+              "Height"
+            ],
+            [
+              "Weathered broad relief",
+              "Normal",
+              "Subtle stone grain",
+              "Normal"
+            ],
+            [
+              "Quiet slate color variation",
+              "Color",
+              "Matte charcoal slate",
+              "Base Color"
+            ],
+            [
+              "Subtle stone grain",
+              "Normal",
+              "Matte charcoal slate",
+              "Normal"
+            ],
+            [
+              "Matte charcoal slate",
+              "BSDF",
+              "Surface",
+              "Surface"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "lights": [
+    {
+      "name": "Lower | octagon wall wash",
+      "type": "AREA",
+      "power": 12.960000991821289,
+      "world": [
+        27.16448402404785,
+        -3.8420329093933105,
+        8.216489791870117
+      ],
+      "size": 0.7200000286102295,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Lower | octagon wall wash.001",
+      "type": "AREA",
+      "power": 12.960000991821289,
+      "world": [
+        29.090139389038086,
+        -5.0582356452941895,
+        8.216489791870117
+      ],
+      "size": 0.7200000286102295,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Lower | octagon wall wash.002",
+      "type": "AREA",
+      "power": 12.960000991821289,
+      "world": [
+        30.18364143371582,
+        -6.437853813171387,
+        8.216489791870117
+      ],
+      "size": 0.7200000286102295,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Lower | opposite bay 1 wall wash",
+      "type": "AREA",
+      "power": 12.960000991821289,
+      "world": [
+        29.869672775268555,
+        -8.025866508483887,
+        8.216489791870117
+      ],
+      "size": 0.7200000286102295,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Lower | opposite bay 2 wall wash",
+      "type": "AREA",
+      "power": 12.960000991821289,
+      "world": [
+        28.814674377441406,
+        -9.696272850036621,
+        8.216489791870117
+      ],
+      "size": 0.7200000286102295,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Lower | far right beveled bay wall wash",
+      "type": "AREA",
+      "power": 12.960000991821289,
+      "world": [
+        27.515663146972656,
+        -10.662153244018555,
+        8.216489791870117
+      ],
+      "size": 0.7200000286102295,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left stairs | warm marker 02.001",
+      "type": "POINT",
+      "power": 1.5,
+      "world": [
+        11.469954490661621,
+        -3.1444602012634277,
+        3.595304250717163
+      ],
+      "size": null,
+      "radius": 0.04500000178813934,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left stairs | warm marker 03.001",
+      "type": "POINT",
+      "power": 1.5,
+      "world": [
+        10.921906471252441,
+        -1.9216585159301758,
+        3.595304250717163
+      ],
+      "size": null,
+      "radius": 0.04500000178813934,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left stairs | warm marker 04.001",
+      "type": "POINT",
+      "power": 1.5,
+      "world": [
+        11.608346939086914,
+        -0.17688190937042236,
+        2.666750907897949
+      ],
+      "size": null,
+      "radius": 0.04500000178813934,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left stairs | warm marker 05.001",
+      "type": "POINT",
+      "power": 1.5,
+      "world": [
+        10.385544776916504,
+        -0.7249290943145752,
+        2.666750907897949
+      ],
+      "size": null,
+      "radius": 0.04500000178813934,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left stairs | warm marker 00.002",
+      "type": "POINT",
+      "power": 1.5,
+      "world": [
+        16.81878662109375,
+        -1.6807668209075928,
+        7.0
+      ],
+      "size": null,
+      "radius": 0.04500000178813934,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left stairs | warm marker 01.002",
+      "type": "POINT",
+      "power": 1.5,
+      "world": [
+        16.528478622436523,
+        -0.37259238958358765,
+        7.0
+      ],
+      "size": null,
+      "radius": 0.04500000178813934,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left bay | support 01 warm downward wash",
+      "type": "AREA",
+      "power": 24.0,
+      "world": [
+        10.890580177307129,
+        -3.056419610977173,
+        6.6307501792907715
+      ],
+      "size": 0.5199999809265137,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left bay | support 02 warm downward wash",
+      "type": "AREA",
+      "power": 24.0,
+      "world": [
+        9.786306381225586,
+        -0.5925643444061279,
+        6.6307501792907715
+      ],
+      "size": 0.5199999809265137,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left bay | support 03 warm downward wash",
+      "type": "AREA",
+      "power": 24.0,
+      "world": [
+        6.90292501449585,
+        5.840832710266113,
+        6.6307501792907715
+      ],
+      "size": 0.5199999809265137,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left bay | support 04 warm downward wash",
+      "type": "AREA",
+      "power": 24.0,
+      "world": [
+        9.214859008789062,
+        7.797525405883789,
+        6.6307501792907715
+      ],
+      "size": 0.5199999809265137,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left bay | wall apron wash 0",
+      "type": "AREA",
+      "power": 6.0,
+      "world": [
+        10.217450141906738,
+        -1.9335129261016846,
+        3.210750102996826
+      ],
+      "size": 0.6499999761581421,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left bay | wall apron wash 1",
+      "type": "AREA",
+      "power": 6.0,
+      "world": [
+        9.031377792358398,
+        0.7128491401672363,
+        3.210750102996826
+      ],
+      "size": 0.6499999761581421,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left bay | wall apron wash 2",
+      "type": "AREA",
+      "power": 6.0,
+      "world": [
+        8.008902549743652,
+        2.994196653366089,
+        3.210750102996826
+      ],
+      "size": 0.6499999761581421,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Left bay | wall apron wash 3",
+      "type": "AREA",
+      "power": 6.0,
+      "world": [
+        7.190920352935791,
+        4.819272994995117,
+        3.210750102996826
+      ],
+      "size": 0.6499999761581421,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "Holo table | soft glass glow",
+      "type": "POINT",
+      "power": 4.0,
+      "world": [
+        26.48150062561035,
+        -7.055500030517578,
+        7.433000087738037
+      ],
+      "size": null,
+      "radius": 0.5,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Center | soft overhead spot",
+      "type": "SPOT",
+      "power": 3600.0,
+      "world": [
+        21.299999237060547,
+        0.0,
+        13.871000289916992
+      ],
+      "size": null,
+      "radius": 0.6500000357627869,
+      "spot": 1.5791738033294678,
+      "blend": 0.9200000166893005,
+      "volume": 1.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Center | soft fill -1",
+      "type": "AREA",
+      "power": 302.4000244140625,
+      "world": [
+        22.574905395507812,
+        5.1085333824157715,
+        11.371000289916992
+      ],
+      "size": 4.400000095367432,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": "RL receivers | Center reflection fill"
+    },
+    {
+      "name": "RL | Center | soft fill +1",
+      "type": "AREA",
+      "power": 302.4000244140625,
+      "world": [
+        25.365020751953125,
+        3.3463571071624756,
+        11.371000289916992
+      ],
+      "size": 4.400000095367432,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": "RL receivers | Center reflection fill"
+    },
+    {
+      "name": "RL | Rear left | soft overhead spot",
+      "type": "SPOT",
+      "power": 1450.0,
+      "world": [
+        17.486644744873047,
+        13.838196754455566,
+        11.850000381469727
+      ],
+      "size": null,
+      "radius": 0.550000011920929,
+      "spot": 1.9058995246887207,
+      "blend": 0.9200000166893005,
+      "volume": 1.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Rear left | soft fill -1",
+      "type": "AREA",
+      "power": 162.0,
+      "world": [
+        16.0333309173584,
+        12.853118896484375,
+        11.25
+      ],
+      "size": 2.799999952316284,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Rear left | soft fill +1",
+      "type": "AREA",
+      "power": 162.0,
+      "world": [
+        19.23324966430664,
+        13.65966796875,
+        11.25
+      ],
+      "size": 2.799999952316284,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Rear left | stair spill",
+      "type": "AREA",
+      "power": 194.40000915527344,
+      "world": [
+        18.073226928710938,
+        11.51098346710205,
+        11.799999237060547
+      ],
+      "size": 3.200000047683716,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Front left | soft overhead spot -1",
+      "type": "SPOT",
+      "power": 1200.0,
+      "world": [
+        12.649685859680176,
+        0.8011155128479004,
+        8.73699951171875
+      ],
+      "size": null,
+      "radius": 0.7000000476837158,
+      "spot": 1.4884167909622192,
+      "blend": 0.9200000166893005,
+      "volume": 1.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Front left | soft fill -1",
+      "type": "AREA",
+      "power": 129.60000610351562,
+      "world": [
+        9.556777000427246,
+        2.8120646476745605,
+        7.036999702453613
+      ],
+      "size": 4.5,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Front left | soft overhead spot +1",
+      "type": "SPOT",
+      "power": 1200.0,
+      "world": [
+        10.114054679870605,
+        6.458904266357422,
+        8.73699951171875
+      ],
+      "size": null,
+      "radius": 0.7000000476837158,
+      "spot": 1.4884167909622192,
+      "blend": 0.9200000166893005,
+      "volume": 1.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Front left | soft fill +1",
+      "type": "AREA",
+      "power": 129.60000610351562,
+      "world": [
+        13.206963539123535,
+        4.447955131530762,
+        7.036999702453613
+      ],
+      "size": 4.5,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Upper right | soft overhead spot",
+      "type": "SPOT",
+      "power": 1200.0,
+      "world": [
+        27.90483856201172,
+        -5.153493881225586,
+        13.743803024291992
+      ],
+      "size": null,
+      "radius": 0.29999998211860657,
+      "spot": 2.359684944152832,
+      "blend": 0.9200000166893005,
+      "volume": 1.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Upper right | soft fill -1",
+      "type": "AREA",
+      "power": 151.20001220703125,
+      "world": [
+        27.36417007446289,
+        -4.043233871459961,
+        13.643803596496582
+      ],
+      "size": 2.4000000953674316,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Upper right | soft fill +1",
+      "type": "AREA",
+      "power": 151.20001220703125,
+      "world": [
+        29.139698028564453,
+        -5.164618492126465,
+        13.643803596496582
+      ],
+      "size": 2.4000000953674316,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Lower right | soft overhead spot",
+      "type": "SPOT",
+      "power": 1050.0,
+      "world": [
+        26.482255935668945,
+        -7.05480432510376,
+        9.394489288330078
+      ],
+      "size": null,
+      "radius": 0.29999998211860657,
+      "spot": 2.3778364658355713,
+      "blend": 0.9200000166893005,
+      "volume": 1.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Lower right | soft fill -1",
+      "type": "AREA",
+      "power": 97.20000457763672,
+      "world": [
+        25.594491958618164,
+        -6.494112014770508,
+        9.294489860534668
+      ],
+      "size": 2.4000000953674316,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Lower right | soft fill +1",
+      "type": "AREA",
+      "power": 97.20000457763672,
+      "world": [
+        27.370019912719727,
+        -7.615496635437012,
+        9.294489860534668
+      ],
+      "size": 2.4000000953674316,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Cave | restrained overhead fill",
+      "type": "AREA",
+      "power": 468.0,
+      "world": [
+        22.9019775390625,
+        2.5364670753479004,
+        16.0
+      ],
+      "size": 7.0,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Cave | soft side bounce -1",
+      "type": "AREA",
+      "power": 198.0,
+      "world": [
+        12.400115966796875,
+        0.8899860382080078,
+        7.5
+      ],
+      "size": 6.0,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Cave | soft side bounce +1",
+      "type": "AREA",
+      "power": 198.0,
+      "world": [
+        25.927940368652344,
+        -7.653898239135742,
+        7.5
+      ],
+      "size": 6.0,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Upper right | wall bounce -1",
+      "type": "AREA",
+      "power": 81.0,
+      "world": [
+        25.84674072265625,
+        -5.5094895362854,
+        13.203803062438965
+      ],
+      "size": 2.5,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Lower right | wall bounce -1",
+      "type": "AREA",
+      "power": 48.60000228881836,
+      "world": [
+        24.424158096313477,
+        -7.410799980163574,
+        8.85448932647705
+      ],
+      "size": 2.5,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Upper right | wall bounce +1",
+      "type": "AREA",
+      "power": 81.0,
+      "world": [
+        28.467756271362305,
+        -7.164867401123047,
+        13.203803062438965
+      ],
+      "size": 2.5,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Lower right | wall bounce +1",
+      "type": "AREA",
+      "power": 48.60000228881836,
+      "world": [
+        27.04517364501953,
+        -9.066177368164062,
+        8.85448932647705
+      ],
+      "size": 2.5,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 1.0,
+      "receivers": null
+    },
+    {
+      "name": "RL | Cave | lower reflected bounce -1",
+      "type": "AREA",
+      "power": 324.0,
+      "world": [
+        14.291341781616211,
+        -2.669966697692871,
+        3.5
+      ],
+      "size": 7.0,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 0.30000001192092896,
+      "receivers": "RL receivers | Cave bounce"
+    },
+    {
+      "name": "RL | Cave | lower reflected bounce +1",
+      "type": "AREA",
+      "power": 324.0,
+      "world": [
+        21.90074348449707,
+        -7.4759016036987305,
+        3.5
+      ],
+      "size": 7.0,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.0,
+      "specular": 0.30000001192092896,
+      "receivers": "RL receivers | Cave bounce"
+    },
+    {
+      "name": "RL | Cave | broad environment fill -1",
+      "type": "AREA",
+      "power": 1116.0,
+      "world": [
+        10.46439266204834,
+        -4.9839372634887695,
+        10.5
+      ],
+      "size": 12.0,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.03500000014901161,
+      "specular": 0.30000001192092896,
+      "receivers": null
+    },
+    {
+      "name": "RL | Cave | broad environment fill +1",
+      "type": "AREA",
+      "power": 1116.0,
+      "world": [
+        21.45574951171875,
+        -11.925843238830566,
+        10.5
+      ],
+      "size": 12.0,
+      "radius": 0.0,
+      "spot": null,
+      "blend": null,
+      "volume": 0.03500000014901161,
+      "specular": 0.30000001192092896,
+      "receivers": null
+    }
+  ],
+  "cycles": {
+    "samples": 64,
+    "preview_samples": 128,
+    "denoise": true
+  },
+  "camera": [
+    11.583734512329102,
+    -15.384082794189453,
+    13.286300659179688
+  ]
+}

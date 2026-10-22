@@ -29,12 +29,11 @@ export type BootPartId =
   | "alignGrid"
   | "readoutBars"
   | "glassAssembly"
-  | "scaffoldFade"
-  | "onlinePulse";
+  | "scaffoldFade";
 
 export type BootPartScope = "panel" | "global";
 
-export type BootWebglRole = "glow" | "flicker" | "frame" | "assembly" | "pulse";
+export type BootWebglRole = "glow" | "flicker" | "frame" | "assembly";
 
 export interface BootPartDef {
   id: BootPartId;
@@ -170,14 +169,6 @@ export const BOOT_PARTS: BootPartDef[] = [
     scope: "global",
     defaultDelayMs: bootScaleMs(2900),
     defaultDurationMs: bootScaleMs(180),
-  },
-  {
-    id: "onlinePulse",
-    label: "System online pulse",
-    scope: "global",
-    defaultDelayMs: bootScaleMs(3050),
-    defaultDurationMs: bootScaleMs(450),
-    webgl: "pulse",
   },
 ];
 

@@ -27,12 +27,15 @@
     "export-mesh-variant-catalog": "tsx scripts/export-mesh-variant-catalog.ts",
     "insert-circuit-mesh": "tsx scripts/insert-circuit-mesh.ts",
     "check-circuit-line-geometry": "tsx scripts/check-circuit-line-geometry.ts",
-    "export-secret-base-world": "node secret-base/scripts/export-world.mjs"
+    "export-secret-base-world": "node secret-base/scripts/export-world.mjs",
+    "voxel-server": "cargo run --release --manifest-path voxel-server/Cargo.toml",
+    "export-secret-base-cave": "/Applications/Blender.app/Contents/MacOS/Blender --background secret-base/platform-controls/cave-platform-sliders.blend --python secret-base/cave-web/export_cave.py && node secret-base/cave-web/encode_atlases.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "@react-three/postprocessing": "^3.0.4",
+    "@voxelize/core": "3.0.0",
     "gsap": "^3.14.2",
     "opentype.js": "^1.3.4",
     "postprocessing": "6.39.0",

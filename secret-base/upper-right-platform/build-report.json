@@ -1,0 +1,36 @@
+{
+  "side_m": 6.125,
+  "corner_bevel_m": 0.3,
+  "height": 11.5888032913208,
+  "frame": [
+    [
+      0.8454889059066772,
+      0.5339930057525635,
+      0.0,
+      28.25415802001953
+    ],
+    [
+      -0.5339930057525635,
+      0.8454889059066772,
+      0.0,
+      -5.255842685699463
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "rock_vertices_changed": 4146,
+  "maximum_sculpt_delta": 4.511928219907391,
+  "preserved_objects": 2312,
+  "shape_key": "Upper-right | fitted shoulder and square recess",
+  "mesh_vertices": 35734
+}

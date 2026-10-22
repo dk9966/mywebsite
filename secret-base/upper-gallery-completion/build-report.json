@@ -1,0 +1,35 @@
+{
+  "original_controls": {
+    "b": 1.5,
+    "w": 2.25,
+    "d": 2.25,
+    "h": 2.25,
+    "c": 0.6000000238418579
+  },
+  "finished_controls": {
+    "b": 1.5,
+    "w": 3.700000047683716,
+    "d": 2.25,
+    "h": 2.25,
+    "c": 0.6000000238418579
+  },
+  "support_count": 7,
+  "left_to_right_wall_mapping": [
+    1,
+    1,
+    2,
+    2,
+    3,
+    4,
+    4
+  ],
+  "channel_width_m": 0.22,
+  "channel_gap_m": 0.104,
+  "all_base_plate_dimensions_m": [
+    0.36,
+    0.46,
+    0.058
+  ],
+  "protected_objects_unchanged": 2793,
+  "created_or_updated_objects": 94
+}

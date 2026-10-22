@@ -1,0 +1,19 @@
+{
+  "150 | continuous cave with oblique carved rooms": {
+    "before_triangles": 5332,
+    "after_triangles": 10664,
+    "average_area_ratio": 0.5,
+    "shape_preserved": true,
+    "invalid_edges": 0,
+    "boundary_edges": 240
+  },
+  "Central rock mound | continuous cross-column extrusions": {
+    "before_triangles": 546,
+    "after_triangles": 1092,
+    "average_area_ratio": 0.5,
+    "shape_preserved": true,
+    "invalid_edges": 0,
+    "boundary_edges": 0
+  },
+  "other_object_changes": []
+}

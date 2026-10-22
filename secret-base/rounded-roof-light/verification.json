@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "rounded_roof_sections": 4,
+  "height_and_radius_tests": [
+    {
+      "height": 0.35,
+      "radius": 0.85,
+      "wall_anchor_error_m": 0,
+      "rounded_edge_radius_error_m": 3.838485233331745e-06,
+      "light_join_height_error_m": 5.722045898770567e-07,
+      "minimum_sampled_roof_clearance_m": 0.16565772891044617,
+      "minimum_sampled_fixture_clearance_m": 0.07303142547607422
+    },
+    {
+      "height": 0.35,
+      "radius": 1.4600000381469727,
+      "wall_anchor_error_m": 0,
+      "rounded_edge_radius_error_m": 3.750402014057741e-06,
+      "light_join_height_error_m": 5.722045898770567e-07,
+      "minimum_sampled_roof_clearance_m": 0.16000638902187347,
+      "minimum_sampled_fixture_clearance_m": 0.07247257232666016
+    },
+    {
+      "height": 0.35,
+      "radius": 2.1,
+      "wall_anchor_error_m": 0,
+      "rounded_edge_radius_error_m": 3.594969659737046e-06,
+      "light_join_height_error_m": 5.722045898770567e-07,
+      "minimum_sampled_roof_clearance_m": 0.15543600916862488,
+      "minimum_sampled_fixture_clearance_m": 0.07159233093261719
+    },
+    {
+      "height": 1.4900000095367432,
+      "radius": 0.85,
+      "wall_anchor_error_m": 0,
+      "rounded_edge_radius_error_m": 3.838485233331745e-06,
+      "light_join_height_error_m": 9.059906005415286e-07,
+      "minimum_sampled_roof_clearance_m": 0.13059741258621216,
+      "minimum_sampled_fixture_clearance_m": 0.06541156768798828
+    },
+    {
+      "height": 1.4900000095367432,
+      "radius": 1.4600000381469727,
+      "wall_anchor_error_m": 0,
+      "rounded_edge_radius_error_m": 3.750402014057741e-06,
+      "light_join_height_error_m": 9.059906005415286e-07,
+      "minimum_sampled_roof_clearance_m": 0.09826081246137619,
+      "minimum_sampled_fixture_clearance_m": 0.06541633605957031
+    },
+    {
+      "height": 1.4900000095367432,
+      "radius": 2.1,
+      "wall_anchor_error_m": 0,
+      "rounded_edge_radius_error_m": 3.594969659737046e-06,
+      "light_join_height_error_m": 9.059906005415286e-07,
+      "minimum_sampled_roof_clearance_m": 0.08590222895145416,
+      "minimum_sampled_fixture_clearance_m": 0.05787372589111328
+    },
+    {
+      "height": 2.1,
+      "radius": 0.85,
+      "wall_anchor_error_m": 0,
+      "rounded_edge_radius_error_m": 3.838485233331745e-06,
+      "light_join_height_error_m": 5.722045899325678e-07,
+      "minimum_sampled_roof_clearance_m": 0.10775836557149887,
+      "minimum_sampled_fixture_clearance_m": 0.061041831970214844
+    },
+    {
+      "height": 2.1,
+      "radius": 1.4600000381469727,
+      "wall_anchor_error_m": 0,
+      "rounded_edge_radius_error_m": 3.750402014057741e-06,
+      "light_join_height_error_m": 5.722045899325678e-07,
+      "minimum_sampled_roof_clearance_m": 0.0608692541718483,
+      "minimum_sampled_fixture_clearance_m": 0.06057929992675781
+    },
+    {
+      "height": 2.1,
+      "radius": 2.1,
+      "wall_anchor_error_m": 0,
+      "rounded_edge_radius_error_m": 3.594969659737046e-06,
+      "light_join_height_error_m": 5.722045899325678e-07,
+      "minimum_sampled_roof_clearance_m": 0.043702080845832825,
+      "minimum_sampled_fixture_clearance_m": 0.05058765411376953
+    }
+  ],
+  "native_radius_control": "Light radius (m)",
+  "radius_range_m": [
+    0.85,
+    2.1
+  ],
+  "restored_height": 1.4900000095367432,
+  "restored_radius": 1.4600000381469727,
+  "source_terrain_triangles": 175365,
+  "final_terrain_triangles": 43302,
+  "terrain_triangle_reduction_percent": 75.30750149687793,
+  "non_manifold_fixture_or_roof_edges": {},
+  "invalid_drivers": []
+}

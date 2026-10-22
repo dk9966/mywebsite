@@ -1,0 +1,83 @@
+{
+  "upper_origin": [
+    17.733518600463867,
+    0.05752973258495331,
+    6.869999885559082
+  ],
+  "first_direction": [
+    -0.9125386476516724,
+    -0.40899041295051575,
+    0.0
+  ],
+  "right_direction": [
+    -0.40899041295051575,
+    0.9125386476516724,
+    0.0
+  ],
+  "bridge_bays": 2,
+  "bay_length": 0.56,
+  "bridge_length": 1.12,
+  "width": 1.34,
+  "upper_z": 6.869999885559082,
+  "mid_z": 4.703375220298767,
+  "lower_z": 2.536750555038452,
+  "steps_per_flight": 14,
+  "rise": 0.15475890466145106,
+  "going": 0.21857142857142858,
+  "landing_center": [
+    13.307706832885742,
+    -1.9260737895965576,
+    4.703375339508057
+  ],
+  "lower_endpoint": [
+    11.782172203063965,
+    1.4776954650878906,
+    2.536750555038452
+  ],
+  "changed_existing": [
+    "Metal | continuous steel guardrail",
+    "Metal | guardrail polished top edge",
+    "Metal | continuous steel guardrail.001",
+    "Metal | guardrail polished top edge.001",
+    "Metal | perimeter post.016",
+    "Metal | post bolted foot.016",
+    "Metal | outer rim reinforcement strap.008",
+    "Metal | perimeter post.017",
+    "Metal | post bolted foot.017"
+  ],
+  "frame": [
+    [
+      -0.9125386476516724,
+      -0.40899041295051575,
+      0.0,
+      17.733518600463867
+    ],
+    [
+      -0.40899041295051575,
+      0.9125386476516724,
+      0.0,
+      0.05752973258495331
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "made_meshes": 218,
+  "active_file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "landing_support_count": 4,
+  "alignment_rotation_degrees": 20.54631825919541,
+  "platform_long_direction": [
+    -0.40899041295051575,
+    0.9125386476516724,
+    -0.0
+  ]
+}

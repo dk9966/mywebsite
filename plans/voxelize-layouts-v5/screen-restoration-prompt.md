@@ -1,0 +1,5 @@
+# Screen restoration
+
+Applied to jungle, ice and forge drafts. Image 1 is each draft; image 2 is `../voxelize-layouts-v4/05-layered-biomes.png`. Built-in image generation.
+
+Use case: precise-object-edit. Image 1 is the edit target, image 2 is reference ONLY for the foreground central purple monitor array. Restore the full tall multi-row curved purple screen array from image 2 into image 1, with its exact original size, height, placement, screens and black mounts above the central command console. It occupies approximately x735-970,y365-465 in the 1697x927 full scene. The edit target incorrectly shrank this array. Change ONLY this monitor array and its support mounts. Leave the newly designed voxel environment in image 1 completely intact, including its distinct terrain, lighting, paths and features. Keep every other pixel/composition as close as possible to image 1: natural rock frame, upper-left workshop, half-steel half-voxel short rear-right bridge, all other bridges, command deck and side consoles, empty right landing pad and aircraft hangar. DO NOT import any voxel environment, arch, waterfall or stairs from image 2. Same full wide framing. No text.

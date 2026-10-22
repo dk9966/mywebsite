@@ -1,0 +1,132 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/connected-cavern/connected-cavern-open-chamber.blend",
+  "new_architecture_built_from_scratch": true,
+  "lower_polygon": [
+    [
+      -4.3,
+      -1.1
+    ],
+    [
+      -2.4355339059327377,
+      -1.1
+    ],
+    [
+      -1.0355339059327378,
+      -2.5
+    ],
+    [
+      1.0355339059327378,
+      -2.5
+    ],
+    [
+      2.5,
+      -1.0355339059327378
+    ],
+    [
+      2.5,
+      1.0355339059327378
+    ],
+    [
+      1.0355339059327378,
+      2.5
+    ],
+    [
+      -1.0355339059327378,
+      2.5
+    ],
+    [
+      -2.4355339059327377,
+      1.1
+    ],
+    [
+      -4.3,
+      1.1
+    ]
+  ],
+  "upper_polygon": [
+    [
+      -4.15,
+      0.05
+    ],
+    [
+      -3.65,
+      -0.45
+    ],
+    [
+      1.7,
+      -0.45
+    ],
+    [
+      2.2,
+      0.05
+    ],
+    [
+      2.2,
+      3.0
+    ],
+    [
+      -4.15,
+      3.0
+    ]
+  ],
+  "common_yaw_degrees": -79,
+  "camera_angle_from_facade_normal": 59.17186622869221,
+  "middle_protected_count": 237,
+  "middle_changes": [],
+  "wall_components": [
+    53599
+  ],
+  "wall_invalid_edges": 0,
+  "support_anchor_distances": [
+    0.0,
+    0.0,
+    0.0,
+    5.960464477539063e-08,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    5.960464477539063e-08
+  ],
+  "bridge_start": [
+    2.129403591156006,
+    1.5435478687286377,
+    6.87117862701416
+  ],
+  "bridge_end": [
+    6.710050582885742,
+    4.863936424255371,
+    6.842178821563721
+  ],
+  "center_rail_gate_edits": [
+    "Metal | continuous steel guardrail",
+    "Metal | guardrail polished top edge",
+    "Metal | continuous steel guardrail.001",
+    "Metal | guardrail polished top edge.001",
+    "Metal | perimeter post.003",
+    "Metal | post bolted foot.003",
+    "Metal | perimeter post.004",
+    "Metal | post bolted foot.004",
+    "Metal | outer rim reinforcement strap.002",
+    "Metal | rim strap bolt.004",
+    "Metal | rim strap bolt.005",
+    "Metal | warm lamp armor.001",
+    "Metal | lamp cap.001",
+    "Metal | inset amber diffuser.004",
+    "Metal | inset amber diffuser.005",
+    "Metal | inset amber diffuser.006",
+    "Metal | inset amber diffuser.007"
+  ],
+  "lower_marking_center": [
+    7.5,
+    0.8
+  ],
+  "lower_overhead_light_center": [
+    7.5,
+    0.8
+  ],
+  "no_water": true,
+  "no_vehicles": true,
+  "passed": true
+}

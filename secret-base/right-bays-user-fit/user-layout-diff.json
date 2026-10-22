@@ -1,0 +1,4345 @@
+{
+  "changes": [
+    {
+      "name": "Lower | folded perimeter edge",
+      "shift": [
+        1.0472235679626465,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 2.980232238769531e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.001",
+      "shift": [
+        1.0472236275672913,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 3.03925246810483e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap",
+      "shift": [
+        1.047223448753357,
+        0.9413111805915833,
+        0.0
+      ],
+      "non_translation_error": 5.495276723678641e-07
+    },
+    {
+      "name": "Lower | recessed amber edge light",
+      "shift": [
+        1.0472229719161987,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.316709639690788e-06
+    },
+    {
+      "name": "Lower | fascia bolt strap.001",
+      "shift": [
+        1.0472235679626465,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 5.364418029785156e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.002",
+      "shift": [
+        1.0472235679626465,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 5.364418029785156e-07
+    },
+    {
+      "name": "Lower | recessed amber edge light.001",
+      "shift": [
+        1.0472230911254883,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.4317526995497124e-06
+    },
+    {
+      "name": "Lower | fascia bolt strap.003",
+      "shift": [
+        1.0472229719161987,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.3113021850585938e-06
+    },
+    {
+      "name": "Lower | folded perimeter edge.002",
+      "shift": [
+        1.047222912311554,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.301785091629121e-06
+    },
+    {
+      "name": "Lower | folded perimeter edge.003",
+      "shift": [
+        1.0472230315208435,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.3760800815361972e-06
+    },
+    {
+      "name": "Lower | fascia bolt strap.004",
+      "shift": [
+        1.047222375869751,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.3328003749250113e-06
+    },
+    {
+      "name": "Lower | recessed amber edge light.002",
+      "shift": [
+        1.047222375869751,
+        0.9413115382194519,
+        0.0
+      ],
+      "non_translation_error": 1.1935820814669602e-06
+    },
+    {
+      "name": "Lower | fascia bolt strap.005",
+      "shift": [
+        1.0472232103347778,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 6.9510363278929e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.006",
+      "shift": [
+        1.04722261428833,
+        0.9413112998008728,
+        0.0
+      ],
+      "non_translation_error": 1.1573128604261636e-06
+    },
+    {
+      "name": "Lower | recessed amber edge light.003",
+      "shift": [
+        1.0472224950790405,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 1.1135066564243678e-06
+    },
+    {
+      "name": "Lower | folded perimeter edge.004",
+      "shift": [
+        1.0472233295440674,
+        0.9413108229637146,
+        0.0
+      ],
+      "non_translation_error": 1.3072319149649923e-06
+    },
+    {
+      "name": "Lower | folded perimeter edge.005",
+      "shift": [
+        1.047223687171936,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 7.251217997429632e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.007",
+      "shift": [
+        1.0472230911254883,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Lower | recessed amber edge light.004",
+      "shift": [
+        1.047222912311554,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.491307735824204e-06
+    },
+    {
+      "name": "Lower | fascia bolt strap.008",
+      "shift": [
+        1.0472232103347778,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 1.6603932711105489e-06
+    },
+    {
+      "name": "Lower | fascia bolt strap.009",
+      "shift": [
+        1.04722261428833,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.5078914929239175e-06
+    },
+    {
+      "name": "Lower | recessed amber edge light.005",
+      "shift": [
+        1.047223448753357,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 3.5762786865234375e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.006",
+      "shift": [
+        1.04722261428833,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 9.5367431640625e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.007",
+      "shift": [
+        1.047223448753357,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.010",
+      "shift": [
+        1.0472232103347778,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.5679534003693945e-06
+    },
+    {
+      "name": "Lower | recessed amber edge light.006",
+      "shift": [
+        1.0472235679626465,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.011",
+      "shift": [
+        1.047223687171936,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.012",
+      "shift": [
+        1.0472228527069092,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.6689300537109375e-06
+    },
+    {
+      "name": "Lower | recessed amber edge light.007",
+      "shift": [
+        1.0472228527069092,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.1980385328675377e-06
+    },
+    {
+      "name": "Lower | folded perimeter edge.008",
+      "shift": [
+        1.047223448753357,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.009",
+      "shift": [
+        1.0472233295440674,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.013",
+      "shift": [
+        1.0472229719161987,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.3953089607619793e-06
+    },
+    {
+      "name": "Lower | recessed amber edge light.008",
+      "shift": [
+        1.0472235679626465,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 8.344650268554688e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.014",
+      "shift": [
+        1.047223687171936,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 3.769728732309794e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.015",
+      "shift": [
+        1.0472230911254883,
+        0.9413106441497803,
+        0.0
+      ],
+      "non_translation_error": 1.1920928955078125e-06
+    },
+    {
+      "name": "Lower | recessed amber edge light.009",
+      "shift": [
+        1.0472230911254883,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 4.76837158203125e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.010",
+      "shift": [
+        1.0472233295440674,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 7.251217997429632e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.011",
+      "shift": [
+        1.04722261428833,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.5078914929239175e-06
+    },
+    {
+      "name": "Lower | folded perimeter edge.012",
+      "shift": [
+        1.047222375869751,
+        0.9413112998008728,
+        0.0
+      ],
+      "non_translation_error": 1.1935820814669602e-06
+    },
+    {
+      "name": "Lower | folded perimeter edge.013",
+      "shift": [
+        1.04722261428833,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.014",
+      "shift": [
+        1.0472227334976196,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 9.610960183499514e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.015",
+      "shift": [
+        1.0472229719161987,
+        0.9413116574287415,
+        0.0
+      ],
+      "non_translation_error": 1.8128044993574082e-06
+    },
+    {
+      "name": "Lower | folded perimeter edge.016",
+      "shift": [
+        1.0472232103347778,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 3.625608998714816e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.017",
+      "shift": [
+        1.047223448753357,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 3.998401124775034e-07
+    },
+    {
+      "name": "Lower | folded perimeter edge.018",
+      "shift": [
+        1.047222524881363,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.1091109553532836e-06
+    },
+    {
+      "name": "Lower | folded perimeter edge.019",
+      "shift": [
+        1.0472230315208435,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.402926718704679e-06
+    },
+    {
+      "name": "Lower | fascia bolt strap.016",
+      "shift": [
+        1.0472229719161987,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.312656137081697e-06
+    },
+    {
+      "name": "Lower | recessed amber edge light.010",
+      "shift": [
+        1.0472229719161987,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.312656137081697e-06
+    },
+    {
+      "name": "Lower | fascia bolt strap.017",
+      "shift": [
+        1.047223448753357,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 3.5762786865234375e-07
+    },
+    {
+      "name": "Lower | fascia bolt strap.018",
+      "shift": [
+        1.0472230911254883,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.4317526995497124e-06
+    },
+    {
+      "name": "Lower | recessed amber edge light.011",
+      "shift": [
+        1.0472229719161987,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.316709639690788e-06
+    },
+    {
+      "name": "Lower | fascia bolt strap.019",
+      "shift": [
+        1.0472224950790405,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.0794860289260646e-06
+    },
+    {
+      "name": "Lower | octagon-centered registration.003",
+      "shift": [
+        1.0472230352461338,
+        0.9413112048059702,
+        0.0
+      ],
+      "non_translation_error": 2.248530572318481e-06
+    },
+    {
+      "name": "Lower | slender continuous guard",
+      "shift": [
+        1.0472236275672913,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 3.03925246810483e-07
+    },
+    {
+      "name": "Lower | slender continuous guard.001",
+      "shift": [
+        1.0472236275672913,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 3.03925246810483e-07
+    },
+    {
+      "name": "Lower | rail stanchion",
+      "shift": [
+        1.0472230315208435,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.678482036629763e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate",
+      "shift": [
+        1.047223448753357,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 5.495276723678641e-07
+    },
+    {
+      "name": "Lower | rail stanchion.001",
+      "shift": [
+        1.0472235679626465,
+        0.9413114488124847,
+        0.0
+      ],
+      "non_translation_error": 1.4901161193847656e-07
+    },
+    {
+      "name": "Lower | stanchion sole plate.001",
+      "shift": [
+        1.047223448753357,
+        0.9413115084171295,
+        0.0
+      ],
+      "non_translation_error": 3.5886748369909214e-07
+    },
+    {
+      "name": "Lower | rail stanchion.002",
+      "shift": [
+        1.0472235679626465,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.1920928955078125e-07
+    },
+    {
+      "name": "Lower | stanchion sole plate.002",
+      "shift": [
+        1.0472233295440674,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 2.457562461863554e-07
+    },
+    {
+      "name": "Lower | rail stanchion.003",
+      "shift": [
+        1.047223448753357,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 7.468440584028761e-07
+    },
+    {
+      "name": "Lower | stanchion sole plate.003",
+      "shift": [
+        1.0472235679626465,
+        0.9413109123706818,
+        0.0
+      ],
+      "non_translation_error": 5.662441253662109e-07
+    },
+    {
+      "name": "Lower | rail stanchion.004",
+      "shift": [
+        1.0472228527069092,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 1.2629997790108377e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.004",
+      "shift": [
+        1.0472229719161987,
+        0.9413110315799713,
+        0.0
+      ],
+      "non_translation_error": 1.4057727354849285e-06
+    },
+    {
+      "name": "Lower | low marker casing",
+      "shift": [
+        1.0472229719161987,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.7921085808721671e-06
+    },
+    {
+      "name": "Lower | warm marker face",
+      "shift": [
+        1.0472235679626465,
+        0.9413110911846161,
+        0.0
+      ],
+      "non_translation_error": 6.854534149169922e-07
+    },
+    {
+      "name": "Lower | slender continuous guard.002",
+      "shift": [
+        1.0472230315208435,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.3760800815361972e-06
+    },
+    {
+      "name": "Lower | slender continuous guard.003",
+      "shift": [
+        1.0472230315208435,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.3760800815361972e-06
+    },
+    {
+      "name": "Lower | rail stanchion.005",
+      "shift": [
+        1.0472228527069092,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 1.2629997790108377e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.005",
+      "shift": [
+        1.0472229719161987,
+        0.9413110315799713,
+        0.0
+      ],
+      "non_translation_error": 1.4057727354849285e-06
+    },
+    {
+      "name": "Lower | rail stanchion.006",
+      "shift": [
+        1.0472228527069092,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 1.3072319149649923e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.006",
+      "shift": [
+        1.0472228527069092,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.7721734937809117e-06
+    },
+    {
+      "name": "Lower | rail stanchion.007",
+      "shift": [
+        1.0472228527069092,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.6858739404357613e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.007",
+      "shift": [
+        1.0472229719161987,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.3591950238932823e-06
+    },
+    {
+      "name": "Lower | rail stanchion.008",
+      "shift": [
+        1.0472230315208435,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.372201971199672e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.008",
+      "shift": [
+        1.047222912311554,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.4948768858891074e-06
+    },
+    {
+      "name": "Lower | slender continuous guard.004",
+      "shift": [
+        1.047223448753357,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Lower | slender continuous guard.005",
+      "shift": [
+        1.047223448753357,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Lower | rail stanchion.009",
+      "shift": [
+        1.04722261428833,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.4502435994859265e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.009",
+      "shift": [
+        1.0472228527069092,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.39020726557858e-06
+    },
+    {
+      "name": "Lower | rail stanchion.010",
+      "shift": [
+        1.047223448753357,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.4936881168057522e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.010",
+      "shift": [
+        1.047222375869751,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.2894456179609261e-06
+    },
+    {
+      "name": "Lower | rail stanchion.011",
+      "shift": [
+        1.0472233295440674,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 4.2981520598697533e-07
+    },
+    {
+      "name": "Lower | stanchion sole plate.011",
+      "shift": [
+        1.0472238063812256,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 6.419616707723741e-07
+    },
+    {
+      "name": "Lower | rail stanchion.012",
+      "shift": [
+        1.0472228527069092,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.673182111694598e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.012",
+      "shift": [
+        1.0472238063812256,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 2.384185791015625e-07
+    },
+    {
+      "name": "Lower | rail stanchion.013",
+      "shift": [
+        1.0472233295440674,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.1920928955078125e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.013",
+      "shift": [
+        1.047222375869751,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.1980385328675377e-06
+    },
+    {
+      "name": "Lower | slender continuous guard.006",
+      "shift": [
+        1.0472233295440674,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | slender continuous guard.007",
+      "shift": [
+        1.0472233295440674,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | rail stanchion.014",
+      "shift": [
+        1.0472233295440674,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.1920928955078125e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.014",
+      "shift": [
+        1.047222375869751,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.1980385328675377e-06
+    },
+    {
+      "name": "Lower | rail stanchion.015",
+      "shift": [
+        1.0472232103347778,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.6214216361922555e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.015",
+      "shift": [
+        1.0472233295440674,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 6.419616707723741e-07
+    },
+    {
+      "name": "Lower | rail stanchion.016",
+      "shift": [
+        1.0472232103347778,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 3.5762786865234375e-07
+    },
+    {
+      "name": "Lower | stanchion sole plate.016",
+      "shift": [
+        1.047223448753357,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 8.344650268554688e-07
+    },
+    {
+      "name": "Lower | rail stanchion.017",
+      "shift": [
+        1.0472230911254883,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 1.1246181883879427e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.017",
+      "shift": [
+        1.0472238063812256,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 8.678567277527473e-07
+    },
+    {
+      "name": "Lower | rail stanchion.018",
+      "shift": [
+        1.04722261428833,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.4745374771181322e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.018",
+      "shift": [
+        1.047222375869751,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.6689300537109375e-06
+    },
+    {
+      "name": "Lower | low marker casing.001",
+      "shift": [
+        1.0472230911254883,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.4502435994859265e-06
+    },
+    {
+      "name": "Lower | warm marker face.001",
+      "shift": [
+        1.047223687171936,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 7.633118912497578e-07
+    },
+    {
+      "name": "Lower | slender continuous guard.008",
+      "shift": [
+        1.0472230315208435,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.402926718704679e-06
+    },
+    {
+      "name": "Lower | slender continuous guard.009",
+      "shift": [
+        1.0472230315208435,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.402926718704679e-06
+    },
+    {
+      "name": "Lower | rail stanchion.019",
+      "shift": [
+        1.0472230911254883,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.5078914929239175e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.019",
+      "shift": [
+        1.047223448753357,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Lower | rail stanchion.020",
+      "shift": [
+        1.0472228527069092,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.3328003749250113e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.020",
+      "shift": [
+        1.047222375869751,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | rail stanchion.021",
+      "shift": [
+        1.0472235679626465,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Lower | stanchion sole plate.021",
+      "shift": [
+        1.0472230911254883,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.5078914929239175e-06
+    },
+    {
+      "name": "Lower | rail stanchion.022",
+      "shift": [
+        1.0472235679626465,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 5.364418029785156e-07
+    },
+    {
+      "name": "Lower | stanchion sole plate.022",
+      "shift": [
+        1.0472235679626465,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 6.556510925292969e-07
+    },
+    {
+      "name": "Lower | rail stanchion.023",
+      "shift": [
+        1.0472230315208435,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.678482036629763e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.023",
+      "shift": [
+        1.047223448753357,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 5.495276723678641e-07
+    },
+    {
+      "name": "Lower | slender continuous guard.010",
+      "shift": [
+        1.047222912311554,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 1.3194050563084277e-06
+    },
+    {
+      "name": "Lower | slender continuous guard.011",
+      "shift": [
+        1.047222912311554,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 1.3194050563084277e-06
+    },
+    {
+      "name": "Lower | rail stanchion.024",
+      "shift": [
+        1.0472230315208435,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.372201971199672e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.024",
+      "shift": [
+        1.047222912311554,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.4948768858891074e-06
+    },
+    {
+      "name": "Lower | rail stanchion.025",
+      "shift": [
+        1.0472228527069092,
+        0.9413115382194519,
+        0.0
+      ],
+      "non_translation_error": 1.441644027524927e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.025",
+      "shift": [
+        1.0472224950790405,
+        0.9413112998008728,
+        0.0
+      ],
+      "non_translation_error": 1.3447420802925203e-06
+    },
+    {
+      "name": "Lower | slender continuous guard.012",
+      "shift": [
+        1.0472235679626465,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 4.76837158203125e-07
+    },
+    {
+      "name": "Lower | slender continuous guard.013",
+      "shift": [
+        1.0472235679626465,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 4.76837158203125e-07
+    },
+    {
+      "name": "Lower | rail stanchion.026",
+      "shift": [
+        1.047223448753357,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.3953089607619793e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.026",
+      "shift": [
+        1.0472233295440674,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 8.678567277527473e-07
+    },
+    {
+      "name": "Lower | rail stanchion.027",
+      "shift": [
+        1.04722261428833,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.4502435994859265e-06
+    },
+    {
+      "name": "Lower | stanchion sole plate.027",
+      "shift": [
+        1.0472228527069092,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.39020726557858e-06
+    },
+    {
+      "name": "Lower | recessed portal web",
+      "shift": [
+        1.0472235679626465,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 7.748603820800781e-07
+    },
+    {
+      "name": "Lower | portal chamfer face",
+      "shift": [
+        1.0472235679626465,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 7.152557373046875e-07
+    },
+    {
+      "name": "Lower | recessed portal web.001",
+      "shift": [
+        1.0472235679626465,
+        0.9413110315799713,
+        0.0
+      ],
+      "non_translation_error": 6.258487701416016e-07
+    },
+    {
+      "name": "Lower | portal chamfer face.001",
+      "shift": [
+        1.047222912311554,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 1.8487051033104447e-06
+    },
+    {
+      "name": "Lower | recessed portal web.002",
+      "shift": [
+        1.0472238063812256,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 7.539457464619588e-07
+    },
+    {
+      "name": "Lower | portal chamfer face.002",
+      "shift": [
+        1.0472233295440674,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.7357134555054946e-06
+    },
+    {
+      "name": "Lower | recessed portal web.003",
+      "shift": [
+        1.0472232103347778,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.0728836059570312e-06
+    },
+    {
+      "name": "Lower | portal chamfer face.003",
+      "shift": [
+        1.0472230911254883,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.9110702922202824e-06
+    },
+    {
+      "name": "Lower | recessed portal web.004",
+      "shift": [
+        1.0472235679626465,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 4.76837158203125e-07
+    },
+    {
+      "name": "Lower | portal chamfer face.004",
+      "shift": [
+        1.0472233295440674,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.0990553447357282e-06
+    },
+    {
+      "name": "Lower | flush back lining",
+      "shift": [
+        1.0472228527069092,
+        0.9413111805915833,
+        0.0
+      ],
+      "non_translation_error": 1.678482036629763e-06
+    },
+    {
+      "name": "Lower | vertical panel reveal",
+      "shift": [
+        1.0472233295440674,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 2.1589720578521293e-06
+    },
+    {
+      "name": "Lower | vertical panel reveal.001",
+      "shift": [
+        1.0472235679626465,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 6.743495761743046e-07
+    },
+    {
+      "name": "Lower | vertical panel reveal.002",
+      "shift": [
+        1.0472230911254883,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.922192036699903e-06
+    },
+    {
+      "name": "Lower | vertical panel reveal.003",
+      "shift": [
+        1.0472228527069092,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.6689300537109375e-06
+    },
+    {
+      "name": "Lower | service bulkhead seam",
+      "shift": [
+        1.0472235679626465,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 9.610960183499514e-07
+    },
+    {
+      "name": "Lower | service bulkhead seam.001",
+      "shift": [
+        1.0472235679626465,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 9.610960183499514e-07
+    },
+    {
+      "name": "Lower | flush back lining.001",
+      "shift": [
+        1.04722261428833,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.461225828186424e-06
+    },
+    {
+      "name": "Lower | vertical panel reveal.004",
+      "shift": [
+        1.04722261428833,
+        0.9413111805915833,
+        0.0
+      ],
+      "non_translation_error": 1.228781230931777e-06
+    },
+    {
+      "name": "Lower | vertical panel reveal.005",
+      "shift": [
+        1.0472229719161987,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.7881393432617188e-06
+    },
+    {
+      "name": "Lower | vertical panel reveal.006",
+      "shift": [
+        1.047223448753357,
+        0.9413111507892609,
+        0.0
+      ],
+      "non_translation_error": 6.371008851060852e-07
+    },
+    {
+      "name": "Lower | vertical panel reveal.007",
+      "shift": [
+        1.0472229719161987,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 1.8668722824294359e-06
+    },
+    {
+      "name": "Lower | vertical panel reveal.008",
+      "shift": [
+        1.0472235679626465,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 8.344650268554688e-07
+    },
+    {
+      "name": "Lower | service bulkhead seam.002",
+      "shift": [
+        1.047223448753357,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 3.5762786865234375e-07
+    },
+    {
+      "name": "Lower | service bulkhead seam.003",
+      "shift": [
+        1.047223448753357,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 3.5762786865234375e-07
+    },
+    {
+      "name": "Lower | angled room side",
+      "shift": [
+        1.0472232103347778,
+        0.9413112998008728,
+        0.0
+      ],
+      "non_translation_error": 7.468440584028761e-07
+    },
+    {
+      "name": "Lower | angled room side.001",
+      "shift": [
+        1.0472214221954346,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 7.996802249550068e-07
+    },
+    {
+      "name": "Lower | wide overhead fixture",
+      "shift": [
+        1.047223687171936,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 7.275674114068569e-07
+    },
+    {
+      "name": "Lower | overhead lens",
+      "shift": [
+        1.0472229719161987,
+        0.941310703754425,
+        0.0
+      ],
+      "non_translation_error": 1.8668722824294359e-06
+    },
+    {
+      "name": "Lower | overhead lens.001",
+      "shift": [
+        1.0472233295440674,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 2.980232238769531e-07
+    },
+    {
+      "name": "Lower | overhead lens.002",
+      "shift": [
+        1.0472229719161987,
+        0.9413102865219116,
+        0.0
+      ],
+      "non_translation_error": 1.7921085808721671e-06
+    },
+    {
+      "name": "Lower | short ceiling mount",
+      "shift": [
+        1.047222375869751,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.2839233415447482e-06
+    },
+    {
+      "name": "Lower | short ceiling mount.001",
+      "shift": [
+        1.0472228527069092,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.2839233415447482e-06
+    },
+    {
+      "name": "Lower | front fixture lens",
+      "shift": [
+        1.0472238063812256,
+        0.9413111805915833,
+        0.0
+      ],
+      "non_translation_error": 5.870376707193913e-07
+    },
+    {
+      "name": "Lower | pressure access door",
+      "shift": [
+        1.0472235679626465,
+        0.9413112103939056,
+        0.0
+      ],
+      "non_translation_error": 5.662441253662109e-07
+    },
+    {
+      "name": "Lower | door brushed jamb",
+      "shift": [
+        1.047223448753357,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 3.625608998714816e-07
+    },
+    {
+      "name": "Lower | door brushed jamb.001",
+      "shift": [
+        1.0472224950790405,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.0794860289260646e-06
+    },
+    {
+      "name": "Lower | door inset",
+      "shift": [
+        1.0472230911254883,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 1.441644027524927e-06
+    },
+    {
+      "name": "Lower | door upper glass",
+      "shift": [
+        1.0472230911254883,
+        0.9413111805915833,
+        0.0
+      ],
+      "non_translation_error": 1.4901161193847656e-06
+    },
+    {
+      "name": "Lower | door handle",
+      "shift": [
+        1.0472230911254883,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.4354699347963686e-06
+    },
+    {
+      "name": "Lower | door lower vent",
+      "shift": [
+        1.0472227334976196,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.3113021850585938e-06
+    },
+    {
+      "name": "Lower | door lower vent.001",
+      "shift": [
+        1.0472227334976196,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.3113021850585938e-06
+    },
+    {
+      "name": "Lower | door lower vent.002",
+      "shift": [
+        1.0472227334976196,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.3113021850585938e-06
+    },
+    {
+      "name": "Lower | door lower vent.003",
+      "shift": [
+        1.0472227334976196,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.3113021850585938e-06
+    },
+    {
+      "name": "Lower | wide machined worktop",
+      "shift": [
+        1.0472230911254883,
+        0.9413111805915833,
+        0.0
+      ],
+      "non_translation_error": 7.748603820800781e-07
+    },
+    {
+      "name": "Lower | open bench pedestal",
+      "shift": [
+        1.0472233295440674,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 7.152557373046875e-07
+    },
+    {
+      "name": "Lower | bench foot",
+      "shift": [
+        1.0472233295440674,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.39020726557858e-06
+    },
+    {
+      "name": "Lower | open bench pedestal.001",
+      "shift": [
+        1.0472233295440674,
+        0.9413106441497803,
+        0.0
+      ],
+      "non_translation_error": 1.0115243642614567e-06
+    },
+    {
+      "name": "Lower | bench foot.001",
+      "shift": [
+        1.04722261428833,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.5497207641601562e-06
+    },
+    {
+      "name": "Lower | underbench instrument drawer",
+      "shift": [
+        1.0472233295440674,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 9.310543150790517e-07
+    },
+    {
+      "name": "Lower | bench test instrument",
+      "shift": [
+        1.0472233295440674,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.1920928955078125e-06
+    },
+    {
+      "name": "Lower | instrument screen",
+      "shift": [
+        1.0472235679626465,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | bench test instrument.001",
+      "shift": [
+        1.0472228527069092,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.6858739404357613e-06
+    },
+    {
+      "name": "Lower | instrument screen.001",
+      "shift": [
+        1.0472235679626465,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 5.331201499700045e-07
+    },
+    {
+      "name": "Lower | inset diagnostic board",
+      "shift": [
+        1.0472233295440674,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 7.251217997429632e-07
+    },
+    {
+      "name": "Lower | diagnostic switch",
+      "shift": [
+        1.0472230911254883,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 0.0
+    },
+    {
+      "name": "Lower | small readout",
+      "shift": [
+        1.0472230911254883,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.966049969490843e-06
+    },
+    {
+      "name": "Lower | diagnostic switch.001",
+      "shift": [
+        1.0472230911254883,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.9405866379856713e-06
+    },
+    {
+      "name": "Lower | small readout.001",
+      "shift": [
+        1.0472238063812256,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 7.152557373046875e-07
+    },
+    {
+      "name": "Lower | diagnostic switch.002",
+      "shift": [
+        1.0472238063812256,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | small readout.002",
+      "shift": [
+        1.047222375869751,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 1.1920928955078125e-06
+    },
+    {
+      "name": "Lower | diagnostic switch.003",
+      "shift": [
+        1.0472233295440674,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.39020726557858e-06
+    },
+    {
+      "name": "Lower | small readout.003",
+      "shift": [
+        1.0472228527069092,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.1980385328675377e-06
+    },
+    {
+      "name": "Lower | diagnostic switch.004",
+      "shift": [
+        1.0472228527069092,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 7.251217997429632e-07
+    },
+    {
+      "name": "Lower | small readout.004",
+      "shift": [
+        1.0472233295440674,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 7.152557373046875e-07
+    },
+    {
+      "name": "Lower | diagnostic switch.005",
+      "shift": [
+        1.0472230911254883,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 1.998311831264521e-06
+    },
+    {
+      "name": "Lower | small readout.005",
+      "shift": [
+        1.0472235679626465,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 5.331201499700045e-07
+    },
+    {
+      "name": "Lower | diagnostic switch.006",
+      "shift": [
+        1.0472228527069092,
+        0.9413107633590698,
+        0.0
+      ],
+      "non_translation_error": 1.8659205248950158e-06
+    },
+    {
+      "name": "Lower | small readout.006",
+      "shift": [
+        1.0472233295440674,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.215700987241932e-06
+    },
+    {
+      "name": "Lower | vertical oxidized service pipe",
+      "shift": [
+        1.047222375869751,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.3328003749250113e-06
+    },
+    {
+      "name": "Lower | pipe fixing clip",
+      "shift": [
+        1.047223448753357,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 6.9510363278929e-07
+    },
+    {
+      "name": "Lower | pipe fixing clip.001",
+      "shift": [
+        1.047223448753357,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 6.9510363278929e-07
+    },
+    {
+      "name": "Lower | pipe fixing clip.002",
+      "shift": [
+        1.047223448753357,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 6.9510363278929e-07
+    },
+    {
+      "name": "Lower | vertical oxidized service pipe.001",
+      "shift": [
+        1.0472233295440674,
+        0.9413115978240967,
+        0.0
+      ],
+      "non_translation_error": 2.384185791015625e-07
+    },
+    {
+      "name": "Lower | pipe fixing clip.003",
+      "shift": [
+        1.047223448753357,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 5.990192664337689e-07
+    },
+    {
+      "name": "Lower | pipe fixing clip.004",
+      "shift": [
+        1.047223448753357,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 5.990192664337689e-07
+    },
+    {
+      "name": "Lower | pipe fixing clip.005",
+      "shift": [
+        1.047223448753357,
+        0.9413114190101624,
+        0.0
+      ],
+      "non_translation_error": 5.990192664337689e-07
+    },
+    {
+      "name": "Lower | fire service cabinet",
+      "shift": [
+        1.0472235679626465,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 6.743495761743046e-07
+    },
+    {
+      "name": "Lower | fire cabinet label",
+      "shift": [
+        1.0472230911254883,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.1246181883879427e-06
+    },
+    {
+      "name": "Lower | low service crate",
+      "shift": [
+        1.0472230911254883,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.5078914929239175e-06
+    },
+    {
+      "name": "Lower | low service crate.001",
+      "shift": [
+        1.0472229719161987,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.8039638937022157e-06
+    },
+    {
+      "name": "Lower | low service crate.002",
+      "shift": [
+        1.0472229719161987,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.316709639690788e-06
+    },
+    {
+      "name": "Lower | strip light socket",
+      "shift": [
+        1.047223687171936,
+        0.9413111507892609,
+        0.0
+      ],
+      "non_translation_error": 5.204751848153168e-07
+    },
+    {
+      "name": "Lower | strip diffuser",
+      "shift": [
+        1.047223448753357,
+        0.9413113296031952,
+        0.0
+      ],
+      "non_translation_error": 4.140270945265831e-07
+    },
+    {
+      "name": "Lower | strip light socket.001",
+      "shift": [
+        1.0472235679626465,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | strip diffuser.001",
+      "shift": [
+        1.0472235679626465,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Lower | strip light socket.002",
+      "shift": [
+        1.0472230911254883,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.066240299940009e-06
+    },
+    {
+      "name": "Lower | strip diffuser.002",
+      "shift": [
+        1.0472218990325928,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.244581521619624e-06
+    },
+    {
+      "name": "Lower | engineered diagonal bracket",
+      "shift": [
+        1.0472232699394226,
+        0.9413106441497803,
+        0.0
+      ],
+      "non_translation_error": 1.6268901901192881e-06
+    },
+    {
+      "name": "Lower | upper bracket flange",
+      "shift": [
+        1.0472224950790405,
+        0.9413110911846161,
+        0.0
+      ],
+      "non_translation_error": 1.479648540890981e-06
+    },
+    {
+      "name": "Lower | engineered diagonal bracket.001",
+      "shift": [
+        1.0472235083580017,
+        0.9413115233182907,
+        0.0
+      ],
+      "non_translation_error": 4.1962050915744076e-07
+    },
+    {
+      "name": "Lower | upper bracket flange.001",
+      "shift": [
+        1.047223448753357,
+        0.9413115084171295,
+        0.0
+      ],
+      "non_translation_error": 3.5886748369909214e-07
+    },
+    {
+      "name": "Lower | engineered diagonal bracket.002",
+      "shift": [
+        1.0472232103347778,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.5542989743239043e-06
+    },
+    {
+      "name": "Lower | upper bracket flange.002",
+      "shift": [
+        1.047223448753357,
+        0.9413112998008728,
+        0.0
+      ],
+      "non_translation_error": 7.468440584028761e-07
+    },
+    {
+      "name": "Lower | rock bolting shoe.002",
+      "shift": [
+        1.0472233891487122,
+        0.9413110315799713,
+        0.0
+      ],
+      "non_translation_error": 6.931843369968538e-07
+    },
+    {
+      "name": "Lower | engineered diagonal bracket.003",
+      "shift": [
+        1.0472235679626465,
+        0.94131138920784,
+        0.0
+      ],
+      "non_translation_error": 5.204751848153168e-07
+    },
+    {
+      "name": "Lower | upper bracket flange.003",
+      "shift": [
+        1.047223687171936,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 3.5762786865234375e-07
+    },
+    {
+      "name": "Lower | rock bolting shoe.003",
+      "shift": [
+        1.0472228527069092,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 1.6953304592761865e-06
+    },
+    {
+      "name": "Lower | engineered diagonal bracket.004",
+      "shift": [
+        1.04722261428833,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.5078914929239175e-06
+    },
+    {
+      "name": "Lower | upper bracket flange.004",
+      "shift": [
+        1.04722261428833,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.018524616398517e-06
+    },
+    {
+      "name": "Lower | rock bolting shoe.004",
+      "shift": [
+        1.0472229719161987,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.8039638937022157e-06
+    },
+    {
+      "name": "Lower | engineered diagonal bracket.005",
+      "shift": [
+        1.0472233295440674,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 1.228781230931777e-06
+    },
+    {
+      "name": "Lower | upper bracket flange.005",
+      "shift": [
+        1.0472235679626465,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Lower | rock bolting shoe.005",
+      "shift": [
+        1.0472232103347778,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 2.1123939927422225e-06
+    },
+    {
+      "name": "Upper | folded perimeter edge",
+      "shift": [
+        -0.02568364143371582,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.215700987241932e-06
+    },
+    {
+      "name": "Upper | folded perimeter edge.001",
+      "shift": [
+        -0.02568507194519043,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.870376707193913e-07
+    },
+    {
+      "name": "Upper | fascia bolt strap",
+      "shift": [
+        -0.025683283805847168,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 6.664001874625056e-07
+    },
+    {
+      "name": "Upper | recessed amber edge light",
+      "shift": [
+        -0.025684237480163574,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.416786232472028e-06
+    },
+    {
+      "name": "Upper | folded perimeter edge.002",
+      "shift": [
+        -0.025684118270874023,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.0115243642614567e-06
+    },
+    {
+      "name": "Upper | folded perimeter edge.003",
+      "shift": [
+        -0.02568364143371582,
+        0.6281726956367493,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7202937233044877e-06
+    },
+    {
+      "name": "Upper | fascia bolt strap.001",
+      "shift": [
+        -0.025683164596557617,
+        0.6281723380088806,
+        1.6516599655151367
+      ],
+      "non_translation_error": 2.980232238769531e-07
+    },
+    {
+      "name": "Upper | recessed amber edge light.001",
+      "shift": [
+        -0.02568364143371582,
+        0.6281731724739075,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1935820814669602e-06
+    },
+    {
+      "name": "Upper | fascia bolt strap.002",
+      "shift": [
+        -0.025684237480163574,
+        0.6281723380088806,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.312656137081697e-06
+    },
+    {
+      "name": "Upper | fascia bolt strap.003",
+      "shift": [
+        -0.025684356689453125,
+        0.6281723082065582,
+        1.6516599655151367
+      ],
+      "non_translation_error": 9.578560996048568e-07
+    },
+    {
+      "name": "Upper | recessed amber edge light.002",
+      "shift": [
+        -0.02568364143371582,
+        0.6281732022762299,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1954409551698911e-06
+    },
+    {
+      "name": "Upper | fascia bolt strap.004",
+      "shift": [
+        -0.025683164596557617,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.539457464619588e-07
+    },
+    {
+      "name": "Upper | fascia bolt strap.005",
+      "shift": [
+        -0.02568364143371582,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.2839233415447482e-06
+    },
+    {
+      "name": "Upper | recessed amber edge light.003",
+      "shift": [
+        -0.025684118270874023,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1920928955078125e-06
+    },
+    {
+      "name": "Upper | fascia bolt strap.006",
+      "shift": [
+        -0.025684118270874023,
+        0.6281726956367493,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.36050131446282e-06
+    },
+    {
+      "name": "Upper | fascia bolt strap.007",
+      "shift": [
+        -0.02568364143371582,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.6858739404357613e-06
+    },
+    {
+      "name": "Upper | recessed amber edge light.004",
+      "shift": [
+        -0.02568364143371582,
+        0.6281720399856567,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1980385328675377e-06
+    },
+    {
+      "name": "Upper | fascia bolt strap.008",
+      "shift": [
+        -0.02568364143371582,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.922192036699903e-06
+    },
+    {
+      "name": "Upper | folded perimeter edge.004",
+      "shift": [
+        -0.025684356689453125,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 9.830249847454215e-07
+    },
+    {
+      "name": "Upper | folded perimeter edge.005",
+      "shift": [
+        -0.025684118270874023,
+        0.6281725168228149,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4551348228137138e-06
+    },
+    {
+      "name": "Upper | fascia bolt strap.009",
+      "shift": [
+        -0.025683999061584473,
+        0.6281721591949463,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.0990553447357282e-06
+    },
+    {
+      "name": "Upper | recessed amber edge light.005",
+      "shift": [
+        -0.02568352222442627,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7881393432617188e-06
+    },
+    {
+      "name": "Upper | folded perimeter edge.006",
+      "shift": [
+        -0.025683164596557617,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 3.371747880871523e-07
+    },
+    {
+      "name": "Upper | folded perimeter edge.007",
+      "shift": [
+        -0.025683283805847168,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Upper | folded perimeter edge.008",
+      "shift": [
+        -0.02568364143371582,
+        0.6281721591949463,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.8157418026599666e-06
+    },
+    {
+      "name": "Upper | folded perimeter edge.009",
+      "shift": [
+        -0.025683879852294922,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.8621086301581035e-06
+    },
+    {
+      "name": "Upper | folded perimeter edge.010",
+      "shift": [
+        -0.02568364143371582,
+        0.628173291683197,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.893327256949972e-06
+    },
+    {
+      "name": "Upper | folded perimeter edge.011",
+      "shift": [
+        -0.025683879852294922,
+        0.6281723380088806,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4317526995497124e-06
+    },
+    {
+      "name": "Upper | slender continuous guard",
+      "shift": [
+        -0.02568507194519043,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.870376707193913e-07
+    },
+    {
+      "name": "Upper | slender continuous guard.001",
+      "shift": [
+        -0.02568507194519043,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.870376707193913e-07
+    },
+    {
+      "name": "Upper | rail stanchion",
+      "shift": [
+        -0.02568364143371582,
+        0.628173291683197,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1935820814669602e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate",
+      "shift": [
+        -0.025684118270874023,
+        0.6281729936599731,
+        1.6516599655151367
+      ],
+      "non_translation_error": 9.310543150790517e-07
+    },
+    {
+      "name": "Upper | rail stanchion.001",
+      "shift": [
+        -0.025683164596557617,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.870376707193913e-07
+    },
+    {
+      "name": "Upper | stanchion sole plate.001",
+      "shift": [
+        -0.025683045387268066,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Upper | rail stanchion.002",
+      "shift": [
+        -0.025684118270874023,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1980385328675377e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.002",
+      "shift": [
+        -0.025684595108032227,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.6689300537109375e-06
+    },
+    {
+      "name": "Upper | slender continuous guard.002",
+      "shift": [
+        -0.02568364143371582,
+        0.6281726956367493,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7202937233044877e-06
+    },
+    {
+      "name": "Upper | slender continuous guard.003",
+      "shift": [
+        -0.02568364143371582,
+        0.6281726956367493,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7202937233044877e-06
+    },
+    {
+      "name": "Upper | rail stanchion.003",
+      "shift": [
+        -0.025684118270874023,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1980385328675377e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.003",
+      "shift": [
+        -0.025684595108032227,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.6689300537109375e-06
+    },
+    {
+      "name": "Upper | rail stanchion.004",
+      "shift": [
+        -0.025684356689453125,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 9.610960183499514e-07
+    },
+    {
+      "name": "Upper | stanchion sole plate.004",
+      "shift": [
+        -0.025683879852294922,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4354699347963686e-06
+    },
+    {
+      "name": "Upper | rail stanchion.005",
+      "shift": [
+        -0.025682926177978516,
+        0.6281723082065582,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4901161193847656e-07
+    },
+    {
+      "name": "Upper | stanchion sole plate.005",
+      "shift": [
+        -0.025683164596557617,
+        0.6281723082065582,
+        1.6516599655151367
+      ],
+      "non_translation_error": 2.8115454709698567e-07
+    },
+    {
+      "name": "Upper | rail stanchion.006",
+      "shift": [
+        -0.025683879852294922,
+        0.6281722486019135,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.445643047766078e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.006",
+      "shift": [
+        -0.02568376064300537,
+        0.6281725466251373,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5727609159897281e-06
+    },
+    {
+      "name": "Upper | rail stanchion.007",
+      "shift": [
+        -0.025684118270874023,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.39020726557858e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.007",
+      "shift": [
+        -0.025684595108032227,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.215700987241932e-06
+    },
+    {
+      "name": "Upper | rail stanchion.008",
+      "shift": [
+        -0.02568376064300537,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.6214216361922555e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.008",
+      "shift": [
+        -0.025683164596557617,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.331201499700045e-07
+    },
+    {
+      "name": "Upper | rail stanchion.009",
+      "shift": [
+        -0.025683879852294922,
+        0.6281726956367493,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4901161193847656e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.009",
+      "shift": [
+        -0.02568352222442627,
+        0.6281725764274597,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.416786232472028e-06
+    },
+    {
+      "name": "Upper | rail stanchion.010",
+      "shift": [
+        -0.025683879852294922,
+        0.6281729340553284,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.228781230931777e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.010",
+      "shift": [
+        -0.025684833526611328,
+        0.6281729340553284,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.441644027524927e-06
+    },
+    {
+      "name": "Upper | rail stanchion.011",
+      "shift": [
+        -0.02568352222442627,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.8039638937022157e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.011",
+      "shift": [
+        -0.025683164596557617,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 3.371747880871523e-07
+    },
+    {
+      "name": "Upper | low marker casing",
+      "shift": [
+        -0.025683164596557617,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.331201499700045e-07
+    },
+    {
+      "name": "Upper | warm marker face",
+      "shift": [
+        -0.025684118270874023,
+        0.6281724572181702,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.36050131446282e-06
+    },
+    {
+      "name": "Upper | slender continuous guard.004",
+      "shift": [
+        -0.025684118270874023,
+        0.6281725168228149,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4551348228137138e-06
+    },
+    {
+      "name": "Upper | slender continuous guard.005",
+      "shift": [
+        -0.025684118270874023,
+        0.6281725168228149,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4551348228137138e-06
+    },
+    {
+      "name": "Upper | rail stanchion.012",
+      "shift": [
+        -0.02568352222442627,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.8039638937022157e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.012",
+      "shift": [
+        -0.025683164596557617,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 3.371747880871523e-07
+    },
+    {
+      "name": "Upper | rail stanchion.013",
+      "shift": [
+        -0.02568376064300537,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5542989743239043e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.013",
+      "shift": [
+        -0.025684118270874023,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.244581521619624e-06
+    },
+    {
+      "name": "Upper | rail stanchion.014",
+      "shift": [
+        -0.025683879852294922,
+        0.6281732320785522,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.018524616398517e-06
+    },
+    {
+      "name": "Upper | stanchion sole plate.014",
+      "shift": [
+        -0.025684714317321777,
+        0.6281732320785522,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.316709639690788e-06
+    },
+    {
+      "name": "Upper | recessed portal web",
+      "shift": [
+        -0.02568364143371582,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5679534003693945e-06
+    },
+    {
+      "name": "Upper | portal chamfer face",
+      "shift": [
+        -0.02568340301513672,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7841612752790171e-06
+    },
+    {
+      "name": "Upper | recessed portal web.001",
+      "shift": [
+        -0.025684773921966553,
+        0.6281725764274597,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.432992849370397e-06
+    },
+    {
+      "name": "Upper | portal chamfer face.001",
+      "shift": [
+        -0.025683343410491943,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.177349673981843e-07
+    },
+    {
+      "name": "Upper | recessed portal web.002",
+      "shift": [
+        -0.025684833526611328,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5078914929239175e-06
+    },
+    {
+      "name": "Upper | portal chamfer face.002",
+      "shift": [
+        -0.025683879852294922,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5993604499100135e-06
+    },
+    {
+      "name": "Upper | recessed portal web.003",
+      "shift": [
+        -0.025684237480163574,
+        0.6281725168228149,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.8848643661548968e-06
+    },
+    {
+      "name": "Upper | portal chamfer face.003",
+      "shift": [
+        -0.025684118270874023,
+        0.6281725764274597,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.678482036629763e-06
+    },
+    {
+      "name": "Upper | recessed portal web.004",
+      "shift": [
+        -0.025684595108032227,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.251217997429632e-07
+    },
+    {
+      "name": "Upper | portal chamfer face.004",
+      "shift": [
+        -0.02568364143371582,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 9.310543150790517e-07
+    },
+    {
+      "name": "Upper | flush back lining",
+      "shift": [
+        -0.025683879852294922,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5078914929239175e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal",
+      "shift": [
+        -0.02568364143371582,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7068172768683855e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal.001",
+      "shift": [
+        -0.025684118270874023,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.39020726557858e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal.002",
+      "shift": [
+        -0.02568364143371582,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 2.277490279023981e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal.003",
+      "shift": [
+        -0.02568364143371582,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.215700987241932e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal.004",
+      "shift": [
+        -0.02568364143371582,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.8621086301581035e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal.005",
+      "shift": [
+        -0.025683879852294922,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4745374771181322e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal.006",
+      "shift": [
+        -0.02568364143371582,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.8157418026599666e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal.007",
+      "shift": [
+        -0.02568340301513672,
+        0.6281726956367493,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.8706744702428836e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal.008",
+      "shift": [
+        -0.025683879852294922,
+        0.6281729936599731,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.633118912497578e-07
+    },
+    {
+      "name": "Upper | vertical panel reveal.009",
+      "shift": [
+        -0.025684118270874023,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7721734937809117e-06
+    },
+    {
+      "name": "Upper | vertical panel reveal.010",
+      "shift": [
+        -0.02568364143371582,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7721734937809117e-06
+    },
+    {
+      "name": "Upper | service bulkhead seam",
+      "shift": [
+        -0.025684356689453125,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.3486991523486091e-06
+    },
+    {
+      "name": "Upper | service bulkhead seam.001",
+      "shift": [
+        -0.025684356689453125,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.3486991523486091e-06
+    },
+    {
+      "name": "Upper | angled room side",
+      "shift": [
+        -0.025684356689453125,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4354699347963686e-06
+    },
+    {
+      "name": "Upper | angled room side.001",
+      "shift": [
+        -0.025683879852294922,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4502435994859265e-06
+    },
+    {
+      "name": "Upper | wide overhead fixture",
+      "shift": [
+        -0.02568340301513672,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.152557373046875e-07
+    },
+    {
+      "name": "Upper | overhead lens",
+      "shift": [
+        -0.02568364143371582,
+        0.6281725764274597,
+        1.6516599655151367
+      ],
+      "non_translation_error": 8.940696716308594e-07
+    },
+    {
+      "name": "Upper | overhead lens.001",
+      "shift": [
+        -0.02568340301513672,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.364418029785156e-07
+    },
+    {
+      "name": "Upper | overhead lens.002",
+      "shift": [
+        -0.02568340301513672,
+        0.6281730532646179,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7881393432617188e-07
+    },
+    {
+      "name": "Upper | short ceiling mount",
+      "shift": [
+        -0.025684356689453125,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 2.037049232797034e-06
+    },
+    {
+      "name": "Upper | short ceiling mount.001",
+      "shift": [
+        -0.025684356689453125,
+        0.6281729340553284,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.228781230931777e-06
+    },
+    {
+      "name": "Upper | front fixture lens",
+      "shift": [
+        -0.025683879852294922,
+        0.6281729340553284,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.9157121992097135e-06
+    },
+    {
+      "name": "Upper | recessed equipment cabinet",
+      "shift": [
+        -0.025684356689453125,
+        0.6281730532646179,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4805486617534424e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam",
+      "shift": [
+        -0.02568364143371582,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.673182111694598e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.001",
+      "shift": [
+        -0.02568364143371582,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.673182111694598e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.002",
+      "shift": [
+        -0.02568364143371582,
+        0.6281722784042358,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.673182111694598e-06
+    },
+    {
+      "name": "Upper | cabinet latch",
+      "shift": [
+        -0.025683164596557617,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.152557373046875e-07
+    },
+    {
+      "name": "Upper | amber relay label",
+      "shift": [
+        -0.025684356689453125,
+        0.628173828125,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7192608239479013e-06
+    },
+    {
+      "name": "Upper | amber relay label.001",
+      "shift": [
+        -0.025683164596557617,
+        0.6281722187995911,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.177349673981843e-07
+    },
+    {
+      "name": "Upper | amber relay label.002",
+      "shift": [
+        -0.02568531036376953,
+        0.6281732320785522,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.0728836059570312e-06
+    },
+    {
+      "name": "Upper | recessed equipment cabinet.001",
+      "shift": [
+        -0.025684356689453125,
+        0.6281724572181702,
+        1.6516599655151367
+      ],
+      "non_translation_error": 9.702933189928356e-07
+    },
+    {
+      "name": "Upper | cabinet panel seam.003",
+      "shift": [
+        -0.025684356689453125,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 9.5367431640625e-07
+    },
+    {
+      "name": "Upper | cabinet panel seam.004",
+      "shift": [
+        -0.025684356689453125,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 9.5367431640625e-07
+    },
+    {
+      "name": "Upper | cabinet panel seam.005",
+      "shift": [
+        -0.025684356689453125,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 9.5367431640625e-07
+    },
+    {
+      "name": "Upper | cabinet latch.001",
+      "shift": [
+        -0.025684118270874023,
+        0.6281721591949463,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.6689300537109375e-06
+    },
+    {
+      "name": "Upper | amber relay label.003",
+      "shift": [
+        -0.025684356689453125,
+        0.6281734108924866,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4805486617534424e-06
+    },
+    {
+      "name": "Upper | amber relay label.004",
+      "shift": [
+        -0.02568340301513672,
+        0.6281734108924866,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.0132789611816406e-06
+    },
+    {
+      "name": "Upper | amber relay label.005",
+      "shift": [
+        -0.025682926177978516,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.066240299940009e-06
+    },
+    {
+      "name": "Upper | recessed equipment cabinet.002",
+      "shift": [
+        -0.025684595108032227,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.39020726557858e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.006",
+      "shift": [
+        -0.025683879852294922,
+        0.6281733512878418,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.430511474609375e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.007",
+      "shift": [
+        -0.025683879852294922,
+        0.6281733512878418,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.430511474609375e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.008",
+      "shift": [
+        -0.025683879852294922,
+        0.6281733512878418,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.430511474609375e-06
+    },
+    {
+      "name": "Upper | cabinet latch.002",
+      "shift": [
+        -0.025683164596557617,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.539457464619588e-07
+    },
+    {
+      "name": "Upper | amber relay label.006",
+      "shift": [
+        -0.025684356689453125,
+        0.6281725168228149,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.2672121301573098e-06
+    },
+    {
+      "name": "Upper | amber relay label.007",
+      "shift": [
+        -0.02568340301513672,
+        0.6281730532646179,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7881393432617188e-07
+    },
+    {
+      "name": "Upper | amber relay label.008",
+      "shift": [
+        -0.025684833526611328,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Upper | recessed equipment cabinet.003",
+      "shift": [
+        -0.025683164596557617,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.251217997429632e-07
+    },
+    {
+      "name": "Upper | cabinet panel seam.009",
+      "shift": [
+        -0.025684356689453125,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1573128604261636e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.010",
+      "shift": [
+        -0.025684356689453125,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1573128604261636e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.011",
+      "shift": [
+        -0.025684356689453125,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1573128604261636e-06
+    },
+    {
+      "name": "Upper | cabinet latch.003",
+      "shift": [
+        -0.025684118270874023,
+        0.6281725168228149,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4551348228137138e-06
+    },
+    {
+      "name": "Upper | amber relay label.009",
+      "shift": [
+        -0.02568340301513672,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Upper | amber relay label.010",
+      "shift": [
+        -0.025683164596557617,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 8.596304119739507e-07
+    },
+    {
+      "name": "Upper | amber relay label.011",
+      "shift": [
+        -0.025684356689453125,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1920928955078125e-06
+    },
+    {
+      "name": "Upper | recessed equipment cabinet.004",
+      "shift": [
+        -0.025684118270874023,
+        0.6281729936599731,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.1980385328675377e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.012",
+      "shift": [
+        -0.025683879852294922,
+        0.6281729936599731,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4354699347963686e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.013",
+      "shift": [
+        -0.025683879852294922,
+        0.6281729936599731,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4354699347963686e-06
+    },
+    {
+      "name": "Upper | cabinet panel seam.014",
+      "shift": [
+        -0.025683879852294922,
+        0.6281729936599731,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4354699347963686e-06
+    },
+    {
+      "name": "Upper | cabinet latch.004",
+      "shift": [
+        -0.02568364143371582,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.922192036699903e-06
+    },
+    {
+      "name": "Upper | amber relay label.012",
+      "shift": [
+        -0.025684356689453125,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.966049969490843e-06
+    },
+    {
+      "name": "Upper | amber relay label.013",
+      "shift": [
+        -0.025682926177978516,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 6.743495761743046e-07
+    },
+    {
+      "name": "Upper | amber relay label.014",
+      "shift": [
+        -0.025684118270874023,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.6858739404357613e-06
+    },
+    {
+      "name": "Upper | slender operator console",
+      "shift": [
+        -0.02568376064300537,
+        0.628173291683197,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5600028429391861e-06
+    },
+    {
+      "name": "Upper | console upright",
+      "shift": [
+        -0.02568340301513672,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 5.960464477539062e-07
+    },
+    {
+      "name": "Upper | console upright.001",
+      "shift": [
+        -0.025683879852294922,
+        0.6281729936599731,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4745374771181322e-06
+    },
+    {
+      "name": "Upper | operator screen",
+      "shift": [
+        -0.025684237480163574,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.3591950238932823e-06
+    },
+    {
+      "name": "Upper | operator glass",
+      "shift": [
+        -0.025683164596557617,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 6.419616707723741e-07
+    },
+    {
+      "name": "Upper | gantry support",
+      "shift": [
+        -0.025684118270874023,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5266237824995157e-06
+    },
+    {
+      "name": "Upper | gantry support.001",
+      "shift": [
+        -0.025683164596557617,
+        0.6281729936599731,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.53127104981722e-06
+    },
+    {
+      "name": "Upper | gantry track",
+      "shift": [
+        -0.025683879852294922,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4502435994859265e-06
+    },
+    {
+      "name": "Upper | gantry carriage",
+      "shift": [
+        -0.025683879852294922,
+        0.6281729340553284,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4901161193847656e-06
+    },
+    {
+      "name": "Upper | empty hoist chain",
+      "shift": [
+        -0.025684118270874023,
+        0.6281723976135254,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.2839233415447482e-06
+    },
+    {
+      "name": "Upper | ribbed storage case",
+      "shift": [
+        -0.025683879852294922,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5993604499100135e-06
+    },
+    {
+      "name": "Upper | case reinforcing band",
+      "shift": [
+        -0.02568364143371582,
+        0.6281724572181702,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.6953304592761865e-06
+    },
+    {
+      "name": "Upper | case reinforcing band.001",
+      "shift": [
+        -0.02568364143371582,
+        0.6281731724739075,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.177349673981843e-07
+    },
+    {
+      "name": "Upper | ribbed storage case.001",
+      "shift": [
+        -0.025684118270874023,
+        0.6281729340553284,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.205429340371888e-06
+    },
+    {
+      "name": "Upper | case reinforcing band.002",
+      "shift": [
+        -0.025684118270874023,
+        0.6281726956367493,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.228781230931777e-06
+    },
+    {
+      "name": "Upper | case reinforcing band.003",
+      "shift": [
+        -0.025683164596557617,
+        0.6281731724739075,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.177349673981843e-07
+    },
+    {
+      "name": "Upper | ribbed storage case.002",
+      "shift": [
+        -0.025684118270874023,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.215700987241932e-06
+    },
+    {
+      "name": "Upper | case reinforcing band.004",
+      "shift": [
+        -0.025684356689453125,
+        0.6281726956367493,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.0941958278826368e-06
+    },
+    {
+      "name": "Upper | case reinforcing band.005",
+      "shift": [
+        -0.02568364143371582,
+        0.6281729340553284,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7202937233044877e-06
+    },
+    {
+      "name": "Upper | strip light socket",
+      "shift": [
+        -0.025684356689453125,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7691638564653194e-06
+    },
+    {
+      "name": "Upper | strip diffuser",
+      "shift": [
+        -0.02568507194519043,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.4502435994859265e-06
+    },
+    {
+      "name": "Upper | strip light socket.001",
+      "shift": [
+        -0.02568364143371582,
+        0.6281729340553284,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7530251943889549e-06
+    },
+    {
+      "name": "Upper | strip diffuser.001",
+      "shift": [
+        -0.025683164596557617,
+        0.6281723380088806,
+        1.6516599655151367
+      ],
+      "non_translation_error": 7.177349673981843e-07
+    },
+    {
+      "name": "Upper | engineered diagonal bracket",
+      "shift": [
+        -0.0256841778755188,
+        0.6281725466251373,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.260536073598659e-06
+    },
+    {
+      "name": "Upper | upper bracket flange",
+      "shift": [
+        -0.025684237480163574,
+        0.6281729936599731,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.5542989743239043e-06
+    },
+    {
+      "name": "Upper | rock bolting shoe",
+      "shift": [
+        -0.0256841778755188,
+        0.628172367811203,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.2520522795677188e-06
+    },
+    {
+      "name": "Upper | engineered diagonal bracket.001",
+      "shift": [
+        -0.025683164596557617,
+        0.6281728148460388,
+        1.6516599655151367
+      ],
+      "non_translation_error": 6.976544803809897e-07
+    },
+    {
+      "name": "Upper | upper bracket flange.001",
+      "shift": [
+        -0.025683283805847168,
+        0.6281725466251373,
+        1.6516599655151367
+      ],
+      "non_translation_error": 6.957422214704008e-07
+    },
+    {
+      "name": "Upper | rock bolting shoe.001",
+      "shift": [
+        -0.02568376064300537,
+        0.628172755241394,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7068172768683855e-06
+    },
+    {
+      "name": "Upper | engineered diagonal bracket.002",
+      "shift": [
+        -0.025683820247650146,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.652887418730503e-06
+    },
+    {
+      "name": "Upper | upper bracket flange.002",
+      "shift": [
+        -0.025684237480163574,
+        0.6281728744506836,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.3953089607619793e-06
+    },
+    {
+      "name": "Upper | rock bolting shoe.002",
+      "shift": [
+        -0.02568364143371582,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7357134555054946e-06
+    },
+    {
+      "name": "Upper | engineered diagonal bracket.003",
+      "shift": [
+        -0.025683701038360596,
+        0.6281729340553284,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.6625315762736026e-06
+    },
+    {
+      "name": "Upper | upper bracket flange.003",
+      "shift": [
+        -0.025684237480163574,
+        0.6281731128692627,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.3328003749250113e-06
+    },
+    {
+      "name": "Upper | rock bolting shoe.003",
+      "shift": [
+        -0.02568376064300537,
+        0.6281726360321045,
+        1.6516599655151367
+      ],
+      "non_translation_error": 1.7068172768683855e-06
+    },
+    {
+      "name": "Bridge | stanchion.003",
+      "shift": [
+        1.0472229719161987,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.0728836059570312e-06
+    },
+    {
+      "name": "Bridge | stanchion.004",
+      "shift": [
+        1.0472235679626465,
+        0.9413102865219116,
+        0.0
+      ],
+      "non_translation_error": 4.915124923727108e-07
+    },
+    {
+      "name": "Bridge | stanchion.005",
+      "shift": [
+        1.0472238063812256,
+        0.9413113594055176,
+        0.0
+      ],
+      "non_translation_error": 2.384185791015625e-07
+    },
+    {
+      "name": "Bridge | side truss.003",
+      "shift": [
+        1.0472224652767181,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.4675941767984785e-06
+    },
+    {
+      "name": "Bridge | side truss.004",
+      "shift": [
+        1.0472224354743958,
+        0.9413109421730042,
+        0.0
+      ],
+      "non_translation_error": 1.361806351994975e-06
+    },
+    {
+      "name": "Bridge | stanchion.009",
+      "shift": [
+        1.0472229719161987,
+        0.9413108825683594,
+        0.0
+      ],
+      "non_translation_error": 1.6214216361922555e-06
+    },
+    {
+      "name": "Bridge | stanchion.010",
+      "shift": [
+        1.0472229719161987,
+        0.9413114786148071,
+        0.0
+      ],
+      "non_translation_error": 1.316709639690788e-06
+    },
+    {
+      "name": "Bridge | side truss.008",
+      "shift": [
+        1.0472227036952972,
+        0.9413111507892609,
+        0.0
+      ],
+      "non_translation_error": 1.6927089477971705e-06
+    },
+    {
+      "name": "Bridge | transverse grip bar.015",
+      "shift": [
+        1.0472223162651062,
+        0.9413111209869385,
+        0.0
+      ],
+      "non_translation_error": 1.0132789611816406e-06
+    },
+    {
+      "name": "Bridge | transverse grip bar.016",
+      "shift": [
+        1.047223448753357,
+        0.9413110613822937,
+        0.0
+      ],
+      "non_translation_error": 6.664001874625056e-07
+    },
+    {
+      "name": "Bridge | transverse grip bar.017",
+      "shift": [
+        1.0472230315208435,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.716158395873066e-06
+    },
+    {
+      "name": "Bridge | transverse grip bar.018",
+      "shift": [
+        1.0472235679626465,
+        0.9413111805915833,
+        0.0
+      ],
+      "non_translation_error": 8.280541890531661e-07
+    },
+    {
+      "name": "Bridge | transverse grip bar.019",
+      "shift": [
+        1.047223448753357,
+        0.9413110017776489,
+        0.0
+      ],
+      "non_translation_error": 1.316709639690788e-06
+    },
+    {
+      "name": "Bridge | transverse grip bar.020",
+      "shift": [
+        1.0472235679626465,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 1.1920928955078125e-07
+    },
+    {
+      "name": "Bridge | transverse grip bar.021",
+      "shift": [
+        1.0472233295440674,
+        0.941311240196228,
+        0.0
+      ],
+      "non_translation_error": 2.6656007498500226e-07
+    },
+    {
+      "name": "Bridge | transverse grip bar.022",
+      "shift": [
+        1.0472230911254883,
+        0.9413111805915833,
+        0.0
+      ],
+      "non_translation_error": 1.4317526995497124e-06
+    },
+    {
+      "name": "Lower | primary room practical",
+      "matrix_before": [
+        [
+          0.24658595025539398,
+          -0.9644967317581177,
+          0.0945589616894722,
+          25.802297592163086
+        ],
+        [
+          0.9691209197044373,
+          0.24540938436985016,
+          -0.024059580639004707,
+          -5.2646894454956055
+        ],
+        [
+          -2.687408198198682e-07,
+          0.09757182002067566,
+          0.9952284693717957,
+          8.876178741455078
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_after": [
+        [
+          0.24658595025539398,
+          -0.9644967317581177,
+          0.0945589616894722,
+          27.190366744995117
+        ],
+        [
+          0.9691209197044373,
+          0.24540938436985016,
+          -0.024059580639004707,
+          -5.028031349182129
+        ],
+        [
+          -2.687408198198682e-07,
+          0.09757182002067566,
+          0.9952284693717957,
+          8.876178741455078
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Upper | primary room practical",
+      "matrix_before": [
+        [
+          0.24658606946468353,
+          -0.9639589190483093,
+          0.09989246726036072,
+          28.42495346069336
+        ],
+        [
+          0.9691209197044373,
+          0.24527263641357422,
+          -0.02541690692305565,
+          -4.487400531768799
+        ],
+        [
+          -3.3992829884255116e-08,
+          0.10307533293962479,
+          0.9946735501289368,
+          12.151178359985352
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_after": [
+        [
+          0.24658606946468353,
+          -0.9639589190483093,
+          0.09989246726036072,
+          28.738677978515625
+        ],
+        [
+          0.9691209197044373,
+          0.24527263641357422,
+          -0.02541690692305565,
+          -3.942572593688965
+        ],
+        [
+          -3.3992829884255116e-08,
+          0.10307533293962479,
+          0.9946735501289368,
+          13.802838325500488
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Lower | wall grazing practical",
+      "matrix_before": [
+        [
+          0.24658675491809845,
+          -0.8319656848907471,
+          0.4970191717147827,
+          27.37017250061035
+        ],
+        [
+          0.9691207408905029,
+          0.2116885483264923,
+          -0.1264633983373642,
+          -2.1036977767944336
+        ],
+        [
+          -5.3073566874672906e-08,
+          0.5128557682037354,
+          0.8584747910499573,
+          8.726178169250488
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_after": [
+        [
+          0.24658675491809845,
+          -0.8319656848907471,
+          0.4970191717147827,
+          28.758241653442383
+        ],
+        [
+          0.9691207408905029,
+          0.2116885483264923,
+          -0.1264633983373642,
+          -1.8670395612716675
+        ],
+        [
+          -5.3073566874672906e-08,
+          0.5128557682037354,
+          0.8584747910499573,
+          8.726178169250488
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Lower | wall grazing practical.001",
+      "matrix_before": [
+        [
+          0.24658699333667755,
+          -0.8319660425186157,
+          0.4970184862613678,
+          27.934362411499023
+        ],
+        [
+          0.9691206812858582,
+          0.21168886125087738,
+          -0.12646330893039703,
+          -5.807181358337402
+        ],
+        [
+          -1.0218758461633115e-07,
+          0.5128551125526428,
+          0.8584752082824707,
+          8.726178169250488
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_after": [
+        [
+          0.24658699333667755,
+          -0.8319660425186157,
+          0.4970184862613678,
+          29.322431564331055
+        ],
+        [
+          0.9691206812858582,
+          0.21168886125087738,
+          -0.12646330893039703,
+          -5.570523262023926
+        ],
+        [
+          -1.0218758461633115e-07,
+          0.5128551125526428,
+          0.8584752082824707,
+          8.726178169250488
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Lower | wall grazing practical.002",
+      "matrix_before": [
+        [
+          0.24658791720867157,
+          -0.8290826678276062,
+          0.5018129944801331,
+          26.5872745513916
+        ],
+        [
+          0.969120442867279,
+          0.21095602214336395,
+          -0.1276838183403015,
+          -7.2082719802856445
+        ],
+        [
+          -2.123327647041151e-08,
+          0.5178025364875793,
+          0.8555001616477966,
+          8.706178665161133
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_after": [
+        [
+          0.24658791720867157,
+          -0.8290826678276062,
+          0.5018129944801331,
+          27.975343704223633
+        ],
+        [
+          0.969120442867279,
+          0.21095602214336395,
+          -0.1276838183403015,
+          -6.971613883972168
+        ],
+        [
+          -2.123327647041151e-08,
+          0.5178025364875793,
+          0.8555001616477966,
+          8.706178665161133
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Upper | wall grazing practical",
+      "matrix_before": [
+        [
+          0.24658721685409546,
+          -0.8199142813682556,
+          0.516657829284668,
+          30.53083038330078
+        ],
+        [
+          0.9691206216812134,
+          0.2086225003004074,
+          -0.13146068155765533,
+          -2.010188102722168
+        ],
+        [
+          3.765867262472966e-08,
+          0.5331202745437622,
+          0.8460394740104675,
+          12.03117847442627
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_after": [
+        [
+          0.24658721685409546,
+          -0.8199142813682556,
+          0.516657829284668,
+          30.844554901123047
+        ],
+        [
+          0.9691206216812134,
+          0.2086225003004074,
+          -0.13146068155765533,
+          -1.4653600454330444
+        ],
+        [
+          3.765867262472966e-08,
+          0.5331202745437622,
+          0.8460394740104675,
+          13.682838439941406
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "Upper | wall grazing practical.001",
+      "matrix_before": [
+        [
+          0.2465870976448059,
+          -0.8199138045310974,
+          0.5166586637496948,
+          29.66530990600586
+        ],
+        [
+          0.9691206216812134,
+          0.20862223207950592,
+          -0.13146089017391205,
+          -5.411801338195801
+        ],
+        [
+          1.0840324193850392e-07,
+          0.5331211686134338,
+          0.8460389375686646,
+          12.03117847442627
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matrix_after": [
+        [
+          0.2465870976448059,
+          -0.8199138045310974,
+          0.5166586637496948,
+          29.979034423828125
+        ],
+        [
+          0.9691206216812134,
+          0.20862223207950592,
+          -0.13146089017391205,
+          -4.866973400115967
+        ],
+        [
+          1.0840324193850392e-07,
+          0.5331211686134338,
+          0.8460389375686646,
+          13.682838439941406
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "removed": [],
+  "floor_vertices": {
+    "Lower | continuous floor footprint": [
+      [
+        3.995802164077759,
+        2.4634296894073486,
+        6.810178756713867
+      ],
+      [
+        4.819167613983154,
+        -0.07062864303588867,
+        6.810178756713867
+      ],
+      [
+        3.9203121662139893,
+        -1.834731101989746,
+        6.810178756713867
+      ],
+      [
+        4.560308456420898,
+        -3.804434299468994,
+        6.810178756713867
+      ],
+      [
+        6.405643463134766,
+        -4.744677543640137,
+        6.810178756713867
+      ],
+      [
+        8.375346183776855,
+        -4.104682922363281,
+        6.810178756713867
+      ],
+      [
+        9.315591812133789,
+        -2.259347438812256,
+        6.810178756713867
+      ],
+      [
+        8.675596237182617,
+        -0.2896456718444824,
+        6.810178756713867
+      ],
+      [
+        6.911493301391602,
+        0.6092095375061035,
+        6.810178756713867
+      ],
+      [
+        6.088126182556152,
+        3.1432669162750244,
+        6.810178756713867
+      ],
+      [
+        3.995802164077759,
+        2.4634296894073486,
+        6.836178779602051
+      ],
+      [
+        4.819167613983154,
+        -0.07062864303588867,
+        6.836178779602051
+      ],
+      [
+        3.9203121662139893,
+        -1.834731101989746,
+        6.836178779602051
+      ],
+      [
+        4.560308456420898,
+        -3.804434299468994,
+        6.836178779602051
+      ],
+      [
+        6.405643463134766,
+        -4.744677543640137,
+        6.836178779602051
+      ],
+      [
+        8.375346183776855,
+        -4.104682922363281,
+        6.836178779602051
+      ],
+      [
+        9.315591812133789,
+        -2.259347438812256,
+        6.836178779602051
+      ],
+      [
+        8.675596237182617,
+        -0.2896456718444824,
+        6.836178779602051
+      ],
+      [
+        6.911493301391602,
+        0.6092095375061035,
+        6.836178779602051
+      ],
+      [
+        6.088126182556152,
+        3.1432669162750244,
+        6.836178779602051
+      ]
+    ],
+    "Upper | continuous floor footprint": [
+      [
+        5.996621608734131,
+        3.586693525314331,
+        10.195178985595703
+      ],
+      [
+        5.675602436065674,
+        2.9566566944122314,
+        10.195178985595703
+      ],
+      [
+        7.328843116760254,
+        -2.131495475769043,
+        10.195178985595703
+      ],
+      [
+        7.958879470825195,
+        -2.4525156021118164,
+        10.195178985595703
+      ],
+      [
+        10.764496803283691,
+        -1.5409150123596191,
+        10.195178985595703
+      ],
+      [
+        8.802238464355469,
+        4.498292922973633,
+        10.195178985595703
+      ],
+      [
+        5.996621608734131,
+        3.586693525314331,
+        10.221179008483887
+      ],
+      [
+        5.675602436065674,
+        2.9566566944122314,
+        10.221179008483887
+      ],
+      [
+        7.328843116760254,
+        -2.131495475769043,
+        10.221179008483887
+      ],
+      [
+        7.958879470825195,
+        -2.4525156021118164,
+        10.221179008483887
+      ],
+      [
+        10.764496803283691,
+        -1.5409150123596191,
+        10.221179008483887
+      ],
+      [
+        8.802238464355469,
+        4.498292922973633,
+        10.221179008483887
+      ]
+    ]
+  }
+}

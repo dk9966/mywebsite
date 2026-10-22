@@ -19,25 +19,12 @@ export function bootStabilizeMs(): number {
   return useBootTuning.getState().stabilizeMs;
 }
 
-/** The "system online" pulse starts here and staggers across the wall. */
-export function bootPulseBaseMs(): number {
-  return useBootTuning.getState().pulseBaseMs;
-}
-
-export const BOOT_PULSE_SWEEP_MS = 260;
-
-export function bootPulseSweepMs(): number {
-  return useBootTuning.getState().pulseSweepMs;
-}
-
 /** Boot scaffolding unmounts after this; everything must equal steady state. */
 export { BOOT_TOTAL_MS } from "./bootParts";
 
 export interface PanelBoot {
   /** This panel's power-on offset, ms from mount. */
   startMs: number;
-  /** Absolute delay of the final sweep as it crosses this panel. */
-  pulseDelayMs: number;
   /** Deterministic flicker seed so panels don't blink in unison. */
   seed: number;
 }
@@ -81,8 +68,6 @@ export interface BootVisual {
   drawOpacity: number;
   /** Opacity multiplier for the curved glass fill. */
   fill: number;
-  /** Extra emission during the final online pulse (0..~0.9). */
-  boost: number;
 }
 
 const DARK: BootVisual = {
@@ -90,7 +75,6 @@ const DARK: BootVisual = {
   draw: 0,
   drawOpacity: 0,
   fill: 0,
-  boost: 0,
 };
 
 function partEnd(
@@ -105,15 +89,6 @@ export function panelBootVisual(
   boot: PanelBoot,
 ): BootVisual {
   const stabilizeMs = bootStabilizeMs();
-  const pulseDur = useBootTuning.getState().parts.onlinePulse.durationMs;
-
-  let boost = 0;
-  if (bootPartScale("onlinePulse") > 0) {
-    const pt = elapsedMs - boot.pulseDelayMs;
-    if (pt >= 0 && pt < pulseDur) {
-      boost = Math.sin((pt / pulseDur) * Math.PI) * 0.9;
-    }
-  }
 
   if (elapsedMs >= stabilizeMs) {
     return {
@@ -121,7 +96,6 @@ export function panelBootVisual(
       draw: 1,
       drawOpacity: 1,
       fill: 1,
-      boost,
     };
   }
 
@@ -141,7 +115,6 @@ export function panelBootVisual(
       draw: 0,
       drawOpacity: 0,
       fill: 0,
-      boost: 0,
     };
   }
 
@@ -157,7 +130,6 @@ export function panelBootVisual(
       draw: 0,
       drawOpacity: 0,
       fill: fill * bootPartScale("flickerFill"),
-      boost: 0,
     };
   }
 
@@ -171,7 +143,6 @@ export function panelBootVisual(
       draw: eased * frameScale,
       drawOpacity: (0.55 + 0.45 * eased) * dropout * frameScale,
       fill: (0.15 + 0.4 * eased) * bootPartScale("flickerFill"),
-      boost: 0,
     };
   }
 
@@ -183,7 +154,6 @@ export function panelBootVisual(
     draw: 1,
     drawOpacity: (n > 0.94 ? 0.55 : 1) * bootPartScale("bezelDraw"),
     fill: (0.55 + 0.45 * p) * (n > 0.9 ? 0.8 : 1) * assemblyScale,
-    boost: 0,
   };
 }
 
@@ -192,14 +162,3 @@ export const BOOT_PANEL_START_MS: Record<CellId, number> =
   DEFAULT_PANEL_START_MS;
 
 export const BOOT_STABILIZE_MS = bootScaleMs(2900);
-export const BOOT_PULSE_DELAY_MS = bootScaleMs(3050);
-export const BOOT_PULSE_DUR_MS = bootScaleMs(450);
-
-export function panelPulseDelayForCell(
-  cellX: number,
-  wallWidthPx: number,
-): number {
-  const base = bootPulseBaseMs();
-  const sweep = bootPulseSweepMs();
-  return base + (cellX / wallWidthPx + 0.5) * sweep;
-}

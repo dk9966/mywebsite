@@ -1,0 +1,15 @@
+{
+  "source_triangles": 72208,
+  "evaluated_triangles": 48378,
+  "smoothed_vertices": 12345,
+  "retained_shape_keys": [
+    "Basis",
+    "Upper-left | broad inward rock support",
+    "Left bay | flatter close wall and short anchors",
+    "Rear-left | raised enclosing rock walls",
+    "Left bay | 1.5 m deeper platform recess",
+    "Upper-right | fitted shoulder and square recess",
+    "Upper corner bevel | follow slider",
+    "Between platforms | natural connected rock"
+  ]
+}

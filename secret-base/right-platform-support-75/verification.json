@@ -1,0 +1,87 @@
+{
+  "measured_support_percent": 74.99160291099086,
+  "sample_count": 26795,
+  "brace_count": 8,
+  "supported_edges": [
+    "front edge",
+    "front left clipped corner",
+    "left edge",
+    "rear edge",
+    "rear left clipped corner",
+    "right edge"
+  ],
+  "unchanged_original_objects_and_shape_keys": true,
+  "changed_originals": [],
+  "new_nonmanifold_meshes": {},
+  "new_floor_intrusions": [],
+  "connections": [
+    {
+      "name": "Lower right | 01-01 compact diagonal brace",
+      "edge": "front left clipped corner",
+      "length": 0.8309581176019064,
+      "rock_anchor_distance": 0.05479630455374718,
+      "underside_distance": 0.07200002670288086,
+      "clear_brace_run": true
+    },
+    {
+      "name": "Lower right | 02-01 compact diagonal brace",
+      "edge": "front edge",
+      "length": 0.6302605391160877,
+      "rock_anchor_distance": 0.05476422235369682,
+      "underside_distance": 0.07200002670288086,
+      "clear_brace_run": true
+    },
+    {
+      "name": "Lower right | 04-01 compact diagonal brace",
+      "edge": "right edge",
+      "length": 0.4964921194922413,
+      "rock_anchor_distance": 0.05401447042822838,
+      "underside_distance": 0.07200002670288086,
+      "clear_brace_run": true
+    },
+    {
+      "name": "Lower right | 06-01 compact diagonal brace",
+      "edge": "rear edge",
+      "length": 0.4832364673293923,
+      "rock_anchor_distance": 0.05474410578608513,
+      "underside_distance": 0.07200002670288086,
+      "clear_brace_run": true
+    },
+    {
+      "name": "Lower right | 06-02 compact diagonal brace",
+      "edge": "rear edge",
+      "length": 0.4264808444584245,
+      "rock_anchor_distance": 0.05479089170694351,
+      "underside_distance": 0.07200002670288086,
+      "clear_brace_run": true
+    },
+    {
+      "name": "Lower right | 07-01 compact diagonal brace",
+      "edge": "rear left clipped corner",
+      "length": 0.5964552711726214,
+      "rock_anchor_distance": 0.05459386110305786,
+      "underside_distance": 0.07200002670288086,
+      "clear_brace_run": true
+    },
+    {
+      "name": "Lower right | 08-01 compact diagonal brace",
+      "edge": "left edge",
+      "length": 0.6847189058961465,
+      "rock_anchor_distance": 0.054411519318819046,
+      "underside_distance": 0.07200002670288086,
+      "clear_brace_run": true
+    },
+    {
+      "name": "Lower right | 08-02 compact diagonal brace",
+      "edge": "left edge",
+      "length": 0.703267662926912,
+      "rock_anchor_distance": 0.05481830984354019,
+      "underside_distance": 0.07200002670288086,
+      "clear_brace_run": true
+    }
+  ],
+  "original_camera_preserved": true,
+  "all_checks_passed": true,
+  "final_live_originals_changed": [],
+  "saved_copy": "/Users/danielku/mywebsite/secret-base/right-platform-support-75/right-platform-75-preview.blend"
+}

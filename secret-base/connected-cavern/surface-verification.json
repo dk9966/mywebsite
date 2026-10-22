@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "file": "/Users/danielku/mywebsite/secret-base/connected-cavern/connected-cavern.blend",
+  "sha256": "408870666ce4479c38e4a2b28e609e4648292fbee6bfcb155176029f66f087fd",
+  "original_meshes_checked": 996,
+  "changed_original_meshes_or_material_nodes": [],
+  "original_rock_objects_restored_exactly": [
+    "Bays | continuous cave wall | stratum 0",
+    "Bays | left broken cave return | stratum 0",
+    "Bays | right overlapping cave cheek | stratum 0",
+    "Bays | forward right cave wall | stratum 0"
+  ],
+  "changed_original_lights": [],
+  "new_surface_components": [
+    12589
+  ],
+  "open_boundary_edges": 466,
+  "interior_nonmanifold_edges": 0,
+  "loose_edges": 0,
+  "new_surface_modifiers": [],
+  "smooth_shaded_faces": 0,
+  "enclosure_gaps_at_sampled_heights": [],
+  "bridge_obstructions": [],
+  "support_anchor_distances": [
+    4.76837158203125e-07,
+    0.0,
+    8.259061701210157e-07,
+    6.743495646333031e-07,
+    5.331201577973843e-07,
+    2.384185791015625e-07
+  ],
+  "open_ceiling_and_floor": true,
+  "construction": "One open sheet for the new interior wall. No exterior layer, thickness, smoothing, voxel remesh, top cap or bottom cap."
+}

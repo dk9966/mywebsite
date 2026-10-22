@@ -1,0 +1,9 @@
+{
+  "changed_vertices": 2399,
+  "maximum_inward_pull": 6.540708364147821,
+  "vertices": 32664,
+  "faces": 52520,
+  "protected_objects_unchanged": 1996,
+  "shape_key": "Upper-left | broad inward rock support",
+  "source_mesh": "Cave | continuous sculptable platform terrain"
+}

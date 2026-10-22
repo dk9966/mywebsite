@@ -1,0 +1,35 @@
+{
+  "retargeted_drivers": 425,
+  "existing_meshes_identical": 2376,
+  "preserved_values": {
+    "Upper corner bevel (m)": 1.5,
+    "Upper light width (m)": 2.25,
+    "Upper light depth (m)": 2.25,
+    "Upper light height (m)": 2.25,
+    "Upper light corner bevel (m)": 0.6000000238418579
+  },
+  "timings_seconds": {
+    "Upper light width (m)": [
+      0.1176458330010064,
+      0.1174030409893021,
+      0.1261963329743594
+    ],
+    "Upper light height (m)": [
+      0.11814070795662701,
+      0.11533691704971716,
+      0.11927500000456348
+    ],
+    "Upper corner bevel (m)": [
+      0.11405583302257583,
+      0.10866774996975437,
+      0.10652924998430535
+    ]
+  },
+  "invalid_drivers": [],
+  "old_shared_control_update_seconds": [
+    5.729,
+    5.6123,
+    5.5875
+  ],
+  "mode_preserved": "SCULPT"
+}

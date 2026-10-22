@@ -1,0 +1,198 @@
+{
+  "connections": [
+    {
+      "name": "Lower right | 01-01 upright brace",
+      "side": "front left clipped corner",
+      "anchor": [
+        5.602806091308594,
+        -5.420895576477051,
+        4.950078964233398
+      ],
+      "top": [
+        5.242656707763672,
+        -5.801673889160156,
+        6.5514912605285645
+      ],
+      "surface": [
+        5.655755043029785,
+        -5.388575553894043,
+        4.969491004943848
+      ],
+      "angle_from_vertical": 18.122488911315067,
+      "length": 1.684998817676899,
+      "visible_fraction_from_main_camera": 1.0
+    },
+    {
+      "name": "Lower right | 02-01 upright brace",
+      "side": "front edge",
+      "anchor": [
+        7.004211902618408,
+        -5.825949192047119,
+        4.806798934936523
+      ],
+      "top": [
+        7.009974479675293,
+        -6.428138732910156,
+        6.5514912605285645
+      ],
+      "surface": [
+        7.009974956512451,
+        -5.762461185455322,
+        4.819490909576416
+      ],
+      "angle_from_vertical": 19.0431869362322,
+      "length": 1.8457022308828066,
+      "visible_fraction_from_main_camera": 1.0
+    },
+    {
+      "name": "Lower right | 02-02 upright brace",
+      "side": "front edge",
+      "anchor": [
+        8.140739440917969,
+        -5.971141815185547,
+        4.8150739669799805
+      ],
+      "top": [
+        8.148756980895996,
+        -6.428138732910156,
+        6.5514912605285645
+      ],
+      "surface": [
+        8.148756980895996,
+        -5.906789779663086,
+        4.819490909576416
+      ],
+      "angle_from_vertical": 14.747121575318012,
+      "length": 1.795565517038503,
+      "visible_fraction_from_main_camera": 1.0
+    },
+    {
+      "name": "Lower right | 07-01 upright brace",
+      "side": "rear left clipped corner",
+      "anchor": [
+        5.654849052429199,
+        -0.9894388318061829,
+        4.596384525299072
+      ],
+      "top": [
+        5.24265718460083,
+        -0.593263566493988,
+        6.5514912605285645
+      ],
+      "surface": [
+        5.689047813415527,
+        -1.0396537780761719,
+        4.619491100311279
+      ],
+      "angle_from_vertical": 16.300022952385778,
+      "length": 2.036982882587422,
+      "visible_fraction_from_main_camera": 0.0
+    },
+    {
+      "name": "Lower right | 08-01 upright brace",
+      "side": "left edge",
+      "anchor": [
+        5.25712251663208,
+        -2.5276572704315186,
+        4.802002906799316
+      ],
+      "top": [
+        4.61619234085083,
+        -2.5257411003112793,
+        6.5514912605285645
+      ],
+      "surface": [
+        5.319696426391602,
+        -2.5257411003112793,
+        4.819490909576416
+      ],
+      "angle_from_vertical": 20.1205388265412,
+      "length": 1.8631974223577366,
+      "visible_fraction_from_main_camera": 1.0
+    },
+    {
+      "name": "Lower right | 08-02 upright brace",
+      "side": "left edge",
+      "anchor": [
+        5.210602760314941,
+        -3.8624215126037598,
+        4.588768482208252
+      ],
+      "top": [
+        4.61619234085083,
+        -3.8691964149475098,
+        6.5514912605285645
+      ],
+      "surface": [
+        5.267481803894043,
+        -3.8691964149475098,
+        4.619491100311279
+      ],
+      "angle_from_vertical": 16.84996423688749,
+      "length": 2.050768215501325,
+      "visible_fraction_from_main_camera": 1.0
+    }
+  ],
+  "skipped_occluded_positions": [
+    {
+      "side": "front right clipped corner",
+      "position": 0.5
+    },
+    {
+      "side": "right edge",
+      "position": 0.33
+    },
+    {
+      "side": "right edge",
+      "position": 0.67
+    },
+    {
+      "side": "rear right clipped corner",
+      "position": 0.5
+    },
+    {
+      "side": "rear edge",
+      "position": 0.33
+    },
+    {
+      "side": "rear edge",
+      "position": 0.67
+    }
+  ],
+  "replaced_objects": [
+    "Lower right | 01-01 rock anchor plate",
+    "Lower right | 01-01 compact diagonal brace",
+    "Lower right | 01-01 underside bearer",
+    "Lower right | 01-01 rim connection plate",
+    "Lower right | 02-01 rock anchor plate",
+    "Lower right | 02-01 compact diagonal brace",
+    "Lower right | 02-01 underside bearer",
+    "Lower right | 02-01 rim connection plate",
+    "Lower right | 04-01 rock anchor plate",
+    "Lower right | 04-01 compact diagonal brace",
+    "Lower right | 04-01 underside bearer",
+    "Lower right | 04-01 rim connection plate",
+    "Lower right | 06-01 rock anchor plate",
+    "Lower right | 06-01 compact diagonal brace",
+    "Lower right | 06-01 underside bearer",
+    "Lower right | 06-01 rim connection plate",
+    "Lower right | 06-02 rock anchor plate",
+    "Lower right | 06-02 compact diagonal brace",
+    "Lower right | 06-02 underside bearer",
+    "Lower right | 06-02 rim connection plate",
+    "Lower right | 07-01 rock anchor plate",
+    "Lower right | 07-01 compact diagonal brace",
+    "Lower right | 07-01 underside bearer",
+    "Lower right | 07-01 rim connection plate",
+    "Lower right | 08-01 rock anchor plate",
+    "Lower right | 08-01 compact diagonal brace",
+    "Lower right | 08-01 underside bearer",
+    "Lower right | 08-01 rim connection plate",
+    "Lower right | 08-02 rock anchor plate",
+    "Lower right | 08-02 compact diagonal brace",
+    "Lower right | 08-02 underside bearer",
+    "Lower right | 08-02 rim connection plate"
+  ],
+  "rock_bearing_fraction": 0.7482739317036761,
+  "coverage_samples": 26795
+}

@@ -1,0 +1,2049 @@
+{
+  "center": [
+    26.48150062561035,
+    -7.055500030517578,
+    6.8480000495910645
+  ],
+  "objects": [
+    {
+      "name": "Holo table | floor plinth",
+      "type": "MESH",
+      "radial": [
+        0.68199,
+        0.69
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | pedestal column",
+      "type": "MESH",
+      "radial": [
+        0.44399,
+        0.45
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | pedestal collar",
+      "type": "MESH",
+      "radial": [
+        0.50399,
+        0.51
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | underside plate",
+      "type": "MESH",
+      "radial": [
+        0.0,
+        1.09
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 00",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 01",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 02",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 03",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 04",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 05",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 06",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 07",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 08",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 09",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 10",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 11",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 12",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 13",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 14",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | armored band panel 15",
+      "type": "MESH",
+      "radial": [
+        0.94898,
+        1.2375
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | top rim",
+      "type": "MESH",
+      "radial": [
+        0.945,
+        1.2335
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | inner lip",
+      "type": "MESH",
+      "radial": [
+        0.938,
+        0.974
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | dark basin",
+      "type": "MESH",
+      "radial": [
+        0.945,
+        0.945
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | misty holo glass",
+      "type": "MESH",
+      "radial": [
+        0.942,
+        0.942
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | soft glass glow",
+      "type": "LIGHT",
+      "radial": null,
+      "mods": []
+    },
+    {
+      "name": "Holo table | upper fascia trim",
+      "type": "MESH",
+      "radial": [
+        1.2285,
+        1.2385
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | lower fascia trim",
+      "type": "MESH",
+      "radial": [
+        1.2205,
+        1.2325
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | inward projector light 00",
+      "type": "MESH",
+      "radial": [
+        0.9345,
+        0.937
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | inward projector light 01",
+      "type": "MESH",
+      "radial": [
+        0.9345,
+        0.937
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | inward projector light 02",
+      "type": "MESH",
+      "radial": [
+        0.9345,
+        0.937
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | inward projector light 03",
+      "type": "MESH",
+      "radial": [
+        0.9345,
+        0.937
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | inward projector light 04",
+      "type": "MESH",
+      "radial": [
+        0.9345,
+        0.937
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | inward projector light 05",
+      "type": "MESH",
+      "radial": [
+        0.9345,
+        0.937
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | inward projector light 06",
+      "type": "MESH",
+      "radial": [
+        0.9345,
+        0.937
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | inward projector light 07",
+      "type": "MESH",
+      "radial": [
+        0.9345,
+        0.937
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | metal bezel",
+      "type": "MESH",
+      "radial": [
+        1.0198,
+        1.17903
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | inset dark panel",
+      "type": "MESH",
+      "radial": [
+        1.02721,
+        1.17299
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | key socket 0",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | ivory key 0",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | cyan key 0",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | key socket 1",
+      "type": "MESH",
+      "radial": [
+        1.08655,
+        1.16019
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | ivory key 1",
+      "type": "MESH",
+      "radial": [
+        1.09549,
+        1.15291
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | cyan key 1",
+      "type": "MESH",
+      "radial": [
+        1.05976,
+        1.08158
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | key socket 2",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | ivory key 2",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | cyan key 2",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | telemetry screen",
+      "type": "MESH",
+      "radial": [
+        1.03523,
+        1.05185
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | screen mark 0",
+      "type": "MESH",
+      "radial": [
+        1.04183,
+        1.04549
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | screen mark 1",
+      "type": "MESH",
+      "radial": [
+        1.04083,
+        1.0443
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | screen mark 2",
+      "type": "MESH",
+      "radial": [
+        1.04022,
+        1.04349
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | screen mark 3",
+      "type": "MESH",
+      "radial": [
+        1.03999,
+        1.04307
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | red status indicator",
+      "type": "MESH",
+      "radial": [
+        1.03686,
+        1.05226
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | captive fastener",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | captive fastener.001",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | captive fastener.002",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 00 | captive fastener.003",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 00 | bezel",
+      "type": "MESH",
+      "radial": [
+        1.23443,
+        1.24243
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 00 | frosted lens",
+      "type": "MESH",
+      "radial": [
+        1.24114,
+        1.24414
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 00 | divider",
+      "type": "MESH",
+      "radial": [
+        1.2435,
+        1.2455
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | metal bezel",
+      "type": "MESH",
+      "radial": [
+        1.0198,
+        1.17902
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | inset dark panel",
+      "type": "MESH",
+      "radial": [
+        1.02721,
+        1.17299
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | key socket 0",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | ivory key 0",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | cyan key 0",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | key socket 1",
+      "type": "MESH",
+      "radial": [
+        1.08655,
+        1.16019
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | ivory key 1",
+      "type": "MESH",
+      "radial": [
+        1.09549,
+        1.15291
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | cyan key 1",
+      "type": "MESH",
+      "radial": [
+        1.05976,
+        1.08158
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | key socket 2",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | ivory key 2",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | cyan key 2",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | telemetry screen",
+      "type": "MESH",
+      "radial": [
+        1.03524,
+        1.05185
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | screen mark 0",
+      "type": "MESH",
+      "radial": [
+        1.04182,
+        1.04549
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | screen mark 1",
+      "type": "MESH",
+      "radial": [
+        1.04083,
+        1.0443
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | screen mark 2",
+      "type": "MESH",
+      "radial": [
+        1.04022,
+        1.04349
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | screen mark 3",
+      "type": "MESH",
+      "radial": [
+        1.03999,
+        1.04307
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | red status indicator",
+      "type": "MESH",
+      "radial": [
+        1.03686,
+        1.05226
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | captive fastener",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | captive fastener.001",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | captive fastener.002",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 01 | captive fastener.003",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 01 | bezel",
+      "type": "MESH",
+      "radial": [
+        1.23443,
+        1.24243
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 01 | frosted lens",
+      "type": "MESH",
+      "radial": [
+        1.24114,
+        1.24414
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 01 | divider",
+      "type": "MESH",
+      "radial": [
+        1.2435,
+        1.2455
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | metal bezel",
+      "type": "MESH",
+      "radial": [
+        1.0198,
+        1.17902
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | inset dark panel",
+      "type": "MESH",
+      "radial": [
+        1.02721,
+        1.17299
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | key socket 0",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | ivory key 0",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | cyan key 0",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | key socket 1",
+      "type": "MESH",
+      "radial": [
+        1.08655,
+        1.16019
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | ivory key 1",
+      "type": "MESH",
+      "radial": [
+        1.09549,
+        1.15291
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | cyan key 1",
+      "type": "MESH",
+      "radial": [
+        1.05976,
+        1.08158
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | key socket 2",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | ivory key 2",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | cyan key 2",
+      "type": "MESH",
+      "radial": [
+        1.06074,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | telemetry screen",
+      "type": "MESH",
+      "radial": [
+        1.03524,
+        1.05185
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | screen mark 0",
+      "type": "MESH",
+      "radial": [
+        1.04182,
+        1.04549
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | screen mark 1",
+      "type": "MESH",
+      "radial": [
+        1.04083,
+        1.0443
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | screen mark 2",
+      "type": "MESH",
+      "radial": [
+        1.04022,
+        1.04349
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | screen mark 3",
+      "type": "MESH",
+      "radial": [
+        1.03999,
+        1.04307
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | red status indicator",
+      "type": "MESH",
+      "radial": [
+        1.03686,
+        1.05226
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | captive fastener",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | captive fastener.001",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | captive fastener.002",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 02 | captive fastener.003",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 02 | bezel",
+      "type": "MESH",
+      "radial": [
+        1.23443,
+        1.24243
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 02 | frosted lens",
+      "type": "MESH",
+      "radial": [
+        1.24114,
+        1.24414
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 02 | divider",
+      "type": "MESH",
+      "radial": [
+        1.2435,
+        1.2455
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | metal bezel",
+      "type": "MESH",
+      "radial": [
+        1.0198,
+        1.17902
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | inset dark panel",
+      "type": "MESH",
+      "radial": [
+        1.02721,
+        1.17299
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | key socket 0",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | ivory key 0",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | cyan key 0",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | key socket 1",
+      "type": "MESH",
+      "radial": [
+        1.08655,
+        1.16019
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | ivory key 1",
+      "type": "MESH",
+      "radial": [
+        1.09549,
+        1.15291
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | cyan key 1",
+      "type": "MESH",
+      "radial": [
+        1.05976,
+        1.08158
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | key socket 2",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | ivory key 2",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | cyan key 2",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | telemetry screen",
+      "type": "MESH",
+      "radial": [
+        1.03524,
+        1.05185
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | screen mark 0",
+      "type": "MESH",
+      "radial": [
+        1.04182,
+        1.04549
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | screen mark 1",
+      "type": "MESH",
+      "radial": [
+        1.04083,
+        1.0443
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | screen mark 2",
+      "type": "MESH",
+      "radial": [
+        1.04022,
+        1.04349
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | screen mark 3",
+      "type": "MESH",
+      "radial": [
+        1.03999,
+        1.04307
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | red status indicator",
+      "type": "MESH",
+      "radial": [
+        1.03686,
+        1.05226
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | captive fastener",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | captive fastener.001",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | captive fastener.002",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 03 | captive fastener.003",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 03 | bezel",
+      "type": "MESH",
+      "radial": [
+        1.23443,
+        1.24243
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 03 | frosted lens",
+      "type": "MESH",
+      "radial": [
+        1.24114,
+        1.24414
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 03 | divider",
+      "type": "MESH",
+      "radial": [
+        1.2435,
+        1.2455
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | metal bezel",
+      "type": "MESH",
+      "radial": [
+        1.0198,
+        1.17903
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | inset dark panel",
+      "type": "MESH",
+      "radial": [
+        1.02721,
+        1.17299
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | key socket 0",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | ivory key 0",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | cyan key 0",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | key socket 1",
+      "type": "MESH",
+      "radial": [
+        1.08655,
+        1.16019
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | ivory key 1",
+      "type": "MESH",
+      "radial": [
+        1.09549,
+        1.15291
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | cyan key 1",
+      "type": "MESH",
+      "radial": [
+        1.05976,
+        1.08158
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | key socket 2",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | ivory key 2",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | cyan key 2",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | telemetry screen",
+      "type": "MESH",
+      "radial": [
+        1.03523,
+        1.05185
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | screen mark 0",
+      "type": "MESH",
+      "radial": [
+        1.04183,
+        1.04549
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | screen mark 1",
+      "type": "MESH",
+      "radial": [
+        1.04083,
+        1.0443
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | screen mark 2",
+      "type": "MESH",
+      "radial": [
+        1.04022,
+        1.04349
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | screen mark 3",
+      "type": "MESH",
+      "radial": [
+        1.03999,
+        1.04307
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | red status indicator",
+      "type": "MESH",
+      "radial": [
+        1.03686,
+        1.05226
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | captive fastener",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | captive fastener.001",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | captive fastener.002",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 04 | captive fastener.003",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 04 | bezel",
+      "type": "MESH",
+      "radial": [
+        1.23443,
+        1.24243
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 04 | frosted lens",
+      "type": "MESH",
+      "radial": [
+        1.24114,
+        1.24414
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 04 | divider",
+      "type": "MESH",
+      "radial": [
+        1.2435,
+        1.2455
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | metal bezel",
+      "type": "MESH",
+      "radial": [
+        1.0198,
+        1.17902
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | inset dark panel",
+      "type": "MESH",
+      "radial": [
+        1.02721,
+        1.17299
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | key socket 0",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | ivory key 0",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | cyan key 0",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | key socket 1",
+      "type": "MESH",
+      "radial": [
+        1.08655,
+        1.16019
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | ivory key 1",
+      "type": "MESH",
+      "radial": [
+        1.09549,
+        1.15291
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | cyan key 1",
+      "type": "MESH",
+      "radial": [
+        1.05976,
+        1.08158
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | key socket 2",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | ivory key 2",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | cyan key 2",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | telemetry screen",
+      "type": "MESH",
+      "radial": [
+        1.03524,
+        1.05185
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | screen mark 0",
+      "type": "MESH",
+      "radial": [
+        1.04182,
+        1.04549
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | screen mark 1",
+      "type": "MESH",
+      "radial": [
+        1.04083,
+        1.0443
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | screen mark 2",
+      "type": "MESH",
+      "radial": [
+        1.04022,
+        1.04349
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | screen mark 3",
+      "type": "MESH",
+      "radial": [
+        1.03999,
+        1.04307
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | red status indicator",
+      "type": "MESH",
+      "radial": [
+        1.03686,
+        1.05226
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | captive fastener",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | captive fastener.001",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | captive fastener.002",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 05 | captive fastener.003",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 05 | bezel",
+      "type": "MESH",
+      "radial": [
+        1.23443,
+        1.24243
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 05 | frosted lens",
+      "type": "MESH",
+      "radial": [
+        1.24114,
+        1.24414
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 05 | divider",
+      "type": "MESH",
+      "radial": [
+        1.2435,
+        1.2455
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | metal bezel",
+      "type": "MESH",
+      "radial": [
+        1.0198,
+        1.17902
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | inset dark panel",
+      "type": "MESH",
+      "radial": [
+        1.02721,
+        1.17299
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | key socket 0",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | ivory key 0",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | cyan key 0",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | key socket 1",
+      "type": "MESH",
+      "radial": [
+        1.08655,
+        1.16019
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | ivory key 1",
+      "type": "MESH",
+      "radial": [
+        1.09549,
+        1.15291
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | cyan key 1",
+      "type": "MESH",
+      "radial": [
+        1.05976,
+        1.08158
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | key socket 2",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | ivory key 2",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | cyan key 2",
+      "type": "MESH",
+      "radial": [
+        1.06074,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | telemetry screen",
+      "type": "MESH",
+      "radial": [
+        1.03524,
+        1.05185
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | screen mark 0",
+      "type": "MESH",
+      "radial": [
+        1.04182,
+        1.04549
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | screen mark 1",
+      "type": "MESH",
+      "radial": [
+        1.04083,
+        1.0443
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | screen mark 2",
+      "type": "MESH",
+      "radial": [
+        1.04022,
+        1.04349
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | screen mark 3",
+      "type": "MESH",
+      "radial": [
+        1.03999,
+        1.04307
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | red status indicator",
+      "type": "MESH",
+      "radial": [
+        1.03686,
+        1.05226
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | captive fastener",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | captive fastener.001",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | captive fastener.002",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 06 | captive fastener.003",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 06 | bezel",
+      "type": "MESH",
+      "radial": [
+        1.23443,
+        1.24243
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 06 | frosted lens",
+      "type": "MESH",
+      "radial": [
+        1.24114,
+        1.24414
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 06 | divider",
+      "type": "MESH",
+      "radial": [
+        1.2435,
+        1.2455
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | metal bezel",
+      "type": "MESH",
+      "radial": [
+        1.0198,
+        1.17902
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | inset dark panel",
+      "type": "MESH",
+      "radial": [
+        1.02721,
+        1.17299
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | key socket 0",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | ivory key 0",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | cyan key 0",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | key socket 1",
+      "type": "MESH",
+      "radial": [
+        1.08655,
+        1.16019
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | ivory key 1",
+      "type": "MESH",
+      "radial": [
+        1.09549,
+        1.15291
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | cyan key 1",
+      "type": "MESH",
+      "radial": [
+        1.05976,
+        1.08158
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | key socket 2",
+      "type": "MESH",
+      "radial": [
+        1.08702,
+        1.16317
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | ivory key 2",
+      "type": "MESH",
+      "radial": [
+        1.0965,
+        1.15539
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | cyan key 2",
+      "type": "MESH",
+      "radial": [
+        1.06075,
+        1.08428
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | telemetry screen",
+      "type": "MESH",
+      "radial": [
+        1.03524,
+        1.05185
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | screen mark 0",
+      "type": "MESH",
+      "radial": [
+        1.04182,
+        1.04549
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | screen mark 1",
+      "type": "MESH",
+      "radial": [
+        1.04083,
+        1.0443
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | screen mark 2",
+      "type": "MESH",
+      "radial": [
+        1.04022,
+        1.04349
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | screen mark 3",
+      "type": "MESH",
+      "radial": [
+        1.03999,
+        1.04307
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | red status indicator",
+      "type": "MESH",
+      "radial": [
+        1.03686,
+        1.05226
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | captive fastener",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | captive fastener.001",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | captive fastener.002",
+      "type": "MESH",
+      "radial": [
+        1.16243,
+        1.16879
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | console 07 | captive fastener.003",
+      "type": "MESH",
+      "radial": [
+        1.03398,
+        1.04038
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 07 | bezel",
+      "type": "MESH",
+      "radial": [
+        1.23443,
+        1.24243
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 07 | frosted lens",
+      "type": "MESH",
+      "radial": [
+        1.24114,
+        1.24414
+      ],
+      "mods": []
+    },
+    {
+      "name": "Holo table | fascia lamp 07 | divider",
+      "type": "MESH",
+      "radial": [
+        1.2435,
+        1.2455
+      ],
+      "mods": []
+    }
+  ]
+}

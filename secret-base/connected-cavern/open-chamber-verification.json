@@ -1,0 +1,50 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/connected-cavern/connected-cavern-right-wall-rebuilt.blend",
+  "right_side_objects_removed": 894,
+  "protected_center_meshes": 237,
+  "center_meshes_changed": [],
+  "rail_restored_from": "/Users/danielku/mywebsite/secret-base/central-metal-platform/central-metal-platform.blend",
+  "rail_meshes": 164,
+  "wall_components": [
+    16504
+  ],
+  "boundary_loops": [
+    205,
+    207
+  ],
+  "invalid_edges": 0,
+  "degenerate_faces": 0,
+  "ray_gaps": [],
+  "wall_radial_distance": {
+    "0.0": {
+      "min": 8.347576141357422,
+      "max": 14.928478240966797
+    },
+    "3.0": {
+      "min": 8.030075073242188,
+      "max": 15.418752670288086
+    },
+    "6.9": {
+      "min": 8.056550025939941,
+      "max": 15.418752670288086
+    },
+    "10.0": {
+      "min": 8.154484748840332,
+      "max": 15.060797691345215
+    },
+    "14.0": {
+      "min": 7.859442710876465,
+      "max": 15.418753623962402
+    }
+  },
+  "central_deck_radius": 2.8235271786587486,
+  "nearest_wall_distance_from_platform_geometry": 5.189942836761475,
+  "minimum_radial_gap_at_deck": 5.233022847281193,
+  "wall_thickness": 0,
+  "wall_modifiers": 0,
+  "unexpected_meshes": [],
+  "passed": true,
+  "reopened_saved_file": true,
+  "sha256": "69aa7c50a374ff557b1a3eae9c308d8d91628defac2de2500be0f00b6a9d77ea",
+  "saved_center_changes": []
+}

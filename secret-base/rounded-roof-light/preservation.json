@@ -1,0 +1,19 @@
+{
+  "changed_meshes": [
+    "150 | continuous cave with oblique carved rooms",
+    "Lower | roof slope 1 - rear wall",
+    "Lower | roof panel seam 1",
+    "Lower | roof slope 2 - rear corner",
+    "Lower | roof panel seam 2",
+    "Lower | roof slope 3 - right wall",
+    "Lower | roof panel seam 3",
+    "Lower | roof slope 4 - front return",
+    "Lower | roof panel seam 4",
+    "Lower | roof joint rib 1",
+    "Lower | roof joint rib 2",
+    "Lower | roof joint rib 3",
+    "Lower | roof joint rib 4",
+    "Lower | roof joint rib 5"
+  ],
+  "other_meshes_and_transforms_preserved": true
+}

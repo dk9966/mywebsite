@@ -1,0 +1,28 @@
+{
+  "file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "texture_objects": 50,
+  "packed_images": 20,
+  "width_control_checks": [
+    {
+      "width": 1.019999623298645,
+      "triangles": 4860,
+      "sector_max_radius": 2.300099319990034
+    },
+    {
+      "width": 0.9689996421337127,
+      "triangles": 4716,
+      "sector_max_radius": 2.185094309719398
+    },
+    {
+      "width": 1.0709996044635772,
+      "triangles": 4764,
+      "sector_max_radius": 2.415104277785417
+    },
+    {
+      "width": 1.019999623298645,
+      "triangles": 4860,
+      "sector_max_radius": 2.300099319990034
+    }
+  ],
+  "saved_file_left_unchanged": true
+}

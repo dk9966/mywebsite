@@ -1,0 +1,40 @@
+{
+  "reviewed_image": "preview-06-overview.png",
+  "final_geometry_matches_reviewed_preview": false,
+  "review_method": "Two independent critics initially started with fresh context, then reviewed successive image iterations.",
+  "latest_user_constraints": [
+    "No vehicles",
+    "No water",
+    "Remove lower stairs",
+    "Extend the far-right rock wall toward the camera",
+    "Terminate lower-platform railing against the wall"
+  ],
+  "reviews": [
+    {
+      "critic": "right_bay_layout_critic",
+      "grade_out_of_10": 9,
+      "must_fix": [],
+      "assessment": "Platform positions, differing orientations, bridge connection and shared rock enclosure closely match the reference. Smaller turntable preserves floor margin. Extended right wall receives railing."
+    },
+    {
+      "critic": "right_bay_visual_critic",
+      "grade_out_of_10": 8,
+      "must_fix": [],
+      "assessment": "Stairs removed; railing terminates against forward wall; upper booth connects continuously to hangar balcony. Both openings remain readable and central platform preserved.",
+      "remaining_style_note": "The broad separator rock remains more slab-like than the image reference, while retaining the approved pillar style."
+    }
+  ],
+  "final_changes_after_review": [
+    "Two short railing end pieces were fitted to measured ray intersections with the rock wall; all other reviewed geometry is unchanged."
+  ],
+  "support_revision": {
+    "reviewed_images": [
+      "preview-supports-overview.png",
+      "preview-supports-detail.png"
+    ],
+    "critic": "right_bay_visual_critic",
+    "grade_out_of_10": 8.5,
+    "must_fix": [],
+    "assessment": "Rock clearly meets all six brackets; triangular I-section supports, bearing plates and bolts read as an integrated system. Dedicated lower camera added to reveal foreshortened connections."
+  }
+}

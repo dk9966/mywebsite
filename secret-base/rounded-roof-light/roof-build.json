@@ -1,0 +1,12 @@
+{
+  "roof_sections": 4,
+  "light_radius_default": 1.46,
+  "radius_range": [
+    0.85,
+    2.1
+  ],
+  "preserved_height": 1.4900000095367432,
+  "radius_socket": "Socket_9",
+  "rounded_inner_edges": true,
+  "horizontal_tangent_at_light": true
+}

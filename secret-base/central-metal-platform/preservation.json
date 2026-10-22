@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "preserved_rock_and_console_meshes": 8,
+  "changed": [],
+  "unexpected_objects": [],
+  "scenes": [
+    "Central pillar | machined metal platform"
+  ],
+  "sha256": "3d6cbef223cd79660edfba3c3f11951b475699c283b057a3fd6afe91b615830c"
+}

@@ -1,0 +1,23 @@
+{
+  "before_triangles": 30346,
+  "after_triangles": 29762,
+  "passes": [
+    {
+      "region": "upper shoulder",
+      "selected_faces": 263,
+      "removed_faces": 206
+    },
+    {
+      "region": "lower roof seam",
+      "selected_faces": 236,
+      "removed_faces": 200
+    },
+    {
+      "region": "lower platform surrounds",
+      "selected_faces": 276,
+      "removed_faces": 178
+    }
+  ],
+  "modifiers": 0,
+  "shape_keys": false
+}

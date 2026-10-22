@@ -1,0 +1,27 @@
+{
+  "before": {
+    "verts": 29710,
+    "faces": 49654,
+    "components": [
+      29710
+    ],
+    "boundary_edges": 136,
+    "nonmanifold_edges": 140,
+    "wire_edges": 0,
+    "volume": 11915.239145054862
+  },
+  "after": {
+    "verts": 104971,
+    "faces": 154473,
+    "components": [
+      104971
+    ],
+    "boundary_edges": 141,
+    "nonmanifold_edges": 102848,
+    "wire_edges": 0,
+    "volume": 11963.92424316962
+  },
+  "far_surface_max_deviation": 0.0,
+  "bearing_top_max_deviation": 3.644758462905884,
+  "solver": "EXACT"
+}

@@ -1,0 +1,100 @@
+{
+  "before": {
+    "vertices": 6624,
+    "faces": 12580,
+    "boundary_edges": 100,
+    "nonmanifold_edges": 1
+  },
+  "after": {
+    "vertices": 6640,
+    "faces": 12585,
+    "boundary_edges": 129,
+    "nonmanifold_edges": 1,
+    "opening_boundary_loop_vertices": [
+      29
+    ],
+    "opening_bounds_local": [
+      [
+        -2.502610683441162,
+        4.047120094299316
+      ],
+      [
+        14.199999809265137,
+        14.199999809265137
+      ],
+      [
+        9.569758415222168,
+        13.358536720275879
+      ]
+    ]
+  },
+  "protected_objects_unchanged": 3207,
+  "original_mesh_preserved": "Cave | close continuous platform backs.004",
+  "saved_scene": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "unmodified_cave_faces_preserved": 12539,
+  "open_ray_checks": [
+    {
+      "x": -1,
+      "z": 10.5,
+      "open": true
+    },
+    {
+      "x": -1,
+      "z": 11.5,
+      "open": true
+    },
+    {
+      "x": -1,
+      "z": 12.5,
+      "open": true
+    },
+    {
+      "x": 0,
+      "z": 10.5,
+      "open": true
+    },
+    {
+      "x": 0,
+      "z": 11.5,
+      "open": true
+    },
+    {
+      "x": 0,
+      "z": 12.5,
+      "open": true
+    },
+    {
+      "x": 1,
+      "z": 10.5,
+      "open": true
+    },
+    {
+      "x": 1,
+      "z": 11.5,
+      "open": true
+    },
+    {
+      "x": 1,
+      "z": 12.5,
+      "open": true
+    },
+    {
+      "x": 2,
+      "z": 10.5,
+      "open": true
+    },
+    {
+      "x": 2,
+      "z": 11.5,
+      "open": true
+    },
+    {
+      "x": 2,
+      "z": 12.5,
+      "open": true
+    }
+  ],
+  "connected_mesh_components": [
+    6640
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "fitted_source_vertices": {
+    "floor": 782,
+    "lower_wall": 8556,
+    "roof": 928,
+    "upper_wall": 740
+  },
+  "triangles_after": 31286,
+  "backing_gap_m": 0.008,
+  "target_sources": 36,
+  "original_gap_max_m": {
+    "floor": 0.4199714660644531,
+    "lower_wall": 1.2475531101226807,
+    "roof": 0.37913545966148376,
+    "upper_wall": 1.248267650604248
+  }
+}

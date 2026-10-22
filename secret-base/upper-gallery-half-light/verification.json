@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "evaluated_meshes_checked": 62,
+  "topology_issues": [],
+  "invalid_drivers": [],
+  "mirrored_parts": 19,
+  "maximum_mirror_error_m": 8.776022534179499e-05,
+  "retained_wall_objects_unchanged": 105,
+  "slider_checks": [
+    {
+      "factor": 1,
+      "lamp_dimensions_m": [
+        1.8500005006790161,
+        1.125
+      ],
+      "wall_and_roof_outer_edge_fixed": true
+    },
+    {
+      "factor": 1.15,
+      "lamp_dimensions_m": [
+        2.127500534057617,
+        1.2937500476837158
+      ],
+      "wall_and_roof_outer_edge_fixed": true
+    }
+  ]
+}

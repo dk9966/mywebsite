@@ -1,0 +1,182 @@
+{
+  "v_frames": [
+    {
+      "side": "front chamfer",
+      "anchor": [
+        5.562955379486084,
+        -5.458524227142334,
+        5.097988605499268
+      ],
+      "top_connections": [
+        [
+          4.728514671325684,
+          -5.3158159255981445,
+          6.489490985870361
+        ],
+        [
+          5.228514671325684,
+          -5.8158159255981445,
+          6.489490985870361
+        ],
+        [
+          5.728514671325684,
+          -6.3158159255981445,
+          6.489490985870361
+        ]
+      ],
+      "inward_lean_degrees": 19.3671474085014,
+      "span": 1.4142135623730951,
+      "vertical_drop": 1.3915023803710938,
+      "visible_fraction": 1.0
+    },
+    {
+      "side": "front long side",
+      "anchor": [
+        7.727278232574463,
+        -5.9194769859313965,
+        4.814488887786865
+      ],
+      "top_connections": [
+        [
+          6.190051555633545,
+          -6.448138236999512,
+          6.489490985870361
+        ],
+        [
+          7.738795280456543,
+          -6.448138236999512,
+          6.489490985870361
+        ],
+        [
+          9.287538528442383,
+          -6.448138236999512,
+          6.489490985870361
+        ]
+      ],
+      "inward_lean_degrees": 17.51664773678707,
+      "span": 3.097487481117368,
+      "vertical_drop": 1.675002098083496,
+      "visible_fraction": 1.0
+    },
+    {
+      "side": "rear chamfer",
+      "anchor": [
+        5.603235244750977,
+        -0.9322289228439331,
+        4.821343898773193
+      ],
+      "top_connections": [
+        [
+          5.728515148162842,
+          -0.07912135124206543,
+          6.489490985870361
+        ],
+        [
+          5.228515148162842,
+          -0.5791214108467102,
+          6.489490985870361
+        ],
+        [
+          4.728515148162842,
+          -1.079121470451355,
+          6.489490985870361
+        ]
+      ],
+      "inward_lean_degrees": 17.145886878582633,
+      "span": 1.4142139130348312,
+      "vertical_drop": 1.668147087097168,
+      "visible_fraction": 0.2222222222222222
+    },
+    {
+      "side": "left long side",
+      "anchor": [
+        5.224687576293945,
+        -3.188812017440796,
+        4.800692081451416
+      ],
+      "top_connections": [
+        [
+          4.596192359924316,
+          -1.4588795900344849,
+          6.489490985870361
+        ],
+        [
+          4.596192359924316,
+          -3.1974687576293945,
+          6.489490985870361
+        ],
+        [
+          4.596192359924316,
+          -4.936058044433594,
+          6.489490985870361
+        ]
+      ],
+      "inward_lean_degrees": 20.413009670963703,
+      "span": 3.4771783346763474,
+      "vertical_drop": 1.6887989044189453,
+      "visible_fraction": 1.0
+    }
+  ],
+  "created_objects": [
+    "Lower right | V 01 diagonal 1",
+    "Lower right | V 01 diagonal 2",
+    "Lower right | V 01 center member",
+    "Lower right | V 01 underside header",
+    "Lower right | V 01 rock anchor",
+    "Lower right | V 01 lower gusset",
+    "Lower right | V 01 upper shoe 1",
+    "Lower right | V 01 upper shoe 2",
+    "Lower right | V 02 diagonal 1",
+    "Lower right | V 02 diagonal 2",
+    "Lower right | V 02 center member",
+    "Lower right | V 02 underside header",
+    "Lower right | V 02 rock anchor",
+    "Lower right | V 02 lower gusset",
+    "Lower right | V 02 upper shoe 1",
+    "Lower right | V 02 upper shoe 2",
+    "Lower right | V 03 diagonal 1",
+    "Lower right | V 03 diagonal 2",
+    "Lower right | V 03 center member",
+    "Lower right | V 03 underside header",
+    "Lower right | V 03 rock anchor",
+    "Lower right | V 03 lower gusset",
+    "Lower right | V 03 upper shoe 1",
+    "Lower right | V 03 upper shoe 2",
+    "Lower right | V 04 diagonal 1",
+    "Lower right | V 04 diagonal 2",
+    "Lower right | V 04 center member",
+    "Lower right | V 04 underside header",
+    "Lower right | V 04 rock anchor",
+    "Lower right | V 04 lower gusset",
+    "Lower right | V 04 upper shoe 1",
+    "Lower right | V 04 upper shoe 2"
+  ],
+  "replaced_objects": [
+    "Lower right | 01-01 rock anchor plate",
+    "Lower right | 01-01 upright brace",
+    "Lower right | 01-01 underside bearer",
+    "Lower right | 01-01 rim connection plate",
+    "Lower right | 02-01 rock anchor plate",
+    "Lower right | 02-01 upright brace",
+    "Lower right | 02-01 underside bearer",
+    "Lower right | 02-01 rim connection plate",
+    "Lower right | 02-02 rock anchor plate",
+    "Lower right | 02-02 upright brace",
+    "Lower right | 02-02 underside bearer",
+    "Lower right | 02-02 rim connection plate",
+    "Lower right | 07-01 rock anchor plate",
+    "Lower right | 07-01 upright brace",
+    "Lower right | 07-01 underside bearer",
+    "Lower right | 07-01 rim connection plate",
+    "Lower right | 08-01 rock anchor plate",
+    "Lower right | 08-01 upright brace",
+    "Lower right | 08-01 underside bearer",
+    "Lower right | 08-01 rim connection plate",
+    "Lower right | 08-02 rock anchor plate",
+    "Lower right | 08-02 upright brace",
+    "Lower right | 08-02 underside bearer",
+    "Lower right | 08-02 rim connection plate"
+  ],
+  "other_geometry_unchanged": true,
+  "terrain_unchanged": true
+}

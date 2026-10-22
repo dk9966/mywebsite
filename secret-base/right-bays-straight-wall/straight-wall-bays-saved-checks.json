@@ -1,0 +1,253 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/connected-cavern/connected-cavern-open-chamber.blend",
+  "new_architecture_built_from_scratch": true,
+  "lower_polygon": [
+    [
+      -5.1,
+      -1.1
+    ],
+    [
+      -2.4355339059327377,
+      -1.1
+    ],
+    [
+      -1.0355339059327378,
+      -2.5
+    ],
+    [
+      1.0355339059327378,
+      -2.5
+    ],
+    [
+      2.5,
+      -1.0355339059327378
+    ],
+    [
+      2.5,
+      1.0355339059327378
+    ],
+    [
+      1.0355339059327378,
+      2.5
+    ],
+    [
+      -1.0355339059327378,
+      2.5
+    ],
+    [
+      -2.4355339059327377,
+      1.1
+    ],
+    [
+      -5.1,
+      1.1
+    ]
+  ],
+  "upper_polygon": [
+    [
+      -4.15,
+      0.05
+    ],
+    [
+      -3.65,
+      -0.45
+    ],
+    [
+      1.7,
+      -0.45
+    ],
+    [
+      2.2,
+      0.05
+    ],
+    [
+      2.2,
+      3.0
+    ],
+    [
+      -4.15,
+      3.0
+    ]
+  ],
+  "common_yaw_degrees": -72.0,
+  "camera_angle_from_facade_normal": 49.26792283413067,
+  "middle_protected_count": 237,
+  "middle_changes": [],
+  "wall_components": [
+    54048
+  ],
+  "wall_invalid_edges": 0,
+  "support_anchor_distances": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.9802322387695312e-08,
+    0.0,
+    2.384185791015625e-07
+  ],
+  "bridge_start": [
+    2.154369831085205,
+    -1.5085060596466064,
+    6.87117862701416
+  ],
+  "bridge_end": [
+    4.373457431793213,
+    -2.776320219039917,
+    6.842178821563721
+  ],
+  "center_rail_gate_edits": [
+    "Metal | continuous steel guardrail",
+    "Metal | guardrail polished top edge",
+    "Metal | continuous steel guardrail.001",
+    "Metal | guardrail polished top edge.001",
+    "Metal | perimeter post.028",
+    "Metal | post bolted foot.028",
+    "Metal | outer rim reinforcement strap.014",
+    "Metal | rim strap bolt.028",
+    "Metal | rim strap bolt.029",
+    "Metal | warm lamp armor.007",
+    "Metal | lamp cap.007",
+    "Metal | inset amber diffuser.028",
+    "Metal | inset amber diffuser.029",
+    "Metal | inset amber diffuser.030",
+    "Metal | inset amber diffuser.031",
+    "Metal | perimeter post.029",
+    "Metal | post bolted foot.029"
+  ],
+  "lower_marking_center": [
+    6.6179508298273815,
+    -2.047040229833687
+  ],
+  "lower_overhead_light_center": [
+    6.6179508298273815,
+    -2.047040229833687
+  ],
+  "origin": [
+    7.66411299775205,
+    -1.7071215360212448
+  ],
+  "previous_origin": [
+    7.549131688157631,
+    -0.6131474511161441
+  ],
+  "forward_slide_distance": 1.1,
+  "forward_slide_vector": [
+    0.11498130959441877,
+    -1.0939740849051007
+  ],
+  "wall_rotation_toward_camera_degrees": 12.000000000000004,
+  "wall_plan": [
+    [
+      10.559423278450387,
+      -9.808953327565826
+    ],
+    [
+      9.060690855731892,
+      -5.196329223534334
+    ],
+    [
+      5.908717513107428,
+      4.504447242676232
+    ],
+    [
+      3.8,
+      10.6
+    ],
+    [
+      0.0,
+      10.4
+    ],
+    [
+      -3.7,
+      10.15
+    ],
+    [
+      -6.5,
+      7.6
+    ],
+    [
+      -8.2,
+      4.0
+    ],
+    [
+      -8.5,
+      0.7
+    ],
+    [
+      -9.0,
+      -3.6
+    ],
+    [
+      -10.4,
+      -7.6
+    ],
+    [
+      -11.0,
+      -13.0
+    ],
+    [
+      -8.5,
+      -19.0
+    ],
+    [
+      0.0,
+      -23.0
+    ],
+    [
+      8.5,
+      -20.0
+    ],
+    [
+      10.5,
+      -16.2
+    ],
+    [
+      11.36286746382525,
+      -12.281700269933225
+    ]
+  ],
+  "lower_railing_gate_local": [
+    -0.8582282050564028,
+    0.5500771930785441
+  ],
+  "bridge_attachment_bearing": 125.0,
+  "octagon_landing_local": [
+    0,
+    -2.36
+  ],
+  "megablock_width_range": [
+    3.4,
+    6.8
+  ],
+  "megablock_height_range": [
+    2.35,
+    3.35
+  ],
+  "lower_offset_y": -1.1,
+  "lower_floor_z": 6.836178627,
+  "upper_floor_z": 10.221178627,
+  "no_water": true,
+  "no_vehicles": true,
+  "passed": true,
+  "saved_middle_changes": [],
+  "standing_space_rock_intrusions": [],
+  "key_floor_occlusions": [],
+  "bridge_railing_obstacles": [],
+  "actual_bridge_attachment_bearing": 125.00000113907045,
+  "bearing_error": 1.1390704486302639e-06,
+  "octagon_landing_error": 0.0,
+  "saved_wall_components": [
+    54048
+  ],
+  "saved_wall_invalid_edges": 0,
+  "right_continuation_turns_degrees": [
+    0.0,
+    8.537736462515939e-07
+  ],
+  "sha256": "224d8f435f1ca0b2c3c19d224de08eec02f849da43c8ff34e8ac9eeb84000957",
+  "saved_file_passed": true
+}

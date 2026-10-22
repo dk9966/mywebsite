@@ -1,0 +1,53 @@
+{
+  "restored_m": 0.30000001192092896,
+  "checks": [
+    {
+      "slider_m": 0.1,
+      "measured_corner_cut_m": 0.09999918937683105,
+      "cut_error_mm": 0.0008106231689508636,
+      "floor_outside_diagonal_m": -0.16999926567077672,
+      "rails_outside_diagonal_m": -0.09817066192626989,
+      "support_samples": 441,
+      "maximum_bearing_gap_mm": 12.479591369629617,
+      "minimum_bearing_gap_mm": -0.15182495117116446,
+      "headroom_intrusions": 0,
+      "invalid_drivers": []
+    },
+    {
+      "slider_m": 0.3,
+      "measured_corner_cut_m": 0.2999992370605469,
+      "cut_error_mm": 0.0007629394531138978,
+      "floor_outside_diagonal_m": -0.16999931335449237,
+      "rails_outside_diagonal_m": -0.09817070960998553,
+      "support_samples": 441,
+      "maximum_bearing_gap_mm": 12.708473205567117,
+      "minimum_bearing_gap_mm": -0.1375198364250707,
+      "headroom_intrusions": 0,
+      "invalid_drivers": []
+    },
+    {
+      "slider_m": 0.8,
+      "measured_corner_cut_m": 0.7999992370605469,
+      "cut_error_mm": 0.0007629394531694089,
+      "floor_outside_diagonal_m": -0.16999931335449237,
+      "rails_outside_diagonal_m": -0.09817070960998553,
+      "support_samples": 429,
+      "maximum_bearing_gap_mm": 12.717056274414773,
+      "minimum_bearing_gap_mm": 0.1791000366218043,
+      "headroom_intrusions": 0,
+      "invalid_drivers": []
+    },
+    {
+      "slider_m": 1.5,
+      "measured_corner_cut_m": 1.4999991655349731,
+      "cut_error_mm": 0.0008344650268554688,
+      "floor_outside_diagonal_m": -0.16999971866607666,
+      "rails_outside_diagonal_m": -0.09817111492156982,
+      "support_samples": 381,
+      "maximum_bearing_gap_mm": 12.523460388184304,
+      "minimum_bearing_gap_mm": 0.6196975708014918,
+      "headroom_intrusions": 0,
+      "invalid_drivers": []
+    }
+  ]
+}

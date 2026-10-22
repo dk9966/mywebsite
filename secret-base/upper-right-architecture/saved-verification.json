@@ -1,0 +1,12 @@
+{
+  "saved_file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "controls": {
+    "Upper light width (m)": 2.25,
+    "Upper light depth (m)": 2.25,
+    "Upper light height (m)": 2.25,
+    "Upper light corner bevel (m)": 0.6000000238418579
+  },
+  "invalid_drivers": [],
+  "native_controls_persist_after_reopen": true,
+  "old_all_edge_railings_archived": true
+}

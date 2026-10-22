@@ -1,0 +1,5917 @@
+{
+  "active_file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "material_assignments": [
+    {
+      "object": "Lower right | Corner 01 center to corner",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 corner header 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 corner header 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 joint gusset 0",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 joint gusset 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 rock anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 three way foot hub",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 upper shoe 0",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 upper shoe 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 upper shoe 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 wing 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 01 wing 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 center to corner",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 corner header 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 corner header 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 joint gusset 0",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 joint gusset 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 rock anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 three way foot hub",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 upper shoe 0",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 upper shoe 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 upper shoe 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 wing 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 02 wing 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 center to corner",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 corner header 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 corner header 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 joint gusset 0",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 joint gusset 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 rock anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 three way foot hub",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 upper shoe 0",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 upper shoe 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 upper shoe 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 wing 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 07 wing 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 center to corner",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 corner header 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 corner header 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 joint gusset 0",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 joint gusset 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 rock anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 three way foot hub",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 upper shoe 0",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 upper shoe 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 upper shoe 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 wing 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower right | Corner 08 wing 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | V foundation rear bearing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | V foundation rear bearing.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | V foundation rock tie",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | V foundation rock tie.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | V truss anchor shoe",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | V truss anchor shoe.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | angled corner bay flat upper projection",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | angled corner bay gray light ledge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | gray lamp ledges",
+      "new": "Right steel | gray lamp ledges"
+    },
+    {
+      "object": "Lower | angled corner bay ledge lamp housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | center service plate seam",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | circular cover seam 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 08",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 09",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 10",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 11",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular cover seam 12",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light bottom lip",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light machined rim",
+      "new": "Right steel | circular light machined rim"
+    },
+    {
+      "object": "Lower | circular light inner reveal",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | circular light pocket 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 08",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 09",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 10",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 11",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light pocket 12",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light recessed underside",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light recessed slots",
+      "new": "Right steel | circular light recessed slots"
+    },
+    {
+      "object": "Lower | circular light stepped rim",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | circular light upper cover",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | crown sloped graphite roof",
+      "new": "Right steel | crown sloped graphite roof"
+    },
+    {
+      "object": "Lower | circular light upper lip",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light machined rim",
+      "new": "Right steel | circular light machined rim"
+    },
+    {
+      "object": "Lower | circular recessed service track",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | cliff anchored diagonal brace",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | cliff anchored diagonal brace.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | cliff anchored diagonal brace.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | edge highlight",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.008",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.009",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | edge highlight.010",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | embedded foundation shoe",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | embedded foundation shoe.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | embedded foundation shoe.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | exposed front V truss",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | exposed front V truss.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | exposed front V truss.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | exposed front V truss.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | far right beveled bay",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | far right beveled bay flat upper projection",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | far right beveled bay gray light ledge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | gray lamp ledges",
+      "new": "Right steel | gray lamp ledges"
+    },
+    {
+      "object": "Lower | far right beveled bay ledge lamp housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | far right beveled bay panel border",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | far right beveled bay panel border.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | far right beveled bay recessed panel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | far right beveled bay recessed panel.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | far right beveled bay recessed panel.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | far right beveled bay recessed panel.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | far right beveled bay recessed panel.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | far right beveled bay recessed panel.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | far right beveled bay recessed panel.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | far right beveled bay recessed panel.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | far right beveled bay roof cassette",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | far right beveled bay roof edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | far right beveled bay roof fascia",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | far right beveled bay strip light housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | fitted bay backing 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted bay backing 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted bay backing 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted bay backing 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted broad perimeter apron",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | radial satin turntable",
+      "new": "Right steel | radial satin turntable"
+    },
+    {
+      "object": "Lower | fitted center disc reveal",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted center disc rim",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted deep front fascia",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | fitted deep front fascia.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | fitted deep front fascia.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | fitted foot inset",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted foot inset.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted foot inset.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted foot inset.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted foot inset.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.008",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.009",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.010",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted horizontal panel reveal.011",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted inner metal rim",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted outer circle glint",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Lower | fitted outer circle groove",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted outer deck seam",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted outer deck seam.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted outer deck seam.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted outer deck seam.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted outer deck seam.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted outer deck seam.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted outer deck seam.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted outer recessed channel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted perimeter groove",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted pier edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted pier edge.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted pier edge.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted pier edge.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted pier edge.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.008",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.009",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.010",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted radial turntable seam.011",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted recessed bay 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed bay 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed bay 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed bay 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.008",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.009",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.010",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.011",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.012",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.013",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.014",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.015",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.016",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.017",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.018",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.019",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.020",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.021",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.022",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.023",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.024",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.025",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.026",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.027",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.028",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.029",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.030",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted recessed metal panel.031",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | fitted roof cassette",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | matte roof cassette",
+      "new": "Right steel | matte roof cassette"
+    },
+    {
+      "object": "Lower | fitted roof cassette.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | matte roof cassette",
+      "new": "Right steel | matte roof cassette"
+    },
+    {
+      "object": "Lower | fitted roof cassette.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | matte roof cassette",
+      "new": "Right steel | matte roof cassette"
+    },
+    {
+      "object": "Lower | fitted roof cassette.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | matte roof cassette",
+      "new": "Right steel | matte roof cassette"
+    },
+    {
+      "object": "Lower | fitted roof edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted roof edge.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted roof edge.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted roof edge.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | fitted roof fascia",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | fitted roof fascia.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | fitted roof fascia.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | fitted roof fascia.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | fitted splayed pier foot",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted splayed pier foot.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted splayed pier foot.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted splayed pier foot.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted splayed pier foot.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted structural pier",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted structural pier.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted structural pier.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted structural pier.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted structural pier.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | fitted turntable surface",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | radial satin turntable",
+      "new": "Right steel | radial satin turntable"
+    },
+    {
+      "object": "Lower | fitted vertical panel reveal",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted vertical panel reveal.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted vertical panel reveal.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | fitted vertical panel reveal.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | foundation cross tie",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | front girder gusset",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | front girder gusset.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | front girder gusset.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | front load transfer upright",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | front load transfer upright.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | front load transfer upright.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | front load transfer upright.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | inner circular machined lip",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.008",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.009",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | load bearing perimeter fascia.010",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | octagon angled corner bay",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon foot inset",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | octagon foot inset.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | octagon foot inset.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | octagon foot inset.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | octagon panel border",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon panel border.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon panel border.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon panel border.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon panel border.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon panel border.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon pier edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | octagon pier edge.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | octagon pier edge.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | octagon pier edge.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | octagon rear bay 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon rear bay 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon recessed panel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.008",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.009",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.010",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.011",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.012",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.013",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.014",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.015",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.016",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.017",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.018",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.019",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.020",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.021",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.022",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon recessed panel.023",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | octagon roof cassette",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | octagon roof cassette.001",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | octagon roof cassette.002",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | octagon roof edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | octagon roof edge.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | octagon roof edge.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | octagon roof fascia",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | octagon roof fascia.001",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | octagon roof fascia.002",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | octagon splayed pier foot",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon splayed pier foot.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon splayed pier foot.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon splayed pier foot.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon strip light housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | octagon strip light housing.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | octagon strip light housing.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | octagon upright pier",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon upright pier.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon upright pier.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | octagon upright pier.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite bay 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite bay 1 flat upper projection",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | opposite bay 1 gray light ledge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | gray lamp ledges",
+      "new": "Right steel | gray lamp ledges"
+    },
+    {
+      "object": "Lower | opposite bay 1 ledge lamp housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | opposite bay 1 panel border",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite bay 1 panel border.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite bay 1 recessed panel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 1 recessed panel.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 1 recessed panel.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 1 recessed panel.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 1 recessed panel.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 1 recessed panel.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 1 recessed panel.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 1 recessed panel.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 1 roof cassette",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | opposite bay 1 roof edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | opposite bay 1 roof fascia",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | opposite bay 1 strip light housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | opposite bay 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite bay 2 flat upper projection",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | opposite bay 2 gray light ledge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | gray lamp ledges",
+      "new": "Right steel | gray lamp ledges"
+    },
+    {
+      "object": "Lower | opposite bay 2 ledge lamp housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | opposite bay 2 panel border",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite bay 2 panel border.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite bay 2 recessed panel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 2 recessed panel.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 2 recessed panel.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 2 recessed panel.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 2 recessed panel.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 2 recessed panel.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 2 recessed panel.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 2 recessed panel.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Lower | opposite bay 2 roof cassette",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | opposite bay 2 roof edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | opposite bay 2 roof fascia",
+      "slot": 0,
+      "old_link": "OBJECT",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | opposite bay 2 strip light housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | opposite joint 1 foot inset",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | opposite joint 1 pier edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | opposite joint 1 splayed pier foot",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite joint 1 upright pier",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite joint 2 foot inset",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | opposite joint 2 pier edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | opposite joint 2 splayed pier foot",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite joint 2 upright pier",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite joint 3 foot inset",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | opposite joint 3 pier edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | opposite joint 3 splayed pier foot",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | opposite joint 3 upright pier",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | outer circular machined lip",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | outer walkway alloy",
+      "new": "Right steel | outer walkway alloy"
+    },
+    {
+      "object": "Lower | overhead hood armor edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | overhead hood armor edge.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | overhead hood armor edge.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | overhead hood armor edge.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | overhead hood armor edge.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | overhead hood armor edge.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | overhead hood armor edge.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | overhead hood armor edge.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | plain octagon",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Lower | radial plate joint",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.008",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.009",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.010",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.011",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.012",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.013",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.014",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial plate joint.015",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | radial underfloor girder",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | radial underfloor girder.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | radial underfloor girder.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | rear bay 1 flat upper projection",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | rear bay 1 gray light ledge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | gray lamp ledges",
+      "new": "Right steel | gray lamp ledges"
+    },
+    {
+      "object": "Lower | rear bay 1 ledge lamp housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | rear bay 2 flat upper projection",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | flat dark gray wall projections",
+      "new": "Right steel | flat dark gray wall projections"
+    },
+    {
+      "object": "Lower | rear bay 2 gray light ledge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | gray lamp ledges",
+      "new": "Right steel | gray lamp ledges"
+    },
+    {
+      "object": "Lower | rear bay 2 ledge lamp housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | rear diagonal brace",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | rear diagonal brace.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | rear diagonal brace.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | recessed panel border",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | recessed panel border.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | recessed panel border.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | recessed panel border.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | recessed panel border.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | recessed panel border.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | recessed panel border.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | recessed panel border.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned architectural trim",
+      "new": "Right steel | aligned architectural trim"
+    },
+    {
+      "object": "Lower | reference octagonal overhead hood",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | matte roof cassette",
+      "new": "Right steel | matte roof cassette"
+    },
+    {
+      "object": "Lower | reference strip light housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | reference strip light housing.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | reference strip light housing.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | reference strip light housing.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | registration band fastener",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.008",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.009",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.010",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.011",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.012",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.013",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.014",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | registration band fastener.015",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | roof joint rib 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | roof joint rib 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | roof joint rib 3",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | roof joint rib 4",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | roof joint rib 5",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | roof panel seam 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | roof panel seam 2",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | roof panel seam 3",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | roof panel seam 4",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | circular light blackened housing",
+      "new": "Right steel | circular light blackened housing"
+    },
+    {
+      "object": "Lower | roof slope 1 - rear wall",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | crown sloped graphite roof",
+      "new": "Right steel | crown sloped graphite roof"
+    },
+    {
+      "object": "Lower | roof slope 2 - rear corner",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | crown sloped graphite roof",
+      "new": "Right steel | crown sloped graphite roof"
+    },
+    {
+      "object": "Lower | roof slope 3 - right wall",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | crown sloped graphite roof",
+      "new": "Right steel | crown sloped graphite roof"
+    },
+    {
+      "object": "Lower | roof slope 4 - front return",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | crown sloped graphite roof",
+      "new": "Right steel | crown sloped graphite roof"
+    },
+    {
+      "object": "Lower | structural floor plate seam",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | structural floor plate seam.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | structural floor plate seam.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | structural floor plate seam.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | structural floor plate seam.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | support 01 anchor shoe",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 01 anchor shoe.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 02 anchor shoe",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 02 anchor shoe.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 03 anchor shoe",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 03 anchor shoe.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 04 anchor shoe",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 04 anchor shoe.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 05 anchor shoe",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 05 anchor shoe.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 06 anchor shoe",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 06 anchor shoe.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 07 anchor shoe",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | support 07 anchor shoe.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | symmetric channeled support 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | symmetric channeled support 01",
+      "slot": 1,
+      "old_link": "DATA",
+      "old": "Lower | dark recessed support channels",
+      "new": "Right steel | dark recessed support channels"
+    },
+    {
+      "object": "Lower | symmetric channeled support 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | symmetric channeled support 02",
+      "slot": 1,
+      "old_link": "DATA",
+      "old": "Lower | dark recessed support channels",
+      "new": "Right steel | dark recessed support channels"
+    },
+    {
+      "object": "Lower | symmetric channeled support 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | symmetric channeled support 03",
+      "slot": 1,
+      "old_link": "DATA",
+      "old": "Lower | dark recessed support channels",
+      "new": "Right steel | dark recessed support channels"
+    },
+    {
+      "object": "Lower | symmetric channeled support 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | symmetric channeled support 04",
+      "slot": 1,
+      "old_link": "DATA",
+      "old": "Lower | dark recessed support channels",
+      "new": "Right steel | dark recessed support channels"
+    },
+    {
+      "object": "Lower | symmetric channeled support 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | symmetric channeled support 05",
+      "slot": 1,
+      "old_link": "DATA",
+      "old": "Lower | dark recessed support channels",
+      "new": "Right steel | dark recessed support channels"
+    },
+    {
+      "object": "Lower | symmetric channeled support 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | symmetric channeled support 06",
+      "slot": 1,
+      "old_link": "DATA",
+      "old": "Lower | dark recessed support channels",
+      "new": "Right steel | dark recessed support channels"
+    },
+    {
+      "object": "Lower | symmetric channeled support 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | neutral gray channel supports",
+      "new": "Right steel | neutral gray channel supports"
+    },
+    {
+      "object": "Lower | symmetric channeled support 07",
+      "slot": 1,
+      "old_link": "DATA",
+      "old": "Lower | dark recessed support channels",
+      "new": "Right steel | dark recessed support channels"
+    },
+    {
+      "object": "Lower | symmetric outer deck seam 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | symmetric outer deck seam 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | symmetric outer deck seam 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | symmetric outer deck seam 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | symmetric outer deck seam 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | symmetric outer deck seam 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | symmetric outer deck seam 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | symmetric outer deck seam 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | unlit grate recess",
+      "new": "Right steel | unlit grate recess"
+    },
+    {
+      "object": "Lower | vertical load leg",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | vertical load leg.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Lower | vertical load leg.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | front wall terminal",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 00 bar 0.190",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 00 bar 0.345",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 00 foot 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 00 foot 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 00 foot 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 00 post 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 00 post 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 00 post 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 01 bar 0.190",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 01 bar 0.345",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 01 foot 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 01 post 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 bar 0.190",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 bar 0.345",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 foot 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 02 foot 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 02 foot 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 02 foot 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 02 foot 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 02 foot 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 02 foot 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 02 foot 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 02 foot 08",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 02 post 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 post 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 post 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 post 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 post 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 post 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 post 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 post 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 02 post 08",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 03 bar 0.190",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 03 bar 0.345",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 03 foot 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 03 post 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 bar 0.190",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 bar 0.345",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 foot 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 04 foot 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 04 foot 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 04 foot 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 04 foot 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 04 foot 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 04 foot 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 04 foot 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 04 foot 08",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper exposed rail | span 04 post 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 post 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 post 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 post 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 post 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 post 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 post 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 post 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper exposed rail | span 04 post 08",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper light | broad chamfered housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper light | dark inset center plate",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper light | machined outer lip",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper light | recessed diffuser gasket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper light | upper stiffening rib -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper light | upper stiffening rib 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper light | wall-mounted suspension arm 0",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper light | wall-mounted suspension arm 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | drain dark recess",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | drain dark recess.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | drain edge",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | drain edge.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | drain edge.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | drain edge.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | lower perimeter reveal 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper right | lower perimeter reveal 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper right | lower perimeter reveal 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper right | lower perimeter reveal 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper right | lower perimeter reveal 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper right | lower perimeter reveal 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper right | lower perimeter reveal 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper right | lower perimeter reveal 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper right | machined perimeter cap 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | machined perimeter cap 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | machined perimeter cap 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | machined perimeter cap 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | machined perimeter cap 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | machined perimeter cap 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | machined perimeter cap 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | machined perimeter cap 07",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper right | recessed edge light housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.001",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.002",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.003",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.004",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.005",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.006",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.007",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.008",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.009",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.010",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | recessed edge light housing.011",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 00 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 00 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 00 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 00 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 00 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 00 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 00 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 01 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 01 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 01 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 01 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 01 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 01 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 01 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 02 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 02 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 02 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 02 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 02 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 02 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 02 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 03 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 03 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 03 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 03 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 03 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 03 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 03 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 04 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 04 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 04 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 04 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 04 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 04 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 04 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 05 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 05 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 05 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 05 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 05 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 05 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Upper right | satin service insert",
+      "new": "Right steel | satin service insert"
+    },
+    {
+      "object": "Upper right | satin floor plate 05 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 06 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 06 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 06 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 06 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 06 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 06 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper right | satin floor plate 06 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | satin blue steel",
+      "new": "Right steel | satin blue steel"
+    },
+    {
+      "object": "Upper roof | continuous fitted crown panels",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper roof | finished terminal fascia 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper roof | finished terminal fascia 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper roof | panel joint 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper roof | panel joint 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper roof | panel joint 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper roof | panel joint 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper roof | panel joint 04",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper roof | panel joint 05",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper roof | panel joint 06",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 00 angled crown header",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 00 floor skirting",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 00 panel course 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 00 panel course 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 00 panel course 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 00 panel course 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 01 angled crown header",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 01 floor skirting",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 01 panel course 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 01 panel course 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 01 panel course 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 01 panel course 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 01 recessed ventilation slots",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | bay 02 angled crown header",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 02 floor skirting",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 02 panel course 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 02 panel course 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 02 panel course 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 02 panel course 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 02 recessed ventilation slots",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | bay 03 angled crown header",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 03 floor skirting",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 03 panel course 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 03 panel course 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 03 panel course 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 03 panel course 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 04 angled crown header",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 04 floor skirting",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 04 panel course 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 04 panel course 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 04 panel course 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 04 panel course 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 04 recessed ventilation slots",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | bay 05 angled crown header",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 05 floor skirting",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | bay 05 panel course 00",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 05 panel course 01",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 05 panel course 02",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 05 panel course 03",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Lower | aligned blue graphite panels",
+      "new": "Right steel | aligned blue graphite panels"
+    },
+    {
+      "object": "Upper wall | bay 05 recessed ventilation slots",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | rib 00 bent channel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 00 flange bolt 0.32 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 00 flange bolt 0.32 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 00 flange bolt 1.16 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 00 flange bolt 1.16 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 00 floor anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 00 foot fastener -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 00 foot fastener 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 00 locator gasket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | rib 00 locator housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 00 seated base socket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 01 bent channel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 01 flange bolt 0.32 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 01 flange bolt 0.32 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 01 flange bolt 1.16 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 01 flange bolt 1.16 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 01 floor anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 01 foot fastener -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 01 foot fastener 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 01 locator gasket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | rib 01 locator housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 01 seated base socket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 02 bent channel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 02 flange bolt 0.32 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 02 flange bolt 0.32 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 02 flange bolt 1.16 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 02 flange bolt 1.16 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 02 floor anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 02 foot fastener -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 02 foot fastener 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 02 locator gasket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | rib 02 locator housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 02 seated base socket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 03 bent channel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 03 flange bolt 0.32 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 03 flange bolt 0.32 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 03 flange bolt 1.16 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 03 flange bolt 1.16 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 03 floor anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 03 foot fastener -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 03 foot fastener 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 03 locator gasket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | rib 03 locator housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 03 seated base socket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 04 bent channel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 04 flange bolt 0.32 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 04 flange bolt 0.32 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 04 flange bolt 1.16 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 04 flange bolt 1.16 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 04 floor anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 04 foot fastener -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 04 foot fastener 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 04 locator gasket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | rib 04 locator housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 04 seated base socket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 05 bent channel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 05 flange bolt 0.32 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 05 flange bolt 0.32 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 05 flange bolt 1.16 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 05 flange bolt 1.16 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 05 floor anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 05 foot fastener -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 05 foot fastener 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 05 locator gasket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | rib 05 locator housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 05 seated base socket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 06 bent channel",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper wall | rib 06 flange bolt 0.32 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 06 flange bolt 0.32 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 06 flange bolt 1.16 -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 06 flange bolt 1.16 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 06 floor anchor",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | machined edge highlights",
+      "new": "Right steel | machined edge highlights"
+    },
+    {
+      "object": "Upper wall | rib 06 foot fastener -1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 06 foot fastener 1",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 06 locator gasket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Left bay | deep channel inset",
+      "new": "Right steel | deep channel inset"
+    },
+    {
+      "object": "Upper wall | rib 06 locator housing",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    },
+    {
+      "object": "Upper wall | rib 06 seated base socket",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Bridge | blue gunmetal panel frames",
+      "new": "Right steel | blue gunmetal panel frames"
+    },
+    {
+      "object": "Upper | beveled square gallery",
+      "slot": 0,
+      "old_link": "DATA",
+      "old": "Metal | dark structural steel",
+      "new": "Right steel | dark structural steel"
+    }
+  ],
+  "materials_created": {
+    "Metal | dark structural steel": "Right steel | dark structural steel",
+    "Metal | outer walkway alloy": "Right steel | outer walkway alloy",
+    "Lower | flat dark gray wall projections": "Right steel | flat dark gray wall projections",
+    "Lower | gray lamp ledges": "Right steel | gray lamp ledges",
+    "Metal | unlit grate recess": "Right steel | unlit grate recess",
+    "Lower | circular light recessed slots": "Right steel | circular light recessed slots",
+    "Lower | circular light machined rim": "Right steel | circular light machined rim",
+    "Lower | circular light blackened housing": "Right steel | circular light blackened housing",
+    "Lower | crown sloped graphite roof": "Right steel | crown sloped graphite roof",
+    "Lower | aligned architectural trim": "Right steel | aligned architectural trim",
+    "Lower | aligned blue graphite panels": "Right steel | aligned blue graphite panels",
+    "Lower | radial satin turntable": "Right steel | radial satin turntable",
+    "Metal | machined edge highlights": "Right steel | machined edge highlights",
+    "Lower | matte roof cassette": "Right steel | matte roof cassette",
+    "Metal | satin blue steel": "Right steel | satin blue steel",
+    "Lower | neutral gray channel supports": "Right steel | neutral gray channel supports",
+    "Lower | dark recessed support channels": "Right steel | dark recessed support channels",
+    "Bridge | blue gunmetal panel frames": "Right steel | blue gunmetal panel frames",
+    "Left bay | deep channel inset": "Right steel | deep channel inset",
+    "Upper right | satin service insert": "Right steel | satin service insert"
+  },
+  "zone_brightness_before": {
+    "Upper right platform": 1.0,
+    "Lower right platform": 1.0
+  },
+  "light_settings_before": [
+    {
+      "name": "RL | Upper right | soft overhead spot",
+      "base_power": 1200.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ],
+        [
+          "spot_blend",
+          0,
+          "b"
+        ],
+        [
+          "spot_size",
+          0,
+          "min(3.10,2.2689280276*w)"
+        ],
+        [
+          "shadow_soft_size",
+          0,
+          "0.300000*r"
+        ]
+      ],
+      "volume_factor": 1.0
+    },
+    {
+      "name": "RL | Upper right | soft fill -1",
+      "base_power": 140.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z*f"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ]
+      ],
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Upper right | soft fill +1",
+      "base_power": 140.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z*f"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ]
+      ],
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Lower right | soft overhead spot",
+      "base_power": 1050.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ],
+        [
+          "spot_blend",
+          0,
+          "b"
+        ],
+        [
+          "spot_size",
+          0,
+          "min(3.10,2.2863813201*w)"
+        ],
+        [
+          "shadow_soft_size",
+          0,
+          "0.300000*r"
+        ]
+      ],
+      "volume_factor": 1.0
+    },
+    {
+      "name": "RL | Lower right | soft fill -1",
+      "base_power": 90.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z*f"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ]
+      ],
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Lower right | soft fill +1",
+      "base_power": 90.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z*f"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ]
+      ],
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Upper right | wall bounce -1",
+      "base_power": 75.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z*f"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ]
+      ],
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Lower right | wall bounce -1",
+      "base_power": 45.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z*f"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ]
+      ],
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Upper right | wall bounce +1",
+      "base_power": 75.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z*f"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ]
+      ],
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Lower right | wall bounce +1",
+      "base_power": 45.0,
+      "drivers": [
+        [
+          "energy",
+          0,
+          "p*m*z*f"
+        ],
+        [
+          "color",
+          0,
+          "c"
+        ],
+        [
+          "color",
+          1,
+          "c"
+        ],
+        [
+          "color",
+          2,
+          "c"
+        ]
+      ],
+      "volume_factor": 0.0
+    }
+  ],
+  "mist_drivers_before": {
+    "RL mist | Upper right": [
+      [
+        "nodes[\"Math.003\"].inputs[1].default_value",
+        "(0.02*b*h/0.0045)*0.6"
+      ]
+    ],
+    "RL mist | Lower right": [
+      [
+        "nodes[\"Math.003\"].inputs[1].default_value",
+        "(0.024*b*h/0.0045)*0.6"
+      ]
+    ]
+  },
+  "geometry_transforms_camera_unchanged": true,
+  "outside_material_assignments_unchanged": true,
+  "meshes_verified": 3987,
+  "objects_verified": 3255,
+  "saved_main_file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "invalid_drivers": [],
+  "right_lights_after": [
+    {
+      "name": "RL | Upper right | soft overhead spot",
+      "energy": 1106.9998779296875,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "SPOT",
+      "spot_degrees": 116.47999704864645,
+      "spot_blend": 0.8399999737739563,
+      "volume_factor": 1.25
+    },
+    {
+      "name": "RL | Upper right | soft fill -1",
+      "energy": 77.60479736328125,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "AREA",
+      "spot_degrees": null,
+      "spot_blend": null,
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Upper right | soft fill +1",
+      "energy": 77.60479736328125,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "AREA",
+      "spot_degrees": null,
+      "spot_blend": null,
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Lower right | soft overhead spot",
+      "energy": 968.6249389648438,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "SPOT",
+      "spot_degrees": 124.80000074080073,
+      "spot_blend": 0.8399999737739563,
+      "volume_factor": 1.25
+    },
+    {
+      "name": "RL | Lower right | soft fill -1",
+      "energy": 49.8887939453125,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "AREA",
+      "spot_degrees": null,
+      "spot_blend": null,
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Lower right | soft fill +1",
+      "energy": 49.8887939453125,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "AREA",
+      "spot_degrees": null,
+      "spot_blend": null,
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Upper right | wall bounce -1",
+      "energy": 41.573997497558594,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "AREA",
+      "spot_degrees": null,
+      "spot_blend": null,
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Lower right | wall bounce -1",
+      "energy": 24.94439697265625,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "AREA",
+      "spot_degrees": null,
+      "spot_blend": null,
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Upper right | wall bounce +1",
+      "energy": 41.573997497558594,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "AREA",
+      "spot_degrees": null,
+      "spot_blend": null,
+      "volume_factor": 0.0
+    },
+    {
+      "name": "RL | Lower right | wall bounce +1",
+      "energy": 24.94439697265625,
+      "color": [
+        0.8019999861717224,
+        0.8920000195503235,
+        1.0
+      ],
+      "type": "AREA",
+      "spot_degrees": null,
+      "spot_blend": null,
+      "volume_factor": 0.0
+    }
+  ]
+}

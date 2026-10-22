@@ -1,0 +1,40 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/connected-cavern/connected-cavern-single-surface.blend",
+  "non_wall_meshes_preserved": 1113,
+  "changed_non_wall_meshes": [],
+  "vertices": 21433,
+  "faces": 37364,
+  "connected_components": [
+    21433
+  ],
+  "boundary_edges": 459,
+  "nonmanifold_edges": 0,
+  "loose_edges": 0,
+  "support_anchor_distances": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "bridge_obstructions": [],
+  "sampled_enclosure_gaps": [],
+  "exterior_layers": 0,
+  "modifiers": 0,
+  "smooth_faces": 0,
+  "boundary_loops": [
+    230,
+    229
+  ],
+  "degenerate_faces": 0,
+  "passed": true,
+  "file": "/Users/danielku/mywebsite/secret-base/connected-cavern/connected-cavern-right-wall-rebuilt.blend",
+  "sha256": "91b51d6b99878401e46477b1a02e1c8b4e7014a395f618aec00b04ec17b26f59",
+  "reopened_saved_file": true,
+  "changed_lights": [],
+  "left_wall_sample_count": 490,
+  "left_wall_max_surface_difference": 1.9073486328125e-05,
+  "platform_clearance_samples": 628,
+  "rock_intrusions_into_bay_standing_space": []
+}

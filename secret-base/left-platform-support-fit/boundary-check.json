@@ -1,0 +1,12 @@
+{
+  "before": {
+    "nonmanifold_edges": 104,
+    "boundary_components": 5,
+    "wire_edges": 0
+  },
+  "after": {
+    "nonmanifold_edges": 140,
+    "boundary_components": 5,
+    "wire_edges": 0
+  }
+}

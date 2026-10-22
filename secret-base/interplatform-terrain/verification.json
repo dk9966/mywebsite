@@ -1,0 +1,182 @@
+{
+  "triangles_before": 72208,
+  "triangles_after": 48378,
+  "connected_components": 1,
+  "loose_edges": 0,
+  "nonmanifold_junctions": 0,
+  "degenerate_faces_in_edit": [],
+  "checked_objects": 2691,
+  "controls_restored": [
+    0.8100000619888306,
+    0.9300000667572021
+  ],
+  "control_checks": [
+    {
+      "height": 0.8100000619888306,
+      "radius": 0.9300000667572021,
+      "upper_bearing_gap_m": [
+        -0.0002691268920891332,
+        0.012596893310547586
+      ],
+      "unsupported_upper_samples": 0,
+      "roof_contact": {
+        "Lower | roof slope 1 - rear wall": {
+          "contact_samples": 262,
+          "contact_gap_min_max": [
+            -0.024293899536132812,
+            0.024155616760253906
+          ]
+        },
+        "Lower | roof slope 2 - rear corner": {
+          "contact_samples": 165,
+          "contact_gap_min_max": [
+            -0.0322723388671875,
+            0.02281951904296875
+          ]
+        },
+        "Lower | roof slope 3 - right wall": {
+          "contact_samples": 239,
+          "contact_gap_min_max": [
+            -0.03244304656982422,
+            0.02220916748046875
+          ]
+        },
+        "Lower | roof slope 4 - front return": {
+          "contact_samples": 127,
+          "contact_gap_min_max": [
+            -0.0313262939453125,
+            0.0001983642578125
+          ]
+        }
+      },
+      "fixture_intrusions": 0,
+      "intrusion_examples": []
+    },
+    {
+      "height": 0.35,
+      "radius": 0.85,
+      "upper_bearing_gap_m": [
+        -0.0002691268920891332,
+        0.012596893310547586
+      ],
+      "unsupported_upper_samples": 0,
+      "roof_contact": {
+        "Lower | roof slope 1 - rear wall": {
+          "contact_samples": 174,
+          "contact_gap_min_max": [
+            -0.02896881103515625,
+            0.024644851684570312
+          ]
+        },
+        "Lower | roof slope 2 - rear corner": {
+          "contact_samples": 163,
+          "contact_gap_min_max": [
+            -0.029129981994628906,
+            -0.0038776397705078125
+          ]
+        },
+        "Lower | roof slope 3 - right wall": {
+          "contact_samples": 218,
+          "contact_gap_min_max": [
+            -0.023545265197753906,
+            0.02013683319091797
+          ]
+        },
+        "Lower | roof slope 4 - front return": {
+          "contact_samples": 143,
+          "contact_gap_min_max": [
+            -0.026200294494628906,
+            -0.012463569641113281
+          ]
+        }
+      },
+      "fixture_intrusions": 0,
+      "intrusion_examples": []
+    },
+    {
+      "height": 1.49,
+      "radius": 1.46,
+      "upper_bearing_gap_m": [
+        -0.0002691268920891332,
+        0.012596893310547586
+      ],
+      "unsupported_upper_samples": 0,
+      "roof_contact": {
+        "Lower | roof slope 1 - rear wall": {
+          "contact_samples": 231,
+          "contact_gap_min_max": [
+            -0.043540000915527344,
+            0.024231910705566406
+          ]
+        },
+        "Lower | roof slope 2 - rear corner": {
+          "contact_samples": 132,
+          "contact_gap_min_max": [
+            -0.05719757080078125,
+            -0.007664680480957031
+          ]
+        },
+        "Lower | roof slope 3 - right wall": {
+          "contact_samples": 248,
+          "contact_gap_min_max": [
+            -0.05760478973388672,
+            0.024619102478027344
+          ]
+        },
+        "Lower | roof slope 4 - front return": {
+          "contact_samples": 127,
+          "contact_gap_min_max": [
+            -0.03368377685546875,
+            -0.012536048889160156
+          ]
+        }
+      },
+      "fixture_intrusions": 0,
+      "intrusion_examples": []
+    },
+    {
+      "height": 2.1,
+      "radius": 2.1,
+      "upper_bearing_gap_m": [
+        -0.0002691268920891332,
+        0.012596893310547586
+      ],
+      "unsupported_upper_samples": 0,
+      "roof_contact": {
+        "Lower | roof slope 1 - rear wall": {
+          "contact_samples": 99,
+          "contact_gap_min_max": [
+            -0.06003856658935547,
+            0.022611618041992188
+          ]
+        },
+        "Lower | roof slope 2 - rear corner": {
+          "contact_samples": 107,
+          "contact_gap_min_max": [
+            -0.0710287094116211,
+            0.0171661376953125
+          ]
+        },
+        "Lower | roof slope 3 - right wall": {
+          "contact_samples": 198,
+          "contact_gap_min_max": [
+            -0.0715322494506836,
+            0.019781112670898438
+          ]
+        },
+        "Lower | roof slope 4 - front return": {
+          "contact_samples": 110,
+          "contact_gap_min_max": [
+            -0.07163715362548828,
+            -0.0110321044921875
+          ]
+        }
+      },
+      "fixture_intrusions": 0,
+      "intrusion_examples": []
+    }
+  ],
+  "reopen_fingerprint_differences": 555,
+  "preservation_note": "Live fingerprints are authoritative; reopened files recompute transforms and per-view-layer visibility.",
+  "unrelated_object_changes_live": []
+}

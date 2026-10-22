@@ -1,0 +1,80 @@
+{
+  "file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "existing_non_light_objects_checked": 3113,
+  "changed_existing_geometry_or_transforms": [],
+  "unexpected_objects": [],
+  "camera_unchanged": true,
+  "invalid_drivers": [],
+  "changed_surface_materials": [],
+  "master_brightness_test_ratio": 1.25,
+  "softness_test_value": 0.7200000286102295,
+  "mirrored_light_pairs": [
+    {
+      "pair": "RL | Center | soft fill",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Rear left | soft fill",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Front left | soft overhead spot",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Front left | soft fill",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Upper right | soft fill",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Lower right | soft fill",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Cave | soft side bounce",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Upper right | wall bounce",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Lower right | wall bounce",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Cave | lower reflected bounce",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    },
+    {
+      "pair": "RL | Cave | broad environment fill",
+      "position_symmetry_error": 0.0,
+      "power_difference": 0.0,
+      "color_difference": 0.0
+    }
+  ],
+  "passed": true
+}

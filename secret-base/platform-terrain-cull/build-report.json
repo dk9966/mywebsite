@@ -1,0 +1,9 @@
+{
+  "source_triangles": 82334,
+  "evaluated_triangles": 30346,
+  "local_triangles_before": 48884,
+  "local_triangles_after": 912,
+  "local_reduction_percent": 98.1343588904345,
+  "material": "Terrain | rough hewn slate.001",
+  "retained_shape_keys": 9
+}

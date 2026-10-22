@@ -1,0 +1,32 @@
+{
+  "terrain_changes": [],
+  "lower_radius": 2.7059807587933955,
+  "upper_radius": 2.435382682914056,
+  "upper_lower_radius_ratio": 0.9,
+  "middle_radius_multiplier": 1.2,
+  "console_scale": 0.5,
+  "side_platform_objects": [
+    "Lower | plain octagon",
+    "Upper | plain octagon - 90 percent radius"
+  ],
+  "bridge_object": "Bridge | floating rectangle",
+  "bridge_start": [
+    3.2040352821350098,
+    -0.46219345927238464,
+    6.87117862701416
+  ],
+  "bridge_end": [
+    5.170238494873047,
+    -0.7458252310752869,
+    6.836178779602051
+  ],
+  "bridge_dimensions": [
+    1.986863613128662,
+    1.0800001621246338,
+    0.14000000059604645
+  ],
+  "bridge_radial_alignment": 1.0000000484287739,
+  "bridge_obstacles": [],
+  "removed_detail_objects": 470,
+  "passed": true
+}

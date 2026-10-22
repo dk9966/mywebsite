@@ -1,0 +1,15 @@
+{
+  "saved": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "light": "RL | Cave | soft side bounce +1",
+  "before_world_position": [
+    25.927940368652344,
+    -7.653898239135742,
+    7.5
+  ],
+  "after_world_position": [
+    25.328369140625,
+    -11.406776428222656,
+    8.747563362121582
+  ],
+  "backup": "/Users/danielku/mywebsite/secret-base/lower-light-seam/before-applying.blend"
+}

@@ -1,0 +1,63 @@
+{
+  "new_sections": [
+    "opposite bay 1",
+    "opposite bay 2",
+    "far right beveled bay"
+  ],
+  "base_points_local": [
+    [
+      11.67632007598877,
+      -1.2217998504638672,
+      6.824491024017334
+    ],
+    [
+      11.676319122314453,
+      -3.1974692344665527,
+      6.824491024017334
+    ],
+    [
+      11.676319122314453,
+      -5.173138618469238,
+      6.824491024017334
+    ],
+    [
+      10.42632007598877,
+      -6.4231390953063965,
+      6.824491024017334
+    ]
+  ],
+  "height_m": 2.03,
+  "rock_vertices_recessed": 25163,
+  "local_rock_edges_subdivided": 18874,
+  "shortened_rails": [
+    "Lower | aligned continuous rail 0 0.190",
+    "Lower | aligned continuous rail 0 0.345",
+    "Lower | aligned perimeter curb 0"
+  ],
+  "hidden_replaced_posts": [
+    "Lower | aligned perimeter post 0 03 01 upright",
+    "Lower | aligned perimeter post 0 03 01 foot",
+    "Lower | aligned perimeter post 0 03 02 upright",
+    "Lower | aligned perimeter post 0 03 02 foot",
+    "Lower | aligned perimeter post 0 03 03 upright",
+    "Lower | aligned perimeter post 0 03 03 foot",
+    "Lower | aligned perimeter post 0 03 04 upright",
+    "Lower | aligned perimeter post 0 03 04 foot",
+    "Lower | aligned perimeter post 0 04 01 upright",
+    "Lower | aligned perimeter post 0 04 01 foot",
+    "Lower | aligned perimeter post 0 04 02 upright",
+    "Lower | aligned perimeter post 0 04 02 foot",
+    "Lower | aligned perimeter post 0 04 03 upright",
+    "Lower | aligned perimeter post 0 04 03 foot",
+    "Lower | aligned perimeter post 0 04 04 upright",
+    "Lower | aligned perimeter post 0 04 04 foot",
+    "Lower | aligned perimeter post 0 04 05 upright",
+    "Lower | aligned perimeter post 0 04 05 foot",
+    "Lower | aligned perimeter post 0 04 06 upright",
+    "Lower | aligned perimeter post 0 04 06 foot",
+    "Lower | aligned perimeter post 0 04 07 upright",
+    "Lower | aligned perimeter post 0 04 07 foot"
+  ],
+  "platform_pad_and_bridge_unchanged": true,
+  "new_objects": 63
+}

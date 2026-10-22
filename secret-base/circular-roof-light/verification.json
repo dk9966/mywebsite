@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "four_roof_planes": 4,
+  "rim_light_segments": 12,
+  "native_height_control": "Light height above walls (m)",
+  "min_height_m": 0.3499999940395355,
+  "max_height_m": 2.0999999046325684,
+  "default_restored": 1.149999976158142,
+  "height_tests": [
+    {
+      "height": 0.35,
+      "center_error_m": 4.76837158203125e-07,
+      "top_height_error_m": 2.5939941394881316e-07,
+      "wall_anchor_error_m": 0,
+      "crown_anchor_error_m": 0,
+      "roof_planarity_error_m": 7.82310962677002e-08,
+      "downlight_error_m": 7.629394538355427e-08,
+      "roof_rock_intersections_at_sample_points": []
+    },
+    {
+      "height": 1.15,
+      "center_error_m": 4.76837158203125e-07,
+      "top_height_error_m": 6.86645513781059e-08,
+      "wall_anchor_error_m": 0,
+      "crown_anchor_error_m": 0,
+      "roof_planarity_error_m": 3.129243850708008e-07,
+      "downlight_error_m": 1.1444091718715299e-07,
+      "roof_rock_intersections_at_sample_points": []
+    },
+    {
+      "height": 2.1,
+      "center_error_m": 4.76837158203125e-07,
+      "top_height_error_m": 2.5939941394881316e-07,
+      "wall_anchor_error_m": 0,
+      "crown_anchor_error_m": 0,
+      "roof_planarity_error_m": 4.6193599700927734e-07,
+      "downlight_error_m": 7.629394538355427e-08,
+      "roof_rock_intersections_at_sample_points": []
+    }
+  ],
+  "non_manifold_edges": {},
+  "invalid_drivers": [],
+  "original_meshes_changed": [
+    "150 | continuous cave with oblique carved rooms"
+  ],
+  "all_other_original_meshes_and_transforms_preserved": true
+}

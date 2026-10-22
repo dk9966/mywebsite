@@ -1,0 +1,69 @@
+{
+  "before": {
+    "verts": 29710,
+    "faces": 49654,
+    "components": [
+      29710
+    ],
+    "boundary": 136,
+    "nonmanifold": 140,
+    "volume": 11915.239145054862
+  },
+  "cleaned": {
+    "verts": 29707,
+    "faces": 59408,
+    "components": [
+      29707
+    ],
+    "boundary": 4,
+    "nonmanifold": 6,
+    "volume": 13145.749422564239
+  },
+  "trials": [
+    {
+      "solver": "MANIFOLD",
+      "stats": {
+        "verts": 29707,
+        "faces": 59408,
+        "components": [
+          29707
+        ],
+        "boundary": 4,
+        "nonmanifold": 6,
+        "volume": 13145.749422564239
+      },
+      "far_max": 0.0,
+      "top_max": 3.4744999408721924
+    },
+    {
+      "solver": "EXACT",
+      "stats": {
+        "verts": 30295,
+        "faces": 60192,
+        "components": [
+          30295
+        ],
+        "boundary": 24,
+        "nonmanifold": 25,
+        "volume": 13194.483690668443
+      },
+      "far_max": 0.0,
+      "top_max": 3.644759178161621
+    },
+    {
+      "solver": "FLOAT",
+      "stats": {
+        "verts": 30295,
+        "faces": 60199,
+        "components": [
+          30295
+        ],
+        "boundary": 4,
+        "nonmanifold": 6,
+        "volume": 13194.483642642681
+      },
+      "far_max": 0.0,
+      "top_max": 3.644758939743042
+    }
+  ]
+}

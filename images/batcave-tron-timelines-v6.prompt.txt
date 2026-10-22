@@ -1,0 +1,7 @@
+Mode: built-in image_gen image edit
+Source: images/batcave-tron-timelines-v5.png
+Output: images/batcave-tron-timelines-v6.png
+
+Use case: precise-object-edit.
+The provided image is the edit target. Make one localized correction only: rotate the direction of the three glowing timeline strips on the BOTTOM LEFT floor platform by 90 degrees within the plane of the floor. Their current long segments run from screen-bottom-left toward screen-upper-right. Instead, all THREE strips must run along the OTHER floor axis, diagonally from screen-upper-left toward screen-bottom-right, aligned to the existing metal floor perspective. They should read as three distinct, parallel, well-spaced timeline strips running down and to the right across the bottom-left platform. Replace the existing light paths completely with the reoriented paths. Keep the same thin Tron-style inlaid floor lighting, coordinated subtle icy cyan / blue-teal / blue-violet colors, and several brighter round time-marker dots spaced along EACH line. Avoid long segments along the old orientation. Keep paths on the floor and use subtle natural glow and metal reflections.
+Preserve everything else: platform shape, floor, stairs, railings, cave walls, waterfalls, water, bridges, central purple workstation, right circular platform, rooms, aircraft, original dark cinematic realistic 3D style, original lighting, exact camera position and wide aspect ratio. Change only the orientation of the three bottom-left timeline lights. No text, numbers or new objects.

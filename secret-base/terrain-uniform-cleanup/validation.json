@@ -1,0 +1,574 @@
+{
+  "before": {
+    "vertices": 7120,
+    "faces": 14122,
+    "components": 1,
+    "boundary": 120,
+    "junctions": 0,
+    "degenerate": 0,
+    "local_faces": 1356,
+    "tiny_faces": 262,
+    "area_p10": 0.011360025964677334,
+    "area_median": 0.14752104133367538
+  },
+  "after": {
+    "vertices": 6154,
+    "faces": 12190,
+    "components": 1,
+    "boundary": 120,
+    "junctions": 0,
+    "degenerate": 0,
+    "local_faces": 1207,
+    "tiny_faces": 33,
+    "area_p10": 0.0694802850484848,
+    "area_median": 0.2623499929904938
+  },
+  "surface_deviation_max": 0.39018967747688293,
+  "crossings": [
+    {
+      "name": "Lower | plain octagon",
+      "before": 76,
+      "after": 119
+    },
+    {
+      "name": "Upper | beveled square gallery",
+      "before": 47,
+      "after": 92
+    },
+    {
+      "name": "Lower | recessed wall bay 00",
+      "before": 13,
+      "after": 11
+    },
+    {
+      "name": "Lower | recessed wall bay 01",
+      "before": 32,
+      "after": 40
+    },
+    {
+      "name": "Lower | bay horizontal frame.005",
+      "before": 4,
+      "after": 0
+    },
+    {
+      "name": "Lower | clipped lintel shoulder",
+      "before": 4,
+      "after": 0
+    },
+    {
+      "name": "Lower | clipped lintel shoulder.001",
+      "before": 4,
+      "after": 4
+    },
+    {
+      "name": "Lower | continuous folded canopy roof",
+      "before": 17,
+      "after": 24
+    },
+    {
+      "name": "Lower | roof cassette stiffener.002",
+      "before": 12,
+      "after": 6
+    },
+    {
+      "name": "Lower | roof cassette stiffener.003",
+      "before": 6,
+      "after": 6
+    },
+    {
+      "name": "Lower | roof cassette stiffener.004",
+      "before": 8,
+      "after": 10
+    },
+    {
+      "name": "Lower | roof cassette stiffener.005",
+      "before": 4,
+      "after": 4
+    },
+    {
+      "name": "Lower | load bearing perimeter fascia.001",
+      "before": 19,
+      "after": 20
+    },
+    {
+      "name": "Lower | edge highlight.001",
+      "before": 12,
+      "after": 12
+    },
+    {
+      "name": "Lower | load bearing perimeter fascia.002",
+      "before": 25,
+      "after": 22
+    },
+    {
+      "name": "Lower | edge highlight.002",
+      "before": 12,
+      "after": 12
+    },
+    {
+      "name": "Lower | load bearing perimeter fascia.003",
+      "before": 41,
+      "after": 45
+    },
+    {
+      "name": "Lower | load bearing perimeter fascia.004",
+      "before": 28,
+      "after": 23
+    },
+    {
+      "name": "Lower | edge highlight.004",
+      "before": 18,
+      "after": 0
+    },
+    {
+      "name": "Lower | load bearing perimeter fascia.005",
+      "before": 36,
+      "after": 41
+    },
+    {
+      "name": "Lower | edge highlight.005",
+      "before": 14,
+      "after": 0
+    },
+    {
+      "name": "Lower | radial underfloor girder",
+      "before": 16,
+      "after": 24
+    },
+    {
+      "name": "Lower | radial underfloor girder.001",
+      "before": 20,
+      "after": 36
+    },
+    {
+      "name": "Lower | radial underfloor girder.002",
+      "before": 20,
+      "after": 42
+    },
+    {
+      "name": "Lower | aligned perimeter curb 0",
+      "before": 9,
+      "after": 12
+    },
+    {
+      "name": "Lower | aligned perimeter post 0 02 08 upright",
+      "before": 0,
+      "after": 14
+    },
+    {
+      "name": "Lower | aligned perimeter post 0 02 08 foot",
+      "before": 9,
+      "after": 0
+    },
+    {
+      "name": "Lower | octagon roof cassette",
+      "before": 20,
+      "after": 26
+    },
+    {
+      "name": "Lower | octagon rear bay 2",
+      "before": 31,
+      "after": 41
+    },
+    {
+      "name": "Lower | octagon recessed panel.015",
+      "before": 0,
+      "after": 27
+    },
+    {
+      "name": "Lower | octagon panel border.003",
+      "before": 0,
+      "after": 14
+    },
+    {
+      "name": "Lower | octagon roof fascia.001",
+      "before": 25,
+      "after": 19
+    },
+    {
+      "name": "Lower | octagon roof cassette.001",
+      "before": 29,
+      "after": 34
+    },
+    {
+      "name": "Lower | octagon roof edge.001",
+      "before": 0,
+      "after": 12
+    },
+    {
+      "name": "Lower | octagon angled corner bay",
+      "before": 27,
+      "after": 49
+    },
+    {
+      "name": "Lower | octagon recessed panel.018",
+      "before": 0,
+      "after": 9
+    },
+    {
+      "name": "Lower | octagon recessed panel.019",
+      "before": 0,
+      "after": 24
+    },
+    {
+      "name": "Lower | octagon panel border.005",
+      "before": 0,
+      "after": 14
+    },
+    {
+      "name": "Lower | octagon roof fascia.002",
+      "before": 44,
+      "after": 25
+    },
+    {
+      "name": "Lower | octagon roof cassette.002",
+      "before": 31,
+      "after": 24
+    },
+    {
+      "name": "Lower | octagon roof edge.002",
+      "before": 12,
+      "after": 14
+    },
+    {
+      "name": "Lower | opposite bay 1",
+      "before": 42,
+      "after": 59
+    },
+    {
+      "name": "Lower | opposite bay 1 roof fascia",
+      "before": 17,
+      "after": 23
+    },
+    {
+      "name": "Lower | opposite bay 1 roof cassette",
+      "before": 39,
+      "after": 58
+    },
+    {
+      "name": "Lower | opposite bay 1 roof edge",
+      "before": 0,
+      "after": 15
+    },
+    {
+      "name": "Lower | opposite bay 2",
+      "before": 9,
+      "after": 26
+    },
+    {
+      "name": "Lower | opposite bay 2 roof fascia",
+      "before": 0,
+      "after": 29
+    },
+    {
+      "name": "Lower | opposite bay 2 roof cassette",
+      "before": 46,
+      "after": 70
+    },
+    {
+      "name": "Lower | opposite bay 2 roof edge",
+      "before": 0,
+      "after": 8
+    },
+    {
+      "name": "Lower | far right beveled bay",
+      "before": 31,
+      "after": 57
+    },
+    {
+      "name": "Lower | far right beveled bay recessed panel.004",
+      "before": 0,
+      "after": 11
+    },
+    {
+      "name": "Lower | far right beveled bay recessed panel.005",
+      "before": 0,
+      "after": 21
+    },
+    {
+      "name": "Lower | far right beveled bay recessed panel.006",
+      "before": 8,
+      "after": 16
+    },
+    {
+      "name": "Lower | far right beveled bay recessed panel.007",
+      "before": 0,
+      "after": 15
+    },
+    {
+      "name": "Lower | far right beveled bay panel border",
+      "before": 0,
+      "after": 17
+    },
+    {
+      "name": "Lower | far right beveled bay panel border.001",
+      "before": 0,
+      "after": 12
+    },
+    {
+      "name": "Lower | far right beveled bay roof fascia",
+      "before": 29,
+      "after": 26
+    },
+    {
+      "name": "Lower | far right beveled bay roof cassette",
+      "before": 36,
+      "after": 30
+    },
+    {
+      "name": "Lower | far right beveled bay roof edge",
+      "before": 0,
+      "after": 12
+    },
+    {
+      "name": "Lower | symmetric channeled support 03",
+      "before": 0,
+      "after": 10
+    },
+    {
+      "name": "Lower | support 03 anchor shoe",
+      "before": 9,
+      "after": 12
+    },
+    {
+      "name": "Lower | support 03 anchor shoe.001",
+      "before": 20,
+      "after": 14
+    },
+    {
+      "name": "Lower | support 04 anchor shoe",
+      "before": 11,
+      "after": 0
+    },
+    {
+      "name": "Lower | support 04 anchor shoe.001",
+      "before": 14,
+      "after": 23
+    },
+    {
+      "name": "Lower | support 05 anchor shoe.001",
+      "before": 0,
+      "after": 10
+    },
+    {
+      "name": "Lower | support 06 anchor shoe.001",
+      "before": 12,
+      "after": 14
+    },
+    {
+      "name": "Lower | symmetric channeled support 07",
+      "before": 0,
+      "after": 36
+    },
+    {
+      "name": "Lower | support 07 anchor shoe",
+      "before": 12,
+      "after": 14
+    },
+    {
+      "name": "Lower | support 07 anchor shoe.001",
+      "before": 19,
+      "after": 12
+    },
+    {
+      "name": "Lower | angled corner bay flat upper projection",
+      "before": 0,
+      "after": 23
+    },
+    {
+      "name": "Lower | angled corner bay gray light ledge",
+      "before": 0,
+      "after": 12
+    },
+    {
+      "name": "Lower | far right beveled bay flat upper projection",
+      "before": 0,
+      "after": 9
+    },
+    {
+      "name": "Lower | far right beveled bay gray light ledge",
+      "before": 0,
+      "after": 14
+    },
+    {
+      "name": "Lower | roof slope 1 - rear wall",
+      "before": 0,
+      "after": 42
+    },
+    {
+      "name": "Lower | roof slope 2 - rear corner",
+      "before": 38,
+      "after": 73
+    },
+    {
+      "name": "Lower | roof panel seam 2",
+      "before": 16,
+      "after": 16
+    },
+    {
+      "name": "Lower | roof slope 3 - right wall",
+      "before": 58,
+      "after": 121
+    },
+    {
+      "name": "Lower | roof panel seam 3",
+      "before": 0,
+      "after": 18
+    },
+    {
+      "name": "Lower | roof slope 4 - front return",
+      "before": 26,
+      "after": 32
+    },
+    {
+      "name": "Lower | roof joint rib 2",
+      "before": 18,
+      "after": 30
+    },
+    {
+      "name": "Lower | roof joint rib 3",
+      "before": 20,
+      "after": 40
+    },
+    {
+      "name": "Lower | roof joint rib 4",
+      "before": 0,
+      "after": 40
+    },
+    {
+      "name": "Lower | roof joint rib 5",
+      "before": 52,
+      "after": 36
+    },
+    {
+      "name": "Lower | circular light upper cover",
+      "before": 17,
+      "after": 63
+    },
+    {
+      "name": "Lower | circular light stepped rim",
+      "before": 0,
+      "after": 90
+    },
+    {
+      "name": "Lower | circular light upper lip",
+      "before": 0,
+      "after": 76
+    },
+    {
+      "name": "Lower | circular cover seam 02",
+      "before": 9,
+      "after": 0
+    },
+    {
+      "name": "Lower | reference large diagonal bracket",
+      "before": 6,
+      "after": 6
+    },
+    {
+      "name": "Lower | reference large diagonal bracket.001",
+      "before": 4,
+      "after": 6
+    },
+    {
+      "name": "Lower | reference large diagonal bracket.002",
+      "before": 6,
+      "after": 6
+    },
+    {
+      "name": "Lower | reference large diagonal bracket.003",
+      "before": 4,
+      "after": 4
+    },
+    {
+      "name": "Lower | reference large diagonal bracket.004",
+      "before": 12,
+      "after": 8
+    },
+    {
+      "name": "Upper wall | rib 00 floor anchor",
+      "before": 0,
+      "after": 9
+    },
+    {
+      "name": "Upper wall | rib 02 floor anchor",
+      "before": 0,
+      "after": 9
+    },
+    {
+      "name": "Upper wall | bay 00 panel course 00",
+      "before": 11,
+      "after": 0
+    },
+    {
+      "name": "Upper wall | bay 00 panel course 01",
+      "before": 9,
+      "after": 19
+    },
+    {
+      "name": "Upper wall | bay 00 panel course 02",
+      "before": 6,
+      "after": 21
+    },
+    {
+      "name": "Upper wall | bay 01 panel course 00",
+      "before": 0,
+      "after": 13
+    },
+    {
+      "name": "Upper wall | bay 01 panel course 01",
+      "before": 0,
+      "after": 24
+    },
+    {
+      "name": "Upper wall | bay 01 panel course 02",
+      "before": 4,
+      "after": 30
+    },
+    {
+      "name": "Upper wall | bay 02 panel course 01",
+      "before": 0,
+      "after": 20
+    },
+    {
+      "name": "Upper wall | bay 02 panel course 02",
+      "before": 14,
+      "after": 20
+    },
+    {
+      "name": "Upper wall | bay 03 panel course 00",
+      "before": 22,
+      "after": 10
+    },
+    {
+      "name": "Upper wall | bay 03 panel course 01",
+      "before": 27,
+      "after": 0
+    },
+    {
+      "name": "Upper wall | bay 03 panel course 03",
+      "before": 0,
+      "after": 11
+    },
+    {
+      "name": "Upper wall | bay 04 panel course 00",
+      "before": 0,
+      "after": 8
+    },
+    {
+      "name": "Upper wall | bay 04 panel course 01",
+      "before": 9,
+      "after": 18
+    },
+    {
+      "name": "Upper wall | bay 04 panel course 02",
+      "before": 15,
+      "after": 9
+    },
+    {
+      "name": "Upper wall | bay 05 panel course 01",
+      "before": 0,
+      "after": 4
+    }
+  ]
+}

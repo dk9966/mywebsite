@@ -1,0 +1,5173 @@
+{
+  "current": {
+    "collections": {
+      "01 | Approved rock and original console": {
+        "count": 8,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "deck_desk_b",
+          "deck_desk_dark_b",
+          "deck_desk_neon_b",
+          "deck_desk_led_b",
+          "deck_desk_glass_b"
+        ]
+      },
+      "02 | Machined rings and eight recessed grates": {
+        "count": 229,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | continuous support drum",
+          "Metal | lower rolled rim",
+          "Metal | upper rolled rim",
+          "Metal | grate recess backing",
+          "Metal | central four-part plate"
+        ]
+      },
+      "03 | Steel perimeter and warm inset lamps": {
+        "count": 157,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | continuous steel guardrail",
+          "Metal | guardrail polished top edge",
+          "Metal | continuous steel guardrail.001",
+          "Metal | guardrail polished top edge.001",
+          "Metal | perimeter post"
+        ]
+      },
+      "04 | Presentation cameras and studio lights": {
+        "count": 15,
+        "types": [
+          "CAMERA",
+          "LIGHT"
+        ],
+        "examples": [
+          "Metal | amber floor pool",
+          "Metal | amber floor pool.001",
+          "Metal | amber floor pool.002",
+          "Metal | amber floor pool.003",
+          "Metal | amber floor pool.004"
+        ]
+      },
+      "05 | Lower recessed garage and apron": {
+        "count": 202,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | Garage | deep clipped structural apron",
+          "Metal | Garage | satin floor plate",
+          "Metal | Garage | broad panel seam",
+          "Metal | Garage | broad panel seam.001",
+          "Metal | Garage | broad panel seam.002"
+        ]
+      },
+      "06 | Upper recessed aircraft hangar": {
+        "count": 106,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | Hangar | heavy inset slab",
+          "Metal | Hangar | satin flight deck",
+          "Metal | Hangar | rear wall | lining",
+          "Metal | Hangar | rear wall | vertical frame",
+          "Metal | Hangar | rear wall | vertical frame.001"
+        ]
+      },
+      "08 | Short straight bridge": {
+        "count": 29,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | Bridge | continuous metal tread",
+          "Metal | Bridge | continuous metal tread.001",
+          "Metal | Bridge | continuous metal tread.002",
+          "Metal | Bridge | continuous metal tread.003",
+          "Metal | Bridge | continuous metal tread.004"
+        ]
+      },
+      "10 | Wide perspective camera and cave practicals": {
+        "count": 12,
+        "types": [
+          "CAMERA",
+          "LIGHT",
+          "MESH"
+        ],
+        "examples": [
+          "Bays | wide reference camera",
+          "Bays | garage overhead pool",
+          "Bays | garage soft side fill",
+          "Bays | hangar ceiling beam",
+          "Bays | hangar front soft return"
+        ]
+      },
+      "11 | Editable cave excavation volumes": {
+        "count": 11,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | Cave | reference-shaped broken outer contour",
+          "Metal | Garage | vaulted rock excavation",
+          "Metal | Garage | irregular overlapping rock lip",
+          "Metal | Garage | apron undercroft cut",
+          "Metal | Garage | apron undercroft cut.001"
+        ]
+      },
+      "12 | Engineered garage cantilever brackets": {
+        "count": 249,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | Support | apron edge girder web",
+          "Metal | Support | apron edge girder flange",
+          "Metal | Support | apron edge girder flange.001",
+          "Metal | Support | apron edge girder web.001",
+          "Metal | Support | apron edge girder flange.002"
+        ]
+      },
+      "13 | Joined interior cave surface": {
+        "count": 1,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Cavern | rebuilt continuous interior wall"
+        ]
+      },
+      "14 | Upper bay finish": {
+        "count": 121,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | Upper finish | balcony fascia",
+          "Metal | Upper finish | balcony edge trim",
+          "Metal | Upper finish | balcony edge trim.001",
+          "Metal | Upper finish | fascia strap",
+          "Metal | Upper finish | fascia bolt"
+        ]
+      },
+      "15 | Interior views and supplementary light": {
+        "count": 10,
+        "types": [
+          "CAMERA",
+          "LIGHT"
+        ],
+        "examples": [
+          "Upper | warm balcony pool",
+          "Upper | warm balcony pool.001",
+          "Upper | warm balcony pool.002",
+          "Upper | portal soft reveal",
+          "Upper | rear wall bounce"
+        ]
+      },
+      "16 | Rebuilt wall inspection cameras": {
+        "count": 2,
+        "types": [
+          "CAMERA"
+        ],
+        "examples": [
+          "Rebuilt wall | under platform",
+          "Rebuilt wall | wall and pillar comparison"
+        ]
+      }
+    },
+    "meshes": {
+      "deck_desk_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_dark_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_neon_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_led_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_glass_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_metal_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_hud_b": [
+        "01 | Approved rock and original console"
+      ],
+      "Central rock mound | continuous cross-column extrusions": [
+        "01 | Approved rock and original console"
+      ],
+      "Metal | continuous support drum": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | lower rolled rim": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | upper rolled rim": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate recess backing": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | central four-part plate": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | central four-part plate.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | central four-part plate.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | central four-part plate.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 00": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 01": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 02": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 03": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 04": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 05": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 06": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 07": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | narrow cardinal structural spoke": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | broad diagonal steel wedge": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | narrow cardinal structural spoke.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | broad diagonal steel wedge.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | narrow cardinal structural spoke.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | broad diagonal steel wedge.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | narrow cardinal structural spoke.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.024": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.025": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.026": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.027": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | broad diagonal steel wedge.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.028": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.029": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.030": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.031": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.024": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.025": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.026": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.027": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.028": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.029": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.030": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.031": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.032": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.033": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.034": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.035": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.036": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.037": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.038": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.039": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.040": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.041": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.042": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.043": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.044": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.045": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.046": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.047": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.048": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.049": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.050": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.051": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.052": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.053": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.054": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.055": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.056": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.057": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.058": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.059": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.060": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.061": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.062": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.063": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.064": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.065": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.066": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.067": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.068": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.069": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.070": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.071": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.072": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.073": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.074": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.075": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.076": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.077": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.078": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.079": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | continuous steel guardrail": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | guardrail polished top edge": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | continuous steel guardrail.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | guardrail polished top edge.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.015": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.015": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.015": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.015": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.016": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.016": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.016": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.017": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.016": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.017": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.018": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.019": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.017": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.017": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.018": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.018": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.018": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.019": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.019": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.019": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.020": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.020": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.020": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.021": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.020": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.021": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.022": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.023": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.021": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.021": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.022": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.022": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.022": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.023": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.023": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.023": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.024": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.024": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.024": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.025": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.024": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.025": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.026": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.027": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.025": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.025": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.026": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.026": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.026": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.027": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.027": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.027": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.028": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.028": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.028": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.029": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.028": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.029": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.030": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.031": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.031": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.031": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | Garage | deep clipped structural apron": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | satin floor plate": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | broad panel seam.009": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | flush turntable ring": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | flush turntable ring.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | flush turntable ring.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | flush turntable ring.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | flush turntable ring.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | flush turntable ring.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | flush turntable ring.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | flush turntable ring.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.009": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.010": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | ring bolt.011": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 0 | lining": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 0 | vertical frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 0 | vertical frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 0 | vertical frame.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 0 | horizontal frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 0 | horizontal frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 0 | recessed fixture": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 1 | lining": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 1 | vertical frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 1 | vertical frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 1 | vertical frame.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 1 | horizontal frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 1 | horizontal frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 1 | recessed fixture": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 2 | lining": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 2 | vertical frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 2 | vertical frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 2 | vertical frame.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 2 | horizontal frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 2 | horizontal frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | faceted back service wall 2 | recessed fixture": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | right return | lining": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | right return | vertical frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | right return | vertical frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | right return | vertical frame.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | right return | horizontal frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | right return | horizontal frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | right return | recessed fixture": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | left return | lining": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | left return | vertical frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | left return | vertical frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | left return | vertical frame.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | left return | horizontal frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | left return | horizontal frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | left return | recessed fixture": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | inset angled arch frame.009": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | rail": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | rail.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | toe plate": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | rail.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | rail.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | toe plate.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | rail.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | rail.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | toe plate.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | exposed apron guard | post.009": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | service bench worktop": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer cabinet": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer front": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer pull": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer front.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer pull.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer front.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer pull.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | wall equipment board": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | worktop equipment": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | worktop equipment.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | worktop equipment.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | service bench worktop.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer cabinet.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer front.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer pull.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer front.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer pull.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer front.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer pull.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | wall equipment board.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.009": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.009": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.010": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.010": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.011": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.011": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.012": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.012": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.013": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.013": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | worktop equipment.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | worktop equipment.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | worktop equipment.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | service bench worktop.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer cabinet.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer front.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer pull.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer front.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer pull.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer front.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | drawer pull.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | wall equipment board.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.014": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.014": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.015": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.015": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.016": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.016": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.017": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.017": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.018": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.018": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.019": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.019": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hanging service tool.020": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tool head.020": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | worktop equipment.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | worktop equipment.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | worktop equipment.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tall equipment locker": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.004": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.005": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker status": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | tall equipment locker.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.006": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.007": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.008": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.009": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.010": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker louver.011": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | locker status.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hydraulic service jack": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | jack lifting arm": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | jack top support": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | jack roller": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | jack roller.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | hydraulic service jack.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | jack lifting arm.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | jack top support.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | jack roller.002": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | jack roller.003": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | rail socket into right wall": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Garage | rail socket into right wall.001": [
+        "05 | Lower recessed garage and apron"
+      ],
+      "Metal | Hangar | heavy inset slab": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | satin flight deck": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | lining": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | vertical frame": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | vertical frame.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | vertical frame.002": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | vertical frame.003": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | vertical frame.004": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | vertical frame.005": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | vertical frame.006": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | horizontal frame": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | horizontal frame.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | recessed fixture": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | recessed fixture.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | rear wall | recessed fixture.002": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | lining": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.002": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.003": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.004": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.005": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.006": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.007": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.008": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.009": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.010": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.011": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | vertical frame.012": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | horizontal frame": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | horizontal frame.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | recessed fixture": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | recessed fixture.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | recessed fixture.002": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | recessed fixture.003": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | recessed fixture.004": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | side service wall | recessed fixture.005": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.002": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.003": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.004": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.005": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.006": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.007": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.008": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.009": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.010": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.011": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.012": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.013": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.014": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.015": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.016": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.017": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.018": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.019": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.020": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.021": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.022": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | embedded polygonal arch rib.023": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | recessed ceiling light": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | rail": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | rail.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | toe plate": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post.002": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post.003": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post.004": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post.005": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post.006": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post.007": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post.008": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | front balcony guard | post.009": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | continuous balcony front beam": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | balcony machined lip": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | balcony bracket into cliff": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | balcony bracket into cliff.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | balcony bracket into cliff.002": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | balcony bracket into cliff.003": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | control tower body": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | tower window": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | tower window.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | tower crown": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | logistics case": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | logistics case.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | logistics case.002": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | logistics case.003": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | recessed service gantry upright": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | recessed service gantry upright.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | recessed service gantry header": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.002": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.003": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.004": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.005": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.006": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.007": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.008": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.009": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.010": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | restrained crane identification stripe.011": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | recessed floor guide": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Hangar | recessed floor guide.001": [
+        "06 | Upper recessed aircraft hangar"
+      ],
+      "Metal | Bridge | continuous metal tread": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.001": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.002": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.003": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.004": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.005": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.006": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.007": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.008": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.009": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | continuous metal tread.010": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | joined steel rail": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | joined steel rail.001": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | outer side girder": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.001": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.002": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.003": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.004": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.005": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | joined steel rail.002": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | joined steel rail.003": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | outer side girder.001": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.006": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.007": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.008": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.009": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.010": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Bridge | fitted post.011": [
+        "08 | Short straight bridge"
+      ],
+      "Metal | Atmosphere | dry cave volume": [
+        "10 | Wide perspective camera and cave practicals"
+      ],
+      "Metal | Cave | reference-shaped broken outer contour": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Garage | vaulted rock excavation": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Garage | irregular overlapping rock lip": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Garage | apron undercroft cut": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Garage | apron undercroft cut.001": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Garage | apron undercroft cut.002": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Hangar | deep rock arch excavation": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Hangar | irregular rock mouth": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Hangar | clear front balcony": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Cave | forward right return inner contour": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Center | right bridge opening": [
+        "11 | Editable cave excavation volumes"
+      ],
+      "Metal | Support | apron edge girder web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | apron edge girder flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | apron edge girder flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | apron edge girder web.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | apron edge girder flange.002": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | apron edge girder flange.003": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | apron edge girder web.002": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | apron edge girder flange.004": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | apron edge girder flange.005": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 underside joist web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 underside joist flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 underside joist flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 diagonal web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 diagonal flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 diagonal flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 grout seat": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 rock anchor plate": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.002": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.002": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.003": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.003": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 upper gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.002": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.002": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 lower gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 upper gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.003": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.003": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.004": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.004": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.005": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.005": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 0 lower gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.002": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.002": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.003": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.003": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 underside joist web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 underside joist flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 underside joist flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 diagonal web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 diagonal flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 diagonal flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 grout seat": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 rock anchor plate": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.004": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.004": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.005": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.005": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.006": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.006": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.007": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.007": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 upper gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.006": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.006": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.007": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.007": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.008": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.008": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 lower gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.004": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.004": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.005": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.005": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 upper gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.009": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.009": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.010": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.010": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.011": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.011": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 1 lower gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.006": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.006": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.007": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.007": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 underside joist web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 underside joist flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 underside joist flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 diagonal web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 diagonal flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 diagonal flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 grout seat": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 rock anchor plate": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.008": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.008": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.009": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.009": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.010": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.010": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.011": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.011": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 upper gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.012": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.012": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.013": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.013": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.014": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.014": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 lower gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.008": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.008": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.009": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.009": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 upper gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.015": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.015": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.016": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.016": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.017": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.017": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 2 lower gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.010": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.010": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.011": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.011": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 underside joist web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 underside joist flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 underside joist flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 diagonal web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 diagonal flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 diagonal flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 grout seat": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 rock anchor plate": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.012": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.012": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.013": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.013": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.014": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.014": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.015": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.015": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 upper gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.018": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.018": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.019": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.019": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.020": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.020": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 lower gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.012": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.012": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.013": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.013": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 upper gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.021": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.021": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.022": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.022": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.023": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.023": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 3 lower gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.014": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.014": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.015": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.015": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 underside joist web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 underside joist flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 underside joist flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 diagonal web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 diagonal flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 diagonal flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 grout seat": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 rock anchor plate": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.016": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.016": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.017": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.017": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.018": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.018": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.019": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.019": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 upper gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.024": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.024": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.025": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.025": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.026": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.026": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 lower gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.016": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.016": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.017": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.017": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 upper gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.027": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.027": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.028": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.028": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.029": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.029": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 4 lower gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.018": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.018": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.019": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.019": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 underside joist web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 underside joist flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 underside joist flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 diagonal web": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 diagonal flange": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 diagonal flange.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 grout seat": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 rock anchor plate": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.020": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.020": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.021": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.021": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.022": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.022": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor washer.023": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | rock anchor hex nut.023": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 upper gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.030": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.030": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.031": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.031": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.032": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.032": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 lower gusset": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.020": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.020": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.021": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.021": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 upper gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.033": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.033": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.034": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.034": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener washer.035": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | gusset fastener hex nut.035": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | bracket 5 lower gusset.001": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.022": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.022": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis washer.023": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Metal | Support | lower clevis hex nut.023": [
+        "12 | Engineered garage cantilever brackets"
+      ],
+      "Cavern | rebuilt continuous interior wall": [
+        "13 | Joined interior cave surface"
+      ],
+      "Metal | Upper finish | balcony fascia": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | balcony edge trim": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | balcony edge trim.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia strap": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia strap.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia strap.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.004": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.005": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia strap.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.006": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.007": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia strap.004": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.008": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.009": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia strap.005": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.010": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.011": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia strap.006": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.012": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.013": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia strap.007": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.014": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.015": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia strap.008": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.016": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | fascia bolt.017": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | lamp armor": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | warm inset lens": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | warm inset lens.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | lamp cap": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | lamp armor.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | warm inset lens.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | warm inset lens.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | lamp cap.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | lamp armor.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | warm inset lens.004": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | warm inset lens.005": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | lamp cap.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | short recessed portal light": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.004": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.005": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.006": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.007": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | short recessed portal light.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.004": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.008": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.009": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.005": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.010": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.011": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | short recessed portal light.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.006": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.012": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.013": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.007": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.014": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal fixing.015": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | short recessed portal light.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.008": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.009": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.010": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.011": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.012": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.013": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.014": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | portal brushed steel face.015": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth mullion": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth mullion.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth mullion.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth window frame": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth window frame.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth mullion.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth mullion.004": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth mullion.005": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth window frame.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth window frame.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth vent": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth vent.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth vent.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth vent.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth vent.004": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | booth header light": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | rear service cabinet": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | rear cabinet face": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet recessed seam": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet recessed seam.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet recessed seam.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet status glass": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | status readout": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | status readout.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | status readout.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | rear service cabinet.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | rear cabinet face.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet recessed seam.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet recessed seam.004": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet recessed seam.005": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet status glass.001": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | status readout.003": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | status readout.004": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | status readout.005": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | rear service cabinet.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | rear cabinet face.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet recessed seam.006": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet recessed seam.007": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet recessed seam.008": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | cabinet status glass.002": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | status readout.006": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | status readout.007": [
+        "14 | Upper bay finish"
+      ],
+      "Metal | Upper finish | status readout.008": [
+        "14 | Upper bay finish"
+      ]
+    },
+    "lights": [
+      {
+        "name": "Metal | amber floor pool",
+        "pos": [
+          2.6010007858276367,
+          -3.5762786865234375e-07,
+          7.111178398132324
+        ],
+        "energy": 3.0999999046325684
+      },
+      {
+        "name": "Metal | amber floor pool.001",
+        "pos": [
+          1.8391854763031006,
+          1.8391849994659424,
+          7.111178398132324
+        ],
+        "energy": 3.0999999046325684
+      },
+      {
+        "name": "Metal | amber floor pool.002",
+        "pos": [
+          1.5497207641601562e-06,
+          2.6009998321533203,
+          7.111178398132324
+        ],
+        "energy": 3.0999999046325684
+      },
+      {
+        "name": "Metal | amber floor pool.003",
+        "pos": [
+          -1.8391845226287842,
+          1.839184045791626,
+          7.111178398132324
+        ],
+        "energy": 3.0999999046325684
+      },
+      {
+        "name": "Metal | amber floor pool.004",
+        "pos": [
+          -2.600998878479004,
+          3.5762786865234375e-07,
+          7.111178398132324
+        ],
+        "energy": 3.0999999046325684
+      },
+      {
+        "name": "Metal | amber floor pool.005",
+        "pos": [
+          -1.8391845226287842,
+          -1.8391849994659424,
+          7.111178398132324
+        ],
+        "energy": 3.0999999046325684
+      },
+      {
+        "name": "Metal | amber floor pool.006",
+        "pos": [
+          3.5762786865234375e-07,
+          -2.6009998321533203,
+          7.111178398132324
+        ],
+        "energy": 3.0999999046325684
+      },
+      {
+        "name": "Metal | amber floor pool.007",
+        "pos": [
+          1.839186429977417,
+          -1.8391849994659424,
+          7.111178398132324
+        ],
+        "energy": 3.0999999046325684
+      },
+      {
+        "name": "Metal | soft overhead steel reflection",
+        "pos": [
+          -3.0,
+          -4.000000476837158,
+          12.800000190734863
+        ],
+        "energy": 403.0
+      },
+      {
+        "name": "Metal | long back edge reflection",
+        "pos": [
+          3.5762786865234375e-07,
+          2.9999990463256836,
+          11.5
+        ],
+        "energy": 527.0
+      },
+      {
+        "name": "Metal | broad rock fill",
+        "pos": [
+          4.000000953674316,
+          -6.0,
+          3.4000000953674316
+        ],
+        "energy": 372.0
+      },
+      {
+        "name": "Metal | left rock key",
+        "pos": [
+          -4.999999523162842,
+          -4.000000476837158,
+          5.0
+        ],
+        "energy": 403.0
+      },
+      {
+        "name": "Metal | soft console fill",
+        "pos": [
+          1.0000007152557373,
+          -4.999999523162842,
+          10.0
+        ],
+        "energy": 86.80000305175781
+      },
+      {
+        "name": "Bays | garage overhead pool",
+        "pos": [
+          6.75327205657959,
+          -1.2940046787261963,
+          8.801178932189941
+        ],
+        "energy": 240.0
+      },
+      {
+        "name": "Bays | garage soft side fill",
+        "pos": [
+          4.635953903198242,
+          -0.8160474300384521,
+          8.28117847442627
+        ],
+        "energy": 90.0
+      },
+      {
+        "name": "Bays | hangar ceiling beam",
+        "pos": [
+          7.560927867889404,
+          5.763338565826416,
+          12.541178703308105
+        ],
+        "energy": 440.0
+      },
+      {
+        "name": "Bays | hangar front soft return",
+        "pos": [
+          6.187267303466797,
+          1.6702897548675537,
+          11.571178436279297
+        ],
+        "energy": 90.0
+      },
+      {
+        "name": "Bays | hangar interior overhead pool",
+        "pos": [
+          9.826455116271973,
+          6.309244632720947,
+          11.821178436279297
+        ],
+        "energy": 260.0
+      },
+      {
+        "name": "Bays | upper rock reveal",
+        "pos": [
+          5.000000476837158,
+          -1.0000004768371582,
+          14.0
+        ],
+        "energy": 540.0
+      },
+      {
+        "name": "Bays | lower cliff soft fill",
+        "pos": [
+          6.000001430511475,
+          -7.0,
+          5.0
+        ],
+        "energy": 390.0
+      },
+      {
+        "name": "Bays | central ceiling pool",
+        "pos": [
+          -1.0,
+          -4.470348358154297e-07,
+          13.0
+        ],
+        "energy": 600.0
+      },
+      {
+        "name": "Bays | underside reflected cool fill",
+        "pos": [
+          3.762613296508789,
+          -7.523008346557617,
+          6.281178951263428
+        ],
+        "energy": 55.0
+      },
+      {
+        "name": "Upper | warm balcony pool",
+        "pos": [
+          5.197092056274414,
+          2.713563919067383,
+          10.191178321838379
+        ],
+        "energy": 7.0
+      },
+      {
+        "name": "Upper | warm balcony pool.001",
+        "pos": [
+          7.268649578094482,
+          2.5265073776245117,
+          10.191178321838379
+        ],
+        "energy": 7.0
+      },
+      {
+        "name": "Upper | warm balcony pool.002",
+        "pos": [
+          9.34020709991455,
+          2.3394505977630615,
+          10.191178321838379
+        ],
+        "energy": 7.0
+      },
+      {
+        "name": "Upper | portal soft reveal",
+        "pos": [
+          8.123194694519043,
+          4.206463813781738,
+          12.021178245544434
+        ],
+        "energy": 180.0
+      },
+      {
+        "name": "Upper | rear wall bounce",
+        "pos": [
+          12.483842849731445,
+          10.104277610778809,
+          11.771178245544434
+        ],
+        "energy": 110.0
+      },
+      {
+        "name": "Interior | left restrained bounce",
+        "pos": [
+          -1.9999992847442627,
+          -3.0,
+          11.0
+        ],
+        "energy": 180.0
+      },
+      {
+        "name": "Interior | rear grazing fill",
+        "pos": [
+          1.0000009536743164,
+          1.9999995231628418,
+          12.0
+        ],
+        "energy": 160.0
+      }
+    ]
+  },
+  "center": {
+    "collections": {
+      "01 | Approved rock and original console": {
+        "count": 8,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "deck_desk_b",
+          "deck_desk_dark_b",
+          "deck_desk_neon_b",
+          "deck_desk_led_b",
+          "deck_desk_glass_b"
+        ]
+      },
+      "02 | Machined rings and eight recessed grates": {
+        "count": 229,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | continuous support drum",
+          "Metal | lower rolled rim",
+          "Metal | upper rolled rim",
+          "Metal | grate recess backing",
+          "Metal | central four-part plate"
+        ]
+      },
+      "03 | Steel perimeter and warm inset lamps": {
+        "count": 164,
+        "types": [
+          "MESH"
+        ],
+        "examples": [
+          "Metal | continuous steel guardrail",
+          "Metal | guardrail polished top edge",
+          "Metal | continuous steel guardrail.001",
+          "Metal | guardrail polished top edge.001",
+          "Metal | perimeter post"
+        ]
+      },
+      "04 | Presentation cameras and studio lights": {
+        "count": 15,
+        "types": [
+          "CAMERA",
+          "LIGHT"
+        ],
+        "examples": [
+          "Metal | amber floor pool",
+          "Metal | amber floor pool.001",
+          "Metal | amber floor pool.002",
+          "Metal | amber floor pool.003",
+          "Metal | amber floor pool.004"
+        ]
+      }
+    },
+    "meshes": {
+      "deck_desk_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_dark_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_neon_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_led_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_glass_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_metal_b": [
+        "01 | Approved rock and original console"
+      ],
+      "deck_desk_hud_b": [
+        "01 | Approved rock and original console"
+      ],
+      "Central rock mound | continuous cross-column extrusions": [
+        "01 | Approved rock and original console"
+      ],
+      "Metal | continuous support drum": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | lower rolled rim": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | upper rolled rim": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate recess backing": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | central four-part plate": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | central four-part plate.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | central four-part plate.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | central four-part plate.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | concentric machined trim.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | large concentric alloy plate.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | outer walkway plate.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | vertical drum service plate.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 00": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 01": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 02": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 03": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 04": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 05": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 06": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | recessed open grate 07": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | grate radial edge frame.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | narrow cardinal structural spoke": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | broad diagonal steel wedge": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | narrow cardinal structural spoke.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | broad diagonal steel wedge.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | narrow cardinal structural spoke.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | broad diagonal steel wedge.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | narrow cardinal structural spoke.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.024": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.025": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.026": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.027": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | broad diagonal steel wedge.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.028": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.029": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.030": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | spoke countersunk fastener.031": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.001": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.002": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.003": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.004": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.005": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.006": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.007": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.008": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.009": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.010": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.011": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.012": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.013": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.014": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.015": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.016": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.017": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.018": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.019": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.020": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.021": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.022": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.023": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.024": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.025": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.026": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.027": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.028": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.029": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.030": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.031": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.032": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.033": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.034": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.035": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.036": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.037": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.038": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.039": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.040": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.041": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.042": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.043": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.044": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.045": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.046": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.047": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.048": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.049": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.050": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.051": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.052": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.053": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.054": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.055": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.056": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.057": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.058": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.059": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.060": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.061": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.062": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.063": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.064": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.065": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.066": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.067": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.068": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.069": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.070": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.071": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.072": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.073": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.074": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.075": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.076": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.077": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.078": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | flush deck fastener.079": [
+        "02 | Machined rings and eight recessed grates"
+      ],
+      "Metal | continuous steel guardrail": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | guardrail polished top edge": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | continuous steel guardrail.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | guardrail polished top edge.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.001": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.002": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.003": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.015": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.015": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.015": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.015": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.016": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.016": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.008": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.016": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.017": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.004": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.016": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.017": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.018": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.019": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.017": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.017": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.018": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.018": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.009": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.018": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.019": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.019": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.019": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.020": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.020": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.010": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.020": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.021": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.005": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.020": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.021": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.022": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.023": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.021": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.021": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.022": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.022": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.011": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.022": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.023": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.023": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.023": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.024": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.024": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.012": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.024": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.025": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.006": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.024": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.025": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.026": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.027": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.025": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.025": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.026": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.026": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.013": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.026": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.027": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.027": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.027": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.028": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.028": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.014": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.028": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.029": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | warm lamp armor.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | lamp cap.007": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.028": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.029": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.030": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | inset amber diffuser.031": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.029": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.029": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.030": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.030": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | outer rim reinforcement strap.015": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.030": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | rim strap bolt.031": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | perimeter post.031": [
+        "03 | Steel perimeter and warm inset lamps"
+      ],
+      "Metal | post bolted foot.031": [
+        "03 | Steel perimeter and warm inset lamps"
+      ]
+    },
+    "lights": [
+      {
+        "name": "Metal | amber floor pool",
+        "pos": [
+          2.6010007858276367,
+          -3.5762786865234375e-07,
+          7.111178398132324
+        ],
+        "energy": 5.0
+      },
+      {
+        "name": "Metal | amber floor pool.001",
+        "pos": [
+          1.8391854763031006,
+          1.8391849994659424,
+          7.111178398132324
+        ],
+        "energy": 5.0
+      },
+      {
+        "name": "Metal | amber floor pool.002",
+        "pos": [
+          1.5497207641601562e-06,
+          2.6009998321533203,
+          7.111178398132324
+        ],
+        "energy": 5.0
+      },
+      {
+        "name": "Metal | amber floor pool.003",
+        "pos": [
+          -1.8391845226287842,
+          1.839184045791626,
+          7.111178398132324
+        ],
+        "energy": 5.0
+      },
+      {
+        "name": "Metal | amber floor pool.004",
+        "pos": [
+          -2.600998878479004,
+          3.5762786865234375e-07,
+          7.111178398132324
+        ],
+        "energy": 5.0
+      },
+      {
+        "name": "Metal | amber floor pool.005",
+        "pos": [
+          -1.8391845226287842,
+          -1.8391849994659424,
+          7.111178398132324
+        ],
+        "energy": 5.0
+      },
+      {
+        "name": "Metal | amber floor pool.006",
+        "pos": [
+          3.5762786865234375e-07,
+          -2.6009998321533203,
+          7.111178398132324
+        ],
+        "energy": 5.0
+      },
+      {
+        "name": "Metal | amber floor pool.007",
+        "pos": [
+          1.839186429977417,
+          -1.8391849994659424,
+          7.111178398132324
+        ],
+        "energy": 5.0
+      },
+      {
+        "name": "Metal | soft overhead steel reflection",
+        "pos": [
+          -3.0,
+          -4.000000476837158,
+          12.800000190734863
+        ],
+        "energy": 650.0
+      },
+      {
+        "name": "Metal | long back edge reflection",
+        "pos": [
+          3.5762786865234375e-07,
+          2.9999990463256836,
+          11.5
+        ],
+        "energy": 850.0
+      },
+      {
+        "name": "Metal | broad rock fill",
+        "pos": [
+          4.000000953674316,
+          -6.0,
+          3.4000000953674316
+        ],
+        "energy": 600.0
+      },
+      {
+        "name": "Metal | left rock key",
+        "pos": [
+          -4.999999523162842,
+          -4.000000476837158,
+          5.0
+        ],
+        "energy": 650.0
+      },
+      {
+        "name": "Metal | soft console fill",
+        "pos": [
+          1.0000007152557373,
+          -4.999999523162842,
+          10.0
+        ],
+        "energy": 140.0
+      }
+    ]
+  }
+}

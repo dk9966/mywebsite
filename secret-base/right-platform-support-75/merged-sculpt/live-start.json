@@ -1,0 +1,82 @@
+{
+  "cave": "9ea399455672bef3cb4c5580b1397009ce62650ece9a8b6527c85222f4220bb5",
+  "shoulder": "b601e4090bd0b88ee219f06c7c4393253667f635848a534de74c61fb5a532eba",
+  "mode": "SCULPT",
+  "attrs": [
+    [
+      "wall_path_t",
+      "POINT",
+      "FLOAT"
+    ],
+    [
+      "wall_height_v",
+      "POINT",
+      "FLOAT"
+    ],
+    [
+      "roof_clearance_follow",
+      "POINT",
+      "FLOAT"
+    ],
+    [
+      ".select_vert",
+      "POINT",
+      "BOOLEAN"
+    ],
+    [
+      ".select_edge",
+      "EDGE",
+      "BOOLEAN"
+    ],
+    [
+      ".select_poly",
+      "FACE",
+      "BOOLEAN"
+    ],
+    [
+      "sharp_face",
+      "FACE",
+      "BOOLEAN"
+    ],
+    [
+      "position",
+      "POINT",
+      "FLOAT_VECTOR"
+    ],
+    [
+      ".edge_verts",
+      "EDGE",
+      "INT32_2D"
+    ],
+    [
+      ".corner_vert",
+      "CORNER",
+      "INT"
+    ],
+    [
+      ".corner_edge",
+      "CORNER",
+      "INT"
+    ]
+  ],
+  "mods": [
+    [
+      "Archived baked | Rock | subtle broken planes",
+      "DISPLACE",
+      false,
+      false
+    ],
+    [
+      "Archived baked | Foundation | reversible local smoothing",
+      "SMOOTH",
+      false,
+      false
+    ],
+    [
+      "Close rock follows light height and radius",
+      "NODES",
+      true,
+      true
+    ]
+  ]
+}

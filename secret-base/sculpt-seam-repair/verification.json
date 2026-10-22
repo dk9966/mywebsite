@@ -1,0 +1,49 @@
+{
+  "changed_evaluated_vertices": 311,
+  "unchanged_evaluated_vertices": 14925,
+  "max_change_m": 2.442051379607585,
+  "triangles": 30346,
+  "connected_components": 1,
+  "boundary_edges": 128,
+  "loose_edges": 0,
+  "nonmanifold_junctions": 0,
+  "degenerate_faces": 0,
+  "shape_keys_retained": 9,
+  "control_checks": [
+    {
+      "height": 0.8100000619888306,
+      "radius": 0.9300000667572021,
+      "new_walk_intrusions": 0,
+      "new_light_intrusions": 0,
+      "new_walk_samples": [],
+      "new_light_details": [],
+      "light_coverage_samples": 142,
+      "light_min_gap": 0.11800003051757812
+    },
+    {
+      "height": 0.35,
+      "radius": 0.85,
+      "new_walk_intrusions": 0,
+      "new_light_intrusions": 0,
+      "new_walk_samples": [],
+      "new_light_details": [],
+      "light_coverage_samples": 153,
+      "light_min_gap": 0.3224668502807617
+    },
+    {
+      "height": 1.49,
+      "radius": 1.46,
+      "new_walk_intrusions": 0,
+      "new_light_intrusions": 0,
+      "new_walk_samples": [],
+      "new_light_details": [],
+      "light_coverage_samples": 145,
+      "light_min_gap": 0.10860157012939453
+    }
+  ],
+  "controls_restored": [
+    0.8100000619888306,
+    0.9300000667572021
+  ],
+  "viewport_render_consistent": true
+}

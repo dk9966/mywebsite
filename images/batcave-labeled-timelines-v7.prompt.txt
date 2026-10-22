@@ -1,0 +1,14 @@
+Mode: built-in image_gen image edit
+Source: images/batcave-tron-timelines-v6.png
+Location reference: user-provided workstation close-up
+Output: images/batcave-labeled-timelines-v7.png
+
+Use case: precise-object-edit.
+Input image 1: full wide Batcave scene, the EDIT TARGET. Return this complete wide scene, same composition and aspect ratio.
+Input image 2: close-up LOCATION REFERENCE showing the equipment the user wants removed. Do not return a crop.
+
+Make these two localized changes to the bottom-left platform area:
+1. Remove the entire small workstation and equipment installation shown in image 2: desk, three monitors, chair, upright metallic cabinets/machines, small tabletop parts, and large dark equipment/storage enclosure behind them. In image 1 these objects are on the narrow left platform against the cave wall, above and behind the three glowing timeline strips (roughly x=20–300, y=635–775 in the 1697x927 full scene). Replace their footprints with a clear, empty, continuous dark metallic platform floor with matching panels and natural lighting. Preserve the cave wall, warm lamps, perimeter safety railings and structural platform. The result here must be simply open platform with no remaining furniture, screens or equipment.
+2. On the ground of the bottom-left foreground platform, add exactly three floor labels for the three existing luminous timeline strips: "WORK", "EDUCATION", "TIMELINE", one label at the beginning of each respective strip, in that order from the leftmost strip to the rightmost strip. Integrate the labels flat into the floor plane, correctly foreshortened with the metal floor perspective. Use a sophisticated narrow square geometric futuristic sans-serif reminiscent of Eurostile, ALL CAPS, medium weight, subtle wide letter spacing, clean readable complete words. Make the text a restrained luminous pale icy blue, matched to each strip's hue, with very gentle glow. The letters must look like precise inlaid architectural floor signage in the Batcave, not a floating overlay. Give words enough space so EDUCATION is fully legible and no label collides with the dots, railings or stairs. Exact spelling: WORK / EDUCATION / TIMELINE. No other new text.
+
+Keep all THREE existing glowing floor timeline strips with their brighter circular time-marker dots and subtly different cyan, blue-teal, and blue-violet colors. Preserve their current orientation, from screen-upper-left diagonally toward screen-bottom-right, and their ample spacing. Preserve the stairs, water and boats behind the platform, bridges, all central purple computer equipment, right circular platform, upper rooms, aircraft, cave formations, waterfalls, lighting and every other area of image 1. Maintain the dark cinematic realistic 3D rendering, detailed metal materials and wide camera viewpoint. Only clear the indicated left-side equipment and add the three floor labels.

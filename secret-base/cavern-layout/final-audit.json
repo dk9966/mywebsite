@@ -1,0 +1,644 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/mound-study/central-platform-rock-mound-balanced.blend",
+  "central_island_unchanged": true,
+  "protected_objects": {
+    "deck_floor_b": "33b2d39eb802941206ccdb71a111aaf9996113dce0035312ba9434fce9373b8d",
+    "deck_runes_b": "c7cb8b9fa924d213cb5af468c6a2402b721135d5f4f8af0693289cb48a0f1dbc",
+    "deck_hub_b": "6fa845da1168b9e1e9b29e2d1e0f8831f257fef13f98efb17e226783d848d74b",
+    "deck_hub_glow_b": "bcab8c233b55ca0cec56414df42134d200c34d83f3743d3acd33490545c184cc",
+    "deck_braziers_b": "ee638656866333597cca8b3dc5687879ecaa0c7da3a5ebb0520389e6b33bf76a",
+    "deck_brazier_flames_b": "13697435aa2ea01ed013ff4b8f29f8d2dbed0d4917ad8745cf827b69e7916a2c",
+    "deck_crystal_base_b": "6fb1b4aa7c4165b7785854fa2c3f6734a15a993c05998ae680259c62a1e8e290",
+    "deck_crystal.001": "38d27bca62518c60e6d70f6f95b84e9e2aad19e125cd14d5c5644154abb70062",
+    "deck_desk_b": "2dd84994f7c806e9b371830cc6888c2f3c93fd30a5561df76f6c96ee445677b5",
+    "deck_desk_dark_b": "5c7fb10e802d8a6eeb8149e7332e6e4fdcc9407d60662f0e80cc293bc664a838",
+    "deck_desk_neon_b": "cee9101c3f7362040ae4ea20d469f21ba437552ae39bb3e3ffe43cd199365570",
+    "deck_desk_led_b": "8d0002ce361e03b13368c0fe7eb35d8df0a4e40aca322430483f5a9d51089aee",
+    "deck_desk_glass_b": "5bfc7c0dcacf101051f204ac9ab7408d976b252d6b762514b778e3afd1a93cae",
+    "deck_desk_metal_b": "18974d5c0dccc6d5650dec18e6ea3fb2562ca97ad58f683e0878ea6ac2bffae4",
+    "deck_desk_hud_b": "afa2fbc4872f5b1a3e98b02cdb1aa241ceaa219f8e8ff3c7c9588eaba1ab2de0",
+    "deck_railing_b": "9c5025f4884f69f997704b2f927f154b8ef678ac60521dab2074611b280b1b86",
+    "Central rock mound | continuous cross-column extrusions": "da45e33245d4e0906b339b3cb745a072e53a525b7849328f2b86ae0d5e9a5e4d"
+  },
+  "gates": {
+    "contact": [
+      -2.379275321960449,
+      1.020491361618042,
+      6.87117862701416
+    ],
+    "experiences": [
+      -1.6109400987625122,
+      -2.07242488861084,
+      6.87117862701416
+    ],
+    "about": [
+      2.4363455772399902,
+      0.8755275011062622,
+      6.87117862701416
+    ]
+  },
+  "platforms": {
+    "contact": {
+      "collections": [
+        "12",
+        "20"
+      ],
+      "source": [
+        -12.5,
+        11,
+        11.35
+      ],
+      "target": [
+        -7.3,
+        3.0,
+        8.55
+      ],
+      "scale": 0.53
+    },
+    "experiences": {
+      "collections": [
+        "11",
+        "23"
+      ],
+      "source": [
+        -13.7,
+        -5,
+        5.5
+      ],
+      "target": [
+        -7.6,
+        -4.0,
+        5.49
+      ],
+      "scale": 0.54
+    },
+    "about": {
+      "collections": [
+        "13",
+        "22"
+      ],
+      "source": [
+        13.75,
+        -1.2,
+        7.7
+      ],
+      "target": [
+        8.25,
+        -2.3,
+        5.98
+      ],
+      "scale": 0.53
+    },
+    "workshop": {
+      "collections": [
+        "14",
+        "24"
+      ],
+      "source": [
+        14.7,
+        14.1,
+        11.45
+      ],
+      "target": [
+        8.1,
+        3.8,
+        8.35
+      ],
+      "scale": 0.54
+    }
+  },
+  "imported_objects": {
+    "contact": 429,
+    "experiences": 722,
+    "about": 462,
+    "workshop": 630
+  },
+  "bridges": [
+    {
+      "name": "Projects to Experiences",
+      "points": [
+        [
+          -1.6109400987625122,
+          -2.07242488861084,
+          6.87117862701416
+        ],
+        [
+          -3.25,
+          -2.450000047683716,
+          6.441178798675537
+        ],
+        [
+          -4.900000095367432,
+          -2.6500000953674316,
+          5.949999809265137
+        ]
+      ],
+      "width": 0.89,
+      "stairs": false
+    },
+    {
+      "name": "Projects to Contact - lower span",
+      "points": [
+        [
+          -2.379275321960449,
+          1.020491361618042,
+          6.87117862701416
+        ],
+        [
+          -4.199999809265137,
+          1.2999999523162842,
+          6.87117862701416
+        ]
+      ],
+      "width": 0.87,
+      "stairs": false
+    },
+    {
+      "name": "Contact - lower stair",
+      "points": [
+        [
+          -4.199999809265137,
+          1.2999999523162842,
+          6.87117862701416
+        ],
+        [
+          -4.199999809265137,
+          2.200000047683716,
+          7.75
+        ]
+      ],
+      "width": 0.87,
+      "stairs": true
+    },
+    {
+      "name": "Contact - switchback landing",
+      "points": [
+        [
+          -4.199999809265137,
+          2.200000047683716,
+          7.75
+        ],
+        [
+          -4.71999979019165,
+          2.200000047683716,
+          7.75
+        ]
+      ],
+      "width": 0.87,
+      "stairs": false
+    },
+    {
+      "name": "Contact - upper stair",
+      "points": [
+        [
+          -4.71999979019165,
+          2.200000047683716,
+          7.75
+        ],
+        [
+          -5.320000171661377,
+          3.3499999046325684,
+          8.600000381469727
+        ]
+      ],
+      "width": 0.87,
+      "stairs": true
+    },
+    {
+      "name": "Projects to About",
+      "points": [
+        [
+          2.4363455772399902,
+          0.8755275011062622,
+          6.87117862701416
+        ],
+        [
+          4.0,
+          -0.800000011920929,
+          6.630000114440918
+        ],
+        [
+          5.599999904632568,
+          -2.0,
+          6.019999980926514
+        ]
+      ],
+      "width": 0.95,
+      "stairs": false
+    },
+    {
+      "name": "Workshop - rear gallery",
+      "points": [
+        [
+          -1.0,
+          5.349999904632568,
+          8.399999618530273
+        ],
+        [
+          -0.44999998807907104,
+          4.800000190734863,
+          8.399999618530273
+        ],
+        [
+          0.0,
+          4.300000190734863,
+          8.399999618530273
+        ],
+        [
+          3.0999999046325684,
+          4.300000190734863,
+          8.399999618530273
+        ],
+        [
+          5.5,
+          4.300000190734863,
+          8.420000076293945
+        ]
+      ],
+      "width": 0.75,
+      "stairs": false
+    },
+    {
+      "name": "About - descending stair",
+      "points": [
+        [
+          10.550000190734863,
+          -3.5999999046325684,
+          6.039999961853027
+        ],
+        [
+          10.550000190734863,
+          -6.300000190734863,
+          4.050000190734863
+        ]
+      ],
+      "width": 0.9,
+      "stairs": true
+    },
+    {
+      "name": "About - lower exit",
+      "points": [
+        [
+          10.550000190734863,
+          -6.300000190734863,
+          4.050000190734863
+        ],
+        [
+          7.099999904632568,
+          -9.300000190734863,
+          2.0999999046325684
+        ]
+      ],
+      "width": 1.1,
+      "stairs": false
+    }
+  ],
+  "terrain": [
+    {
+      "name": "Contact | approved rock foundation",
+      "position": [
+        -7.3,
+        3,
+        -5
+      ],
+      "scale": [
+        1.16,
+        0.88,
+        12.98
+      ],
+      "rotation": 0.28,
+      "inverted": false
+    },
+    {
+      "name": "Experiences | approved rock foundation",
+      "position": [
+        -7.6,
+        -4.0,
+        -5
+      ],
+      "scale": [
+        1.8,
+        1.22,
+        9.57
+      ],
+      "rotation": -0.08,
+      "inverted": false
+    },
+    {
+      "name": "About | approved rock foundation",
+      "position": [
+        8.25,
+        -2.3,
+        -5
+      ],
+      "scale": [
+        1.72,
+        1.35,
+        10.39
+      ],
+      "rotation": 0.16,
+      "inverted": false
+    },
+    {
+      "name": "Workshop | approved rock foundation",
+      "position": [
+        8.1,
+        3.8,
+        -5
+      ],
+      "scale": [
+        1.7,
+        1.22,
+        12.74
+      ],
+      "rotation": -0.24,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Left foreground",
+      "position": [
+        -13.4,
+        -3.8,
+        -6
+      ],
+      "scale": [
+        1.22,
+        1.5,
+        22
+      ],
+      "rotation": 0.3,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Left wall",
+      "position": [
+        -13.4,
+        4.5,
+        -6
+      ],
+      "scale": [
+        1.5,
+        2.2,
+        24
+      ],
+      "rotation": 0.07,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Left rear",
+      "position": [
+        -11.7,
+        11,
+        -6
+      ],
+      "scale": [
+        1.6,
+        2.1,
+        25
+      ],
+      "rotation": -0.35,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Right foreground",
+      "position": [
+        13.8,
+        -3.9,
+        -6
+      ],
+      "scale": [
+        1.24,
+        1.65,
+        23
+      ],
+      "rotation": -0.15,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Right wall",
+      "position": [
+        13.3,
+        5.8,
+        -6
+      ],
+      "scale": [
+        1.43,
+        2.15,
+        24
+      ],
+      "rotation": 0.3,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Right rear",
+      "position": [
+        12.8,
+        12.5,
+        -6
+      ],
+      "scale": [
+        1.52,
+        2.0,
+        25
+      ],
+      "rotation": -0.1,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Back left buttress",
+      "position": [
+        -5.3,
+        12.6,
+        -6
+      ],
+      "scale": [
+        1.5,
+        1.48,
+        24
+      ],
+      "rotation": 0.36,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Back right buttress",
+      "position": [
+        5.35,
+        14.5,
+        -6
+      ],
+      "scale": [
+        1.28,
+        1.6,
+        23
+      ],
+      "rotation": -0.22,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Distant left",
+      "position": [
+        -9.4,
+        23,
+        -7
+      ],
+      "scale": [
+        2.2,
+        1.75,
+        27
+      ],
+      "rotation": 0.16,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Distant center",
+      "position": [
+        0.3,
+        27,
+        -7
+      ],
+      "scale": [
+        2.0,
+        1.65,
+        27
+      ],
+      "rotation": 0.55,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Distant right",
+      "position": [
+        10.4,
+        24,
+        -7
+      ],
+      "scale": [
+        2.2,
+        1.8,
+        28
+      ],
+      "rotation": -0.13,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Rear rock landing",
+      "position": [
+        -0.6,
+        6.1,
+        -5
+      ],
+      "scale": [
+        0.43,
+        0.51,
+        13.35
+      ],
+      "rotation": 0.2,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | Rear landing buttress",
+      "position": [
+        -1.0,
+        7.0,
+        -6
+      ],
+      "scale": [
+        0.45,
+        0.52,
+        24
+      ],
+      "rotation": 0.37,
+      "inverted": false
+    },
+    {
+      "name": "Cavern | hanging roof 00",
+      "position": [
+        -11,
+        4,
+        16.3
+      ],
+      "scale": [
+        1.5,
+        2.0,
+        3.0
+      ],
+      "rotation": 0.0,
+      "inverted": true
+    },
+    {
+      "name": "Cavern | hanging roof 01",
+      "position": [
+        -6.5,
+        6,
+        16.3
+      ],
+      "scale": [
+        1.55,
+        2.0,
+        3.2
+      ],
+      "rotation": 0.2,
+      "inverted": true
+    },
+    {
+      "name": "Cavern | hanging roof 02",
+      "position": [
+        -1.5,
+        7,
+        16.6
+      ],
+      "scale": [
+        1.55,
+        2.0,
+        3.0
+      ],
+      "rotation": 0.4,
+      "inverted": true
+    },
+    {
+      "name": "Cavern | hanging roof 03",
+      "position": [
+        3.5,
+        7.5,
+        16.8
+      ],
+      "scale": [
+        1.55,
+        2.0,
+        3.2
+      ],
+      "rotation": 0.6000000000000001,
+      "inverted": true
+    },
+    {
+      "name": "Cavern | hanging roof 04",
+      "position": [
+        8.4,
+        6,
+        16.1
+      ],
+      "scale": [
+        1.6,
+        1.8,
+        2.8
+      ],
+      "rotation": 0.8,
+      "inverted": true
+    },
+    {
+      "name": "Cavern | hanging roof 05",
+      "position": [
+        12.5,
+        4.5,
+        16.1
+      ],
+      "scale": [
+        1.4,
+        2.0,
+        3.2
+      ],
+      "rotation": 1.0,
+      "inverted": true
+    }
+  ],
+  "stage": 7
+}

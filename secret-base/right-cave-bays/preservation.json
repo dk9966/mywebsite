@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "protected_central_meshes": 237,
+  "changed": [],
+  "bridge_clearance_obstructions": [],
+  "upper_balcony_rock_occlusions": [],
+  "vehicle_objects": [],
+  "support_anchor_distances_from_rock": [
+    0.0,
+    4.76837158203125e-07,
+    1.9660499219753547e-06,
+    0.0,
+    6.743495646333031e-07,
+    0.0
+  ],
+  "stair_objects": [],
+  "camera_lens_mm": 32.0,
+  "permitted_center_change": "New opening in right perimeter fence for the connecting bridge",
+  "file": "/Users/danielku/mywebsite/secret-base/right-cave-bays/central-pillar-right-cave-bays.blend",
+  "sha256": "8a0f6f197a3dff0f9ee79f6c4c8be045c20bf9675ddde99d47aeb05deaa17c3d"
+}

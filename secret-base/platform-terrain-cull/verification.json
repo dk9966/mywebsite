@@ -1,0 +1,64 @@
+{
+  "source_triangles": 82334,
+  "evaluated_triangles": 30346,
+  "local_triangles_before": 48884,
+  "local_triangles_after": 912,
+  "local_median_edge_m": 0.7178049027105136,
+  "surface_deviation_p95_m": 0.6739449501037598,
+  "surface_deviation_max_m": 0.9688392281532288,
+  "outside_unchanged_vertices": 14665,
+  "outside_max_displacement_m": 0.0,
+  "connected_components": 1,
+  "loose_edges": 0,
+  "nonmanifold_junctions": 0,
+  "degenerate_faces": 0,
+  "control_checks": [
+    {
+      "height": 0.8100000619888306,
+      "radius": 0.9300000667572021,
+      "new_walk_intrusions": 0,
+      "new_light_intrusions": 0,
+      "baseline_walk_intrusions": 0,
+      "baseline_light_intrusions": 0
+    },
+    {
+      "height": 0.35,
+      "radius": 0.85,
+      "new_walk_intrusions": 0,
+      "new_light_intrusions": 0,
+      "baseline_walk_intrusions": 0,
+      "baseline_light_intrusions": 0
+    },
+    {
+      "height": 1.49,
+      "radius": 1.46,
+      "new_walk_intrusions": 0,
+      "new_light_intrusions": 0,
+      "baseline_walk_intrusions": 0,
+      "baseline_light_intrusions": 0
+    },
+    {
+      "height": 2.1,
+      "radius": 2.1,
+      "new_walk_intrusions": 0,
+      "new_light_intrusions": 0,
+      "baseline_walk_intrusions": 0,
+      "baseline_light_intrusions": 0
+    }
+  ],
+  "restored_controls": [
+    0.8100000619888306,
+    0.9300000667572021
+  ],
+  "protected_objects": 2903,
+  "changed_unrelated_objects": [
+    "Middle back | upper octagon"
+  ],
+  "source_shape_keys": 9,
+  "viewport_render_consistent": true,
+  "snug_backing_vertex_samples": 80,
+  "snug_backing_gap_median_m": 0.015805586241185665,
+  "snug_backing_gap_p95_m": 0.04490573704242706,
+  "source_deviation_note": "Includes intentional inward refitting of hidden wall backing, previously as much as 1.25 m away.",
+  "unrelated_object_note": "Middle back upper octagon changed independently in the live session; this work does not write to it and retains its current state."
+}

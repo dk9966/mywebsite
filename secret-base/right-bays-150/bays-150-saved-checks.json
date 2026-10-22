@@ -1,0 +1,145 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/connected-cavern/connected-cavern-open-chamber.blend",
+  "new_architecture_built_from_scratch": true,
+  "lower_polygon": [
+    [
+      -5.1,
+      -1.1
+    ],
+    [
+      -2.4355339059327377,
+      -1.1
+    ],
+    [
+      -1.0355339059327378,
+      -2.5
+    ],
+    [
+      1.0355339059327378,
+      -2.5
+    ],
+    [
+      2.5,
+      -1.0355339059327378
+    ],
+    [
+      2.5,
+      1.0355339059327378
+    ],
+    [
+      1.0355339059327378,
+      2.5
+    ],
+    [
+      -1.0355339059327378,
+      2.5
+    ],
+    [
+      -2.4355339059327377,
+      1.1
+    ],
+    [
+      -5.1,
+      1.1
+    ]
+  ],
+  "upper_polygon": [
+    [
+      -4.15,
+      0.05
+    ],
+    [
+      -3.65,
+      -0.45
+    ],
+    [
+      1.7,
+      -0.45
+    ],
+    [
+      2.2,
+      0.05
+    ],
+    [
+      2.2,
+      3.0
+    ],
+    [
+      -4.15,
+      3.0
+    ]
+  ],
+  "common_yaw_degrees": -84,
+  "camera_angle_from_facade_normal": 59.35322914806885,
+  "middle_protected_count": 237,
+  "middle_changes": [],
+  "wall_components": [
+    66021
+  ],
+  "wall_invalid_edges": 0,
+  "support_anchor_distances": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.9802322387695312e-08,
+    4.76837158203125e-07,
+    0.0,
+    0.0
+  ],
+  "bridge_start": [
+    2.620192527770996,
+    0.22691752016544342,
+    6.87117862701416
+  ],
+  "bridge_end": [
+    5.374475002288818,
+    0.46544766426086426,
+    6.842178821563721
+  ],
+  "center_rail_gate_edits": [
+    "Metal | continuous steel guardrail",
+    "Metal | guardrail polished top edge",
+    "Metal | continuous steel guardrail.001",
+    "Metal | guardrail polished top edge.001",
+    "Metal | perimeter post",
+    "Metal | post bolted foot",
+    "Metal | outer rim reinforcement strap",
+    "Metal | rim strap bolt",
+    "Metal | rim strap bolt.001",
+    "Metal | warm lamp armor",
+    "Metal | lamp cap",
+    "Metal | inset amber diffuser",
+    "Metal | inset amber diffuser.001",
+    "Metal | inset amber diffuser.002",
+    "Metal | inset amber diffuser.003",
+    "Metal | perimeter post.001",
+    "Metal | post bolted foot.001"
+  ],
+  "lower_marking_center": [
+    6.706025915094899,
+    -3.1149813095944188
+  ],
+  "lower_overhead_light_center": [
+    6.706025915094899,
+    -3.1149813095944188
+  ],
+  "origin": [
+    7.8,
+    -3.0
+  ],
+  "lower_offset_y": -1.1,
+  "lower_floor_z": 6.836178627,
+  "upper_floor_z": 10.221178627,
+  "no_water": true,
+  "no_vehicles": true,
+  "passed": true,
+  "saved_middle_changes": [],
+  "standing_space_rock_intrusions": [],
+  "key_floor_occlusions": [],
+  "bridge_railing_obstacles": [],
+  "sha256": "f887306433ad102b67384d6a53867fd3a4efe523a2a381a532d0193815892925",
+  "saved_file_passed": true
+}

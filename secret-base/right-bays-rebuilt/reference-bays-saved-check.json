@@ -1,0 +1,150 @@
+{
+  "protected_middle_meshes": 237,
+  "changed_middle_meshes": [],
+  "wall_components": [
+    37995
+  ],
+  "wall_invalid_edges": 0,
+  "standing_space_rock_intrusions": [],
+  "lower_polygon": [
+    [
+      -3.5,
+      -1.1
+    ],
+    [
+      -2.0112698372208095,
+      -1.1
+    ],
+    [
+      -0.9112698372208095,
+      -2.2
+    ],
+    [
+      0.9112698372208095,
+      -2.2
+    ],
+    [
+      2.2,
+      -0.9112698372208095
+    ],
+    [
+      2.2,
+      0.9112698372208095
+    ],
+    [
+      0.9112698372208095,
+      2.2
+    ],
+    [
+      -0.9112698372208095,
+      2.2
+    ],
+    [
+      -2.0112698372208095,
+      1.1
+    ],
+    [
+      -3.5,
+      1.1
+    ]
+  ],
+  "lower_octagon_half_extent": 2.2,
+  "lower_octagon_corner_cut": 1.2887301627791907,
+  "lower_wing_bounds": [
+    -3.5,
+    -1.6,
+    -1.1,
+    1.1
+  ],
+  "upper_polygon": [
+    [
+      -3.6,
+      0.55
+    ],
+    [
+      -3.05,
+      0
+    ],
+    [
+      1.65,
+      0
+    ],
+    [
+      2.2,
+      0.55
+    ],
+    [
+      2.2,
+      3.6
+    ],
+    [
+      -3.6,
+      3.6
+    ]
+  ],
+  "upper_right_edge_fixed": 2.2,
+  "upper_left_extension": 1.4,
+  "lower_marking_and_light_center": [
+    6.34,
+    -2.75
+  ],
+  "lower_yaw_degrees": -35.0,
+  "upper_yaw_degrees": -10.0,
+  "lower_origin": [
+    6.34,
+    -2.75
+  ],
+  "upper_origin": [
+    8.3,
+    3.5
+  ],
+  "lower_floor_z": 6.831178627,
+  "upper_floor_z": 9.9,
+  "support_seat_distances": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "central_railing_bridge_changes": [
+    "Metal | continuous steel guardrail",
+    "Metal | guardrail polished top edge",
+    "Metal | continuous steel guardrail.001",
+    "Metal | guardrail polished top edge.001",
+    "Metal | perimeter post.030",
+    "Metal | post bolted foot.030",
+    "Metal | outer rim reinforcement strap.015",
+    "Metal | rim strap bolt.030",
+    "Metal | rim strap bolt.031",
+    "Metal | perimeter post.031",
+    "Metal | post bolted foot.031"
+  ],
+  "bridge_start": [
+    2.490187406539917,
+    -0.8766796588897705,
+    6.87117862701416
+  ],
+  "bridge_end": [
+    3.3795130252838135,
+    -1.1897701025009155,
+    6.834178447723389
+  ],
+  "no_vehicles": true,
+  "no_water": true,
+  "passed": true,
+  "reopened_saved_file": true,
+  "saved_center_mesh_changes": [],
+  "camera_visibility_samples": 22,
+  "camera_rock_occlusions": [],
+  "bridge_rail_obstructions": [],
+  "sha256": "a0d5f8f025786f3480e3e72f8041586bc37c60be93a7eda32b5e99f971334a36",
+  "saved_checks_passed": true
+}

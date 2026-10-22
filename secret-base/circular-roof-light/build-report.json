@@ -1,0 +1,27 @@
+{
+  "center_xy": [
+    26.482255935668945,
+    -7.05480432510376
+  ],
+  "wall_top_z": 8.91448974609375,
+  "default_height_above_walls_m": 1.149999976158142,
+  "fixture_radius_m": 1.46,
+  "roof_slopes": 4,
+  "rim_light_segments": 12,
+  "new_meshes": 67,
+  "control_socket": "Socket_8",
+  "superseded_hidden": [
+    "Lower | reference octagonal overhead hood",
+    "Lower | overhead hood armor edge",
+    "Lower | overhead hood armor edge.001",
+    "Lower | overhead hood armor edge.002",
+    "Lower | overhead hood armor edge.003",
+    "Lower | overhead hood armor edge.004",
+    "Lower | overhead hood armor edge.005",
+    "Lower | overhead hood armor edge.006",
+    "Lower | overhead hood armor edge.007",
+    "Lower | overhead inset diffuser",
+    "Lower | overhead inset diffuser.001",
+    "Lower | fitted overhead pool"
+  ]
+}

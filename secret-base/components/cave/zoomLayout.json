@@ -1,0 +1,15 @@
+{
+  "About Me": {
+    "distance": 4.332,
+    "elevation": 14.5,
+    "facing": 177,
+    "panX": 0,
+    "panY": -0.05
+  },
+  "Experiences": {
+    "distance": 13.316,
+    "facing": 48,
+    "panX": 0.08,
+    "panY": -0.5
+  }
+}

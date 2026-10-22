@@ -1,0 +1,607 @@
+[
+  {
+    "name": "Blockout | lower fill",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 210.0,
+    "color": [
+      0.699999988079071,
+      0.8299999833106995,
+      1.0
+    ]
+  },
+  {
+    "name": "Blockout | upper fill",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 210.0,
+    "color": [
+      0.699999988079071,
+      0.8299999833106995,
+      1.0
+    ]
+  },
+  {
+    "name": "150 | cave overhead shaft",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 750.0,
+    "color": [
+      0.47999998927116394,
+      0.6600000262260437,
+      0.8600000143051147
+    ]
+  },
+  {
+    "name": "150 | cliff edge grazing",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 330.0,
+    "color": [
+      0.550000011920929,
+      0.7200000286102295,
+      0.9100000262260437
+    ]
+  },
+  {
+    "name": "150 | far ambient fill",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 32.0,
+    "color": [
+      0.4399999976158142,
+      0.5899999737739563,
+      0.7300000190734863
+    ]
+  },
+  {
+    "name": "150 | right return faint rim",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 170.0,
+    "color": [
+      0.3700000047683716,
+      0.5199999809265137,
+      0.6600000262260437
+    ]
+  },
+  {
+    "name": "Metal | soft overhead steel reflection",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 153.13999938964844,
+    "color": [
+      0.7400000095367432,
+      0.8399999737739563,
+      1.0
+    ]
+  },
+  {
+    "name": "Metal | long back edge reflection",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 200.25999450683594,
+    "color": [
+      0.5400000214576721,
+      0.699999988079071,
+      1.0
+    ]
+  },
+  {
+    "name": "Metal | broad rock fill",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 141.36000061035156,
+    "color": [
+      0.6299999952316284,
+      0.7200000286102295,
+      0.8700000047683716
+    ]
+  },
+  {
+    "name": "Metal | left rock key",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 153.13999938964844,
+    "color": [
+      0.699999988079071,
+      0.7900000214576721,
+      0.9399999976158142
+    ]
+  },
+  {
+    "name": "Metal | soft console fill",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 32.98400115966797,
+    "color": [
+      0.699999988079071,
+      0.8299999833106995,
+      1.0
+    ]
+  },
+  {
+    "name": "Metal | amber floor pool",
+    "hide_render": true,
+    "hide_viewport": true,
+    "energy": 1.1779999732971191,
+    "color": [
+      1.0,
+      0.4300000071525574,
+      0.15000000596046448
+    ]
+  },
+  {
+    "name": "Metal | amber floor pool.001",
+    "hide_render": true,
+    "hide_viewport": true,
+    "energy": 1.1779999732971191,
+    "color": [
+      1.0,
+      0.4300000071525574,
+      0.15000000596046448
+    ]
+  },
+  {
+    "name": "Metal | amber floor pool.002",
+    "hide_render": true,
+    "hide_viewport": true,
+    "energy": 1.1779999732971191,
+    "color": [
+      1.0,
+      0.4300000071525574,
+      0.15000000596046448
+    ]
+  },
+  {
+    "name": "Metal | amber floor pool.003",
+    "hide_render": true,
+    "hide_viewport": true,
+    "energy": 1.1779999732971191,
+    "color": [
+      1.0,
+      0.4300000071525574,
+      0.15000000596046448
+    ]
+  },
+  {
+    "name": "Metal | amber floor pool.004",
+    "hide_render": true,
+    "hide_viewport": true,
+    "energy": 1.1779999732971191,
+    "color": [
+      1.0,
+      0.4300000071525574,
+      0.15000000596046448
+    ]
+  },
+  {
+    "name": "Metal | amber floor pool.005",
+    "hide_render": true,
+    "hide_viewport": true,
+    "energy": 1.1779999732971191,
+    "color": [
+      1.0,
+      0.4300000071525574,
+      0.15000000596046448
+    ]
+  },
+  {
+    "name": "Metal | amber floor pool.006",
+    "hide_render": true,
+    "hide_viewport": true,
+    "energy": 1.1779999732971191,
+    "color": [
+      1.0,
+      0.4300000071525574,
+      0.15000000596046448
+    ]
+  },
+  {
+    "name": "Metal | amber floor pool.007",
+    "hide_render": true,
+    "hide_viewport": true,
+    "energy": 1.1779999732971191,
+    "color": [
+      1.0,
+      0.4300000071525574,
+      0.15000000596046448
+    ]
+  },
+  {
+    "name": "Lower | canopy downlight",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 70.0,
+    "color": [
+      0.6600000262260437,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | wall practical pool",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 18.0,
+    "color": [
+      0.6600000262260437,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | wall practical pool.001",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 18.0,
+    "color": [
+      0.6600000262260437,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | wall practical pool.002",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 18.0,
+    "color": [
+      0.6600000262260437,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | wall practical pool.003",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 18.0,
+    "color": [
+      0.6600000262260437,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | soft room bounce",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 48.0,
+    "color": [
+      0.6299999952316284,
+      0.7699999809265137,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | faint cliff reflected fill",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 75.0,
+    "color": [
+      0.6299999952316284,
+      0.7699999809265137,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | fitted wall wash",
+    "hide_render": true,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | fitted wall wash.001",
+    "hide_render": true,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | fitted wall wash.002",
+    "hide_render": true,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | fitted wall wash.003",
+    "hide_render": true,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | fitted overhead pool",
+    "hide_render": true,
+    "hide_viewport": false,
+    "energy": 100.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | fitted broad soft fill",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 45.0,
+    "color": [
+      0.5600000023841858,
+      0.7099999785423279,
+      0.8500000238418579
+    ]
+  },
+  {
+    "name": "Lower | octagon wall wash",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | octagon wall wash.001",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | octagon wall wash.002",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | opposite bay 1 wall wash",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | opposite bay 2 wall wash",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | far right beveled bay wall wash",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 28.0,
+    "color": [
+      0.6499999761581421,
+      0.8199999928474426,
+      1.0
+    ]
+  },
+  {
+    "name": "Lower | circular crown downlight",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 220.0,
+    "color": [
+      0.6800000071525574,
+      0.8299999833106995,
+      1.0
+    ]
+  },
+  {
+    "name": "Left stairs | warm marker 02.001",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 3.0,
+    "color": [
+      1.0,
+      0.5799999833106995,
+      0.25999999046325684
+    ]
+  },
+  {
+    "name": "Left stairs | warm marker 03.001",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 3.0,
+    "color": [
+      1.0,
+      0.5799999833106995,
+      0.25999999046325684
+    ]
+  },
+  {
+    "name": "Left stairs | warm marker 04.001",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 3.0,
+    "color": [
+      1.0,
+      0.5799999833106995,
+      0.25999999046325684
+    ]
+  },
+  {
+    "name": "Left stairs | warm marker 05.001",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 3.0,
+    "color": [
+      1.0,
+      0.5799999833106995,
+      0.25999999046325684
+    ]
+  },
+  {
+    "name": "Left stairs | warm marker 00.002",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 3.0,
+    "color": [
+      1.0,
+      0.5799999833106995,
+      0.25999999046325684
+    ]
+  },
+  {
+    "name": "Left stairs | warm marker 01.002",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 3.0,
+    "color": [
+      1.0,
+      0.5799999833106995,
+      0.25999999046325684
+    ]
+  },
+  {
+    "name": "Left bay | support 01 warm downward wash",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 48.0,
+    "color": [
+      1.0,
+      0.47999998927116394,
+      0.20000000298023224
+    ]
+  },
+  {
+    "name": "Left bay | support 02 warm downward wash",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 48.0,
+    "color": [
+      1.0,
+      0.47999998927116394,
+      0.20000000298023224
+    ]
+  },
+  {
+    "name": "Left bay | support 03 warm downward wash",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 48.0,
+    "color": [
+      1.0,
+      0.47999998927116394,
+      0.20000000298023224
+    ]
+  },
+  {
+    "name": "Left bay | support 04 warm downward wash",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 48.0,
+    "color": [
+      1.0,
+      0.47999998927116394,
+      0.20000000298023224
+    ]
+  },
+  {
+    "name": "Left bay | wall apron wash 0",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 12.0,
+    "color": [
+      1.0,
+      0.5,
+      0.23000000417232513
+    ]
+  },
+  {
+    "name": "Left bay | wall apron wash 1",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 12.0,
+    "color": [
+      1.0,
+      0.5,
+      0.23000000417232513
+    ]
+  },
+  {
+    "name": "Left bay | wall apron wash 2",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 12.0,
+    "color": [
+      1.0,
+      0.5,
+      0.23000000417232513
+    ]
+  },
+  {
+    "name": "Left bay | wall apron wash 3",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 12.0,
+    "color": [
+      1.0,
+      0.5,
+      0.23000000417232513
+    ]
+  },
+  {
+    "name": "Upper light | rectangular downlight",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 230.0,
+    "color": [
+      0.7200000286102295,
+      0.8600000143051147,
+      1.0
+    ]
+  },
+  {
+    "name": "Holo table | soft glass glow",
+    "hide_render": false,
+    "hide_viewport": false,
+    "energy": 6.0,
+    "color": [
+      0.44999998807907104,
+      0.7200000286102295,
+      1.0
+    ]
+  }
+]

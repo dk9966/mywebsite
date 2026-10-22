@@ -1,0 +1,43 @@
+{
+  "radius_m": 3.7249960027389624,
+  "clearance_m": 0.0012,
+  "rim_segments": 192,
+  "trimmed_objects": [
+    "Bridge | parallel edge stringer 0",
+    "Bridge | steel edge cap 0",
+    "Bridge | parallel edge stringer 1",
+    "Bridge | steel edge cap 1",
+    "Bridge | transverse panel frame 00",
+    "Bridge | deck cross bearer 00",
+    "Bridge | longitudinal panel divider 0",
+    "Bridge | longitudinal panel divider 1",
+    "Bridge | fine open welded grating",
+    "Left stairs | upper bridge bay 01 frame",
+    "Left stairs | upper bridge bay 01 open grating",
+    "Left stairs | upper bridge edge girder",
+    "Left stairs | upper bridge edge girder.001",
+    "Left stairs | bridge cross bearer",
+    "Left stairs | bridge underside diagonal",
+    "Left stairs | bridge underside diagonal.001",
+    "Rear left | bridge bay 00 cassette frame",
+    "Rear left | bridge bay 00 open grating",
+    "Rear left | bridge edge stringer",
+    "Rear left | bridge edge cap",
+    "Rear left | bridge edge stringer.001",
+    "Rear left | bridge edge cap.001",
+    "Rear left | bridge cross bearer",
+    "Rear left | bridge underdeck X brace",
+    "Rear left | bridge underdeck X brace.001"
+  ],
+  "end_frames": [
+    "Bridge circle | front flush curved end frame",
+    "Bridge circle | stairs flush curved end frame",
+    "Bridge circle | rear flush curved end frame"
+  ],
+  "archived_thresholds": [
+    "Bridge | curved circle threshold",
+    "Rear left | curved flush center threshold"
+  ],
+  "original_objects_preserved": 2854,
+  "file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend"
+}

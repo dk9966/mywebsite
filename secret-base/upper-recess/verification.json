@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "file": "/Users/danielku/mywebsite/secret-base/upper-recess/upper-recess.blend",
+  "unchanged_meshes_and_materials": 888,
+  "unexpected_changes": [],
+  "lower_rock_samples_checked": 16612,
+  "lower_rock_errors": [],
+  "upper_rock_join_boundary_edges": {
+    "Bays | left broken cave return | stratum 0": 0,
+    "Bays | right overlapping cave cheek | stratum 0": 0,
+    "Bays | continuous cave wall | stratum 0": 0
+  },
+  "entrance_frame_components": [
+    24
+  ],
+  "entrance_frame_nonmanifold_edges": 0,
+  "walkable_clearance_samples": 247,
+  "clearance_obstructions": [],
+  "rail_to_frame_distances": [
+    0.020000547170639038,
+    0.020000547170639038,
+    0.020001143217086792,
+    0.020001143217086792
+  ],
+  "unwanted_upper_props": [],
+  "upper_lights": [
+    "Upper | sole ceiling practical"
+  ],
+  "sha256": "2fa8131d162830df540c0a3f98ffd454c6a97f8777d3561efb2c3f9e296245a7"
+}

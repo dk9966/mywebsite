@@ -1,0 +1,42 @@
+{
+  "Project": {
+    "position": [
+      21.2,
+      9.7,
+      0.1
+    ],
+    "scale": 1
+  },
+  "About Me": {
+    "position": [
+      25.921,
+      8.678,
+      7.233
+    ],
+    "scale": 0.835
+  },
+  "Experiences": {
+    "position": [
+      13,
+      6.55,
+      -4
+    ],
+    "scale": 1.122
+  },
+  "Contact": {
+    "position": [
+      28.2,
+      13.3,
+      4.3
+    ],
+    "scale": 1
+  },
+  "Projects": {
+    "position": [
+      22.857,
+      10.695,
+      -2.418
+    ],
+    "scale": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "topology": {
+    "vertices": 29945,
+    "faces": 57004,
+    "connected_components": 1,
+    "open_bottom_boundary_edges": 128,
+    "bad_interior_edges": 0,
+    "loose_vertices": 0
+  },
+  "mode": "SCULPT",
+  "bearing_fraction": 0.7482739317036761,
+  "brace_count": 6,
+  "length_range": [
+    1.684998817676899,
+    2.050768215501325
+  ],
+  "angle_range": [
+    14.747121575318012,
+    20.1205388265412
+  ],
+  "visible_braces": 5,
+  "roof_control_preserved": true,
+  "preview_path": "/Users/danielku/mywebsite/secret-base/right-platform-support-75/merged-sculpt/sculpt-ready-platform-preview.blend"
+}

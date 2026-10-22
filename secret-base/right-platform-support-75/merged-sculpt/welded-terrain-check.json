@@ -1,0 +1,53 @@
+{
+  "before": {
+    "verts": 29710,
+    "faces": 49654,
+    "components": [
+      29710
+    ],
+    "boundary": 136,
+    "nonmanifold": 140,
+    "volume": 11915.239145054862
+  },
+  "cleaned": {
+    "verts": 29703,
+    "faces": 59402,
+    "components": [
+      29703
+    ],
+    "boundary": 0,
+    "nonmanifold": 0,
+    "volume": 13145.749396371693
+  },
+  "trials": [
+    {
+      "solver": "MANIFOLD",
+      "raw_stats": {
+        "verts": 30052,
+        "faces": 59606,
+        "components": [
+          30052
+        ],
+        "boundary": 0,
+        "nonmanifold": 0,
+        "volume": 13097.86002197229
+      },
+      "stats": {
+        "verts": 29945,
+        "faces": 57004,
+        "components": [
+          29945
+        ],
+        "boundary": 128,
+        "nonmanifold": 128,
+        "volume": 11867.453777183762
+      },
+      "far_max": 9.830249609876773e-07,
+      "top_max": 5.245208740234375e-06,
+      "roof_attribute_range": [
+        0.0,
+        1.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "changed_existing_meshes": [
+    "150 | continuous cave with oblique carved rooms",
+    "Lower | plain octagon"
+  ],
+  "unaffected_existing_objects": 492,
+  "terrain_before": {
+    "components": 1,
+    "boundary_edges": 95,
+    "nonmanifold_junctions": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0
+  },
+  "terrain_after": {
+    "components": 1,
+    "boundary_edges": 95,
+    "nonmanifold_junctions": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0
+  },
+  "clear_floor_samples": 5,
+  "clear_bridge_gate_rays": 9,
+  "bridge_landing_height_error_m": 0.00014925004785126816,
+  "invalid_drivers": [],
+  "railing_control_measured_height_increase_m": 0.0353999137878418,
+  "reference_furniture_added": false
+}

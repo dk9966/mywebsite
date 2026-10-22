@@ -1,0 +1,39 @@
+{
+  "before": {
+    "verts": 29710,
+    "faces": 49654,
+    "components": [
+      29710
+    ],
+    "boundary": 136,
+    "nonmanifold": 140,
+    "volume": 11915.239145054862
+  },
+  "cleaned": {
+    "verts": 29703,
+    "faces": 59402,
+    "components": [
+      29703
+    ],
+    "boundary": 0,
+    "nonmanifold": 2,
+    "volume": 13145.749396371693
+  },
+  "trials": [
+    {
+      "solver": "MANIFOLD",
+      "stats": {
+        "verts": 30031,
+        "faces": 59593,
+        "components": [
+          30031
+        ],
+        "boundary": 0,
+        "nonmanifold": 0,
+        "volume": 13116.51614551472
+      },
+      "far_max": 0.0,
+      "top_max": 5.245208740234375e-06
+    }
+  ]
+}

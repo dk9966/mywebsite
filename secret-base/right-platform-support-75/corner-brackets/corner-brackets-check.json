@@ -1,0 +1,206 @@
+{
+  "corner_supports": [
+    {
+      "corner_index": 0,
+      "anchor": [
+        5.1189165115356445,
+        -4.782174587249756,
+        4.623131275177002
+      ],
+      "top_connections": [
+        [
+          4.621192455291748,
+          -3.592602491378784,
+          6.489490985870361
+        ],
+        [
+          4.621192455291748,
+          -5.17313814163208,
+          6.489490985870361
+        ],
+        [
+          5.121192455291748,
+          -5.67313814163208,
+          6.489490985870361
+        ]
+      ],
+      "inward_lean_degrees": 18.73269777987111,
+      "enclosed_tetrahedral_volume": 0.2458206762870153,
+      "visible_fraction": 1.0,
+      "center_attaches_to_actual_corner": true
+    },
+    {
+      "corner_index": 1,
+      "anchor": [
+        6.213789939880371,
+        -5.804466724395752,
+        4.794765949249268
+      ],
+      "top_connections": [
+        [
+          5.371192455291748,
+          -5.92313814163208,
+          6.489490985870361
+        ],
+        [
+          5.871192455291748,
+          -6.42313814163208,
+          6.489490985870361
+        ],
+        [
+          7.52119255065918,
+          -6.42313814163208,
+          6.489490985870361
+        ]
+      ],
+      "inward_lean_degrees": 22.650433975467184,
+      "enclosed_tetrahedral_volume": 0.2330247014760971,
+      "visible_fraction": 1.0,
+      "center_attaches_to_actual_corner": true
+    },
+    {
+      "corner_index": 6,
+      "anchor": [
+        5.951469898223877,
+        -0.5078005194664001,
+        4.670499801635742
+      ],
+      "top_connections": [
+        [
+          7.52119255065918,
+          0.028200937435030937,
+          6.489490985870361
+        ],
+        [
+          5.871192932128906,
+          0.028201013803482056,
+          6.489490985870361
+        ],
+        [
+          5.371192932128906,
+          -0.47179898619651794,
+          6.489490985870361
+        ]
+      ],
+      "inward_lean_degrees": 16.591753561030576,
+      "enclosed_tetrahedral_volume": 0.25011127690474194,
+      "visible_fraction": 0.0,
+      "center_attaches_to_actual_corner": true
+    },
+    {
+      "corner_index": 7,
+      "anchor": [
+        5.116540431976318,
+        -1.3405567407608032,
+        4.8039093017578125
+      ],
+      "top_connections": [
+        [
+          5.121192455291748,
+          -0.7217991352081299,
+          6.489490985870361
+        ],
+        [
+          4.621192455291748,
+          -1.2217991352081299,
+          6.489490985870361
+        ],
+        [
+          4.621192455291748,
+          -2.802334785461426,
+          6.489490985870361
+        ]
+      ],
+      "inward_lean_degrees": 16.814883155310557,
+      "enclosed_tetrahedral_volume": 0.22201014962047338,
+      "visible_fraction": 0.8888888888888888,
+      "center_attaches_to_actual_corner": true
+    }
+  ],
+  "created_objects": [
+    "Lower right | Corner 01 center to corner",
+    "Lower right | Corner 01 wing 1",
+    "Lower right | Corner 01 wing 2",
+    "Lower right | Corner 01 corner header 1",
+    "Lower right | Corner 01 corner header 2",
+    "Lower right | Corner 01 rock anchor",
+    "Lower right | Corner 01 three way foot hub",
+    "Lower right | Corner 01 joint gusset 0",
+    "Lower right | Corner 01 joint gusset 1",
+    "Lower right | Corner 01 upper shoe 0",
+    "Lower right | Corner 01 upper shoe 1",
+    "Lower right | Corner 01 upper shoe 2",
+    "Lower right | Corner 02 center to corner",
+    "Lower right | Corner 02 wing 1",
+    "Lower right | Corner 02 wing 2",
+    "Lower right | Corner 02 corner header 1",
+    "Lower right | Corner 02 corner header 2",
+    "Lower right | Corner 02 rock anchor",
+    "Lower right | Corner 02 three way foot hub",
+    "Lower right | Corner 02 joint gusset 0",
+    "Lower right | Corner 02 joint gusset 1",
+    "Lower right | Corner 02 upper shoe 0",
+    "Lower right | Corner 02 upper shoe 1",
+    "Lower right | Corner 02 upper shoe 2",
+    "Lower right | Corner 07 center to corner",
+    "Lower right | Corner 07 wing 1",
+    "Lower right | Corner 07 wing 2",
+    "Lower right | Corner 07 corner header 1",
+    "Lower right | Corner 07 corner header 2",
+    "Lower right | Corner 07 rock anchor",
+    "Lower right | Corner 07 three way foot hub",
+    "Lower right | Corner 07 joint gusset 0",
+    "Lower right | Corner 07 joint gusset 1",
+    "Lower right | Corner 07 upper shoe 0",
+    "Lower right | Corner 07 upper shoe 1",
+    "Lower right | Corner 07 upper shoe 2",
+    "Lower right | Corner 08 center to corner",
+    "Lower right | Corner 08 wing 1",
+    "Lower right | Corner 08 wing 2",
+    "Lower right | Corner 08 corner header 1",
+    "Lower right | Corner 08 corner header 2",
+    "Lower right | Corner 08 rock anchor",
+    "Lower right | Corner 08 three way foot hub",
+    "Lower right | Corner 08 joint gusset 0",
+    "Lower right | Corner 08 joint gusset 1",
+    "Lower right | Corner 08 upper shoe 0",
+    "Lower right | Corner 08 upper shoe 1",
+    "Lower right | Corner 08 upper shoe 2"
+  ],
+  "replaced_objects": [
+    "Lower right | V 01 diagonal 1",
+    "Lower right | V 01 diagonal 2",
+    "Lower right | V 01 center member",
+    "Lower right | V 01 underside header",
+    "Lower right | V 01 rock anchor",
+    "Lower right | V 01 lower gusset",
+    "Lower right | V 01 upper shoe 1",
+    "Lower right | V 01 upper shoe 2",
+    "Lower right | V 02 diagonal 1",
+    "Lower right | V 02 diagonal 2",
+    "Lower right | V 02 center member",
+    "Lower right | V 02 underside header",
+    "Lower right | V 02 rock anchor",
+    "Lower right | V 02 lower gusset",
+    "Lower right | V 02 upper shoe 1",
+    "Lower right | V 02 upper shoe 2",
+    "Lower right | V 03 diagonal 1",
+    "Lower right | V 03 diagonal 2",
+    "Lower right | V 03 center member",
+    "Lower right | V 03 underside header",
+    "Lower right | V 03 rock anchor",
+    "Lower right | V 03 lower gusset",
+    "Lower right | V 03 upper shoe 1",
+    "Lower right | V 03 upper shoe 2",
+    "Lower right | V 04 diagonal 1",
+    "Lower right | V 04 diagonal 2",
+    "Lower right | V 04 center member",
+    "Lower right | V 04 underside header",
+    "Lower right | V 04 rock anchor",
+    "Lower right | V 04 lower gusset",
+    "Lower right | V 04 upper shoe 1",
+    "Lower right | V 04 upper shoe 2"
+  ],
+  "other_geometry_unchanged": true,
+  "terrain_unchanged": true
+}

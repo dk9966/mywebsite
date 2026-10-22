@@ -1,0 +1,89 @@
+{
+  "file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "objects": 3255,
+  "camera": {
+    "name": "150 | main cave camera",
+    "matrix": [
+      [
+        0.8454893231391907,
+        0.178602933883667,
+        -0.503238320350647,
+        11.583734512329102
+      ],
+      [
+        -0.533992350101471,
+        0.28278833627700806,
+        -0.7967954277992249,
+        -15.384082794189453
+      ],
+      [
+        -5.4658300996379694e-08,
+        0.9424074292182922,
+        0.3344671130180359,
+        13.286300659179688
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "controls": {
+    "Socket_2": 0.9999999403953552,
+    "Socket_2_use_attribute": 0,
+    "Socket_2_attribute_name": "",
+    "Socket_3": 0.20000001788139343,
+    "Socket_3_use_attribute": 0,
+    "Socket_3_attribute_name": "",
+    "Socket_4": 1.0,
+    "Socket_4_use_attribute": 0,
+    "Socket_4_attribute_name": "",
+    "Socket_5": 1.0,
+    "Socket_5_use_attribute": 0,
+    "Socket_5_attribute_name": "",
+    "Socket_6": 0.8199999928474426,
+    "Socket_6_use_attribute": 0,
+    "Socket_6_attribute_name": "",
+    "Socket_7": 0.8199999928474426,
+    "Socket_7_use_attribute": 0,
+    "Socket_7_attribute_name": "",
+    "Socket_8": 1.0,
+    "Socket_8_use_attribute": 0,
+    "Socket_8_attribute_name": "",
+    "Socket_9": 1.0399999618530273,
+    "Socket_9_use_attribute": 0,
+    "Socket_9_attribute_name": "",
+    "Socket_10": 1.0,
+    "Socket_10_use_attribute": 0,
+    "Socket_10_attribute_name": "",
+    "Socket_11": 1.2999999523162842,
+    "Socket_11_use_attribute": 0,
+    "Socket_11_attribute_name": "",
+    "Socket_12": 2.9600000381469727,
+    "Socket_12_use_attribute": 0,
+    "Socket_12_attribute_name": "",
+    "Socket_13": 0.0024999999441206455,
+    "Socket_13_use_attribute": 0,
+    "Socket_13_attribute_name": "",
+    "Socket_14": 0.5,
+    "Socket_14_use_attribute": 0,
+    "Socket_14_attribute_name": "",
+    "Socket_15": [
+      0.5600000023841858,
+      0.7599999904632568,
+      1.0,
+      1.0
+    ],
+    "Socket_15_attribute_name": "",
+    "Socket_16": 0.699999988079071,
+    "Socket_16_use_attribute": 0,
+    "Socket_16_attribute_name": ""
+  },
+  "render": {
+    "width": 1200,
+    "height": 662,
+    "samples": 64
+  }
+}

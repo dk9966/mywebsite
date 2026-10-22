@@ -14,7 +14,7 @@ import {
 } from "../lib/bootSequence";
 import { useBootTuning } from "../stores/bootTuning";
 import { useDeskLayout } from "../stores/deskLayout";
-import { BootFx, BootPulse } from "./BootFx";
+import { BootFx } from "./BootFx";
 import "./HudScreen.css";
 import "./hudContactPortal.css";
 
@@ -270,7 +270,6 @@ export default function HudScreen({
         ...(boot
           ? ({
               "--boot-delay": `${boot.startMs}ms`,
-              "--pulse-delay": `${Math.round(boot.pulseDelayMs)}ms`,
             } as CSSProperties)
           : null),
       }}
@@ -312,13 +311,10 @@ export default function HudScreen({
         </div>
       ) : null}
       {boot ? (
-        <>
-          <BootFx
-            seed={boot.seed}
-            compact={headerOnly || hideHeader || heightPx < 220}
-          />
-          <BootPulse />
-        </>
+        <BootFx
+          seed={boot.seed}
+          compact={headerOnly || hideHeader || heightPx < 220}
+        />
       ) : null}
     </div>
   );
@@ -445,23 +441,21 @@ function HeaderLinkPortal({
     const icons = document.querySelectorAll<HTMLElement>(".hud-contact__icon");
     const n = links.length;
 
+    // Every read before any write: a read after a style write forces a fresh
+    // layout, which interleaved would cost one layout per icon per frame.
+    const bests: (DOMRect | null)[] = Array.from({ length: n }, () => null);
+    icons.forEach((icon, idx) => {
+      const r = icon.getBoundingClientRect();
+      const current = bests[idx % n];
+      if (r.width * r.height > (current ? current.width * current.height : 0)) bests[idx % n] = r;
+    });
+
     for (let i = 0; i < n; i++) {
       const el = anchorsRef.current[i];
       if (!el) continue;
 
-      let best: DOMRect | null = null;
-      let bestArea = 0;
-      icons.forEach((icon, idx) => {
-        if (idx % n !== i) return;
-        const r = icon.getBoundingClientRect();
-        const area = r.width * r.height;
-        if (area > bestArea) {
-          bestArea = area;
-          best = r;
-        }
-      });
-
-      if (!best || bestArea < 1) {
+      const best = bests[i];
+      if (!best || best.width * best.height < 1) {
         el.style.display = "none";
         continue;
       }
@@ -845,8 +839,6 @@ function BezelLines({
       draw.opacity = bezelOpacity * v.drawOpacity;
       draw.dashSize = Math.max(outlineLength * v.draw, 1e-5);
       draw.gapSize = outlineLength * 2;
-      // The final online pulse briefly over-drives the bezel emission.
-      draw.color.copy(lineColor).multiplyScalar(1 + v.boost);
     }
   });
 

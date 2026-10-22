@@ -1,0 +1,7188 @@
+{
+  "objects": [
+    {
+      "name": "SCENE SLIDERS",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {
+        "How to use": "Drag the five sliders in this pinned modifier panel. These controls and drivers are native to the blend file; no Python autorun or add-on is needed."
+      },
+      "mods": [
+        {
+          "name": "Scene Sliders",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Rig | middle radius",
+      "type": "EMPTY",
+      "matrix": [
+        [
+          0.917230486869812,
+          0.579303503036499,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.579303503036499,
+          0.917230486869812,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {
+        "Width control": "SCENE SLIDERS > Modifiers > Middle platform width. 1.0 is the current width; G moves the assembly."
+      },
+      "mods": []
+    },
+    {
+      "name": "Rig | table and machinery",
+      "type": "EMPTY",
+      "matrix": [
+        [
+          1.2906752824783325,
+          0.8151631355285645,
+          0.0,
+          22.45421028137207
+        ],
+        [
+          -0.8151631355285645,
+          1.2906752824783325,
+          0.0,
+          1.6866782903671265
+        ],
+        [
+          0.0,
+          0.0,
+          1.4071437120437622,
+          6.855199813842773
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "Rig | console placement",
+      "type": "EMPTY",
+      "matrix": [
+        [
+          0.8454889059066772,
+          0.5339930057525635,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5339930057525635,
+          0.8454889059066772,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "Metal | continuous steel guardrail",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        7.261181354522705,
+        7.270911693572998,
+        0.017776966094970703
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel",
+        null
+      ],
+      "vertices": 2248,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | guardrail polished top edge",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        7.257119655609131,
+        7.266708850860596,
+        0.0024242401123046875
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights",
+        "Metal | dark structural steel",
+        null
+      ],
+      "vertices": 2248,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | continuous steel guardrail.001",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        7.261181354522705,
+        7.270911693572998,
+        0.017777442932128906
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel",
+        null
+      ],
+      "vertices": 2248,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | guardrail polished top edge.001",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        7.257119655609131,
+        7.266708850860596,
+        0.0024247169494628906
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights",
+        "Metal | dark structural steel",
+        null
+      ],
+      "vertices": 2248,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04205450043082237,
+        0.04060373827815056,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2958639860153198,
+          0.12441527843475342,
+          0.0,
+          24.839004516601562
+        ],
+        [
+          -0.12441527843475342,
+          1.2958639860153198,
+          0.0,
+          -0.3397789001464844
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887643188238144,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2958639860153198,
+          0.12441527843475342,
+          0.0,
+          24.9271240234375
+        ],
+        [
+          -0.12441527843475342,
+          1.2958639860153198,
+          0.0,
+          -0.3482389450073242
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04165832698345184,
+        0.11325857788324356,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.12441569566726685,
+          -4.4797130271945207e-07,
+          1.2958635091781616,
+          24.953039169311523
+        ],
+        [
+          1.2958635091781616,
+          2.506696432647004e-07,
+          -0.12441569566726685,
+          -0.35072755813598633
+        ],
+        [
+          -2.2864986704007606e-07,
+          0.9999998807907104,
+          5.197508130549977e-07,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848992988467216,
+        0.02369677647948265,
+        0.01171640120446682
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.001",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.12441569566726685,
+          -4.4797130271945207e-07,
+          1.2958635091781616,
+          24.953039169311523
+        ],
+        [
+          1.2958635091781616,
+          2.506696432647004e-07,
+          -0.12441569566726685,
+          -0.35072755813598633
+        ],
+        [
+          -2.2864986704007606e-07,
+          0.9999998807907104,
+          5.197508130549977e-07,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848992988467216,
+        0.02369677647948265,
+        0.01171640120446682
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.001",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04346853494644165,
+        0.04290597140789032,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.001",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2952364683151245,
+          -0.13078570365905762,
+          0.0,
+          24.837289810180664
+        ],
+        [
+          0.13078570365905762,
+          1.2952364683151245,
+          0.0,
+          0.35717523097991943
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320048689842224,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.002",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.043211955577135086,
+        0.04355932027101517,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.002",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2448337078094482,
+          -0.380960613489151,
+          0.0,
+          24.69963836669922
+        ],
+        [
+          0.380960613489151,
+          1.2448337078094482,
+          0.0,
+          1.0404037237167358
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.001",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2448337078094482,
+          -0.380960613489151,
+          0.0,
+          24.78428840637207
+        ],
+        [
+          0.380960613489151,
+          1.2448337078094482,
+          0.0,
+          1.0663089752197266
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04165832698345184,
+        0.11325855553150177,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.002",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.38096100091934204,
+          -9.878921503059246e-08,
+          1.2448337078094482,
+          24.809185028076172
+        ],
+        [
+          1.2448339462280273,
+          -3.9900675119497464e-07,
+          0.38096094131469727,
+          1.0739284753799438
+        ],
+        [
+          3.900590570538043e-07,
+          1.000000238418579,
+          2.3364863466213137e-07,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849004164338112,
+        0.023696785792708397,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.003",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.38096100091934204,
+          -9.878921503059246e-08,
+          1.2448337078094482,
+          24.809185028076172
+        ],
+        [
+          1.2448339462280273,
+          -3.9900675119497464e-07,
+          0.38096094131469727,
+          1.0739284753799438
+        ],
+        [
+          3.900590570538043e-07,
+          1.000000238418579,
+          2.3364863466213137e-07,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849004164338112,
+        0.023696785792708397,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.003",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04129497706890106,
+        0.042538948357105255,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.003",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.146592617034912,
+          -0.6164958477020264,
+          0.0,
+          24.431346893310547
+        ],
+        [
+          0.6164958477020264,
+          1.146592617034912,
+          0.0,
+          1.6836506128311157
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876422941684723,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.004",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03797922655940056,
+        0.040071696043014526,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.004",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.0042887926101685,
+          -0.8283395767211914,
+          0.0,
+          24.042713165283203
+        ],
+        [
+          0.8283395767211914,
+          1.0042887926101685,
+          0.0,
+          2.2621936798095703
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887643188238144,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.002",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.0042887926101685,
+          -0.8283395767211914,
+          0.0,
+          24.111005783081055
+        ],
+        [
+          0.8283395767211914,
+          1.0042887926101685,
+          0.0,
+          2.3185205459594727
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04165832698345184,
+        0.11325857788324356,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.004",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.8283392786979675,
+          -2.3712354391136614e-07,
+          1.004288911819458,
+          24.13109016418457
+        ],
+        [
+          1.004289150238037,
+          -2.4772344886514475e-07,
+          0.8283390998840332,
+          2.335087776184082
+        ],
+        [
+          4.449572799103407e-08,
+          1.0000001192092896,
+          3.766997451748466e-07,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.023696783930063248,
+        0.011716402135789394
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.005",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.8283392786979675,
+          -2.3712354391136614e-07,
+          1.004288911819458,
+          24.13109016418457
+        ],
+        [
+          1.004289150238037,
+          -2.4772344886514475e-07,
+          0.8283390998840332,
+          2.335087776184082
+        ],
+        [
+          4.449572799103407e-08,
+          1.0000001192092896,
+          3.766997451748466e-07,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.023696783930063248,
+        0.011716402135789394
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.005",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03350802883505821,
+        0.03636810556054115,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.005",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.823390781879425,
+          -1.008350133895874,
+          0.0,
+          23.548681259155273
+        ],
+        [
+          1.008350133895874,
+          0.823390781879425,
+          0.0,
+          2.7538046836853027
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887642741203308,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.006",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03225180506706238,
+        0.03527919203042984,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.006",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.6108506917953491,
+          -1.1496104001998901,
+          0.0,
+          22.968231201171875
+        ],
+        [
+          1.1496104001998901,
+          0.6108506917953491,
+          0.0,
+          3.139586925506592
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887643039226532,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.003",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.6108506917953491,
+          -1.1496104001998901,
+          0.0,
+          23.0097713470459
+        ],
+        [
+          1.1496104001998901,
+          0.6108506917953491,
+          0.0,
+          3.217759609222412
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04165833443403244,
+        0.11325857788324356,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.006",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.1496105194091797,
+          -7.676030833181358e-08,
+          0.61085045337677,
+          23.021987915039062
+        ],
+        [
+          0.61085045337677,
+          -5.1961524860644204e-08,
+          1.1496105194091797,
+          3.2407524585723877
+        ],
+        [
+          -4.801047381874923e-08,
+          1.0,
+          9.059748862227934e-08,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.02369678020477295,
+        0.011716404929757118
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.007",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.1496105194091797,
+          -7.676030833181358e-08,
+          0.61085045337677,
+          23.021987915039062
+        ],
+        [
+          0.61085045337677,
+          -5.1961524860644204e-08,
+          1.1496105194091797,
+          3.2407524585723877
+        ],
+        [
+          -4.801047381874923e-08,
+          1.0,
+          9.059748862227934e-08,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.02369678020477295,
+        0.011716404929757118
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.007",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03704563528299332,
+        0.03932834044098854,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.007",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.37483540177345276,
+          -1.2466919422149658,
+          0.0,
+          22.32367706298828
+        ],
+        [
+          1.2466919422149658,
+          0.37483540177345276,
+          0.0,
+          3.4047141075134277
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887642741203308,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.008",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04060373827815056,
+        0.04205450043082237,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.008",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.12441536784172058,
+          -1.2958636283874512,
+          0.0,
+          21.639780044555664
+        ],
+        [
+          1.2958636283874512,
+          0.12441536784172058,
+          0.0,
+          3.5390028953552246
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876424431800842,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.004",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.12441536784172058,
+          -1.2958636283874512,
+          0.0,
+          21.648237228393555
+        ],
+        [
+          1.2958636283874512,
+          0.12441536784172058,
+          0.0,
+          3.627122402191162
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.041658323258161545,
+        0.11325854808092117,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.008",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.2958636283874512,
+          -1.7200488855451113e-07,
+          0.12441548705101013,
+          21.65073013305664
+        ],
+        [
+          0.12441548705101013,
+          -1.9568568632166716e-07,
+          1.2958636283874512,
+          3.6530394554138184
+        ],
+        [
+          -1.6870410490810173e-07,
+          0.9999999403953552,
+          2.3364860624042194e-07,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848992988467216,
+        0.0236967783421278,
+        0.01171640120446682
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.009",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.2958636283874512,
+          -1.7200488855451113e-07,
+          0.12441548705101013,
+          21.65073013305664
+        ],
+        [
+          0.12441548705101013,
+          -1.9568568632166716e-07,
+          1.2958636283874512,
+          3.6530394554138184
+        ],
+        [
+          -1.6870410490810173e-07,
+          0.9999999403953552,
+          2.3364860624042194e-07,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848992988467216,
+        0.0236967783421278,
+        0.01171640120446682
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.009",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04290597140789032,
+        0.04346853494644165,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.009",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.13078582286834717,
+          -1.295236349105835,
+          0.0,
+          20.942821502685547
+        ],
+        [
+          1.295236349105835,
+          -0.13078582286834717,
+          0.0,
+          3.537290096282959
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887642741203308,
+        0.14320048689842224,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.010",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04355932027101517,
+        0.043211955577135086,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.010",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.38096025586128235,
+          -1.2448337078094482,
+          0.0,
+          20.259597778320312
+        ],
+        [
+          1.2448337078094482,
+          -0.38096025586128235,
+          0.0,
+          3.3996405601501465
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.005",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.38096025586128235,
+          -1.2448337078094482,
+          0.0,
+          20.233692169189453
+        ],
+        [
+          1.2448337078094482,
+          -0.38096025586128235,
+          0.0,
+          3.484290599822998
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.041658323258161545,
+        0.11325854808092117,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.010",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.2448337078094482,
+          6.83617926711122e-08,
+          -0.38096094131469727,
+          20.226070404052734
+        ],
+        [
+          -0.38096094131469727,
+          -1.9997762024104304e-07,
+          1.2448337078094482,
+          3.509185314178467
+        ],
+        [
+          7.57529594608286e-09,
+          1.0,
+          2.3364860624042194e-07,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848998576402664,
+        0.02369678020477295,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.011",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.2448337078094482,
+          6.83617926711122e-08,
+          -0.38096094131469727,
+          20.226070404052734
+        ],
+        [
+          -0.38096094131469727,
+          -1.9997762024104304e-07,
+          1.2448337078094482,
+          3.509185314178467
+        ],
+        [
+          7.57529594608286e-09,
+          1.0,
+          2.3364860624042194e-07,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848998576402664,
+        0.02369678020477295,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.011",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.042538948357105255,
+        0.04129497706890106,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.011",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.6164953708648682,
+          -1.1465928554534912,
+          0.0,
+          19.616352081298828
+        ],
+        [
+          1.1465928554534912,
+          -0.6164953708648682,
+          0.0,
+          3.131345272064209
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876424431800842,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.012",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04007143899798393,
+        0.03797922655940056,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.012",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.8283393383026123,
+          -1.004288673400879,
+          0.0,
+          19.03780746459961
+        ],
+        [
+          1.004288673400879,
+          -0.8283393383026123,
+          0.0,
+          2.74271297454834
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876424431800842,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.006",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.8283393383026123,
+          -1.004288673400879,
+          0.0,
+          18.98147964477539
+        ],
+        [
+          1.004288673400879,
+          -0.8283393383026123,
+          0.0,
+          2.811004161834717
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04165831580758095,
+        0.11325854808092117,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.012",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.0042893886566162,
+          -1.7385346495757403e-08,
+          -0.8283387422561646,
+          18.96491241455078
+        ],
+        [
+          -0.8283389210700989,
+          4.712984136290288e-08,
+          1.0042892694473267,
+          2.8310904502868652
+        ],
+        [
+          1.833586615873628e-08,
+          1.0000001192092896,
+          -5.245366452300004e-08,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.023696783930063248,
+        0.011716402135789394
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.013",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.0042893886566162,
+          -1.7385346495757403e-08,
+          -0.8283387422561646,
+          18.96491241455078
+        ],
+        [
+          -0.8283389210700989,
+          4.712984136290288e-08,
+          1.0042892694473267,
+          2.8310904502868652
+        ],
+        [
+          1.833586615873628e-08,
+          1.0000001192092896,
+          -5.245366452300004e-08,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.023696783930063248,
+        0.011716402135789394
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.013",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03636810556054115,
+        0.03350802883505821,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.013",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.008349895477295,
+          -0.8233910799026489,
+          0.0,
+          18.546199798583984
+        ],
+        [
+          0.8233910799026489,
+          -1.008349895477295,
+          0.0,
+          2.2486820220947266
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887643039226532,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.014",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03527919203042984,
+        0.03225180506706238,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.014",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.1496104001998901,
+          -0.6108506917953491,
+          0.0,
+          18.160417556762695
+        ],
+        [
+          0.6108506917953491,
+          -1.1496104001998901,
+          0.0,
+          1.6682319641113281
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887643188238144,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.007",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.1496104001998901,
+          -0.6108506917953491,
+          0.0,
+          18.08224105834961
+        ],
+        [
+          0.6108506917953491,
+          -1.1496104001998901,
+          0.0,
+          1.7097702026367188
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04165833443403244,
+        0.11325857788324356,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.014",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.6108506917953491,
+          1.9771509585098102e-07,
+          -1.1496105194091797,
+          18.059246063232422
+        ],
+        [
+          -1.1496105194091797,
+          -7.806627166928592e-08,
+          0.6108506917953491,
+          1.7219867706298828
+        ],
+        [
+          2.636458695803867e-08,
+          1.000000238418579,
+          2.3364864887298609e-07,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849004164338112,
+        0.023696785792708397,
+        0.011716405861079693
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.015",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.6108506917953491,
+          1.9771509585098102e-07,
+          -1.1496105194091797,
+          18.059246063232422
+        ],
+        [
+          -1.1496105194091797,
+          -7.806627166928592e-08,
+          0.6108506917953491,
+          1.7219867706298828
+        ],
+        [
+          2.636458695803867e-08,
+          1.000000238418579,
+          2.3364864887298609e-07,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849004164338112,
+        0.023696785792708397,
+        0.011716405861079693
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.015",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03932808339595795,
+        0.03704563528299332,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.015",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.2466918230056763,
+          -0.37483540177345276,
+          0.0,
+          17.895286560058594
+        ],
+        [
+          0.37483540177345276,
+          -1.2466918230056763,
+          0.0,
+          1.0236749649047852
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.188764289021492,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.016",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04205423966050148,
+        0.040603868663311005,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.016",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.2958636283874512,
+          -0.12441575527191162,
+          0.0,
+          17.760995864868164
+        ],
+        [
+          0.12441575527191162,
+          -1.2958636283874512,
+          0.0,
+          0.33977794647216797
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.008",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.2958636283874512,
+          -0.12441575527191162,
+          0.0,
+          17.67287826538086
+        ],
+        [
+          0.12441575527191162,
+          -1.2958636283874512,
+          0.0,
+          0.3482389450073242
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.041658319532871246,
+        0.11325855553150177,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.016",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.12441560626029968,
+          -3.890171740295045e-08,
+          -1.2958638668060303,
+          17.646963119506836
+        ],
+        [
+          -1.2958636283874512,
+          9.099848341520556e-08,
+          0.12441560626029968,
+          0.3507270812988281
+        ],
+        [
+          9.60839869890151e-08,
+          0.9999998807907104,
+          -5.245366807571372e-08,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848992988467216,
+        0.02369677647948265,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.017",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.12441560626029968,
+          -3.890171740295045e-08,
+          -1.2958638668060303,
+          17.646963119506836
+        ],
+        [
+          -1.2958636283874512,
+          9.099848341520556e-08,
+          0.12441560626029968,
+          0.3507270812988281
+        ],
+        [
+          9.60839869890151e-08,
+          0.9999998807907104,
+          -5.245366807571372e-08,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848992988467216,
+        0.02369677647948265,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.017",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04346853494644165,
+        0.04290597140789032,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.017",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.295236349105835,
+          0.13078582286834717,
+          0.0,
+          17.762710571289062
+        ],
+        [
+          -0.13078582286834717,
+          -1.295236349105835,
+          0.0,
+          -0.35717546939849854
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887642741203308,
+        0.14320048689842224,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.018",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04321221262216568,
+        0.043559059500694275,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.018",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.2448338270187378,
+          0.3809603154659271,
+          0.0,
+          17.900362014770508
+        ],
+        [
+          -0.3809603154659271,
+          -1.2448338270187378,
+          0.0,
+          -1.0404038429260254
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.009",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.2448338270187378,
+          0.3809603154659271,
+          0.0,
+          17.81570816040039
+        ],
+        [
+          -0.3809603154659271,
+          -1.2448338270187378,
+          0.0,
+          -1.066308617591858
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.041658319532871246,
+        0.11325855553150177,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.018",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.38096073269844055,
+          -9.414156920684036e-08,
+          -1.2448338270187378,
+          17.790813446044922
+        ],
+        [
+          -1.2448338270187378,
+          -2.9635563691954303e-07,
+          -0.38096073269844055,
+          -1.0739270448684692
+        ],
+        [
+          -2.8298751431066194e-07,
+          1.0000001192092896,
+          -1.955048247737068e-07,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848998576402664,
+        0.023696783930063248,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.019",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.38096073269844055,
+          -9.414156920684036e-08,
+          -1.2448338270187378,
+          17.790813446044922
+        ],
+        [
+          -1.2448338270187378,
+          -2.9635563691954303e-07,
+          -0.38096073269844055,
+          -1.0739270448684692
+        ],
+        [
+          -2.8298751431066194e-07,
+          1.0000001192092896,
+          -1.955048247737068e-07,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848998576402664,
+        0.023696783930063248,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.019",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04129497706890106,
+        0.042538948357105255,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.019",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.1465930938720703,
+          0.6164957880973816,
+          0.0,
+          18.168655395507812
+        ],
+        [
+          -0.6164957880973816,
+          -1.1465930938720703,
+          0.0,
+          -1.6836498975753784
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887643188238144,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.020",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03797922655940056,
+        0.04007143899798393,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.020",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.0042892694473267,
+          0.8283387422561646,
+          0.0,
+          18.55728530883789
+        ],
+        [
+          -0.8283387422561646,
+          -1.0042892694473267,
+          0.0,
+          -2.262193441390991
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.010",
+      "type": "MESH",
+      "matrix": [
+        [
+          -1.0042892694473267,
+          0.8283387422561646,
+          0.0,
+          18.488996505737305
+        ],
+        [
+          -0.8283387422561646,
+          -1.0042892694473267,
+          0.0,
+          -2.3185207843780518
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04165832698345184,
+        0.11325855553150177,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.020",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.828338623046875,
+          -4.611896287087802e-08,
+          -1.004289150238037,
+          18.468910217285156
+        ],
+        [
+          -1.004289150238037,
+          -2.21858101667749e-07,
+          -0.828338623046875,
+          -2.335087776184082
+        ],
+        [
+          -1.5685861853853567e-07,
+          1.0,
+          -1.9550479635199736e-07,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848992988467216,
+        0.02369678020477295,
+        0.01171640120446682
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.021",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.828338623046875,
+          -4.611896287087802e-08,
+          -1.004289150238037,
+          18.468910217285156
+        ],
+        [
+          -1.004289150238037,
+          -2.21858101667749e-07,
+          -0.828338623046875,
+          -2.335087776184082
+        ],
+        [
+          -1.5685861853853567e-07,
+          1.0,
+          -1.9550479635199736e-07,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848992988467216,
+        0.02369678020477295,
+        0.01171640120446682
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.021",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.033508092164993286,
+        0.03636810556054115,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.021",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.8233917355537415,
+          1.0083494186401367,
+          0.0,
+          19.05131721496582
+        ],
+        [
+          -1.0083494186401367,
+          -0.8233917355537415,
+          0.0,
+          -2.7538039684295654
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887643039226532,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.022",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03225180506706238,
+        0.03527919203042984,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.022",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.610850989818573,
+          1.1496100425720215,
+          0.0,
+          19.63176918029785
+        ],
+        [
+          -1.1496100425720215,
+          -0.610850989818573,
+          0.0,
+          -3.139585494995117
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887642741203308,
+        0.14320048689842224,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.011",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.610850989818573,
+          1.1496100425720215,
+          0.0,
+          19.590229034423828
+        ],
+        [
+          -1.1496100425720215,
+          -0.610850989818573,
+          0.0,
+          -3.217759370803833
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.041658323258161545,
+        0.11325857043266296,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.022",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.1496102809906006,
+          -6.007786623740685e-08,
+          -0.6108508110046387,
+          19.578012466430664
+        ],
+        [
+          -0.6108508110046387,
+          -2.1776367375991867e-08,
+          -1.1496102809906006,
+          -3.240752696990967
+        ],
+        [
+          4.738194903097792e-08,
+          1.0,
+          -5.245366807571372e-08,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.02369678020477295,
+        0.011716404929757118
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.023",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.1496102809906006,
+          -6.007786623740685e-08,
+          -0.6108508110046387,
+          19.578012466430664
+        ],
+        [
+          -0.6108508110046387,
+          -2.1776367375991867e-08,
+          -1.1496102809906006,
+          -3.240752696990967
+        ],
+        [
+          4.738194903097792e-08,
+          1.0,
+          -5.245366807571372e-08,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.02369678020477295,
+        0.011716404929757118
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.023",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03704563528299332,
+        0.03932834044098854,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.023",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.37483593821525574,
+          1.2466915845870972,
+          0.0,
+          20.276325225830078
+        ],
+        [
+          -1.2466915845870972,
+          -0.37483593821525574,
+          0.0,
+          -3.4047160148620605
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.024",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04060399532318115,
+        0.04205423966050148,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.024",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.12441542744636536,
+          1.2958639860153198,
+          0.0,
+          20.960220336914062
+        ],
+        [
+          -1.2958639860153198,
+          -0.12441542744636536,
+          0.0,
+          -3.539003610610962
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887642741203308,
+        0.14320050179958344,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.012",
+      "type": "MESH",
+      "matrix": [
+        [
+          -0.12441542744636536,
+          1.2958639860153198,
+          0.0,
+          20.95176124572754
+        ],
+        [
+          -1.2958639860153198,
+          -0.12441542744636536,
+          0.0,
+          -3.627121925354004
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04165833443403244,
+        0.11325857788324356,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.024",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2958639860153198,
+          2.996534220756075e-08,
+          -0.12441554665565491,
+          20.94927406311035
+        ],
+        [
+          -0.12441554665565491,
+          7.940371204995245e-08,
+          -1.2958638668060303,
+          -3.6530404090881348
+        ],
+        [
+          -2.4600090853255097e-08,
+          0.9999999403953552,
+          9.059747441142463e-08,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.0236967783421278,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.025",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2958639860153198,
+          2.996534220756075e-08,
+          -0.12441554665565491,
+          20.94927406311035
+        ],
+        [
+          -0.12441554665565491,
+          7.940371204995245e-08,
+          -1.2958638668060303,
+          -3.6530404090881348
+        ],
+        [
+          -2.4600090853255097e-08,
+          0.9999999403953552,
+          9.059747441142463e-08,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030849000439047813,
+        0.0236967783421278,
+        0.011716403067111969
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.025",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04290597140789032,
+        0.04346853494644165,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.025",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.13078558444976807,
+          1.295236349105835,
+          0.0,
+          21.657176971435547
+        ],
+        [
+          -1.295236349105835,
+          0.13078558444976807,
+          0.0,
+          -3.537290334701538
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.188764289021492,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.026",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04355932027101517,
+        0.043212469667196274,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.026",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.380960613489151,
+          1.2448337078094482,
+          0.0,
+          22.340402603149414
+        ],
+        [
+          -1.2448337078094482,
+          0.380960613489151,
+          0.0,
+          -3.399641513824463
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.013",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.380960613489151,
+          1.2448337078094482,
+          0.0,
+          22.366308212280273
+        ],
+        [
+          -1.2448337078094482,
+          0.380960613489151,
+          0.0,
+          -3.4842886924743652
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.041658319532871246,
+        0.11325855553150177,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.026",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2448337078094482,
+          1.1115524500837637e-08,
+          0.380960613489151,
+          22.37392807006836
+        ],
+        [
+          0.380960613489151,
+          2.2430035073739418e-07,
+          -1.2448337078094482,
+          -3.509185314178467
+        ],
+        [
+          -8.436249743226654e-08,
+          1.0,
+          2.3364860624042194e-07,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848994851112366,
+        0.02369678020477295,
+        0.011716402135789394
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.027",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2448337078094482,
+          1.1115524500837637e-08,
+          0.380960613489151,
+          22.37392807006836
+        ],
+        [
+          0.380960613489151,
+          2.2430035073739418e-07,
+          -1.2448337078094482,
+          -3.509185314178467
+        ],
+        [
+          -8.436249743226654e-08,
+          1.0,
+          2.3364860624042194e-07,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.030848994851112366,
+        0.02369678020477295,
+        0.011716402135789394
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.027",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.042538948357105255,
+        0.04129497706890106,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.027",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.6164955496788025,
+          1.1465928554534912,
+          0.0,
+          22.98365020751953
+        ],
+        [
+          -1.1465928554534912,
+          0.6164955496788025,
+          0.0,
+          -3.131344795227051
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320047199726105,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.030",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03527919203042984,
+        0.03225181996822357,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel",
+        null
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.030",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.1496100425720215,
+          0.6108509302139282,
+          0.0,
+          24.439584732055664
+        ],
+        [
+          -0.6108509302139282,
+          1.1496100425720215,
+          0.0,
+          -1.6682319641113281
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.1887642741203308,
+        0.14320048689842224,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | outer rim reinforcement strap.015",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.1496100425720215,
+          0.6108509302139282,
+          0.0,
+          24.517763137817383
+        ],
+        [
+          -0.6108509302139282,
+          1.1496100425720215,
+          0.0,
+          -1.7097711563110352
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.693178653717041
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.04165833070874214,
+        0.11325857043266296,
+        0.4050000011920929
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.030",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.6108507513999939,
+          -5.022012672384335e-08,
+          1.1496105194091797,
+          24.540754318237305
+        ],
+        [
+          1.1496105194091797,
+          -1.9557404584702454e-07,
+          -0.6108507513999939,
+          -1.7219877243041992
+        ],
+        [
+          2.1710424391585548e-07,
+          1.0000001192092896,
+          -5.24536716284274e-08,
+          6.5411787033081055
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03084900602698326,
+        0.023696783930063248,
+        0.011716406792402267
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | rim strap bolt.031",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.6108507513999939,
+          -5.022012672384335e-08,
+          1.1496105194091797,
+          24.540754318237305
+        ],
+        [
+          1.1496105194091797,
+          -1.9557404584702454e-07,
+          -0.6108507513999939,
+          -1.7219877243041992
+        ],
+        [
+          2.1710424391585548e-07,
+          1.0000001192092896,
+          -5.24536716284274e-08,
+          6.812178611755371
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03084900602698326,
+        0.023696783930063248,
+        0.011716406792402267
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | machined edge highlights"
+      ],
+      "vertices": 24,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | perimeter post.031",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9172304272651672,
+          0.5793035626411438,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5793035626411438,
+          0.9172304272651672,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.03932834044098854,
+        0.03704569861292839,
+        0.3595757484436035
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 56,
+      "props": {},
+      "mods": [
+        {
+          "name": "Railing size",
+          "type": "NODES"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Metal | post bolted foot.031",
+      "type": "MESH",
+      "matrix": [
+        [
+          1.2466919422149658,
+          0.3748352527618408,
+          0.0,
+          24.704715728759766
+        ],
+        [
+          -0.3748352527618408,
+          1.2466919422149658,
+          0.0,
+          -1.0236749649047852
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.882178783416748
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.18876425921916962,
+        0.14320048689842224,
+        0.02199999988079071
+      ],
+      "parent": "Rig | middle radius",
+      "materials": [
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {},
+      "mods": [
+        {
+          "name": "Fine machined edge",
+          "type": "BEVEL"
+        },
+        {
+          "name": "Weighted planar normals",
+          "type": "WEIGHTED_NORMAL"
+        },
+        {
+          "name": "Platform width \u2014 preserve detail size",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "150 | continuous cave with oblique carved rooms",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.8454889059066772,
+          0.5339930057525635,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5339930057525635,
+          0.8454889059066772,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        32.821529388427734,
+        39.802059173583984,
+        25.994298934936523
+      ],
+      "parent": null,
+      "materials": [
+        "Terrain | rough hewn slate"
+      ],
+      "vertices": 5360,
+      "props": {
+        "single_inside_surface": "True",
+        "source_mesher": "meshes/pillars/island_pillar_src/shape.py",
+        "new_right_face_yaw": "-72.0",
+        "sculpt_copy": "Applied low-poly triangles. Platform and prop geometry preserved from the live snapshot.",
+        "original_evaluated_triangles": "104792",
+        "low_poly_triangles": "10664",
+        "terrain_style": "Broad natural bumps; flat triangular faces; no blockwork or shader bump.",
+        "density_multiplier": "2",
+        "reference_blockout_revision": "Front-left lower shelf and alcove; broad rear-left stair buttress and display room; middle-back stepped grotto ledges. Right bay vertices outside angular mask retained exactly.",
+        "changed_vertices": "2724",
+        "reference_terrain_check": "One connected surface, no loose edges or non-manifold junctions. 3156 original right-side wall vertices retained exactly.",
+        "contour_source_mesh": "Faceted cave | continuous inner skin | double density.001",
+        "contour_description": "Continuous faceted U-shaped wall lip follows red annotation and contacts front-left platform. Camera and platforms unchanged.",
+        "contour_validation": "One connected surface; longitudinal seam welded; no internal non-manifold edges or zero-area faces; platform corner gap zero; all faces flat shaded.",
+        "body_source_mesh": "Approved contour | before wall body rebuild",
+        "body_rebuild_note": "Rebuilt complete front-side wall body with arc-length-distributed triangulation; accepted top contour and shared perimeter preserved exactly.",
+        "body_validation": "Approved perimeter unchanged; corner contact gap zero; one connected surface; no loose edges, internal non-manifold edges, or degenerate faces; flat shading; camera unchanged.",
+        "infill_source_mesh": "Wall before upper side infill",
+        "upper_wall_fill": "Both side gaps above the low contour filled to surrounding cliff height with welded flat-shaded rock faces. Lower contour, platform contact, and camera preserved.",
+        "infill_validation": "Both upper side gaps filled; one connected mesh; no internal non-manifold edges, loose edges, or degenerate faces. Previous lower wall and camera unchanged.",
+        "roof_source_mesh": "Cave wall | complete side walls.001",
+        "roof_description": "Continuous faceted vault welded to all upper wall rim edges; six integrated irregular stalactites. Original camera retained.",
+        "pre_texture_material": "Terrain | matte blue-gray facets.001"
+      },
+      "mods": [
+        {
+          "name": "Rock | subtle broken planes",
+          "type": "DISPLACE"
+        }
+      ]
+    },
+    {
+      "name": "Cube",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.32388341426849365,
+          -1.6835795640945435,
+          0.0,
+          28.234054565429688
+        ],
+        [
+          0.5050738453865051,
+          1.0796114206314087,
+          0.0,
+          -4.207886219024658
+        ],
+        [
+          0.0,
+          0.0,
+          0.08749999850988388,
+          6.736990928649902
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        1.2000001668930054,
+        4.000000476837158,
+        0.17499999701976776
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 8,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "Lower | plain octagon",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.34409502148628235,
+          1.31796395778656,
+          0.0,
+          26.809850692749023
+        ],
+        [
+          -1.31796395778656,
+          0.34409502148628235,
+          0.0,
+          -7.45615291595459
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.836178779602051
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        6.065927982330322,
+        6.065927982330322,
+        0.17501211166381836
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel",
+        "Metal | dark structural steel"
+      ],
+      "vertices": 16,
+      "props": {
+        "circumradius": "2.7059807587933955",
+        "apothem": "2.500000238418579",
+        "shape": "Square with straight beveled corners",
+        "side_width_m": "5.5",
+        "corner_cut_m": "1.25",
+        "deck_height_m": "6.824491024017334",
+        "editing_note": "Fitted to camera reference. Top matches evaluated bridge landing. Original object name retained for scene compatibility."
+      },
+      "mods": []
+    },
+    {
+      "name": "Upper | plain octagon - 90 percent radius",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.12425818294286728,
+          1.3554675579071045,
+          0.0,
+          28.25415802001953
+        ],
+        [
+          -1.3554675579071045,
+          0.12425818294286728,
+          0.0,
+          -5.255842685699463
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          11.5888032913208
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        6.125180721282959,
+        6.125180721282959,
+        0.20000000298023224
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel",
+        "Metal | dark structural steel"
+      ],
+      "vertices": 16,
+      "props": {
+        "circumradius": "2.435382682914056",
+        "apothem": "2.2500002145767213"
+      },
+      "mods": []
+    },
+    {
+      "name": "Bridge | floating rectangle",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.6026623845100403,
+          1.29859459400177,
+          0.007418171502649784,
+          22.796630859375
+        ],
+        [
+          -1.2982898950576782,
+          0.6028038859367371,
+          -0.01598064973950386,
+          -3.092552661895752
+        ],
+        [
+          -0.025217974558472633,
+          -4.195246233740235e-11,
+          1.0000076293945312,
+          6.87117862701416
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        1.7916558980941772,
+        1.5462193489074707,
+        0.15298022329807281
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel",
+        "Metal | dark structural steel"
+      ],
+      "vertices": 8,
+      "props": {
+        "editing_note": "One mesh. Origin at the middle-platform end; local X follows the bridge. Rotate or scale along local axes.",
+        "width": "1.08"
+      },
+      "mods": [
+        {
+          "name": "Follow platform radii",
+          "type": "NODES"
+        }
+      ]
+    },
+    {
+      "name": "Blockout | lower fill",
+      "type": "LIGHT",
+      "matrix": [
+        [
+          0.24658595025539398,
+          -0.9644967317581177,
+          0.09455898404121399,
+          27.190366744995117
+        ],
+        [
+          0.9691209197044373,
+          0.24540938436985016,
+          -0.024059586226940155,
+          -5.028031349182129
+        ],
+        [
+          -2.687408198198682e-07,
+          0.09757184237241745,
+          0.9952284693717957,
+          8.876178741455078
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "Blockout | upper fill",
+      "type": "LIGHT",
+      "matrix": [
+        [
+          0.24658606946468353,
+          -0.9639589190483093,
+          0.0998924970626831,
+          28.738677978515625
+        ],
+        [
+          0.9691209197044373,
+          0.24527263641357422,
+          -0.025416916236281395,
+          -3.942572593688965
+        ],
+        [
+          -3.3992829884255116e-08,
+          0.10307537019252777,
+          0.9946735501289368,
+          13.802838325500488
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "150 | main cave camera",
+      "type": "CAMERA",
+      "matrix": [
+        [
+          0.8454893231391907,
+          0.178602933883667,
+          -0.503238320350647,
+          11.583734512329102
+        ],
+        [
+          -0.533992350101471,
+          0.28278833627700806,
+          -0.7967954277992249,
+          -15.384082794189453
+        ],
+        [
+          -5.4658300996379694e-08,
+          0.9424074292182922,
+          0.3344671130180359,
+          13.286300659179688
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {
+        "alignment_previous_matrix": "<bpy id property array [16]>",
+        "before_cross_alignment": "<bpy id property array [16]>"
+      },
+      "mods": []
+    },
+    {
+      "name": "150 | same azimuth detail",
+      "type": "CAMERA",
+      "matrix": [
+        [
+          0.6060990691184998,
+          0.1346876621246338,
+          -0.7839025259017944,
+          12.462414741516113
+        ],
+        [
+          -0.7953891754150391,
+          0.10263418406248093,
+          -0.5973460674285889,
+          -15.116451263427734
+        ],
+        [
+          5.2000469707991215e-08,
+          0.9855584502220154,
+          0.16933558881282806,
+          12.800000190734863
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "155 | rock foundation detail",
+      "type": "CAMERA",
+      "matrix": [
+        [
+          0.5913733839988708,
+          0.2500426471233368,
+          -0.7666525840759277,
+          16.471811294555664
+        ],
+        [
+          -0.8063978552818298,
+          0.1833692193031311,
+          -0.5622261166572571,
+          -12.326337814331055
+        ],
+        [
+          -2.9822189162587165e-08,
+          0.9507125616073608,
+          0.31007352471351624,
+          9.300000190734863
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "150 | top-down arrangement",
+      "type": "CAMERA",
+      "matrix": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          22.45698356628418
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          -1.9134750366210938
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          40.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "150 | cave overhead shaft",
+      "type": "LIGHT",
+      "matrix": [
+        [
+          -0.9950371384620667,
+          -0.09750991314649582,
+          0.019821735098958015,
+          21.522497177124023
+        ],
+        [
+          0.09950419515371323,
+          -0.9750944375991821,
+          0.19821636378765106,
+          2.224970817565918
+        ],
+        [
+          3.0700872954980696e-09,
+          0.19920498132705688,
+          0.9799578189849854,
+          16.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "150 | cliff edge grazing",
+      "type": "LIGHT",
+      "matrix": [
+        [
+          0.13104377686977386,
+          0.5345143675804138,
+          -0.8349382877349854,
+          20.098514556884766
+        ],
+        [
+          -0.9913765788078308,
+          0.07065403461456299,
+          -0.11036520451307297,
+          -7.5204010009765625
+        ],
+        [
+          -2.937603227337604e-08,
+          0.8422009348869324,
+          0.5391637682914734,
+          14.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "150 | far ambient fill",
+      "type": "LIGHT",
+      "matrix": [
+        [
+          0.9833367466926575,
+          0.04878031834959984,
+          -0.17512668669223785,
+          14.180091857910156
+        ],
+        [
+          -0.18179349601268768,
+          0.2638568878173828,
+          -0.9472754001617432,
+          -3.78244948387146
+        ],
+        [
+          -1.2221139655821389e-08,
+          0.9633275866508484,
+          0.26832810044288635,
+          10.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "150 | right return faint rim",
+      "type": "LIGHT",
+      "matrix": [
+        [
+          0.7117143273353577,
+          -0.5587692260742188,
+          0.42572256922721863,
+          29.621389389038086
+        ],
+        [
+          0.702468991279602,
+          0.5661233067512512,
+          -0.4313254952430725,
+          -11.169353485107422
+        ],
+        [
+          -6.032520616372494e-08,
+          0.606037437915802,
+          0.7954361438751221,
+          12.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": null,
+      "materials": [],
+      "vertices": 0,
+      "props": {},
+      "mods": []
+    },
+    {
+      "name": "Front left | beveled rectangle landing",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.8378331661224365,
+          -0.8718984127044678,
+          0.0,
+          12.98884391784668
+        ],
+        [
+          0.8718984127044678,
+          0.8378331661224365,
+          0.0,
+          1.8783204555511475
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          2.3467507362365723
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        10.13140869140625,
+        14.361594200134277,
+        0.3799999952316284
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel"
+      ],
+      "vertices": 8,
+      "props": {
+        "construction": "Simple editable blockout aligned to the existing camera reference."
+      },
+      "mods": [
+        {
+          "name": "Inner two corners - adjust Amount",
+          "type": "BEVEL"
+        }
+      ]
+    },
+    {
+      "name": "Front left | descending bridge stairs",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9785125255584717,
+          -0.20618727803230286,
+          0.0,
+          13.91373348236084
+        ],
+        [
+          0.20618727803230286,
+          0.9785125255584717,
+          0.0,
+          -0.18246346712112427
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          4.35424280166626
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        7.119304656982422,
+        2.3755319118499756,
+        5.46999979019165
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel"
+      ],
+      "vertices": 132,
+      "props": {
+        "construction": "Simple editable blockout aligned to the existing camera reference.",
+        "steps": "32",
+        "rise": "0.1615625023841858",
+        "tread": "0.218541199740531"
+      },
+      "mods": []
+    },
+    {
+      "name": "Back left | upper rectangular platform",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9191604852676392,
+          0.40544265508651733,
+          0.0,
+          16.974802017211914
+        ],
+        [
+          -0.40544265508651733,
+          0.9191604852676392,
+          0.0,
+          14.352944374084473
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          8.574999809265137
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        5.786135673522949,
+        5.449301242828369,
+        0.25
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel"
+      ],
+      "vertices": 8,
+      "props": {
+        "construction": "Simple editable blockout aligned to the existing camera reference."
+      },
+      "mods": []
+    },
+    {
+      "name": "Back left | broad stair flight",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.7296785116195679,
+          0.683790385723114,
+          0.0,
+          17.41892433166504
+        ],
+        [
+          -0.683790385723114,
+          0.7296785116195679,
+          0.0,
+          10.95176887512207
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          7.900528430938721
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        4.798437118530273,
+        4.931559085845947,
+        1.9900002479553223
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel"
+      ],
+      "vertices": 76,
+      "props": {
+        "construction": "Simple editable blockout aligned to the existing camera reference.",
+        "steps": "18",
+        "rise": "0.09166667196485731",
+        "tread": "0.16645222573058013"
+      },
+      "mods": []
+    },
+    {
+      "name": "Back left | lower stair landing",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9151712656021118,
+          0.40306517481803894,
+          0.0,
+          17.669612884521484
+        ],
+        [
+          -0.40306517481803894,
+          0.9151712656021118,
+          0.0,
+          8.837615966796875
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          6.92500114440918
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        3.8836371898651123,
+        2.963439702987671,
+        0.25
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel"
+      ],
+      "vertices": 16,
+      "props": {
+        "construction": "Simple editable blockout aligned to the existing camera reference."
+      },
+      "mods": []
+    },
+    {
+      "name": "Back left | short connection to center",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.9358726143836975,
+          0.3523384928703308,
+          0.0,
+          22.626155853271484
+        ],
+        [
+          -0.3523384928703308,
+          0.9358726143836975,
+          0.0,
+          1.04042387008667
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        4.230249881744385,
+        4.755119800567627,
+        0.40000009536743164
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel"
+      ],
+      "vertices": 12,
+      "props": {
+        "construction": "Simple editable blockout aligned to the existing camera reference.",
+        "steps": "2",
+        "rise": "0.09000015258789062",
+        "tread": "2.6004282451955185"
+      },
+      "mods": []
+    },
+    {
+      "name": "Middle back | central octagon",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.8454889059066772,
+          0.5339930057525635,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5339930057525635,
+          0.8454889059066772,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        5.025904655456543,
+        5.025904655456543,
+        0.19999980926513672
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel"
+      ],
+      "vertices": 16,
+      "props": {
+        "construction": "Simple editable blockout aligned to the existing camera reference."
+      },
+      "mods": []
+    },
+    {
+      "name": "Middle back | upper octagon",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.8454889059066772,
+          0.5339930057525635,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5339930057525635,
+          0.8454889059066772,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        4.730262756347656,
+        4.730262756347656,
+        0.19999980926513672
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel"
+      ],
+      "vertices": 16,
+      "props": {
+        "construction": "Simple editable blockout aligned to the existing camera reference."
+      },
+      "mods": []
+    },
+    {
+      "name": "Middle back | lower octagon",
+      "type": "MESH",
+      "matrix": [
+        [
+          0.8454889059066772,
+          0.5339930057525635,
+          0.0,
+          21.299999237060547
+        ],
+        [
+          -0.5339930057525635,
+          0.8454889059066772,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dimensions": [
+        4.563965320587158,
+        4.56396484375,
+        0.19999980926513672
+      ],
+      "parent": null,
+      "materials": [
+        "Metal | satin blue steel"
+      ],
+      "vertices": 16,
+      "props": {
+        "construction": "Simple editable blockout aligned to the existing camera reference."
+      },
+      "mods": []
+    }
+  ],
+  "camera": {
+    "name": "150 | main cave camera",
+    "type": "CAMERA",
+    "matrix": [
+      [
+        0.8454893231391907,
+        0.178602933883667,
+        -0.503238320350647,
+        11.583734512329102
+      ],
+      [
+        -0.533992350101471,
+        0.28278833627700806,
+        -0.7967954277992249,
+        -15.384082794189453
+      ],
+      [
+        -5.4658300996379694e-08,
+        0.9424074292182922,
+        0.3344671130180359,
+        13.286300659179688
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "dimensions": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "parent": null,
+    "materials": [],
+    "vertices": 0,
+    "props": {
+      "alignment_previous_matrix": "<bpy id property array [16]>",
+      "before_cross_alignment": "<bpy id property array [16]>"
+    },
+    "mods": []
+  },
+  "backgrounds": [
+    {
+      "image": "batcave-railings-no-car-v2.png",
+      "alpha": 0.6951219439506531,
+      "depth": "FRONT"
+    }
+  ],
+  "render": {
+    "engine": "CYCLES",
+    "x": 1600,
+    "y": 896
+  },
+  "materials": [
+    "Bays | dry cave haze",
+    "glassPane",
+    "graphite",
+    "hudBlue_workshop_cyan",
+    "ledBlue_workshop_cyan",
+    "Metal | amber lamp diffusers",
+    "Metal | brushed grating steel",
+    "Metal | dark structural steel",
+    "Metal | machined edge highlights",
+    "Metal | outer walkway alloy",
+    "Metal | satin blue steel",
+    "Metal | unlit grate recess",
+    "metalDark",
+    "neonCyan",
+    "neonCyan_workshop_cyan",
+    "neonCyanFaint",
+    "rockDark",
+    "Terrain | fractured charcoal slate",
+    "Terrain | matte blue-gray facets.001",
+    "Terrain | rough hewn slate"
+  ]
+}

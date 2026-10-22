@@ -1,0 +1,140 @@
+{
+  "supports": [
+    {
+      "support": "Lower | symmetric channeled support 01",
+      "mirror_error": 4.76837158203125e-07,
+      "channel_depth": 0.051
+    },
+    {
+      "support": "Lower | symmetric channeled support 02",
+      "mirror_error": 4.76837158203125e-07,
+      "channel_depth": 0.051
+    },
+    {
+      "support": "Lower | symmetric channeled support 03",
+      "mirror_error": 4.76837158203125e-07,
+      "channel_depth": 0.051
+    },
+    {
+      "support": "Lower | symmetric channeled support 04",
+      "mirror_error": 1.966049969490843e-06,
+      "channel_depth": 0.051
+    },
+    {
+      "support": "Lower | symmetric channeled support 05",
+      "mirror_error": 4.76837158203125e-07,
+      "channel_depth": 0.051
+    },
+    {
+      "support": "Lower | symmetric channeled support 06",
+      "mirror_error": 4.76837158203125e-07,
+      "channel_depth": 0.051
+    },
+    {
+      "support": "Lower | symmetric channeled support 07",
+      "mirror_error": 4.76837158203125e-07,
+      "channel_depth": 0.051
+    }
+  ],
+  "light_ledge_relationships": [
+    {
+      "bay": "rear bay 1",
+      "upper_projection_bottom": 1.55,
+      "lamp_center": 1.499,
+      "lamp_bottom": 1.48,
+      "ledge_top": 1.48,
+      "ledge_front": 0.233,
+      "upper_projection_front": 0.13
+    },
+    {
+      "bay": "rear bay 2",
+      "upper_projection_bottom": 1.55,
+      "lamp_center": 1.499,
+      "lamp_bottom": 1.48,
+      "ledge_top": 1.48,
+      "ledge_front": 0.233,
+      "upper_projection_front": 0.13
+    },
+    {
+      "bay": "angled corner bay",
+      "upper_projection_bottom": 1.55,
+      "lamp_center": 1.499,
+      "lamp_bottom": 1.48,
+      "ledge_top": 1.48,
+      "ledge_front": 0.233,
+      "upper_projection_front": 0.13
+    },
+    {
+      "bay": "opposite bay 1",
+      "upper_projection_bottom": 1.55,
+      "lamp_center": 1.499,
+      "lamp_bottom": 1.48,
+      "ledge_top": 1.48,
+      "ledge_front": 0.233,
+      "upper_projection_front": 0.13
+    },
+    {
+      "bay": "opposite bay 2",
+      "upper_projection_bottom": 1.55,
+      "lamp_center": 1.499,
+      "lamp_bottom": 1.48,
+      "ledge_top": 1.48,
+      "ledge_front": 0.233,
+      "upper_projection_front": 0.13
+    },
+    {
+      "bay": "far right beveled bay",
+      "upper_projection_bottom": 1.55,
+      "lamp_center": 1.499,
+      "lamp_bottom": 1.48,
+      "ledge_top": 1.48,
+      "ledge_front": 0.233,
+      "upper_projection_front": 0.13
+    }
+  ],
+  "all_existing_meshes_preserved": true,
+  "non_manifold_edges": {},
+  "hidden_superseded_parts": [
+    "Lower | octagon upright pier",
+    "Lower | octagon pier edge",
+    "Lower | octagon splayed pier foot",
+    "Lower | octagon foot inset",
+    "Lower | octagon upright pier.001",
+    "Lower | octagon pier edge.001",
+    "Lower | octagon splayed pier foot.001",
+    "Lower | octagon foot inset.001",
+    "Lower | octagon upright pier.002",
+    "Lower | octagon pier edge.002",
+    "Lower | octagon splayed pier foot.002",
+    "Lower | octagon foot inset.002",
+    "Lower | octagon upright pier.003",
+    "Lower | octagon pier edge.003",
+    "Lower | octagon splayed pier foot.003",
+    "Lower | octagon foot inset.003",
+    "Lower | opposite joint 1 upright pier",
+    "Lower | opposite joint 1 pier edge",
+    "Lower | opposite joint 1 splayed pier foot",
+    "Lower | opposite joint 1 foot inset",
+    "Lower | opposite joint 2 upright pier",
+    "Lower | opposite joint 2 pier edge",
+    "Lower | opposite joint 2 splayed pier foot",
+    "Lower | opposite joint 2 foot inset",
+    "Lower | opposite joint 3 upright pier",
+    "Lower | opposite joint 3 pier edge",
+    "Lower | opposite joint 3 splayed pier foot",
+    "Lower | opposite joint 3 foot inset",
+    "Lower | octagon strip light housing",
+    "Lower | octagon white strip diffuser",
+    "Lower | octagon strip light housing.001",
+    "Lower | octagon white strip diffuser.001",
+    "Lower | octagon strip light housing.002",
+    "Lower | octagon white strip diffuser.002",
+    "Lower | opposite bay 1 strip light housing",
+    "Lower | opposite bay 1 white strip diffuser",
+    "Lower | opposite bay 2 strip light housing",
+    "Lower | opposite bay 2 white strip diffuser",
+    "Lower | far right beveled bay strip light housing",
+    "Lower | far right beveled bay white strip diffuser"
+  ],
+  "new_objects": 45
+}

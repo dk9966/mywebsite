@@ -1,0 +1,127 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/low-poly-sculpt/source-live-snapshot.blend",
+  "terrain": {
+    "150 | continuous cave with oblique carved rooms": {
+      "original_faces": 107807,
+      "original_triangles": 104792,
+      "triangles": 13999,
+      "vertices": 7229,
+      "components": [
+        7229
+      ],
+      "invalid_edges": 0,
+      "boundary_edges": 459,
+      "all_triangles": true,
+      "modifiers": 0
+    },
+    "Central rock mound | continuous cross-column extrusions": {
+      "original_faces": 175388,
+      "original_triangles": 175388,
+      "triangles": 4500,
+      "vertices": 2252,
+      "components": [
+        2252
+      ],
+      "invalid_edges": 0,
+      "boundary_edges": 0,
+      "all_triangles": true,
+      "modifiers": 0
+    }
+  },
+  "platforms_unchanged": true,
+  "recess_clearance_vertices_adjusted": 3,
+  "standing_rock_intrusions": [],
+  "rock_seating": [
+    {
+      "xy": [
+        0,
+        -1.0
+      ],
+      "rock_below": true
+    },
+    {
+      "xy": [
+        0,
+        0.25
+      ],
+      "rock_below": true
+    },
+    {
+      "xy": [
+        -3.8,
+        0.2
+      ],
+      "rock_below": true
+    },
+    {
+      "xy": [
+        1.7,
+        0.2
+      ],
+      "rock_below": true
+    }
+  ],
+  "anchor_contacts": [
+    {
+      "name": "Lower | rock bolting shoe",
+      "old_distance": 0.012000225484371185,
+      "new_distance": 0.009039285592734814,
+      "added_gap": -0.0029609398916363716
+    },
+    {
+      "name": "Lower | rock bolting shoe.001",
+      "old_distance": 0.012001289054751396,
+      "new_distance": 0.012259438633918762,
+      "added_gap": 0.00025814957916736603
+    },
+    {
+      "name": "Lower | rock bolting shoe.002",
+      "old_distance": 0.011997484602034092,
+      "new_distance": 0.011904063634574413,
+      "added_gap": -9.342096745967865e-05
+    },
+    {
+      "name": "Lower | rock bolting shoe.003",
+      "old_distance": 0.012000192888081074,
+      "new_distance": 0.011415811255574226,
+      "added_gap": -0.0005843816325068474
+    },
+    {
+      "name": "Lower | rock bolting shoe.004",
+      "old_distance": 0.011999414302408695,
+      "new_distance": 0.009866653941571712,
+      "added_gap": -0.0021327603608369827
+    },
+    {
+      "name": "Lower | rock bolting shoe.005",
+      "old_distance": 0.012000426650047302,
+      "new_distance": 0.011611156165599823,
+      "added_gap": -0.00038927048444747925
+    },
+    {
+      "name": "Upper | rock bolting shoe",
+      "old_distance": 0.011999552138149738,
+      "new_distance": 0.01244937814772129,
+      "added_gap": 0.0004498260095715523
+    },
+    {
+      "name": "Upper | rock bolting shoe.001",
+      "old_distance": 0.012000012211501598,
+      "new_distance": 0.014245649799704552,
+      "added_gap": 0.0022456375882029533
+    },
+    {
+      "name": "Upper | rock bolting shoe.002",
+      "old_distance": 0.012001034803688526,
+      "new_distance": 0.011551189236342907,
+      "added_gap": -0.0004498455673456192
+    },
+    {
+      "name": "Upper | rock bolting shoe.003",
+      "old_distance": 0.01199883408844471,
+      "new_distance": 0.012281913310289383,
+      "added_gap": 0.00028307922184467316
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,47 @@
+{
+  "controls": {
+    "Table & machinery size": 0.5,
+    "Railing size": 1.0,
+    "Middle radius (m)": 3.3671998977661133,
+    "Lower radius (m)": 2.7059807777404785,
+    "Upper radius (m)": 2.435382604598999
+  },
+  "driver_tests": {
+    "Table & machinery size": {
+      "measured_ratio": 1.5,
+      "expected_ratio": 1.5
+    },
+    "Middle radius (m)": {
+      "measured_ratio": 1.0800000897274338,
+      "expected_ratio": 1.08
+    },
+    "Lower radius (m)": {
+      "measured_ratio": 1.1000000972184991,
+      "expected_ratio": 1.1
+    },
+    "Upper radius (m)": {
+      "measured_ratio": 0.8499998772493443,
+      "expected_ratio": 0.85
+    },
+    "Railing size": {
+      "measured_height_ratio": 1.3999997829962976,
+      "expected_ratio": 1.4
+    }
+  },
+  "default_geometry_errors": {
+    "Metal | continuous support drum": 0.0,
+    "deck_desk_b": 1.1920928955078125e-07,
+    "Lower | plain octagon": 0.0,
+    "Upper | plain octagon - 90 percent radius": 0.0,
+    "Bridge | floating rectangle": 2.384185791015625e-07
+  },
+  "terrain_max_vertex_error": {
+    "150 | continuous cave with oblique carved rooms": 0.0,
+    "Central rock mound | continuous cross-column extrusions": 0.0
+  },
+  "terrain_changed": [],
+  "rail_objects_controlled": 76,
+  "requires_addon": false,
+  "requires_python_autorun": false,
+  "passed": true
+}

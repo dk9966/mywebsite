@@ -1,0 +1,30 @@
+{
+  "brief": "A little more platform sheen with cool reference lighting; no water; preserve scene geometry and terrain.",
+  "reference": "../../design-references/misty-abyss/dry-cavern-satin-lighting-reference.png",
+  "reviewed_image": "satin-preview-03-overview.png",
+  "final_image": "satin-overview.png",
+  "critics": [
+    {
+      "agent": "satin_critic_a",
+      "initial_context": "fresh",
+      "finish_grade_out_of_10": 8.5,
+      "lighting_grade_out_of_10": 8.5,
+      "remaining_visual_blockers": [],
+      "assessment": "Platforms read as dry satin with visible tile texture and restrained highlights. Roofs no longer resemble polished metal; fog supports depth. Cool atmosphere and warm workshop light are balanced."
+    },
+    {
+      "agent": "satin_critic_b",
+      "initial_context": "fresh",
+      "overall_grade_out_of_10": 8.6,
+      "remaining_visual_blockers": [],
+      "assessment": "Floors read as dry satin metal, roof highlights stay subordinate, and darker gaps restore depth. The modest sheen increase is clear without a wet appearance."
+    }
+  ],
+  "refinements": [
+    "Reduced floor highlight peaks by increasing roughness to 0.42",
+    "Reduced helper-light powers and clear coat",
+    "Assigned roofs a separate matte powdercoat finish",
+    "Reduced volumetric haze density",
+    "Retained localized warm Workshop task lighting"
+  ]
+}

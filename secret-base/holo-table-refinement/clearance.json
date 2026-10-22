@@ -1,0 +1,15 @@
+{
+  "clearance_candidates": 10,
+  "obstructions": [],
+  "skipped": [
+    "Lower | recessed wall bay 02",
+    "Lower | recessed wall bay 03",
+    "Lower | recessed wall bay 04",
+    "Lower | vertical panel seam.013",
+    "Lower | vertical panel seam.014",
+    "Lower | splayed structural wall jamb.005",
+    "Lower | exposed jamb edge.005"
+  ],
+  "strips_fixed": 8,
+  "saved": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend"
+}

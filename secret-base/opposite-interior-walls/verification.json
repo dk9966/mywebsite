@@ -1,0 +1,36 @@
+{
+  "walls": [
+    {
+      "name": "Lower | opposite bay 1",
+      "min_clearance": 0.7344629764556885,
+      "rock_intrusions": [],
+      "samples_hit": 357,
+      "vertical_error": 0.0,
+      "parallel_error": 3.8743019104003906e-07
+    },
+    {
+      "name": "Lower | opposite bay 2",
+      "min_clearance": 0.7331767082214355,
+      "rock_intrusions": [],
+      "samples_hit": 357,
+      "vertical_error": 0.0,
+      "parallel_error": 2.384185791015625e-07
+    },
+    {
+      "name": "Lower | far right beveled bay",
+      "min_clearance": 0.6359534859657288,
+      "rock_intrusions": [],
+      "samples_hit": 357,
+      "vertical_error": 0.0,
+      "parallel_error": 3.8743019104003906e-07
+    }
+  ],
+  "rock": {
+    "vertices": 83159,
+    "loose_edges": 0,
+    "nonmanifold_junctions": 0,
+    "boundary_edges": 95,
+    "connected_components": 1
+  },
+  "passed": true
+}

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "preserved_scene_objects": 5299,
+  "changed_outside_table": [],
+  "original_components": 143,
+  "table_errors": [],
+  "replaced_table_leftovers": [],
+  "source_sha256": "23e9d2bb397843f508882d6662660c0a64a897b5cb9eb8bef1e66a367cbdf934",
+  "input_scene_sha256": "a633dbed36a36e201cf5750ce69a3159867f2064431d5688f0b99e7c9c583c4f",
+  "output_sha256": "0f27e56a4f95736b91a3a48f9b59b476b14eeee6ce904dfccc8db6e159608ce8"
+}

@@ -1,0 +1,43 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/cavern-layout/cavern-matched-islands.blend",
+  "output": "/Users/danielku/mywebsite/secret-base/cavern-layout/cavern-satin-lighting.blend",
+  "geometry_unchanged": true,
+  "terrain_shaders_unchanged": true,
+  "water_added": false,
+  "materials": {
+    "Satin | cool platform paving": {
+      "source": "stationFloorSatin",
+      "roughness": 0.42,
+      "metallic": 0.46,
+      "coat": 0.09
+    },
+    "Satin | graphite trim and equipment": {
+      "source": "graphite",
+      "roughness": 0.4,
+      "metallic": 0.5,
+      "coat": 0.05
+    },
+    "Satin | brushed metal details": {
+      "source": "metalDark",
+      "roughness": 0.34,
+      "metallic": 0.65,
+      "coat": 0.04
+    },
+    "Satin | restrained powdercoat roofs": {
+      "roughness": 0.62,
+      "metallic": 0.28,
+      "coat": 0
+    }
+  },
+  "restyled_objects": 2238,
+  "non_light_objects_checked": 5313,
+  "added_lights": [
+    "Satin | Projects soft ceiling reflection",
+    "Satin | Contact soft ceiling reflection",
+    "Satin | Education soft ceiling reflection",
+    "Satin | Work soft ceiling reflection",
+    "Satin | About soft ceiling reflection",
+    "Satin | Workshop ceiling reflection",
+    "Satin | deep dry chasm fill"
+  ]
+}

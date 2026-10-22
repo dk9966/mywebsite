@@ -73,6 +73,36 @@ interface BootPartRowProps {
   onDuration: (v: number) => void;
 }
 
+// The clock ticks every frame during boot; only these two leaves subscribe to
+// it so the rest of the controls panel doesn't re-render at 60 Hz.
+function BootTime() {
+  const elapsedMs = useBootClock((s) => s.elapsedMs);
+  return (
+    <span className="desk-controls__time">
+      {formatBootMs(elapsedMs)} / {formatBootMs(BOOT_TOTAL_MS)}
+    </span>
+  );
+}
+
+function BootScrubber() {
+  const elapsedMs = useBootClock((s) => s.elapsedMs);
+  const seek = useBootClock((s) => s.seek);
+  const setScrubbing = useBootClock((s) => s.setScrubbing);
+  return (
+    <input
+      className="desk-controls__slider desk-controls__slider--time"
+      type="range"
+      min={0}
+      max={BOOT_TOTAL_MS}
+      step={10}
+      value={Math.min(elapsedMs, BOOT_TOTAL_MS)}
+      onPointerDown={() => setScrubbing(true)}
+      onPointerUp={() => setScrubbing(false)}
+      onChange={(e) => seek(Number(e.target.value))}
+    />
+  );
+}
+
 function BootPartRow({
   index,
   label,
@@ -198,26 +228,19 @@ export default function DeskControls() {
   const reset = useDeskLayout((s) => s.reset);
   const saveAsDefault = useDeskLayout((s) => s.saveAsDefault);
 
-  const bootElapsedMs = useBootClock((s) => s.elapsedMs);
   const bootPaused = useBootClock((s) => s.paused);
-  const bootSeek = useBootClock((s) => s.seek);
   const bootRestart = useBootClock((s) => s.restart);
   const bootTogglePause = useBootClock((s) => s.togglePause);
-  const setBootScrubbing = useBootClock((s) => s.setScrubbing);
 
   const bootParts = useBootTuning((s) => s.parts);
   const panelStartMs = useBootTuning((s) => s.panelStartMs);
   const stabilizeMs = useBootTuning((s) => s.stabilizeMs);
-  const pulseBaseMs = useBootTuning((s) => s.pulseBaseMs);
-  const pulseSweepMs = useBootTuning((s) => s.pulseSweepMs);
   const setPartVisible = useBootTuning((s) => s.setPartVisible);
   const setAllPartsVisible = useBootTuning((s) => s.setAllPartsVisible);
   const setPartDelay = useBootTuning((s) => s.setPartDelay);
   const setPartDuration = useBootTuning((s) => s.setPartDuration);
   const setPanelStart = useBootTuning((s) => s.setPanelStart);
   const setStabilizeMs = useBootTuning((s) => s.setStabilizeMs);
-  const setPulseBaseMs = useBootTuning((s) => s.setPulseBaseMs);
-  const setPulseSweepMs = useBootTuning((s) => s.setPulseSweepMs);
   const resetBootTuning = useBootTuning((s) => s.reset);
 
   const [minimized, setMinimized] = useState(false);
@@ -341,21 +364,9 @@ export default function DeskControls() {
               >
                 {bootPaused ? ">" : "||"}
               </button>
-              <span className="desk-controls__time">
-                {formatBootMs(bootElapsedMs)} / {formatBootMs(BOOT_TOTAL_MS)}
-              </span>
+              <BootTime />
             </div>
-            <input
-              className="desk-controls__slider desk-controls__slider--time"
-              type="range"
-              min={0}
-              max={BOOT_TOTAL_MS}
-              step={10}
-              value={Math.min(bootElapsedMs, BOOT_TOTAL_MS)}
-              onPointerDown={() => setBootScrubbing(true)}
-              onPointerUp={() => setBootScrubbing(false)}
-              onChange={(e) => bootSeek(Number(e.target.value))}
-            />
+            <BootScrubber />
           </section>
 
           <hr className="desk-controls__divider" />
@@ -386,22 +397,6 @@ export default function DeskControls() {
               max={BOOT_TOTAL_MS}
               step={10}
               onChange={setStabilizeMs}
-            />
-            <Slider
-              label="Pulse base"
-              value={pulseBaseMs}
-              min={2000}
-              max={BOOT_TOTAL_MS}
-              step={10}
-              onChange={setPulseBaseMs}
-            />
-            <Slider
-              label="Pulse sweep"
-              value={pulseSweepMs}
-              min={0}
-              max={800}
-              step={10}
-              onChange={setPulseSweepMs}
             />
           </section>
 

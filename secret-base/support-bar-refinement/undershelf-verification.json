@@ -1,0 +1,145 @@
+{
+  "supports": [
+    {
+      "name": "Lower | symmetric channeled support 01",
+      "mirror_error": 9.830249847454215e-07,
+      "channel_depth": 0.09,
+      "shaft_channel_width": 0.1056,
+      "shaft_front": 0.17,
+      "angled_tip_front": 0.36,
+      "angled_end_vertical_length": 0.435
+    },
+    {
+      "name": "Lower | symmetric channeled support 02",
+      "mirror_error": 1.066240299940009e-06,
+      "channel_depth": 0.09,
+      "shaft_channel_width": 0.1056,
+      "shaft_front": 0.17,
+      "angled_tip_front": 0.36,
+      "angled_end_vertical_length": 0.435
+    },
+    {
+      "name": "Lower | symmetric channeled support 03",
+      "mirror_error": 9.5367431640625e-07,
+      "channel_depth": 0.09,
+      "shaft_channel_width": 0.1056,
+      "shaft_front": 0.17,
+      "angled_tip_front": 0.36,
+      "angled_end_vertical_length": 0.435
+    },
+    {
+      "name": "Lower | symmetric channeled support 04",
+      "mirror_error": 9.5367431640625e-07,
+      "channel_depth": 0.09,
+      "shaft_channel_width": 0.1056,
+      "shaft_front": 0.17,
+      "angled_tip_front": 0.36,
+      "angled_end_vertical_length": 0.435
+    },
+    {
+      "name": "Lower | symmetric channeled support 05",
+      "mirror_error": 9.5367431640625e-07,
+      "channel_depth": 0.09,
+      "shaft_channel_width": 0.1056,
+      "shaft_front": 0.17,
+      "angled_tip_front": 0.36,
+      "angled_end_vertical_length": 0.435
+    },
+    {
+      "name": "Lower | symmetric channeled support 06",
+      "mirror_error": 9.5367431640625e-07,
+      "channel_depth": 0.09,
+      "shaft_channel_width": 0.1056,
+      "shaft_front": 0.17,
+      "angled_tip_front": 0.36,
+      "angled_end_vertical_length": 0.435
+    },
+    {
+      "name": "Lower | symmetric channeled support 07",
+      "mirror_error": 9.5367431640625e-07,
+      "channel_depth": 0.09,
+      "shaft_channel_width": 0.1056,
+      "shaft_front": 0.17,
+      "angled_tip_front": 0.36,
+      "angled_end_vertical_length": 0.435
+    }
+  ],
+  "ledges_and_lights": [
+    {
+      "bay": "rear bay 1",
+      "width_before": 2.0675629377365112,
+      "width_after": 1.927562937736511,
+      "ledge_front": 0.125,
+      "support_front": 0.17,
+      "ledge_bottom": 1.43,
+      "lamp_top": 1.43,
+      "diffuser_top": 1.418
+    },
+    {
+      "bay": "rear bay 2",
+      "width_before": 2.067568063735962,
+      "width_after": 1.9275680637359618,
+      "ledge_front": 0.125,
+      "support_front": 0.17,
+      "ledge_bottom": 1.43,
+      "lamp_top": 1.43,
+      "diffuser_top": 1.418
+    },
+    {
+      "bay": "angled corner bay",
+      "width_before": 1.5577688217163086,
+      "width_after": 1.4177688217163085,
+      "ledge_front": 0.125,
+      "support_front": 0.17,
+      "ledge_bottom": 1.43,
+      "lamp_top": 1.43,
+      "diffuser_top": 1.418
+    },
+    {
+      "bay": "opposite bay 1",
+      "width_before": 1.765671730041504,
+      "width_after": 1.6256717300415038,
+      "ledge_front": 0.125,
+      "support_front": 0.17,
+      "ledge_bottom": 1.43,
+      "lamp_top": 1.43,
+      "diffuser_top": 1.418
+    },
+    {
+      "bay": "opposite bay 2",
+      "width_before": 1.7656712532043457,
+      "width_after": 1.6256712532043456,
+      "ledge_front": 0.125,
+      "support_front": 0.17,
+      "ledge_bottom": 1.43,
+      "lamp_top": 1.43,
+      "diffuser_top": 1.418
+    },
+    {
+      "bay": "far right beveled bay",
+      "width_before": 1.5577678680419922,
+      "width_after": 1.417767868041992,
+      "ledge_front": 0.125,
+      "support_front": 0.17,
+      "ledge_bottom": 1.43,
+      "lamp_top": 1.43,
+      "diffuser_top": 1.418
+    }
+  ],
+  "darkened_headers": [
+    "Lower | octagon roof fascia",
+    "Lower | octagon roof cassette",
+    "Lower | octagon roof fascia.001",
+    "Lower | octagon roof cassette.001",
+    "Lower | octagon roof fascia.002",
+    "Lower | octagon roof cassette.002",
+    "Lower | opposite bay 1 roof fascia",
+    "Lower | opposite bay 1 roof cassette",
+    "Lower | opposite bay 2 roof fascia",
+    "Lower | opposite bay 2 roof cassette",
+    "Lower | far right beveled bay roof fascia",
+    "Lower | far right beveled bay roof cassette"
+  ],
+  "unrelated_meshes_and_transforms_preserved": true,
+  "non_manifold_edges": {}
+}

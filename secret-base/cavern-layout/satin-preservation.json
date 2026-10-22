@@ -1,0 +1,13 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/cavern-layout/cavern-matched-islands.blend",
+  "output": "/Users/danielku/mywebsite/secret-base/cavern-layout/cavern-satin-lighting.blend",
+  "source_sha256": "f5368c92ce1f2e3da7b8b19be44ae429edf6f7f14405a3cc35320a23d9fb975a",
+  "output_sha256": "a633dbed36a36e201cf5750ce69a3159867f2064431d5688f0b99e7c9c583c4f",
+  "non_light_objects_checked": 5313,
+  "changed_geometry_or_transforms": [],
+  "added_non_light_objects": [],
+  "rock_shaders_unchanged": true,
+  "water_added": false,
+  "scope": "Platform and equipment shader finish plus lighting; geometry and terrain retained.",
+  "passed": true
+}

@@ -19,6 +19,26 @@
         "dev"
       ],
       "port": 5174
+    },
+    {
+      "name": "site-5175",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "vite",
+        "--port",
+        "5175",
+        "--strictPort"
+      ],
+      "port": 5175
+    },
+    {
+      "name": "voxel-server",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "voxel-server"
+      ],
+      "port": 4100
     }
   ]
 }

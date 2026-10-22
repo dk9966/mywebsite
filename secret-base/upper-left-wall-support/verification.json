@@ -1,0 +1,30 @@
+{
+  "support_samples": {
+    "Back left | upper rectangular platform": {
+      "samples": 713,
+      "support_before_percent": 4.91,
+      "support_after_percent": 100.0,
+      "new_walking_surface_intrusions": 0
+    },
+    "Back left | broad stair flight": {
+      "samples": 713,
+      "support_before_percent": 2.81,
+      "support_after_percent": 100.0,
+      "new_walking_surface_intrusions": 0
+    },
+    "Back left | lower stair landing": {
+      "samples": 713,
+      "support_before_percent": 0.0,
+      "support_after_percent": 100.0,
+      "new_walking_surface_intrusions": 0
+    }
+  },
+  "mesh_checks": {
+    "components": 1,
+    "loose_edges": 0,
+    "nonmanifold_junctions": 0,
+    "zero_area_faces": 0
+  },
+  "unrelated_objects_changed": [],
+  "file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend"
+}

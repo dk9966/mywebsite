@@ -1,0 +1,15 @@
+{
+  "objects_checked": 3208,
+  "changed_object_records": [
+    "RL | Cave | lower reflected bounce -1",
+    "RL | Cave | lower reflected bounce +1"
+  ],
+  "unexpected_changes": [],
+  "added_objects": [],
+  "camera_preserved": true,
+  "lighting_controls_preserved": true,
+  "wall_normal_reversal_max_error": 0.00010031461715698242,
+  "all_cave_faces_reversed_exactly": true,
+  "invalid_drivers": [],
+  "passed": true
+}

@@ -112,15 +112,3 @@ export function BootFx({
     </div>
   );
 }
-
-/** The "system online" sweep — separate from .boot-fx so it survives the
- *  stabilize fade-out. Delay comes from --pulse-delay on the panel face. */
-export function BootPulse() {
-  const visible = useBootTuning((s) => s.parts.onlinePulse.visible);
-  return (
-    <div
-      className={`boot-fx-pulse ${visible ? "boot-fx__part--on" : ""}`}
-      aria-hidden="true"
-    />
-  );
-}

@@ -1,0 +1,5 @@
+/* drei's <Html transform> layers (every child of the canvas root except the
+   canvas's own container) follow the camera's lens shift; see LensShift. */
+.cave-html-shift > div:not(:has(> canvas)) {
+  translate: var(--lens-shift-x, 0) var(--lens-shift-y, 0);
+}

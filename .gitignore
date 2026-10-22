@@ -92,6 +92,14 @@ _shot.js
 /reference-cavern/*-review/before-*.blend
 /reference-cavern/*-review/pass-*.blend
 
+# Per-iteration secret-base scene snapshots (base.blend is the source of truth)
+/secret-base/*/**/*.blend
+
+# Downloaded third-party Blender assets (re-download; too large for git)
+/blender-assets/
+/blender/Namaqualand Boulder 02 Model/
+/blender/Namaqualand Boulder 02 Model.zip
+
 # Intermediate cavern renders; retain the final image from each review series.
 /reference-cavern/atmosphere-review/pass-*.png
 !/reference-cavern/atmosphere-review/pass-29.png

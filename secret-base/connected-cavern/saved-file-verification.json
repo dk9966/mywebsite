@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "file": "/Users/danielku/mywebsite/secret-base/connected-cavern/connected-cavern.blend",
+  "sha256": "4cfb3da0fbdd6c49bbc1443f64a434e7be94f69400aa27b183bed70bf0a9d382",
+  "preserved_original_meshes_and_materials": 994,
+  "unexpected_changes": [],
+  "upper_mouth_edited_rock_objects": [
+    "Bays | continuous cave wall | stratum 0",
+    "Bays | left broken cave return | stratum 0"
+  ],
+  "original_rock_samples_outside_upper_cut": 4352,
+  "rock_changes_outside_upper_cut": [],
+  "interior_surface_components": [
+    13087
+  ],
+  "interior_surface_vertices": 13087,
+  "open_boundary_edges": 453,
+  "nonmanifold_nonboundary_edges": 0,
+  "interior_surface_modifiers": 0,
+  "thickness": 0,
+  "bridge_obstructions": [],
+  "enclosure_gaps": [],
+  "support_anchor_distances": [
+    4.76837158203125e-07,
+    0.0,
+    8.259061701210157e-07,
+    6.743495646333031e-07,
+    5.331201577973843e-07,
+    2.384185791015625e-07
+  ],
+  "no_ceiling_or_floor": true
+}

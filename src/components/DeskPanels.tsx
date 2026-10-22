@@ -5,7 +5,6 @@ import {
   BOOT_TOTAL_MS,
   bootPanelStartMs,
   bootSkipped,
-  panelPulseDelayForCell,
   startBootClock,
   type PanelBoot,
 } from "../lib/bootSequence";
@@ -93,18 +92,18 @@ const BOOT_SEEDS: Record<CellId, number> = {
 // shared clock (WebGL envelopes + CSS delays measure from the same commit)
 // and tears all boot scaffolding down after BOOT_TOTAL_MS.
 function useBootActive(): boolean {
-  const elapsedMs = useBootClock((s) => s.elapsedMs);
-  const paused = useBootClock((s) => s.paused);
-  const scrubbing = useBootClock((s) => s.scrubbing);
+  // Select the boolean, not elapsedMs: the clock ticks every frame and a
+  // per-frame re-render here would rebuild every panel during the boot.
+  const active = useBootClock(
+    (s) => s.paused || s.scrubbing || s.elapsedMs < BOOT_TOTAL_MS,
+  );
 
   useEffect(() => {
     if (bootSkipped()) return;
     startBootClock();
   }, []);
 
-  if (bootSkipped()) return false;
-  if (paused || scrubbing) return true;
-  return elapsedMs < BOOT_TOTAL_MS;
+  return !bootSkipped() && active;
 }
 
 function handleEdges(handle: ResizeHandle): {
@@ -219,13 +218,11 @@ export default function DeskPanels() {
       bent.position[2] * WORLD_PER_CSS_PX,
     ];
     const meta = CELL_META[cell.id];
-    // Staggered power-on per panel; the final pulse sweeps the wall left →
-    // right, so its delay follows the cell's horizontal position.
+    // Staggered power-on per panel.
     const boot: PanelBoot | undefined =
       bootActive && !dockIcon
         ? {
             startMs: bootPanelStartMs(cell.id),
-            pulseDelayMs: panelPulseDelayForCell(cell.x, wallWidthPx),
             seed: BOOT_SEEDS[cell.id],
           }
         : undefined;

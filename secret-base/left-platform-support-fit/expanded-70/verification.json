@@ -1,0 +1,147 @@
+{
+  "measured_rock_coverage_percent": 70.01417290949585,
+  "unrelated_objects_changed": [],
+  "long_braces": 8,
+  "front_short_braces": 4,
+  "connections": [
+    {
+      "name": "Left platform | short long 01 diagonal A",
+      "side": "long",
+      "anchor_distance": 0.04999994486570358,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.12006571888923645
+    },
+    {
+      "name": "Left platform | short long 01 diagonal B",
+      "side": "long",
+      "anchor_distance": 0.04999994486570358,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.09982715547084808
+    },
+    {
+      "name": "Left platform | short long 02 diagonal A",
+      "side": "long",
+      "anchor_distance": 0.05000012367963791,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.0839017704129219
+    },
+    {
+      "name": "Left platform | short long 02 diagonal B",
+      "side": "long",
+      "anchor_distance": 0.05000012367963791,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.07362153381109238
+    },
+    {
+      "name": "Left platform | short long 03 diagonal A",
+      "side": "long",
+      "anchor_distance": 0.05000005289912224,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.0559784360229969
+    },
+    {
+      "name": "Left platform | short long 03 diagonal B",
+      "side": "long",
+      "anchor_distance": 0.05000005289912224,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.05248832702636719
+    },
+    {
+      "name": "Left platform | short long 04 diagonal A",
+      "side": "long",
+      "anchor_distance": 0.05000028386712074,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.09880374372005463
+    },
+    {
+      "name": "Left platform | short long 04 diagonal B",
+      "side": "long",
+      "anchor_distance": 0.05000028386712074,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.07889130711555481
+    },
+    {
+      "name": "Left platform | front short edge 01 diagonal",
+      "side": "short",
+      "anchor_distance": 0.05000011995434761,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.05026499554514885
+    },
+    {
+      "name": "Left platform | front short edge 02 diagonal",
+      "side": "short",
+      "anchor_distance": 0.04999978095293045,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.06350435316562653
+    },
+    {
+      "name": "Left platform | front short edge 03 diagonal",
+      "side": "short",
+      "anchor_distance": 0.049999870359897614,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.07582884281873703
+    },
+    {
+      "name": "Left platform | front short edge 04 diagonal",
+      "side": "short",
+      "anchor_distance": 0.05000027269124985,
+      "upper_bearer_distance": 0.07500004768371582,
+      "minimum_rock_clearance": 0.049117039889097214
+    }
+  ],
+  "new_mesh_nonmanifold_edges": {},
+  "preexisting_rear_wall_intersections": [
+    [
+      2.4000000953674316,
+      13.050000190734863,
+      2.9193360805511475
+    ],
+    [
+      2.6500000953674316,
+      13.050000190734863,
+      2.631340980529785
+    ],
+    [
+      2.9000000953674316,
+      13.050000190734863,
+      2.60896372795105
+    ],
+    [
+      3.1500000953674316,
+      13.050000190734863,
+      2.6276350021362305
+    ],
+    [
+      0.6499999761581421,
+      13.300000190734863,
+      2.9498960971832275
+    ],
+    [
+      0.8999999761581421,
+      13.300000190734863,
+      2.892849922180176
+    ],
+    [
+      1.149999976158142,
+      13.300000190734863,
+      2.8353681564331055
+    ],
+    [
+      1.399999976158142,
+      13.300000190734863,
+      2.7570996284484863
+    ],
+    [
+      3.4000000953674316,
+      13.300000190734863,
+      2.5870275497436523
+    ],
+    [
+      3.6500000953674316,
+      13.300000190734863,
+      2.8653934001922607
+    ]
+  ],
+  "new_walking_surface_intrusions": [],
+  "all_checks_passed": true
+}

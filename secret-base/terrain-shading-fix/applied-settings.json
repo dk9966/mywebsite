@@ -1,0 +1,42 @@
+{
+  "saved": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "backup": "/Users/danielku/mywebsite/secret-base/terrain-shading-fix/before-applying-fix.blend",
+  "materials": {
+    "Terrain | rough hewn slate.001": {
+      "Weathered broad relief": {
+        "Strength": 0.16,
+        "Distance": 0.045
+      },
+      "Subtle stone grain": {
+        "Strength": 0.12,
+        "Distance": 0.008
+      },
+      "Matte charcoal slate": {
+        "Roughness": 0.9,
+        "Specular IOR Level": 0.18
+      }
+    },
+    "Terrain | rough hewn slate": {
+      "Weathered broad relief": {
+        "Strength": 0.16,
+        "Distance": 0.045
+      },
+      "Subtle stone grain": {
+        "Strength": 0.12,
+        "Distance": 0.008
+      },
+      "Matte charcoal slate": {
+        "Roughness": 0.9,
+        "Specular IOR Level": 0.18
+      }
+    }
+  },
+  "local_mist_multipliers": {
+    "RL mist | Center": 0.22,
+    "RL mist | Front left": 0.22,
+    "RL mist | Lower right": 0.6,
+    "RL mist | Rear left": 0.6,
+    "RL mist | Upper right": 0.6
+  },
+  "mode_restored": "SCULPT"
+}

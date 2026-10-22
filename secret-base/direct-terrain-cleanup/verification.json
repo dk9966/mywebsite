@@ -1,0 +1,33 @@
+{
+  "before": {
+    "vertices": 15236,
+    "triangles": 30346,
+    "components": 1,
+    "boundary_edges": 128,
+    "loose_edges": 0,
+    "nonmanifold_junctions": 0,
+    "degenerate_faces": 0,
+    "region_triangles": 1375,
+    "region_tiny_faces": 414
+  },
+  "after": {
+    "vertices": 14944,
+    "triangles": 29762,
+    "components": 1,
+    "boundary_edges": 128,
+    "loose_edges": 0,
+    "nonmanifold_junctions": 0,
+    "degenerate_faces": 0,
+    "region_triangles": 793,
+    "region_tiny_faces": 105
+  },
+  "unchanged_baseline_vertices": 14790,
+  "original_objects_changed": [],
+  "original_objects_checked": 2904,
+  "new_upper_walk_intrusions": 0,
+  "new_light_intrusions": 0,
+  "light_min_gap": 0.1413412094116211,
+  "candidate_modifiers": 0,
+  "candidate_shape_keys": false,
+  "original_modifiers_preserved": 19
+}

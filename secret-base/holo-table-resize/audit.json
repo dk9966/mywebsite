@@ -1,0 +1,1820 @@
+{
+  "old_tabletop_diameter": 2.4750018813386183,
+  "new_tabletop_diameter": 3.093752351673273,
+  "radial_offset": 0.3093752351673273,
+  "ring_thickness_preserved": true,
+  "height_preserved": true,
+  "before": {
+    "Holo table | floor plinth": [
+      0.6819887037650907,
+      0.6900012293403842
+    ],
+    "Holo table | pedestal column": [
+      0.4439907032309047,
+      0.4500011596399836
+    ],
+    "Holo table | pedestal collar": [
+      0.5039902809221602,
+      0.5100012436588928
+    ],
+    "Holo table | underside plate": [
+      0.0,
+      1.0900008604714857
+    ],
+    "Holo table | armored band panel 00": [
+      0.9489770645020168,
+      1.2375009406693092
+    ],
+    "Holo table | armored band panel 01": [
+      0.9489770510921564,
+      1.2375005433052488
+    ],
+    "Holo table | armored band panel 02": [
+      0.9489770432409859,
+      1.2375005312639118
+    ],
+    "Holo table | armored band panel 03": [
+      0.9489770432409859,
+      1.2375003777368527
+    ],
+    "Holo table | armored band panel 04": [
+      0.9489770432409859,
+      1.2375003777368527
+    ],
+    "Holo table | armored band panel 05": [
+      0.9489770432409859,
+      1.2375005312639118
+    ],
+    "Holo table | armored band panel 06": [
+      0.9489770510921564,
+      1.2375005433052488
+    ],
+    "Holo table | armored band panel 07": [
+      0.9489770645020168,
+      1.2375009406693092
+    ],
+    "Holo table | armored band panel 08": [
+      0.9489770645020168,
+      1.2375009406693092
+    ],
+    "Holo table | armored band panel 09": [
+      0.9489770510921564,
+      1.2375005433052488
+    ],
+    "Holo table | armored band panel 10": [
+      0.9489770432409859,
+      1.2375008322973053
+    ],
+    "Holo table | armored band panel 11": [
+      0.9489770432409859,
+      1.2375004891192307
+    ],
+    "Holo table | armored band panel 12": [
+      0.9489770432409859,
+      1.2375004891192307
+    ],
+    "Holo table | armored band panel 13": [
+      0.9489770432409859,
+      1.2375008322973053
+    ],
+    "Holo table | armored band panel 14": [
+      0.9489770510921564,
+      1.2375005433052488
+    ],
+    "Holo table | armored band panel 15": [
+      0.9489770645020168,
+      1.2375009406693092
+    ],
+    "Holo table | top rim": [
+      0.9449991384633492,
+      1.233500752014782
+    ],
+    "Holo table | inner lip": [
+      0.9379992745036754,
+      0.9740009434536824
+    ],
+    "Holo table | dark basin": [
+      0.9449977823766291,
+      0.9450017008311996
+    ],
+    "Holo table | misty holo glass": [
+      0.9419989658992147,
+      0.9420005695144892
+    ],
+    "Holo table | upper fascia trim": [
+      1.2284992865854194,
+      1.2385009065385257
+    ],
+    "Holo table | lower fascia trim": [
+      1.2204994458982967,
+      1.2325009352388374
+    ],
+    "Holo table | inward projector light 00": [
+      0.9344990632373065,
+      0.9370009246252153
+    ],
+    "Holo table | inward projector light 01": [
+      0.9344995007449838,
+      0.937000491267333
+    ],
+    "Holo table | inward projector light 02": [
+      0.9344994688537704,
+      0.9370004515097191
+    ],
+    "Holo table | inward projector light 03": [
+      0.9344991519347793,
+      0.9370008133039436
+    ],
+    "Holo table | inward projector light 04": [
+      0.9344990632373065,
+      0.9370009246252153
+    ],
+    "Holo table | inward projector light 05": [
+      0.9344995007449838,
+      0.937000491267333
+    ],
+    "Holo table | inward projector light 06": [
+      0.9344994688537704,
+      0.9370004515097191
+    ],
+    "Holo table | inward projector light 07": [
+      0.9344991519347793,
+      0.9370008133039436
+    ],
+    "Holo table | console 00 | metal bezel": [
+      1.019802842924826,
+      1.179025284159338
+    ],
+    "Holo table | console 00 | inset dark panel": [
+      1.027208326120329,
+      1.1729932615265668
+    ],
+    "Holo table | console 00 | key socket 0": [
+      1.0870182453549386,
+      1.1631727498516002
+    ],
+    "Holo table | console 00 | ivory key 0": [
+      1.0964957088867244,
+      1.1553926583732053
+    ],
+    "Holo table | console 00 | cyan key 0": [
+      1.0607454340615878,
+      1.0842809554923467
+    ],
+    "Holo table | console 00 | key socket 1": [
+      1.0865536012359196,
+      1.1601903441585957
+    ],
+    "Holo table | console 00 | ivory key 1": [
+      1.0954895355337673,
+      1.1529106410626422
+    ],
+    "Holo table | console 00 | cyan key 1": [
+      1.059763874006108,
+      1.0815765186212523
+    ],
+    "Holo table | console 00 | key socket 2": [
+      1.0870171401235065,
+      1.1631728331217288
+    ],
+    "Holo table | console 00 | ivory key 2": [
+      1.0964971782832404,
+      1.1553919224348423
+    ],
+    "Holo table | console 00 | cyan key 2": [
+      1.0607459547087983,
+      1.0842814133024974
+    ],
+    "Holo table | console 00 | telemetry screen": [
+      1.035234608473495,
+      1.05184675635761
+    ],
+    "Holo table | console 00 | screen mark 0": [
+      1.0418255189133903,
+      1.0454901424563068
+    ],
+    "Holo table | console 00 | screen mark 1": [
+      1.0408299720718222,
+      1.0443008645258935
+    ],
+    "Holo table | console 00 | screen mark 2": [
+      1.040218108619774,
+      1.0434917181780328
+    ],
+    "Holo table | console 00 | screen mark 3": [
+      1.0399906415816296,
+      1.0430674470500398
+    ],
+    "Holo table | console 00 | red status indicator": [
+      1.0368595648588779,
+      1.0522636960851883
+    ],
+    "Holo table | console 00 | captive fastener": [
+      1.1624259012779286,
+      1.1687871368648344
+    ],
+    "Holo table | console 00 | captive fastener.001": [
+      1.0339807219021047,
+      1.040376409255345
+    ],
+    "Holo table | console 00 | captive fastener.002": [
+      1.162427067007,
+      1.1687869137529114
+    ],
+    "Holo table | console 00 | captive fastener.003": [
+      1.0339818338349247,
+      1.0403762664743672
+    ],
+    "Holo table | fascia lamp 00 | bezel": [
+      1.2344273498757732,
+      1.2424251161187745
+    ],
+    "Holo table | fascia lamp 00 | frosted lens": [
+      1.2411374476276644,
+      1.2441385859019098
+    ],
+    "Holo table | fascia lamp 00 | divider": [
+      1.2435016683087778,
+      1.2455010574107388
+    ],
+    "Holo table | console 01 | metal bezel": [
+      1.0198025105061876,
+      1.1790249587168231
+    ],
+    "Holo table | console 01 | inset dark panel": [
+      1.0272083193204238,
+      1.1729934187328044
+    ],
+    "Holo table | console 01 | key socket 0": [
+      1.0870174965393469,
+      1.1631720292444705
+    ],
+    "Holo table | console 01 | ivory key 0": [
+      1.0964953028912705,
+      1.1553931927947456
+    ],
+    "Holo table | console 01 | cyan key 0": [
+      1.0607453471406965,
+      1.0842809735298986
+    ],
+    "Holo table | console 01 | key socket 1": [
+      1.086554633225364,
+      1.1601897983003209
+    ],
+    "Holo table | console 01 | ivory key 1": [
+      1.0954902972614786,
+      1.152910035211599
+    ],
+    "Holo table | console 01 | cyan key 1": [
+      1.0597647492925033,
+      1.081576379126483
+    ],
+    "Holo table | console 01 | key socket 2": [
+      1.0870179077882482,
+      1.1631719139472882
+    ],
+    "Holo table | console 01 | ivory key 2": [
+      1.096496729820235,
+      1.1553920707510452
+    ],
+    "Holo table | console 01 | cyan key 2": [
+      1.060745909053404,
+      1.08428109721596
+    ],
+    "Holo table | console 01 | telemetry screen": [
+      1.0352357653901512,
+      1.051845578752878
+    ],
+    "Holo table | console 01 | screen mark 0": [
+      1.04182351203109,
+      1.0454920131345442
+    ],
+    "Holo table | console 01 | screen mark 1": [
+      1.0408284375086025,
+      1.0443008716604087
+    ],
+    "Holo table | console 01 | screen mark 2": [
+      1.040217754075088,
+      1.0434932747072612
+    ],
+    "Holo table | console 01 | screen mark 3": [
+      1.0399907060583862,
+      1.0430671131169853
+    ],
+    "Holo table | console 01 | red status indicator": [
+      1.0368598594732803,
+      1.0522631579650648
+    ],
+    "Holo table | console 01 | captive fastener": [
+      1.1624268170363286,
+      1.1687877424541253
+    ],
+    "Holo table | console 01 | captive fastener.001": [
+      1.0339814627404267,
+      1.040376821484954
+    ],
+    "Holo table | console 01 | captive fastener.002": [
+      1.1624269324074143,
+      1.168787436472207
+    ],
+    "Holo table | console 01 | captive fastener.003": [
+      1.0339815708262166,
+      1.0403765135436327
+    ],
+    "Holo table | fascia lamp 01 | bezel": [
+      1.2344271009048795,
+      1.242425511907812
+    ],
+    "Holo table | fascia lamp 01 | frosted lens": [
+      1.241137642726,
+      1.2441377864308216
+    ],
+    "Holo table | fascia lamp 01 | divider": [
+      1.2435008609386817,
+      1.2455015539161916
+    ],
+    "Holo table | console 02 | metal bezel": [
+      1.0198030538827518,
+      1.1790247786175285
+    ],
+    "Holo table | console 02 | inset dark panel": [
+      1.0272087218747397,
+      1.1729938792358037
+    ],
+    "Holo table | console 02 | key socket 0": [
+      1.0870177518563915,
+      1.163172353517734
+    ],
+    "Holo table | console 02 | ivory key 0": [
+      1.0964961981195405,
+      1.1553925350451224
+    ],
+    "Holo table | console 02 | cyan key 0": [
+      1.0607453620665066,
+      1.0842814502365161
+    ],
+    "Holo table | console 02 | key socket 1": [
+      1.0865539886606432,
+      1.160189753347275
+    ],
+    "Holo table | console 02 | ivory key 1": [
+      1.095490261555504,
+      1.1529091934820215
+    ],
+    "Holo table | console 02 | cyan key 1": [
+      1.0597648617790558,
+      1.0815765186212523
+    ],
+    "Holo table | console 02 | key socket 2": [
+      1.0870180722877654,
+      1.1631721157173496
+    ],
+    "Holo table | console 02 | ivory key 2": [
+      1.0964962541774532,
+      1.1553927252766696
+    ],
+    "Holo table | console 02 | cyan key 2": [
+      1.0607449994570597,
+      1.0842811590589854
+    ],
+    "Holo table | console 02 | telemetry screen": [
+      1.0352356304465953,
+      1.0518458514614595
+    ],
+    "Holo table | console 02 | screen mark 0": [
+      1.0418240233618248,
+      1.0454915677352674
+    ],
+    "Holo table | console 02 | screen mark 1": [
+      1.0408296615802046,
+      1.0443007949643661
+    ],
+    "Holo table | console 02 | screen mark 2": [
+      1.0402181927793532,
+      1.0434923322219507
+    ],
+    "Holo table | console 02 | screen mark 3": [
+      1.039991066053536,
+      1.0430669899010183
+    ],
+    "Holo table | console 02 | red status indicator": [
+      1.036859449887381,
+      1.052263823534651
+    ],
+    "Holo table | console 02 | captive fastener": [
+      1.1624269316062263,
+      1.1687871918459805
+    ],
+    "Holo table | console 02 | captive fastener.001": [
+      1.0339816505394794,
+      1.0403765090677408
+    ],
+    "Holo table | console 02 | captive fastener.002": [
+      1.1624262722282686,
+      1.1687875703393062
+    ],
+    "Holo table | console 02 | captive fastener.003": [
+      1.033981805012056,
+      1.0403765636736215
+    ],
+    "Holo table | fascia lamp 02 | bezel": [
+      1.2344283623568906,
+      1.2424251970756333
+    ],
+    "Holo table | fascia lamp 02 | frosted lens": [
+      1.2411374476276644,
+      1.2441378582934124
+    ],
+    "Holo table | fascia lamp 02 | divider": [
+      1.2435007096503494,
+      1.2455011501316517
+    ],
+    "Holo table | console 03 | metal bezel": [
+      1.0198026858479003,
+      1.1790245163676296
+    ],
+    "Holo table | console 03 | inset dark panel": [
+      1.0272087762739592,
+      1.172993164662107
+    ],
+    "Holo table | console 03 | key socket 0": [
+      1.0870184424115876,
+      1.1631715936772777
+    ],
+    "Holo table | console 03 | ivory key 0": [
+      1.0964962405876564,
+      1.1553935539120266
+    ],
+    "Holo table | console 03 | cyan key 0": [
+      1.060745066184231,
+      1.0842815507313979
+    ],
+    "Holo table | console 03 | key socket 1": [
+      1.0865535772361534,
+      1.1601892845511217
+    ],
+    "Holo table | console 03 | ivory key 1": [
+      1.0954894811246247,
+      1.15290915632312
+    ],
+    "Holo table | console 03 | cyan key 1": [
+      1.059763793156324,
+      1.0815771506528822
+    ],
+    "Holo table | console 03 | key socket 2": [
+      1.0870183190369942,
+      1.1631727978920599
+    ],
+    "Holo table | console 03 | ivory key 2": [
+      1.096497450078912,
+      1.1553936055002003
+    ],
+    "Holo table | console 03 | cyan key 2": [
+      1.0607454173798012,
+      1.084280739900633
+    ],
+    "Holo table | console 03 | telemetry screen": [
+      1.0352355062985084,
+      1.051846542086772
+    ],
+    "Holo table | console 03 | screen mark 0": [
+      1.041824084149378,
+      1.045491029692688
+    ],
+    "Holo table | console 03 | screen mark 1": [
+      1.0408296544218953,
+      1.044301242655141
+    ],
+    "Holo table | console 03 | screen mark 2": [
+      1.0402173529738838,
+      1.043491946659533
+    ],
+    "Holo table | console 03 | screen mark 3": [
+      1.0399912362004542,
+      1.0430671131169853
+    ],
+    "Holo table | console 03 | red status indicator": [
+      1.0368587672438563,
+      1.0522644466206905
+    ],
+    "Holo table | console 03 | captive fastener": [
+      1.1624257915150622,
+      1.1687881249314105
+    ],
+    "Holo table | console 03 | captive fastener.001": [
+      1.0339804251162692,
+      1.0403771938789883
+    ],
+    "Holo table | console 03 | captive fastener.002": [
+      1.1624260478954636,
+      1.168786391033382
+    ],
+    "Holo table | console 03 | captive fastener.003": [
+      1.0339823562492836,
+      1.04037714374903
+    ],
+    "Holo table | fascia lamp 03 | bezel": [
+      1.2344274147590888,
+      1.2424255239014175
+    ],
+    "Holo table | fascia lamp 03 | frosted lens": [
+      1.2411377267683505,
+      1.2441379900414846
+    ],
+    "Holo table | fascia lamp 03 | divider": [
+      1.2435006572236953,
+      1.2455018410517846
+    ],
+    "Holo table | console 04 | metal bezel": [
+      1.019802842924826,
+      1.179025284159338
+    ],
+    "Holo table | console 04 | inset dark panel": [
+      1.027208326120329,
+      1.1729932615265668
+    ],
+    "Holo table | console 04 | key socket 0": [
+      1.0870182453549386,
+      1.1631727498516002
+    ],
+    "Holo table | console 04 | ivory key 0": [
+      1.0964957088867244,
+      1.1553926583732053
+    ],
+    "Holo table | console 04 | cyan key 0": [
+      1.0607454340615878,
+      1.0842809554923467
+    ],
+    "Holo table | console 04 | key socket 1": [
+      1.0865536012359196,
+      1.1601903441585957
+    ],
+    "Holo table | console 04 | ivory key 1": [
+      1.0954895355337673,
+      1.1529106410626422
+    ],
+    "Holo table | console 04 | cyan key 1": [
+      1.059763874006108,
+      1.0815765186212523
+    ],
+    "Holo table | console 04 | key socket 2": [
+      1.0870171401235065,
+      1.1631728331217288
+    ],
+    "Holo table | console 04 | ivory key 2": [
+      1.0964971782832404,
+      1.1553919224348423
+    ],
+    "Holo table | console 04 | cyan key 2": [
+      1.0607459547087983,
+      1.0842814133024974
+    ],
+    "Holo table | console 04 | telemetry screen": [
+      1.035234608473495,
+      1.05184675635761
+    ],
+    "Holo table | console 04 | screen mark 0": [
+      1.0418255189133903,
+      1.0454901424563068
+    ],
+    "Holo table | console 04 | screen mark 1": [
+      1.0408299720718222,
+      1.0443008645258935
+    ],
+    "Holo table | console 04 | screen mark 2": [
+      1.040218108619774,
+      1.0434917181780328
+    ],
+    "Holo table | console 04 | screen mark 3": [
+      1.0399906415816296,
+      1.0430674470500398
+    ],
+    "Holo table | console 04 | red status indicator": [
+      1.0368595648588779,
+      1.0522636960851883
+    ],
+    "Holo table | console 04 | captive fastener": [
+      1.1624259012779286,
+      1.1687871368648344
+    ],
+    "Holo table | console 04 | captive fastener.001": [
+      1.0339807219021047,
+      1.040376409255345
+    ],
+    "Holo table | console 04 | captive fastener.002": [
+      1.162427067007,
+      1.1687869137529114
+    ],
+    "Holo table | console 04 | captive fastener.003": [
+      1.0339818338349247,
+      1.0403762664743672
+    ],
+    "Holo table | fascia lamp 04 | bezel": [
+      1.2344273498757732,
+      1.2424251161187745
+    ],
+    "Holo table | fascia lamp 04 | frosted lens": [
+      1.2411374476276644,
+      1.2441385859019098
+    ],
+    "Holo table | fascia lamp 04 | divider": [
+      1.2435016683087778,
+      1.2455010574107388
+    ],
+    "Holo table | console 05 | metal bezel": [
+      1.0198025105061876,
+      1.1790249587168231
+    ],
+    "Holo table | console 05 | inset dark panel": [
+      1.0272083193204238,
+      1.1729935203610682
+    ],
+    "Holo table | console 05 | key socket 0": [
+      1.0870174965393469,
+      1.1631720292444705
+    ],
+    "Holo table | console 05 | ivory key 0": [
+      1.0964953028912705,
+      1.1553931927947456
+    ],
+    "Holo table | console 05 | cyan key 0": [
+      1.0607453471406965,
+      1.0842809735298986
+    ],
+    "Holo table | console 05 | key socket 1": [
+      1.086554633225364,
+      1.1601897983003209
+    ],
+    "Holo table | console 05 | ivory key 1": [
+      1.0954902972614786,
+      1.1529096474667644
+    ],
+    "Holo table | console 05 | cyan key 1": [
+      1.0597647492925033,
+      1.081576379126483
+    ],
+    "Holo table | console 05 | key socket 2": [
+      1.0870179077882482,
+      1.1631723238927731
+    ],
+    "Holo table | console 05 | ivory key 2": [
+      1.096496729820235,
+      1.1553920707510452
+    ],
+    "Holo table | console 05 | cyan key 2": [
+      1.060745909053404,
+      1.08428109721596
+    ],
+    "Holo table | console 05 | telemetry screen": [
+      1.0352357653901512,
+      1.051845578752878
+    ],
+    "Holo table | console 05 | screen mark 0": [
+      1.04182351203109,
+      1.0454920131345442
+    ],
+    "Holo table | console 05 | screen mark 1": [
+      1.0408284375086025,
+      1.0443008716604087
+    ],
+    "Holo table | console 05 | screen mark 2": [
+      1.040217754075088,
+      1.0434932747072612
+    ],
+    "Holo table | console 05 | screen mark 3": [
+      1.0399907060583862,
+      1.0430671131169853
+    ],
+    "Holo table | console 05 | red status indicator": [
+      1.0368598594732803,
+      1.0522631579650648
+    ],
+    "Holo table | console 05 | captive fastener": [
+      1.1624268170363286,
+      1.1687877424541253
+    ],
+    "Holo table | console 05 | captive fastener.001": [
+      1.0339814627404267,
+      1.040376821484954
+    ],
+    "Holo table | console 05 | captive fastener.002": [
+      1.162426522199057,
+      1.1687878444480801
+    ],
+    "Holo table | console 05 | captive fastener.003": [
+      1.0339815708262166,
+      1.0403765135436327
+    ],
+    "Holo table | fascia lamp 05 | bezel": [
+      1.2344271009048795,
+      1.242425511907812
+    ],
+    "Holo table | fascia lamp 05 | frosted lens": [
+      1.2411372105081073,
+      1.24413745107201
+    ],
+    "Holo table | fascia lamp 05 | divider": [
+      1.2435008609386817,
+      1.2455016137361121
+    ],
+    "Holo table | console 06 | metal bezel": [
+      1.019802842924826,
+      1.1790247786175285
+    ],
+    "Holo table | console 06 | inset dark panel": [
+      1.0272087218747397,
+      1.172994336562741
+    ],
+    "Holo table | console 06 | key socket 0": [
+      1.0870172583576203,
+      1.1631728659493739
+    ],
+    "Holo table | console 06 | ivory key 0": [
+      1.0964966329929713,
+      1.1553925350451224
+    ],
+    "Holo table | console 06 | cyan key 0": [
+      1.0607453620665066,
+      1.0842809554923467
+    ],
+    "Holo table | console 06 | key socket 1": [
+      1.0865539886606432,
+      1.160189753347275
+    ],
+    "Holo table | console 06 | ivory key 1": [
+      1.0954898007782983,
+      1.1529095989986509
+    ],
+    "Holo table | console 06 | cyan key 1": [
+      1.0597648617790558,
+      1.0815765186212523
+    ],
+    "Holo table | console 06 | key socket 2": [
+      1.0870180722877654,
+      1.1631716545285864
+    ],
+    "Holo table | console 06 | ivory key 2": [
+      1.0964962541774532,
+      1.1553922932253138
+    ],
+    "Holo table | console 06 | cyan key 2": [
+      1.0607449994570597,
+      1.0842811590589854
+    ],
+    "Holo table | console 06 | telemetry screen": [
+      1.0352356304465953,
+      1.0518468147951037
+    ],
+    "Holo table | console 06 | screen mark 0": [
+      1.0418235656671928,
+      1.0454911116462113
+    ],
+    "Holo table | console 06 | screen mark 1": [
+      1.0408292034483115,
+      1.0443007949643661
+    ],
+    "Holo table | console 06 | screen mark 2": [
+      1.0402181927793532,
+      1.0434918752590694
+    ],
+    "Holo table | console 06 | screen mark 3": [
+      1.0399905502395512,
+      1.0430665327517965
+    ],
+    "Holo table | console 06 | red status indicator": [
+      1.036859449887381,
+      1.052263823534651
+    ],
+    "Holo table | console 06 | captive fastener": [
+      1.1624259573611408,
+      1.168788109791687
+    ],
+    "Holo table | console 06 | captive fastener.001": [
+      1.0339806705613137,
+      1.0403774830213797
+    ],
+    "Holo table | console 06 | captive fastener.002": [
+      1.1624262722282686,
+      1.1687875703393062
+    ],
+    "Holo table | console 06 | captive fastener.003": [
+      1.0339813438460448,
+      1.0403770220048352
+    ],
+    "Holo table | fascia lamp 06 | bezel": [
+      1.2344273966521173,
+      1.2424251970756333
+    ],
+    "Holo table | fascia lamp 06 | frosted lens": [
+      1.2411374116095066,
+      1.2441378582934124
+    ],
+    "Holo table | fascia lamp 06 | divider": [
+      1.2435007096503494,
+      1.2455011501316517
+    ],
+    "Holo table | console 07 | metal bezel": [
+      1.0198026858479003,
+      1.1790245163676296
+    ],
+    "Holo table | console 07 | inset dark panel": [
+      1.0272087762739592,
+      1.172993164662107
+    ],
+    "Holo table | console 07 | key socket 0": [
+      1.0870184424115876,
+      1.1631715936772777
+    ],
+    "Holo table | console 07 | ivory key 0": [
+      1.0964962405876564,
+      1.1553935539120266
+    ],
+    "Holo table | console 07 | cyan key 0": [
+      1.060745066184231,
+      1.0842815507313979
+    ],
+    "Holo table | console 07 | key socket 1": [
+      1.0865535772361534,
+      1.1601892845511217
+    ],
+    "Holo table | console 07 | ivory key 1": [
+      1.0954894811246247,
+      1.15290915632312
+    ],
+    "Holo table | console 07 | cyan key 1": [
+      1.059763793156324,
+      1.0815771506528822
+    ],
+    "Holo table | console 07 | key socket 2": [
+      1.0870183190369942,
+      1.1631727978920599
+    ],
+    "Holo table | console 07 | ivory key 2": [
+      1.096497450078912,
+      1.1553936055002003
+    ],
+    "Holo table | console 07 | cyan key 2": [
+      1.0607454173798012,
+      1.084280739900633
+    ],
+    "Holo table | console 07 | telemetry screen": [
+      1.0352355062985084,
+      1.051846542086772
+    ],
+    "Holo table | console 07 | screen mark 0": [
+      1.041824084149378,
+      1.045491029692688
+    ],
+    "Holo table | console 07 | screen mark 1": [
+      1.0408296544218953,
+      1.044301242655141
+    ],
+    "Holo table | console 07 | screen mark 2": [
+      1.0402173529738838,
+      1.043491946659533
+    ],
+    "Holo table | console 07 | screen mark 3": [
+      1.0399912362004542,
+      1.0430671131169853
+    ],
+    "Holo table | console 07 | red status indicator": [
+      1.0368587672438563,
+      1.0522644466206905
+    ],
+    "Holo table | console 07 | captive fastener": [
+      1.1624257915150622,
+      1.1687881249314105
+    ],
+    "Holo table | console 07 | captive fastener.001": [
+      1.0339804251162692,
+      1.0403771938789883
+    ],
+    "Holo table | console 07 | captive fastener.002": [
+      1.1624260478954636,
+      1.168786391033382
+    ],
+    "Holo table | console 07 | captive fastener.003": [
+      1.0339823562492836,
+      1.04037714374903
+    ],
+    "Holo table | fascia lamp 07 | bezel": [
+      1.2344274147590888,
+      1.2424255239014175
+    ],
+    "Holo table | fascia lamp 07 | frosted lens": [
+      1.2411377267683505,
+      1.2441379900414846
+    ],
+    "Holo table | fascia lamp 07 | divider": [
+      1.2435006572236953,
+      1.2455018410517846
+    ]
+  },
+  "after": {
+    "Holo table | floor plinth": [
+      0.6819887037650907,
+      0.6900012293403842
+    ],
+    "Holo table | pedestal column": [
+      0.4439907032309047,
+      0.4500011596399836
+    ],
+    "Holo table | pedestal collar": [
+      0.5039902809221602,
+      0.5100012436588928
+    ],
+    "Holo table | underside plate": [
+      0.0,
+      1.3993766018311846
+    ],
+    "Holo table | armored band panel 00": [
+      1.2583521873210064,
+      1.5468766592960899
+    ],
+    "Holo table | armored band panel 01": [
+      1.2583521875754202,
+      1.5468763871620201
+    ],
+    "Holo table | armored band panel 02": [
+      1.2583519152138762,
+      1.546876136702303
+    ],
+    "Holo table | armored band panel 03": [
+      1.2583520040274296,
+      1.5468757321134434
+    ],
+    "Holo table | armored band panel 04": [
+      1.2583520040274296,
+      1.5468757321134434
+    ],
+    "Holo table | armored band panel 05": [
+      1.2583519152138762,
+      1.546876136702303
+    ],
+    "Holo table | armored band panel 06": [
+      1.2583521875754202,
+      1.5468763871620201
+    ],
+    "Holo table | armored band panel 07": [
+      1.2583521873210064,
+      1.5468766592960899
+    ],
+    "Holo table | armored band panel 08": [
+      1.2583521873210064,
+      1.5468766592960899
+    ],
+    "Holo table | armored band panel 09": [
+      1.2583521875754202,
+      1.5468763871620201
+    ],
+    "Holo table | armored band panel 10": [
+      1.2583519152138762,
+      1.5468769458797045
+    ],
+    "Holo table | armored band panel 11": [
+      1.2583524776996085,
+      1.5468760415757652
+    ],
+    "Holo table | armored band panel 12": [
+      1.2583524776996085,
+      1.5468760415757652
+    ],
+    "Holo table | armored band panel 13": [
+      1.2583519152138762,
+      1.5468769458797045
+    ],
+    "Holo table | armored band panel 14": [
+      1.2583521875754202,
+      1.5468763871620201
+    ],
+    "Holo table | armored band panel 15": [
+      1.2583521873210064,
+      1.5468766592960899
+    ],
+    "Holo table | top rim": [
+      1.254373912467346,
+      1.542876209429468
+    ],
+    "Holo table | inner lip": [
+      1.2473739696436885,
+      1.2833768126111835
+    ],
+    "Holo table | dark basin": [
+      1.2543735287082256,
+      1.2543770865730453
+    ],
+    "Holo table | misty holo glass": [
+      1.2513740586993753,
+      1.251376020514362
+    ],
+    "Holo table | upper fascia trim": [
+      1.5378744119182444,
+      1.5478763614436917
+    ],
+    "Holo table | lower fascia trim": [
+      1.5298745926405213,
+      1.5418764908083298
+    ],
+    "Holo table | inward projector light 00": [
+      1.2438738250914714,
+      1.2463761670309244
+    ],
+    "Holo table | inward projector light 01": [
+      1.2438743701649926,
+      1.2463761730087188
+    ],
+    "Holo table | inward projector light 02": [
+      1.243874633716939,
+      1.2463758143409989
+    ],
+    "Holo table | inward projector light 03": [
+      1.243873843060932,
+      1.2463766063987427
+    ],
+    "Holo table | inward projector light 04": [
+      1.2438738250914714,
+      1.2463761670309244
+    ],
+    "Holo table | inward projector light 05": [
+      1.2438743701649926,
+      1.246376316475778
+    ],
+    "Holo table | inward projector light 06": [
+      1.2438744989460644,
+      1.2463762447422504
+    ],
+    "Holo table | inward projector light 07": [
+      1.243873843060932,
+      1.2463766063987427
+    ],
+    "Holo table | console 00 | metal bezel": [
+      1.3280104643857542,
+      1.4874992619039804
+    ],
+    "Holo table | console 00 | inset dark panel": [
+      1.3355640445697887,
+      1.4815639732480645
+    ],
+    "Holo table | console 00 | key socket 0": [
+      1.3962342925327988,
+      1.4718709896016813
+    ],
+    "Holo table | console 00 | ivory key 0": [
+      1.4056297590112417,
+      1.4642251463288234
+    ],
+    "Holo table | console 00 | cyan key 0": [
+      1.3698752006713708,
+      1.3930323423117807
+    ],
+    "Holo table | console 00 | key socket 1": [
+      1.3958723914733608,
+      1.469515327152379
+    ],
+    "Holo table | console 00 | ivory key 1": [
+      1.404844949064357,
+      1.4622677749085635
+    ],
+    "Holo table | console 00 | cyan key 1": [
+      1.3691149939125522,
+      1.390928492485848
+    ],
+    "Holo table | console 00 | key socket 2": [
+      1.396233182603478,
+      1.4718711389300654
+    ],
+    "Holo table | console 00 | ivory key 2": [
+      1.4056312391830457,
+      1.4642244377673008
+    ],
+    "Holo table | console 00 | cyan key 2": [
+      1.369875687450637,
+      1.3930328183248206
+    ],
+    "Holo table | console 00 | telemetry screen": [
+      1.3445695828387922,
+      1.3605464623160644
+    ],
+    "Holo table | console 00 | screen mark 0": [
+      1.3507805089027398,
+      1.3542951964551428
+    ],
+    "Holo table | console 00 | screen mark 1": [
+      1.3500126817116427,
+      1.3533776145471854
+    ],
+    "Holo table | console 00 | screen mark 2": [
+      1.3495408715667772,
+      1.3527532208281323
+    ],
+    "Holo table | console 00 | screen mark 3": [
+      1.3493654359113703,
+      1.3524262556827384
+    ],
+    "Holo table | console 00 | red status indicator": [
+      1.3459348022393158,
+      1.360980951489298
+    ],
+    "Holo table | console 00 | captive fastener": [
+      1.4710509622198942,
+      1.477352647436856
+    ],
+    "Holo table | console 00 | captive fastener.001": [
+      1.34243151316779,
+      1.3487549359814173
+    ],
+    "Holo table | console 00 | captive fastener.002": [
+      1.4710521511814822,
+      1.4773524255361665
+    ],
+    "Holo table | console 00 | captive fastener.003": [
+      1.3424326627242704,
+      1.34875477785567
+    ],
+    "Holo table | fascia lamp 00 | bezel": [
+      1.5437166381234912,
+      1.5517153605085212
+    ],
+    "Holo table | fascia lamp 00 | frosted lens": [
+      1.5504849989298233,
+      1.5534862377407699
+    ],
+    "Holo table | fascia lamp 00 | divider": [
+      1.5528765103525413,
+      1.5548759231251836
+    ],
+    "Holo table | console 01 | metal bezel": [
+      1.3280100155590586,
+      1.487499001446557
+    ],
+    "Holo table | console 01 | inset dark panel": [
+      1.3355640424778128,
+      1.4815640185078207
+    ],
+    "Holo table | console 01 | key socket 0": [
+      1.396233489434989,
+      1.4718702530834975
+    ],
+    "Holo table | console 01 | ivory key 0": [
+      1.405629275337933,
+      1.4642255775716648
+    ],
+    "Holo table | console 01 | cyan key 0": [
+      1.3698750266273454,
+      1.3930322620848479
+    ],
+    "Holo table | console 01 | key socket 1": [
+      1.3958733989412273,
+      1.4695147694419517
+    ],
+    "Holo table | console 01 | ivory key 1": [
+      1.4048456597317858,
+      1.4622671227198567
+    ],
+    "Holo table | console 01 | cyan key 1": [
+      1.3691158319641883,
+      1.390928299649968
+    ],
+    "Holo table | console 01 | key socket 2": [
+      1.3962339590204755,
+      1.4718702328355697
+    ],
+    "Holo table | console 01 | ivory key 2": [
+      1.4056307806877386,
+      1.4642245395355837
+    ],
+    "Holo table | console 01 | cyan key 2": [
+      1.3698756575368325,
+      1.393032454629479
+    ],
+    "Holo table | console 01 | telemetry screen": [
+      1.344570752039585,
+      1.360545257558636
+    ],
+    "Holo table | console 01 | screen mark 0": [
+      1.3507784073966869,
+      1.3542969445381774
+    ],
+    "Holo table | console 01 | screen mark 1": [
+      1.3500111005467987,
+      1.3533775402273212
+    ],
+    "Holo table | console 01 | screen mark 2": [
+      1.349540454744335,
+      1.3527546514566142
+    ],
+    "Holo table | console 01 | screen mark 3": [
+      1.3493654110644222,
+      1.352425867294828
+    ],
+    "Holo table | console 01 | red status indicator": [
+      1.3459350873236005,
+      1.3609803575146577
+    ],
+    "Holo table | console 01 | captive fastener": [
+      1.4710517459976624,
+      1.477353121497308
+    ],
+    "Holo table | console 01 | captive fastener.001": [
+      1.3424321521187375,
+      1.3487552308271935
+    ],
+    "Holo table | console 01 | captive fastener.002": [
+      1.471052009367158,
+      1.4773529197694746
+    ],
+    "Holo table | console 01 | captive fastener.003": [
+      1.3424323852212874,
+      1.3487550098654937
+    ],
+    "Holo table | fascia lamp 01 | bezel": [
+      1.5437170990437943,
+      1.5517164624552333
+    ],
+    "Holo table | fascia lamp 01 | frosted lens": [
+      1.550485847069029,
+      1.5534861154417703
+    ],
+    "Holo table | fascia lamp 01 | divider": [
+      1.5528764383837073,
+      1.554877092312355
+    ],
+    "Holo table | console 02 | metal bezel": [
+      1.3280108514986573,
+      1.4874989526107851
+    ],
+    "Holo table | console 02 | inset dark panel": [
+      1.3355644218227132,
+      1.4815648143249762
+    ],
+    "Holo table | console 02 | key socket 0": [
+      1.3962339736950193,
+      1.4718708579902116
+    ],
+    "Holo table | console 02 | ivory key 0": [
+      1.405630385798597,
+      1.4642252239271023
+    ],
+    "Holo table | console 02 | cyan key 0": [
+      1.3698752972114068,
+      1.393033017554949
+    ],
+    "Holo table | console 02 | key socket 1": [
+      1.3958728465019838,
+      1.469514845493386
+    ],
+    "Holo table | console 02 | ivory key 1": [
+      1.404845763149777,
+      1.4622664425071066
+    ],
+    "Holo table | console 02 | cyan key 1": [
+      1.369116049639854,
+      1.3909285701558478
+    ],
+    "Holo table | console 02 | key socket 2": [
+      1.396234164464076,
+      1.4718704150669097
+    ],
+    "Holo table | console 02 | ivory key 2": [
+      1.4056303354435977,
+      1.4642252315597195
+    ],
+    "Holo table | console 02 | cyan key 2": [
+      1.369874771000143,
+      1.3930325722956294
+    ],
+    "Holo table | console 02 | telemetry screen": [
+      1.344570704939099,
+      1.3605457832710997
+    ],
+    "Holo table | console 02 | screen mark 0": [
+      1.3507791809829566,
+      1.354296816629739
+    ],
+    "Holo table | console 02 | screen mark 1": [
+      1.3500125244230763,
+      1.3533776806092839
+    ],
+    "Holo table | console 02 | screen mark 2": [
+      1.3495410565144421,
+      1.352753982269659
+    ],
+    "Holo table | console 02 | screen mark 3": [
+      1.3493659024817557,
+      1.3524259003491226
+    ],
+    "Holo table | console 02 | red status indicator": [
+      1.345934733044092,
+      1.3609810719265207
+    ],
+    "Holo table | console 02 | captive fastener": [
+      1.4710522296858344,
+      1.4773529424638572
+    ],
+    "Holo table | console 02 | captive fastener.001": [
+      1.3424326280364007,
+      1.348755302639738
+    ],
+    "Holo table | console 02 | captive fastener.002": [
+      1.4710513002953316,
+      1.4773530609789607
+    ],
+    "Holo table | console 02 | captive fastener.003": [
+      1.3424325378479351,
+      1.3487550319616652
+    ],
+    "Holo table | fascia lamp 02 | bezel": [
+      1.5437176854500543,
+      1.5517155261606912
+    ],
+    "Holo table | fascia lamp 02 | frosted lens": [
+      1.5504850974389333,
+      1.5534855782852661
+    ],
+    "Holo table | fascia lamp 02 | divider": [
+      1.5528756827107506,
+      1.554876107607644
+    ],
+    "Holo table | console 03 | metal bezel": [
+      1.328010778564351,
+      1.4874989613761802
+    ],
+    "Holo table | console 03 | inset dark panel": [
+      1.3355649796826652,
+      1.4815643403549368
+    ],
+    "Holo table | console 03 | key socket 0": [
+      1.3962349835700796,
+      1.4718703340752057
+    ],
+    "Holo table | console 03 | ivory key 0": [
+      1.4056307806877386,
+      1.464226554546128
+    ],
+    "Holo table | console 03 | cyan key 0": [
+      1.3698753094488756,
+      1.3930333959584034
+    ],
+    "Holo table | console 03 | key socket 1": [
+      1.3958728438331947,
+      1.4695147897223344
+    ],
+    "Holo table | console 03 | ivory key 1": [
+      1.4048453839504382,
+      1.4622667762444879
+    ],
+    "Holo table | console 03 | cyan key 1": [
+      1.369115396612753,
+      1.3909296066481878
+    ],
+    "Holo table | console 03 | key socket 2": [
+      1.3962348768461974,
+      1.4718716096940245
+    ],
+    "Holo table | console 03 | ivory key 2": [
+      1.405631968004758,
+      1.4642265748997556
+    ],
+    "Holo table | console 03 | cyan key 2": [
+      1.3698756575368325,
+      1.3930326043863959
+    ],
+    "Holo table | console 03 | telemetry screen": [
+      1.3445709958538403,
+      1.3605467470767552
+    ],
+    "Holo table | console 03 | screen mark 0": [
+      1.350779554675987,
+      1.3542965484345875
+    ],
+    "Holo table | console 03 | screen mark 1": [
+      1.3500128224435024,
+      1.353378443075768
+    ],
+    "Holo table | console 03 | screen mark 2": [
+      1.3495405872441981,
+      1.3527539024078192
+    ],
+    "Holo table | console 03 | screen mark 3": [
+      1.349366471200469,
+      1.3524264181996324
+    ],
+    "Holo table | console 03 | red status indicator": [
+      1.345934489476876,
+      1.360982164072667
+    ],
+    "Holo table | console 03 | captive fastener": [
+      1.4710513205545315,
+      1.477354109963293
+    ],
+    "Holo table | console 03 | captive fastener.001": [
+      1.342431685913516,
+      1.348756158865937
+    ],
+    "Holo table | console 03 | captive fastener.002": [
+      1.471051563664907,
+      1.477352375104187
+    ],
+    "Holo table | console 03 | captive fastener.003": [
+      1.342433628434204,
+      1.348756158865937
+    ],
+    "Holo table | fascia lamp 03 | bezel": [
+      1.5437169639048716,
+      1.5517161167465452
+    ],
+    "Holo table | fascia lamp 03 | frosted lens": [
+      1.5504855779710878,
+      1.5534859427843428
+    ],
+    "Holo table | fascia lamp 03 | divider": [
+      1.5528758050578257,
+      1.55487695814338
+    ],
+    "Holo table | console 04 | metal bezel": [
+      1.3280104643857542,
+      1.4874992619039804
+    ],
+    "Holo table | console 04 | inset dark panel": [
+      1.3355640445697887,
+      1.4815639732480645
+    ],
+    "Holo table | console 04 | key socket 0": [
+      1.3962342925327988,
+      1.4718709896016813
+    ],
+    "Holo table | console 04 | ivory key 0": [
+      1.4056297590112417,
+      1.4642251463288234
+    ],
+    "Holo table | console 04 | cyan key 0": [
+      1.3698752006713708,
+      1.3930323423117807
+    ],
+    "Holo table | console 04 | key socket 1": [
+      1.3958723914733608,
+      1.469515327152379
+    ],
+    "Holo table | console 04 | ivory key 1": [
+      1.404844949064357,
+      1.4622677749085635
+    ],
+    "Holo table | console 04 | cyan key 1": [
+      1.3691149939125522,
+      1.390928492485848
+    ],
+    "Holo table | console 04 | key socket 2": [
+      1.396233182603478,
+      1.4718711389300654
+    ],
+    "Holo table | console 04 | ivory key 2": [
+      1.4056312391830457,
+      1.4642244377673008
+    ],
+    "Holo table | console 04 | cyan key 2": [
+      1.369875687450637,
+      1.3930328183248206
+    ],
+    "Holo table | console 04 | telemetry screen": [
+      1.3445695828387922,
+      1.3605464623160644
+    ],
+    "Holo table | console 04 | screen mark 0": [
+      1.3507805089027398,
+      1.3542951964551428
+    ],
+    "Holo table | console 04 | screen mark 1": [
+      1.3500126817116427,
+      1.3533776145471854
+    ],
+    "Holo table | console 04 | screen mark 2": [
+      1.3495408715667772,
+      1.3527532208281323
+    ],
+    "Holo table | console 04 | screen mark 3": [
+      1.3493654359113703,
+      1.3524262556827384
+    ],
+    "Holo table | console 04 | red status indicator": [
+      1.3459348022393158,
+      1.360980951489298
+    ],
+    "Holo table | console 04 | captive fastener": [
+      1.4710509622198942,
+      1.477352647436856
+    ],
+    "Holo table | console 04 | captive fastener.001": [
+      1.34243151316779,
+      1.3487549359814173
+    ],
+    "Holo table | console 04 | captive fastener.002": [
+      1.4710521511814822,
+      1.4773524255361665
+    ],
+    "Holo table | console 04 | captive fastener.003": [
+      1.3424326627242704,
+      1.34875477785567
+    ],
+    "Holo table | fascia lamp 04 | bezel": [
+      1.543716804633983,
+      1.5517155261606912
+    ],
+    "Holo table | fascia lamp 04 | frosted lens": [
+      1.550485195948037,
+      1.5534864127961838
+    ],
+    "Holo table | fascia lamp 04 | divider": [
+      1.5528766974714936,
+      1.554876107607644
+    ],
+    "Holo table | console 05 | metal bezel": [
+      1.3280104643857542,
+      1.4874991216576812
+    ],
+    "Holo table | console 05 | inset dark panel": [
+      1.335564131735446,
+      1.4815648030100432
+    ],
+    "Holo table | console 05 | key socket 0": [
+      1.396234215157947,
+      1.4718706377940725
+    ],
+    "Holo table | console 05 | ivory key 0": [
+      1.4056300174119822,
+      1.4642263510098352
+    ],
+    "Holo table | console 05 | cyan key 0": [
+      1.369875352959875,
+      1.39303262578024
+    ],
+    "Holo table | console 05 | key socket 1": [
+      1.3958736337945592,
+      1.4695150533672865
+    ],
+    "Holo table | console 05 | ivory key 1": [
+      1.4048458930851913,
+      1.462267020815345
+    ],
+    "Holo table | console 05 | cyan key 1": [
+      1.3691163979208472,
+      1.390928642469292
+    ],
+    "Holo table | console 05 | key socket 2": [
+      1.3962345780192844,
+      1.4718707592816016
+    ],
+    "Holo table | console 05 | ivory key 2": [
+      1.4056313743463735,
+      1.4642247023648216
+    ],
+    "Holo table | console 05 | cyan key 2": [
+      1.3698758315807777,
+      1.3930326043863959
+    ],
+    "Holo table | console 05 | telemetry screen": [
+      1.3445709736889098,
+      1.3605460023178995
+    ],
+    "Holo table | console 05 | screen mark 0": [
+      1.3507788045319395,
+      1.354297692733531
+    ],
+    "Holo table | console 05 | screen mark 1": [
+      1.3500118069662248,
+      1.3533782448895753
+    ],
+    "Holo table | console 05 | screen mark 2": [
+      1.3495411393268213,
+      1.3527550039500214
+    ],
+    "Holo table | console 05 | screen mark 3": [
+      1.349365676098512,
+      1.3524261537653544
+    ],
+    "Holo table | console 05 | red status indicator": [
+      1.345935242320856,
+      1.3609804998496182
+    ],
+    "Holo table | console 05 | captive fastener": [
+      1.4710521714406704,
+      1.4773539284083657
+    ],
+    "Holo table | console 05 | captive fastener.001": [
+      1.342432573923322,
+      1.3487560041928572
+    ],
+    "Holo table | console 05 | captive fastener.002": [
+      1.4710517054792742,
+      1.4773534644345614
+    ],
+    "Holo table | console 05 | captive fastener.003": [
+      1.34243292912708,
+      1.3487555512215936
+    ],
+    "Holo table | fascia lamp 05 | bezel": [
+      1.543716404043494,
+      1.5517158478619566
+    ],
+    "Holo table | fascia lamp 05 | frosted lens": [
+      1.550484809119569,
+      1.5534851370494271
+    ],
+    "Holo table | fascia lamp 05 | divider": [
+      1.5528757474827328,
+      1.5548764981353778
+    ],
+    "Holo table | console 06 | metal bezel": [
+      1.3280104643857542,
+      1.4874987159450983
+    ],
+    "Holo table | console 06 | inset dark panel": [
+      1.335564435769215,
+      1.481565064510692
+    ],
+    "Holo table | console 06 | key socket 0": [
+      1.3962333106722908,
+      1.4718711199476444
+    ],
+    "Holo table | console 06 | ivory key 0": [
+      1.4056306919039478,
+      1.4642250089416968
+    ],
+    "Holo table | console 06 | cyan key 0": [
+      1.3698751245271126,
+      1.3930323423117807
+    ],
+    "Holo table | console 06 | key socket 1": [
+      1.3958727797822537,
+      1.469514782117191
+    ],
+    "Holo table | console 06 | ivory key 1": [
+      1.4048452274975343,
+      1.462266720196994
+    ],
+    "Holo table | console 06 | cyan key 1": [
+      1.3691160061047236,
+      1.390928492485848
+    ],
+    "Holo table | console 06 | key socket 2": [
+      1.3962341217744993,
+      1.4718699240546365
+    ],
+    "Holo table | console 06 | ivory key 2": [
+      1.4056303062907025,
+      1.4642247888678468
+    ],
+    "Holo table | console 06 | cyan key 2": [
+      1.3698747302085639,
+      1.393032580318321
+    ],
+    "Holo table | console 06 | telemetry screen": [
+      1.3445706135087385,
+      1.3605465280300753
+    ],
+    "Holo table | console 06 | screen mark 0": [
+      1.3507785411540594,
+      1.3542961647091245
+    ],
+    "Holo table | console 06 | screen mark 1": [
+      1.3500119118253269,
+      1.3533775388510272
+    ],
+    "Holo table | console 06 | screen mark 2": [
+      1.3495409571395807,
+      1.3527533846826743
+    ],
+    "Holo table | console 06 | screen mark 3": [
+      1.3493653448058915,
+      1.3524253301624276
+    ],
+    "Holo table | console 06 | red status indicator": [
+      1.345934691526956,
+      1.3609810691893114
+    ],
+    "Holo table | console 06 | captive fastener": [
+      1.4710510267961072,
+      1.4773535968184062
+    ],
+    "Holo table | console 06 | captive fastener.001": [
+      1.3424314521170864,
+      1.3487559834777114
+    ],
+    "Holo table | console 06 | captive fastener.002": [
+      1.471051381332129,
+      1.4773530660221565
+    ],
+    "Holo table | console 06 | captive fastener.003": [
+      1.3424321049432164,
+      1.3487555346494715
+    ],
+    "Holo table | fascia lamp 06 | bezel": [
+      1.5437167587832696,
+      1.5517155261606912
+    ],
+    "Holo table | fascia lamp 06 | frosted lens": [
+      1.5504850397750647,
+      1.5534855782852661
+    ],
+    "Holo table | fascia lamp 06 | divider": [
+      1.5528756827107506,
+      1.554876107607644
+    ],
+    "Holo table | console 07 | metal bezel": [
+      1.3280110703015526,
+      1.4874992418687956
+    ],
+    "Holo table | console 07 | inset dark panel": [
+      1.3355652251409702,
+      1.4815645817402276
+    ],
+    "Holo table | console 07 | key socket 0": [
+      1.3962352610521345,
+      1.4718706377940725
+    ],
+    "Holo table | console 07 | ivory key 0": [
+      1.4056310563149932,
+      1.4642268394968903
+    ],
+    "Holo table | console 07 | cyan key 0": [
+      1.3698755922703472,
+      1.3930336954720186
+    ],
+    "Holo table | console 07 | key socket 1": [
+      1.3958731000369295,
+      1.4695150330869073
+    ],
+    "Holo table | console 07 | ivory key 1": [
+      1.4048456385178378,
+      1.462267020815345
+    ],
+    "Holo table | console 07 | cyan key 1": [
+      1.3691156578236308,
+      1.390929863762447
+    ],
+    "Holo table | console 07 | key socket 2": [
+      1.3962351329835005,
+      1.4718718324210065
+    ],
+    "Holo table | console 07 | ivory key 2": [
+      1.405632222429703,
+      1.4642268191432661
+    ],
+    "Holo table | console 07 | cyan key 2": [
+      1.3698758968472515,
+      1.3930328397186613
+    ],
+    "Holo table | console 07 | telemetry screen": [
+      1.3445712618329775,
+      1.3605470318373865
+    ],
+    "Holo table | console 07 | screen mark 0": [
+      1.35077984149566,
+      1.354296834509414
+    ],
+    "Holo table | console 07 | screen mark 1": [
+      1.3500131094260728,
+      1.353378729344662
+    ],
+    "Holo table | console 07 | screen mark 2": [
+      1.3495408743271904,
+      1.352754188808878
+    ],
+    "Holo table | console 07 | screen mark 3": [
+      1.3493667362343507,
+      1.352426682633859
+    ],
+    "Holo table | console 07 | red status indicator": [
+      1.3459347441153282,
+      1.360982404946887
+    ],
+    "Holo table | console 07 | captive fastener": [
+      1.471051604183299,
+      1.4773543923820243
+    ],
+    "Holo table | console 07 | captive fastener.001": [
+      1.3424319745167672,
+      1.3487564461158947
+    ],
+    "Holo table | console 07 | captive fastener.002": [
+      1.4710518067752425,
+      1.477352617177673
+    ],
+    "Holo table | console 07 | captive fastener.003": [
+      1.3424338615364977,
+      1.348756390875523
+    ],
+    "Holo table | fascia lamp 07 | bezel": [
+      1.5437169639048716,
+      1.5517161167465452
+    ],
+    "Holo table | fascia lamp 07 | frosted lens": [
+      1.5504855779710878,
+      1.5534859427843428
+    ],
+    "Holo table | fascia lamp 07 | divider": [
+      1.5528758050578257,
+      1.55487695814338
+    ]
+  },
+  "backup": "/Users/danielku/mywebsite/secret-base/holo-table-resize/before-table-widening.blend"
+}

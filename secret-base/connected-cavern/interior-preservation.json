@@ -1,0 +1,48 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/right-cave-bays/central-pillar-right-cave-bays.blend",
+  "protected_meshes": 994,
+  "unexpected_changed_meshes_or_materials": [],
+  "new_wall_vertices": 13087,
+  "new_wall_polygons": 22854,
+  "new_wall_thickness": 0,
+  "new_wall_modifiers": 0,
+  "boundary_edges_expected_for_open_surface": 453,
+  "nonmanifold_nonboundary_edges": 0,
+  "original_rock_restored_except_local_upper_entrance_cut": true,
+  "upper_mouth_rock_objects": [
+    "Bays | continuous cave wall | stratum 0",
+    "Bays | left broken cave return | stratum 0"
+  ],
+  "upper_mouth_cut_section": [
+    [
+      -2.1,
+      10.171178627
+    ],
+    [
+      -2.1,
+      11.121178626999999
+    ],
+    [
+      -0.75,
+      11.871178626999999
+    ],
+    [
+      0.2,
+      12.271178627
+    ],
+    [
+      0.35,
+      12.271178627
+    ],
+    [
+      0.35,
+      10.171178627
+    ]
+  ],
+  "upper_mouth_cut_depth": [
+    -4.0,
+    5.9
+  ],
+  "new_exterior_shell": false,
+  "upper_bay_changes": "Local removal of the hanging entrance blade, plus brushed-metal portal faces, short inset lights, balcony fascia and warm lamps, booth mullions, and rear service cabinets."
+}

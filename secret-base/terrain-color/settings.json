@@ -1,0 +1,25 @@
+{
+  "blend_file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "changes": [
+    {
+      "material": "Terrain | rough hewn slate",
+      "brightness": 0.6499999761581421,
+      "original_viewport_color": [
+        0.02800000086426735,
+        0.03500000014901161,
+        0.041999999433755875,
+        1.0
+      ]
+    },
+    {
+      "material": "Terrain | rough hewn slate.001",
+      "brightness": 0.6499999761581421,
+      "original_viewport_color": [
+        0.02800000086426735,
+        0.03500000014901161,
+        0.041999999433755875,
+        1.0
+      ]
+    }
+  ]
+}

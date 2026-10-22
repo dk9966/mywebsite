@@ -1,8 +1,10 @@
 /* Boot-sequence overlays and content reveal for the desk HUD panels.
  *
- * Timeline is scrub-driven: every animation stays paused and its delay is
- * recomputed each frame from --boot-elapsed (published on :root by
- * BootClockDriver). Per-part offsets/durations come from --boot-off-* /
+ * Every animation is declared paused with its delay measured from mount;
+ * BootClockDriver seeks them onto the shared boot clock through the Web
+ * Animations API and lets them play natively (no per-frame style writes).
+ * Only keyframes named boot-* are driven. Per-part offsets/durations come
+ * from --boot-off-* /
  * --boot-dur-* (bootTuning store). Visibility toggles use --boot-show-* (0|1).
  * Keep in sync with src/lib/bootParts.ts and src/lib/bootSequence.ts.
  */
@@ -15,7 +17,7 @@
   pointer-events: none;
   color: #9cf8f8;
   animation: boot-fx-out var(--boot-dur-scaffoldFade) linear
-    calc(var(--boot-off-scaffoldFade) - var(--boot-elapsed)) both paused;
+    calc(var(--boot-off-scaffoldFade)) both paused;
 }
 
 .boot-fx:not(.boot-fx--scaffold-fade) {
@@ -39,7 +41,7 @@
   );
   opacity: 0;
   animation: boot-flash var(--boot-dur-powerFlash) linear
-    calc(var(--boot-delay) + var(--boot-off-powerFlash) - var(--boot-elapsed)) both
+    calc(var(--boot-delay) + var(--boot-off-powerFlash)) both
     paused;
 }
 
@@ -82,10 +84,10 @@
     );
   animation:
     boot-noise-burst var(--boot-dur-staticNoise) steps(8, jump-none)
-      calc(var(--boot-delay) + var(--boot-off-staticNoise) - var(--boot-elapsed)) both
+      calc(var(--boot-delay) + var(--boot-off-staticNoise)) both
       paused,
     boot-noise-shift var(--boot-dur-staticNoise) steps(7)
-      calc(var(--boot-delay) + var(--boot-off-staticNoise) - var(--boot-elapsed)) both
+      calc(var(--boot-delay) + var(--boot-off-staticNoise)) both
       paused;
 }
 
@@ -127,12 +129,12 @@
 
 .boot-fx__scan--a {
   animation: boot-scan var(--boot-dur-scanA) cubic-bezier(0.3, 0, 0.7, 1)
-    calc(var(--boot-delay) + var(--boot-off-scanA) - var(--boot-elapsed)) both paused;
+    calc(var(--boot-delay) + var(--boot-off-scanA)) both paused;
 }
 
 .boot-fx__scan--b {
   animation: boot-scan var(--boot-dur-scanB) cubic-bezier(0.4, 0, 0.6, 1)
-    calc(var(--boot-delay) + var(--boot-off-scanB) - var(--boot-elapsed)) both paused;
+    calc(var(--boot-delay) + var(--boot-off-scanB)) both paused;
 }
 
 .boot-fx__scan:not(.boot-fx__part--on) {
@@ -156,7 +158,7 @@
     linear-gradient(90deg, rgba(156, 248, 248, 0.13) 1px, transparent 1px);
   background-size: 64px 64px;
   animation: boot-grid var(--boot-dur-alignGrid) steps(3, jump-none)
-    calc(var(--boot-delay) + var(--boot-off-alignGrid) - var(--boot-elapsed)) forwards
+    calc(var(--boot-delay) + var(--boot-off-alignGrid)) forwards
     paused;
 }
 
@@ -197,7 +199,7 @@
 .boot-fx__diag-line {
   opacity: 0;
   animation: boot-diag var(--boot-dur-diagText) steps(2, jump-none)
-    calc(var(--boot-delay) + var(--boot-off-diagText) + var(--i) * var(--boot-diag-stagger) - var(--boot-elapsed))
+    calc(var(--boot-delay) + var(--boot-off-diagText) + var(--i) * var(--boot-diag-stagger))
     forwards paused;
 }
 
@@ -222,7 +224,7 @@
   stroke: currentColor;
   opacity: 0;
   animation: boot-reticle-in var(--boot-reticle-in-dur) linear
-    calc(var(--boot-delay) + var(--boot-off-reticle) - var(--boot-elapsed)) forwards paused;
+    calc(var(--boot-delay) + var(--boot-off-reticle)) forwards paused;
 }
 
 .boot-fx__reticle:not(.boot-fx__part--on) {
@@ -243,24 +245,24 @@
 .boot-fx__arc--outer {
   stroke-dasharray: 42 58;
   animation: boot-arc var(--boot-dur-reticle) cubic-bezier(0.2, 0, 0.3, 1)
-    calc(var(--boot-delay) + var(--boot-off-reticle) - var(--boot-elapsed)) both paused;
+    calc(var(--boot-delay) + var(--boot-off-reticle)) both paused;
 }
 
 .boot-fx__arc--mid {
   stroke-dasharray: 26 74;
   animation:
     boot-arc var(--boot-dur-reticle) cubic-bezier(0.2, 0, 0.3, 1)
-      calc(var(--boot-delay) + var(--boot-off-reticle) + var(--boot-reticle-arc-offset-mid) - var(--boot-elapsed)) both
+      calc(var(--boot-delay) + var(--boot-off-reticle) + var(--boot-reticle-arc-offset-mid)) both
       paused,
     boot-spin var(--boot-reticle-spin-dur) linear
-      calc(var(--boot-delay) + var(--boot-off-reticle) + var(--boot-reticle-arc-offset-mid) - var(--boot-elapsed)) both
+      calc(var(--boot-delay) + var(--boot-off-reticle) + var(--boot-reticle-arc-offset-mid)) both
       paused;
 }
 
 .boot-fx__arc--inner {
   stroke-dasharray: 14 86;
   animation: boot-arc calc(var(--boot-dur-reticle) * 0.86) cubic-bezier(0.2, 0, 0.3, 1)
-    calc(var(--boot-delay) + var(--boot-off-reticle) + var(--boot-reticle-arc-offset-inner) - var(--boot-elapsed)) both
+    calc(var(--boot-delay) + var(--boot-off-reticle) + var(--boot-reticle-arc-offset-inner)) both
     paused;
 }
 
@@ -301,8 +303,7 @@
   transform-origin: bottom;
   animation: boot-bar var(--boot-dur-readoutBars) steps(4, jump-none)
     calc(
-      var(--boot-delay) + var(--boot-off-readoutBars) + var(--i) * var(--boot-readout-stagger) -
-        var(--boot-elapsed)
+      var(--boot-delay) + var(--boot-off-readoutBars) + var(--i) * var(--boot-readout-stagger)
     )
     both paused;
 }
@@ -314,49 +315,9 @@
   100% { transform: scaleY(1); }
 }
 
-.boot-fx-pulse {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.boot-fx-pulse:not(.boot-fx__part--on) {
-  display: none;
-}
-
-.boot-fx-pulse::before {
-  content: "";
-  position: absolute;
-  top: -10%;
-  bottom: -10%;
-  left: -10%;
-  width: 6.8%;
-  background: linear-gradient(
-    100deg,
-    transparent,
-    rgba(180, 255, 255, 0.16) 35%,
-    rgba(215, 255, 255, 0.34) 50%,
-    rgba(180, 255, 255, 0.16) 65%,
-    transparent
-  );
-  filter: blur(2px);
-  animation: boot-pulse var(--boot-dur-onlinePulse) cubic-bezier(0.3, 0, 0.4, 1)
-    calc(var(--pulse-delay) - var(--boot-elapsed)) both paused;
-}
-
-/* Sweep in panel-relative units (left %) rather than element-relative
-   translateX %, so the bar crosses the full panel no matter how thin it is
-   (left % resolves against the container; translateX % against the bar). */
-@keyframes boot-pulse {
-  from { left: -10%; }
-  to { left: 104%; }
-}
-
 .hud-screen__face--boot {
   animation: boot-jitter var(--boot-dur-contentJitter) steps(2, jump-none)
-    calc(var(--boot-delay) + var(--boot-off-contentJitter) - var(--boot-elapsed)) both
+    calc(var(--boot-delay) + var(--boot-off-contentJitter)) both
     paused;
 }
 
@@ -376,7 +337,7 @@
 
 .hud-screen__face--boot.boot-part--titleReveal .hud-screen__handle {
   animation: boot-text-in var(--boot-dur-titleReveal) linear
-    calc(var(--boot-delay) + var(--boot-off-titleReveal) - var(--boot-elapsed)) both
+    calc(var(--boot-delay) + var(--boot-off-titleReveal)) both
     paused;
 }
 
@@ -400,7 +361,7 @@
 
 .hud-screen__face--boot.boot-part--bodyReveal .hud-screen__body {
   animation: boot-body-in var(--boot-dur-bodyReveal) linear
-    calc(var(--boot-delay) + var(--boot-off-bodyReveal) - var(--boot-elapsed)) both
+    calc(var(--boot-delay) + var(--boot-off-bodyReveal)) both
     paused;
 }
 
@@ -423,8 +384,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .boot-fx,
-  .boot-fx-pulse {
+  .boot-fx {
     display: none;
   }
 

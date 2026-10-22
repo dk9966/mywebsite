@@ -1,0 +1,10 @@
+# Local visual iterations; final scene, final renders, and generator are retained.
+iteration-*
+generator-*.py
+source-inventory.json
+harmony-[0-9]*
+harmony-inventory.json
+satin-preview-*
+holo-preview*
+holo-source-inventory.json
+recessed-preview-*

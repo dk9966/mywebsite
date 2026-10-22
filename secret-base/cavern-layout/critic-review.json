@@ -1,0 +1,33 @@
+{
+  "method": "Two independent critics started with fresh context, reference image, candidate render, and user constraints. Subsequent revisions were re-reviewed by the same critics.",
+  "constraints": [
+    "Keep center island geometry, props, transforms, and materials unchanged.",
+    "Use approved connected rock terrain style, not concept blockwork."
+  ],
+  "final_candidate": "iteration-07-overview.png",
+  "critic_a": {
+    "grade": 7.5,
+    "assessment": "Rear destination resolved, rooms readable, workshop glare and occlusions corrected. No blocking readability defects.",
+    "residuals": [
+      "Bridge grades remain steeper than concept",
+      "Cool atmospheric illumination remains more uniform than concept"
+    ]
+  },
+  "critic_b": {
+    "grade": 8.6,
+    "assessment": "Rear bridge destination and workshop warmth resolved. Coherent and readable composition ready under preservation constraints.",
+    "residuals": [
+      "More selective shadows on lower supports could further deepen the abyss"
+    ]
+  },
+  "revisions": [
+    "Linked imported collections before reading evaluated transforms",
+    "Cleared terrain from platform signs and floors",
+    "Moved lights below obstructing ceilings",
+    "Added localized station and rock lighting",
+    "Reduced broad fill and About table reflection",
+    "Built continuous sloped bridge decking",
+    "Added service recess and landing at rear path",
+    "Extended warm workshop light across its floor"
+  ]
+}

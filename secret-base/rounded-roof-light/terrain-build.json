@@ -1,0 +1,11 @@
+{
+  "source_triangles": 175365,
+  "reduced_triangles": 28056,
+  "triangle_reduction_percent": 84.00136857411684,
+  "original_vertices": 87731,
+  "reduced_vertices": 14077,
+  "source_overhang_vertices": 1889,
+  "roof_clearance_m": 0.2,
+  "clearance_follows_height_and_radius": true,
+  "source_mesh_retained": "Cave | local clearance over four-slope circular crown"
+}

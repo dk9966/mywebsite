@@ -12,6 +12,11 @@ export function armBootClock(elapsedMs: number): void {
   anchorAt = performance.now() - elapsedMs;
 }
 
+/** performance.now() at boot time 0, or null before the clock is armed. */
+export function bootClockAnchor(): number | null {
+  return anchorAt;
+}
+
 export function bootAnchorElapsedMs(): number {
   if (anchorAt === null) return useBootClock.getState().elapsedMs;
   return performance.now() - anchorAt;

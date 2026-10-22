@@ -1,0 +1,3 @@
+# Regenerable comparison data (render_reference.py, exr_dump.py)
+reference/*.exr
+reference/*.f32

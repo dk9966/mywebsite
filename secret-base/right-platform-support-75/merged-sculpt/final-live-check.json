@@ -1,0 +1,10 @@
+{
+  "vertices": 29945,
+  "faces": 49702,
+  "bad_interior_edges": 0,
+  "loose_vertices": 0,
+  "sculpt_mode": "SCULPT",
+  "separate_shoulder_removed": true,
+  "brace_count": 6,
+  "roof_mask_present": true
+}

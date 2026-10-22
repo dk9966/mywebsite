@@ -1,0 +1,16 @@
+{
+  "parallel_stringer_lateral_ranges": {
+    "Bridge | parallel edge stringer 0": [
+      -0.6999995708465576,
+      -0.6399991512298584
+    ],
+    "Bridge | parallel edge stringer 1": [
+      0.6400001049041748,
+      0.7000004053115845
+    ]
+  },
+  "vertical_posts_max_center_drift": 9.536761353939188e-07,
+  "valid_drivers": true,
+  "generated_visible": 107,
+  "saved_file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend"
+}

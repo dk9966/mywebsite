@@ -1,0 +1,170 @@
+{
+  "frame": [
+    [
+      0.9696715474128723,
+      -0.24441181123256683,
+      0.0,
+      18.464740753173828
+    ],
+    [
+      0.24441181123256683,
+      0.9696715474128723,
+      0.0,
+      9.748664855957031
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "bridge_frame": [
+    [
+      0.9991327524185181,
+      -0.04163985699415207,
+      0.0,
+      0.3665809631347656
+    ],
+    [
+      0.04163985699415207,
+      0.9991327524185181,
+      0.0,
+      -10.145973205566406
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "floor_height": 6.87117862701416,
+  "upper_height": 8.7,
+  "bridge_width": 1.18,
+  "bridge_length": 4.176502242789679,
+  "bridge_radial_dot": 1.000000157393515,
+  "bridge_start": 3.627974362938589,
+  "bridge_end": 7.804476605728269,
+  "center_radius": 3.7249960287809056,
+  "stair_run": 2.99614,
+  "stair_rise": 0.10160118738810217,
+  "stair_count": 18,
+  "terrain_vertices_changed": 1038,
+  "terrain_max_raise": 2.134446661221684,
+  "terrain_underdeck_clearance_vertices": 333,
+  "aperture_objects": [
+    "Metal | continuous steel guardrail",
+    "Metal | guardrail polished top edge",
+    "Metal | continuous steel guardrail.001",
+    "Metal | guardrail polished top edge.001",
+    "Metal | perimeter post.009",
+    "Metal | perimeter post.010",
+    "Metal | rim strap bolt.011",
+    "Metal | perimeter post.011"
+  ],
+  "new_objects": 302,
+  "protected_object_geometry_unchanged": 1992,
+  "upper_polygon": [
+    [
+      -2.12,
+      2.982
+    ],
+    [
+      2.2,
+      2.982
+    ],
+    [
+      2.34,
+      3.122
+    ],
+    [
+      2.34,
+      6.54
+    ],
+    [
+      2.2,
+      6.68
+    ],
+    [
+      -2.12,
+      6.68
+    ],
+    [
+      -2.26,
+      6.54
+    ],
+    [
+      -2.26,
+      3.122
+    ]
+  ],
+  "landing_polygon": [
+    [
+      -2.02,
+      0.035
+    ],
+    [
+      -2.02,
+      -1.17
+    ],
+    [
+      -1.86,
+      -1.38
+    ],
+    [
+      -0.5478847026824951,
+      -2.3728322982788086
+    ],
+    [
+      0.6310919523239136,
+      -2.323697090148926
+    ],
+    [
+      1.86,
+      -1.38
+    ],
+    [
+      2.02,
+      -1.17
+    ],
+    [
+      2.02,
+      0.035
+    ]
+  ],
+  "archive_collection": "Archive | rear-left platform before details",
+  "walking_surface_rock_clearance_samples": 7749,
+  "rock_surface_intrusions": [],
+  "closed_mesh_checks": {
+    "Rear left | connected broad stair body": {
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    "Rear left | one-piece chamfered T landing": {
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    "Rear left | upper connected platform": {
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    },
+    "Rear left | curved flush center threshold": {
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0
+    }
+  },
+  "bridge_clearance_guardrail_intrusions": []
+}

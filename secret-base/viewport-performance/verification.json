@@ -1,0 +1,39 @@
+{
+  "file": "/Users/danielku/mywebsite/secret-base/platform-controls/cave-platform-sliders.blend",
+  "backup": "/Users/danielku/mywebsite/secret-base/viewport-performance/before-viewport-fix-20260929-143028.blend",
+  "changes": {
+    "use_preview_denoising": {
+      "before": false,
+      "after": true
+    },
+    "preview_denoiser": {
+      "before": "AUTO",
+      "after": "OPENIMAGEDENOISE"
+    },
+    "preview_denoising_input_passes": {
+      "before": "RGB_ALBEDO",
+      "after": "RGB_ALBEDO_NORMAL"
+    },
+    "preview_denoising_start_sample": {
+      "before": 1,
+      "after": 8
+    },
+    "preview_samples": {
+      "before": 1024,
+      "after": 128
+    }
+  },
+  "preserved": {
+    "mesh_geometry": true,
+    "objects": true,
+    "materials": true,
+    "lights": true,
+    "worlds": true,
+    "node_groups": true,
+    "cameras": true,
+    "color_management": true,
+    "render_settings": true
+  },
+  "max_sample_budget_reduction": 0.875,
+  "note": "Only preview sampling and denoising changed. Final render, resolution, geometry, lighting, materials, camera, volume shaders, and node groups are unchanged."
+}

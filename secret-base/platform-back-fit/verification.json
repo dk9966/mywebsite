@@ -1,0 +1,27 @@
+{
+  "before": {
+    "verts": 6232,
+    "faces": 12346,
+    "components": [
+      6232
+    ],
+    "boundary": 120,
+    "loose": 0,
+    "nonmanifold": 1,
+    "degenerate": 0
+  },
+  "after": {
+    "verts": 6199,
+    "faces": 12280,
+    "components": [
+      6199
+    ],
+    "boundary": 120,
+    "loose": 0,
+    "nonmanifold": 1,
+    "degenerate": 0
+  },
+  "other_objects_changed": [
+    "Metal | recessed open grate 05"
+  ]
+}

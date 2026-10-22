@@ -1,0 +1,30 @@
+{
+  "connected_components": 1,
+  "loose_edges": 0,
+  "nonmanifold_junctions": 0,
+  "protected_objects": 2905,
+  "changed_unrelated_objects": [
+    "Upper roof | continuous fitted crown panels",
+    "Upper roof | panel joint 00",
+    "Upper roof | panel joint 01",
+    "Upper roof | panel joint 03",
+    "Upper roof | panel joint 04",
+    "Upper roof | panel joint 05",
+    "Upper roof | panel joint 06",
+    "Upper roof | finished terminal fascia 00",
+    "Upper roof | finished terminal fascia 06"
+  ],
+  "new_walking_intrusions": [],
+  "new_light_intrusions": [],
+  "clearances_before": {
+    "walking_intrusions": [],
+    "light_intrusions": []
+  },
+  "clearances_after": {
+    "walking_intrusions": [],
+    "light_intrusions": []
+  },
+  "active_fit_modifier": "Upper right | continuous forward rock fit",
+  "final_unrelated_object_changes": [],
+  "preservation_note": "Nine upper-roof parts changed concurrently during the session. This edit touched only the cave terrain; the final protection snapshot retains all current non-terrain objects."
+}

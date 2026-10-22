@@ -1,0 +1,13 @@
+{
+  "source": "/Users/danielku/mywebsite/secret-base/mound-study/central-platform-rock-mound-balanced.blend",
+  "output": "/Users/danielku/mywebsite/secret-base/cavern-layout/cavern-approved-terrain.blend",
+  "output_sha256": "ea6993ca64dd1753dff7bf9d96dac772181ff75379d31608e381d6db51e0e7a7",
+  "active_scene": "Cavern | approved island and reference composition",
+  "protected_objects": 17,
+  "compared": "World transforms, mesh vertices and topology, face material indices, material node graphs and input values, and modifier settings",
+  "changed_objects": [],
+  "missing_from_active_scene": [],
+  "source_sha256": "679e93e07d3b3d3c36f8ef3e22930799b73d124f5327b52604d310c7b973f976",
+  "asset_source_sha256": "6bfb34609f78199e7513ecf69e51235e05a8723253060e0d96c27da7463be3b6",
+  "passed": true
+}
